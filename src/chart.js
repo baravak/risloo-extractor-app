@@ -1,39 +1,14 @@
-const dataset = [
-  {
-    label: "نزدیک بودن",
-    subLabel: "(دلبستگی ایمن)",
-    data: 4,
-  },
-  {
-    label: "اضطراب",
-    subLabel: "(دلبستگی اضطرابی - دوسوگرا)",
-    data: 9,
-  },
-  {
-    label: "وابستگی",
-    subLabel: "(دلبستگی اجتنابی)",
-    data: 15,
-  },
-];
+// Imports
+import styleString from "./style.js";
 
 // Constants
 
-const WIDTH = 500;
-const HEIGHT = 500;
-const PADDING = 40;
-
 const PI = Math.PI;
-const sqrt = Math.sqrt;
-const pow = Math.pow;
-const round = Math.round;
-const sin = Math.sin;
-const cos = Math.cos;
-const tan = Math.tan;
 
 // Functions
 
 function calcDistance(pt1, pt2) {
-  return sqrt(pow(pt2.x - pt1.x, 2) + pow(pt2.y - pt1.y, 2));
+  return Math.sqrt(Math.pow(pt2.x - pt1.x, 2) + Math.pow(pt2.y - pt1.y, 2));
 }
 
 function toDegrees(rad) {
@@ -59,21 +34,26 @@ function createArithmeticSequence(a_0, d, n) {
 
 function rotateAxes(pt, theta) {
   return {
-    x: round(pt.x * cos(theta) - pt.y * sin(theta)),
-    y: round(pt.x * sin(theta) + pt.y * cos(theta)),
+    x: Math.round(pt.x * Math.cos(theta) - pt.y * Math.sin(theta)),
+    y: Math.round(pt.x * Math.sin(theta) + pt.y * Math.cos(theta)),
   };
 }
 
 // Translate Axes of 2D Coordinate System for a Point
 
 function translateAxes(pt, d) {
-  return { x: round(pt.x - d.x), y: round(pt.y - d.y) };
+  return { x: Math.round(pt.x - d.x), y: Math.round(pt.y - d.y) };
 }
 
 // Transform Axes of 2D Coordinate System for a Point
 
 function transformAxes(pt, d, theta) {
   return rotateAxes(translateAxes(pt, d), theta);
+}
+
+// Check Whether an Object is Empty
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
 }
 
 // Classes
@@ -105,49 +85,76 @@ class Dataset {
 }
 
 class SVG {
-  static drawPath(points, fill, stroke) {
-    // let n = points.length;
-    // let output = '<path d="M';
-    // output = points.reduce((accumulator, point, index) => accumulator + ` ${point.x} ${point.y} ${index == (n-1) ? : }`, output);
+  static drawPathObj(points, attrs) {
+    const reducer = (accumulator, point, index) => {
+      if (index === 0) return accumulator + `M ${point.x} ${point.y}`;
+      else return accumulator + ` L ${point.x} ${point.y}`;
+    };
+    let d = points.reduce(reducer, "");
+    d += " Z";
+
+    const attributes = {
+      d,
+      ...attrs,
+    };
+
+    return this.drawTagObj("path", attributes, true, []);
   }
 
-  _createTag(name, attributes, selfClosing = true) {
-    let begin = `<${name} `;
-    let attributeString = Object.entries(attributes).reduce(
-      (accumulator, item) => accumulator + `${item[0]}="${item[1]}" `,
-      ""
-    );
-    let end = selfClosing ? "/>" : ``;
+  static drawCircleObj(center, attrs) {
+    const attributes = {
+      cx: center.x,
+      cy: center.y,
+      ...attrs,
+    };
+
+    return this.drawTagObj("circle", attributes, true, []);
   }
 
-  _appendChild(parent, child) {}
+  static drawTextObj(point, text, attrs) {
+    const attributes = {
+      x: point.x,
+      y: point.y,
+      ...attrs,
+    };
+
+    return this.drawTagObj("text", attributes, false, [text]);
+  }
+
+  static drawTagObj(name, attrs, selfClosing, children) {
+    return {
+      name,
+      attrs,
+      selfClosing,
+      children,
+    };
+  }
 
   static toXML(tagObj, space = 2) {
-    const { name, attributes, selfClosing, children } = tagObj;
+    const { name, attrs, selfClosing, children } = tagObj;
     let spaceString = "".padEnd(space, " ");
 
     let objXML = `<${name}`;
 
-    let attributeString = Object.entries(attributes).reduce(
-      (accumulator, item) => accumulator + ` ${item[0]}="${item[1]}"`,
-      ""
-    );
+    let attributeString = this.getAttrsString(attrs);
 
     objXML += attributeString;
 
     if (selfClosing) {
-      objXML += " />\n";
+      objXML += "/>\n";
       return objXML;
     }
 
     objXML += ">\n";
 
     for (const item of children) {
+      if (typeof item === "string" || typeof item === "number") {
+        objXML += item;
+        continue;
+      }
       let child = SVG.toXML(item)
         .split("\n")
-        .map(
-          (member) => (member ? spaceString + member : member)
-        )
+        .map((member) => (member ? spaceString + member : member))
         .join("\n");
       objXML += child;
     }
@@ -156,35 +163,128 @@ class SVG {
 
     return objXML;
   }
+
+  static getAttrsString(attrs) {
+    return Object.entries(attrs).reduce(
+      (accumulator, item) => accumulator + ` ${item[0]}="${item[1]}"`,
+      ""
+    );
+  }
+}
+
+class Color {
+  static colors = {
+    red: "#f44336",
+    pink: "#e91e63",
+    purple: "#9c27b0",
+    indigo: "#3f51b5",
+    blue: "#2196f3",
+    lightBlue: "#03a9f4",
+    cyan: "#009688",
+    green: "#4caf50",
+    lime: "#cddc39",
+    yellow: "#ffeb3b",
+    orange: "#ff9800",
+    brown: "#795548",
+  };
+
+  static getRandomColorArr(n) {
+    const colors = Object.entries(this.colors);
+    let len = colors.length;
+
+    const output = [];
+    while (output.length < n) {
+      let ran = Math.floor(Math.random() * len);
+      let color = colors[ran][0];
+      if (!output.includes(color)) {
+        output.push(color);
+      }
+    }
+
+    return output;
+  }
+}
+
+class Defaults {
+  constructor(config) {
+    this.parameters = {
+      canvas: {
+        width: 800,
+        height: 800,
+        padding: 60,
+      },
+      polygonChart: {
+        global: {
+          maxValue: 20,
+          textOffset: 40,
+          centerOffset: 50,
+          innerPolygonNum: 20,
+        },
+        polygons: {
+          fill: "transparent",
+          stroke: "#E1EDF2",
+        },
+        dataPoints: {
+          fill: "transparent",
+          stroke: "black",
+          "stroke-width": 3,
+        },
+        circles: {
+          r: 10,
+          "stroke-width": 1,
+        },
+        text: {
+          "font-size": 12,
+          "text-anchor": "middle",
+          "dominant-baseline": "middle",
+        },
+        label: {
+          fill: "black",
+        },
+        subLabel: {
+          "font-size": 10,
+          fill: "black",
+        },
+      },
+    };
+    this._setConfig(config);
+  }
+
+  _setConfig(config) {
+    const { parameters } = this;
+
+    Object.assign(parameters, config);
+  }
 }
 
 class Chart {
-  constructor() {
-    this.canvas = new Canvas(WIDTH, HEIGHT, PADDING);
+  constructor(config) {
+    this.defaults = new Defaults(config);
+    const { width, height, padding } = this.defaults.parameters.canvas;
+    this.canvas = new Canvas(width, height, padding);
   }
 }
 
 class PolygonChart extends Chart {
-  constructor(
-    dataset,
-    max_value = 20,
-    innerPolygonNum = 10,
-    centerOffset = 20,
-    textOffset = 20
-  ) {
-    super();
+  constructor(dataset, config = {}) {
+    super(config);
     const me = this;
-    dataset = new Dataset(max_value, dataset);
-    this.dataValues = dataset.dataPoints.map(
-      (item) => item.data / dataset.max_value
-    );
-    this.n = dataValues.length;
-    this.consecutiveDistance = round((radius - centerOffset) / innerPolygonNum);
-    this.innerPolygonNum = innerPolygonNum;
-    this.textOffset = textOffset;
+    this.defaults = me.defaults.parameters.polygonChart;
+    this.dataset = new Dataset(me.defaults.global.maxValue, dataset);
+    this.innerPolygonNum = me.defaults.global.innerPolygonNum;
+    this.textOffset = me.defaults.global.textOffset;
+    this.centerOffset = me.defaults.global.centerOffset;
     this.center = me.canvas.center;
     this.radius = me.canvas.height / 2 - me.canvas.padding;
-    this.angles = createArithmeticSequence(0, (2 * PI) / n, n);
+    this.dataValues = me.dataset.dataPoints.map(
+      (item) => (item.data / me.dataset.max_value) * me.radius
+    );
+    this.n = me.dataValues.length;
+    this.consecutiveDistance = Math.round(
+      (me.radius - me.centerOffset) / me.innerPolygonNum
+    );
+    this.angles = createArithmeticSequence(0, (2 * PI) / me.n, me.n);
+    this.colors = Color.getRandomColorArr(me.n);
     this.mainPoints = me._calcMainPolygonPoints();
     this.innerPoints = me._calcInnerPolygonPoints();
     this.dataPoints = me._calcDataPoints();
@@ -193,7 +293,7 @@ class PolygonChart extends Chart {
 
   _calcMainPolygonPoints() {
     const { radius, angles, n } = this;
-    const radiuses = Array(n).fill(radius);
+    let radiuses = Array(n).fill(radius);
 
     return this._calcPolygonPoints(radiuses, angles);
   }
@@ -206,7 +306,7 @@ class PolygonChart extends Chart {
       consecutiveDistance: dist,
       innerPolygonNum: num,
     } = this;
-    const radiuses = Array(n).fill(radius);
+    let radiuses = Array(n).fill(radius);
 
     let i;
     let arr = [];
@@ -225,7 +325,7 @@ class PolygonChart extends Chart {
   }
 
   _calcTextPoints() {
-    const { radius, angles, textOffset } = this;
+    const { radius, angles, textOffset, n } = this;
     const radiuses = Array(n).fill(radius + textOffset);
 
     return this._calcPolygonPoints(radiuses, angles);
@@ -241,10 +341,88 @@ class PolygonChart extends Chart {
     return points;
   }
 
+  _drawPolygonsObj() {
+    const { mainPoints, innerPoints: points, defaults } = this;
+
+    points.push(mainPoints);
+    let pathArr = points.map((item) => SVG.drawPathObj(item));
+
+    const attrs = defaults.polygons;
+
+    return SVG.drawTagObj("g", attrs, false, pathArr);
+  }
+
+  _drawDataPointsObj() {
+    const { dataPoints: points, defaults } = this;
+
+    let pathObj = SVG.drawPathObj(points);
+
+    const attrs = defaults.dataPoints;
+
+    return SVG.drawTagObj("g", attrs, false, [pathObj]);
+  }
+
+  _drawDataPointsCirclesObj() {
+    const { dataPoints: points, dataset, defaults, colors } = this;
+
+    let dataArr = dataset.dataPoints.map((item) => item.data);
+
+    const circleAttrs = defaults.circles;
+    const textAttrs = defaults.text;
+    const attrs = {
+      fill: "white",
+    };
+
+    let i;
+    let n = points.length;
+    const childrenArr = [];
+    for (i = 0; i < n; i++) {
+      childrenArr.push(
+        SVG.drawCircleObj(points[i], { ...circleAttrs, stroke: colors[i] })
+      );
+      childrenArr.push(
+        SVG.drawTextObj(points[i], dataArr[i], {
+          ...textAttrs,
+          fill: colors[i],
+        })
+      );
+    }
+
+    return SVG.drawTagObj("g", attrs, false, childrenArr);
+  }
+
+  _drawDataPointsAxesLabels() {
+    const { textPoints: points, dataset, defaults } = this;
+
+    let labelArr = dataset.dataPoints.map((item) => item.label);
+    let subLabelArr = dataset.dataPoints.map((item) => item.subLabel);
+
+    const labelAttrs = {
+      ...defaults.text,
+      ...defaults.label,
+    };
+    const subLabelAttrs = {
+      ...defaults.text,
+      ...defaults.subLabel,
+    };
+
+    let i;
+    let n = points.length;
+    const childrenArr = [];
+    for (i = 0; i < n; i++) {
+      childrenArr.push(SVG.drawTextObj(points[i], labelArr[i], labelAttrs));
+      childrenArr.push(
+        SVG.drawTextObj(points[i], subLabelArr[i], subLabelAttrs)
+      );
+    }
+
+    return SVG.drawTagObj("g", {}, false, childrenArr);
+  }
+
   _polarToCartesian(radius, angle) {
     return {
-      x: round(radius * sin(angle)),
-      y: round(radius * cos(angle)),
+      x: Math.round(radius * Math.sin(angle)),
+      y: Math.round(radius * Math.cos(angle)),
     };
   }
 
@@ -259,6 +437,7 @@ class PolygonChart extends Chart {
 const chart = {
   SVG,
   PolygonChart,
+  Color,
 };
 
 export default chart;

@@ -1,9 +1,5 @@
 // Constants
 
-const WIDTH = 800;
-const HEIGHT = 800;
-const PADDING = 100;
-
 const PI = Math.PI;
 
 // Functions
@@ -131,15 +127,44 @@ class Color {
   }
 }
 
+class Defaults {
+  constructor(config) {
+    this.parameters = {
+      canvas: {
+        width: 800,
+        height: 800,
+        padding: 100,
+      },
+      polygonChart: {
+        global: {
+          maxValue: 20,
+          textOffset: 40,
+          centerOffset: 50,
+          innerPolygonNum: 20,
+        },
+      },
+    };
+    this._setConfig(config);
+  }
+
+  _setConfig(config) {
+    const { parameters } = this;
+
+    Object.assign(parameters, config);
+  }
+}
+
 class Chart {
-  constructor() {
-    this.canvas = new Canvas(WIDTH, HEIGHT, PADDING);
+  constructor(config) {
+    this.defaults = new Defaults(config);
+    const { width, height, padding } = this.defaults.parameters.canvas;
+    this.canvas = new Canvas(width, height, padding);
   }
 }
 
 class RadarChart extends Chart {
-  constructor(dataset) {
-    super();
+  constructor(dataset, config = {}) {
+    super(config);
     const me = this;
     this.defaults = me.defaults.parameters.polygonChart;
     this.dataset = new Dataset(me.defaults.global.maxValue, dataset);

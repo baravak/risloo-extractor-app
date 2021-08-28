@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?><svg version="1.1" width="800" height="800" xmlns="http://www.w3.org/2000/svg"><style>@font-face {
+  font-family: Dana-fanum;
+  font-style: normal;
+  font-weight: normal;
+  src: url('https://api.risloo.ir/fonts/Dana/eot/dana-fanum-regular.eot');
+  src: url('https://api.risloo.ir/fonts/Dana/eot/dana-fanum-regular.eot?#iefix') format('embedded-opentype'),
+   url('https://api.risloo.ir/fonts/Dana/woff2/dana-fanum-regular.woff2') format('woff2'),
+   url('https://api.risloo.ir/fonts/Dana/woff/dana-fanum-regular.woff') format('woff');
+}
+@font-face {
+  font-family: Dana;
+  font-style: normal;
+  font-weight: normal;
+  src: url('https://api.risloo.ir/fonts/Dana/eot/dana-regular.eot');
+  src: url('https://api.risloo.ir/fonts/Dana/eot/dana-regular.eot?#iefix') format('embedded-opentype'),
+   url('https://api.risloo.ir/fonts/Dana/woff2/dana-regular.woff2') format('woff2'),
+   url('https://api.risloo.ir/fonts/Dana/woff/dana-regular.woff') format('woff');
+}
+.number {
+  font-family: 'iransans';
+  font-weight: bold;
+}
+.text {
+  direction: rtl;
+}
+.title {
+  direction: rtl;
+  font-family: 'iransans';
+  font-weight: bold;
+}
+.sub-title {
+  direction: rtl;
+  font-family: 'iransans';
+  font-weight: normal;
+}</style><g fill="transparent" stroke="#E1EDF2"><path d="M 400 113 L 127 311 L 231 632 L 569 632 L 673 311 Z"></path><path d="M 400 126 L 139 315 L 239 622 L 561 622 L 661 315 Z"></path><path d="M 400 139 L 152 319 L 247 611 L 553 611 L 648 319 Z"></path><path d="M 400 152 L 164 323 L 254 601 L 546 601 L 636 323 Z"></path><path d="M 400 165 L 177 327 L 262 590 L 538 590 L 623 327 Z"></path><path d="M 400 178 L 189 331 L 270 580 L 530 580 L 611 331 Z"></path><path d="M 400 191 L 201 335 L 277 569 L 523 569 L 599 335 Z"></path><path d="M 400 204 L 214 339 L 285 559 L 515 559 L 586 339 Z"></path><path d="M 400 217 L 226 343 L 292 548 L 508 548 L 574 343 Z"></path><path d="M 400 230 L 238 347 L 300 538 L 500 538 L 562 347 Z"></path><path d="M 400 243 L 251 351 L 308 527 L 492 527 L 549 351 Z"></path><path d="M 400 256 L 263 356 L 315 516 L 485 516 L 537 356 Z"></path><path d="M 400 269 L 275 360 L 323 506 L 477 506 L 525 360 Z"></path><path d="M 400 282 L 288 364 L 331 495 L 469 495 L 512 364 Z"></path><path d="M 400 295 L 300 368 L 338 485 L 462 485 L 500 368 Z"></path><path d="M 400 308 L 313 372 L 346 474 L 454 474 L 487 372 Z"></path><path d="M 400 321 L 325 376 L 354 464 L 446 464 L 475 376 Z"></path><path d="M 400 334 L 337 380 L 361 453 L 439 453 L 463 380 Z"></path><path d="M 400 347 L 350 384 L 369 443 L 431 443 L 450 384 Z"></path><path d="M 400 360 L 362 388 L 376 432 L 424 432 L 438 388 Z"></path><path d="M 400 373 L 374 392 L 384 422 L 416 422 L 426 392 Z"></path><path d="M 400 100 L 115 307 L 224 643 L 576 643 L 685 307 Z"></path></g><g fill="transparent" stroke="black" stroke-width="3"><path d="M 400 340 L 272 358 L 268 582 L 568 631 L 557 349 Z"></path></g><g fill="white"><circle cx="400" cy="340" r="10" stroke="pink" stroke-width="1"></circle><text class="number" x="400" y="340" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="pink">۴</text><circle cx="272" cy="358" r="10" stroke="green" stroke-width="1"></circle><text class="number" x="272" y="358" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="green">۹</text><circle cx="268" cy="582" r="10" stroke="lightBlue" stroke-width="1"></circle><text class="number" x="268" y="582" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="lightBlue">۱۵</text><circle cx="568" cy="631" r="10" stroke="orange" stroke-width="1"></circle><text class="number" x="568" y="631" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="orange">۱۹</text><circle cx="557" cy="349" r="10" stroke="lime" stroke-width="1"></circle><text class="number" x="557" y="349" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="lime">۱۱</text></g><g></g><text class="text title" x="400" y="48" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">نزدیک بودن</text><text class="text sub-title" x="400" y="72" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی ایمن)</text><text class="text title" x="77" y="283" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">اضطراب</text><text class="text sub-title" x="77" y="307" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی اضطرابی - دوسوگرا)</text><text class="text title" x="200" y="663" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">وابستگی</text><text class="text sub-title" x="200" y="687" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی اجتنابی)</text><text class="text title" x="600" y="663" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">عنوان</text><text class="text sub-title" x="600" y="687" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">(زیرعنوان)</text><text class="text title" x="723" y="283" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">عنوان</text><text class="text sub-title" x="723" y="307" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="black">(زیرعنوان)</text></svg>

@@ -1,4 +1,3 @@
-let styleString = `
 @font-face {
   font-family: Dana-fanum;
   font-style: normal;
@@ -16,6 +15,21 @@ let styleString = `
   src: url('https://api.risloo.ir/fonts/Dana/eot/dana-regular.eot?#iefix') format('embedded-opentype'),
    url('https://api.risloo.ir/fonts/Dana/woff2/dana-regular.woff2') format('woff2'),
    url('https://api.risloo.ir/fonts/Dana/woff/dana-regular.woff') format('woff');
-}`;
-
-export default styleString;
+}
+.number {
+  font-family: 'iransans';
+  font-weight: bold;
+}
+.text {
+  direction: rtl;
+}
+.title {
+  direction: rtl;
+  font-family: 'iransans';
+  font-weight: bold;
+}
+.sub-title {
+  direction: rtl;
+  font-family: 'iransans';
+  font-weight: normal;
+}

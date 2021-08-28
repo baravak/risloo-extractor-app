@@ -1,7 +1,8 @@
-// Imports
-import styleString from "./style.js";
-
 // Constants
+
+const WIDTH = 800;
+const HEIGHT = 800;
+const PADDING = 100;
 
 const PI = Math.PI;
 
@@ -85,7 +86,7 @@ class Dataset {
 }
 
 class SVG {
-  static drawPathObj(points, attrs) {
+  static pathDGenerator(points) {
     const reducer = (accumulator, point, index) => {
       if (index === 0) return accumulator + `M ${point.x} ${point.y}`;
       else return accumulator + ` L ${point.x} ${point.y}`;
@@ -93,82 +94,7 @@ class SVG {
     let d = points.reduce(reducer, "");
     d += " Z";
 
-    const attributes = {
-      d,
-      ...attrs,
-    };
-
-    return this.drawTagObj("path", attributes, true, []);
-  }
-
-  static drawCircleObj(center, attrs) {
-    const attributes = {
-      cx: center.x,
-      cy: center.y,
-      ...attrs,
-    };
-
-    return this.drawTagObj("circle", attributes, true, []);
-  }
-
-  static drawTextObj(point, text, attrs) {
-    const attributes = {
-      x: point.x,
-      y: point.y,
-      ...attrs,
-    };
-
-    return this.drawTagObj("text", attributes, false, [text]);
-  }
-
-  static drawTagObj(name, attrs, selfClosing, children) {
-    return {
-      name,
-      attrs,
-      selfClosing,
-      children,
-    };
-  }
-
-  static toXML(tagObj, space = 2) {
-    const { name, attrs, selfClosing, children } = tagObj;
-    let spaceString = "".padEnd(space, " ");
-
-    let objXML = `<${name}`;
-
-    let attributeString = this.getAttrsString(attrs);
-
-    objXML += attributeString;
-
-    if (selfClosing) {
-      objXML += "/>\n";
-      return objXML;
-    }
-
-    objXML += ">\n";
-
-    for (const item of children) {
-      if (typeof item === "string" || typeof item === "number") {
-        objXML += item;
-        continue;
-      }
-      let child = SVG.toXML(item)
-        .split("\n")
-        .map((member) => (member ? spaceString + member : member))
-        .join("\n");
-      objXML += child;
-    }
-
-    objXML += `</${name}>\n`;
-
-    return objXML;
-  }
-
-  static getAttrsString(attrs) {
-    return Object.entries(attrs).reduce(
-      (accumulator, item) => accumulator + ` ${item[0]}="${item[1]}"`,
-      ""
-    );
+    return d;
   }
 }
 
@@ -205,69 +131,15 @@ class Color {
   }
 }
 
-class Defaults {
-  constructor(config) {
-    this.parameters = {
-      canvas: {
-        width: 800,
-        height: 800,
-        padding: 60,
-      },
-      polygonChart: {
-        global: {
-          maxValue: 20,
-          textOffset: 40,
-          centerOffset: 50,
-          innerPolygonNum: 20,
-        },
-        polygons: {
-          fill: "transparent",
-          stroke: "#E1EDF2",
-        },
-        dataPoints: {
-          fill: "transparent",
-          stroke: "black",
-          "stroke-width": 3,
-        },
-        circles: {
-          r: 10,
-          "stroke-width": 1,
-        },
-        text: {
-          "font-size": 12,
-          "text-anchor": "middle",
-          "dominant-baseline": "middle",
-        },
-        label: {
-          fill: "black",
-        },
-        subLabel: {
-          "font-size": 10,
-          fill: "black",
-        },
-      },
-    };
-    this._setConfig(config);
-  }
-
-  _setConfig(config) {
-    const { parameters } = this;
-
-    Object.assign(parameters, config);
-  }
-}
-
 class Chart {
-  constructor(config) {
-    this.defaults = new Defaults(config);
-    const { width, height, padding } = this.defaults.parameters.canvas;
-    this.canvas = new Canvas(width, height, padding);
+  constructor() {
+    this.canvas = new Canvas(WIDTH, HEIGHT, PADDING);
   }
 }
 
-class PolygonChart extends Chart {
-  constructor(dataset, config = {}) {
-    super(config);
+class RadarChart extends Chart {
+  constructor(dataset) {
+    super();
     const me = this;
     this.defaults = me.defaults.parameters.polygonChart;
     this.dataset = new Dataset(me.defaults.global.maxValue, dataset);
@@ -341,84 +213,6 @@ class PolygonChart extends Chart {
     return points;
   }
 
-  _drawPolygonsObj() {
-    const { mainPoints, innerPoints: points, defaults } = this;
-
-    points.push(mainPoints);
-    let pathArr = points.map((item) => SVG.drawPathObj(item));
-
-    const attrs = defaults.polygons;
-
-    return SVG.drawTagObj("g", attrs, false, pathArr);
-  }
-
-  _drawDataPointsObj() {
-    const { dataPoints: points, defaults } = this;
-
-    let pathObj = SVG.drawPathObj(points);
-
-    const attrs = defaults.dataPoints;
-
-    return SVG.drawTagObj("g", attrs, false, [pathObj]);
-  }
-
-  _drawDataPointsCirclesObj() {
-    const { dataPoints: points, dataset, defaults, colors } = this;
-
-    let dataArr = dataset.dataPoints.map((item) => item.data);
-
-    const circleAttrs = defaults.circles;
-    const textAttrs = defaults.text;
-    const attrs = {
-      fill: "white",
-    };
-
-    let i;
-    let n = points.length;
-    const childrenArr = [];
-    for (i = 0; i < n; i++) {
-      childrenArr.push(
-        SVG.drawCircleObj(points[i], { ...circleAttrs, stroke: colors[i] })
-      );
-      childrenArr.push(
-        SVG.drawTextObj(points[i], dataArr[i], {
-          ...textAttrs,
-          fill: colors[i],
-        })
-      );
-    }
-
-    return SVG.drawTagObj("g", attrs, false, childrenArr);
-  }
-
-  _drawDataPointsAxesLabels() {
-    const { textPoints: points, dataset, defaults } = this;
-
-    let labelArr = dataset.dataPoints.map((item) => item.label);
-    let subLabelArr = dataset.dataPoints.map((item) => item.subLabel);
-
-    const labelAttrs = {
-      ...defaults.text,
-      ...defaults.label,
-    };
-    const subLabelAttrs = {
-      ...defaults.text,
-      ...defaults.subLabel,
-    };
-
-    let i;
-    let n = points.length;
-    const childrenArr = [];
-    for (i = 0; i < n; i++) {
-      childrenArr.push(SVG.drawTextObj(points[i], labelArr[i], labelAttrs));
-      childrenArr.push(
-        SVG.drawTextObj(points[i], subLabelArr[i], subLabelAttrs)
-      );
-    }
-
-    return SVG.drawTagObj("g", {}, false, childrenArr);
-  }
-
   _polarToCartesian(radius, angle) {
     return {
       x: Math.round(radius * Math.sin(angle)),
@@ -435,9 +229,9 @@ class PolygonChart extends Chart {
 }
 
 const chart = {
+  RadarChart,
   SVG,
-  PolygonChart,
   Color,
 };
 
-export default chart;
+module.exports = chart;

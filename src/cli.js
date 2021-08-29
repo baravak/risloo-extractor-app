@@ -1,8 +1,12 @@
 import arg from "arg";
-import main from "./main";
 import fs from "fs/promises";
 import inquirer from "inquirer";
-import pug from "pug";
+import path from "path";
+const eta = require("eta");
+
+eta.configure({
+  views: path.join(__dirname, "../views")
+})
 
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
@@ -94,19 +98,19 @@ export async function cli(args) {
       incorrectInput["jsonFile"] = true;
     }
 
-    switch (options.chartType) {
-      case "radar":
-        ctx = main.radar(dataset);
-        break;
-      default:
-        incorrectInput["chartType"] = true;
+    try {
+      const chartClass = require(`./profiles/${options.chartType}.js`);
+      const chartObj = new chartClass[options.chartType](dataset);
+      ctx = chartObj.register();
+    } catch (err) {
+      incorrectInput["chartType"] = true;
     }
 
     if (!Object.keys(incorrectInput).length) break;
     options = await promptForIncorrectInput(options, incorrectInput);
   }
 
-  const SVGContent = pug.renderFile(`./views/${options.chartType}.pug`, ctx);
+  const SVGContent = await eta.renderFile(`/${options.chartType}.eta`, ctx);
 
   fs.writeFile(options.saveDir, SVGContent);
 }

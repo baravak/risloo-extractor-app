@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" width='<%= it.canvas.width %>' height='<%= it.canvas.height %>' xmlns="http://www.w3.org/2000/svg">
+  <style>
+    <%~ includeFile('./style.css') %>
+  </style>
+  <%~ it.body %>
+</svg>

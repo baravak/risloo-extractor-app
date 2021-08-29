@@ -16,20 +16,3 @@
    url('https://api.risloo.ir/fonts/Dana/woff2/dana-regular.woff2') format('woff2'),
    url('https://api.risloo.ir/fonts/Dana/woff/dana-regular.woff') format('woff');
 }
-.number {
-  font-family: 'iransans';
-  font-weight: bold;
-}
-.text {
-  direction: rtl;
-}
-.title {
-  direction: rtl;
-  font-family: 'iransans';
-  font-weight: bold;
-}
-.sub-title {
-  direction: rtl;
-  font-family: 'iransans';
-  font-weight: normal;
-}

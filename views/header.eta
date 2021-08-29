@@ -1,0 +1,19 @@
+<g font-family="iransans">
+  <g fill="white" font-weight="bold" font-size="14">
+    <rect x="0" y="0" width="100%" height="<%= it.header.height1 %>" fill="#007BA4"/>
+    <text x="100%" y="<%= it.header.height1 / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dominant-baseline="middle">پرسشنامه دلبستگی کولینز و رید</text>
+    <text x="0" y="<%= it.header.height1 / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="start" dominant-baseline="middle">SADJKLHFKLASJDFKJAS</text>
+  </g>
+  <g transform="translate(0, <%= it.header.height1 %>)" fill="#4B5563">
+    <rect x="0" y="0" width="100%" height="<%= it.header.height2 %>" fill="#D7ECF3"/>
+    <g fill="#007BA4">
+      <text x="100%" y="<%= it.header.height2 / 2 %>" transform="translate(-<%= it.header.paddingX %>, -<%= it.header.textYTransform %>)" font-weight="bold" text-anchor="end" dominant-baseline="middle">اتاق درمانی دکتر مسعود جان بزرگی</text>
+      <text x="100%" y="<%= it.header.height2 / 2 %>" transform="translate(-<%= it.header.paddingX %>, +<%= it.header.textYTransform %>)" font-weight="normal" text-anchor="end" dominant-baseline="middle">مرکز خدمات روانشناسی و مشاوره طلیعه سلامت</text>
+    </g>
+    <g fill="#4B5563" font-weight="normal">
+      <text x="50%" y="<%= it.header.height2 / 2 %>" transform="translate(0, 0)" text-anchor="middle" dominant-baseline="middle">محمد علی نخلی</text>
+      <text x="0" y="<%= it.header.height2 / 2 %>" transform="translate(+<%= it.header.paddingX %>, -<%= it.header.textYTransform %>)" text-anchor="start" dominant-baseline="middle">سه‌شنبه، ۲۵ اردیبهشت ۱۴۰۰</text>
+      <text x="0" y="<%= it.header.height2 / 2 %>" transform="translate(+<%= it.header.paddingX %>, +<%= it.header.textYTransform %>)" text-anchor="start" dominant-baseline="middle">۲۴ دقیقه</text>
+    </g>
+  </g>
+</g>

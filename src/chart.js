@@ -22,19 +22,24 @@ export class FS {
     return arr;
   }
 
+  // Round to 2 Decimal Places
+  static roundTo2(n) {
+    return +n.toFixed(2);
+  }
+
   // Rotate Axes of 2D Coordinate System for a Point (Counterclockwise)
 
   static rotateAxes(pt, theta) {
     return {
-      x: Math.round(pt.x * Math.cos(theta) - pt.y * Math.sin(theta)),
-      y: Math.round(pt.x * Math.sin(theta) + pt.y * Math.cos(theta)),
+      x: FS.roundTo2(pt.x * Math.cos(theta) - pt.y * Math.sin(theta)),
+      y: FS.roundTo2(pt.x * Math.sin(theta) + pt.y * Math.cos(theta)),
     };
   }
 
   // Translate Axes of 2D Coordinate System for a Point
 
   static translateAxes(pt, d) {
-    return { x: Math.round(pt.x - d.x), y: Math.round(pt.y - d.y) };
+    return { x: FS.roundTo2(pt.x - d.x), y: FS.roundTo2(pt.y - d.y) };
   }
 
   // Transform Axes of 2D Coordinate System for a Point
@@ -52,12 +57,31 @@ export class FS {
 // Classes
 
 class Canvas {
-  constructor(width, height, padding) {
+  constructor(width, height, padding, header, footer) {
     const me = this;
     this.width = width;
     this.height = height;
     this.padding = padding;
+    this.header = header;
+    this.footer = footer;
     this.center = { x: me.width / 2, y: me.height / 2 };
+    this._computeWidthAndHeight();
+  }
+
+  _computeWidthAndHeight() {
+    const { width, height, header, footer } = this;
+
+    let tempWidth = width;
+    let tempHeight =
+      height +
+      header.height1 +
+      header.height2 +
+      footer.height;
+    
+    let computedLength = Math.max(tempWidth, tempHeight);
+
+    this.computedWidth = computedLength;
+    this.computedHeight = computedLength;
   }
 }
 
@@ -65,15 +89,6 @@ export class Dataset {
   constructor(max_value, dataPoints = []) {
     this.max_value = max_value;
     this.dataPoints = dataPoints;
-  }
-
-  addData(label, subLabel, value) {
-    let data = {
-      label,
-      subLabel,
-      value,
-    };
-    this.dataPoints.push(data);
   }
 }
 
@@ -130,12 +145,21 @@ class Defaults {
         width: 800,
         height: 800,
         padding: 100,
+        header: {
+          height1: 40,
+          height2: 80,
+          paddingX: 12,
+          textYTransform: 15,
+        },
+        footer: {
+          height: 25,
+        },
       },
       polygonChart: {
         global: {
           maxValue: 20,
           textOffset: 40,
-          centerOffset: 50,
+          centerOffset: 30,
           innerPolygonNum: 20,
         },
       },
@@ -143,6 +167,7 @@ class Defaults {
     this._setConfig(config);
   }
 
+  // Deep Merge (Not Implemented Yet)
   _setConfig(config) {
     const { parameters } = this;
 
@@ -153,7 +178,7 @@ class Defaults {
 export class Chart {
   constructor(config) {
     this.defaults = new Defaults(config);
-    const { width, height, padding } = this.defaults.parameters.canvas;
-    this.canvas = new Canvas(width, height, padding);
+    const { width, height, padding, header, footer } = this.defaults.parameters.canvas;
+    this.canvas = new Canvas(width, height, padding, header, footer);
   }
 }

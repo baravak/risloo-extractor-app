@@ -1,23 +1,25 @@
 <% layout('./layout.eta') %>
 
-<g fill="transparent" stroke="#E1EDF2">
-  <% it.pointsAttr.forEach(function(item){ %>
-    <path d='<%= item %>'/>
-  <% }) %>
-</g>
-<g fill="transparent" stroke="black" stroke-width="3">
-  <path d='<%= it.dataAttr %>'/>
-</g>
-<g fill="white">
-  <% it.dataPoints.forEach(function(item, index){ %>
-    <circle cx='<%= item.x %>' cy='<%= item.y %>' r="10" stroke='<%= it.colors[index] %>' stroke-width="1"/>
-    <text x='<%= item.x %>' y='<%= item.y %>' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='<%= it.colors[index] %>'><%~ it.dataset[index].data %></text>
-  <% }) %>
-</g>
-<g>
-  <% it.textPoints.forEach(function(item, index){ %>
-    <text x='<%= item.x %>' y='<%= item.y - 12 %>' font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black"><%~ it.dataset[index].label %></text>
-    <text x='<%= item.x %>' y='<%= item.y + 12 %>' font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black"><%~ it.dataset[index].subLabel %></text>
-  <% }) %>
+<g transform="translate(<%= (it.canvas.computedWidth - it.canvas.width) / 2 %>, <%= it.canvas.header.height1 + it.canvas.header.height2 %>)">
+  <g fill="transparent" stroke="#E1EDF2">
+    <% it.pointsAttr.forEach(function(item){ %>
+      <path d='<%= item %>'/>
+    <% }) %>
+  </g>
+  <g fill="transparent" stroke="black" stroke-width="3">
+    <path d='<%= it.dataAttr %>'/>
+  </g>
+  <g fill="white">
+    <% it.dataPoints.forEach(function(item, index){ %>
+      <circle cx='<%= item.x %>' cy='<%= item.y %>' r="10" stroke='<%= it.colors[index] %>' stroke-width="1"/>
+      <text x='<%= item.x %>' y='<%= item.y %>' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='<%= it.colors[index] %>'><%~ it.dataset[index].data %></text>
+    <% }) %>
+  </g>
+  <g>
+    <% it.textPoints.forEach(function(item, index){ %>
+      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, -<%= it.canvas.header.textYTransform %>)" font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black"><%~ it.dataset[index].label %></text>
+      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, +<%= it.canvas.header.textYTransform %>)" font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black"><%~ it.dataset[index].subLabel %></text>
+    <% }) %>
+  </g>
 </g>
 

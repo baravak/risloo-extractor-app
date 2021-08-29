@@ -1,0 +1,4 @@
+<g fill="white" font-weight="bold" font-size="14" transform="translate(0, <%= it.canvas.header.height1 + it.canvas.header.height2 + it.canvas.height %>)">
+  <rect x="0" y="0" width="100%" height="<%= it.canvas.footer.height %>" fill="#007BA4"/>
+  <text x="50%" y="<%= it.canvas.footer.height / 2 %>" text-anchor="middle" dominant-baseline="middle">WWW.RISLOO.IR</text>
+</g>

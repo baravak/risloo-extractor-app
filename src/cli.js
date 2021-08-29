@@ -5,8 +5,8 @@ import path from "path";
 const eta = require("eta");
 
 eta.configure({
-  views: path.join(__dirname, "../views")
-})
+  views: path.join(__dirname, "../views"),
+});
 
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
@@ -89,6 +89,7 @@ export async function cli(args) {
   let incorrectInput;
   let dataset = [];
   let ctx = {};
+  let chartClass = [];
 
   while (true) {
     incorrectInput = {};
@@ -99,18 +100,23 @@ export async function cli(args) {
     }
 
     try {
-      const chartClass = require(`./profiles/${options.chartType}.js`);
-      const chartObj = new chartClass[options.chartType](dataset);
-      ctx = chartObj.register();
+      chartClass = require(`./profiles/${options.chartType}.js`);
     } catch (err) {
       incorrectInput["chartType"] = true;
+    }
+
+    try {
+    const chartObj = new chartClass[options.chartType](dataset);
+    ctx = chartObj.register();
+    } catch (err) {
+      console.log("An Error Occured due to Dataset Issues!")
     }
 
     if (!Object.keys(incorrectInput).length) break;
     options = await promptForIncorrectInput(options, incorrectInput);
   }
 
-  const SVGContent = await eta.renderFile(`/${options.chartType}.eta`, ctx);
+  const svgString = await eta.renderFile(`/${options.chartType}.eta`, ctx);
 
-  fs.writeFile(options.saveDir, SVGContent);
+  fs.writeFile(options.saveDir, svgString);
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" width='800' height='800' xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width='945' height='945' xmlns="http://www.w3.org/2000/svg">
   <style>
     @font-face {
   font-family: Dana-fanum;
@@ -19,57 +19,79 @@
    url('https://api.risloo.ir/fonts/Dana/woff2/dana-regular.woff2') format('woff2'),
    url('https://api.risloo.ir/fonts/Dana/woff/dana-regular.woff') format('woff');
 }  </style>
-  
-<g fill="transparent" stroke="#E1EDF2">
-      <path d='M 400 113 L 127 311 L 231 632 L 569 632 L 673 311 Z'/>
-      <path d='M 400 126 L 139 315 L 239 622 L 561 622 L 661 315 Z'/>
-      <path d='M 400 139 L 152 319 L 247 611 L 553 611 L 648 319 Z'/>
-      <path d='M 400 152 L 164 323 L 254 601 L 546 601 L 636 323 Z'/>
-      <path d='M 400 165 L 177 327 L 262 590 L 538 590 L 623 327 Z'/>
-      <path d='M 400 178 L 189 331 L 270 580 L 530 580 L 611 331 Z'/>
-      <path d='M 400 191 L 201 335 L 277 569 L 523 569 L 599 335 Z'/>
-      <path d='M 400 204 L 214 339 L 285 559 L 515 559 L 586 339 Z'/>
-      <path d='M 400 217 L 226 343 L 292 548 L 508 548 L 574 343 Z'/>
-      <path d='M 400 230 L 238 347 L 300 538 L 500 538 L 562 347 Z'/>
-      <path d='M 400 243 L 251 351 L 308 527 L 492 527 L 549 351 Z'/>
-      <path d='M 400 256 L 263 356 L 315 516 L 485 516 L 537 356 Z'/>
-      <path d='M 400 269 L 275 360 L 323 506 L 477 506 L 525 360 Z'/>
-      <path d='M 400 282 L 288 364 L 331 495 L 469 495 L 512 364 Z'/>
-      <path d='M 400 295 L 300 368 L 338 485 L 462 485 L 500 368 Z'/>
-      <path d='M 400 308 L 313 372 L 346 474 L 454 474 L 487 372 Z'/>
-      <path d='M 400 321 L 325 376 L 354 464 L 446 464 L 475 376 Z'/>
-      <path d='M 400 334 L 337 380 L 361 453 L 439 453 L 463 380 Z'/>
-      <path d='M 400 347 L 350 384 L 369 443 L 431 443 L 450 384 Z'/>
-      <path d='M 400 360 L 362 388 L 376 432 L 424 432 L 438 388 Z'/>
-      <path d='M 400 373 L 374 392 L 384 422 L 416 422 L 426 392 Z'/>
-      <path d='M 400 100 L 115 307 L 224 643 L 576 643 L 685 307 Z'/>
+  <g font-family="iransans">
+  <g fill="white" font-weight="bold" font-size="14">
+    <rect x="0" y="0" width="100%" height="40" fill="#007BA4"/>
+    <text x="100%" y="20" transform="translate(-12, 0)" text-anchor="end" dominant-baseline="middle">پرسشنامه دلبستگی کولینز و رید</text>
+    <text x="0" y="20" transform="translate(+12, 0)" text-anchor="start" dominant-baseline="middle">SADJKLHFKLASJDFKJAS</text>
   </g>
-<g fill="transparent" stroke="black" stroke-width="3">
-  <path d='M 400 400 L 272 358 L 268 582 L 568 631 L 557 349 Z'/>
+  <g transform="translate(0, 40)" fill="#4B5563">
+    <rect x="0" y="0" width="100%" height="80" fill="#D7ECF3"/>
+    <g fill="#007BA4">
+      <text x="100%" y="40" transform="translate(-12, -15)" font-weight="bold" text-anchor="end" dominant-baseline="middle">اتاق درمانی دکتر مسعود جان بزرگی</text>
+      <text x="100%" y="40" transform="translate(-12, +15)" font-weight="normal" text-anchor="end" dominant-baseline="middle">مرکز خدمات روانشناسی و مشاوره طلیعه سلامت</text>
+    </g>
+    <g fill="#4B5563" font-weight="normal">
+      <text x="50%" y="40" transform="translate(0, 0)" text-anchor="middle" dominant-baseline="middle">محمد علی نخلی</text>
+      <text x="0" y="40" transform="translate(+12, -15)" text-anchor="start" dominant-baseline="middle">سه‌شنبه، ۲۵ اردیبهشت ۱۴۰۰</text>
+      <text x="0" y="40" transform="translate(+12, +15)" text-anchor="start" dominant-baseline="middle">۲۴ دقیقه</text>
+    </g>
+  </g>
+</g>  
+<g transform="translate(72.5, 120)">
+  <g fill="transparent" stroke="#E1EDF2">
+          <path d='M 400 113.5 L 127.52 311.47 L 231.6 631.78 L 568.4 631.78 L 672.48 311.47 Z'/>
+          <path d='M 400 127 L 140.36 315.64 L 239.53 620.86 L 560.47 620.86 L 659.64 315.64 Z'/>
+          <path d='M 400 140.5 L 153.2 319.81 L 247.47 609.94 L 552.53 609.94 L 646.8 319.81 Z'/>
+          <path d='M 400 154 L 166.04 323.98 L 255.4 599.02 L 544.6 599.02 L 633.96 323.98 Z'/>
+          <path d='M 400 167.5 L 178.88 328.15 L 263.34 588.1 L 536.66 588.1 L 621.12 328.15 Z'/>
+          <path d='M 400 181 L 191.72 332.33 L 271.28 577.17 L 528.72 577.17 L 608.28 332.33 Z'/>
+          <path d='M 400 194.5 L 204.56 336.5 L 279.21 566.25 L 520.79 566.25 L 595.44 336.5 Z'/>
+          <path d='M 400 208 L 217.4 340.67 L 287.15 555.33 L 512.85 555.33 L 582.6 340.67 Z'/>
+          <path d='M 400 221.5 L 230.24 344.84 L 295.08 544.41 L 504.92 544.41 L 569.76 344.84 Z'/>
+          <path d='M 400 235 L 243.08 349.01 L 303.02 533.49 L 496.98 533.49 L 556.92 349.01 Z'/>
+          <path d='M 400 248.5 L 255.91 353.18 L 310.95 522.57 L 489.05 522.57 L 544.09 353.18 Z'/>
+          <path d='M 400 262 L 268.75 357.36 L 318.89 511.64 L 481.11 511.64 L 531.25 357.36 Z'/>
+          <path d='M 400 275.5 L 281.59 361.53 L 326.82 500.72 L 473.18 500.72 L 518.41 361.53 Z'/>
+          <path d='M 400 289 L 294.43 365.7 L 334.76 489.8 L 465.24 489.8 L 505.57 365.7 Z'/>
+          <path d='M 400 302.5 L 307.27 369.87 L 342.69 478.88 L 457.31 478.88 L 492.73 369.87 Z'/>
+          <path d='M 400 316 L 320.11 374.04 L 350.63 467.96 L 449.37 467.96 L 479.89 374.04 Z'/>
+          <path d='M 400 329.5 L 332.95 378.21 L 358.56 457.04 L 441.44 457.04 L 467.05 378.21 Z'/>
+          <path d='M 400 343 L 345.79 382.39 L 366.5 446.11 L 433.5 446.11 L 454.21 382.39 Z'/>
+          <path d='M 400 356.5 L 358.63 386.56 L 374.43 435.19 L 425.57 435.19 L 441.37 386.56 Z'/>
+          <path d='M 400 370 L 371.47 390.73 L 382.37 424.27 L 417.63 424.27 L 428.53 390.73 Z'/>
+          <path d='M 400 100 L 114.68 307.29 L 223.66 642.71 L 576.34 642.71 L 685.32 307.29 Z'/>
+      </g>
+  <g fill="transparent" stroke="black" stroke-width="3">
+    <path d='M 400 370 L 255.91 353.18 L 263.34 588.1 L 568.4 631.78 L 569.76 344.84 Z'/>
+  </g>
+  <g fill="white">
+          <circle cx='400' cy='370' r="10" stroke='indigo' stroke-width="1"/>
+      <text x='400' y='370' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='indigo'>0</text>
+          <circle cx='255.91' cy='353.18' r="10" stroke='cyan' stroke-width="1"/>
+      <text x='255.91' y='353.18' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='cyan'>9</text>
+          <circle cx='263.34' cy='588.1' r="10" stroke='lightBlue' stroke-width="1"/>
+      <text x='263.34' y='588.1' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='lightBlue'>15</text>
+          <circle cx='568.4' cy='631.78' r="10" stroke='brown' stroke-width="1"/>
+      <text x='568.4' y='631.78' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='brown'>19</text>
+          <circle cx='569.76' cy='344.84' r="10" stroke='purple' stroke-width="1"/>
+      <text x='569.76' y='344.84' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='purple'>11</text>
+      </g>
+  <g>
+          <text x='400' y='60' transform="translate(0, -15)" font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">نزدیک بودن</text>
+      <text x='400' y='60' transform="translate(0, +15)" font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی ایمن)</text>
+          <text x='76.64' y='294.93' transform="translate(0, -15)" font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">اضطراب</text>
+      <text x='76.64' y='294.93' transform="translate(0, +15)" font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی اضطرابی - دوسوگرا)</text>
+          <text x='200.15' y='675.07' transform="translate(0, -15)" font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">وابستگی</text>
+      <text x='200.15' y='675.07' transform="translate(0, +15)" font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی اجتنابی)</text>
+          <text x='599.85' y='675.07' transform="translate(0, -15)" font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">عنوان</text>
+      <text x='599.85' y='675.07' transform="translate(0, +15)" font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(زیرعنوان)</text>
+          <text x='723.36' y='294.93' transform="translate(0, -15)" font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">عنوان</text>
+      <text x='723.36' y='294.93' transform="translate(0, +15)" font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(زیرعنوان)</text>
+      </g>
 </g>
-<g fill="white">
-      <circle cx='400' cy='400' r="10" stroke='green' stroke-width="1"/>
-    <text x='400' y='400' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='green'>0</text>
-      <circle cx='272' cy='358' r="10" stroke='blue' stroke-width="1"/>
-    <text x='272' y='358' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='blue'>9</text>
-      <circle cx='268' cy='582' r="10" stroke='pink' stroke-width="1"/>
-    <text x='268' y='582' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='pink'>15</text>
-      <circle cx='568' cy='631' r="10" stroke='yellow' stroke-width="1"/>
-    <text x='568' y='631' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='yellow'>19</text>
-      <circle cx='557' cy='349' r="10" stroke='indigo' stroke-width="1"/>
-    <text x='557' y='349' font-size="12" font-weight="bold" font-family="Dana-fanum" text-anchor="middle" dominant-baseline="middle" fill='indigo'>11</text>
-  </g>
-<g>
-      <text x='400' y='48' font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">نزدیک بودن</text>
-    <text x='400' y='72' font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی ایمن)</text>
-      <text x='77' y='283' font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">اضطراب</text>
-    <text x='77' y='307' font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی اضطرابی - دوسوگرا)</text>
-      <text x='200' y='663' font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">وابستگی</text>
-    <text x='200' y='687' font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(دلبستگی اجتنابی)</text>
-      <text x='600' y='663' font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">عنوان</text>
-    <text x='600' y='687' font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(زیرعنوان)</text>
-      <text x='723' y='283' font-size="12" font-family="Dana" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="black">عنوان</text>
-    <text x='723' y='307' font-size="12" font-family="Dana" text-anchor="middle" dominant-baseline="middle" fill="black">(زیرعنوان)</text>
-  </g>
 
-</svg>
+  <g fill="white" font-weight="bold" font-size="14" transform="translate(0, 920)">
+  <rect x="0" y="0" width="100%" height="25" fill="#007BA4"/>
+  <text x="50%" y="12.5" text-anchor="middle" dominant-baseline="middle">WWW.RISLOO.IR</text>
+</g></svg>

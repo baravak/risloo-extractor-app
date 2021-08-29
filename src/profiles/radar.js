@@ -10,13 +10,16 @@ export class radar extends Chart {
     this.textOffset = me.defaults.global.textOffset;
     this.centerOffset = me.defaults.global.centerOffset;
     this.center = me.canvas.center;
-    this.radius = me.canvas.height / 2 - me.canvas.padding;
+    this.radius =
+      Math.min(me.canvas.height, me.canvas.width) / 2 -
+      me.canvas.padding -
+      me.centerOffset;
     this.dataValues = me.dataset.dataPoints.map(
       (item) => (item.data / me.dataset.max_value) * me.radius
     );
     this.n = me.dataValues.length;
-    this.consecutiveDistance = Math.round(
-      (me.radius - me.centerOffset) / me.innerPolygonNum
+    this.consecutiveDistance = FS.roundTo2(
+      me.radius / me.innerPolygonNum
     );
     this.colors = Color.getRandomColorArr(me.n);
     this.angles = FS.createArithmeticSequence(0, (2 * Math.PI) / me.n, me.n);
@@ -45,7 +48,7 @@ export class radar extends Chart {
 
     let i;
     let arr = [];
-    for (i = 0; i <= num; i++) {
+    for (i = 0; i < num; i++) {
       radiuses = radiuses.map((radius) => radius - dist);
       arr.push(this._calcPolygonPoints(radiuses, angles));
     }
@@ -67,8 +70,9 @@ export class radar extends Chart {
   }
 
   _calcPolygonPoints(radiuses, angles) {
+    const { centerOffset } = this;
     let points = angles.map((angle, index) =>
-      this._polarToCartesian(radiuses[index], angle)
+      this._polarToCartesian(radiuses[index] + centerOffset, angle)
     );
 
     points = this._transformAxes(points, this.center, Math.PI);
@@ -78,8 +82,8 @@ export class radar extends Chart {
 
   _polarToCartesian(radius, angle) {
     return {
-      x: Math.round(radius * Math.sin(angle)),
-      y: Math.round(radius * Math.cos(angle)),
+      x: FS.roundTo2(radius * Math.sin(angle)),
+      y: FS.roundTo2(radius * Math.cos(angle)),
     };
   }
 
@@ -91,7 +95,15 @@ export class radar extends Chart {
   }
 
   register() {
-    const { canvas, innerPoints: points, mainPoints, dataPoints, textPoints, colors, dataset } = this;
+    const {
+      canvas,
+      innerPoints: points,
+      mainPoints,
+      dataPoints,
+      textPoints,
+      colors,
+      dataset,
+    } = this;
     points.push(mainPoints);
 
     let pointsAttr = points.map((item) => SVG.pathDGenerator(item));

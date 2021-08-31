@@ -106,12 +106,12 @@ export async function cli(args) {
       incorrectInput["chartType"] = true;
     }
 
-    // try {
+    try {
     const chartObj = new chartClass[options.chartType](dataset);
-    ctx = chartObj.export();
-    // } catch (err) {
-    //   console.log("An Error Occured due to Dataset Issues!")
-    // }
+    ctx = chartObj.getTemplateEngineParams();
+    } catch (err) {
+      console.log("An Error Occured due to Dataset Issues!")
+    }
 
     if (!Object.keys(incorrectInput).length) break;
     options = await promptForIncorrectInput(options, incorrectInput);

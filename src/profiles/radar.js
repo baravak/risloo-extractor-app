@@ -1,22 +1,22 @@
-import { Profile, Color, SVG, FS } from "../chart";
+import { Profile, Color, SVG, FS } from "../profile";
 
 export class radar extends Profile {
-  constructor(dataset, config = {}) {
-    super(dataset, config);
-    this.context = this._calcContext();
-  }
+  // constructor(dataset, config = {}) {
+  //   super(dataset, config);
+  //   this.context = this._calcContext();
+  // }
 
   _calcContext() {
     const { defaults, dataset, canvas } = this;
 
     const {
       maxValue,
-      innerPolygonNum: num,
       textOffset,
       centerOffset,
       ticks,
     } = defaults.parameters.radar;
 
+    // Radius of Main Polygon
     const radius =
       Math.min(canvas.height, canvas.width) / 2 - canvas.padding - centerOffset;
 
@@ -42,7 +42,7 @@ export class radar extends Profile {
     ).map((item) => item * Math.cos(ticksAngles[0]));
 
     // Consecutive Distance
-    const dist = FS.roundTo2(radius / num);
+    const dist = FS.roundTo2(radius / maxValue);
 
     // Calculate Radiuses Array for Main Points
     let radiuses = Array(n).fill(radius + centerOffset);
@@ -50,7 +50,7 @@ export class radar extends Profile {
     // Calculate Polygons Points
     let i;
     const points = [];
-    for (i = 0; i <= num; i++) {
+    for (i = 0; i <= maxValue; i++) {
       points.push(this._calcPolygonPoints(radiuses, angles));
       radiuses = radiuses.map((radius) => radius - dist);
     }

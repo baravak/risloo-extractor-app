@@ -153,7 +153,6 @@ class Defaults {
         maxValue: 20,
         textOffset: 40,
         centerOffset: 30,
-        innerPolygonNum: 20,
         ticks: 5,
         ticksLength: 12,
         dataPointsRadius: 10,
@@ -177,10 +176,10 @@ export class Profile {
       this.defaults.parameters.canvas;
     this.canvas = new Canvas(width, height, padding, header, footer);
     this.dataset = new Dataset(dataset);
-    this.context = {};
+    this.context = this._calcContext();
   }
 
-  export() {
+  getTemplateEngineParams() {
     const {
       canvas,
       dataset: { dataPoints: dataset },

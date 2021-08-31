@@ -1,83 +1,95 @@
-import { Chart, Color, SVG, Dataset, FS } from "../chart";
+import { Profile, Color, SVG, FS } from "../chart";
 
-export class radar extends Chart {
+export class radar extends Profile {
   constructor(dataset, config = {}) {
-    super(config);
-    const me = this;
-    this.defaults = me.defaults.parameters.polygonChart;
-    this.dataset = new Dataset(me.defaults.global.maxValue, dataset);
-    this.innerPolygonNum = me.defaults.global.innerPolygonNum;
-    this.textOffset = me.defaults.global.textOffset;
-    this.centerOffset = me.defaults.global.centerOffset;
-    this.center = me.canvas.center;
-    this.radius =
-      Math.min(me.canvas.height, me.canvas.width) / 2 -
-      me.canvas.padding -
-      me.centerOffset;
-    this.dataValues = me.dataset.dataPoints.map(
-      (item) => (item.data / me.dataset.max_value) * me.radius
-    );
-    this.n = me.dataValues.length;
-    this.consecutiveDistance = FS.roundTo2(
-      me.radius / me.innerPolygonNum
-    );
-    this.colors = Color.getRandomColorArr(me.n);
-    this.angles = FS.createArithmeticSequence(0, (2 * Math.PI) / me.n, me.n);
-    this.mainPoints = me._calcMainPolygonPoints();
-    this.innerPoints = me._calcInnerPolygonPoints();
-    this.dataPoints = me._calcDataPoints();
-    this.textPoints = me._calcTextPoints();
+    super(dataset, config);
+    this.context = this._calcContext();
   }
 
-  _calcMainPolygonPoints() {
-    const { radius, angles, n } = this;
-    let radiuses = Array(n).fill(radius);
+  _calcContext() {
+    const { defaults, dataset, canvas } = this;
 
-    return this._calcPolygonPoints(radiuses, angles);
-  }
-
-  _calcInnerPolygonPoints() {
     const {
-      radius,
-      angles,
-      n,
-      consecutiveDistance: dist,
+      maxValue,
       innerPolygonNum: num,
-    } = this;
-    let radiuses = Array(n).fill(radius);
+      textOffset,
+      centerOffset,
+      ticks,
+    } = defaults.parameters.radar;
 
+    const radius =
+      Math.min(canvas.height, canvas.width) / 2 - canvas.padding - centerOffset;
+
+    const dataValues = dataset.dataPoints.map(
+      (item) => (item.data / maxValue) * radius + centerOffset
+    );
+    const n = dataValues.length;
+
+    // Calculate Polygon Points Angles
+    const angles = FS.createArithmeticSequence(0, (2 * Math.PI) / n, n);
+
+    // Calculate Ticks Arrary and Angle to Place On
+    const ticksNumbers = FS.createArithmeticSequence(
+      0,
+      maxValue / (ticks - 1),
+      ticks
+    );
+    const ticksAngles = Array(ticks).fill((angles[0] + angles[1]) / 2);
+    const ticksRadiuses = FS.createArithmeticSequence(
+      centerOffset,
+      radius / (ticks - 1),
+      ticks
+    ).map((item) => item * Math.cos(ticksAngles[0]));
+
+    // Consecutive Distance
+    const dist = FS.roundTo2(radius / num);
+
+    // Calculate Radiuses Array for Main Points
+    let radiuses = Array(n).fill(radius + centerOffset);
+
+    // Calculate Polygons Points
     let i;
-    let arr = [];
-    for (i = 0; i < num; i++) {
+    const points = [];
+    for (i = 0; i <= num; i++) {
+      points.push(this._calcPolygonPoints(radiuses, angles));
       radiuses = radiuses.map((radius) => radius - dist);
-      arr.push(this._calcPolygonPoints(radiuses, angles));
     }
 
-    return arr;
-  }
+    // Calculate Data Points
+    const dataPoints = this._calcPolygonPoints(dataValues, angles);
 
-  _calcDataPoints() {
-    const { dataValues, angles } = this;
+    // Get "d" Attribute of Path for Polygons and Data Points
+    let pointsAttr = points.map((item) => SVG.pathDGenerator(item));
+    let dataAttr = SVG.pathDGenerator(dataPoints);
 
-    return this._calcPolygonPoints(dataValues, angles);
-  }
+    // Calculate Text Points
+    radiuses = Array(n).fill(radius + textOffset + centerOffset);
+    const textPoints = this._calcPolygonPoints(radiuses, angles);
 
-  _calcTextPoints() {
-    const { radius, angles, textOffset, n } = this;
-    const radiuses = Array(n).fill(radius + textOffset);
+    //Calculate Ticks Points
+    const ticksPoints = this._calcPolygonPoints(ticksRadiuses, ticksAngles);
 
-    return this._calcPolygonPoints(radiuses, angles);
+    // Get n Random Colors (One of Return Values of Method)
+    const colors = Color.getRandomColorArr(n);
+
+    return {
+      colors,
+      pointsAttr,
+      dataAttr,
+      dataPoints,
+      textPoints,
+      ticksPoints,
+      ticksNumbers,
+    };
   }
 
   _calcPolygonPoints(radiuses, angles) {
-    const { centerOffset } = this;
+    const center = this.canvas.center;
     let points = angles.map((angle, index) =>
-      this._polarToCartesian(radiuses[index] + centerOffset, angle)
+      this._polarToCartesian(radiuses[index], angle)
     );
 
-    points = this._transformAxes(points, this.center, Math.PI);
-
-    return points;
+    return this._transformAxes(points, center, Math.PI);
   }
 
   _polarToCartesian(radius, angle) {
@@ -92,31 +104,5 @@ export class radar extends Chart {
       FS.transformAxes(point, d, theta)
     );
     return transformedPoints;
-  }
-
-  register() {
-    const {
-      canvas,
-      innerPoints: points,
-      mainPoints,
-      dataPoints,
-      textPoints,
-      colors,
-      dataset,
-    } = this;
-    points.push(mainPoints);
-
-    let pointsAttr = points.map((item) => SVG.pathDGenerator(item));
-    let dataAttr = SVG.pathDGenerator(dataPoints);
-
-    return {
-      canvas,
-      dataset: dataset.dataPoints,
-      colors,
-      pointsAttr,
-      dataAttr,
-      dataPoints,
-      textPoints,
-    };
   }
 }

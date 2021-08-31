@@ -58,13 +58,12 @@ export class FS {
 
 class Canvas {
   constructor(width, height, padding, header, footer) {
-    const me = this;
     this.width = width;
     this.height = height;
     this.padding = padding;
     this.header = header;
     this.footer = footer;
-    this.center = { x: me.width / 2, y: me.height / 2 };
+    this.center = { x: this.width / 2, y: this.height / 2 };
     this._computeWidthAndHeight();
   }
 
@@ -72,12 +71,8 @@ class Canvas {
     const { width, height, header, footer } = this;
 
     let tempWidth = width;
-    let tempHeight =
-      height +
-      header.height1 +
-      header.height2 +
-      footer.height;
-    
+    let tempHeight = height + header.height1 + header.height2 + footer.height;
+
     let computedLength = Math.max(tempWidth, tempHeight);
 
     this.computedWidth = computedLength;
@@ -86,8 +81,7 @@ class Canvas {
 }
 
 export class Dataset {
-  constructor(max_value, dataPoints = []) {
-    this.max_value = max_value;
+  constructor(dataPoints = []) {
     this.dataPoints = dataPoints;
   }
 }
@@ -155,13 +149,14 @@ class Defaults {
           height: 25,
         },
       },
-      polygonChart: {
-        global: {
-          maxValue: 20,
-          textOffset: 40,
-          centerOffset: 30,
-          innerPolygonNum: 20,
-        },
+      radar: {
+        maxValue: 20,
+        textOffset: 40,
+        centerOffset: 30,
+        innerPolygonNum: 20,
+        ticks: 5,
+        ticksLength: 12,
+        dataPointsRadius: 10,
       },
     };
     this._setConfig(config);
@@ -175,10 +170,29 @@ class Defaults {
   }
 }
 
-export class Chart {
-  constructor(config) {
+export class Profile {
+  constructor(dataset, config) {
     this.defaults = new Defaults(config);
-    const { width, height, padding, header, footer } = this.defaults.parameters.canvas;
+    const { width, height, padding, header, footer } =
+      this.defaults.parameters.canvas;
     this.canvas = new Canvas(width, height, padding, header, footer);
+    this.dataset = new Dataset(dataset);
+    this.context = {};
+  }
+
+  export() {
+    const {
+      canvas,
+      dataset: { dataPoints: dataset },
+      defaults: { parameters: defaults },
+      context,
+    } = this;
+
+    return {
+      canvas,
+      dataset,
+      defaults,
+      ...context,
+    };
   }
 }

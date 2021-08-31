@@ -2,6 +2,7 @@ import arg from "arg";
 import fs from "fs/promises";
 import inquirer from "inquirer";
 import path from "path";
+import sharp from "sharp";
 const eta = require("eta");
 
 eta.configure({
@@ -105,18 +106,20 @@ export async function cli(args) {
       incorrectInput["chartType"] = true;
     }
 
-    try {
+    // try {
     const chartObj = new chartClass[options.chartType](dataset);
-    ctx = chartObj.register();
-    } catch (err) {
-      console.log("An Error Occured due to Dataset Issues!")
-    }
+    ctx = chartObj.export();
+    // } catch (err) {
+    //   console.log("An Error Occured due to Dataset Issues!")
+    // }
 
     if (!Object.keys(incorrectInput).length) break;
     options = await promptForIncorrectInput(options, incorrectInput);
   }
 
-  const svgString = await eta.renderFile(`/${options.chartType}.eta`, ctx);
+  const svg = await eta.renderFile(`profiles/${options.chartType}.eta`, ctx);
+  const png = await sharp(Buffer.from(svg.replace()), { density: 500 });
 
-  fs.writeFile(options.saveDir, svgString);
+  await fs.writeFile(`${options.saveDir}/${options.chartType}.svg`, svg);
+  await png.toFile(`${options.saveDir}/${options.chartType}.png`)
 }

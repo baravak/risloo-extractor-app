@@ -1,10 +1,6 @@
 import { Profile, Color, SVG, FS } from "../profile";
 
-export class radar extends Profile {
-  // constructor(dataset, config = {}) {
-  //   super(dataset, config);
-  //   this.context = this._calcContext();
-  // }
+export class Radar extends Profile {
 
   _calcContext() {
     const { defaults, dataset, canvas } = this;
@@ -14,7 +10,7 @@ export class radar extends Profile {
       textOffset,
       centerOffset,
       ticks,
-    } = defaults.parameters.radar;
+    } = defaults.parameters.Radar;
 
     // Radius of Main Polygon
     const radius =
@@ -105,4 +101,7 @@ export class radar extends Profile {
     );
     return transformedPoints;
   }
+
 }
+
+module.exports = Radar;

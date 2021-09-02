@@ -6,7 +6,7 @@ import sharp from "sharp";
 const eta = require("eta");
 
 eta.configure({
-  views: path.join(__dirname, "../views"),
+  views: path.join(__dirname, "..", "views", "profiles"),
 });
 
 function parseArgumentsIntoOptions(rawArgs) {
@@ -90,7 +90,7 @@ export async function cli(args) {
   let incorrectInput;
   let dataset = [];
   let ctx = {};
-  let chartClass = [];
+  let profileClass = [];
 
   while (true) {
     incorrectInput = {};
@@ -101,14 +101,14 @@ export async function cli(args) {
     }
 
     try {
-      chartClass = require(`./profiles/${options.chartType}.js`);
+      profileClass = require(path.join(__dirname, 'profiles', options.chartType));
     } catch (err) {
       incorrectInput["chartType"] = true;
     }
 
     try {
-    const chartObj = new chartClass[options.chartType](dataset);
-    ctx = chartObj.getTemplateEngineParams();
+    const profileObj = new profileClass(dataset);
+    ctx = profileObj.getTemplateEngineParams();
     } catch (err) {
       console.log("An Error Occured due to Dataset Issues!")
     }
@@ -117,9 +117,9 @@ export async function cli(args) {
     options = await promptForIncorrectInput(options, incorrectInput);
   }
 
-  const svg = await eta.renderFile(`profiles/${options.chartType}.eta`, ctx);
+  const svg = await eta.renderFile(options.chartType, ctx);
   const png = await sharp(Buffer.from(svg.replace()), { density: 500 });
 
   await fs.writeFile(`${options.saveDir}/${options.chartType}.svg`, svg);
-  await png.toFile(`${options.saveDir}/${options.chartType}.png`)
+  await png.toFile(`${options.saveDir}/${options.chartType}.png`);
 }

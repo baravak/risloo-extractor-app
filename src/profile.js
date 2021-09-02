@@ -149,7 +149,7 @@ class Defaults {
           height: 25,
         },
       },
-      radar: {
+      Radar: {
         maxValue: 20,
         textOffset: 40,
         centerOffset: 30,
@@ -183,7 +183,7 @@ export class Profile {
     const {
       canvas,
       dataset: { dataPoints: dataset },
-      defaults: { parameters: defaults },
+      defaults: { parameters: { [this.constructor.name]: defaults } },
       context,
     } = this;
 

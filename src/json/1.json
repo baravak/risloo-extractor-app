@@ -1,32 +1,690 @@
-[
-  {
-    "label": "نزدیک بودن",
-    "subLabel": "(دلبستگی ایمن)",
-    "data": 0
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "سیاهه روانی - اجتماعی نیرومندی من (ایگو)"
   },
-  {
-    "label": "اضطراب",
-    "subLabel": "(دلبستگی اضطرابی - دوسوگرا)",
-    "data": 9
+  "chain": null,
+  "version": "1",
+  "edition": "فرم 32 سوالی",
+  "edition_version": null,
+  "client": {
+    "id": "GH96666D7",
+    "name": "محمدحسن صالحی"
   },
-  {
-    "label": "وابستگی",
-    "subLabel": "(دلبستگی اجتنابی)",
-    "data": 15
+  "room": {
+    "id": "RS9666669",
+    "manager": {
+      "id": "GH9666669",
+      "name": "محمد رضا سالاری فر",
+      "user_id": "IR963U3H",
+      "avatar": [
+        {
+          "id": "F9666W3",
+          "file_name": "P96666DR_large.png",
+          "slug": "storage/public/Files_1000/P96666DR_large.png",
+          "mode": "large",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_large.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        },
+        {
+          "id": "F9666WT",
+          "file_name": "P96666DR_medium.png",
+          "slug": "storage/public/Files_1000/P96666DR_medium.png",
+          "mode": "medium",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_medium.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        },
+        {
+          "id": "F9666WD",
+          "file_name": "P96666DR_original.png",
+          "slug": "storage/public/Files_1000/P96666DR_original.png",
+          "mode": "original",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_original.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        },
+        {
+          "id": "F9666W4",
+          "file_name": "P96666DR_small.png",
+          "slug": "storage/public/Files_1000/P96666DR_small.png",
+          "mode": "small",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_small.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        }
+      ]
+    },
+    "center": {
+      "id": "RS9666669",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "کلینیک شخصی محمد رضا سالاری فر",
+        "avatar": [
+          {
+            "id": "F9666W3",
+            "file_name": "P96666DR_large.png",
+            "slug": "storage/public/Files_1000/P96666DR_large.png",
+            "mode": "large",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_large.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F9666WT",
+            "file_name": "P96666DR_medium.png",
+            "slug": "storage/public/Files_1000/P96666DR_medium.png",
+            "mode": "medium",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_medium.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F9666WD",
+            "file_name": "P96666DR_original.png",
+            "slug": "storage/public/Files_1000/P96666DR_original.png",
+            "mode": "original",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_original.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F9666W4",
+            "file_name": "P96666DR_small.png",
+            "slug": "storage/public/Files_1000/P96666DR_small.png",
+            "mode": "small",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DR_small.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          }
+        ]
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
   },
-  {
-    "label": "عنوان",
-    "subLabel": "(زیرعنوان)",
-    "data": 19
+  "case": null,
+  "code": null,
+  "created_at": 1630907666,
+  "started_at": null,
+  "scored_at": null,
+  "closed_at": null,
+  "description": "## دستور اجرای آزمون افراد از این جمله‌ها ممکن است برای توصیف خودشان استفاده کنند. لطفا هر جمله را به دقت بخوانید و ببینید که چقدر به آن جمله اعتقاد دارید یا بر اساس مقیاس فراوانی به آن پاسخ دهید. ",
+  "psychologist_description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "من متوجه‌ شده‌ام که به راحتی حواسم پرت می‌شود، حتی زمانی که واقعا بایستی کاری را تمام کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از راهی که تاکنون در زندگی‌ام پیش گرفته‌ام، راضی‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "من نسبت به فردی خارج از خانواده‌ام احساس عشق را تجربه کرده‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنگامی که ببینم کسی نیازمند است، به هر طریقی که بتوانم کمکش می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "من واقعا نمی‌دانم چه توانایی‌ها یا مهارت‌هایی برای ارائه به جامعه دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "من کارهای مختلفی را انجام می‌دهم که مرا قادر می‌سازد تا از توانایی‌ها و مهارت‌هایم استفاده کنم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "فکر نکنم تا حالا کسی را خارج از خانواده‌ام واقعا دوست داشته‌ام. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "وقتی کارها مطابق میلم پیش نمی‌رود، جنبه‌های مثبت زندگی‌ام را به خودم یادآوری می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "واقعا نمی‌دانم از زندگی‌ام چه می‌خواهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "زمانی که متوجه می‌شوم کسی دچار مشکل شده است، واقعا در مورد آن نگران می‌شوم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "وقتی قول می‌دهم کاری را انجام دهم، سر قولم می‌ایستم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "تا حد زیادی آینده‌ام را تحت کنترل دارم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "من به چیزی که نیستم تظاهر نمی‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "از اتفاقاتی که ممکن است در آینده برایم بیفتد می‌ترسم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم بر زندگی‌ام تسلط ندارم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "وقتی به آینده‌ام فکر می‌کنم، مسیر مشخصی برای زندگی‌ام می‌بینم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "حتی زمانی که فرصت انجام کارهایی که ممکن است در آن‌ها مهارت داشته باشم به دست آید، معمولا نمی‌توانم شروع به کار کنم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "به جز دوستان صمیمی و افراد خانواده‌ام، من به نیازهای دیگران اهمیت چندانی نمی‌دهم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "من توانایی‌هایی دارم که مرا قادر می‌سازد در موقعیت‌های خاص موثر باشم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "وقتی رابطه نزدیکی با کسی دارم، عادت دارم علایق و اهدافم را فراموش کنم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "مهم نیست که اوضاع چقدر بد باشد، من مطمئنم بهتر خواهد شد. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "ترس مانع تلاش من برای رسیدن به بیاری از اهدافم می‌شود. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "واقعا مطمئن نیستم به چیزی اعتقاد دارم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "وقتی به شدت ناراحتم، باور کردن این که اوضاع بهتر می‌شود بسیار سخت است. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "زمانی که به گذشته می‌اندیشم، احساس ناراحتی و پیشمانی می‌کنم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "با پذیرفتن هدف یا نقش خاصی در عشق مشک دارم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "من از آن‌چه آینده برایم در نظره گرفته نمی‌ترسم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "من وقت رسیدگی به مشکلات دیگران را ندارم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "وقتی کاری آن‌طور که من انتظار داشتم پیش نمی‌رود، می‌خواهم همه چیز را کنار بگذارم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "من و دوستانم عقیده داریم می‌توان در مورد کارها مخالف بود و هم‌چنان دوست باقی ماند. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "هر چند بعضی اوقات از موفق نشدن می‌ترسم، اگر کاری باشد که بخواهم انجام دهم سعی‌ام را می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "وقتی وسوسه می‌شوم کاری را انجام دهم که مورد علاقه‌ام نیست، معمولا می‌توانم در برابر آن مقاومت کنم. ",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "کمی مخالفم",
+          "نظری ندارم",
+          "موافقم",
+          "کاملا موافقم"
+        ]
+      },
+      "user_answered": "5"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true
+    }
+  ],
+  "cornometer": 1,
+  "score": {
+    "id": 2,
+    "sample_id": 343,
+    "type": "32 items",
+    "raw": null,
+    "hope": 12,
+    "will": 14,
+    "purpose": 13,
+    "competence": 10,
+    "fidelity": 12,
+    "love": 8,
+    "care": 12,
+    "wisdom": 14,
+    "created_at": "2021-09-06 12:53:13",
+    "updated_at": "2021-09-06 12:53:13"
   },
-  {
-    "label": "عنوان",
-    "subLabel": "(زیرعنوان)",
-    "data": 11
-  },
-  {
-    "label": "عنوان",
-    "subLabel": "(زیرعنوان)",
-    "data": 16
-  }
-]
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0",
+  "sample_id": 343
+}

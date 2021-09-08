@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" width='<%= it.canvas.computedWidth %>' height='<%= it.canvas.computedHeight %>' xmlns="http://www.w3.org/2000/svg">
-  <style>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" direction="rtl" viewBox="0 0 <%= it.canvas.computedWidth %> <%= it.canvas.computedHeight %>">
+  <style type="text/css">
     <%~ includeFile('./fonts.css') %>
   </style>
-  <%~ includeFile('./header.eta', {header: it.canvas.header}) %>
+  <%~ includeFile('./header.eta', {header: it.canvas.header, info: it.dataset.info}) %>
   <%~ it.body %>
   <%~ includeFile('./footer.eta', {canvas: it.canvas}) %>
 </svg>

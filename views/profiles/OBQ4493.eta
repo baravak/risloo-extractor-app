@@ -1,0 +1,12 @@
+<% layout('../layout.eta') %>
+
+<g  transform="translate(0, <%= it.canvas.headerHeight %>)">
+  <text x="50%" y="50" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="#4B5563">CP</text>
+  <g transform="translate(0, 20)">
+    <rect x="50%" y="50" transform="translate(-50, 0)" width="100" height="30" fill="#E5E7EB"/>
+    <text x="50%" y="50" transform="translate(75, 15)" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF">+۱۵</text>
+    <text x="50%" y="50" transform="translate(-75, 15)" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF">-۱۵</text>
+    <rect x="50%" y="50" transform="translate(-25, 0)" width="+25" height="30" fill="#991B1B"/>
+    <text x="50%" y="50" transform="translate(-12.5, 15)" text-anchor="middle" dominant-baseline="middle" frisloo OBQ4493 ./src/json/OBQ4493.json ./src/svgill="white">-۱۰</text>
+  </g>
+</g>

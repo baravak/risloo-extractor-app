@@ -1,28 +1,35 @@
 import { Profile, Color, SVG, FS } from "../profile";
 
-export class Radar extends Profile {
-
+// CRAAS93 == radar chart
+export class CRAAS93 extends Profile {
   _calcContext() {
-    const { defaults, dataset, canvas } = this;
+    const { spec, dataset, canvas } = this;
 
-    const {
-      maxValue,
-      textOffset,
-      centerOffset,
-      ticks,
-    } = defaults.parameters.Radar;
+    const { maxValue, textOffset, centerOffset, ticks } =
+      spec.parameters["CRAAS93"];
 
-    // Radius of Main Polygon
-    const radius =
-      Math.min(canvas.height, canvas.width) / 2 - canvas.padding - centerOffset;
-
-    const dataValues = dataset.dataPoints.map(
-      (item) => (item.data / maxValue) * radius + centerOffset
-    );
-    const n = dataValues.length;
+    // Calculate Number of Vertices
+    const n = dataset.score.keys.length;
 
     // Calculate Polygon Points Angles
     const angles = FS.createArithmeticSequence(0, (2 * Math.PI) / n, n);
+    const ticksAngle = (angles[0] + angles[1]) / 2;
+
+    // Radius of Main Polygon
+    let radius =
+      Math.min(canvas.height, canvas.width) / 2 - canvas.padding - centerOffset;
+
+    // Change Position of Center and Radius if n is Odd
+    if (FS.isOdd(n)) {
+      let change = 2 / 3 * radius * (1 - Math.cos(ticksAngle));
+      canvas.center.y += change;
+      radius += change;
+    }
+
+    // Calculate Radius for Data Points
+    const dataRadiuses = dataset.score.values.map(
+      (value) => (value / maxValue) * radius + centerOffset
+    );
 
     // Calculate Ticks Arrary and Angle to Place On
     const ticksNumbers = FS.createArithmeticSequence(
@@ -30,12 +37,12 @@ export class Radar extends Profile {
       maxValue / (ticks - 1),
       ticks
     );
-    const ticksAngles = Array(ticks).fill((angles[0] + angles[1]) / 2);
+    const ticksAngles = Array(ticks).fill(ticksAngle);
     const ticksRadiuses = FS.createArithmeticSequence(
       centerOffset,
       radius / (ticks - 1),
       ticks
-    ).map((item) => item * Math.cos(ticksAngles[0]));
+    ).map((item) => item * Math.cos(ticksAngle));
 
     // Consecutive Distance
     const dist = FS.roundTo2(radius / maxValue);
@@ -52,7 +59,7 @@ export class Radar extends Profile {
     }
 
     // Calculate Data Points
-    const dataPoints = this._calcPolygonPoints(dataValues, angles);
+    const dataPoints = this._calcPolygonPoints(dataRadiuses, angles);
 
     // Get "d" Attribute of Path for Polygons and Data Points
     let pointsAttr = points.map((item) => SVG.pathDGenerator(item));
@@ -101,7 +108,6 @@ export class Radar extends Profile {
     );
     return transformedPoints;
   }
-
 }
 
-module.exports = Radar;
+module.exports = CRAAS93;

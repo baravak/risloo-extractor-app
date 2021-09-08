@@ -1,3 +1,9 @@
+import moment from 'moment-jalaali';
+import fa from "moment/src/locale/fa";
+
+moment.locale("fa", fa);
+moment.loadPersian({dialect: 'persian-modern'})
+
 export class FS {
   static calcDistance(pt1, pt2) {
     return Math.sqrt(Math.pow(pt2.x - pt1.x, 2) + Math.pow(pt2.y - pt1.y, 2));
@@ -9,6 +15,10 @@ export class FS {
 
   static toRadians(deg) {
     return deg * (PI / 180);
+  }
+
+  static isOdd(n) {
+    return !!(n % 2);
   }
 
   // Create Arithmetic Sequence for Angles of Polygon
@@ -70,19 +80,59 @@ class Canvas {
   _computeWidthAndHeight() {
     const { width, height, header, footer } = this;
 
+    let headerHeight = header.heights.reduce(
+      (sum, current) => sum + current,
+      0
+    );
+
     let tempWidth = width;
-    let tempHeight = height + header.height1 + header.height2 + footer.height;
+    let tempHeight = height + headerHeight + footer.height;
 
     let computedLength = Math.max(tempWidth, tempHeight);
 
     this.computedWidth = computedLength;
     this.computedHeight = computedLength;
+    this.headerHeight = headerHeight;
   }
 }
 
-export class Dataset {
-  constructor(dataPoints = []) {
-    this.dataPoints = dataPoints;
+class Dataset {
+  static clean(dataset, labels) {
+    // Destructure Data that is Needed
+    const {
+      id,
+      scale: { title },
+      client: { name },
+      center: {
+        detail: { title: centerTitle },
+      },
+      started_at,
+      cornometer: time,
+      prerequisites,
+      score,
+    } = dataset;
+
+    // Specifying Fields that are Going to Be Extracted (gender, age, education, marital status)
+    let fields = { gender: "", age: "", education: "", marital_status: "" };
+    let keys = Object.values(labels);
+    let values = [];
+
+    // Extract Fields
+    for (let elem in fields) {
+      let temp = prerequisites.find((item) => item.label === elem);
+      if (elem === "age") fields[elem] = temp.user_answered;
+      else fields[elem] = temp.answer.options[temp.user_answered - 1];
+    }
+
+    // Assign Score Values Acc. to Labels Order
+    for (let index in labels) {
+      values.push(score[index]);
+    }
+
+    // Change Timestamp to Proper Date Format
+    let date = moment(started_at * 1000).format('dddd، jD jMMMM jYYYY');
+
+    return { info: { id, title, name, centerTitle, time, date, ...fields }, score: { keys, values } };
   }
 }
 
@@ -132,30 +182,65 @@ export class Color {
   }
 }
 
-class Defaults {
+class Spec {
   constructor(config) {
     this.parameters = {
       canvas: {
-        width: 800,
-        height: 800,
-        padding: 100,
+        width: 1024,
+        height: 844,
+        padding: 80,
         header: {
-          height1: 40,
-          height2: 80,
-          paddingX: 12,
-          textYTransform: 15,
+          heights: [40, 70, 40],
+          paddingX: 20,
+          iconPadding: 10,
+          textYPadding: 11,
         },
         footer: {
-          height: 25,
+          height: 30,
         },
       },
-      Radar: {
+      // CRAAS93 == radar chart
+      CRAAS93: {
         maxValue: 20,
-        textOffset: 40,
-        centerOffset: 30,
+        textOffset: 35,
+        centerOffset: 35,
         ticks: 5,
         ticksLength: 12,
-        dataPointsRadius: 10,
+        dataPointsRadius: 15,
+        textYPadding: 10,
+        labels: {
+          closeness: {
+            name: "نزدیک بودن",
+            type: "دلبستگی ایمن",
+          },
+          anxiety: {
+            name: "اضطراب",
+            type: "دلبستگی اضطرابی-دوسوگرا",
+          },
+          dependance: {
+            name: "وابستگی",
+            type: "دلبستگی اجتنابی",
+          },
+        },
+      },
+      OBQ4493: {
+        maxValues: {
+          CP: 15,
+          ICT: 16,
+          RT: 21,
+          PC: 30,
+          G: 48,
+          Total: 132,
+        },
+        length: 5,
+        labels: {
+          complete_performance: "CP",
+          important_and_control_of_thought: "ICT",
+          responsibility_and_threat_estimation: "RT",
+          perfectionism_certainty: "PC",
+          general: "G",
+          raw: "Total",
+        },
       },
     };
     this._setConfig(config);
@@ -171,26 +256,31 @@ class Defaults {
 
 export class Profile {
   constructor(dataset, config) {
-    this.defaults = new Defaults(config);
+    this.spec = new Spec(config);
     const { width, height, padding, header, footer } =
-      this.defaults.parameters.canvas;
+      this.spec.parameters.canvas;
     this.canvas = new Canvas(width, height, padding, header, footer);
-    this.dataset = new Dataset(dataset);
+    this.dataset = Dataset.clean(
+      dataset,
+      this.spec.parameters[this.constructor.name].labels
+    );
     this.context = this._calcContext();
   }
 
   getTemplateEngineParams() {
     const {
       canvas,
-      dataset: { dataPoints: dataset },
-      defaults: { parameters: { [this.constructor.name]: defaults } },
+      dataset,
+      spec: {
+        parameters: { [this.constructor.name]: spec },
+      },
       context,
     } = this;
 
     return {
       canvas,
       dataset,
-      defaults,
+      spec,
       ...context,
     };
   }

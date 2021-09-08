@@ -4,17 +4,17 @@
   <path id="clock" d="M8 0.25C3.71875 0.25 0.25 3.71875 0.25 8C0.25 12.2812 3.71875 15.75 8 15.75C12.2812 15.75 15.75 12.2812 15.75 8C15.75 3.71875 12.2812 0.25 8 0.25ZM14.75 8C14.75 11.7094 11.7469 14.75 8 14.75C4.29063 14.75 1.25 11.7469 1.25 8C1.25 4.29063 4.25313 1.25 8 1.25C11.7094 1.25 14.75 4.25313 14.75 8ZM10.0969 10.7594L7.55937 8.91562C7.4625 8.84375 7.40625 8.73125 7.40625 8.6125V3.625C7.40625 3.41875 7.575 3.25 7.78125 3.25H8.21875C8.425 3.25 8.59375 3.41875 8.59375 3.625V8.19687L10.7969 9.8C10.9656 9.92188 11 10.1562 10.8781 10.325L10.6219 10.6781C10.5 10.8438 10.2656 10.8812 10.0969 10.7594Z" fill="#4B5563"/>
 </defs>
 
-<g font-family="Dana-fanum">
+<g font-family="Dana-FaNum">
   <g fill="white" font-weight="bold" font-size="16">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[0] %>" fill="#007BA4"/>
-    <text x="100%" y="<%= it.header.heights[0] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="start" dominant-baseline="middle"><%= it.info.title %></text>
+    <text x="100%" y="<%= it.header.heights[0] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dominant-baseline="middle"><%= it.info.title %></text>
     <text x="0" y="<%= it.header.heights[0] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" font-family="Dana" text-anchor="start" dominant-baseline="middle" direction="ltr"><%= it.info.id %></text>
   </g>
   <g transform="translate(0, <%= it.header.heights[0] %>)" fill="#4B5563">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[1] %>" fill="#D7ECF3"/>
     <g fill="#007BA4">
-      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, -<%= it.header.textYPadding %>)" font-size="14" font-weight="600" text-anchor="start" dominant-baseline="middle">اتاق درمانی دکتر مسعود جان بزرگی</text>
-      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, +<%= it.header.textYPadding %>)" font-size="12" text-anchor="start" dominant-baseline="middle"><%= it.info.centerTitle %></text>
+      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, -<%= it.header.textYPadding %>)" font-size="14" font-weight="600" text-anchor="end" dominant-baseline="middle">اتاق درمانی دکتر مسعود جان بزرگی</text>
+      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, +<%= it.header.textYPadding %>)" font-size="12" text-anchor="end" dominant-baseline="middle"><%= it.info.centerTitle %></text>
     </g>
     <g fill="#4B5563" font-size="12" font-weight="normal">
       <g transform="translate(0, -<%= it.header.textYPadding %>)">
@@ -28,20 +28,20 @@
           <use href="#calender"/>
         </svg>
       </g>
-      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, -<%= it.header.textYPadding %>)" text-anchor="start" dominant-baseline="middle"><%= it.info.date %></text>
+      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, -<%= it.header.textYPadding %>)" text-anchor="end" dominant-baseline="middle"><%= it.info.date %></text>
       <g transform="translate(0, +<%= it.header.textYPadding %>)">
         <svg width="16" height="16" x="17%" y="<%= it.header.heights[1] / 2 %>" viewBox="0 8 16 16" overflow="visible">
           <use href="#clock"/>
         </svg>
       </g>
-      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, +<%= it.header.textYPadding %>)" text-anchor="start" dominant-baseline="middle"><%= it.info.time %> دقیقه</text>
+      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, +<%= it.header.textYPadding %>)" text-anchor="end" dominant-baseline="middle">دقیقه <tspan unicode-bidi="embed"><%= it.info.time %></tspan></text>
     </g>
   </g>
   <g transform="translate(0, <%= it.header.heights[0] + it.header.heights[1] %>)" fill="#6B7280"  font-size="14">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[2] %>" fill="#F9FAFB"/>
-    <text x="0" y="<%= it.header.heights[2] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="end" dominant-baseline="middle">وضعیت تأهل: <tspan font-weight="600"><%= it.info.marital_status %></tspan></text>
-    <text x="33.3%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle" dominant-baseline="middle">تحصیلات: <tspan font-weight="600"><%= it.info.education %></tspan></text>
-    <text x="66.6%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle" dominant-baseline="middle">سن: <tspan font-weight="600"><%= it.info.age %></tspan></text>
-    <text x="100%" y="<%= it.header.heights[2] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="start" dominant-baseline="middle">جنسیت: <tspan font-weight="600"><%= it.info.gender %></tspan></text>
+    <text x="0" y="<%= it.header.heights[2] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="start" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.marital_status %></tspan> :وضعیت تأهل</text>
+    <text x="33.3%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.education %></tspan> :تحصیلات</text>
+    <text x="66.6%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.age %></tspan> :سن</text>
+    <text x="100%" y="<%= it.header.heights[2] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.gender %></tspan> :جنسیت</text>
   </g>
 </g>

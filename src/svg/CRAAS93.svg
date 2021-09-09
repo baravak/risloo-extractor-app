@@ -42,14 +42,14 @@
 <g font-family="Dana-FaNum">
   <g fill="white" font-weight="bold" font-size="16">
     <rect x="0" y="0" width="100%" height="40" fill="#007BA4"/>
-    <text x="100%" y="20" transform="translate(-20, 0)" text-anchor="end" dominant-baseline="middle">آزمون دلبستگی کولینز و رید</text>
-    <text x="0" y="20" transform="translate(+20, 0)" font-family="Dana" text-anchor="start" dominant-baseline="middle" direction="ltr">$X1HQ2G3J3</text>
+    <text x="100%" y="20" transform="translate(-20, 0)" text-anchor="end" dy="5">آزمون دلبستگی کولینز و رید</text>
+    <text x="0" y="20" transform="translate(+20, 0)" font-family="Dana" text-anchor="start" dy="5">$X1HQ2G3J3</text>
   </g>
   <g transform="translate(0, 40)" fill="#4B5563">
     <rect x="0" y="0" width="100%" height="70" fill="#D7ECF3"/>
     <g fill="#007BA4">
-      <text x="100%" y="35" transform="translate(-20, -11)" font-size="14" font-weight="600" text-anchor="end" dominant-baseline="middle">اتاق درمانی دکتر مسعود جان بزرگی</text>
-      <text x="100%" y="35" transform="translate(-20, +11)" font-size="12" text-anchor="end" dominant-baseline="middle">کلینیک شخصی محمد رضا سالاری فر</text>
+      <text x="100%" y="35" transform="translate(-20, -11)" font-size="14" font-weight="600" text-anchor="end" dy="4">اتاق درمانی دکتر مسعود جان بزرگی</text>
+      <text x="100%" y="35" transform="translate(-20, +11)" font-size="12" text-anchor="end" dy="3">کلینیک شخصی محمد رضا سالاری فر</text>
     </g>
     <g fill="#4B5563" font-size="12" font-weight="normal">
       <g transform="translate(0, -11)">
@@ -57,30 +57,30 @@
           <use href="#person"/>
         </svg>
       </g>
-      <text x="50%" y="35" transform="translate(0, +11)" text-anchor="middle" dominant-baseline="middle">محمدحسن صالحی</text>
+      <text x="50%" y="35" transform="translate(0, +11)" text-anchor="middle" dy="3">محمدحسن صالحی</text>
       <g transform="translate(0, -11)">
         <svg width="15" height="18" x="17%" y="35" viewBox="0 9 15 18" overflow="visible">
           <use href="#calender"/>
         </svg>
       </g>
-      <text x="17%" y="35" transform="translate(-10, -11)" text-anchor="end" dominant-baseline="middle">دوشنبه، 15 شهریور 1400</text>
+      <text x="17%" y="35" transform="translate(-10, -11)" text-anchor="end" dy="3">دوشنبه، 15 شهریور 1400</text>
       <g transform="translate(0, +11)">
         <svg width="16" height="16" x="17%" y="35" viewBox="0 8 16 16" overflow="visible">
           <use href="#clock"/>
         </svg>
       </g>
-      <text x="17%" y="35" transform="translate(-10, +11)" text-anchor="end" dominant-baseline="middle">دقیقه <tspan unicode-bidi="embed">1</tspan></text>
+      <text x="17%" y="35" transform="translate(-10, +11)" text-anchor="end"><tspan unicode-bidi="embed" dy="3">دقیقه</tspan> 1</text>
     </g>
   </g>
   <g transform="translate(0, 110)" fill="#6B7280"  font-size="14">
     <rect x="0" y="0" width="100%" height="40" fill="#F9FAFB"/>
-    <text x="0" y="20" transform="translate(+20, 0)" text-anchor="start" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed">متأهل</tspan> :وضعیت تأهل</text>
-    <text x="33.3%" y="20" text-anchor="middle" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed">پزشکی عمومی</tspan> :تحصیلات</text>
-    <text x="66.6%" y="20" text-anchor="middle" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed">37</tspan> :سن</text>
-    <text x="100%" y="20" transform="translate(-20, 0)" text-anchor="end" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed">مرد</tspan> :جنسیت</text>
+    <text x="0" y="20" transform="translate(+20, 0)" text-anchor="start"><tspan font-weight="600" unicode-bidi="embed" dy="4">متأهل</tspan> :وضعیت تأهل</text>
+    <text x="33.3%" y="20" text-anchor="middle"><tspan font-weight="600" unicode-bidi="embed" dy="4">پزشکی عمومی</tspan> :تحصیلات</text>
+    <text x="66.6%" y="20" text-anchor="middle"><tspan font-weight="600" unicode-bidi="embed" dy="4">37</tspan> :سن</text>
+    <text x="100%" y="20" transform="translate(-20, 0)" text-anchor="end"><tspan font-weight="600" unicode-bidi="embed" dy="4">مرد</tspan> :جنسیت</text>
   </g>
 </g>  
-<g transform="translate(0, 150)" font-family="iransans">
+<g transform="translate(0, 150)" font-family="Dana-FaNum">
   <g fill="transparent" stroke="#E1EDF2">
           <path d='M 512 80 L 127.2 746.5 L 896.8 746.5 Z'/>
           <path d='M 512 100.47 L 144.92 736.26 L 879.08 736.26 Z'/>
@@ -108,36 +108,36 @@
     <path d='M 512 346.06 L 286.72 654.4 L 790.46 685.1 Z'/>
   </g>
   <g fill="white">
-          <circle cx='512' cy='346.06' r="15" stroke='red' stroke-width="2"/>
-      <text x='512' y='346.06' font-size="16" font-weight="600" text-anchor="middle" dominant-baseline="middle" fill='red'>7</text>
-          <circle cx='286.72' cy='654.4' r="15" stroke='brown' stroke-width="2"/>
-      <text x='286.72' y='654.4' font-size="16" font-weight="600" text-anchor="middle" dominant-baseline="middle" fill='brown'>11</text>
-          <circle cx='790.46' cy='685.1' r="15" stroke='green' stroke-width="2"/>
-      <text x='790.46' y='685.1' font-size="16" font-weight="600" text-anchor="middle" dominant-baseline="middle" fill='green'>14</text>
+          <circle cx='512' cy='346.06' r="15" stroke='yellow' stroke-width="2"/>
+      <text x='512' y='346.06' font-size="16" font-weight="600" text-anchor="middle" dy="5" fill='yellow'>7</text>
+          <circle cx='286.72' cy='654.4' r="15" stroke='indigo' stroke-width="2"/>
+      <text x='286.72' y='654.4' font-size="16" font-weight="600" text-anchor="middle" dy="5" fill='indigo'>11</text>
+          <circle cx='790.46' cy='685.1' r="15" stroke='orange' stroke-width="2"/>
+      <text x='790.46' y='685.1' font-size="16" font-weight="600" text-anchor="middle" dy="5" fill='orange'>14</text>
       </g>
   <g fill="#4B5563">
-          <text x='512' y='45' transform="translate(0, -10)" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">نزدیک بودن</text>
-      <text x='512' y='45' transform="translate(0, +10)" font-size="12" text-anchor="middle" dominant-baseline="middle">(دلبستگی ایمن)</text>
-          <text x='96.89' y='764' transform="translate(0, -10)" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">اضطراب</text>
-      <text x='96.89' y='764' transform="translate(0, +10)" font-size="12" text-anchor="middle" dominant-baseline="middle">(دلبستگی اضطرابی-دوسوگرا)</text>
-          <text x='927.11' y='764' transform="translate(0, -10)" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">وابستگی</text>
-      <text x='927.11' y='764' transform="translate(0, +10)" font-size="12" text-anchor="middle" dominant-baseline="middle">(دلبستگی اجتنابی)</text>
+          <text x='512' y='45' transform="translate(0, -10)" font-size="12" font-weight="bold" text-anchor="middle" dy="3">نزدیک بودن</text>
+      <text x='512' y='45' transform="translate(0, +10)" font-size="12" text-anchor="middle" dy="3">(دلبستگی ایمن)</text>
+          <text x='96.89' y='764' transform="translate(0, -10)" font-size="12" font-weight="bold" text-anchor="middle" dy="3">اضطراب</text>
+      <text x='96.89' y='764' transform="translate(0, +10)" font-size="12" text-anchor="middle" dy="3">(دلبستگی اضطرابی-دوسوگرا)</text>
+          <text x='927.11' y='764' transform="translate(0, -10)" font-size="12" font-weight="bold" text-anchor="middle" dy="3">وابستگی</text>
+      <text x='927.11' y='764' transform="translate(0, +10)" font-size="12" text-anchor="middle" dy="3">(دلبستگی اجتنابی)</text>
       </g>
   <g>
           <rect x='496.84' y='515.58' width='12' height='12' transform="translate(-6,-6)" fill="white"/>
-      <text x='496.84' y='515.58' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF">0</text>
+      <text x='496.84' y='515.58' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dy="3" fill="#9CA3AF">0</text>
           <rect x='452.53' y='490' width='12' height='12' transform="translate(-6,-6)" fill="white"/>
-      <text x='452.53' y='490' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF">5</text>
+      <text x='452.53' y='490' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dy="3" fill="#9CA3AF">5</text>
           <rect x='408.22' y='464.41' width='12' height='12' transform="translate(-6,-6)" fill="white"/>
-      <text x='408.22' y='464.41' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF">10</text>
+      <text x='408.22' y='464.41' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dy="3" fill="#9CA3AF">10</text>
           <rect x='363.91' y='438.83' width='12' height='12' transform="translate(-6,-6)" fill="white"/>
-      <text x='363.91' y='438.83' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF">15</text>
+      <text x='363.91' y='438.83' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dy="3" fill="#9CA3AF">15</text>
           <rect x='319.6' y='413.25' width='12' height='12' transform="translate(-6,-6)" fill="white"/>
-      <text x='319.6' y='413.25' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF">20</text>
+      <text x='319.6' y='413.25' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dy="3" fill="#9CA3AF">20</text>
       </g>
 </g>
 
   <g fill="white" font-weight="600" font-size="14" transform="translate(0, 994)">
   <rect x="0" y="0" width="100%" height="30" fill="#007BA4"/>
-  <text x="50%" y="15" text-anchor="middle" dominant-baseline="middle" font-family="Dana-FaNum" letter-spacing="0.75em">WWW.RISLOO.IR</text>
+  <text x="50%" y="15" text-anchor="middle" dy="4" font-family="Dana-FaNum" letter-spacing="0.75em">WWW.RISLOO.IR</text>
 </g></svg>

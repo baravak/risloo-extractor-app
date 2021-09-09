@@ -7,14 +7,14 @@
 <g font-family="Dana-FaNum">
   <g fill="white" font-weight="bold" font-size="16">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[0] %>" fill="#007BA4"/>
-    <text x="100%" y="<%= it.header.heights[0] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dominant-baseline="middle"><%= it.info.title %></text>
-    <text x="0" y="<%= it.header.heights[0] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" font-family="Dana" text-anchor="start" dominant-baseline="middle" direction="ltr"><%= it.info.id %></text>
+    <text x="100%" y="<%= it.header.heights[0] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dy="5"><%= it.info.title %></text>
+    <text x="0" y="<%= it.header.heights[0] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" font-family="Dana" text-anchor="start" dy="5"><%= it.info.id %></text>
   </g>
   <g transform="translate(0, <%= it.header.heights[0] %>)" fill="#4B5563">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[1] %>" fill="#D7ECF3"/>
     <g fill="#007BA4">
-      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, -<%= it.header.textYPadding %>)" font-size="14" font-weight="600" text-anchor="end" dominant-baseline="middle">اتاق درمانی دکتر مسعود جان بزرگی</text>
-      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, +<%= it.header.textYPadding %>)" font-size="12" text-anchor="end" dominant-baseline="middle"><%= it.info.centerTitle %></text>
+      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, -<%= it.header.textYPadding %>)" font-size="14" font-weight="600" text-anchor="end" dy="4">اتاق درمانی دکتر مسعود جان بزرگی</text>
+      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, +<%= it.header.textYPadding %>)" font-size="12" text-anchor="end" dy="3"><%= it.info.centerTitle %></text>
     </g>
     <g fill="#4B5563" font-size="12" font-weight="normal">
       <g transform="translate(0, -<%= it.header.textYPadding %>)">
@@ -22,26 +22,26 @@
           <use href="#person"/>
         </svg>
       </g>
-      <text x="50%" y="<%= it.header.heights[1] / 2 %>" transform="translate(0, +<%= it.header.textYPadding %>)" text-anchor="middle" dominant-baseline="middle"><%= it.info.name %></text>
+      <text x="50%" y="<%= it.header.heights[1] / 2 %>" transform="translate(0, +<%= it.header.textYPadding %>)" text-anchor="middle" dy="3"><%= it.info.name %></text>
       <g transform="translate(0, -<%= it.header.textYPadding %>)">
         <svg width="15" height="18" x="17%" y="<%= it.header.heights[1] / 2 %>" viewBox="0 9 15 18" overflow="visible">
           <use href="#calender"/>
         </svg>
       </g>
-      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, -<%= it.header.textYPadding %>)" text-anchor="end" dominant-baseline="middle"><%= it.info.date %></text>
+      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, -<%= it.header.textYPadding %>)" text-anchor="end" dy="3"><%= it.info.date %></text>
       <g transform="translate(0, +<%= it.header.textYPadding %>)">
         <svg width="16" height="16" x="17%" y="<%= it.header.heights[1] / 2 %>" viewBox="0 8 16 16" overflow="visible">
           <use href="#clock"/>
         </svg>
       </g>
-      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, +<%= it.header.textYPadding %>)" text-anchor="end" dominant-baseline="middle">دقیقه <tspan unicode-bidi="embed"><%= it.info.time %></tspan></text>
+      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, +<%= it.header.textYPadding %>)" text-anchor="end"><tspan unicode-bidi="embed" dy="3">دقیقه</tspan> <%= it.info.time %></text>
     </g>
   </g>
   <g transform="translate(0, <%= it.header.heights[0] + it.header.heights[1] %>)" fill="#6B7280"  font-size="14">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[2] %>" fill="#F9FAFB"/>
-    <text x="0" y="<%= it.header.heights[2] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="start" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.marital_status %></tspan> :وضعیت تأهل</text>
-    <text x="33.3%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.education %></tspan> :تحصیلات</text>
-    <text x="66.6%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.age %></tspan> :سن</text>
-    <text x="100%" y="<%= it.header.heights[2] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dominant-baseline="middle"><tspan font-weight="600" unicode-bidi="embed"><%= it.info.gender %></tspan> :جنسیت</text>
+    <text x="0" y="<%= it.header.heights[2] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="start"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.marital_status %></tspan> :وضعیت تأهل</text>
+    <text x="33.3%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.education %></tspan> :تحصیلات</text>
+    <text x="66.6%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.age %></tspan> :سن</text>
+    <text x="100%" y="<%= it.header.heights[2] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.gender %></tspan> :جنسیت</text>
   </g>
 </g>

@@ -12,19 +12,19 @@
   <g fill="white">
     <% it.dataPoints.forEach(function(item, index){ %>
       <circle cx='<%= item.x %>' cy='<%= item.y %>' r="<%= it.spec.dataPointsRadius %>" stroke='<%= it.colors[index] %>' stroke-width="2"/>
-      <text x='<%= item.x %>' y='<%= item.y %>' font-size="16" font-weight="600" text-anchor="middle" dominant-baseline="middle" fill='<%= it.colors[index] %>'><%~ it.dataset.score.values[index] %></text>
+      <text x='<%= item.x %>' y='<%= item.y %>' font-size="16" font-weight="600" text-anchor="middle" dy="5" fill='<%= it.colors[index] %>'><%~ it.dataset.score.values[index] %></text>
     <% }) %>
   </g>
   <g fill="#4B5563">
     <% it.textPoints.forEach(function(item, index){ %>
-      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, -<%= it.spec.textYPadding %>)" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle"><%~ it.dataset.score.keys[index].name %></text>
-      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, +<%= it.spec.textYPadding %>)" font-size="12" text-anchor="middle" dominant-baseline="middle">(<%~ it.dataset.score.keys[index].type %>)</text>
+      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, -<%= it.spec.textYPadding %>)" font-size="12" font-weight="bold" text-anchor="middle" dy="3"><%~ it.dataset.score.keys[index].name %></text>
+      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, +<%= it.spec.textYPadding %>)" font-size="12" text-anchor="middle" dy="3">(<%~ it.dataset.score.keys[index].type %>)</text>
     <% }) %>
   </g>
   <g>
     <% it.ticksPoints.forEach(function(item, index){ %>
       <rect x='<%= item.x %>' y='<%= item.y %>' width='<%= it.spec.ticksLength %>' height='<%= it.spec.ticksLength %>' transform="translate(-<%= it.spec.ticksLength / 2 %>,-<%= it.spec.ticksLength / 2 %>)" fill="white"/>
-      <text x='<%= item.x %>' y='<%= item.y %>' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dominant-baseline="middle" fill="#9CA3AF"><%~ it.ticksNumbers[index] %></text>
+      <text x='<%= item.x %>' y='<%= item.y %>' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dy="3" fill="#9CA3AF"><%~ it.ticksNumbers[index] %></text>
     <% }) %>
   </g>
 </g>

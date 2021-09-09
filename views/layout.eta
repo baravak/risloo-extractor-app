@@ -3,6 +3,7 @@
   <style type="text/css"><![CDATA[
     <%~ includeFile('./fonts.css') %>
   ]]></style>
+  <rect x="0" y="0" width="<%= it.canvas.computedWidth %>" height="<%= it.canvas.computedWidth %>" fill="white"/>
   <%~ includeFile('./header.eta', {header: it.canvas.header, info: it.dataset.info}) %>
   <%~ it.body %>
   <%~ includeFile('./footer.eta', {canvas: it.canvas}) %>

@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
   font-family: Dana-FaNum;
   font-style: normal;
   font-weight: normal;
@@ -13,20 +13,4 @@
   src: url("../../fonts/Dana/eot/dana-regular.eot"),
     url("../../fonts/Dana/woff/dana-regular.woff") format("woff"),
     url("../../fonts/Dana/woff2/dana-regular.woff2") format("woff2");
-} */
-/* 
-@font-face {
-  font-family: Dana-FaNum;
-  font-style: normal;
-  font-weight: normal;
-  src: url("Dana-FaNum.ttf");
 }
-@font-face {
-  font-family: Dana;
-  font-style: normal;
-  font-weight: normal;
-  src: url("Dana.ttf");
-} */
-/* text {
-  direction: rtl;
-} */

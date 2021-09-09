@@ -10,11 +10,11 @@ export class FS {
   }
 
   static toDegrees(rad) {
-    return rad * (180 / PI);
+    return rad * (180 / Math.PI);
   }
 
   static toRadians(deg) {
-    return deg * (PI / 180);
+    return deg * (Math.PI / 180);
   }
 
   static isOdd(n) {
@@ -151,18 +151,9 @@ export class SVG {
 
 export class Color {
   static colors = {
-    red: "#f44336",
-    pink: "#e91e63",
-    purple: "#9c27b0",
-    indigo: "#3f51b5",
-    blue: "#2196f3",
-    lightBlue: "#03a9f4",
-    cyan: "#009688",
-    green: "#4caf50",
-    lime: "#cddc39",
-    yellow: "#ffeb3b",
-    orange: "#ff9800",
-    brown: "#795548",
+    red: "#DC2626",
+    green: "#047857",
+    yellow: "#D97706",
   };
 
   static getRandomColorArr(n) {
@@ -206,6 +197,10 @@ class Spec {
         centerOffset: 35,
         ticks: 5,
         ticksLength: 12,
+        ticksDisplacement: {
+          initial_term: 30,
+          common_diff: 10,
+        },
         dataPointsRadius: 15,
         textYPadding: 10,
         labels: {

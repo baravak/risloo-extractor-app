@@ -5,15 +5,20 @@ export class CRAAS93 extends Profile {
   _calcContext() {
     const { spec, dataset, canvas } = this;
 
-    const { maxValue, textOffset, centerOffset, ticks } =
-      spec.parameters["CRAAS93"];
+    const {
+      maxValue,
+      textOffset,
+      centerOffset,
+      ticks,
+      ticksDisplacement: { initial_term, common_diff },
+    } = spec.parameters["CRAAS93"];
 
     // Calculate Number of Vertices
     const n = dataset.score.keys.length;
 
-    // Calculate Polygon Points Angles
+    // Calculate Polygon Points Angles & theta == Angle of Polygon
     const angles = FS.createArithmeticSequence(0, (2 * Math.PI) / n, n);
-    const ticksAngle = (angles[0] + angles[1]) / 2;
+    const theta = angles[1];
 
     // Radius of Main Polygon
     let radius =
@@ -21,7 +26,7 @@ export class CRAAS93 extends Profile {
 
     // Change Position of Center and Radius if n is Odd
     if (FS.isOdd(n)) {
-      let change = 2 / 3 * radius * (1 - Math.cos(ticksAngle));
+      let change = (2 / 3) * radius * (1 - Math.cos(theta / 2));
       canvas.center.y += change;
       radius += change;
     }
@@ -31,18 +36,18 @@ export class CRAAS93 extends Profile {
       (value) => (value / maxValue) * radius + centerOffset
     );
 
-    // Calculate Ticks Arrary and Angle to Place On
+    // Calculate Ticks Array and Angle to Place On
     const ticksNumbers = FS.createArithmeticSequence(
       0,
       maxValue / (ticks - 1),
       ticks
     );
-    const ticksAngles = Array(ticks).fill(ticksAngle);
+    const ticksAngles = Array(ticks).fill(theta);
     const ticksRadiuses = FS.createArithmeticSequence(
       centerOffset,
       radius / (ticks - 1),
       ticks
-    ).map((item) => item * Math.cos(ticksAngle));
+    );
 
     // Consecutive Distance
     const dist = FS.roundTo2(radius / maxValue);
@@ -70,7 +75,15 @@ export class CRAAS93 extends Profile {
     const textPoints = this._calcPolygonPoints(radiuses, angles);
 
     //Calculate Ticks Points
-    const ticksPoints = this._calcPolygonPoints(ticksRadiuses, ticksAngles);
+    let ticksPoints = this._calcPolygonPoints(ticksRadiuses, ticksAngles);
+
+    // Displace Ticks Points (Defining Displacement Vector and Value)
+    const alpha = Math.PI - (3 * theta) / 2;
+    const disVector = { x: Math.cos(alpha), y: Math.sin(alpha) };
+    const disValue = FS.createArithmeticSequence(initial_term, common_diff, ticks);
+    ticksPoints = ticksPoints.map((point, index) =>
+      this._displacePoint(point, disVector, disValue[index])
+    );
 
     // Get n Random Colors (One of Return Values of Method)
     const colors = Color.getRandomColorArr(n);
@@ -95,6 +108,14 @@ export class CRAAS93 extends Profile {
     return this._transformAxes(points, center, Math.PI);
   }
 
+  // Polar Initial Coordinate System
+  //             y
+  //             ^
+  //             |
+  //             |
+  //             |
+  // x <---------|
+
   _polarToCartesian(radius, angle) {
     return {
       x: FS.roundTo2(radius * Math.sin(angle)),
@@ -107,6 +128,13 @@ export class CRAAS93 extends Profile {
       FS.transformAxes(point, d, theta)
     );
     return transformedPoints;
+  }
+
+  _displacePoint(pt, u, d) {
+    return {
+      x: pt.x + d * u.x,
+      y: pt.y + d * u.y,
+    };
   }
 }
 

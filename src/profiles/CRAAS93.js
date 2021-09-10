@@ -5,16 +5,20 @@ export class CRAAS93 extends Profile {
   _calcContext() {
     const { spec, dataset, canvas } = this;
 
-    const {
+    let {
       maxValue,
       textOffset,
       centerOffset,
       ticks,
+      ticksSide,
       ticksDisplacement: { initial_term, common_diff },
     } = spec.parameters["CRAAS93"];
 
     // Calculate Number of Vertices
     const n = dataset.score.keys.length;
+
+    // In Case Ticks Side is Greater than n
+    ticksSide = (ticksSide - 1) % n + 1;
 
     // Calculate Polygon Points Angles & theta == Angle of Polygon
     const angles = FS.createArithmeticSequence(0, (2 * Math.PI) / n, n);
@@ -42,7 +46,7 @@ export class CRAAS93 extends Profile {
       maxValue / (ticks - 1),
       ticks
     );
-    const ticksAngles = Array(ticks).fill(theta);
+    const ticksAngles = Array(ticks).fill(angles[ticksSide - 1]);
     const ticksRadiuses = FS.createArithmeticSequence(
       centerOffset,
       radius / (ticks - 1),
@@ -78,7 +82,7 @@ export class CRAAS93 extends Profile {
     let ticksPoints = this._calcPolygonPoints(ticksRadiuses, ticksAngles);
 
     // Displace Ticks Points (Defining Displacement Vector and Value)
-    const alpha = Math.PI - (3 * theta) / 2;
+    const alpha = Math.PI - (2 * ticksSide - 1) * theta / 2;
     const disVector = { x: Math.cos(alpha), y: Math.sin(alpha) };
     const disValue = FS.createArithmeticSequence(initial_term, common_diff, ticks);
     ticksPoints = ticksPoints.map((point, index) =>

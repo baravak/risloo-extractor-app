@@ -163,7 +163,7 @@ export class Color {
     const output = [];
     while (output.length < n) {
       let ran = Math.floor(Math.random() * len);
-      let color = colors[ran][0];
+      let color = colors[ran][1];
       if (!output.includes(color)) {
         output.push(color);
       }
@@ -197,6 +197,7 @@ class Spec {
         centerOffset: 35,
         ticks: 5,
         ticksLength: 12,
+        ticksSide: 2,
         ticksDisplacement: {
           initial_term: 30,
           common_diff: 10,

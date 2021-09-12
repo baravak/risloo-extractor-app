@@ -228,16 +228,30 @@ class Spec {
           G: 48,
           Total: 132,
         },
-        length: 5,
+        length: 3,
+        rectHeight: 30,
+        paddingX: 20,
+        paddingY: 20,
+        itemPositions: [35, 120, 205, 290, 375, 475, 575, 600],
         labels: {
           complete_performance: "CP",
-          important_and_control_of_thought: "ICT",
+          importance_and_control_of_thought: "ICT",
           responsibility_and_threat_estimation: "RT",
           perfectionism_certainty: "PC",
           general: "G",
           raw: "Total",
         },
+        desc: "این آزمون هر چقدر به سمت مثبت برود، نشان‌دهنده باورهای وسواس بالاست و در صورت منفی بودن، باورهای وسواس پایین است.",
+        descRectHeight: 100,
       },
+      // Test: {
+      //   nothing: true,
+      //   labels: {
+      //     one: 1,
+      //     two: 2,
+      //     three: 3,
+      //   }
+      // }
     };
     this._setConfig(config);
   }

@@ -1,7 +1,41 @@
 import { Profile, Color, SVG, FS } from "../profile";
 
-// CRAAS93 == radar chart
+const defaultSpec = {
+  CRAAS93: {
+    maxValue: 20,
+    textOffset: 35,
+    centerOffset: 35,
+    ticks: 5,
+    ticksLength: 12,
+    ticksSide: 2,
+    ticksDisplacement: {
+      initial_term: 30,
+      common_diff: 10,
+    },
+    dataPointsRadius: 15,
+    textYPadding: 10,
+    labels: {
+      closeness: {
+        name: "نزدیک بودن",
+        type: "دلبستگی ایمن",
+      },
+      anxiety: {
+        name: "اضطراب",
+        type: "دلبستگی اضطرابی-دوسوگرا",
+      },
+      dependance: {
+        name: "وابستگی",
+        type: "دلبستگی اجتنابی",
+      },
+    },
+  },
+};
+
 export class CRAAS93 extends Profile {
+  constructor(dataset, config = {}) {
+    super(dataset, config, defaultSpec);
+  }
+
   _calcContext() {
     const { spec, dataset, canvas } = this;
 
@@ -18,7 +52,7 @@ export class CRAAS93 extends Profile {
     const n = dataset.score.keys.length;
 
     // In Case Ticks Side is Greater than n
-    ticksSide = (ticksSide - 1) % n + 1;
+    ticksSide = ((ticksSide - 1) % n) + 1;
 
     // Calculate Polygon Points Angles & theta == Angle of Polygon
     const angles = FS.createArithmeticSequence(0, (2 * Math.PI) / n, n);
@@ -82,9 +116,13 @@ export class CRAAS93 extends Profile {
     let ticksPoints = this._calcPolygonPoints(ticksRadiuses, ticksAngles);
 
     // Displace Ticks Points (Defining Displacement Vector and Value)
-    const alpha = Math.PI - (2 * ticksSide - 1) * theta / 2;
+    const alpha = Math.PI - ((2 * ticksSide - 1) * theta) / 2;
     const disVector = { x: Math.cos(alpha), y: Math.sin(alpha) };
-    const disValue = FS.createArithmeticSequence(initial_term, common_diff, ticks);
+    const disValue = FS.createArithmeticSequence(
+      initial_term,
+      common_diff,
+      ticks
+    );
     ticksPoints = ticksPoints.map((point, index) =>
       this._displacePoint(point, disVector, disValue[index])
     );

@@ -2,7 +2,7 @@
   "id": "$X1HQ2G3J3",
   "scale": {
     "id": "$PIES-93",
-    "title": "پرسش‌نامه باورهای وسواسی -44"
+    "title": "پرسشنامه سیاهه روانی - اجتماعی نیرومندی من (ایگو) - فرم ۳۲ سؤالی"
   },
   "client": {
     "id": "GH96666D7",
@@ -86,11 +86,14 @@
     }
   ],
   "score": {
-    "raw": -132,
-    "general": -23,
-    "perfectionism_certainty": 1,
-    "responsibility_and_threat_estimation": 17,
-    "importance_and_control_of_thought": -16,
-    "complete_performance": -13
+    "raw": 102,
+    "hope": 16,
+    "will": 4,
+    "purpose": 10,
+    "competence": 20,
+    "fidelity": 18,
+    "love": 15,
+    "care": 7,
+    "wisdom": 12
   }
 }

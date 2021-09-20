@@ -8,7 +8,7 @@
   <g fill="white" font-weight="bold" font-size="16">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[0] %>" fill="#007BA4"/>
     <text x="100%" y="<%= it.header.heights[0] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dy="5"><%= it.info.title %></text>
-    <text x="0" y="<%= it.header.heights[0] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" font-family="Dana" text-anchor="start" dy="5"><%= it.info.id %></text>
+    <text x="0" y="<%= it.header.heights[0] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" font-family="Dana" text-anchor="start" dy="5" direction="ltr"><%= it.info.id %></text>
   </g>
   <g transform="translate(0, <%= it.header.heights[0] %>)" fill="#4B5563">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[1] %>" fill="#D7ECF3"/>
@@ -34,14 +34,14 @@
           <use href="#clock"/>
         </svg>
       </g>
-      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, +<%= it.header.textYPadding %>)" text-anchor="end"><tspan unicode-bidi="embed" dy="3">دقیقه</tspan> <%= it.info.time %></text>
+      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, +<%= it.header.textYPadding %>)" text-anchor="end" dy="3"><%= it.info.time %> دقیقه</text>
     </g>
   </g>
   <g transform="translate(0, <%= it.header.heights[0] + it.header.heights[1] %>)" fill="#6B7280"  font-size="14">
     <rect x="0" y="0" width="100%" height="<%= it.header.heights[2] %>" fill="#F9FAFB"/>
-    <text x="0" y="<%= it.header.heights[2] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="start"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.marital_status %></tspan> :وضعیت تأهل</text>
-    <text x="33.3%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.education %></tspan> :تحصیلات</text>
-    <text x="66.6%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.age %></tspan> :سن</text>
-    <text x="100%" y="<%= it.header.heights[2] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end"><tspan font-weight="600" unicode-bidi="embed" dy="4"><%= it.info.gender %></tspan> :جنسیت</text>
+    <text x="0" y="<%= it.header.heights[2] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="start"><tspan dy="4">وضعیت تأهل: </tspan><tspan font-weight="600"><%= it.info.marital_status %></tspan></text>
+    <text x="33.3%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle">تحصیلات: <tspan font-weight="600" dy="4"><%= it.info.education %></tspan></text>
+    <text x="66.6%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle">سن: <tspan font-weight="600" dy="4"><%= it.info.age %></tspan></text>
+    <text x="100%" y="<%= it.header.heights[2] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end">جنسیت: <tspan font-weight="600" dy="4"><%= it.info.gender %></tspan></text>
   </g>
 </g>

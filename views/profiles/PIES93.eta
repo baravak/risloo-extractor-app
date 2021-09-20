@@ -1,0 +1,34 @@
+<% layout('../layout.eta') %>
+
+<defs>
+  <clipPath id="left-round-corner">
+    <rect x="0" y="0" width="250" height="40" rx="20"/>
+  </clipPath>
+  <filter id="border-shadow">
+    <feDropShadow dx="1" dy="0" stdDeviation="5" flood-color="black" flood-opacity="0.5"/>
+  </filter>
+</defs>
+
+<g transform="translate(0, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
+  <g font-size="20" transform="translate(60, 0)">
+    <rect x="200" y="75" width="50" height="500" fill="#FFFFFF" style="filter: url(#border-shadow);"/>
+    <g transform="translate(0, 95)">
+      <rect x="0" y="0" width="220" height="40" fill="#A27DF8" transform="translate(-20, -20)" clip-path="url(#left-round-corner)"/>
+      <circle cx="0" cy="0" r="18" fill="white"/>
+      <text x="0" y="0" fill="#A27DF8" text-anchor="middle" dy="6.5">HO</text>
+      <text x="40" y="0" fill="white" text-anchor="start" dy="6.5">امید</text>
+    </g>
+    <g transform="translate(0, 165)">
+      <rect x="0" y="0" width="220" height="40" fill="#F06DAD" transform="translate(-20, -20)" clip-path="url(#left-round-corner)"/>
+      <circle cx="0" cy="0" r="18" fill="white"/>
+      <text x="0" y="0" fill="#F06DAD" text-anchor="middle" dy="6.5">W</text>
+      <text x="40" y="0" fill="white" text-anchor="start" dy="6.5">اراده (خواسته)</text>
+    </g>
+    <g transform="translate(0, 235)">
+      <rect x="0" y="0" width="220" height="40" fill="#40C79A" transform="translate(-20, -20)" clip-path="url(#left-round-corner)"/>
+      <circle cx="0" cy="0" r="18" fill="white"/>
+      <text x="0" y="0" fill="#40C79A" text-anchor="middle" dy="6.5">PU</text>
+      <text x="40" y="0" fill="white" text-anchor="start" dy="6.5">هدف‌مندی</text>
+    </g>
+  </g>
+</g>

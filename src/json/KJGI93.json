@@ -2,12 +2,17 @@
   "id": "$X1HQ2G3J3",
   "scale": {
     "id": "$PIES-93",
-    "title": "پرسش‌نامه باورهای وسواسی -44"
+    "title": "آزمون دلبستگی کولینز و رید"
   },
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
   "client": {
     "id": "GH96666D7",
     "name": "مهدی امیرآبادی"
   },
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nعبارات زیر جملاتی هستند که ممکن است افراد از آن‌ها برای توصیف خود استفاده کنند. خواهشمند است هر عبارت را به دقت بخوانید و تعیین کنید تا چه میزانی آن عبارت می‌تواند شما را توصیف کند. سپس میزان درست بودن آن عبارت را بر اساس درجه‌بندی در ستون مقابل علامت بزنید.",
   "center": {
     "detail": {
       "title": "کلینیک شخصی بروبچه‌های ریسلو و رفقا"
@@ -15,11 +20,6 @@
   },
   "started_at": 1630907666,
   "cornometer": 1,
-  "version": "1",
-  "edition": "",
-  "edition_version": null,
-  "filler": "client",
-  "description": "## دستور اجرای آزمون\n\nافراد از این جمله‌ها ممکن است برای توصیف خودشان استفاده کنند. لطفا هر جمله را به دقت بخوانید و ببینید که چقدر به آن جمله اعتقاد دارید یا بر اساس مقیاس فراوانی به آن پاسخ دهید. ",
   "prerequisites": [
     {
       "type": "text",
@@ -86,11 +86,10 @@
     }
   ],
   "score": {
-    "raw": -132,
-    "general": -23,
-    "perfectionism_certainty": 1,
-    "responsibility_and_threat_estimation": 17,
-    "importance_and_control_of_thought": -16,
-    "complete_performance": -13
+    "raw": 225,
+    "moral_standards": 225,
+    "trait_guilt": 45,
+    "state_guilt": 121,
+    "interpretation": "احساس گناه زیاد"
   }
 }

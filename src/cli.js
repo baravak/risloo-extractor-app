@@ -122,8 +122,16 @@ export async function cli(args) {
     options = await promptForIncorrectInput(options, incorrectInput);
   }
 
-  const svg = await eta.renderFile(options.chartType, ctx);
-  const buf = Buffer.from(svg, 'utf8');
+  const xml = await eta.renderFile(options.chartType, ctx);
+
+  const mapObj = {
+    'text-anchor="start"': 'text-anchor="end"',
+    'text-anchor="end"': 'text-anchor="start"',
+  }
+
+  const svg = xml.replace(/text-anchor="start"|text-anchor="end"/g, (matched) => mapObj[matched])
+
+  const buf = Buffer.from(xml, 'utf8');
   const png = await sharp(buf, { density: 500 });
 
   await fs.writeFile(`${options.saveDir}/${options.chartType}.svg`, svg);

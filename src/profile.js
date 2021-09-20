@@ -1,8 +1,8 @@
-import moment from 'moment-jalaali';
+import moment from "moment-jalaali";
 import fa from "moment/src/locale/fa";
 
 moment.locale("fa", fa);
-moment.loadPersian({dialect: 'persian-modern'})
+moment.loadPersian({ dialect: "persian-modern" });
 
 export class FS {
   static calcDistance(pt1, pt2) {
@@ -19,6 +19,16 @@ export class FS {
 
   static isOdd(n) {
     return !!(n % 2);
+  }
+
+  // Create a Line Using the Two Points and Return It As A Function
+  static createLine(pt1, pt2) {
+    let m = (pt2.y - pt1.y) / (pt2.x - pt1.x);
+    let intercept = -m * pt1.x + pt1.y;
+
+    return function (point) {
+      return m * point + intercept;
+    };
   }
 
   // Create Arithmetic Sequence for Angles of Polygon
@@ -69,30 +79,52 @@ export class FS {
 class Canvas {
   constructor(width, height, padding, header, footer) {
     this.width = width;
-    this.height = height;
+    this._height = height;
     this.padding = padding;
     this.header = header;
     this.footer = footer;
-    this.center = { x: this.width / 2, y: this.height / 2 };
+    this.center = this._computeCenter();
+    this._computeHeaderHeight();
     this._computeWidthAndHeight();
   }
 
-  _computeWidthAndHeight() {
-    const { width, height, header, footer } = this;
+  get height() {
+    return this._height;
+  }
+
+  set height(value) {
+    this._height = value;
+    this.center = this._computeCenter();
+    this._computeWidthAndHeight();
+  }
+
+  _computeHeaderHeight() {
+    const { header } = this;
 
     let headerHeight = header.heights.reduce(
       (sum, current) => sum + current,
       0
     );
 
-    let tempWidth = width;
-    let tempHeight = height + headerHeight + footer.height;
-
-    let computedLength = Math.max(tempWidth, tempHeight);
-
-    this.computedWidth = computedLength;
-    this.computedHeight = computedLength;
     this.headerHeight = headerHeight;
+  }
+
+  _computeCenter() {
+    const { width, _height } = this;
+
+    return { x: width / 2, y: _height / 2 };
+  }
+
+  _computeWidthAndHeight() {
+    const { width, _height, footer, headerHeight } = this;
+
+    let computedWidth = width;
+    let computedHeight = _height + headerHeight + footer.height;
+
+    // let computedLength = Math.max(tempWidth, tempHeight);
+
+    this.computedWidth = computedWidth;
+    this.computedHeight = computedHeight;
   }
 }
 
@@ -130,9 +162,12 @@ class Dataset {
     }
 
     // Change Timestamp to Proper Date Format
-    let date = moment(started_at * 1000).format('dddd، jD jMMMM jYYYY');
+    let date = moment(started_at * 1000).format("dddd، jD jMMMM jYYYY");
 
-    return { info: { id, title, name, centerTitle, time, date, ...fields }, score: { keys, values } };
+    return {
+      info: { id, title, name, centerTitle, time, date, ...fields },
+      score: { keys, values },
+    };
   }
 }
 
@@ -174,7 +209,7 @@ export class Color {
 }
 
 class Spec {
-  constructor(config) {
+  constructor(config, profileSpec) {
     this.parameters = {
       canvas: {
         width: 1024,
@@ -190,68 +225,7 @@ class Spec {
           height: 30,
         },
       },
-      // CRAAS93 == radar chart
-      CRAAS93: {
-        maxValue: 20,
-        textOffset: 35,
-        centerOffset: 35,
-        ticks: 5,
-        ticksLength: 12,
-        ticksSide: 2,
-        ticksDisplacement: {
-          initial_term: 30,
-          common_diff: 10,
-        },
-        dataPointsRadius: 15,
-        textYPadding: 10,
-        labels: {
-          closeness: {
-            name: "نزدیک بودن",
-            type: "دلبستگی ایمن",
-          },
-          anxiety: {
-            name: "اضطراب",
-            type: "دلبستگی اضطرابی-دوسوگرا",
-          },
-          dependance: {
-            name: "وابستگی",
-            type: "دلبستگی اجتنابی",
-          },
-        },
-      },
-      OBQ4493: {
-        maxValues: {
-          CP: 15,
-          ICT: 16,
-          RT: 21,
-          PC: 30,
-          G: 48,
-          Total: 132,
-        },
-        length: 3,
-        rectHeight: 30,
-        paddingX: 20,
-        paddingY: 20,
-        itemPositions: [35, 120, 205, 290, 375, 475, 575, 600],
-        labels: {
-          complete_performance: "CP",
-          importance_and_control_of_thought: "ICT",
-          responsibility_and_threat_estimation: "RT",
-          perfectionism_certainty: "PC",
-          general: "G",
-          raw: "Total",
-        },
-        desc: "این آزمون هر چقدر به سمت مثبت برود، نشان‌دهنده باورهای وسواس بالاست و در صورت منفی بودن، باورهای وسواس پایین است.",
-        descRectHeight: 100,
-      },
-      // Test: {
-      //   nothing: true,
-      //   labels: {
-      //     one: 1,
-      //     two: 2,
-      //     three: 3,
-      //   }
-      // }
+      ...profileSpec,
     };
     this._setConfig(config);
   }
@@ -265,8 +239,10 @@ class Spec {
 }
 
 export class Profile {
-  constructor(dataset, config) {
-    this.spec = new Spec(config);
+  constructor(dataset, config = {}, profileSpec) {
+    if (this.constructor.name === "Profile")
+      throw new Error("Can't Instantiate Abstract Class");
+    this.spec = new Spec(config, profileSpec);
     const { width, height, padding, header, footer } =
       this.spec.parameters.canvas;
     this.canvas = new Canvas(width, height, padding, header, footer);

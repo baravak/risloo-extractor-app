@@ -1,22 +1,22 @@
 <% layout('../layout.eta') %>
 
-<g  transform="translate(0, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
+<g  transform="translate(<%= it.canvas.computedWidth / 2 %>, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
   <% it.rectWidths.forEach(function(item, index){ %>
-    <text x="50%" y="<%= it.itemPositions[index] %>" font-size="16" font-weight="700" text-anchor="middle" dy="5" fill="#4B5563"><%= it.dataset.score.keys[index] %></text>
+    <text x="0" y="<%= it.itemHeights[index] %>" font-size="16" font-weight="700" text-anchor="middle" dy="5" fill="#4B5563"><%= it.dataset.score.keys[index] %></text>
     <g transform="translate(0, <%= it.spec.paddingY %>)" font-size="14">
-      <rect x="50%" y="<%= it.itemPositions[index] %>" transform="translate(-<%= item / 2 %>, 0)" width="<%= item %>" height="<%= it.spec.rectHeight %>" fill="#E5E7EB"/>
-      <text x="50%" y="<%= it.itemPositions[index] %>" transform="translate(<%= it.spec.paddingX + item / 2 %>, <%= it.spec.rectHeight / 2 %>)" text-anchor="middle" dy="4" fill="#9CA3AF">+<%= it.spec.maxValues[it.dataset.score.keys[index]] %></text>
-      <text x="50%" y="<%= it.itemPositions[index] %>" transform="translate(-<%= it.spec.paddingX + item / 2 %>, <%= it.spec.rectHeight / 2 %>)" text-anchor="middle" dy="4" fill="#9CA3AF">-<%= it.spec.maxValues[it.dataset.score.keys[index]] %></text>
-      <g transform="translate(<%= it.canvas.computedWidth / 2 %>, 0) scale(<%= it.dataMirrorAndFill[index].mirror %>, 1)">
-        <rect x="0" y="<%= it.itemPositions[index] %>" width="<%= it.dataWidths[index] %>" height="<%= it.spec.rectHeight %>" fill="<%= it.dataMirrorAndFill[index].fill %>"/>
-        <text x="0" y="<%= it.itemPositions[index] %>" transform="translate(<%= it.dataWidths[index] / 2%>, <%= it.spec.rectHeight / 2 %>) scale(<%= it.dataMirrorAndFill[index].mirror %>, 1)" text-anchor="middle" dy="4" fill="white">
-          <% if (it.dataMirrorAndFill[index].mirror > 0) { %>+<% } %><%= it.dataset.score.values[index] %>
+      <rect x="0" y="<%= it.itemHeights[index] %>" transform="translate(-<%= item / 2 %>, 0)" width="<%= item %>" height="<%= it.spec.rectHeight %>" fill="#E5E7EB"/>
+      <text x="0" y="<%= it.itemHeights[index] %>" transform="translate(<%= it.spec.paddingX + item / 2 %>, <%= it.spec.rectHeight / 2 %>)" text-anchor="middle" dy="4" fill="#9CA3AF">+<%= it.spec.maxValues[it.dataset.score.keys[index]] %></text>
+      <text x="0" y="<%= it.itemHeights[index] %>" transform="translate(-<%= it.spec.paddingX + item / 2 %>, <%= it.spec.rectHeight / 2 %>)" text-anchor="middle" dy="4" fill="#9CA3AF">-<%= it.spec.maxValues[it.dataset.score.keys[index]] %></text>
+      <g transform="scale(<%= (it.dataset.score.values[index] < 0) ? -1 : 1 %>, 1)">
+        <rect x="0" y="<%= it.itemHeights[index] %>" width="<%= it.dataWidths[index] %>" height="<%= it.spec.rectHeight %>" fill="<%= (it.dataset.score.values[index] < 0) ? '#007BA4' : '#991B1B' %>"/>
+        <text x="0" y="<%= it.itemHeights[index] %>" transform="translate(<%= it.dataWidths[index] / 2%>, <%= it.spec.rectHeight / 2 %>) scale(<%= (it.dataset.score.values[index] < 0) ? -1 : 1 %>, 1)" text-anchor="middle" dy="4" fill="white">
+          <%= (it.dataset.score.values[index] > 0) ? '+' : '' %><%= it.dataset.score.values[index] %>
         </text>
       </g>
   </g>
   <% }) %>
-  <text x="100%" y="<%= it.itemPositions[it.num] %>" transform="translate(-<%= it.spec.paddingX %>, 0)" font-size="18" text-anchor="end" dy="6" fill="#6B7280"><tspan unicode-bidi="plaintext"><%= it.spec.desc %></tspan></text>
-  <g transform="translate(0, <%= it.itemPositions[it.num + 1] %>)" font-size="16" fill="#6B7280">
+  <text x="50%" y="<%= it.itemHeights[it.num] %>" transform="translate(-<%= it.spec.paddingX %>, 0)" font-size="18" text-anchor="end" dy="6" fill="#6B7280"><%= it.spec.desc %></text>
+  <g transform="translate(<%= -it.canvas.computedWidth / 2 %>, <%= it.itemHeights[it.num + 1] %>)" font-size="16" fill="#6B7280">
     <rect x="0" y="0" width="100%" height="<%= it.spec.descRectHeight %>" fill="#F3F4F6"/>
     <text x="0" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(<%= it.spec.paddingX %>, -<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">CP:</tspan> عملکرد کامل</text>
     <text x="0" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(<%= it.spec.paddingX %>, +<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">PC:</tspan> کمال‌گرایی / یقین</text>

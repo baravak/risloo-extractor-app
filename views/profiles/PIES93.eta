@@ -2,33 +2,70 @@
 
 <defs>
   <clipPath id="left-round-corner">
-    <rect x="0" y="0" width="250" height="40" rx="20"/>
+    <rect x="0" y="0" width="<%= it.spec.items.base.rect.width + 30 %>" height="<%= it.spec.items.base.rect.height %>" rx="<%= it.spec.items.base.rect.borderRadius %>"/>
   </clipPath>
-  <filter id="border-shadow">
-    <feDropShadow dx="1" dy="0" stdDeviation="5" flood-color="black" flood-opacity="0.5"/>
+  <filter id="border-shadow" width="100">
+    <feDropShadow dx="5" dy="1" stdDeviation="3" flood-color="black" flood-opacity="0.15"/>
+  </filter>
+  <filter id="blur-shadow">
+    <feDropShadow in="SourceGraphic" stdDeviation="3"/>
   </filter>
 </defs>
 
 <g transform="translate(0, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
-  <g font-size="20" transform="translate(60, 0)">
-    <rect x="200" y="75" width="50" height="500" fill="#FFFFFF" style="filter: url(#border-shadow);"/>
-    <g transform="translate(0, 95)">
-      <rect x="0" y="0" width="220" height="40" fill="#A27DF8" transform="translate(-20, -20)" clip-path="url(#left-round-corner)"/>
-      <circle cx="0" cy="0" r="18" fill="white"/>
-      <text x="0" y="0" fill="#A27DF8" text-anchor="middle" dy="6.5">HO</text>
-      <text x="40" y="0" fill="white" text-anchor="start" dy="6.5">امید</text>
+  <g font-size="20" transform="translate(52, 0)">
+    <g transform="translate(<%= it.spec.items.base.rect.width %>, <%= it.spec.items.topPos.initial_term - it.spec.items.ticks.heightOffset %>)">
+      <% it.itemsTicksArr.forEach(function(tick, index){ %>
+        <line x1="<%= tick.leftPos %>" y1="0" x2="<%= tick.leftPos %>" y2="<%= it.itemsTotalHeight + 2 * it.spec.items.ticks.heightOffset %>" stroke="#E5E7EB" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="2"/>
+        <text x="<%= tick.leftPos - it.spec.items.ticks.numberOffset.x %>" y="<%= it.spec.items.ticks.numberOffset.y %>" fill="#9CA3AF" text-anchor="middle" font-size="16" dy="5"><%= tick.number %></text>
+      <% }) %>
     </g>
-    <g transform="translate(0, 165)">
-      <rect x="0" y="0" width="220" height="40" fill="#F06DAD" transform="translate(-20, -20)" clip-path="url(#left-round-corner)"/>
-      <circle cx="0" cy="0" r="18" fill="white"/>
-      <text x="0" y="0" fill="#F06DAD" text-anchor="middle" dy="6.5">W</text>
-      <text x="40" y="0" fill="white" text-anchor="start" dy="6.5">اراده (خواسته)</text>
+    <% it.itemsArr.forEach(function(item, index){ %>
+      <g transform="translate(<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.topPos.initial_term + index * it.spec.items.topPos.common_diff %>)">
+        <g transform="translate(0, 1)">
+          <rect x="0" y="0" width="<%= item.width %>" height="<%= it.spec.items.base.rect.height %>" rx="<%= it.spec.items.base.rect.borderRadius %>" fill="<%= item.body.color %>" fill-opacity="<%= item.body.opacity %>"/>
+          <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.base.rect.borderRadius %>)">
+            <text x="<%= item.width - it.spec.items.base.rect.borderRadius %>" y="0" fill="white" text-anchor="middle" font-size="22" dy="7" transform="translate(-<%= it.spec.items.base.rect.borderRadius %>, 0)"><%= item.mark %></text>
+          </g>
+        </g>
+      </g>
+    <% }) %>
+    <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.topPos.initial_term %>)">
+      <% /* <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" height="<%= it.itemsTotalHeight %>" fill="#FFFFFF" rx="1" style="filter: url(#border-shadow);"/> */ %>
+      <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" height="<%= it.itemsTotalHeight %>" fill="black" fill-opacity="0.3" filter="url(#blur-shadow)"/>
+      <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 11 %>" height="<%= it.itemsTotalHeight + 20 %>" fill="#FFFFFF" rx="1" transform="translate(-10, -10)"/>
     </g>
-    <g transform="translate(0, 235)">
-      <rect x="0" y="0" width="220" height="40" fill="#40C79A" transform="translate(-20, -20)" clip-path="url(#left-round-corner)"/>
-      <circle cx="0" cy="0" r="18" fill="white"/>
-      <text x="0" y="0" fill="#40C79A" text-anchor="middle" dy="6.5">PU</text>
-      <text x="40" y="0" fill="white" text-anchor="start" dy="6.5">هدف‌مندی</text>
+    <% it.itemsArr.forEach(function(item, index){ %>
+      <g transform="translate(0, <%= it.spec.items.topPos.initial_term + index * it.spec.items.topPos.common_diff %>)">
+        <rect x="0" y="0" width="<%= it.spec.items.base.rect.width %>" height="<%= it.spec.items.base.rect.height %>" fill="<%= item.baseColor %>" clip-path="url(#left-round-corner)"/>
+        <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.base.rect.borderRadius %>)">
+          <circle cx="0" cy="0" r="<%= it.spec.items.base.circle.radius %>" fill="white"/>
+          <text x="0" y="0" fill="<%= item.baseColor %>" text-anchor="middle" dy="6.5"><%= item.label.abbr %></text>
+          <text x="<%= it.spec.items.base.textOffset.x %>" y="0" fill="white" text-anchor="start" dy="5.5"><%= item.label.fr %></text>
+        </g>
+      </g>
+    <% }) %>   
+    </g> 
+    <g transform="translate(895, 665) scale(1, -1)">
+      <g transform="translate(<%= 2 * it.spec.raw.rect.borderRadius + it.spec.raw.ticks.widthOffset %>, 0)">
+        <% it.rawTicksArr.forEach(function(tick, index){ %>
+          <line x1="0" y1="<%= tick.bottomPos %>" x2="<%= it.spec.raw.ticks.lineWidth %>" y2="<%= tick.bottomPos %>" stroke="#E5E7EB" stroke-dasharray="3" stroke-linecap="round" stroke-width="2"/>
+          <g transform="translate(<%= it.spec.raw.ticks.lineWidth + it.spec.raw.ticks.numberOffset.x %>, <%= tick.bottomPos %>)">
+            <text x="0" y="0" fill="#9CA3AF" text-anchor="middle" font-size="14" dy="4" transform="scale(1, -1)"><%= tick.number %></text>
+          </g>
+        <% }) %> 
+      </g>
+      <rect x="0" y="0" width="<%= it.spec.raw.rect.width %>" height="<%= it.spec.raw.rect.height %>" rx="<%= it.spec.raw.rect.borderRadius %>" fill="#E5E7EB"/>
+      <rect x="0" y="0" width="<%= it.spec.raw.rect.width %>" height="<%= it.raw.height %>" rx="<%= it.spec.raw.rect.borderRadius %>" fill="#374151"/>
+    <g transform="translate(<%= it.spec.raw.rect.borderRadius %>, <%= it.spec.raw.rect.borderRadius %>)">
+      <circle cx="0" cy="0" r="<%= it.spec.raw.circle.radius %>" fill="white"/>
+      <text x="0" y="0" fill="#1F2937" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)">#</text>
+      <g transform="translate(0, <%= it.raw.height - 2 * it.spec.raw.rect.borderRadius %>)">
+        <text x="0" y="0" fill="white" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)"><%= it.raw.mark %></text>
+      </g>
+      <g transform="translate(0, <%= it.spec.raw.textOffset.y %>)">
+        <text x="0" y="0" fill="white" text-anchor="start" font-size="20" dy="4" transform="scale(1, -1) rotate(-90)">نمره کل</text>
+      </g>
     </g>
   </g>
 </g>

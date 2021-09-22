@@ -72,6 +72,19 @@ export class FS {
   static isEmpty(obj) {
     return Object.keys(obj).length === 0;
   }
+
+  // Get the Corresponding Result from Value Acc. to Mapping Object
+  static mapInRange(value, mappingObj) {
+    for (let range in mappingObj) {
+      let split = range.split("-");
+
+      if (split.length === 1) {
+        if (value === +split[0]) return mappingObj[range];
+      } else {
+        if (value <= +split[1] && value >= +split[0]) return mappingObj[range]
+      }
+    }
+  }
 }
 
 // Classes

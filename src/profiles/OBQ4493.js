@@ -34,7 +34,7 @@ class OBQ4493 extends Profile {
   }
 
   _calcContext() {
-    const { spec, dataset,canvas } = this;
+    const { spec, dataset, canvas } = this;
 
     const { indexLength, maxValues, itemHeights, descRectHeight } =
       spec.parameters["OBQ4493"];

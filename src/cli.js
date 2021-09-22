@@ -111,12 +111,12 @@ export async function cli(args) {
       incorrectInput["chartType"] = true;
     }
 
-    try {
+    // try {
       const profileObj = new profileClass(dataset);
       ctx = profileObj.getTemplateEngineParams();
-    } catch (err) {
-      console.log("An Error Occured due to Dataset Issues!");
-    }
+    // } catch (err) {
+    //   console.log("An Error Occured due to Dataset Issues!");
+    // }
 
     if (!Object.keys(incorrectInput).length) break;
     options = await promptForIncorrectInput(options, incorrectInput);

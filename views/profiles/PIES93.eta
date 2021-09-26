@@ -4,6 +4,10 @@
   <clipPath id="left-round-corner">
     <rect x="0" y="0" width="<%= it.spec.items.base.rect.width + 30 %>" height="<%= it.spec.items.base.rect.height %>" rx="<%= it.spec.items.base.rect.borderRadius %>"/>
   </clipPath>
+  <linearGradient id="shadow">
+    <stop offset="0%"  stop-color="black" />
+    <stop offset="100%" stop-color="transparent" />
+  </linearGradient>
   <filter id="border-shadow" width="100">
     <feDropShadow dx="5" dy="1" stdDeviation="3" flood-color="black" flood-opacity="0.15"/>
   </filter>
@@ -31,9 +35,8 @@
       </g>
     <% }) %>
     <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.topPos.initial_term %>)">
-      <% /* <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" height="<%= it.itemsTotalHeight %>" fill="#FFFFFF" rx="1" style="filter: url(#border-shadow);"/> */ %>
-      <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" height="<%= it.itemsTotalHeight %>" fill="black" fill-opacity="0.3" filter="url(#blur-shadow)"/>
-      <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 11 %>" height="<%= it.itemsTotalHeight + 20 %>" fill="#FFFFFF" rx="1" transform="translate(-10, -10)"/>
+      <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" height="<%= it.itemsTotalHeight %>" fill="#FFFFFF" rx="1"/>
+      <rect x="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" y="0" width="5" height="<%= it.itemsTotalHeight %>" fill="url('#shadow')" fill-opacity="0.2"/>
     </g>
     <% it.itemsArr.forEach(function(item, index){ %>
       <g transform="translate(0, <%= it.spec.items.topPos.initial_term + index * it.spec.items.topPos.common_diff %>)">
@@ -58,12 +61,12 @@
       <rect x="0" y="0" width="<%= it.spec.raw.rect.width %>" height="<%= it.spec.raw.rect.height %>" rx="<%= it.spec.raw.rect.borderRadius %>" fill="#E5E7EB"/>
       <rect x="0" y="0" width="<%= it.spec.raw.rect.width %>" height="<%= it.raw.height %>" rx="<%= it.spec.raw.rect.borderRadius %>" fill="#374151"/>
     <g transform="translate(<%= it.spec.raw.rect.borderRadius %>, <%= it.spec.raw.rect.borderRadius %>)">
-      <circle cx="0" cy="0" r="<%= it.spec.raw.circle.radius %>" fill="white"/>
-      <text x="0" y="0" fill="#1F2937" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)">#</text>
+      <% /* <circle cx="0" cy="0" r="<%= it.spec.raw.circle.radius %>" fill="white"/>
+      <text x="0" y="0" fill="#1F2937" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)">#</text> */ %>
       <g transform="translate(0, <%= it.raw.height - 2 * it.spec.raw.rect.borderRadius %>)">
         <text x="0" y="0" fill="white" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)"><%= it.raw.mark %></text>
       </g>
-      <g transform="translate(0, <%= it.spec.raw.textOffset.y %>)">
+      <g>
         <text x="0" y="0" fill="white" text-anchor="start" font-size="20" dy="4" transform="scale(1, -1) rotate(-90)">نمره کل</text>
       </g>
     </g>

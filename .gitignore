@@ -5,3 +5,4 @@ public
 node_modules
 src/profiles/Test.js
 views/profiles/Test.eta
+views/measure.js

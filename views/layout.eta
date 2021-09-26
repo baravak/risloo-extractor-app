@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 <%= it.canvas.computedWidth %> <%= it.canvas.computedHeight %>" xml:lang="fa" direction="rtl">
+<% /* <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="<%= it.canvas.computedWidth %>" height="<%= it.canvas.computedHeight %>" xml:lang="fa" direction="rtl"> */ %>
+  <% if (it.measure) { %>
+    <script><![CDATA[<%~ includeFile('./measure.js') %>]]></script>
+  <% } %>
   <style type="text/css"><![CDATA[
     <%~ includeFile('./fonts.css') %>
   ]]></style>
-  <rect x="0" y="0" width="<%= it.canvas.computedWidth %>" height="<%= it.canvas.computedWidth %>" fill="white"/>
+  <rect id="svg-container" x="0" y="0" width="<%= it.canvas.computedWidth %>" height="<%= it.canvas.computedHeight %>" fill="white"/>
   <%~ includeFile('./header.eta', {header: it.canvas.header, info: it.dataset.info}) %>
   <%~ it.body %>
   <%~ includeFile('./footer.eta', {canvas: it.canvas}) %>

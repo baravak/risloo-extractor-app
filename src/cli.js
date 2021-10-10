@@ -4,6 +4,7 @@ import { access, constants } from "fs";
 import path from "path";
 import sharp from "sharp";
 import { Buffer } from "buffer";
+const prettier = require("prettier");
 const eta = require("eta");
 
 const program = new Command();
@@ -21,8 +22,13 @@ function parseArgumentsIntoOptions(rawArgs) {
     .argument("<profileName>")
     .description("You can draw a profile using this command!")
     .addOption(
+      new Option("-p, --profile-variant <variant>", "profile variant")
+        .choices(["raw", "with-sidebar", "with-header"])
+        .makeOptionMandatory()
+    )
+    .addOption(
       new Option("-i, --input-type <type>", "input type")
-        .choices(["local", "remote", "raw_json"])
+        .choices(["local", "remote", "raw-json"])
         .makeOptionMandatory()
     )
 
@@ -86,17 +92,33 @@ async function draw(options) {
     access(profilePath, constants.F_OK, async (err) => {
       if (err) {
         console.log("Profile Name Is Not Valid!");
-        return;
+        if (err) throw err;
       }
 
-      const profileClass = require(profilePath);
-      const profileObj = new profileClass(dataset);
-      const ctx = {
-        ...profileObj.getTemplateEngineParams(),
-        measure: options.measure,
-      };
+      let profileObj;
+      let ctx = {};
 
-      const xml = await eta.renderFile(options.profileName, ctx);
+      const profileClass = require(profilePath);
+      try {
+        profileObj = new profileClass(dataset, options.profileVariant);
+        ctx = {
+          ...profileObj.getTemplateEngineParams(),
+          variant: options.profileVariant,
+          measure: options.measure,
+        };
+      } catch (err) {
+        if (err) throw err;
+      }
+
+      let xml = "";
+
+      try {
+        xml = await eta.renderFile(options.profileName, ctx);
+      } catch (err) {
+        if (err) throw err;
+      }
+
+      // xml = prettier.format(xml, {parser: "html"});
 
       const mapObj = {
         'text-anchor="start"': 'text-anchor="end"',
@@ -109,13 +131,32 @@ async function draw(options) {
       );
 
       const buf = Buffer.from(xml, "utf8");
-      const png = await sharp(buf, { density: 500 });
+      let png;
+      try {
+        png = await sharp(buf, { density: 500 });
+      } catch (err) {
+        if (err) throw err;
+      }
 
-      await fs.writeFile(
-        `${options.outputAddress}/${options.profileName}.svg`,
-        svg
+      const profileName = `${options.profileName}${
+        options.profileVariant === "with-header"
+          ? "-header"
+          : options.profileVariant === "with-sidebar"
+          ? "-sidebar"
+          : "-raw"
+      }${options.measure ? "-m" : ""}`;
+
+      try {
+        await fs.writeFile(`${options.outputAddress}/${profileName}.svg`, svg);
+      } catch (err) {
+        if (err) console.log(err.message);
+      }
+      png.toFile(
+        `${options.outputAddress}/${options.profileName}.png`,
+        (err) => {
+          if (err) console.log(err.message);
+        }
       );
-      await png.toFile(`${options.outputAddress}/${options.profileName}.png`);
     });
   });
 }
@@ -125,7 +166,11 @@ export async function cli(args) {
 
   switch (options.command) {
     case "draw":
-      draw(options);
+      try {
+        draw(options);
+      } catch (err) {
+        if (err) throw err;
+      }
       break;
   }
 }

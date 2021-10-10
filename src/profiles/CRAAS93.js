@@ -1,19 +1,62 @@
-import { Profile, Color, SVG, FS } from "../profile";
+import { Profile, SVG, FS } from "../profile";
 
 const defaultSpec = {
   CRAAS93: {
-    maxValue: 20,
-    textOffset: 35,
-    centerOffset: 35,
-    ticks: 5,
-    ticksLength: 12,
-    ticksSide: 2,
-    ticksDisplacement: {
-      initial_term: 30,
-      common_diff: 10,
+    /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
+    /* calculating its dimensions carefully is of great importance */
+    profile: {
+      dimensions:
+        {} /* To be calculated in the class with the function provided */,
+      calcDim: function (spec, n) {
+        return {
+          width:
+            800 +
+            spec.profile.padding.x * 2,
+          height:
+            (spec.polygons.radius + spec.items.labels.offset) *
+              (1 + (FS.isOdd(n) ? Math.cos((2 * Math.PI) / n / 2) : 1)) +
+            50 +
+            spec.profile.padding.y * 2,
+        };
+      },
+      padding: {
+        x: 50,
+        y: 15,
+      },
     },
-    dataPointsRadius: 15,
-    textYPadding: 10,
+    /* Spec for the polygons drawn in the profile */
+    polygons: {
+      radius: 450 /* Radius of the peripheral circle of the main polygon */,
+      centerOffset: 40 /* Radius of the peropheral circle of the smallest polygon */,
+      /* Spec for the ticks used in the profile */
+      ticks: {
+        num: 5 /* Number of ticks */,
+        rectDim: 12 /* The dimension of the rectangle the tick number is placed in */,
+        side: 2 /* Which side of the polygon the ticks are going to be placed on */,
+        /* The arithmetic sequence used for displacing ticks on the side direction */
+        displacement: {
+          initialTerm: 30 /* Initial term of the arithmetic sequence */,
+          commonDiff: 10 /* Common difference of the arithmetic sequence */,
+        },
+      },
+    },
+    /* "items" is the general term used for independent data elements to be drawn in the profile */
+    items: {
+      labels: {
+        offset: 50 /* Offset of the label from the vertice of the polygon */,
+        paddingY: 12 /* Half distance between two parts of the label */,
+      },
+      dataPoints: {
+        maxValue: 20 /* Maximum value of marks provided by the dataset */,
+        radius: 15 /* Radius of the circle of the data point */,
+        fills: [
+          "#DC2626",
+          "#047857",
+          "#D97706",
+        ] /* Colors used for theming data points */,
+      },
+    },
+    /* "labels" part which has to be provided for each profile */
     labels: {
       closeness: {
         name: "نزدیک بودن",
@@ -32,144 +75,153 @@ const defaultSpec = {
 };
 
 export class CRAAS93 extends Profile {
-  constructor(dataset, config = {}) {
-    super(dataset, config, defaultSpec);
+  constructor(dataset, profileVariant, config = {}) {
+    super(dataset, profileVariant, config, defaultSpec);
   }
 
   _calcContext() {
-    const { spec, dataset, canvas } = this;
+    const {
+      spec: {
+        parameters: { CRAAS93: spec },
+      },
+      dataset,
+    } = this;
 
+    // Deconstructing the Spec of the Profile
     let {
-      maxValue,
-      textOffset,
-      centerOffset,
-      ticks,
-      ticksSide,
-      ticksDisplacement: { initial_term, common_diff },
-    } = spec.parameters["CRAAS93"];
+      profile,
+      polygons: { radius, centerOffset, ticks: ticksSpec },
+      items: {
+        dataPoints: { maxValue, fills },
+        labels: { offset },
+      },
+    } = spec;
 
     // Calculate Number of Vertices
-    const n = dataset.score.keys.length;
+    const n = dataset.score.length;
 
-    // In Case Ticks Side is Greater than n
-    ticksSide = ((ticksSide - 1) % n) + 1;
+    // ّInit Spec
+    spec.profile.dimensions = spec.profile.calcDim(spec, n);
 
-    // Calculate Polygon Points Angles & theta == Angle of Polygon
+    // Calculate Polygon Angles & theta == Angle of Polygon
     const angles = FS.createArithmeticSequence(0, (2 * Math.PI) / n, n);
     const theta = angles[1];
 
-    // Radius of Main Polygon
-    let radius =
-      Math.min(canvas.height, canvas.width) / 2 - canvas.padding - centerOffset;
-
-    // Change Position of Center and Radius if n is Odd
-    if (FS.isOdd(n)) {
-      let change = (2 / 3) * radius * (1 - Math.cos(theta / 2));
-      canvas.center.y += change;
-      radius += change;
-    }
+    // In Case n is Odd, the Center of the Canvas is Moved to the Proper Point
+    profile["center"] = {
+      x: profile.dimensions.width / 2,
+      y: FS.isOdd(n)
+        ? profile.dimensions.height / (1 + Math.cos(theta / 2))
+        : profile.dimensions.height / 2,
+    };
 
     // Calculate Radius for Data Points
-    const dataRadiuses = dataset.score.values.map(
-      (value) => (value / maxValue) * radius + centerOffset
-    );
-
-    // Calculate Ticks Array and Angle to Place On
-    const ticksNumbers = FS.createArithmeticSequence(
-      0,
-      maxValue / (ticks - 1),
-      ticks
-    );
-    const ticksAngles = Array(ticks).fill(angles[ticksSide - 1]);
-    const ticksRadiuses = FS.createArithmeticSequence(
-      centerOffset,
-      radius / (ticks - 1),
-      ticks
+    const dataRadiuses = dataset.score.map(
+      (data) => (data.mark / maxValue) * (radius - centerOffset) + centerOffset
     );
 
     // Consecutive Distance
-    const dist = FS.roundTo2(radius / maxValue);
+    const dist = FS.roundTo2((radius - centerOffset) / maxValue);
 
     // Calculate Radiuses Array for Main Points
-    let radiuses = Array(n).fill(radius + centerOffset);
+    let radiuses = Array(n).fill(radius);
 
     // Calculate Polygons Points
     let i;
-    const points = [];
+    const polygons = [];
+    let points = [];
     for (i = 0; i <= maxValue; i++) {
-      points.push(this._calcPolygonPoints(radiuses, angles));
+      points = this._calcPolygonPoints(radiuses, angles);
+      polygons.push(SVG.calcPathDAttr(points));
       radiuses = radiuses.map((radius) => radius - dist);
     }
 
     // Calculate Data Points
     const dataPoints = this._calcPolygonPoints(dataRadiuses, angles);
 
-    // Get "d" Attribute of Path for Polygons and Data Points
-    let pointsAttr = points.map((item) => SVG.pathDGenerator(item));
-    let dataAttr = SVG.pathDGenerator(dataPoints);
-
     // Calculate Text Points
-    radiuses = Array(n).fill(radius + textOffset + centerOffset);
+    radiuses = Array(n).fill(radius + offset);
     const textPoints = this._calcPolygonPoints(radiuses, angles);
+
+    // Gather Required Info for Items
+    const items = {
+      dAttr: SVG.calcPathDAttr(dataPoints),
+      points: dataPoints.map((point, index) => ({
+        point,
+        fill: fills[index],
+        mark: dataset.score[index].mark,
+      })),
+      labels: textPoints.map((point, index) => ({
+        point,
+        label: dataset.score[index].label,
+      })),
+    };
+
+    // In Case Ticks Side is Greater than n
+    ticksSpec.side = ((ticksSpec.side - 1) % n) + 1;
+
+    // Calculate Ticks Array and Angle to Place On
+    const ticksNumbers = FS.createArithmeticSequence(
+      0,
+      maxValue / (ticksSpec.num - 1),
+      ticksSpec.num
+    );
+    const ticksAngles = Array(ticksSpec.num).fill(angles[ticksSpec.side - 1]);
+    const ticksRadiuses = FS.createArithmeticSequence(
+      centerOffset,
+      (radius - centerOffset) / (ticksSpec.num - 1),
+      ticksSpec.num
+    );
 
     //Calculate Ticks Points
     let ticksPoints = this._calcPolygonPoints(ticksRadiuses, ticksAngles);
 
-    // Displace Ticks Points (Defining Displacement Vector and Value)
-    const alpha = Math.PI - ((2 * ticksSide - 1) * theta) / 2;
+    // Displace Ticks Points (Defining Displacement Vector and Displacement Value)
+    const alpha = Math.PI - ((2 * ticksSpec.side - 1) * theta) / 2;
     const disVector = { x: Math.cos(alpha), y: Math.sin(alpha) };
     const disValue = FS.createArithmeticSequence(
-      initial_term,
-      common_diff,
-      ticks
+      ticksSpec.displacement.initialTerm,
+      ticksSpec.displacement.commonDiff,
+      ticksSpec.num
     );
     ticksPoints = ticksPoints.map((point, index) =>
       this._displacePoint(point, disVector, disValue[index])
     );
 
-    // Get n Random Colors (One of Return Values of Method)
-    const colors = Color.getRandomColorArr(n);
+    // Gather Required Info for Ticks
+    const ticks = ticksPoints.map((point, index) => ({
+      point,
+      number: ticksNumbers[index],
+    }));
 
     return {
-      colors,
-      pointsAttr,
-      dataAttr,
-      dataPoints,
-      textPoints,
-      ticksPoints,
-      ticksNumbers,
+      polygons,
+      items,
+      ticks,
     };
   }
 
   _calcPolygonPoints(radiuses, angles) {
-    const center = this.canvas.center;
     let points = angles.map((angle, index) =>
       this._polarToCartesian(radiuses[index], angle)
     );
 
-    return this._transformAxes(points, center, Math.PI);
+    return points;
   }
 
   // Polar Initial Coordinate System
-  //             y
-  //             ^
-  //             |
-  //             |
-  //             |
-  // x <---------|
+  //  ------------ x
+  //  |
+  //  |
+  //  |
+  //  |
+  //  y
 
   _polarToCartesian(radius, angle) {
     return {
-      x: FS.roundTo2(radius * Math.sin(angle)),
-      y: FS.roundTo2(radius * Math.cos(angle)),
+      x: -FS.roundTo2(radius * Math.sin(angle)),
+      y: -FS.roundTo2(radius * Math.cos(angle)),
     };
-  }
-
-  _transformAxes(points, d, theta) {
-    let transformedPoints = points.map((point) =>
-      FS.transformAxes(point, d, theta)
-    );
-    return transformedPoints;
   }
 
   _displacePoint(pt, u, d) {

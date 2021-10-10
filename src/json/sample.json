@@ -1,0 +1,486 @@
+{
+  "id": "$X1HQZLQH8",
+  "scale": { "id": "$GHQ28-93", "title": "آزمون سلامت عمومی" },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": { "id": "GH966664G", "name": "امین جان‌بزرگی" },
+  "room": {
+    "id": "RS96666F7",
+    "manager": {
+      "id": "GH966663Q",
+      "name": "حسین نخلی",
+      "user_id": "IR963U3M",
+      "avatar": [
+        {
+          "id": "F9666AR",
+          "file_name": "P96666DY_large.png",
+          "slug": "storage/public/Files_1000/P96666DY_large.png",
+          "mode": "large",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DY_large.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        },
+        {
+          "id": "F9666W6",
+          "file_name": "P96666DY_medium.png",
+          "slug": "storage/public/Files_1000/P96666DY_medium.png",
+          "mode": "medium",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DY_medium.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        },
+        {
+          "id": "F9666AY",
+          "file_name": "P96666DY_original.png",
+          "slug": "storage/public/Files_1000/P96666DY_original.png",
+          "mode": "original",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DY_original.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        },
+        {
+          "id": "F9666W9",
+          "file_name": "P96666DY_small.png",
+          "slug": "storage/public/Files_1000/P96666DY_small.png",
+          "mode": "small",
+          "url": "https://api.risloo.ir/storage/public/Files_1000/P96666DY_small.png",
+          "type": "image",
+          "mime": "image/png",
+          "exec": "png"
+        }
+      ]
+    },
+    "center": {
+      "id": "RS96666TW",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز درمانی ریسلو 2",
+        "avatar": [
+          {
+            "id": "F96668K",
+            "file_name": "P96666FV_large.jpeg",
+            "slug": "storage/public/Files_1000/P96666FV_large.jpeg",
+            "mode": "large",
+            "url": "https://bapi.risloo.ir/storage/public/Files_1000/P96666FV_large.jpeg",
+            "type": "image",
+            "mime": "image/jpeg",
+            "exec": "jpeg"
+          },
+          {
+            "id": "F96668E",
+            "file_name": "P96666FV_medium.jpeg",
+            "slug": "storage/public/Files_1000/P96666FV_medium.jpeg",
+            "mode": "medium",
+            "url": "https://bapi.risloo.ir/storage/public/Files_1000/P96666FV_medium.jpeg",
+            "type": "image",
+            "mime": "image/jpeg",
+            "exec": "jpeg"
+          },
+          {
+            "id": "F96668B",
+            "file_name": "P96666FV_original.jpeg",
+            "slug": "storage/public/Files_1000/P96666FV_original.jpeg",
+            "mode": "original",
+            "url": "https://bapi.risloo.ir/storage/public/Files_1000/P96666FV_original.jpeg",
+            "type": "image",
+            "mime": "image/jpeg",
+            "exec": "jpeg"
+          },
+          {
+            "id": "F96668P",
+            "file_name": "P96666FV_small.jpeg",
+            "slug": "storage/public/Files_1000/P96666FV_small.jpeg",
+            "mode": "small",
+            "url": "https://bapi.risloo.ir/storage/public/Files_1000/P96666FV_small.jpeg",
+            "type": "image",
+            "mime": "image/jpeg",
+            "exec": "jpeg"
+          }
+        ]
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "case": { "id": "CS96666V6" },
+  "code": null,
+  "created_at": 1628314151,
+  "started_at": null,
+  "scored_at": null,
+  "closed_at": null,
+  "description": "## دستور اجرای آزمون می‌خواهیم درباره کسالت و ناراحتی‌های پزشکی و اینکه سلامت عمومی‌شما در طی یک ماه گذشته تا به امروز چگونه بوده است، اطلاعاتی به دست آوریم. لطفاً در تمامی سوال‌های زیر، پاسخی را که فکر می‌کنید با وضع شما بیشتر مطابقت دارد مشخص کنید. به خاطر داشته باشید که ما می‌خواهیم درباره ناراحتی‌های اخیر شما اطلاعاتی به دست آوریم، نه مشکلات و ناراحتی‌هایی که در گذشته داشته‌اید. سعی کنید به تمامی سوال‌ها پاسخ دهید.",
+  "psychologist_description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز کاملاً  احساس کرده‌اید که خوب و سالم هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بیشتر از همیشه",
+          "مثل همیشه",
+          "بدتر از همیشه",
+          "خیلی بدتر از همیشه"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که به داروهای تقویتی نیاز دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس ضعف و سستی کرده‌اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که بیمار هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز سردرد داشته‌اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که سرتان را محکم با چیزی مثل دستمال بسته‌اند یا اینکه فشاری به سرتان وارد می‌شود؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که بعضی وقت‌ها بدنتان داغ و یا سرد می‌شود؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز اتفاق افتاده که بر اثر اثر نگرانی دچار بی‌خوابی شده باشید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز شب‌ها وسط خواب بیدار می‌شوید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که دائماً تحت فشار هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز عصبانی و بد خلق شده‌اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز بدون هیچ دلیل قانع کننده‌ایهراسان و یا وحشت‌زده شده‌اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز متوجه شده‌اید که انجام هر کاری از توانایی شما خارج است؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که در تمامی مدت عصبی هستید و دل شوره دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز توانسته‌اید خودتان را مشغول و سرگرم نگه دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بیشتر از همیشه",
+          "مثل همیشه",
+          "بدتر از همیشه",
+          "خیلی بدتر از همیشه"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز اتفاق افتاده که وقت بیشتری را صرف انجام کارها نمایید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز به طور کلی احساس کرده‌اید که کارها را به خوبی انجام می‌دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بیشتر از همیشه",
+          "مثل همیشه",
+          "بدتر از همیشه",
+          "خیلی بدتر از همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز از نحوه انجام کارهایتان احساس رضایت می‌کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بیشتر از همیشه",
+          "مثل همیشه",
+          "بدتر از همیشه",
+          "خیلی بدتر از همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که نقش مفیدی در انجام کارها به عهده دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بیشتر از همیشه",
+          "مثل همیشه",
+          "بدتر از همیشه",
+          "خیلی بدتر از همیشه"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز  توانایی تصمیم گیری درباره مسائل را داشته‌اید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بیشتر از همیشه",
+          "مثل همیشه",
+          "بدتر از همیشه",
+          "خیلی بدتر از همیشه"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز قادر بوده‌اید از فعالیت‌های روزمره زندگی لذت ببرید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بیشتر از همیشه",
+          "مثل همیشه",
+          "بدتر از همیشه",
+          "خیلی بدتر از همیشه"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز فکر کرده‌اید که شخص بی‌ارزشی هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که زندگی کاملاً ناامید کننده است؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که زندگی ارزش زنده بودن را ندارد؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز به این مسئله فکر کرده‌اید که ممکن است دست به خودکشی بزنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز احساس کرده‌اید که چون اعصابتان خراب است نمی‌توانید کاری انجام دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز به این نتیجه رسیده اید که ای کاش مرده بودی و کلاً از شر زندگی خلاص می‌شدید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آیا از یک ماه گذشته تا به امروز این فکر به ذهنتان رسیده است که بخواهید که زندگی خاتمه دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["خیر", "کمی", "زیاد", "خیلی زیاد"]
+      },
+      "user_answered": "3"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": { "type": "select", "options": ["زن", "مرد"] },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": { "type": "number" },
+      "alias": "age",
+      "force": true,
+      "user_answered": "51"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "14"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": { "type": "select", "options": ["مجرد", "متأهل"] },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 0,
+  "score": {
+    "id": 13,
+    "raw": 46,
+    "range": 2,
+    "a": 9,
+    "a_range": 1,
+    "b": 13,
+    "b_range": 2,
+    "c": 11,
+    "c_range": 1,
+    "d": 13,
+    "d_range": 2,
+    "created_at": 1628314290,
+    "updated_at": 1628314290
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0",
+  "sample_id": 337
+}

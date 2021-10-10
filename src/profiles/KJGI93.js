@@ -2,30 +2,82 @@ import { Profile, FS } from "../profile";
 
 const defaultSpec = {
   KJGI93: {
-    radiusesFunc: {
-      rawRadius: FS.createLine({ x: 45, y: 90 }, { x: 225, y: 225 }),
-      itemRadius: FS.createLine({ x: 45, y: 50 }, { x: 225, y: 90 }),
+    /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
+    /* calculating its dimensions carefully is of great importance */
+    profile: {
+      dimensions:
+        {} /* To be calculated in the class with the function provided */,
+      calcDim: function (spec, n) {
+        return {
+          width:
+            spec.items.distance.x * (n - 1) +
+            2 * spec.items.markToRadius(spec.items.maxValue) +
+            spec.profile.padding.x * 2,
+          height:
+            spec.raw.markToRadius(spec.raw.maxValue) * 2 +
+            spec.interpretRects.height +
+            spec.interpretRects.offsetY1 +
+            spec.interpretRects.offsetY2 +
+            spec.items.markToRadius(spec.items.maxValue) * 2 +
+            spec.items.offset.y +
+            20 +
+            spec.profile.padding.y * 2,
+        };
+      },
+      padding: {
+        x: 10,
+        y: 35,
+      },
     },
+    /* "raw" is the general term used for total data element in the profile */
+    raw: {
+      maxValue: 225,
+      markToRadius: FS.createLine(
+        { x: 45, y: 90 },
+        { x: 225, y: 225 }
+      ) /* The function used for converting mark to the radius of the circle */,
+    },
+    /* "items" is the general term used for independent data elements to be drawn in the profile */
     items: {
-      distance: {
-        x: 200,
-        y: 100,
-      }
+      maxValue: 225,
+      markToRadius: FS.createLine(
+        { x: 45, y: 50 },
+        { x: 225, y: 90 }
+      ) /* The function used for converting mark to the radius of the circle */,
+      offset: {
+        x: 20 /* Horizontal offset between items */,
+        y: 10 /* Vertical offset between items and their labels */,
+      },
+      get distance() {
+        return {
+          x: this.offset.x + 2 * this.markToRadius(this.maxValue),
+          y: this.offset.y + this.markToRadius(this.maxValue),
+        };
+      },
     },
-    itemHeights: [280, 560, 700],
     interpretRects: {
-      width: 160,
-      height: 40,
-      borderRadius: 4,
-      distance: 170,
-      labels: ["احساس گناه کم", "احساس گناه متوسط", "احساس گناه زیاد"],
+      width: 160 /* Width of interpretation rectangles */,
+      height: 40 /* Height of interpretation rectangles */,
+      borderRadius: 4 /* Border Radius of interpretation rectangles */,
+      offsetX: 10 /* Horizontal offset between two adjacent interpretation rectangles */,
+      offsetY1: 80 /* Vertical offset between raw circle and interpretation rectangles */,
+      offsetY2: 25 /* Vertical offset between interpretation rectangles and items circles */,
+      get distanceX() {
+        return this.width + this.offsetX;
+      } /* Horizontal distance between two adjacent interpretation rectangles */,
+      labels: [
+        "احساس گناه کم",
+        "احساس گناه متوسط",
+        "احساس گناه زیاد",
+      ] /* labels of interpretation rectangles */,
     },
+    /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: "raw",
-      moral_standards: "معیارهای اخلاقی",
-      state_guilt: "حالت گناه",
-      trait_guilt: "خصیصه گناه",
-      interpretation: "interpretation",
+      raw: { fr: "نمره کل" },
+      moral_standards: { fr: "معیارهای اخلاقی" },
+      state_guilt: { fr: "حالت گناه" },
+      trait_guilt: { fr: "خصیصه گناه" },
+      interpretation: { fr: "تفسیر" },
     },
   },
 };
@@ -36,29 +88,45 @@ class KJGI93 extends Profile {
   }
 
   _calcContext() {
-    const { spec, dataset, canvas } = this;
+    const {
+      spec: {
+        parameters: { KJGI93: spec },
+      },
+      dataset,
+    } = this;
 
-    let { radiusesFunc, itemHeights, items: {distance} } = spec.parameters["KJGI93"];
+    // Deconstructing the Spec of the Profile
+    let {
+      raw: rawSpec,
+      items: itemsSpec,
+      // itemHeights,
+    } = spec;
 
-    canvas.height = itemHeights[itemHeights.length - 1] + 1.5 * distance.y;
+    // Separate Raw Data from the Dataset
+    let rawData = dataset.score.shift();
 
-    let rawMark = dataset.score.values[0];
-    let itemMarks = dataset.score.values.slice(1, 4);
-    let itemLabels = dataset.score.keys.slice(1, 4);
+    // Separate Interpretation from the Dataset
+    let interpret = dataset.score.pop().mark;
 
+    // ّInit Spec (Do Not Forget To Separate Raw)
+    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
+
+    // Gather Required Info for Raw
     const raw = {
-      mark: rawMark,
-      radius: FS.roundTo2(radiusesFunc.rawRadius(rawMark)),
+      mark: rawData.mark,
+      radius: FS.roundTo2(rawSpec.markToRadius(rawData.mark)),
     };
 
-    const items = itemMarks.map((item, index) => ({
-      label: itemLabels[index],
-      mark: item,
-      radius: FS.roundTo2(radiusesFunc.itemRadius(item)),
+    // Gather Required Info for Items
+    const items = dataset.score.map((data) => ({
+      label: data.label.fr,
+      mark: data.mark,
+      radius: FS.roundTo2(itemsSpec.markToRadius(data.mark)),
     }));
 
     return {
       raw,
+      interpret,
       items,
     };
   }

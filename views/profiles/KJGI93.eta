@@ -2,32 +2,55 @@
 
 <defs>
   <radialGradient id="blueGradient">
-    <stop offset="0%" stop-color="#007BA4" stop-opacity="0.75"/>
-    <stop offset="99.99%" stop-color="#007BA4" stop-opacity="0"/>
-    <stop offset="100%" stop-color="#007BA4" stop-opacity="0"/>
+    <stop offset="0%" stop-color="#007BA4" stop-opacity="0.75" />
+    <stop offset="99.99%" stop-color="#007BA4" stop-opacity="0" />
+    <stop offset="100%" stop-color="#007BA4" stop-opacity="0" />
   </radialGradient>
 </defs>
 
-<g transform="translate(<%= it.canvas.computedWidth / 2 %>, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
-  <g transform="translate(0, <%= it.spec.itemHeights[0] %>)">
-    <circle cx="0" cy="0" r="<%= it.raw.radius %>" fill="url('#blueGradient')"/>
-    <text x="0" y="0" fill="#111827" font-size="48" text-anchor="middle" dy="10"><%= it.raw.mark %></text>
-  </g>
-  <g transform="translate(0, <%= it.spec.itemHeights[1] %>)" font-size="16">
-    <% it.spec.interpretRects.labels.forEach(function(item, index){ %>
-      <g transform="translate(<%= it.spec.interpretRects.distance * (index - 1) %>, 0)">
-        <rect x="0" y="0" width="<%= it.spec.interpretRects.width %>" height="<%= it.spec.interpretRects.height %>" transform="translate(-<%= it.spec.interpretRects.width / 2 %>, -<%= it.spec.interpretRects.height / 2 %>)" fill="<%= (item == it.dataset.score.values[4]) ? '#007BA4' : '#F9FAFB' %>" rx="<%= it.spec.interpretRects.borderRadius %>"/>
-        <text x="0" y="0" text-anchor="middle" dy="5" fill="<%= (item == it.dataset.score.values[4]) ? 'white' : '#6B7280' %>" font-weight="<%= (item == it.dataset.score.values[4]) ? 'bold' : 'normal' %>"><%= item %></text>
-      </g>  
-    <% }) %>
-  </g>
-  <g transform="translate(0, <%= it.spec.itemHeights[2] %>)" font-size="32">
-  <% it.items.forEach(function(item, index){ %>
-    <g transform="translate(<%= it.spec.items.distance.x * (index - 1) %>, 0)">
-      <circle cx="0" cy="0" r="<%= item.radius %>" fill="url('#blueGradient')"/>
-      <text x="0" y="0" fill="#111827" text-anchor="middle" dy="10"><%= item.mark %></text>
-      <text x="0" y="<%= it.spec.items.distance.y %>" fill="#374151" text-anchor="middle" font-size="16" dy="10"><%= item.label %></text>
+<g font-family="Dana-FaNum" transform="translate(0, <%= it.spec.profile.padding.y %>)">
+  <g transform="translate(<%= it.spec.profile.dimensions.width / 2 %>, 0)">
+    <g transform="translate(0, <%= it.spec.raw.markToRadius(it.spec.raw.maxValue) %>)">
+      <circle cx="0" cy="0" r="<%= it.raw.radius %>" fill="url('#blueGradient')" />
+      <text x="0" y="0" fill="#111827" font-size="48" text-anchor="middle" dy="10"><%= it.raw.mark %></text>
     </g>
-  <% }) %>
+    <g
+      transform="translate(0, <%= it.spec.raw.markToRadius(it.spec.raw.maxValue) * 2 + it.spec.interpretRects.offsetY1 %>)"
+      font-size="16">
+      <% it.spec.interpretRects.labels.forEach(function(label, index){ %>
+      <g transform="translate(<%= it.spec.interpretRects.distanceX * (index - 1) %>, 0)">
+        <rect
+          x="0"
+          y="0"
+          width="<%= it.spec.interpretRects.width %>"
+          height="<%= it.spec.interpretRects.height %>"
+          transform="translate(-<%= it.spec.interpretRects.width / 2 %>, -<%= it.spec.interpretRects.height / 2 %>)"
+          fill="<%= (label == it.interpret) ? '#007BA4' : '#F9FAFB' %>"
+          rx="<%= it.spec.interpretRects.borderRadius %>" />
+        <text
+          x="0"
+          y="0"
+          text-anchor="middle"
+          dy="5"
+          fill="<%= (label == it.interpret) ? 'white' : '#6B7280' %>"
+          font-weight="<%= (label == it.interpret) ? 'bold' : 'normal' %>">
+          <%= label %>
+        </text>
+      </g>
+      <% }) %>
+    </g>
+    <g
+      transform="translate(0, <%= it.spec.raw.markToRadius(it.spec.raw.maxValue) * 2 + it.spec.interpretRects.offsetY1 + it.spec.interpretRects.height + it.spec.interpretRects.offsetY2 + it.spec.items.markToRadius(it.spec.items.maxValue) %>)"
+      font-size="32">
+      <% it.items.forEach(function(item, index){ %>
+      <g transform="translate(<%= it.spec.items.distance.x * (index - 1) %>, 0)">
+        <circle cx="0" cy="0" r="<%= item.radius %>" fill="url('#blueGradient')" />
+        <text x="0" y="0" fill="#111827" text-anchor="middle" dy="10"><%= item.mark %></text>
+        <text x="0" y="<%= it.spec.items.distance.y %>" fill="#374151" text-anchor="middle" font-size="16" dy="10">
+          <%= item.label %>
+        </text>
+      </g>
+      <% }) %>
+    </g>
   </g>
 </g>

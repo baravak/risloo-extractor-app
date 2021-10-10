@@ -8,52 +8,48 @@
     <stop offset="0%"  stop-color="black" />
     <stop offset="100%" stop-color="transparent" />
   </linearGradient>
-  <filter id="border-shadow" width="100">
-    <feDropShadow dx="5" dy="1" stdDeviation="3" flood-color="black" flood-opacity="0.15"/>
-  </filter>
-  <filter id="blur-shadow">
-    <feDropShadow in="SourceGraphic" stdDeviation="3"/>
-  </filter>
 </defs>
 
-<g transform="translate(0, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
-  <g font-size="20" transform="translate(52, 0)">
-    <g transform="translate(<%= it.spec.items.base.rect.width %>, <%= it.spec.items.topPos.initial_term - it.spec.items.ticks.heightOffset %>)">
-      <% it.itemsTicksArr.forEach(function(tick, index){ %>
-        <line x1="<%= tick.leftPos %>" y1="0" x2="<%= tick.leftPos %>" y2="<%= it.itemsTotalHeight + 2 * it.spec.items.ticks.heightOffset %>" stroke="#E5E7EB" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="2"/>
+<g font-family="Dana-FaNum" transform="translate(<%= it.spec.profile.padding.x %>, <%= it.spec.profile.padding.y %>)">
+  <g font-size="20">
+    <g transform="translate(<%= it.spec.items.base.rect.width %>, 0)">
+      <% it.itemsTicks.forEach(function(tick, index){ %>
+        <line x1="<%= tick.leftPos %>" y1="0" x2="<%= tick.leftPos %>" y2="<%= it.spec.items.totalHeight + 2 * it.spec.items.ticks.heightOffset %>" stroke="#E5E7EB" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="2"/>
         <text x="<%= tick.leftPos - it.spec.items.ticks.numberOffset.x %>" y="<%= it.spec.items.ticks.numberOffset.y %>" fill="#9CA3AF" text-anchor="middle" font-size="16" dy="5"><%= tick.number %></text>
       <% }) %>
     </g>
-    <% it.itemsArr.forEach(function(item, index){ %>
-      <g transform="translate(<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.topPos.initial_term + index * it.spec.items.topPos.common_diff %>)">
-        <g transform="translate(0, 1)">
+    <g transform="translate(<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.ticks.heightOffset %>)">
+      <% it.items.forEach(function(item, index){ %>
+        <g transform="translate(0, <%= index * it.spec.items.distanceY + 1 %>)">
           <rect x="0" y="0" width="<%= item.width %>" height="<%= it.spec.items.base.rect.height %>" rx="<%= it.spec.items.base.rect.borderRadius %>" fill="<%= item.body.color %>" fill-opacity="<%= item.body.opacity %>"/>
           <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.base.rect.borderRadius %>)">
             <text x="<%= item.width - it.spec.items.base.rect.borderRadius %>" y="0" fill="white" text-anchor="middle" font-size="22" dy="7" transform="translate(-<%= it.spec.items.base.rect.borderRadius %>, 0)"><%= item.mark %></text>
           </g>
         </g>
-      </g>
-    <% }) %>
-    <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.topPos.initial_term %>)">
-      <rect x="0" y="0" width="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" height="<%= it.itemsTotalHeight %>" fill="#FFFFFF" rx="1"/>
-      <rect x="<%= it.spec.items.base.rect.width - it.spec.items.base.rect.borderRadius + 1 %>" y="0" width="5" height="<%= it.itemsTotalHeight %>" fill="url('#shadow')" fill-opacity="0.2"/>
+      <% }) %>
     </g>
-    <% it.itemsArr.forEach(function(item, index){ %>
-      <g transform="translate(0, <%= it.spec.items.topPos.initial_term + index * it.spec.items.topPos.common_diff %>)">
-        <rect x="0" y="0" width="<%= it.spec.items.base.rect.width %>" height="<%= it.spec.items.base.rect.height %>" fill="<%= item.baseColor %>" clip-path="url(#left-round-corner)"/>
-        <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.base.rect.borderRadius %>)">
-          <circle cx="0" cy="0" r="<%= it.spec.items.base.circle.radius %>" fill="white"/>
-          <text x="0" y="0" fill="<%= item.baseColor %>" text-anchor="middle" dy="6.5"><%= item.label.abbr %></text>
-          <text x="<%= it.spec.items.base.textOffset.x %>" y="0" fill="white" text-anchor="start" dy="5.5"><%= item.label.fr %></text>
+    <g transform="translate(0, <%= it.spec.items.ticks.heightOffset %>)">
+      <rect x="0" y="0" width="<%= it.spec.items.base.rect.width + 1 %>" height="<%= it.spec.items.totalHeight %>" fill="#FFFFFF" rx="1"/>
+      <rect x="<%= it.spec.items.base.rect.width + 1 %>" y="0" width="5" height="<%= it.spec.items.totalHeight %>" fill="url('#shadow')" fill-opacity="0.2"/>
+    </g>
+    <g transform="translate(0, <%= it.spec.items.ticks.heightOffset %>)">
+      <% it.items.forEach(function(item, index){ %>
+        <g transform="translate(0, <%= index * it.spec.items.distanceY %>)">
+          <rect x="0" y="0" width="<%= it.spec.items.base.rect.width %>" height="<%= it.spec.items.base.rect.height %>" fill="<%= item.baseColor %>" clip-path="url(#left-round-corner)"/>
+          <g transform="translate(<%= it.spec.items.base.rect.borderRadius %>, <%= it.spec.items.base.rect.borderRadius %>)">
+            <circle cx="0" cy="0" r="<%= it.spec.items.base.label.circle.radius %>" fill="white"/>
+            <text x="0" y="0" fill="<%= item.baseColor %>" text-anchor="middle" dy="6.5"><%= item.label.abbr %></text>
+            <text x="<%= it.spec.items.base.label.offsetX %>" y="0" fill="white" text-anchor="start" dy="5.5"><%= item.label.fr %></text>
+          </g>
         </g>
-      </g>
-    <% }) %>   
+      <% }) %>  
     </g> 
-    <g transform="translate(895, 665) scale(1, -1)">
-      <g transform="translate(<%= 2 * it.spec.raw.rect.borderRadius + it.spec.raw.ticks.widthOffset %>, 0)">
-        <% it.rawTicksArr.forEach(function(tick, index){ %>
-          <line x1="0" y1="<%= tick.bottomPos %>" x2="<%= it.spec.raw.ticks.lineWidth %>" y2="<%= tick.bottomPos %>" stroke="#E5E7EB" stroke-dasharray="3" stroke-linecap="round" stroke-width="2"/>
-          <g transform="translate(<%= it.spec.raw.ticks.lineWidth + it.spec.raw.ticks.numberOffset.x %>, <%= tick.bottomPos %>)">
+    </g> 
+    <g transform="translate(<%= it.spec.items.base.rect.width + it.spec.items.maxValue * it.spec.items.body.widthCoeff + it.spec.raw.offsetX %>, <%= it.spec.items.totalHeight + 2 * it.spec.items.ticks.heightOffset %>) scale(1, -1)">
+      <g transform="translate(<%= it.spec.raw.rect.width + it.spec.raw.ticks.line.offsetX %>, 0)">
+        <% it.rawTicks.forEach(function(tick, index){ %>
+          <line x1="0" y1="<%= tick.bottomPos %>" x2="<%= it.spec.raw.ticks.line.width %>" y2="<%= tick.bottomPos %>" stroke="#E5E7EB" stroke-dasharray="3" stroke-linecap="round" stroke-width="2"/>
+          <g transform="translate(<%= it.spec.raw.ticks.line.width + it.spec.raw.ticks.number.offsetX %>, <%= tick.bottomPos %>)">
             <text x="0" y="0" fill="#9CA3AF" text-anchor="middle" font-size="14" dy="4" transform="scale(1, -1)"><%= tick.number %></text>
           </g>
         <% }) %> 
@@ -62,12 +58,12 @@
       <rect x="0" y="0" width="<%= it.spec.raw.rect.width %>" height="<%= it.raw.height %>" rx="<%= it.spec.raw.rect.borderRadius %>" fill="#374151"/>
     <g transform="translate(<%= it.spec.raw.rect.borderRadius %>, <%= it.spec.raw.rect.borderRadius %>)">
       <% /* <circle cx="0" cy="0" r="<%= it.spec.raw.circle.radius %>" fill="white"/>
-      <text x="0" y="0" fill="#1F2937" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)">#</text> */ %>
+      <text x="0" y="0" fill="#1F2937" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)"><%= it.raw.label.abbr %></text> */ %>
       <g transform="translate(0, <%= it.raw.height - 2 * it.spec.raw.rect.borderRadius %>)">
         <text x="0" y="0" fill="white" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)"><%= it.raw.mark %></text>
       </g>
       <g>
-        <text x="0" y="0" fill="white" text-anchor="start" font-size="20" dy="4" transform="scale(1, -1) rotate(-90)">نمره کل</text>
+        <text x="0" y="0" fill="white" text-anchor="start" font-size="20" dy="4" transform="scale(1, -1) rotate(-90)"><%= it.raw.label.fr %></text>
       </g>
     </g>
   </g>

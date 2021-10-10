@@ -1,31 +1,74 @@
 <% layout('../layout.eta') %>
 
-<g transform="translate(<%= (it.canvas.computedWidth - it.canvas.width) / 2 %>, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
-  <g fill="transparent" stroke="#E1EDF2">
-    <% it.pointsAttr.forEach(function(item){ %>
-      <path d='<%= item %>'/>
-    <% }) %>
-  </g>
-  <g fill="transparent" stroke="#111827" stroke-width="4">
-    <path d='<%= it.dataAttr %>'/>
-  </g>
-  <g fill="white">
-    <% it.dataPoints.forEach(function(item, index){ %>
-      <circle cx='<%= item.x %>' cy='<%= item.y %>' r="<%= it.spec.dataPointsRadius %>" stroke='<%= it.colors[index] %>' stroke-width="2"/>
-      <text x='<%= item.x %>' y='<%= item.y %>' font-size="16" font-weight="600" text-anchor="middle" dy="5" fill='<%= it.colors[index] %>'><%~ it.dataset.score.values[index] %></text>
-    <% }) %>
-  </g>
-  <g fill="#4B5563">
-    <% it.textPoints.forEach(function(item, index){ %>
-      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, -<%= it.spec.textYPadding %>)" font-size="12" font-weight="bold" text-anchor="middle" dy="3"><%~ it.dataset.score.keys[index].name %></text>
-      <text x='<%= item.x %>' y='<%= item.y %>' transform="translate(0, +<%= it.spec.textYPadding %>)" font-size="12" text-anchor="middle" dy="3">(<%~ it.dataset.score.keys[index].type %>)</text>
-    <% }) %>
-  </g>
-  <g>
-    <% it.ticksPoints.forEach(function(item, index){ %>
-      <rect x='<%= item.x %>' y='<%= item.y %>' width='<%= it.spec.ticksLength %>' height='<%= it.spec.ticksLength %>' transform="translate(-<%= it.spec.ticksLength / 2 %>,-<%= it.spec.ticksLength / 2 %>)" fill="white"/>
-      <text x='<%= item.x %>' y='<%= item.y %>' font-size="12" font-family="Dana-FaNum" text-anchor="middle" dy="3" fill="#9CA3AF"><%~ it.ticksNumbers[index] %></text>
-    <% }) %>
+<g font-family="Dana-FaNum">
+  <g transform="translate(<%= it.spec.profile.center.x %>, <%= it.spec.profile.center.y %>)">
+    <g fill="none" stroke="#E1EDF2">
+      <% it.polygons.forEach(function(polygon){ %>
+      <path d="<%= polygon %>" />
+      <% }) %>
+    </g>
+    <g fill="none" stroke="#111827" stroke-width="4">
+      <path d="<%= it.items.dAttr %>" />
+    </g>
+    <g fill="white">
+      <% it.items.points.forEach(function(item, index){ %>
+      <circle
+        cx="<%= item.point.x %>"
+        cy="<%= item.point.y %>"
+        r="<%= it.spec.items.dataPoints.radius %>"
+        stroke="<%= item.fill %>"
+        stroke-width="2" />
+      <text
+        x="<%= item.point.x %>"
+        y="<%= item.point.y %>"
+        font-size="16"
+        font-weight="600"
+        text-anchor="middle"
+        dy="5"
+        fill="<%= item.fill %>">
+        <%~ item.mark %>
+      </text>
+      <% }) %>
+    </g>
+    <g fill="#4B5563" font-size="16" dy="5">
+      <% it.items.labels.forEach(function(item, index){ %>
+      <text
+        x="<%= item.point.x %>"
+        y="<%= item.point.y %>"
+        transform="translate(0, -<%= it.spec.items.labels.paddingY %>)"
+        font-weight="600"
+        text-anchor="middle">
+        <%~ item.label.name %>
+      </text>
+      <text
+        x="<%= item.point.x %>"
+        y="<%= item.point.y %>"
+        transform="translate(0, +<%= it.spec.items.labels.paddingY %>)"
+        text-anchor="middle">
+        (<%~ item.label.type %>)
+      </text>
+      <% }) %>
+    </g>
+    <g>
+      <% it.ticks.forEach(function(tick, index){ %>
+      <rect
+        x="<%= tick.point.x %>"
+        y="<%= tick.point.y %>"
+        width="<%= it.spec.polygons.ticks.rectDim %>"
+        height="<%= it.spec.polygons.ticks.rectDim %>"
+        transform="translate(-<%= it.spec.polygons.ticks.rectDim / 2 %>,-<%= it.spec.polygons.ticks.rectDim / 2 %>)"
+        fill="white" />
+      <text
+        x="<%= tick.point.x %>"
+        y="<%= tick.point.y %>"
+        font-size="12"
+        font-family="Dana-FaNum"
+        text-anchor="middle"
+        dy="3"
+        fill="#9CA3AF">
+        <%~ tick.number %>
+      </text>
+      <% }) %>
+    </g>
   </g>
 </g>
-

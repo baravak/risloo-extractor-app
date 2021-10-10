@@ -1,0 +1,222 @@
+<% function lineWrap(string, maxChar) { 
+  let tokens = string.split(" "); 
+  let lines = []; 
+  let i = 0; 
+  let L = 0;
+  while(true) { 
+    let tokenLength = tokens[i].replace(/‌/g, '').length; 
+    L += tokenLength + 1; 
+    if (L - 1 > maxChar) {
+      lines.push(tokens.slice(0, i).join(" ").trim()); 
+      tokens = tokens.slice(i); 
+      i = 0; 
+      L = 0;
+      continue;
+    } else if (i >= tokens.length - 1) { 
+      lines.push(tokens.slice(0, i + 1).join(" ")); 
+      break; 
+    } 
+    i++; 
+  } 
+
+  return lines; 
+} %>
+
+<% function ellipsisLines(lines, maxLines) {
+  if (lines.length <= maxLines) return lines;
+  const output = lines.slice(0, maxLines);
+  output[maxLines - 1] += " ...";
+  return output;
+} %>
+
+<% function ellipsisChars(string, maxChar) {
+  if (string.length <= maxChar) return string;
+  const output = string.slice(0, maxChar) + " ...";
+  return output;
+} %>
+
+<defs>
+  <path
+    id="person"
+    d="M11.2 10.125C10.175 10.125 9.68214 10.6875 8 10.6875C6.31786 10.6875 5.82857 10.125 4.8 10.125C2.15 10.125 0 12.2414 0 14.85V16.3125C0 17.2441 0.767857 18 1.71429 18H14.2857C15.2321 18 16 17.2441 16 16.3125V14.85C16 12.2414 13.85 10.125 11.2 10.125ZM14.8571 16.3125C14.8571 16.6219 14.6 16.875 14.2857 16.875H1.71429C1.4 16.875 1.14286 16.6219 1.14286 16.3125V14.85C1.14286 12.8637 2.78214 11.25 4.8 11.25C5.5 11.25 6.19643 11.8125 8 11.8125C9.8 11.8125 10.5 11.25 11.2 11.25C13.2179 11.25 14.8571 12.8637 14.8571 14.85V16.3125ZM8 9C10.525 9 12.5714 6.98555 12.5714 4.5C12.5714 2.01445 10.525 0 8 0C5.475 0 3.42857 2.01445 3.42857 4.5C3.42857 6.98555 5.475 9 8 9ZM8 1.125C9.88929 1.125 11.4286 2.64023 11.4286 4.5C11.4286 6.35977 9.88929 7.875 8 7.875C6.11071 7.875 4.57143 6.35977 4.57143 4.5C4.57143 2.64023 6.11071 1.125 8 1.125Z"
+    fill="#4B5563" />
+  <path
+    id="calender"
+    d="M13.3929 2.25H11.7857V0.421875C11.7857 0.189844 11.6049 0 11.3839 0H11.1161C10.8951 0 10.7143 0.189844 10.7143 0.421875V2.25H4.28571V0.421875C4.28571 0.189844 4.10491 0 3.88393 0H3.61607C3.39509 0 3.21429 0.189844 3.21429 0.421875V2.25H1.60714C0.719866 2.25 0 3.00586 0 3.9375V16.3125C0 17.2441 0.719866 18 1.60714 18H13.3929C14.2801 18 15 17.2441 15 16.3125V3.9375C15 3.00586 14.2801 2.25 13.3929 2.25ZM1.60714 3.375H13.3929C13.6875 3.375 13.9286 3.62812 13.9286 3.9375V5.625H1.07143V3.9375C1.07143 3.62812 1.3125 3.375 1.60714 3.375ZM13.3929 16.875H1.60714C1.3125 16.875 1.07143 16.6219 1.07143 16.3125V6.75H13.9286V16.3125C13.9286 16.6219 13.6875 16.875 13.3929 16.875ZM4.95536 11.25H3.61607C3.39509 11.25 3.21429 11.0602 3.21429 10.8281V9.42188C3.21429 9.18984 3.39509 9 3.61607 9H4.95536C5.17634 9 5.35714 9.18984 5.35714 9.42188V10.8281C5.35714 11.0602 5.17634 11.25 4.95536 11.25ZM8.16964 11.25H6.83036C6.60938 11.25 6.42857 11.0602 6.42857 10.8281V9.42188C6.42857 9.18984 6.60938 9 6.83036 9H8.16964C8.39062 9 8.57143 9.18984 8.57143 9.42188V10.8281C8.57143 11.0602 8.39062 11.25 8.16964 11.25ZM11.3839 11.25H10.0446C9.82366 11.25 9.64286 11.0602 9.64286 10.8281V9.42188C9.64286 9.18984 9.82366 9 10.0446 9H11.3839C11.6049 9 11.7857 9.18984 11.7857 9.42188V10.8281C11.7857 11.0602 11.6049 11.25 11.3839 11.25ZM8.16964 14.625H6.83036C6.60938 14.625 6.42857 14.4352 6.42857 14.2031V12.7969C6.42857 12.5648 6.60938 12.375 6.83036 12.375H8.16964C8.39062 12.375 8.57143 12.5648 8.57143 12.7969V14.2031C8.57143 14.4352 8.39062 14.625 8.16964 14.625ZM4.95536 14.625H3.61607C3.39509 14.625 3.21429 14.4352 3.21429 14.2031V12.7969C3.21429 12.5648 3.39509 12.375 3.61607 12.375H4.95536C5.17634 12.375 5.35714 12.5648 5.35714 12.7969V14.2031C5.35714 14.4352 5.17634 14.625 4.95536 14.625ZM11.3839 14.625H10.0446C9.82366 14.625 9.64286 14.4352 9.64286 14.2031V12.7969C9.64286 12.5648 9.82366 12.375 10.0446 12.375H11.3839C11.6049 12.375 11.7857 12.5648 11.7857 12.7969V14.2031C11.7857 14.4352 11.6049 14.625 11.3839 14.625Z"
+    fill="#4B5563" />
+  <path
+    id="clock"
+    d="M8 0.25C3.71875 0.25 0.25 3.71875 0.25 8C0.25 12.2812 3.71875 15.75 8 15.75C12.2812 15.75 15.75 12.2812 15.75 8C15.75 3.71875 12.2812 0.25 8 0.25ZM14.75 8C14.75 11.7094 11.7469 14.75 8 14.75C4.29063 14.75 1.25 11.7469 1.25 8C1.25 4.29063 4.25313 1.25 8 1.25C11.7094 1.25 14.75 4.25313 14.75 8ZM10.0969 10.7594L7.55937 8.91562C7.4625 8.84375 7.40625 8.73125 7.40625 8.6125V3.625C7.40625 3.41875 7.575 3.25 7.78125 3.25H8.21875C8.425 3.25 8.59375 3.41875 8.59375 3.625V8.19687L10.7969 9.8C10.9656 9.92188 11 10.1562 10.8781 10.325L10.6219 10.6781C10.5 10.8438 10.2656 10.8812 10.0969 10.7594Z"
+    fill="#4B5563" />
+  <path id="line-wrap" d="M 0 0 H 125 M 0 30 H 125 M 0 60 H 125" />
+</defs>
+
+<g font-family="Dana-FaNum">
+  <g fill="white" font-weight="600" font-size="16">
+    <rect x="0" y="0" width="100%" height="<%= it.canvas.header.height %>" fill="#007BA4" />
+    <text
+      x="100%"
+      y="<%= it.canvas.header.height / 2 %>"
+      transform="translate(-<%= it.canvas.header.paddingX %>, 0)"
+      text-anchor="end"
+      dy="5">
+      <%= it.info.title %>
+    </text>
+    <a href="http://risloo.ir" target="_blank" fill="white">
+      <text
+        x="0"
+        y="<%= it.canvas.header.height / 2 %>"
+        transform="translate(+<%= it.canvas.header.paddingX %>, 0)"
+        font-family="Dana"
+        text-anchor="start"
+        letter-spacing="2"
+        dy="5">
+        RISLOO.IR
+      </text>
+    </a>
+  </g>
+  <g transform="translate(<%= it.canvas.profile.width %>, <%= it.canvas.header.height %>)">
+    <rect x="0" y="0" width="<%= it.canvas.sidebar.width %>" height="<%= it.canvas.sidebar.height %>" fill="#F3F4F6" />
+    <g transform="translate(0, 32)">
+      <g transform="translate(<%= it.canvas.sidebar.width / 2 %>, 0)" text-anchor="middle">
+        <text x="0" y="0" fill="#4B5563" font-size="12"> اتاق درمانی </text>
+        <g transform="translate(0, <%= it.canvas.sidebar.lineHeight.high %>)" fill="#007BA4" font-size="14" font-weight="600">
+          <% const managerNameLines = ellipsisLines(lineWrap(it.info.managerName, 22), 2) %>
+          <% managerNameLines.forEach(function(line, index) { %>
+            <text x="0" y="<%= it.canvas.sidebar.lineHeight.medium * index %>"> <%= line %> </text>
+          <% }) %>
+        </g>
+      </g>
+
+      <g transform="translate(0, <%= managerNameLines.length * it.canvas.sidebar.lineHeight.medium + it.canvas.sidebar.lineHeight.high + 12 %>)">
+        <g transform="translate(<%= it.canvas.sidebar.width / 2 %>, 0)" text-anchor="middle" font-size="12" fill="#007BA4">
+          <% const centerTitleLines = ellipsisLines(lineWrap(it.info.centerTitle, 22), 2) %>
+          <% centerTitleLines.forEach(function(line, index) { %>
+            <text x="0" y="<%= it.canvas.sidebar.lineHeight.medium * index %>"> <%= line %> </text>
+          <% }) %>
+        </g>
+
+        <g transform="translate(<%= it.canvas.sidebar.width - it.canvas.sidebar.padding.x %>, <%= centerTitleLines.length * it.canvas.sidebar.lineHeight.medium + 14 %>)">
+          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 0 %>)">
+            <text
+              x="0"
+              y="0"
+              transform="translate(<%= -it.canvas.sidebar.icons.paddingX - it.canvas.sidebar.icons.person.width %>, 0)"
+              font-size="12"
+              text-anchor="end"
+              dy="3"
+              fill="#374151">
+             <%= ellipsisChars(it.info.clientName, 20) %>
+            </text>
+            <svg
+              width="<%= it.canvas.sidebar.icons.person.width %>"
+              height="<%= it.canvas.sidebar.icons.person.width / it.canvas.sidebar.icons.person.ratio %>"
+              x="0"
+              y="0"
+              viewBox="16 9 16 18"
+              overflow="visible">
+              <use href="#person" />
+            </svg>
+          </g>
+          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 1 %>)">
+            <text
+              x="0"
+              y="0"
+              transform="translate(<%= -it.canvas.sidebar.icons.paddingX - it.canvas.sidebar.icons.calender.width %>, 0)"
+              font-size="12"
+              text-anchor="end"
+              dy="3"
+              fill="#374151">
+              <%= it.info.date %>
+            </text>
+            <svg
+              width="<%= it.canvas.sidebar.icons.calender.width %>"
+              height="<%= it.canvas.sidebar.icons.calender.width / it.canvas.sidebar.icons.calender.ratio %>"
+              x="0"
+              y="0"
+              viewBox="15 9 15 18"
+              overflow="visible">
+              <use href="#calender" />
+            </svg>
+          </g>
+          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 2 %>)">
+            <text
+              x="0"
+              y="0"
+              transform="translate(<%= -it.canvas.sidebar.icons.paddingX - it.canvas.sidebar.icons.clock.width %>, 0)"
+              font-size="12"
+              text-anchor="end"
+              dy="3"
+              fill="#374151">
+              <%= it.info.time %> دقیقه
+            </text>
+            <svg
+              width="<%= it.canvas.sidebar.icons.clock.width %>"
+              height="<%= it.canvas.sidebar.icons.clock.width / it.canvas.sidebar.icons.clock.ratio %>"
+              x="0"
+              y="0"
+              viewBox="16 8 16 16"
+              overflow="visible">
+              <use href="#clock" />
+            </svg>
+          </g>
+
+          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 2 + 30 %>)">
+            <% let fieldsLength = it.info.fields.filter(field => field.value !== "-").length * it.canvas.sidebar.fields.offsetY %>
+            <rect x="0" y="0" width="4" height="4" fill="#D1D5DB" transform="rotate(45)" />
+            <line
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="<%= fieldsLength %>"
+              stroke="#D1D5DB" />
+            <rect
+              x="0"
+              y="0"
+              width="4"
+              height="4"
+              fill="#D1D5DB"
+              transform="translate(0, <%= fieldsLength %>) rotate(45)" />
+            <g transform="translate(<%= -it.canvas.sidebar.fields.paddingX %>, 15)">
+              <% it.info.fields.forEach(function(field, index) { %>
+                <% if (field.value !== "-") { %>
+                  <g transform="translate(0, <%= index * it.canvas.sidebar.fields.offsetY %>)">
+                    <text x="0" y="0" text-anchor="end" font-size="12" fill="#6B7280" dy="3"><%= field.fr %></text>
+                    <text
+                      x="0"
+                      y="<%= it.canvas.sidebar.fields.lineHeight %>"
+                      text-anchor="end"
+                      font-size="14"
+                      font-weight="500"
+                      fill="#374151"
+                      dy="3">
+                      <%= ellipsisChars(field.value, 20) %>
+                    </text>
+                  </g>
+                <% } %>
+              <% }) %>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    
+    <g transform="translate(<%= it.canvas.sidebar.width - it.canvas.sidebar.padding.x %>, 215)">
+      
+    </g>
+    <g transform="translate(<%= it.canvas.sidebar.width / 2 %>, 607)">
+      <g transform="translate(<%= -it.canvas.sidebar.qrcode.width / 2 %>, 0)"> <%~ it.qrcode %> </g>
+      <text
+        x="0"
+        y="<%= it.canvas.sidebar.qrcode.height + 10 %>"
+        text-anchor="middle"
+        fill="#374151"
+        font-size="14"
+        dy="4"
+        font-family="Dana"
+        direction="ltr"
+        ><%= it.info.id %></text
+      >
+    </g>
+  </g>
+</g>

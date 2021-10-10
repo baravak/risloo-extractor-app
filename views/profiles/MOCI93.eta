@@ -1,0 +1,59 @@
+<% layout('../layout.eta') %>
+
+<g font-family="Dana-FaNum" transform="translate(<%= it.spec.profile.padding.x %>, <%= it.spec.profile.padding.y %>)">
+  <g transform="translate(0, <%= (it.spec.raw.maxValue / it.spec.raw.step) * it.spec.raw.rect.distanceY - it.spec.raw.rect.offsetY %>) scale(1, -1)">
+    <% it.items.forEach(function(item, index){ %>
+      <g transform="translate(<%= it.spec.items.distanceX * index %>, 0)">
+        <text x="0" y="0" text-anchor="end" fill="<%= item.fill %>" transform="translate(<%= it.spec.items.rect.width / 2 + 5 %>, -25) rotate(45) scale(1, -1)"><tspan font-size="18"><%= item.label.fr %></tspan><tspan font-size="14"> (<%= item.label.abbr %>)</tspan></text>
+        <g>
+          <g fill="<%= it.spec.items.rect.defaultColor %>">
+            <% for(let i = 1; i <= item.maxValue / it.spec.items.step; i++) { %>
+              <rect x="0" y="<%= it.spec.items.rect.distanceY * (i - 1) %>" width="<%= it.spec.items.rect.width %>" height="<%= it.spec.items.rect.height %>"/>
+              <% if(i === item.maxValue / it.spec.items.step) { %>
+                <g transform="translate(<%= it.spec.items.rect.width / 2 %>, <%= it.spec.items.rect.distanceY * (i - 1) + it.spec.items.rect.height / 2 %>)">
+                  <text x="0" y="0" font-size="18" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)"><%= item.maxValue %></text>
+                </g>
+              <% } %>
+            <% } %>
+          </g>
+          <g fill="<%= item.fill %>">
+            <% for(let i = 1; i <= Math.ceil(item.mark / it.spec.items.step); i++) { %>
+              <rect x="0" y="<%= it.spec.items.rect.distanceY * (i - 1) %>" width="<%= it.spec.items.rect.width %>" height="<%= it.spec.items.rect.height %>"  fill-opacity="<%= Math.round(((0.5 / (item.maxValue / it.spec.items.step - 1)) * (i - 1) + 0.5) * 100) / 100 %>"/>
+              <% if(i === Math.ceil(item.mark / it.spec.items.step)) { %>
+                <g transform="translate(<%= it.spec.items.rect.width / 2 %>, <%= it.spec.items.rect.distanceY * (i - 1) + it.spec.items.rect.height / 2 %>)">
+                  <text x="0" y="0" font-size="22" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)"><%= item.mark %></text>
+                </g>
+              <% } %>
+            <% } %>
+          </g>
+        </g>
+      </g>
+    <% }) %>
+
+    <g transform="translate(<%= it.spec.items.distanceX * (it.items.length - 1) + it.spec.raw.distanceX %>, 0)">
+        <text x="0" y="0" text-anchor="end" fill="<%= it.spec.raw.rect.color %>" transform="translate(<%= it.spec.items.rect.width / 2 + 10 %>, -25) rotate(45) scale(1, -1)"><tspan font-size="18"><%= it.raw.label.fr %></tspan><tspan font-size="14"> (<%= it.raw.label.abbr %>)</tspan></text>
+        <g>
+          <g fill="<%= it.spec.raw.rect.defaultColor %>">
+            <% for(let i = 1; i <= it.spec.raw.maxValue / it.spec.raw.step; i++) { %>
+              <rect x="0" y="<%= it.spec.raw.rect.distanceY * (i - 1) %>" width="<%= it.spec.raw.rect.width %>" height="<%= it.spec.raw.rect.height %>"/>
+              <% if(i === it.spec.raw.maxValue / it.spec.raw.step) { %>
+                <g transform="translate(<%= it.spec.raw.rect.width / 2 %>, <%= it.spec.raw.rect.distanceY * (i - 1) + it.spec.raw.rect.height / 2 %>)">
+                  <text x="0" y="0" font-size="18" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)"><%= it.spec.raw.maxValue %></text>
+                </g>
+              <% } %>
+            <% } %>
+          </g>
+          <g fill="<%= it.spec.raw.rect.color %>">
+            <% for(let i = 1; i <= Math.ceil(it.raw.mark / it.spec.raw.step); i++) { %>
+              <rect x="0" y="<%= it.spec.raw.rect.distanceY * (i - 1) %>" width="<%= it.spec.raw.rect.width %>" height="<%= it.spec.raw.rect.height %>"  fill-opacity="<%= Math.round(((0.5 / (it.spec.raw.maxValue / it.spec.raw.step - 1)) * (i - 1) + 0.5) * 100) / 100 %>"/>
+              <% if(i === Math.ceil(it.raw.mark / it.spec.raw.step)) { %>
+                <g transform="translate(<%= it.spec.raw.rect.width / 2 %>, <%= it.spec.raw.rect.distanceY * (i - 1) + it.spec.raw.rect.height / 2 %>)">
+                  <text x="0" y="0" font-size="22" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)"><%= it.raw.mark %></text>
+                </g>
+              <% } %>
+            <% } %>
+          </g>
+        </g>
+      </g>
+  </g>
+</g>

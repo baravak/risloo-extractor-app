@@ -1,4 +1,4 @@
-<g fill="white" font-weight="600" font-size="14" transform="translate(0, <%= it.canvas.headerHeight + it.canvas.height %>)">
+<g fill="white" font-weight="600" font-size="14" transform="translate(0, <%= it.canvas.header.totalHeight + it.canvas.profile.height %>)">
   <rect x="0" y="0" width="100%" height="<%= it.canvas.footer.height %>" fill="#007BA4"/>
   <text x="50%" y="<%= it.canvas.footer.height / 2 %>" text-anchor="middle" dy="4" font-family="Dana-FaNum" letter-spacing="0.75em">WWW.RISLOO.IR</text>
 </g>

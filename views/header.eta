@@ -6,42 +6,42 @@
 
 <g font-family="Dana-FaNum">
   <g fill="white" font-weight="bold" font-size="16">
-    <rect x="0" y="0" width="100%" height="<%= it.header.heights[0] %>" fill="#007BA4"/>
-    <text x="100%" y="<%= it.header.heights[0] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end" dy="5"><%= it.info.title %></text>
-    <text x="0" y="<%= it.header.heights[0] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" font-family="Dana" text-anchor="start" dy="5" direction="ltr"><%= it.info.id %></text>
+    <rect x="0" y="0" width="100%" height="<%= it.canvas.header.heights[0] %>" fill="#007BA4"/>
+    <text x="100%" y="<%= it.canvas.header.heights[0] / 2 %>" transform="translate(-<%= it.canvas.header.paddingX %>, 0)" text-anchor="end" dy="5"><%= it.info.title %></text>
+    <text x="0" y="<%= it.canvas.header.heights[0] / 2 %>" transform="translate(+<%= it.canvas.header.paddingX %>, 0)" font-family="Dana" text-anchor="start" dy="5"><%= it.info.id %></text>
   </g>
-  <g transform="translate(0, <%= it.header.heights[0] %>)" fill="#4B5563">
-    <rect x="0" y="0" width="100%" height="<%= it.header.heights[1] %>" fill="#D7ECF3"/>
+  <g transform="translate(0, <%= it.canvas.header.heights[0] %>)" fill="#4B5563">
+    <rect x="0" y="0" width="100%" height="<%= it.canvas.header.heights[1] %>" fill="#D7ECF3"/>
     <g fill="#007BA4">
-      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, -<%= it.header.textYPadding %>)" font-size="14" font-weight="600" text-anchor="end" dy="4">اتاق درمانی دکتر مسعود جان بزرگی</text>
-      <text x="100%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.paddingX %>, +<%= it.header.textYPadding %>)" font-size="12" text-anchor="end" dy="3"><%= it.info.centerTitle %></text>
+      <text x="100%" y="<%= it.canvas.header.heights[1] / 2 %>" transform="translate(-<%= it.canvas.header.paddingX %>, -<%= it.canvas.header.textYPadding %>)" font-size="14" font-weight="600" text-anchor="end" dy="4">اتاق درمانی <%= it.info.managerName %></text>
+      <text x="100%" y="<%= it.canvas.header.heights[1] / 2 %>" transform="translate(-<%= it.canvas.header.paddingX %>, +<%= it.canvas.header.textYPadding %>)" font-size="12" text-anchor="end" dy="3"><%= it.info.centerTitle %></text>
     </g>
     <g fill="#4B5563" font-size="12" font-weight="normal">
-      <g transform="translate(0, -<%= it.header.textYPadding %>)">
-        <svg width="16" height="18" x="50%" y="<%= it.header.heights[1] / 2 %>" viewBox="8 9 16 18" overflow="visible">
+      <g transform="translate(0, -<%= it.canvas.header.textYPadding %>)">
+        <svg width="16" height="18" x="50%" y="<%= it.canvas.header.heights[1] / 2 %>" viewBox="8 9 16 18" overflow="visible">
           <use href="#person"/>
         </svg>
       </g>
-      <text x="50%" y="<%= it.header.heights[1] / 2 %>" transform="translate(0, +<%= it.header.textYPadding %>)" text-anchor="middle" dy="3"><%= it.info.name %></text>
-      <g transform="translate(0, -<%= it.header.textYPadding %>)">
-        <svg width="15" height="18" x="17%" y="<%= it.header.heights[1] / 2 %>" viewBox="0 9 15 18" overflow="visible">
+      <text x="50%" y="<%= it.canvas.header.heights[1] / 2 %>" transform="translate(0, +<%= it.canvas.header.textYPadding %>)" text-anchor="middle" dy="3"><%= it.info.clientName %></text>
+      <g transform="translate(0, -<%= it.canvas.header.textYPadding %>)">
+        <svg width="15" height="18" x="17%" y="<%= it.canvas.header.heights[1] / 2 %>" viewBox="0 9 15 18" overflow="visible">
           <use href="#calender"/>
         </svg>
       </g>
-      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, -<%= it.header.textYPadding %>)" text-anchor="end" dy="3"><%= it.info.date %></text>
-      <g transform="translate(0, +<%= it.header.textYPadding %>)">
-        <svg width="16" height="16" x="17%" y="<%= it.header.heights[1] / 2 %>" viewBox="0 8 16 16" overflow="visible">
+      <text x="17%" y="<%= it.canvas.header.heights[1] / 2 %>" transform="translate(-<%= it.canvas.header.iconPadding %>, -<%= it.canvas.header.textYPadding %>)" text-anchor="end" dy="3"><%= it.info.date %></text>
+      <g transform="translate(0, +<%= it.canvas.header.textYPadding %>)">
+        <svg width="16" height="16" x="17%" y="<%= it.canvas.header.heights[1] / 2 %>" viewBox="0 8 16 16" overflow="visible">
           <use href="#clock"/>
         </svg>
       </g>
-      <text x="17%" y="<%= it.header.heights[1] / 2 %>" transform="translate(-<%= it.header.iconPadding %>, +<%= it.header.textYPadding %>)" text-anchor="end" dy="3"><%= it.info.time %> دقیقه</text>
+      <text x="17%" y="<%= it.canvas.header.heights[1] / 2 %>" transform="translate(-<%= it.canvas.header.iconPadding %>, +<%= it.canvas.header.textYPadding %>)" text-anchor="end" dy="3"><%= it.info.time %> دقیقه</text>
     </g>
   </g>
-  <g transform="translate(0, <%= it.header.heights[0] + it.header.heights[1] %>)" fill="#6B7280"  font-size="14">
-    <rect x="0" y="0" width="100%" height="<%= it.header.heights[2] %>" fill="#F9FAFB"/>
-    <text x="0" y="<%= it.header.heights[2] / 2 %>" transform="translate(+<%= it.header.paddingX %>, 0)" text-anchor="start"><tspan dy="4">وضعیت تأهل: </tspan><tspan font-weight="600"><%= it.info.marital_status %></tspan></text>
-    <text x="33.3%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle">تحصیلات: <tspan font-weight="600" dy="4"><%= it.info.education %></tspan></text>
-    <text x="66.6%" y="<%= it.header.heights[2] / 2 %>" text-anchor="middle">سن: <tspan font-weight="600" dy="4"><%= it.info.age %></tspan></text>
-    <text x="100%" y="<%= it.header.heights[2] / 2 %>" transform="translate(-<%= it.header.paddingX %>, 0)" text-anchor="end">جنسیت: <tspan font-weight="600" dy="4"><%= it.info.gender %></tspan></text>
+  <g transform="translate(0, <%= it.canvas.header.heights[0] + it.canvas.header.heights[1] %>)" fill="#6B7280"  font-size="14">
+    <rect x="0" y="0" width="100%" height="<%= it.canvas.header.heights[2] %>" fill="#F9FAFB"/>
+    <text x="0" y="<%= it.canvas.header.heights[2] / 2 %>" transform="translate(+<%= it.canvas.header.paddingX %>, 0)" text-anchor="start"><tspan dy="4">وضعیت تأهل: </tspan><tspan font-weight="600"><%= it.info.fields.find(field => field.eng === "marital_status").value %></tspan></text>
+    <text x="33.3%" y="<%= it.canvas.header.heights[2] / 2 %>" text-anchor="middle"><tspan dy="4">تحصیلات: </tspan><tspan font-weight="600"><%= it.info.fields.find(field => field.eng === "education").value %></tspan></text>
+    <text x="66.6%" y="<%= it.canvas.header.heights[2] / 2 %>" text-anchor="middle"><tspan dy="4">سن: </tspan><tspan font-weight="600"><%= it.info.fields.find(field => field.eng === "age").value %></tspan></text>
+    <text x="100%" y="<%= it.canvas.header.heights[2] / 2 %>" transform="translate(-<%= it.canvas.header.paddingX %>, 0)" text-anchor="end"><tspan dy="4">جنسیت: </tspan><tspan font-weight="600"><%= it.info.fields.find(field => field.eng === "gender").value %></tspan></text>
   </g>
 </g>

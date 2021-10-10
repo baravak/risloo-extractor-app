@@ -1,0 +1,39 @@
+<% layout('../layout.eta') %>
+
+<defs>
+  <clipPath id="circle-roll">
+    <% let R = 140 %>
+    <% let r = 85 %>
+    <% let rb = 26 %>
+    <% let alpha = Math.asin((rb) / (R - rb)) %>
+    <% let eta = 270 * (Math.PI / 180) %>
+    <% let theta = (eta - alpha) %>
+    <% let P1 = { x: R * Math.sin(theta), y: -R * Math.cos(theta) } %>
+    <% let P2 = { x: (R - rb) * Math.cos(alpha) * Math.sin(eta), y: -(R - rb) * Math.cos(alpha) * Math.cos(eta) } %>
+    <% let P3 = { x: (r + rb) * Math.cos(alpha) * Math.sin(eta), y: -(r + rb) * Math.cos(alpha) * Math.cos(eta) } %>
+    <% let P4 = { x: r * Math.sin(theta), y: -r * Math.cos(theta) } %>
+    <path d="M 0 <%= -R %> A <%= R %> <%= R %> <%= theta %> 1 1 <%= P1.x %> <%= P1.y %> A <%= rb %> <%= rb %> 10 0 1 <%= P2.x %> <%= P2.y %> L <%= P3.x %> <%= P3.y %> A <%= rb %> <%= rb %> 10 0 1 <%= P4.x %> <%= P4.y %> A <%= r %> <%= r %> <%= theta %> 1 0 0 <%= -r %> Z"/>
+  </clipPath>
+</defs>
+
+<g transform="translate(<%= it.canvas.computedWidth / 2 %>, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
+  <g transform="translate(0, 200)">
+    <g transform="translate(0, 140)">
+      <% let zeta = 190 * (Math.PI / 180) %>
+      <% let width = 135 %>
+      <% let height = R - r %>
+      <% let rb_rect = 8 %>
+      <g transform="translate(-5, <%= -R %>)">
+        <path d="M 0 0 h -<%= width - rb_rect %> a <%= rb_rect %> <%= rb_rect %> 90 0 0 -<%= rb_rect %> <%= rb_rect %> v <%= height - 2 * rb_rect %> a <%= rb_rect %> <%= rb_rect %> 90 0 0 <%= rb_rect %> <%= rb_rect %> h <%= width - rb_rect %> Z" fill="#B91C1C"/>
+        <g transform="translate(-<%= width / 2 %>, <%= height / 2 %>)">
+          <text x="0" y="0" text-anchor="middle" font-size="22" font-weight="600" fill="white" dy="6.5">نمره کل</text>
+        </g>
+      </g>
+      <path d="M 0 <%= -R %> A <%= R %> <%= R %> <%= eta %> 1 1 <%= R * Math.sin(eta) %> <%= -R * Math.cos(eta) %> L <%= r * Math.sin(eta) %> <%= -r * Math.cos(eta) %> A <%= r %> <%= r %> <%= eta %> 1 0 0 <%= -r %> Z" clip-path="url(#circle-roll)" fill="#F3F4F6"/>
+      <path d="M 0 <%= -R %> A <%= R %> <%= R %> <%= zeta %> <%= (zeta > Math.PI) ? 1 : 0 %> 1 <%= R * Math.sin(zeta) %> <%= -R * Math.cos(zeta) %> L <%= r * Math.sin(zeta) %> <%= -r * Math.cos(zeta) %> A <%= r %> <%= r %> <%= zeta %> <%= (zeta > Math.PI) ? 1 : 0 %> 0 0 <%= -r %> Z" clip-path="url(#circle-roll)" fill="#B91C1C"/>
+      <text x="0" y="0" text-anchor="middle" font-size="32" font-weight="700" fill="#B91C1C" dy="10">58</text>
+      <line x1="-200" y1="0" x2="200" y2="0" stroke="red" stroke-opacity="0.5"/>
+      <line x1="0" y1="-200" x2="0" y2="200" stroke="red" stroke-opacity="0.5"/>
+    </g>
+  </g>
+</g>

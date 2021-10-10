@@ -1,5 +1,7 @@
 import moment from "moment-jalaali";
 import fa from "moment/src/locale/fa";
+import QRCode from "qrcode";
+// import qrCodeGenerator from "./qrCodeGenerator";
 
 moment.locale("fa", fa);
 moment.loadPersian({ dialect: "persian-modern" });
@@ -81,7 +83,7 @@ export class FS {
       if (split.length === 1) {
         if (value === +split[0]) return mappingObj[range];
       } else {
-        if (value <= +split[1] && value >= +split[0]) return mappingObj[range]
+        if (value <= +split[1] && value >= +split[0]) return mappingObj[range];
       }
     }
   }
@@ -90,54 +92,42 @@ export class FS {
 // Classes
 
 class Canvas {
-  constructor(width, height, padding, header, footer) {
-    this.width = width;
-    this._height = height;
-    this.padding = padding;
-    this.header = header;
-    this.footer = footer;
-    this.center = this._computeCenter();
-    this._computeHeaderHeight();
-    this._computeWidthAndHeight();
+  constructor(canvas, profileVariant) {
+    this.width = canvas.width;
+    this.height = canvas.height;
+    this._init(canvas, profileVariant);
   }
 
-  get height() {
-    return this._height;
+  _init(canvas, profileVariant) {
+    this.profile = { width: this.width, height: this.height };
+    if (profileVariant === "with-sidebar") {
+      this.header = canvas["sidebar-variant"].header;
+      this.sidebar = canvas["sidebar-variant"].sidebar;
+      this.profile = {
+        width: this.width - this.sidebar.width,
+        height: this.height - this.header.height,
+      };
+    } else if (profileVariant === "with-header") {
+      this.header = canvas["header-variant"].header;
+      this.footer = canvas["header-variant"].footer;
+      this.header.totalHeight = this._computeHeaderHeight(
+        canvas["header-variant"].header
+      );
+      this.profile = {
+        width: this.width,
+        height: this.height - this.header.totalHeight - this.footer.height,
+      };
+    }
+    this.profile["padding"] = canvas.profile.padding;
   }
 
-  set height(value) {
-    this._height = value;
-    this.center = this._computeCenter();
-    this._computeWidthAndHeight();
-  }
-
-  _computeHeaderHeight() {
-    const { header } = this;
-
+  _computeHeaderHeight(header) {
     let headerHeight = header.heights.reduce(
       (sum, current) => sum + current,
       0
     );
 
-    this.headerHeight = headerHeight;
-  }
-
-  _computeCenter() {
-    const { width, _height } = this;
-
-    return { x: width / 2, y: _height / 2 };
-  }
-
-  _computeWidthAndHeight() {
-    const { width, _height, footer, headerHeight } = this;
-
-    let computedWidth = width;
-    let computedHeight = _height + headerHeight + footer.height;
-
-    // let computedLength = Math.max(tempWidth, tempHeight);
-
-    this.computedWidth = computedWidth;
-    this.computedHeight = computedHeight;
+    return headerHeight;
   }
 }
 
@@ -145,55 +135,91 @@ class Dataset {
   static clean(dataset, labels) {
     // Destructure Data that is Needed
     const {
-      id,
-      scale: { title },
-      client: { name },
+      id = "-",
+      scale: { title = "-" } = {},
+      client: { name: clientName = "-" } = {},
+      room: {
+        manager: { name: managerName = "-" } = {},
+      } = {},
       center: {
-        detail: { title: centerTitle },
-      },
-      started_at,
-      cornometer: time,
+        detail: { title: centerTitle = "-" } = {},
+      } = {},
+      started_at = "-",
+      cornometer: time = "-",
       prerequisites,
       score,
     } = dataset;
 
     // Specifying Fields that are Going to Be Extracted (gender, age, education, marital status)
-    let fields = { gender: "", age: "", education: "", marital_status: "" };
-    let keys = Object.values(labels);
-    let values = [];
+    let fields = [
+      { eng: "gender", fr: "جنسیت", value: "-" },
+      { eng: "age", fr: "سن", value: "-" },
+      { eng: "education", fr: "تحصیلات", value: "-" },
+      { eng: "marital_status", fr: "وضعیت تأهل", value: "-" },
+      { eng: "job", fr: "شغل", value: "-" },
+      { eng: "economical_status", fr: "وضعیت اقتصادی", value: "-" },
+      { eng: "reason", fr: "علت مراجعه", value: "-" },
+      { eng: "days", fr: "تعداد روز بستری بودن", value: "-" },
+    ];
 
     // Extract Fields
-    for (let elem in fields) {
-      let temp = prerequisites.find((item) => item.label === elem);
-      if (elem === "age") fields[elem] = temp.user_answered;
-      else fields[elem] = temp.answer.options[temp.user_answered - 1];
+    for (let field of fields) {
+      let temp = prerequisites.find((item) => item.label === field.eng);
+      if (temp)
+        if (temp.answer.type !== "select") field.value = temp.user_answered;
+        else field.value = temp.answer.options[temp.user_answered - 1];
     }
 
-    // Assign Score Values Acc. to Labels Order
+    // Create Data Array with Label and Mark Taken from Dataset
+    let data = [];
     for (let index in labels) {
-      values.push(score[index]);
+      data.push({
+        label: { eng: index, ...labels[index] },
+        mark: score[index],
+      });
     }
 
     // Change Timestamp to Proper Date Format
-    let date = moment(started_at * 1000).format("dddd، jD jMMMM jYYYY");
+    let date = moment(started_at * 1000).format("dddd، jYYYY.jMM.jD");
 
     return {
-      info: { id, title, name, centerTitle, time, date, ...fields },
-      score: { keys, values },
+      info: {
+        id: id,
+        title: title,
+        clientName: clientName,
+        managerName: managerName,
+        centerTitle: centerTitle,
+        time: time,
+        date,
+        fields,
+      },
+      score: data,
     };
   }
 }
 
 export class SVG {
-  static pathDGenerator(points) {
-    const reducer = (accumulator, point, index) => {
-      if (index === 0) return accumulator + `M ${point.x} ${point.y}`;
-      else return accumulator + ` L ${point.x} ${point.y}`;
-    };
-    let d = points.reduce(reducer, "");
+  // Calculate "d" Attribute for a Path Tag using Given Points Array
+  static calcPathDAttr(points) {
+    let d = points.reduce(
+      (accumulator, point, index) =>
+        accumulator + `${index === 0 ? "M " : " L "}${point.x} ${point.y}`,
+      ""
+    );
     d += " Z";
 
     return d;
+  }
+
+  // Calculate "points" Attribute for a Polygon Tag using Given Points Array
+  static calcPolygonPointsAttr(points) {
+    let pointsAttr = points.reduce(
+      (accumulator, point) => accumulator + `${point.x},${point.y} `,
+      ""
+    );
+
+    // Remove Whitespace from Both Sides of the Output String
+    return pointsAttr.trim();
   }
 }
 
@@ -225,17 +251,68 @@ class Spec {
   constructor(config, profileSpec) {
     this.parameters = {
       canvas: {
-        width: 1024,
-        height: 844,
-        padding: 80,
-        header: {
-          heights: [40, 70, 40],
-          paddingX: 20,
-          iconPadding: 10,
-          textYPadding: 11,
+        width: 1123,
+        height: 794,
+        profile: {
+          padding: 20,
         },
-        footer: {
-          height: 30,
+        "sidebar-variant": {
+          header: {
+            height: 40,
+            paddingX: 20,
+          },
+          sidebar: {
+            width: 180,
+            height: 754,
+            iconPadding: 10,
+            padding: {
+              x: 20,
+              y: 20,
+            },
+            lineHeight: {
+              low: 19,
+              medium: 20,
+              high: 22,
+            },
+            icons: {
+              offsetY: 27,
+              paddingX: 7,
+              person: {
+                width: 14.22,
+                ratio: 16 / 18,
+              },
+              calender: {
+                width: 14.17,
+                ratio: 15 / 18,
+              },
+              clock: {
+                width: 14.53,
+                ratio: 16 / 16,
+              },
+            },
+            fields: {
+              lineHeight: 20,
+              offsetY: 46,
+              paddingX: 13,
+            },
+            qrcode: {
+              width: 105,
+              get height() {
+                return this.width;
+              },
+            },
+          },
+        },
+        "header-variant": {
+          header: {
+            heights: [40, 70, 40],
+            paddingX: 20,
+            iconPadding: 10,
+            textYPadding: 11,
+          },
+          footer: {
+            height: 30,
+          },
         },
       },
       ...profileSpec,
@@ -252,18 +329,44 @@ class Spec {
 }
 
 export class Profile {
-  constructor(dataset, config = {}, profileSpec) {
+  constructor(dataset, profileVariant, config = {}, profileSpec) {
     if (this.constructor.name === "Profile")
       throw new Error("Can't Instantiate Abstract Class");
     this.spec = new Spec(config, profileSpec);
-    const { width, height, padding, header, footer } =
-      this.spec.parameters.canvas;
-    this.canvas = new Canvas(width, height, padding, header, footer);
+    const { canvas } = this.spec.parameters;
+    this.canvas = new Canvas(canvas, profileVariant);
     this.dataset = Dataset.clean(
       dataset,
       this.spec.parameters[this.constructor.name].labels
     );
+    this._generateQRCode(this.dataset.info.id, {
+      width: 105,
+    });
     this.context = this._calcContext();
+  }
+
+  _generateQRCode(id, options = {}) {
+    // qrCodeGenerator(`https://r1l.ir/${id}`);
+
+    QRCode.toString(
+      `https://r1l.ir/${id}`,
+      {
+        type: "svg",
+        maskPattern: 5,
+        version: 4,
+        errorCorrectionLevel: "S",
+        width: 100,
+        color: {
+          dark: "#000",
+          light: "#0000",
+        },
+        ...options,
+      },
+      (err, url) => {
+        if (err) console.log(err);
+        this.qrcode = url;
+      }
+    );
   }
 
   getTemplateEngineParams() {
@@ -273,6 +376,7 @@ export class Profile {
       spec: {
         parameters: { [this.constructor.name]: spec },
       },
+      qrcode,
       context,
     } = this;
 
@@ -280,6 +384,7 @@ export class Profile {
       canvas,
       dataset,
       spec,
+      qrcode,
       ...context,
     };
   }

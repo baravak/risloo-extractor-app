@@ -1,5 +1,5 @@
 src/svg/
-views/functions/
+views/functions
 src/test.js
 src/qrCodeGenerator.js
 src/chart - old version.js

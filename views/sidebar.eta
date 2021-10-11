@@ -59,11 +59,12 @@
       y="<%= it.canvas.header.height / 2 %>"
       transform="translate(-<%= it.canvas.header.paddingX %>, 0)"
       text-anchor="end"
-      dy="5">
+      dy="4">
       <%= it.info.title %>
     </text>
     <a href="http://risloo.ir" target="_blank" fill="white">
       <text
+        class="eng-font"
         x="0"
         y="<%= it.canvas.header.height / 2 %>"
         transform="translate(+<%= it.canvas.header.paddingX %>, 0)"
@@ -205,6 +206,7 @@
     <g transform="translate(<%= it.canvas.sidebar.width / 2 %>, 607)">
       <g transform="translate(<%= -it.canvas.sidebar.qrcode.width / 2 %>, 0)"> <%~ it.qrcode %> </g>
       <text
+        class="eng-font"
         x="0"
         y="<%= it.canvas.sidebar.qrcode.height + 10 %>"
         text-anchor="middle"

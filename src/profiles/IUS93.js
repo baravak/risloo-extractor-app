@@ -61,42 +61,43 @@ class IUS93 extends Profile {
   }
 
   _calcContext() {
-    const { spec, dataset, canvas } = this;
+    const {
+      spec: {
+        parameters: { IUS93: spec },
+      },
+      dataset,
+    } = this;
 
-    const { raw, items } = spec.parameters["IUS93"];
+    const { raw, items } = spec;
 
-    // const labels = dataset.score.keys.slice(1);
-    // const marks = dataset.score.values.slice(1);
-    // const rawLabel = dataset.score.keys[0];
-    // const rawMark = dataset.score.values[0];
+    // Separate Raw Data from the Dataset
+    const rawData = dataset.score.shift();
 
-    // const rawItem = {
-    //   label: rawLabel,
-    //   mark: rawMark,
-    //   eta: raw.circle.eta,
-    //   zeta: FS.roundTo2((rawMark / raw.maxValue) * raw.circle.eta),
-    //   fill: raw.fill,
-    //   opacity: FS.roundTo2(0.5 + rawMark / raw.maxValue),
-    // };
+    // Gather Required Info for Raw
+    const raw = {
+      label: rawData.label,
+      mark: rawData.mark,
+      eta: raw.circle.eta,
+      zeta: FS.roundTo2((rawData.mark / raw.maxValue) * raw.circle.eta),
+      fill: raw.fill,
+      opacity: FS.roundTo2(0.5 + rawData.mark / raw.maxValue),
+    };
 
-    // // console.log(labels);
+    // Gather Required Info for Items
+    const items = dataset.score.map((data) => ({
+      label: data.label,
+      mark: data.mark,
+      eta: items.circle.eta,
+      zeta: FS.roundTo2(
+        (data.mark / items.maxValues[data.label.eng]) * items.circle.eta
+      ),
+      fill: items.fills[data.label.eng],
+      opacity: FS.roundTo2(
+        0.5 + data.mark / items.maxValues[data.label.eng]
+      ),
+    }));
 
-    // const itemsArr = marks.map((mark, index) => ({
-    //   label: labels[index],
-    //   mark: mark,
-    //   eta: items.circle.eta,
-    //   zeta: FS.roundTo2(
-    //     (mark / items.maxValues[labels[index].eng]) * items.circle.eta
-    //   ),
-    //   fill: items.fills[labels[index].eng],
-    //   opacity: FS.roundTo2(
-    //     0.5 + mark / items.maxValues[labels[index].eng]
-    //   ),
-    // }));
-
-    // console.log(itemsArr);
-
-    // return { rawItem, itemsArr };
+    return { raw, items };
   }
 }
 

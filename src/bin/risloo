@@ -9,10 +9,6 @@ try {
 
 process.on("unhandledRejection", (reason, promise) => {
   console.log("Unhandled Rejection at:", promise, "reason:", reason);
-  // promise.catch((err) => {
-  //   if (err) throw err;
-  // });
-  // process.exit();
-});
+})
 
 // process.on('warning', e => console.warn(e.stack));

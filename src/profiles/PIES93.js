@@ -26,8 +26,8 @@ const defaultSpec = {
         };
       },
       padding: {
-        x: 35,
-        y: 10,
+        x: 40,
+        y: 0,
       },
     },
     /* "raw" is the general term used for total data element in the profile */

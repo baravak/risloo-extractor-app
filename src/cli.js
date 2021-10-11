@@ -1,6 +1,6 @@
 import { Command, Option } from "commander/esm.mjs";
 import fs from "fs/promises";
-import { access, constants } from "fs";
+import { access, constants, mkdir } from "fs";
 import path from "path";
 import sharp from "sharp";
 import { Buffer } from "buffer";
@@ -23,12 +23,14 @@ function parseArgumentsIntoOptions(rawArgs) {
     .description("You can draw a profile using this command!")
     .addOption(
       new Option("-p, --profile-variant <variant>", "profile variant")
-        .choices(["raw", "with-sidebar", "with-header"])
+        .choices(["both", "raw", "with-sidebar"])
+        .default("both")
         .makeOptionMandatory()
     )
     .addOption(
       new Option("-i, --input-type <type>", "input type")
         .choices(["local", "remote", "raw-json"])
+        .default("local")
         .makeOptionMandatory()
     )
 
@@ -39,6 +41,7 @@ function parseArgumentsIntoOptions(rawArgs) {
     .addOption(
       new Option("-o, --output-type <type>", "output type")
         .choices(["local", "remote"])
+        .default("local")
         .makeOptionMandatory()
     )
 
@@ -92,7 +95,7 @@ async function draw(options) {
     access(profilePath, constants.F_OK, async (err) => {
       if (err) {
         console.log("Profile Name Is Not Valid!");
-        if (err) throw err;
+        return;
       }
 
       let profileObj;
@@ -118,8 +121,6 @@ async function draw(options) {
         if (err) throw err;
       }
 
-      // xml = prettier.format(xml, {parser: "html"});
-
       const mapObj = {
         'text-anchor="start"': 'text-anchor="end"',
         'text-anchor="end"': 'text-anchor="start"',
@@ -138,25 +139,28 @@ async function draw(options) {
         if (err) throw err;
       }
 
-      const profileName = `${options.profileName}${
-        options.profileVariant === "with-header"
-          ? "-header"
-          : options.profileVariant === "with-sidebar"
-          ? "-sidebar"
-          : "-raw"
+      const outputFileName = `${ctx.dataset.info.id}${
+        options.profileVariant === "with-sidebar" ? "" : ".raw"
       }${options.measure ? "-m" : ""}`;
 
-      try {
-        await fs.writeFile(`${options.outputAddress}/${profileName}.svg`, svg);
-      } catch (err) {
-        if (err) console.log(err.message);
-      }
-      png.toFile(
-        `${options.outputAddress}/${options.profileName}.png`,
-        (err) => {
+      const outputPath = `${options.outputAddress}/${ctx.dataset.info.id}`;
+
+      access(outputPath, constants.F_OK, async (err) => {
+        if (err) {
+          mkdir(outputPath, (err) => {
+            if (err) throw err;
+          });
+        }
+
+        try {
+          await fs.writeFile(`${outputPath}/${outputFileName}.svg`, svg);
+        } catch (err) {
           if (err) console.log(err.message);
         }
-      );
+        png.toFile(`${outputPath}/${outputFileName}.png`, (err) => {
+          if (err) console.log(err.message);
+        });
+      });
     });
   });
 }

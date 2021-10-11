@@ -107,7 +107,7 @@ class Canvas {
         width: this.width - this.sidebar.width,
         height: this.height - this.header.height,
       };
-    } else if (profileVariant === "with-header") {
+    } /* else if (profileVariant === "with-header") {
       this.header = canvas["header-variant"].header;
       this.footer = canvas["header-variant"].footer;
       this.header.totalHeight = this._computeHeaderHeight(
@@ -117,18 +117,18 @@ class Canvas {
         width: this.width,
         height: this.height - this.header.totalHeight - this.footer.height,
       };
-    }
+    } */
     this.profile["padding"] = canvas.profile.padding;
   }
 
-  _computeHeaderHeight(header) {
-    let headerHeight = header.heights.reduce(
-      (sum, current) => sum + current,
-      0
-    );
+  // _computeHeaderHeight(header) {
+  //   let headerHeight = header.heights.reduce(
+  //     (sum, current) => sum + current,
+  //     0
+  //   );
 
-    return headerHeight;
-  }
+  //   return headerHeight;
+  // }
 }
 
 class Dataset {
@@ -145,7 +145,7 @@ class Dataset {
         detail: { title: centerTitle = "-" } = {},
       } = {},
       started_at = "-",
-      cornometer: time = "-",
+      cornometer = "-",
       prerequisites,
       score,
     } = dataset;
@@ -156,10 +156,10 @@ class Dataset {
       { eng: "age", fr: "سن", value: "-" },
       { eng: "education", fr: "تحصیلات", value: "-" },
       { eng: "marital_status", fr: "وضعیت تأهل", value: "-" },
-      { eng: "job", fr: "شغل", value: "-" },
-      { eng: "economical_status", fr: "وضعیت اقتصادی", value: "-" },
-      { eng: "reason", fr: "علت مراجعه", value: "-" },
-      { eng: "days", fr: "تعداد روز بستری بودن", value: "-" },
+      // { eng: "job", fr: "شغل", value: "-" },
+      // { eng: "economical_status", fr: "وضعیت اقتصادی", value: "-" },
+      // { eng: "reason", fr: "علت مراجعه", value: "-" },
+      // { eng: "days", fr: "تعداد روز بستری بودن", value: "-" },
     ];
 
     // Extract Fields
@@ -180,7 +180,23 @@ class Dataset {
     }
 
     // Change Timestamp to Proper Date Format
-    let date = moment(started_at * 1000).format("dddd، jYYYY.jMM.jD");
+    let date = "-";
+    if (started_at !== "-") {
+      date = moment(started_at * 1000).format("dddd، jYYYY.jMM.jD");
+    }
+
+    // Change Time to Hour & Minute Format
+    let time = {
+      hour: 0,
+      minute: "-",
+    };
+
+    if (cornometer !== "-") {
+      time = {
+        hour: Math.floor(cornometer / 60),
+        minute: cornometer % 60,
+      };
+    }
 
     return {
       info: {
@@ -303,17 +319,17 @@ class Spec {
             },
           },
         },
-        "header-variant": {
-          header: {
-            heights: [40, 70, 40],
-            paddingX: 20,
-            iconPadding: 10,
-            textYPadding: 11,
-          },
-          footer: {
-            height: 30,
-          },
-        },
+        // "header-variant": {
+        //   header: {
+        //     heights: [40, 70, 40],
+        //     paddingX: 20,
+        //     iconPadding: 10,
+        //     textYPadding: 11,
+        //   },
+        //   footer: {
+        //     height: 30,
+        //   },
+        // },
       },
       ...profileSpec,
     };

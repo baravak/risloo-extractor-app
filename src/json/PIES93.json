@@ -14,7 +14,7 @@
     }
   },
   "started_at": 1630907666,
-  "cornometer": 1,
+  "cornometer": 9,
   "version": "1",
   "edition": "",
   "edition_version": null,
@@ -91,7 +91,7 @@
     }
   ],
   "score": {
-    "raw": 102,
+    "raw": 150,
     "hope": 16,
     "will": 4,
     "purpose": 10,

@@ -1,4 +1,6 @@
 src/svg/
+src/bin/
+src/output/
 views/functions
 src/test.js
 src/qrCodeGenerator.js
@@ -8,3 +10,5 @@ node_modules
 src/profiles/Test.js
 views/profiles/Test.eta
 views/measure.js
+views/header.eta
+views/footer.eta

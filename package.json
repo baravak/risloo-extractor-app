@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": {
-    "@amirabody/risloo": "src/bin/risloo",
-    "risloo": "src/bin/risloo"
-  },
   "publishConfig": {
     "access": "public"
   },

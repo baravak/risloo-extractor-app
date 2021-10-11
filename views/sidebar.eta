@@ -148,7 +148,7 @@
               text-anchor="end"
               dy="3"
               fill="#374151">
-              <%= it.info.time %> دقیقه
+              <%= (it.info.time.hour !== 0) ? `${it.info.time.hour} ساعت` : '' %><%= (it.info.time.hour !== 0 && it.info.time.minute !== 0) ? ' و ' : '' %><%= (it.info.time.minute !== 0) ? `${it.info.time.minute} دقیقه` : '' %>
             </text>
             <svg
               width="<%= it.canvas.sidebar.icons.clock.width %>"
@@ -179,21 +179,19 @@
               transform="translate(0, <%= fieldsLength %>) rotate(45)" />
             <g transform="translate(<%= -it.canvas.sidebar.fields.paddingX %>, 15)">
               <% it.info.fields.forEach(function(field, index) { %>
-                <% if (field.value !== "-") { %>
-                  <g transform="translate(0, <%= index * it.canvas.sidebar.fields.offsetY %>)">
-                    <text x="0" y="0" text-anchor="end" font-size="12" fill="#6B7280" dy="3"><%= field.fr %></text>
-                    <text
-                      x="0"
-                      y="<%= it.canvas.sidebar.fields.lineHeight %>"
-                      text-anchor="end"
-                      font-size="14"
-                      font-weight="500"
-                      fill="#374151"
-                      dy="3">
-                      <%= ellipsisChars(field.value, 20) %>
-                    </text>
-                  </g>
-                <% } %>
+                <g transform="translate(0, <%= index * it.canvas.sidebar.fields.offsetY %>)">
+                  <text x="0" y="0" text-anchor="end" font-size="12" fill="#6B7280" dy="3"><%= field.fr %></text>
+                  <text
+                    x="0"
+                    y="<%= it.canvas.sidebar.fields.lineHeight %>"
+                    text-anchor="end"
+                    font-size="14"
+                    font-weight="500"
+                    fill="#374151"
+                    dy="3">
+                    <%= ellipsisChars(field.value, 20) %>
+                  </text>
+                </g>
               <% }) %>
             </g>
           </g>

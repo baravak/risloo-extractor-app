@@ -2,7 +2,7 @@
 
 require = require("esm")(module /*, options*/);
 try {
-  require("../cli").cli(process.argv);
+  require("./src/cli").cli(process.argv);
 } catch (err) {
   if (err) throw err;
 }

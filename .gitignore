@@ -1,6 +1,7 @@
 src/svg/
 src/bin/
 src/output/
+src/json
 views/functions
 src/test.js
 src/qrCodeGenerator.js

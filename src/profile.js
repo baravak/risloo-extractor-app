@@ -138,12 +138,8 @@ class Dataset {
       id = "-",
       scale: { title = "-" } = {},
       client: { name: clientName = "-" } = {},
-      room: {
-        manager: { name: managerName = "-" } = {},
-      } = {},
-      center: {
-        detail: { title: centerTitle = "-" } = {},
-      } = {},
+      room: { manager: { name: managerName = "-" } = {} } = {},
+      center: { detail: { title: centerTitle = "-" } = {} } = {},
       started_at = "-",
       cornometer = "-",
       prerequisites,

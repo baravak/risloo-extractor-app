@@ -78,6 +78,8 @@ function parseArgumentsIntoOptions(rawArgs) {
 async function draw(options) {
   // Suppose that both input & output type are "local"
 
+  console.log('start');
+
   let profilePath = path.join(
     __dirname,
     "profiles",
@@ -90,7 +92,11 @@ async function draw(options) {
       return;
     }
 
+    console.log('before dataset');
+
     const dataset = JSON.parse(await fs.readFile(options.inputData, "utf8"));
+
+    console.log('after dataset');
 
     access(profilePath, constants.F_OK, async (err) => {
       if (err) {
@@ -100,6 +106,8 @@ async function draw(options) {
 
       let profileObj;
       let ctx = {};
+
+      console.log('before profile obj');
 
       const profileClass = require(profilePath);
       try {
@@ -113,7 +121,11 @@ async function draw(options) {
         if (err) throw err;
       }
 
+      console.log('after profile obj');
+
       let xml = "";
+
+      console.log('before eta rendering');
 
       try {
         xml = await eta.renderFile(options.profileName, ctx);
@@ -121,15 +133,23 @@ async function draw(options) {
         if (err) throw err;
       }
 
+      console.log('after eta rendering');
+
       const mapObj = {
         'text-anchor="start"': 'text-anchor="end"',
         'text-anchor="end"': 'text-anchor="start"',
       };
 
+      console.log('before xml replace');
+
       const svg = xml.replace(
         /text-anchor="start"|text-anchor="end"/g,
         (matched) => mapObj[matched]
       );
+
+      console.log('after xml replace');
+
+      console.log('before sharp conversion');
 
       const buf = Buffer.from(xml, "utf8");
       let png;
@@ -138,6 +158,8 @@ async function draw(options) {
       } catch (err) {
         if (err) throw err;
       }
+
+      console.log('after sharp conversion');
 
       const outputFileName = `${ctx.dataset.info.id}${
         options.profileVariant === "with-sidebar" ? "" : ".raw"
@@ -152,14 +174,23 @@ async function draw(options) {
           });
         }
 
+        console.log('before svg creation');
+
         try {
           await fs.writeFile(`${outputPath}/${outputFileName}.svg`, svg);
         } catch (err) {
           if (err) console.log(err.message);
         }
-        png.toFile(`${outputPath}/${outputFileName}.png`, (err) => {
+
+        console.log('after svg creation');
+
+        console.log('before png creation');
+        
+        await png.toFile(`${outputPath}/${outputFileName}.png`, (err) => {
           if (err) console.log(err.message);
         });
+
+        console.log('after png creation');
       });
     });
   });

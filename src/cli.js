@@ -121,6 +121,8 @@ async function draw(options) {
         if (err) throw err;
       }
 
+      const test = "";
+
       console.log('after profile obj');
 
       let xml = "";

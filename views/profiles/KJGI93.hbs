@@ -1,0 +1,57 @@
+{{#> layout}}
+
+<defs>
+  <radialGradient id="blueGradient">
+    <stop offset="0%" stop-color="#007BA4" stop-opacity="0.75" />
+    <stop offset="99.99%" stop-color="#007BA4" stop-opacity="0" />
+    <stop offset="100%" stop-color="#007BA4" stop-opacity="0" />
+  </radialGradient>
+</defs>
+
+<g font-family="Dana-FaNum" transform="translate(0, {{spec.profile.padding.y}})">
+  <g transform="translate({{math spec.profile.dimensions.width '/' 2}}, 0)">
+    <g transform="translate(0, {{spec.raw.maxRadius}})">
+      <circle cx="0" cy="0" r="{{raw.radius}}" fill="url('#blueGradient')" />
+      <text x="0" y="0" fill="#111827" font-size="48" text-anchor="middle" dy="10">{{raw.mark}}</text>
+    </g>
+    <g
+      transform="translate(0, {{math (math spec.raw.maxRadius '*' 2) '+' spec.interpretRects.offsetY1}})"
+      font-size="16">
+      {{#each spec.interpretRects.labels as |label index|}}
+        <g transform="translate({{math @root.spec.interpretRects.distanceX '*' (math index '-' 1)}}, 0)">
+        <rect
+          x="0"
+          y="0"
+          width="{{@root.spec.interpretRects.width}}"
+          height="{{@root.spec.interpretRects.height}}"
+          transform="translate(-{{math @root.spec.interpretRects.width '/' 2}}, -{{math @root.spec.interpretRects.height '/' 2}})"
+          fill="{{ternary (boolean label '==' @root.interpret) '#007BA4' '#F9FAFB'}}"
+          rx="{{@root.spec.interpretRects.borderRadius}}" />
+        <text
+          x="0"
+          y="0"
+          text-anchor="middle"
+          dy="5"
+          fill="{{ternary (boolean label '==' @root.interpret) 'white' '#6B7280'}}"
+          font-weight="{{ternary (boolean label '==' @root.interpret) 'bold' 'normal'}}">
+          {{label}}
+        </text>
+      </g>
+      {{/each}}
+    </g>
+    <g transform="translate(0, {{math (math (math (math (math spec.raw.maxRadius '*' 2) '+' spec.interpretRects.offsetY1) '+' spec.interpretRects.height) '+' spec.interpretRects.offsetY2) '+' spec.items.maxRadius}})"
+      font-size="32">
+      {{#each items as |item index|}}
+        <g transform="translate({{math @root.spec.items.distance.x '*' (math index '-' 1)}}, 0)">
+        <circle cx="0" cy="0" r="{{item.radius}}" fill="url('#blueGradient')" />
+        <text x="0" y="0" fill="#111827" text-anchor="middle" dy="10">{{item.mark}}</text>
+        <text x="0" y="{{@root.spec.items.distance.y}}" fill="#374151" text-anchor="middle" font-size="16" dy="10">
+          {{item.label}}
+        </text>
+      </g>
+      {{/each}}
+    </g>
+  </g>
+</g>
+
+{{/layout}}

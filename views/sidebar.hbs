@@ -1,40 +1,3 @@
-<% function lineWrap(string, maxChar) { 
-  let tokens = string.split(" "); 
-  let lines = []; 
-  let i = 0; 
-  let L = 0;
-  while(true) { 
-    let tokenLength = tokens[i].replace(/‌/g, '').length; 
-    L += tokenLength + 1; 
-    if (L - 1 > maxChar) {
-      lines.push(tokens.slice(0, i).join(" ").trim()); 
-      tokens = tokens.slice(i); 
-      i = 0; 
-      L = 0;
-      continue;
-    } else if (i >= tokens.length - 1) { 
-      lines.push(tokens.slice(0, i + 1).join(" ")); 
-      break; 
-    } 
-    i++; 
-  } 
-
-  return lines; 
-} %>
-
-<% function ellipsisLines(lines, maxLines) {
-  if (lines.length <= maxLines) return lines;
-  const output = lines.slice(0, maxLines);
-  output[maxLines - 1] += " ...";
-  return output;
-} %>
-
-<% function ellipsisChars(string, maxChar) {
-  if (string.length <= maxChar) return string;
-  const output = string.slice(0, maxChar) + " ...";
-  return output;
-} %>
-
 <defs>
   <path
     id="person"
@@ -53,21 +16,21 @@
 
 <g font-family="Dana-FaNum">
   <g fill="white" font-weight="600" font-size="16">
-    <rect x="0" y="0" width="100%" height="<%= it.canvas.header.height %>" fill="#007BA4" />
+    <rect x="0" y="0" width="100%" height="{{canvas.header.height}}" fill="#007BA4" />
     <text
       x="100%"
-      y="<%= it.canvas.header.height / 2 %>"
-      transform="translate(-<%= it.canvas.header.paddingX %>, 0)"
+      y="{{math canvas.header.height '/' 2}}"
+      transform="translate(-{{canvas.header.paddingX}}, 0)"
       text-anchor="end"
       dy="4">
-      <%= it.info.title %>
+      {{info.title}}
     </text>
     <a href="http://risloo.ir" target="_blank" fill="white">
       <text
         class="eng-font"
         x="0"
-        y="<%= it.canvas.header.height / 2 %>"
-        transform="translate(+<%= it.canvas.header.paddingX %>, 0)"
+        y="{{math canvas.header.height '/' 2}}"
+        transform="translate({{canvas.header.paddingX}}, 0)"
         font-family="Dana"
         text-anchor="start"
         letter-spacing="2"
@@ -76,42 +39,42 @@
       </text>
     </a>
   </g>
-  <g transform="translate(<%= it.canvas.profile.width %>, <%= it.canvas.header.height %>)">
-    <rect x="0" y="0" width="<%= it.canvas.sidebar.width %>" height="<%= it.canvas.sidebar.height %>" fill="#F3F4F6" />
+  <g transform="translate({{canvas.profile.width}}, {{canvas.header.height}})">
+    <rect x="0" y="0" width="{{canvas.sidebar.width}}" height="{{canvas.sidebar.height}}" fill="#F3F4F6" />
     <g transform="translate(0, 32)">
-      <g transform="translate(<%= it.canvas.sidebar.width / 2 %>, 0)" text-anchor="middle">
+      <g transform="translate({{math canvas.sidebar.width '/' 2}}, 0)" text-anchor="middle">
         <text x="0" y="0" fill="#4B5563" font-size="12"> اتاق درمانی </text>
-        <g transform="translate(0, <%= it.canvas.sidebar.lineHeight.high %>)" fill="#007BA4" font-size="14" font-weight="600">
-          <% const managerNameLines = ellipsisLines(lineWrap(it.info.managerName, 22), 2) %>
-          <% managerNameLines.forEach(function(line, index) { %>
-            <text x="0" y="<%= it.canvas.sidebar.lineHeight.medium * index %>"> <%= line %> </text>
-          <% }) %>
+        {{setVar "managerNameLines" (ellipsisLines (lineWrap info.managerName 22) 2)}}
+        <g transform="translate(0, {{canvas.sidebar.lineHeight.high}})" fill="#007BA4" font-size="14" font-weight="600">
+          {{#each managerNameLines as |line index|}}
+            <text x="0" y="{{math ../canvas.sidebar.lineHeight.medium '*' index}}">{{line}}</text>
+          {{/each}}
         </g>
       </g>
 
-      <g transform="translate(0, <%= managerNameLines.length * it.canvas.sidebar.lineHeight.medium + it.canvas.sidebar.lineHeight.high + 12 %>)">
-        <g transform="translate(<%= it.canvas.sidebar.width / 2 %>, 0)" text-anchor="middle" font-size="12" fill="#007BA4">
-          <% const centerTitleLines = ellipsisLines(lineWrap(it.info.centerTitle, 22), 2) %>
-          <% centerTitleLines.forEach(function(line, index) { %>
-            <text x="0" y="<%= it.canvas.sidebar.lineHeight.medium * index %>"> <%= line %> </text>
-          <% }) %>
+      {{setVar "centerTitleLines" (ellipsisLines (lineWrap info.centerTitle 22) 2)}}
+      <g transform="translate(0, {{math (math (math centerTitleLines.length '*' canvas.sidebar.lineHeight.medium) '+' canvas.sidebar.lineHeight.high) '+' 12}})">
+        <g transform="translate({{math canvas.sidebar.width '/' 2}}, 0)" text-anchor="middle" font-size="12" fill="#007BA4">
+          {{#each centerTitleLines as |line index|}}
+            <text x="0" y="{{math ../canvas.sidebar.lineHeight.medium '*' index}}">{{line}}</text>
+          {{/each}}
         </g>
 
-        <g transform="translate(<%= it.canvas.sidebar.width - it.canvas.sidebar.padding.x %>, <%= centerTitleLines.length * it.canvas.sidebar.lineHeight.medium + 14 %>)">
-          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 0 %>)">
+        <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, {{math (math centerTitleLines.length '*' canvas.sidebar.lineHeight.medium) '+' 14}})">
+          <g transform="translate(0, {{math canvas.sidebar.icons.offsetY '*' 0}})">
             <text
               x="0"
               y="0"
-              transform="translate(<%= -it.canvas.sidebar.icons.paddingX - it.canvas.sidebar.icons.person.width %>, 0)"
+              transform="translate(-{{math canvas.sidebar.icons.paddingX '+' canvas.sidebar.icons.person.width}}, 0)"
               font-size="12"
               text-anchor="end"
               dy="3"
               fill="#374151">
-             <%= ellipsisChars(it.info.clientName, 20) %>
+              {{ellipsisChars info.clientName 20}}
             </text>
             <svg
-              width="<%= it.canvas.sidebar.icons.person.width %>"
-              height="<%= it.canvas.sidebar.icons.person.width / it.canvas.sidebar.icons.person.ratio %>"
+              width="{{canvas.sidebar.icons.person.width}}"
+              height="{{math canvas.sidebar.icons.person.width '/' canvas.sidebar.icons.person.ratio}}"
               x="0"
               y="0"
               viewBox="16 9 16 18"
@@ -119,20 +82,20 @@
               <use href="#person" />
             </svg>
           </g>
-          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 1 %>)">
+          <g transform="translate(0, {{math canvas.sidebar.icons.offsetY '*' 1}})">
             <text
               x="0"
               y="0"
-              transform="translate(<%= -it.canvas.sidebar.icons.paddingX - it.canvas.sidebar.icons.calender.width %>, 0)"
+              transform="translate(-{{math canvas.sidebar.icons.paddingX '+' canvas.sidebar.icons.person.width}}, 0)"
               font-size="12"
               text-anchor="end"
               dy="3"
               fill="#374151">
-              <%= it.info.date %>
+              {{info.date}}
             </text>
             <svg
-              width="<%= it.canvas.sidebar.icons.calender.width %>"
-              height="<%= it.canvas.sidebar.icons.calender.width / it.canvas.sidebar.icons.calender.ratio %>"
+              width="{{canvas.sidebar.icons.calender.width}}"
+              height="{{math canvas.sidebar.icons.calender.width '/' canvas.sidebar.icons.calender.ratio}}"
               x="0"
               y="0"
               viewBox="15 9 15 18"
@@ -140,20 +103,20 @@
               <use href="#calender" />
             </svg>
           </g>
-          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 2 %>)">
+          <g transform="translate(0, {{math canvas.sidebar.icons.offsetY '*' 2}})">
             <text
               x="0"
               y="0"
-              transform="translate(<%= -it.canvas.sidebar.icons.paddingX - it.canvas.sidebar.icons.clock.width %>, 0)"
+              transform="translate(-{{math canvas.sidebar.icons.paddingX '+' canvas.sidebar.icons.person.width}}, 0)"
               font-size="12"
               text-anchor="end"
               dy="3"
               fill="#374151">
-              <%= (it.info.time.hour !== 0) ? `${it.info.time.hour} ساعت` : '' %><%= (it.info.time.hour !== 0 && it.info.time.minute !== 0) ? ' و ' : '' %><%= (it.info.time.minute !== 0) ? `${it.info.time.minute} دقیقه` : '' %>
+              {{ternary (boolean info.time.hour '!==' 0) (concat info.time.hour " ساعت") ''}}{{ternary (boolean (boolean info.time.hour '!==' 0) '&&' (boolean info.time.minute '!==' 0)) ' و ' ''}}{{ternary (boolean info.time.minute '!==' 0) (concat info.time.minute " دقیقه") ''}}
             </text>
             <svg
-              width="<%= it.canvas.sidebar.icons.clock.width %>"
-              height="<%= it.canvas.sidebar.icons.clock.width / it.canvas.sidebar.icons.clock.ratio %>"
+              width="{{canvas.sidebar.icons.clock.width}}"
+              height="{{math canvas.sidebar.icons.clock.width '/' canvas.sidebar.icons.clock.ratio}}"
               x="0"
               y="0"
               viewBox="16 8 16 16"
@@ -162,14 +125,14 @@
             </svg>
           </g>
 
-          <g transform="translate(0, <%= it.canvas.sidebar.icons.offsetY * 2 + 30 %>)">
-            <% let fieldsLength = it.info.fields.filter(field => field.value !== "-").length * it.canvas.sidebar.fields.offsetY %>
+          <g transform="translate(0, {{math (math canvas.sidebar.icons.offsetY '*' 2) '+' 30}})">
+            {{setVar "fieldsLength" (math info.fields.length '*' canvas.sidebar.fields.offsetY)}}
             <rect x="0" y="0" width="4" height="4" fill="#D1D5DB" transform="rotate(45)" />
             <line
               x1="0"
               y1="0"
               x2="0"
-              y2="<%= fieldsLength %>"
+              y2="{{fieldsLength}}"
               stroke="#D1D5DB" />
             <rect
               x="0"
@@ -177,45 +140,45 @@
               width="4"
               height="4"
               fill="#D1D5DB"
-              transform="translate(0, <%= fieldsLength %>) rotate(45)" />
-            <g transform="translate(<%= -it.canvas.sidebar.fields.paddingX %>, 15)">
-              <% it.info.fields.forEach(function(field, index) { %>
-                <g transform="translate(0, <%= index * it.canvas.sidebar.fields.offsetY %>)">
-                  <text x="0" y="0" text-anchor="end" font-size="12" fill="#6B7280" dy="3"><%= field.fr %></text>
+              transform="translate(0, {{fieldsLength}}) rotate(45)" />
+            <g transform="translate(-{{canvas.sidebar.fields.paddingX}}, 15)">
+              {{#each info.fields as |field index|}}
+                <g transform="translate(0, {{math index '*' ../canvas.sidebar.fields.offsetY}})">
+                  <text x="0" y="0" text-anchor="end" font-size="12" fill="#6B7280" dy="3">{{field.fr}}</text>
                   <text
                     x="0"
-                    y="<%= it.canvas.sidebar.fields.lineHeight %>"
+                    y="{{../canvas.sidebar.fields.lineHeight}}"
                     text-anchor="end"
                     font-size="14"
                     font-weight="500"
                     fill="#374151"
                     dy="3">
-                    <%= ellipsisChars(field.value, 20) %>
+                    {{ellipsisChars field.value 20}}
                   </text>
                 </g>
-              <% }) %>
+              {{/each}}
             </g>
           </g>
         </g>
       </g>
     </g>
     
-    <g transform="translate(<%= it.canvas.sidebar.width - it.canvas.sidebar.padding.x %>, 215)">
+    <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, 215)">
       
     </g>
-    <g transform="translate(<%= it.canvas.sidebar.width / 2 %>, 607)">
-      <g transform="translate(<%= -it.canvas.sidebar.qrcode.width / 2 %>, 0)"> <%~ it.qrcode %> </g>
+    <g transform="translate({{math canvas.sidebar.width '/' 2}}, 607)">
+      <g transform="translate(-{{math canvas.sidebar.qrcode.width '/' 2}}, 0)">{{{qrcode}}}</g>
       <text
         class="eng-font"
         x="0"
-        y="<%= it.canvas.sidebar.qrcode.height + 10 %>"
+        y="{{math canvas.sidebar.qrcode.height '+' 10}}"
         text-anchor="middle"
         fill="#374151"
         font-size="14"
         dy="4"
         font-family="Dana"
         direction="ltr"
-        ><%= it.info.id %></text
+        >{{info.id}}</text
       >
     </g>
   </g>

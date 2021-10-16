@@ -1,0 +1,60 @@
+{{#> layout}}
+
+<g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  <g transform="translate(0, {{math (math (math spec.raw.maxValue '/' spec.raw.step) '*' spec.raw.rect.distanceY) '-' spec.raw.rect.offsetY}}) scale(1, -1)">
+    {{#each items as |item index|}}
+      <g transform="translate({{math @root.spec.items.distanceX '*' index}}, 0)">
+        <text x="0" y="0" text-anchor="end" fill="{{item.fill}}" transform="translate({{math (math @root.spec.items.rect.width '/' 2) '+' 5}}, -25) rotate(45) scale(1, -1)"><tspan font-size="18">{{item.label.fr}}</tspan><tspan font-size="14"> ({{item.label.abbr}})</tspan></text>
+        <g>
+          <g fill="{{@root.spec.items.rect.defaultColor}}">
+          {{#forLoop 1 (math (math item.maxValue '/' @root.spec.items.step) '+' 1) 1 }}
+            <rect x="0" y="{{math @root.spec.items.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.items.rect.width}}" height="{{@root.spec.items.rect.height}}"/>
+            {{#if @last}}
+              <g transform="translate({{math @root.spec.items.rect.width '/' 2}}, {{math (math @root.spec.items.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.items.rect.height '/' 2)}})">
+                <text x="0" y="0" font-size="18" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)">{{item.maxValue}}</text>
+              </g>
+            {{/if}}
+          {{/forLoop}}
+          </g>
+          <g fill="{{item.fill}}">
+            {{#forLoop 1 (ceil (math (math item.mark '/' @root.spec.items.step) '+' 1)) 1 }}
+              <rect x="0" y="{{math @root.spec.items.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.items.rect.width}}" height="{{@root.spec.items.rect.height}}"  fill-opacity="{{math (math (math (math (math 0.5 '/' (math (math item.maxValue '/' @root.spec.items.step) '-' 1)) '*' (math @i '-' 1)) '+' 0.5) '*' 100) '/' 100}}"/>
+              {{#if @last}}
+                <g transform="translate({{math @root.spec.items.rect.width '/' 2}}, {{math (math @root.spec.items.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.items.rect.height '/' 2)}})">
+                  <text x="0" y="0" font-size="22" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)">{{item.mark}}</text>
+                </g>
+              {{/if}}
+            {{/forLoop}}
+          </g>
+        </g>
+      </g>
+    {{/each}}
+
+    <g transform="translate({{math (math spec.items.distanceX '*' (math items.length '-' 1)) '+' spec.raw.distanceX}}, 0)">
+        <text x="0" y="0" text-anchor="end" fill="{{spec.raw.rect.color}}" transform="translate({{math (math spec.items.rect.width '/' 2) '+' 10}}, -25) rotate(45) scale(1, -1)"><tspan font-size="18">{{raw.label.fr}}</tspan><tspan font-size="14"> ({{raw.label.abbr}})</tspan></text>
+        <g>
+          <g fill="{{spec.raw.rect.defaultColor}}">
+            {{#forLoop 1 (math (math spec.raw.maxValue '/' spec.raw.step) '+' 1) 1 }}
+              <rect x="0" y="{{math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.raw.rect.width}}" height="{{@root.spec.raw.rect.height}}"/>
+              {{#if @last}}
+                <g transform="translate({{math @root.spec.raw.rect.width '/' 2}}, {{math (math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.raw.rect.height '/' 2)}})">
+                  <text x="0" y="0" font-size="18" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)">{{@root.spec.raw.maxValue}}</text>
+                </g>
+              {{/if}}
+            {{/forLoop}}
+          </g>
+          <g fill="{{spec.raw.rect.color}}">
+            {{#forLoop 1 (math (ceil (math raw.mark '/' spec.raw.step)) '+' 1) 1 }}
+              <rect x="0" y="{{math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.raw.rect.width}}" height="{{@root.spec.raw.rect.height}}"  fill-opacity="{{math (math (math (math (math 0.5 '/' (math (math @root.spec.raw.maxValue '/' @root.spec.raw.step) '-' 1)) '*' (math @i '-' 1)) '+' 0.5) '*' 100) '/' 100}}"/>
+              {{#if @last}}
+                <g transform="translate({{math @root.spec.raw.rect.width '/' 2}}, {{math (math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.raw.rect.height '/' 2)}})">
+                  <text x="0" y="0" font-size="22" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)">{{@root.raw.mark}}</text>
+                </g>
+              {{/if}}
+            {{/forLoop}}
+          </g>
+        </g>
+      </g>
+  </g>
+</g>
+{{/layout}}

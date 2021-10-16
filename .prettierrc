@@ -1,12 +1,1 @@
-{
-  "overrides": [
-    {
-      "files": "*.eta",
-      "options": {
-        "printWidth": 120,
-        "bracketSameLine": true,
-        "parser": "html"
-      }
-    }
-  ]
-}
+

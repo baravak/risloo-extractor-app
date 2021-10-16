@@ -72,7 +72,9 @@ export function cli(args) {
 
   switch (options.command) {
     case "draw":
-      draw(options).catch((err) => console.error(err));
+      draw(options)
+        .then(() => console.log("0 (Success): Profile Successfully Created!"))
+        .catch((err) => console.error(err));
       break;
   }
 }

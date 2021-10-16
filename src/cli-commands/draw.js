@@ -14,7 +14,7 @@ async function loadInputDataFile(inputData) {
   try {
     await fs.access(inputData, constants.F_OK);
   } catch (err) {
-    throw new Error("Input Data File Does Not Exist!");
+    throw new Error("1 (Not Found): Input Data File Does Not Exist!");
   }
 
   return JSON.parse(await fs.readFile(inputData));
@@ -38,7 +38,7 @@ async function prepareProfileCTX(
 
     return ctx;
   } catch (err) {
-    throw new Error("Error in Instantiating the Profile Object");
+    throw new Error("2 (Profile JS Error): Error in Instantiating the Profile Object");
   }
 }
 
@@ -49,7 +49,7 @@ async function loadProfileJSFile(profileName) {
   try {
     await fs.access(jsFileDir, constants.F_OK);
   } catch (err) {
-    throw new Error("Profile Name Is Not Valid");
+    throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
   }
 
   return require(jsFileDir);
@@ -62,7 +62,7 @@ async function loadProfileTemplateFile(profileName) {
   try {
     await fs.access(templateFileDir, constants.F_OK);
   } catch (err) {
-    throw new Error("Profile Template File Does Not Exist");
+    throw new Error("4 (Not Found): Profile Template File Does Not Exist");
   }
 
   const data = await fs.readFile(templateFileDir);

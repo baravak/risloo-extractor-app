@@ -37,6 +37,8 @@ The structure of the CLI is as follows:
 -v, --dev                           Dev Mode, Default: false
 ```
 
+<br/>
+
 # CLI Status Codes
 
 The **Status Codes** after entering a command for creating a profile is as follows:
@@ -48,6 +50,8 @@ The **Status Codes** after entering a command for creating a profile is as follo
 | 2 | Profile JS Error | Error in Instantiating the Profile Object |
 | 3 | Invalid Name | Profile Name Is Not Valid |
 | 4 | Not Found | Profile Template File Does Not Exist |
+
+<br/>
 
 # Naming Variables Stratrgy
 

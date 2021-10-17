@@ -13,4 +13,3 @@ views/profiles/Test.eta
 views/measure.js
 views/header.eta
 views/footer.eta
-src/cli-commands/draw - timeBench.js

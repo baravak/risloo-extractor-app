@@ -6,7 +6,9 @@
 
 In order to install the package, you can write the code below in your terminal:
 
-> ```npm install risloo-profile-creator```
+```
+npm install risloo-profile-creator
+```
 
 # How Does It Work?
 
@@ -15,11 +17,15 @@ The structure of the CLI is as follows:
 
 ### Main Structure
 
-> ```risloo [command]```
+```
+risloo [command]
+```
 
 ### Commands
 
-> ```draw|D <profileName> [options]```
+```
+draw|D <profileName> [options]
+```
 
 ### **draw** Command Options
 

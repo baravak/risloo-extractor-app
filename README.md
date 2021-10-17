@@ -7,7 +7,7 @@
 In order to install the package, you can write the code below in your terminal:
 
 ```
-npm install risloo-profile-cli
+npm install -g risloo-profile-cli
 ```
 
 # How Does It Work?

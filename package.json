@@ -2,19 +2,22 @@
   "name": "risloo-profile-creator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bin/risloo.js",
   "publishConfig": {
     "access": "public"
+  },
+  "bin": {
+    "risloo": "./bin/risloo.js"
   },
   "scripts": {
     "start": "node app"
   },
   "repository": {
     "type": "git",
-    "url": "\u001b[2~\u0016"
+    "url": "https://github.com/AmirABody/chart-library.git"
   },
   "author": "Mahdi Amirabadi",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "commander": "^8.2.0",
     "esm": "^3.2.25",

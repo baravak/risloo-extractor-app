@@ -53,7 +53,7 @@
       </g>
 
       {{setVar "centerTitleLines" (ellipsisLines (lineWrap info.centerTitle 22) 2)}}
-      <g transform="translate(0, {{math (math (math centerTitleLines.length '*' canvas.sidebar.lineHeight.medium) '+' canvas.sidebar.lineHeight.high) '+' 12}})">
+      <g transform="translate(0, {{math (math (math managerNameLines.length '*' canvas.sidebar.lineHeight.medium) '+' canvas.sidebar.lineHeight.high) '+' 12}})">
         <g transform="translate({{math canvas.sidebar.width '/' 2}}, 0)" text-anchor="middle" font-size="12" fill="#007BA4">
           {{#each centerTitleLines as |line index|}}
             <text x="0" y="{{math ../canvas.sidebar.lineHeight.medium '*' index}}">{{line}}</text>

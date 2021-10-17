@@ -1,13 +1,13 @@
 # Introduction
 
-**Risloo Profile Creator** is a library for creating profiles for *psychological* tests in SVG and PNG format in Persian.
+**Risloo Profile CLI** is a library for creating profiles for *psychological* tests in SVG and PNG format in Persian.
 
 # Installation
 
 In order to install the package, you can write the code below in your terminal:
 
 ```
-npm install risloo-profile-creator
+npm install risloo-profile-cli
 ```
 
 # How Does It Work?

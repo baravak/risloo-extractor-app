@@ -1,5 +1,5 @@
 {
-  "name": "risloo-profile-creator",
+  "name": "risloo-profile-cli",
   "version": "1.0.0",
   "description": "",
   "main": "bin/risloo.js",

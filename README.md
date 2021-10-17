@@ -2,15 +2,11 @@
 
 **Risloo Profile Creator** is a library for creating profiles for *psychological* tests in SVG and PNG format in Persian.
 
-<br/>
-
 # Installation
 
 In order to install the package, you can write the code below in your terminal:
 
-`npm install risloo-profile-creator`
-
-<br/>
+> ```npm install risloo-profile-creator```
 
 # How Does It Work?
 
@@ -19,11 +15,11 @@ The structure of the CLI is as follows:
 
 ### Main Structure
 
-```risloo [command]```
+> ```risloo [command]```
 
 ### Commands
 
-```draw|D <profileName> [options]```
+> ```draw|D <profileName> [options]```
 
 ### **draw** Command Options
 
@@ -37,8 +33,6 @@ The structure of the CLI is as follows:
 -v, --dev                           Dev Mode, Default: false
 ```
 
-<br/>
-
 # CLI Status Codes
 
 The **Status Codes** after entering a command for creating a profile is as follows:
@@ -50,8 +44,6 @@ The **Status Codes** after entering a command for creating a profile is as follo
 | 2 | Profile JS Error | Error in Instantiating the Profile Object |
 | 3 | Invalid Name | Profile Name Is Not Valid |
 | 4 | Not Found | Profile Template File Does Not Exist |
-
-<br/>
 
 # Naming Variables Stratrgy
 

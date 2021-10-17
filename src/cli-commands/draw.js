@@ -86,7 +86,7 @@ async function ensureDirExistence(dir) {
     await fs.access(dir, constants.F_OK);
   } catch (err) {
     mkdir(dir, (err) => {
-      throw err;
+      if (err) throw err;
     });
   }
 }

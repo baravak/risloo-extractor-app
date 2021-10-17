@@ -1,5 +1,5 @@
 import { Command, Option } from "commander/esm.mjs";
-import draw from "./cli-commands/draw - timeBench";
+import draw from "./cli-commands/draw";
 
 const program = new Command();
 

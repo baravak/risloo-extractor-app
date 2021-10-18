@@ -7,6 +7,14 @@ const ellipsisChars = require('./helpers/ellipsisChars');
 const setVar = require('./helpers/setVar');
 const forLoop = require('./helpers/forLoop');
 const concat = require('./helpers/concat');
+const sin = require('./helpers/sin');
+const cos = require('./helpers/cos');
+const tan = require('./helpers/tan');
+const toDeg = require('./helpers/toDeg');
+const toRad = require('./helpers/toRad');
+const roundToTwo = require('./helpers/roundToTwo');
+
+const gauge = require('./helpers/profiles/gauge')
 
 const helpers = {
   boolean,
@@ -17,7 +25,14 @@ const helpers = {
   ellipsisChars,
   setVar,
   forLoop,
-  concat
+  concat,
+  sin,
+  cos,
+  tan,
+  toDeg,
+  toRad,
+  roundToTwo,
+  gauge
 };
 
 module.exports = helpers;

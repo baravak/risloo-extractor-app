@@ -1,7 +1,6 @@
 import moment from "moment-jalaali";
 import fa from "moment/src/locale/fa";
 import QRCode from "qrcode";
-// import qrCodeGenerator from "./qrCodeGenerator";
 
 moment.locale("fa", fa);
 moment.loadPersian({ dialect: "persian-modern" });
@@ -107,28 +106,9 @@ class Canvas {
         width: this.width - this.sidebar.width,
         height: this.height - this.header.height,
       };
-    } /* else if (profileVariant === "with-header") {
-      this.header = canvas["header-variant"].header;
-      this.footer = canvas["header-variant"].footer;
-      this.header.totalHeight = this._computeHeaderHeight(
-        canvas["header-variant"].header
-      );
-      this.profile = {
-        width: this.width,
-        height: this.height - this.header.totalHeight - this.footer.height,
-      };
-    } */
+    }
     this.profile["padding"] = canvas.profile.padding;
   }
-
-  // _computeHeaderHeight(header) {
-  //   let headerHeight = header.heights.reduce(
-  //     (sum, current) => sum + current,
-  //     0
-  //   );
-
-  //   return headerHeight;
-  // }
 }
 
 class Dataset {

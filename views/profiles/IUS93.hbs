@@ -1,39 +1,133 @@
-<% layout('../layout.eta') %>
+{{#> layout}}
 
-<defs>
-  <clipPath id="circle-roll">
-    <% let R = 140 %>
-    <% let r = 85 %>
-    <% let rb = 26 %>
-    <% let alpha = Math.asin((rb) / (R - rb)) %>
-    <% let eta = 270 * (Math.PI / 180) %>
-    <% let theta = (eta - alpha) %>
-    <% let P1 = { x: R * Math.sin(theta), y: -R * Math.cos(theta) } %>
-    <% let P2 = { x: (R - rb) * Math.cos(alpha) * Math.sin(eta), y: -(R - rb) * Math.cos(alpha) * Math.cos(eta) } %>
-    <% let P3 = { x: (r + rb) * Math.cos(alpha) * Math.sin(eta), y: -(r + rb) * Math.cos(alpha) * Math.cos(eta) } %>
-    <% let P4 = { x: r * Math.sin(theta), y: -r * Math.cos(theta) } %>
-    <path d="M 0 <%= -R %> A <%= R %> <%= R %> <%= theta %> 1 1 <%= P1.x %> <%= P1.y %> A <%= rb %> <%= rb %> 10 0 1 <%= P2.x %> <%= P2.y %> L <%= P3.x %> <%= P3.y %> A <%= rb %> <%= rb %> 10 0 1 <%= P4.x %> <%= P4.y %> A <%= r %> <%= r %> <%= theta %> 1 0 0 <%= -r %> Z"/>
-  </clipPath>
-</defs>
+  <defs>
+    {{#with spec.raw.circle}}
+      <clipPath id="raw-circle-roll">
+        {{gauge R r rb eta}}
+      </clipPath>
+    {{/with}}
+    {{#with spec.items.circle}}
+      <clipPath id="items-circle-roll">
+        {{gauge R r rb eta}}
+      </clipPath>
+    {{/with}}
+  </defs>
 
-<g transform="translate(<%= it.canvas.computedWidth / 2 %>, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
-  <g transform="translate(0, 200)">
-    <g transform="translate(0, 140)">
-      <% let zeta = 190 * (Math.PI / 180) %>
-      <% let width = 135 %>
-      <% let height = R - r %>
-      <% let rb_rect = 8 %>
-      <g transform="translate(-5, <%= -R %>)">
-        <path d="M 0 0 h -<%= width - rb_rect %> a <%= rb_rect %> <%= rb_rect %> 90 0 0 -<%= rb_rect %> <%= rb_rect %> v <%= height - 2 * rb_rect %> a <%= rb_rect %> <%= rb_rect %> 90 0 0 <%= rb_rect %> <%= rb_rect %> h <%= width - rb_rect %> Z" fill="#B91C1C"/>
-        <g transform="translate(-<%= width / 2 %>, <%= height / 2 %>)">
-          <text x="0" y="0" text-anchor="middle" font-size="22" font-weight="600" fill="white" dy="6.5">نمره کل</text>
-        </g>
+  <g font-family="Dana-FaNum" transform="translate(0, {{spec.profile.padding.y}})">
+    <g transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{math (math (math (math spec.raw.circle.R '+' spec.raw.ticks.line.width) '+' spec.raw.ticks.line.offset) '+' spec.raw.ticks.number.offset) '+' 10}})">
+      <g transform="translate(-{{spec.raw.rect.offsetX}}, -{{spec.raw.circle.R}})">
+        {{#with spec.raw.rect}}
+          <path
+            d="M 0 0 h -{{math width '-' rb}} a {{rb}} {{rb}} 90 0 0 -{{rb}} {{rb}} v {{math
+              height
+              '-'
+              (math 2 '*' rb)
+            }} a {{rb}} {{rb}} 90 0 0 {{rb}} {{rb}} h {{math width '-' rb}} Z"
+            fill="{{@root.spec.raw.fill}}"
+          ></path>
+          <g transform="translate(-{{math width '/' 2}}, {{math height '/' 2}})">
+            <text x="0" y="0" text-anchor="middle" font-size="22" font-weight="600" fill="white" dy="6.5">{{@root.raw.label.title}}</text>
+          </g>
+        {{/with}}
       </g>
-      <path d="M 0 <%= -R %> A <%= R %> <%= R %> <%= eta %> 1 1 <%= R * Math.sin(eta) %> <%= -R * Math.cos(eta) %> L <%= r * Math.sin(eta) %> <%= -r * Math.cos(eta) %> A <%= r %> <%= r %> <%= eta %> 1 0 0 <%= -r %> Z" clip-path="url(#circle-roll)" fill="#F3F4F6"/>
-      <path d="M 0 <%= -R %> A <%= R %> <%= R %> <%= zeta %> <%= (zeta > Math.PI) ? 1 : 0 %> 1 <%= R * Math.sin(zeta) %> <%= -R * Math.cos(zeta) %> L <%= r * Math.sin(zeta) %> <%= -r * Math.cos(zeta) %> A <%= r %> <%= r %> <%= zeta %> <%= (zeta > Math.PI) ? 1 : 0 %> 0 0 <%= -r %> Z" clip-path="url(#circle-roll)" fill="#B91C1C"/>
-      <text x="0" y="0" text-anchor="middle" font-size="32" font-weight="700" fill="#B91C1C" dy="10">58</text>
-      <line x1="-200" y1="0" x2="200" y2="0" stroke="red" stroke-opacity="0.5"/>
-      <line x1="0" y1="-200" x2="0" y2="200" stroke="red" stroke-opacity="0.5"/>
+      {{#with spec.raw.circle}}
+        {{gauge R r 0 eta clip-path="url(#raw-circle-roll)" fill="#F3F4F6"}}
+        {{gauge R r 0 @root.raw.zeta clip-path="url(#raw-circle-roll)" fill=@root.spec.raw.fill fill-opacity=@root.raw.opacity}}
+      {{/with}}
+      <text x="0" y="0" text-anchor="middle" font-size="32" font-weight="700" fill="{{spec.raw.fill}}" dy="10">{{raw.mark}}</text>
+      {{#each raw.ticks as |tick|}}
+        {{setVar "r2" (math (math @root.spec.raw.circle.R "+" @root.spec.raw.ticks.line.offset) "+" @root.spec.raw.ticks.line.width)}}
+        {{setVar "r1" (math @root.spec.raw.circle.R "+" @root.spec.raw.ticks.line.offset)}}
+        <line
+          x1="{{math r1 '*' (sin tick.angle)}}"
+          y1="{{math -1 '*' (math r1 '*' (cos tick.angle))}}"
+          x2="{{math r2 '*' (sin tick.angle)}}"
+          y2="{{math -1 '*' (math r2 '*' (cos tick.angle))}}"
+          stroke="#F4F4F5"
+          stroke-dasharray="2.5 4.5"
+          stroke-linecap="round"
+          stroke-width="2"
+        ></line>
+        <g
+          transform="translate({{math (math r2 '+' @root.spec.raw.ticks.number.offset) '*' (sin tick.angle)}}, {{math
+            -1
+            '*'
+            (math (math r2 '+' @root.spec.raw.ticks.number.offset) '*' (cos tick.angle))
+          }}) rotate({{math (modulo (toDeg tick.angle) 180) '-' 90}})"
+        >
+          <text
+            x="0"
+            y="0"
+            text-anchor="{{ternary (boolean (toDeg tick.angle) '<' 180) "start" "end"}}"
+            font-size="16"
+            fill="#D4D4D8"
+            dy="5"
+          >{{tick.number}}</text>
+        </g>
+      {{/each}}
+
+      <g transform="translate(0, {{math (math spec.raw.circle.R '+' spec.items.offsetY) '+' spec.items.circle.R}})">
+        {{#each items as |item index|}}
+          <g transform="translate({{math (math (math -2 '*' index) '+' 1) '*' (math @root.spec.items.distanceX '/' 2)}}, 0)">
+            <g transform="translate(-{{@root.spec.items.rect.offsetX}}, -{{@root.spec.items.circle.R}})">
+              {{#with @root.spec.items.rect}}
+                <path
+                  d="M 0 0 h -{{math width '-' rb}} a {{rb}} {{rb}} 90 0 0 -{{rb}} {{rb}} v {{math
+                    height
+                    '-'
+                    (math 2 '*' rb)
+                  }} a {{rb}} {{rb}} 90 0 0 {{rb}} {{rb}} h {{math width '-' rb}} Z"
+                  fill="{{item.fill}}"
+                ></path>
+                <g transform="translate(-{{math width '/' 2}}, {{math height '/' 2}})">
+                  <text x="0" y="0" text-anchor="middle" font-size="18" font-weight="500" fill="white" dy="5">{{item.label.title}}</text>
+                </g>
+              {{/with}}
+            </g>
+            {{#with @root.spec.items.circle}}
+              {{gauge R r 0 eta clip-path="url(#items-circle-roll)" fill="#F3F4F6"}}
+              {{gauge R r 0 item.zeta clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}
+            {{/with}}
+            <text x="0" y="0" text-anchor="middle" font-size="24" font-weight="500" fill="{{item.fill}}" dy="8">{{item.mark}}</text>
+            {{#each item.ticks as |tick|}}
+              {{setVar "r2" (math (math @root.spec.items.circle.R "+" @root.spec.items.ticks.line.offset) "+" @root.spec.items.ticks.line.width)}}
+              {{setVar "r1" (math @root.spec.items.circle.R "+" @root.spec.items.ticks.line.offset)}}
+              <line
+                x1="{{math r1 '*' (sin tick.angle)}}"
+                y1="{{math -1 '*' (math r1 '*' (cos tick.angle))}}"
+                x2="{{math r2 '*' (sin tick.angle)}}"
+                y2="{{math -1 '*' (math r2 '*' (cos tick.angle))}}"
+                stroke="#F4F4F5"
+                stroke-dasharray="2.5 4.5"
+                stroke-linecap="round"
+                stroke-width="2"
+              ></line>
+              <g
+                transform="translate({{math (math r2 '+' @root.spec.items.ticks.number.offset) '*' (sin tick.angle)}}, {{math
+                  -1
+                  '*'
+                  (math (math r2 '+' @root.spec.items.ticks.number.offset) '*' (cos tick.angle))
+                }}) rotate({{math (modulo (toDeg tick.angle) 180) '-' 90}})"
+              >
+                <text
+                  x="0"
+                  y="0"
+                  text-anchor="{{ternary (boolean (toDeg tick.angle) '<' 180) "start" "end"}}"
+                  font-size="16"
+                  fill="#D4D4D8"
+                  dy="5"
+                >{{tick.number}}</text>
+              </g>
+            {{/each}}
+            <g transform="translate(0, {{math @root.spec.items.circle.R '+' @root.spec.items.label.offsetY}})">
+              {{#each (lineWrap item.label.desc 28) as | line index |}}
+                <text x="0" y="{{math index '*' @root.spec.items.label.lineHeight}}" text-anchor="middle" font-size="16" dy="5" fill="#71717A">{{line}}</text>
+              {{/each}}
+            </g>
+          </g>
+        {{/each}}
+      </g>
     </g>
   </g>
-</g>
+
+{{/layout}}

@@ -1,0 +1,67 @@
+{{#> layout}}
+
+  <g font-family="Dana-FaNum" transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{spec.profile.padding.y}})">
+    {{#each items as | item itemIndex |}}
+      {{#with @root.spec.items.rect as | rect |}}
+      <g transform="translate({{math (math (math -2 '*' itemIndex) '+' 1) '*' (math rect.offsetX '/' 2)}}, 0) scale({{ternary (boolean itemIndex '===' 1) -1 1}}, 1)">
+        {{#with (lookup @root.spec.items item.label.eng)}}
+          <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" rx="{{rect.br}}" fill="{{fill}}"/>
+          <g transform="translate({{math rect.width '/' 2}}, {{math rect.height '/' 2}})">
+            <text x="0" y="0" font-size="18" font-weight="500" text-anchor="middle" fill="white" dy="6" transform="scale({{ternary (boolean itemIndex '===' 1) -1 1}}, 1)">{{item.label.fr}}</text> 
+          </g>
+        {{/with}}
+      </g>
+      {{/with}}
+    {{/each}}
+    <g transform="translate(0, {{math spec.items.rect.distanceY '+' spec.items.trait.circle.R}})">
+      <line x1="0" y1="-85" x2="0" y2="+85" stroke="#F4F4F5" stroke-dasharray="4" stroke-linecap="round" stroke-width="2.5"/>
+      {{setVar "p" (polarToCartesian (math spec.items.trait.circle.r '-' 20) (toRad -90))}}
+      <text x="{{p.x}}" y="{{p.y}}" text-anchor="middle" fill="#A1A1AA" font-size="12" font-weight="500" dy="3">{{spec.items.minValue}}</text>
+      {{setVar "p" (polarToCartesian (math spec.items.trait.circle.r '-' 20) (toRad 90))}}
+      <text x="{{p.x}}" y="{{p.y}}" text-anchor="middle" fill="#A1A1AA" font-size="12" font-weight="500" dy="3">{{spec.items.maxValue}}</text>
+      {{#each items as | item itemIndex |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          <g transform="translate({{math (math (math -2 '*' itemIndex) '+' 1) '*' itemsSpec.offsetX}}, 0)">
+            {{#with (lookup itemsSpec item.label.eng)}}
+              {{gauge circle.R circle.r (object start=circle.brs.start end=circle.brs.end) (object start=circle.angles.start end=circle.angles.end) circle.direction fill="#F4F4F5"}}
+
+              {{#each item.stops as | stop stopIndex |}}
+                {{#unless (boolean @first '||' @last)}}
+                  {{setVar "p1" (polarToCartesian ../circle.r stop.angle)}}
+                  {{setVar "p2" (polarToCartesian ../circle.R stop.angle)}}
+                  <line x1="{{p1.x}}" y1="{{p1.y}}" x2="{{p2.x}}" y2="{{p2.y}}" stroke="white"/>
+                  {{setVar "p" (polarToCartesian (math ../circle.r '-' 20) stop.angle)}}
+                  <text x="{{p.x}}" y="{{p.y}}" text-anchor="middle" fill="#D4D4D8" font-size="12" font-weight="500" dy="3">{{stop.mark}}</text>
+                {{/unless}}
+                {{#unless @first}}
+                  {{setVar "prevStopAngle" (lookup (lookup item.stops (math stopIndex '-' 1)) 'angle')}}
+                  {{setVar "pm" (polarToCartesian (math ../circle.R '+' 15) (math (math stop.angle '+' prevStopAngle) '/' 2))}}
+                  <g transform="translate({{pm.x}}, {{pm.y}})">
+                    {{setVar "interpret" (lookup @root.spec.items.interprets (math stopIndex '-' 1))}}
+                    {{setVar "isChosen" (boolean interpret.eng '===' item.mark.interpretation)}}
+                    <circle cx="0" cy="0" r="{{ternary isChosen 3.5 2.5}}" fill="{{ternary isChosen ../fill '#E4E4E7'}}"/>
+                    <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 15}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'start' 'end'}}" fill="{{ternary isChosen ../fill '#A1A1AA'}}" font-weight="{{ternary isChosen 500 400}}" font-size="{{ternary isChosen 16 14}}" dy="3">{{interpret.fr}}</text>
+                  </g>
+
+                  {{setVar "halt" false}}
+                  {{setVar "toAngle" stop.angle}}
+                  {{#if (ternary ../circle.direction (boolean item.angle '>=' stop.angle) (boolean item.angle '<=' stop.angle))}}
+                    {{setVar "toAngle" item.angle}}
+                    {{#if (ternary ../circle.direction (boolean item.angle '>=' prevStopAngle) (boolean item.angle '<=' prevStopAngle))}}
+                      {{setVar "halt" true}}
+                    {{/if}}
+                  {{/if}}
+                  {{#unless halt}}
+                    {{gauge ../circle.R ../circle.r (object start=../circle.brs.start end=../circle.brs.end) (object start=prevStopAngle end=toAngle) ../circle.direction fill=../fill fill-opacity=interpret.opacity}}
+                  {{/unless}}
+                {{/unless}}
+              {{/each}}
+              <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 30}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'start' 'end'}}" fill="{{fill}}" font-size="24" font-weight="600" dy="6.5">{{lookup item.mark item.label.eng}}</text>
+            {{/with}}
+          </g>
+        {{/with}}
+      {{/each}}
+    </g>
+  </g>
+
+{{/layout}}

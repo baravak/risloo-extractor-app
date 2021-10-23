@@ -42,10 +42,20 @@ const defaultSpec = {
       circle: {
         R: 140 /* Radius of the outer circle of the raw element */,
         r: 85 /* Radius of the inner circle of the raw element */,
-        rb: 12 /* Border radius at the end of the gauge of the raw element */,
-        eta: FS.toRadians(
-          270
-        ) /* Total angle of the gauge of the raw element (in Radians) */,
+        brs: {
+          start: 0,
+          end: 12,
+        } /* Border radiuses at each end of the gauge of the raw element */,
+        angles: {
+          start: FS.toRadians(-90),
+          end: FS.toRadians(180),
+        } /* Angles of each end of the raw element */,
+        direction: false /* Clockwise direction for the raw gauge element */,
+        get totalAngle() {
+          return this.direction
+            ? 2 * Math.PI - (this.angles.end - this.angles.start)
+            : this.angles.end - this.angles.start;
+        },
       },
       rect: {
         width: 135 /* Width of the label rect of the raw element */,
@@ -60,7 +70,7 @@ const defaultSpec = {
           offset: 4 /* Offset from the element */,
         },
         number: {
-          offset: 3 /* Offset from the line */,
+          offset: 8 /* Offset from the line */,
         },
       },
     },
@@ -81,10 +91,20 @@ const defaultSpec = {
       circle: {
         R: 90 /* Radius of the outer circle of the items element */,
         r: 50 /* Radius of the inner circle of the items element */,
-        rb: 12 /* Border radius at the end of the gauge of the items element */,
-        eta: FS.toRadians(
-          270
-        ) /* Total angle of the gauge of the raw element (in Radians) */,
+        brs: {
+          start: 0,
+          end: 12,
+        } /* Border radiuses at each end of the gauge of the items element */,
+        angles: {
+          start: FS.toRadians(-90),
+          end: FS.toRadians(180),
+        } /* Angles of each end of the items element */,
+        direction: false /* Clockwise direction for the items gauge element */,
+        get totalAngle() {
+          return this.direction
+            ? 2 * Math.PI - (this.angles.end - this.angles.start)
+            : this.angles.end - this.angles.start;
+        },
       },
       rect: {
         width: 85 /* Width of the label rect of the items element */,
@@ -99,7 +119,7 @@ const defaultSpec = {
           offset: 4 /* Offset from the element */,
         },
         number: {
-          offset: 5 /* Offset from the line */,
+          offset: 8 /* Offset from the line */,
         },
       },
       label: {
@@ -158,12 +178,16 @@ class IUS93 extends Profile {
     const raw = {
       label: rawData.label,
       mark: rawData.mark,
-      zeta: (rawData.mark / rawSpec.maxValue) * rawSpec.circle.eta,
+      zeta:
+        (rawData.mark / rawSpec.maxValue) * rawSpec.circle.totalAngle +
+        rawSpec.circle.angles.start,
       fill: rawSpec.fill,
       opacity: FS.roundTo2(0.5 * (1 + rawData.mark / rawSpec.maxValue)),
       ticks: rawTicksNumbers.map((tick) => ({
         number: tick,
-        angle: (tick / rawSpec.maxValue) * rawSpec.circle.eta,
+        angle:
+          (tick / rawSpec.maxValue) * rawSpec.circle.totalAngle +
+          rawSpec.circle.angles.start,
       })),
     };
 
@@ -185,7 +209,7 @@ class IUS93 extends Profile {
       mark: data.mark,
       zeta:
         (data.mark / itemsSpec.maxValues[data.label.eng]) *
-        itemsSpec.circle.eta,
+        itemsSpec.circle.totalAngle + itemsSpec.circle.angles.start,
       fill: itemsSpec.fills[data.label.eng],
       opacity: FS.roundTo2(
         0.5 * (1 + data.mark / itemsSpec.maxValues[data.label.eng])
@@ -193,7 +217,7 @@ class IUS93 extends Profile {
       ticks: itemsTicksNumbers[data.label.eng].map((tick) => ({
         number: tick,
         angle:
-          (tick / itemsSpec.maxValues[data.label.eng]) * itemsSpec.circle.eta,
+          (tick / itemsSpec.maxValues[data.label.eng]) * itemsSpec.circle.totalAngle + itemsSpec.circle.angles.start,
       })),
     }));
 

@@ -2,9 +2,10 @@
 // This helper is used to provide the path tag for the gauge chart
 
 const Handlebars = require("handlebars");
+const calcGaugeEndpoints = require("./calcGaugeEndpoints");
+const normalizeAngle = require("./normalizeAngle");
 
-function gauge(R, r, rb, angle, options) {
-  
+function gauge(R, r, brs, angles, directionFlag, options) {
   const attributes = [];
 
   Object.keys(options.hash).forEach((key) => {
@@ -13,35 +14,68 @@ function gauge(R, r, rb, angle, options) {
     attributes.push(escapedKey + '="' + escapedValue + '"');
   });
 
-  const alpha = +(Math.asin(rb / (R - rb))).toFixed(2);
-  const theta = angle - alpha;
+  for (let key in angles) angles[key] = normalizeAngle(angles[key]);
 
-  const points = {
-    P1: {
-      x: +(R * Math.sin(theta)).toFixed(2),
-      y: +(-R * Math.cos(theta)).toFixed(2),
-    },
-    P2: {
-      x: +((R - rb) * Math.cos(alpha) * Math.sin(angle)).toFixed(2),
-      y: +(-(R - rb) * Math.cos(alpha) * Math.cos(angle)).toFixed(2),
-    },
-    P3: {
-      x: +((r + rb) * Math.cos(alpha) * Math.sin(angle)).toFixed(2),
-      y: +(-(r + rb) * Math.cos(alpha) * Math.cos(angle)).toFixed(2),
-    },
-    P4: {
-      x: +(r * Math.sin(theta)).toFixed(2),
-      y: +(-r * Math.cos(theta)).toFixed(2),
-    },
-  };
+  let isGreater = true;
+  if (angles.end < angles.start) isGreater = false;
 
-  const result = `<path d="M 0 -${R} A ${R} ${R} ${theta} ${angle > Math.PI ? 1 : 0} 1 ${points.P1.x} ${
-    points.P1.y
-  } A ${rb} ${rb} 10 0 1 ${points.P2.x} ${points.P2.y} L ${points.P3.x} ${
-    points.P3.y
-  } A ${rb} ${rb} 10 0 1 ${points.P4.x} ${
-    points.P4.y
-  } A ${r} ${r} ${theta} ${angle > Math.PI ? 1 : 0} 0 0 -${r} Z" ${attributes.join(" ")}/>`;
+  const totalAngle = directionFlag ^ isGreater
+    ? Math.abs(angles.end - angles.start)
+    : 2 * Math.PI - Math.abs(angles.end - angles.start);
+
+  const startEndpoints = calcGaugeEndpoints(
+    R,
+    r,
+    brs.start,
+    angles.start,
+    true,
+    directionFlag
+  );
+  const endEndpoints = calcGaugeEndpoints(
+    R,
+    r,
+    brs.end,
+    angles.end,
+    false,
+    directionFlag
+  );
+
+  // Calculate "d" Attribute of Path
+  let dAttr = `M ${startEndpoints.P1.x} ${startEndpoints.P1.y}`;
+  dAttr += `A ${R} ${R} 1 ${totalAngle > Math.PI ? 1 : 0} ${
+    directionFlag ? 0 : 1
+  } ${endEndpoints.P1.x} ${endEndpoints.P1.y}`;
+  if (brs.end) {
+    dAttr += `A ${brs.end} ${brs.end} 1 0 ${directionFlag ? 0 : 1} ${
+      endEndpoints.P2.x
+    } ${endEndpoints.P2.y}`;
+    dAttr += `L ${endEndpoints.P3.x} ${endEndpoints.P3.y} `;
+    dAttr += `A ${brs.end} ${brs.end} 1 0 ${directionFlag ? 0 : 1} ${
+      endEndpoints.P4.x
+    } ${endEndpoints.P4.y}`;
+  } else {
+    dAttr += `L ${endEndpoints.P2.x} ${endEndpoints.P2.y}`;
+  }
+  if (brs.start) {
+    dAttr += `A ${r} ${r} 1 ${totalAngle > Math.PI ? 1 : 0} ${
+      directionFlag ? 1 : 0
+    } ${startEndpoints.P4.x} ${startEndpoints.P4.y}`;
+
+    dAttr += `A ${brs.start} ${brs.start} 1 0 ${directionFlag ? 0 : 1} ${
+      startEndpoints.P3.x
+    } ${startEndpoints.P3.y}`;
+    dAttr += `L ${startEndpoints.P2.x} ${startEndpoints.P2.y}`;
+    dAttr += `A ${brs.start} ${brs.start} 1 0 ${directionFlag ? 0 : 1} ${
+      startEndpoints.P1.x
+    } ${startEndpoints.P1.y}`;
+  } else {
+    dAttr += `A ${r} ${r} 1 ${totalAngle > Math.PI ? 1 : 0} ${
+      directionFlag ? 1 : 0
+    } ${startEndpoints.P2.x} ${startEndpoints.P2.y}`;
+    dAttr += `L ${startEndpoints.P1.x} ${startEndpoints.P1.y}`;
+  }
+
+  let result = `<path d="${dAttr}" ${attributes.join(" ")}/>`;
 
   return new Handlebars.SafeString(result);
 }

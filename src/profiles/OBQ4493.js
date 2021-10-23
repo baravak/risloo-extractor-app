@@ -2,29 +2,104 @@ import { Profile, FS } from "../profile";
 
 const defaultSpec = {
   OBQ4493: {
-    maxValues: {
-      CP: 15,
-      ICT: 16,
-      RT: 21,
-      PC: 30,
-      G: 48,
-      Total: 132,
+    /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
+    /* calculating its dimensions carefully is of great importance */
+    profile: {
+      dimensions:
+        {} /* To be calculated in the class with the function provided */,
+      calcDim: function (spec, n) {
+        return {
+          width: spec.separator.line.width + spec.profile.padding.x * 2,
+          height:
+            spec.items.rect.distanceY * 4 +
+            spec.items.rect.height +
+            spec.raw.rect.offsetY +
+            spec.raw.rect.height +
+            spec.separator.line.offsetY +
+            spec.separator.desc.offsetY +
+            40 +
+            spec.profile.padding.y * 2,
+        };
+      },
+      padding: {
+        x: 0,
+        y: 0,
+      },
     },
-    indexLength: 3,
-    rectHeight: 30,
-    paddingX: 20,
-    paddingY: 20,
-    itemHeights: [35, 120, 205, 290, 375, 500, 625, 650],
+    /* "raw" is the general term used for total data element in the profile */
+    raw: {
+      labels: {
+        offsetY: 18,
+      },
+      maxValuesOffsetX: 10,
+      maxValue: 132,
+      rect: {
+        width: 800,
+        height: 48,
+        br: 5,
+        offsetY: 100,
+      },
+    },
+    /* "items" is the general term used for independent data elements to be drawn in the profile */
+    items: {
+      labels: {
+        offsetY: 18,
+      },
+      maxValuesOffsetX: 10,
+      maxValues: {
+        complete_performance: 15,
+        importance_and_control_of_thought: 16,
+        responsibility_and_threat_estimation: 21,
+        perfectionism_certainty: 30,
+        general: 48,
+      },
+      rect: {
+        width: 800,
+        height: 30,
+        br: 5,
+        offsetY: 70,
+        get distanceY() {
+          return this.height + this.offsetY;
+        },
+      },
+    },
+    separator: {
+      line: {
+        width: 903,
+        offsetY: 72.5,
+      },
+      desc: {
+        offsetY: 17.5,
+      },
+    },
+    /* "labels" part which has to be provided for each profile */
     labels: {
-      complete_performance: "CP",
-      importance_and_control_of_thought: "ICT",
-      responsibility_and_threat_estimation: "RT",
-      perfectionism_certainty: "PC",
-      general: "G",
-      raw: "Total",
+      complete_performance: {
+        abbr: "CP",
+        fr: "عملکرد کامل",
+      },
+      importance_and_control_of_thought: {
+        abbr: "ICT",
+        fr: "اهمیت و کنترل فکر",
+      },
+      responsibility_and_threat_estimation: {
+        abbr: "RT",
+        fr: "مسئولیت و تخمین تهدید",
+      },
+      perfectionism_certainty: {
+        abbr: "PC",
+        fr: "کمال‌گرایی / یقین",
+      },
+      general: {
+        abbr: "G",
+        fr: "عمومی",
+      },
+      raw: {
+        abbr: "T",
+        fr: "مجموع",
+      },
     },
     desc: "این آزمون هر چقدر به سمت مثبت برود، نشان‌دهنده باورهای وسواس بالاست و در صورت منفی بودن، باورهای وسواس پایین است.",
-    descRectHeight: 100,
   },
 };
 
@@ -34,27 +109,45 @@ class OBQ4493 extends Profile {
   }
 
   _calcContext() {
-    const { spec, dataset, canvas } = this;
+    const {
+      spec: {
+        parameters: { OBQ4493: spec },
+      },
+      dataset,
+    } = this;
 
-    const { indexLength, maxValues, itemHeights, descRectHeight } =
-      spec.parameters["OBQ4493"];
+    const { items: itemsSpec, raw: rawSpec } = spec;
 
-    canvas.height = itemHeights[itemHeights.length - 1] + descRectHeight;
+    // ّInit Spec (Do Not Forget To Separate Raw)
+    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
-    const num = dataset.score.values.length;
+    // Separate Raw Data from the Dataset
+    const rawData = dataset.score.pop();
 
-    const rectWidths = Object.entries(maxValues).map(
-      (entry) => 2 * entry[1] * indexLength
-    );
-    const dataWidths = dataset.score.values.map(
-      (item) => Math.abs(item) * indexLength
-    );
+    const raw = {
+      label: rawData.label,
+      mark: rawData.mark,
+      maxValue: rawSpec.maxValue,
+      width: Math.abs(
+        (rawData.mark / rawSpec.maxValue) * (rawSpec.rect.width / 2)
+      ),
+    };
+
+    const items = dataset.score.map((data) => ({
+      label: data.label,
+      mark: data.mark,
+      maxValue: itemsSpec.maxValues[data.label.eng],
+      width: Math.abs(
+        (data.mark / itemsSpec.maxValues[data.label.eng]) *
+          (itemsSpec.rect.width / 2)
+      ),
+    }));
+
+    // console.log(items);
 
     return {
-      num,
-      itemHeights,
-      rectWidths,
-      dataWidths,
+      raw,
+      items,
     };
   }
 }

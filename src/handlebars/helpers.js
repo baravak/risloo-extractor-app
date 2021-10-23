@@ -16,6 +16,7 @@ const roundToTwo = require('./helpers/roundToTwo');
 const object = require('./helpers/object');
 const array = require('./helpers/array');
 const polarToCartesian = require('./helpers/polarToCartesian');
+const abs = require('./helpers/abs');
 
 const gauge = require('./helpers/profiles/gauge')
 
@@ -38,6 +39,7 @@ const helpers = {
   object,
   array,
   polarToCartesian,
+  abs,
   gauge
 };
 

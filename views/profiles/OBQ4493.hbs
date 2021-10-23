@@ -1,30 +1,59 @@
-<% layout('../layout.eta') %>
+{{#> layout}}
 
-<g  transform="translate(<%= it.canvas.computedWidth / 2 %>, <%= it.canvas.headerHeight %>)" font-family="Dana-FaNum">
-  <% it.rectWidths.forEach(function(item, index){ %>
-    <text x="0" y="<%= it.itemHeights[index] %>" font-size="16" font-weight="700" text-anchor="middle" dy="5" fill="#4B5563"><%= it.dataset.score.keys[index] %></text>
-    <g transform="translate(0, <%= it.spec.paddingY %>)" font-size="14">
-      <rect x="0" y="<%= it.itemHeights[index] %>" transform="translate(-<%= item / 2 %>, 0)" width="<%= item %>" height="<%= it.spec.rectHeight %>" fill="#E5E7EB"/>
-      <text x="0" y="<%= it.itemHeights[index] %>" transform="translate(<%= it.spec.paddingX + item / 2 %>, <%= it.spec.rectHeight / 2 %>)" text-anchor="middle" dy="4" fill="#9CA3AF">+<%= it.spec.maxValues[it.dataset.score.keys[index]] %></text>
-      <text x="0" y="<%= it.itemHeights[index] %>" transform="translate(-<%= it.spec.paddingX + item / 2 %>, <%= it.spec.rectHeight / 2 %>)" text-anchor="middle" dy="4" fill="#9CA3AF">-<%= it.spec.maxValues[it.dataset.score.keys[index]] %></text>
-      <g transform="scale(<%= (it.dataset.score.values[index] < 0) ? -1 : 1 %>, 1)">
-        <rect x="0" y="<%= it.itemHeights[index] %>" width="<%= it.dataWidths[index] %>" height="<%= it.spec.rectHeight %>" fill="<%= (it.dataset.score.values[index] < 0) ? '#007BA4' : '#991B1B' %>"/>
-        <text x="0" y="<%= it.itemHeights[index] %>" transform="translate(<%= it.dataWidths[index] / 2%>, <%= it.spec.rectHeight / 2 %>) scale(<%= (it.dataset.score.values[index] < 0) ? -1 : 1 %>, 1)" text-anchor="middle" dy="4" fill="white">
-          <%= (it.dataset.score.values[index] > 0) ? '+' : '' %><%= it.dataset.score.values[index] %>
-        </text>
+<defs>
+  {{#with spec.items.rect as | rect |}}
+  <clipPath id="items-rect">
+    <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" rx="{{rect.br}}"/>
+  </clipPath>
+  {{/with}}
+  {{#with spec.raw.rect as | rect |}}
+  <clipPath id="raw-rect">
+    <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" rx="{{rect.br}}"/>
+  </clipPath>
+  {{/with}}
+</defs>
+
+<g font-family="Dana-FaNum" transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{math spec.profile.padding.y '+' 30}})">
+  {{#each items as | item itemIndex |}}
+    {{#with @root.spec.items}}
+    <g transform="translate(0, {{math itemIndex '*' rect.distanceY}})">
+      <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" fill="#F4F4F5" transform="translate(-{{math rect.width '/' 2}}, 0)" clip-path="url(#items-rect)"/>
+      {{setVar "isPositive" (boolean item.mark '>' 0)}}
+      <rect x="0" y="0" width="{{item.width}}" height="{{rect.height}}" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" transform="scale({{ternary isPositive 1 -1}}, 1)"/>
+      <g transform="translate({{ternary isPositive item.width (math -1 '*' item.width)}}, 0)">
+        <line x1="0" y1="-2" x2="0" y2="-8" stroke="{{ternary isPositive '#B91C1C' '#007BA4'}}" stroke-dasharray="2" stroke-linecap="round" stroke-width="1"/>
+        <text x="0" y="-20" text-anchor="middle" font-size="16" font-weight="600" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" dy="5">{{abs item.mark}}{{ternary isPositive '+' '-'}}</text>
       </g>
-  </g>
-  <% }) %>
-  <text x="50%" y="<%= it.itemHeights[it.num] %>" transform="translate(-<%= it.spec.paddingX %>, 0)" font-size="18" text-anchor="end" dy="6" fill="#6B7280"><%= it.spec.desc %></text>
-  <g transform="translate(<%= -it.canvas.computedWidth / 2 %>, <%= it.itemHeights[it.num + 1] %>)" font-size="16" fill="#6B7280">
-    <rect x="0" y="0" width="100%" height="<%= it.spec.descRectHeight %>" fill="#F3F4F6"/>
-    <text x="0" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(<%= it.spec.paddingX %>, -<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">CP:</tspan> عملکرد کامل</text>
-    <text x="0" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(<%= it.spec.paddingX %>, +<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">PC:</tspan> کمال‌گرایی / یقین</text>
-
-    <text x="35%" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(0, -<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">ICT:</tspan> اهمیت و کنترل فکر</text>
-    <text x="35%" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(0, +<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">G:</tspan> عمومی</text>
-
-    <text x="70%" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(0, -<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">RT:</tspan> مسئولیت و تخمین تهدید</text>
-    <text x="70%" y="<%= it.spec.descRectHeight / 2 %>" transform="translate(0, +<%= it.spec.paddingY %>)" text-anchor="start"><tspan font-weight="700" dy="5">Total:</tspan> مجموع</text>
+      <g transform="translate(0, {{math rect.height '/' 2}})">
+        <line x1="0" y1="{{math (math rect.height '/' 2) '+' 1}}" x2="0" y2="-{{math (math rect.height '/' 2) '+' 1}}" stroke="#A1A1AA" stroke-dasharray="2.5" stroke-linecap="round" stroke-width="1"/>
+        <text x="{{math (math rect.width '/' 2) '+' maxValuesOffsetX}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{item.maxValue}}+</text>
+        <text x="{{math -1 '*' (math (math rect.width '/' 2) '+' maxValuesOffsetX)}}" y="0" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{item.maxValue}}-</text>
+      </g>
+      <text x="0" y="{{math rect.height '+' labels.offsetY}}" text-anchor="middle" font-size="14" font-weight="500" fill="#52525B" dy="4">{{item.label.fr}} ({{item.label.abbr}})</text>
+    </g>
+    {{/with}}
+  {{/each}}
+  <g transform="translate(0, {{math (math (math (math items.length '-' 1) '*' spec.items.rect.distanceY) '+' spec.items.rect.height) '+' spec.raw.rect.offsetY}})">
+    {{#with @root.spec.raw}}
+      <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" fill="#F4F4F5" transform="translate(-{{math rect.width '/' 2}}, 0)" clip-path="url(#raw-rect)"/>
+      {{setVar "isPositive" (boolean ../raw.mark '>' 0)}}
+      <rect x="0" y="0" width="{{../raw.width}}" height="{{rect.height}}" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" transform="scale({{ternary isPositive 1 -1}}, 1)"/>
+      <g transform="translate({{ternary isPositive ../raw.width (math -1 '*' ../raw.width)}}, 0)">
+        <line x1="0" y1="-2" x2="0" y2="-8" stroke="{{ternary isPositive '#B91C1C' '#007BA4'}}" stroke-dasharray="2" stroke-linecap="round" stroke-width="1"/>
+        <text x="0" y="-20" text-anchor="middle" font-size="16" font-weight="600" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" dy="5">{{abs ../raw.mark}}{{ternary isPositive '+' '-'}}</text>
+      </g>
+      <g transform="translate(0, {{math rect.height '/' 2}})">
+        <line x1="0" y1="{{math (math rect.height '/' 2) '+' 1}}" x2="0" y2="-{{math (math rect.height '/' 2) '+' 1}}" stroke="#A1A1AA" stroke-dasharray="2.5" stroke-linecap="round" stroke-width="1"/>
+        <text x="{{math (math rect.width '/' 2) '+' maxValuesOffsetX}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{../raw.maxValue}}+</text>
+        <text x="{{math -1 '*' (math (math rect.width '/' 2) '+' maxValuesOffsetX)}}" y="0" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{../raw.maxValue}}-</text>
+      </g>
+      <text x="0" y="{{math rect.height '+' labels.offsetY}}" text-anchor="middle" font-size="14" font-weight="500" fill="#52525B" dy="4">{{../raw.label.fr}} ({{../raw.label.abbr}})</text>
+    {{/with}}
+    <g transform="translate(0, {{math spec.raw.rect.height '+' spec.separator.line.offsetY}})">
+      <line x1="{{math (math -1 '*' spec.separator.line.width) '/' 2}}" y1="0" x2="{{math spec.separator.line.width '/' 2}}" y2="0" stroke="#A1A1AA"/>
+      <text x="{{math spec.separator.line.width '/' 2}}" y="{{spec.separator.desc.offsetY}}" fill="#71717A" text-anchor="end" font-size="14" font-weight="400" dy="4">{{spec.desc}}</text>
+    </g>
   </g>
 </g>
+
+{{/layout}}

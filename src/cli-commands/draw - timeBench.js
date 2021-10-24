@@ -40,6 +40,7 @@ async function prepareProfileCTX(
 
     return ctx;
   } catch (err) {
+    // throw err
     throw new Error("2 (Profile JS Error): Error in Instantiating the Profile Object");
   }
 }

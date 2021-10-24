@@ -1,6 +1,6 @@
 import moment from "moment-jalaali";
 import fa from "moment/src/locale/fa";
-import QRCode from "qrcode";
+import qrCodeGenerator from "./qrcode/qrCodeGenerator"
 
 moment.locale("fa", fa);
 moment.loadPersian({ dialect: "persian-modern" });
@@ -288,24 +288,13 @@ class Spec {
               paddingX: 13,
             },
             qrcode: {
-              width: 105,
+              width: 86,
               get height() {
                 return this.width;
               },
             },
           },
         },
-        // "header-variant": {
-        //   header: {
-        //     heights: [40, 70, 40],
-        //     paddingX: 20,
-        //     iconPadding: 10,
-        //     textYPadding: 11,
-        //   },
-        //   footer: {
-        //     height: 30,
-        //   },
-        // },
       },
       ...profileSpec,
     };
@@ -331,34 +320,16 @@ export class Profile {
       dataset,
       this.spec.parameters[this.constructor.name].labels
     );
-    this._generateQRCode(this.dataset.info.id, {
-      width: 105,
-    });
+    this._generateQRCode();
     this.context = this._calcContext();
   }
 
-  _generateQRCode(id, options = {}) {
-    // qrCodeGenerator(`https://r1l.ir/${id}`);
-
-    QRCode.toString(
-      `https://r1l.ir/${id}`,
-      {
-        type: "svg",
-        maskPattern: 5,
-        version: 4,
-        errorCorrectionLevel: "S",
-        width: 100,
-        color: {
-          dark: "#000",
-          light: "#0000",
-        },
-        ...options,
-      },
-      (err, url) => {
-        if (err) console.log(err);
-        this.qrcode = url;
-      }
-    );
+  _generateQRCode() {
+    const {dataset, canvas} = this;
+    const width = canvas.sidebar.qrcode.width || 120;
+    const height = canvas.sidebar.qrcode.height || 120;
+    const data = `https://r1l.ir/${dataset.info.id}`;
+    this.qrcode = qrCodeGenerator(data, {width, height})
   }
 
   getTemplateEngineParams() {

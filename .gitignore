@@ -4,7 +4,6 @@ src/output/
 src/json
 views/functions
 src/test.js
-src/qrCodeGenerator.js
 src/chart - old version.js
 public
 node_modules

@@ -326,8 +326,8 @@ export class Profile {
 
   _generateQRCode() {
     const {dataset, canvas} = this;
-    const width = canvas.sidebar.qrcode.width || 120;
-    const height = canvas.sidebar.qrcode.height || 120;
+    const width = (canvas.sidebar && canvas.sidebar.qrcode.width) || 120;
+    const height = (canvas.sidebar && canvas.sidebar.qrcode.height) || 120;
     const data = `https://r1l.ir/${dataset.info.id}`;
     this.qrcode = qrCodeGenerator(data, {width, height})
   }

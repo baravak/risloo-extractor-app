@@ -195,7 +195,7 @@ class PIES93 extends Profile {
 
     // ّInit Spec (Do Not Forget To Separate Raw)
     spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
-    spec.items.totalHeight = spec.items.calcTotalHeight(dataset.score.length );
+    spec.items.totalHeight = spec.items.calcTotalHeight(dataset.score.length);
 
     // Gather Required Info for Raw
     const raw = {

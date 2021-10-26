@@ -3,7 +3,7 @@
     {
       "files": "*.hbs",
       "options": {
-        "printWidth": 150
+        "printWidth": 280
       }
     }
   ]

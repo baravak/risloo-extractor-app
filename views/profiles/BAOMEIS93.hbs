@@ -1,0 +1,48 @@
+{{#> layout}}
+
+<defs>
+  <pattern id="hatching" patternTransform="rotate(-25 0 0)" patternUnits="userSpaceOnUse" width="20" height="18">
+    <path d="M 0 0 L 20 0 L 20 9 L 0 9 Z" fill-opacity="0.02"/>
+  </pattern>
+  <path id="badge" d="M 0 122.1 C 40 122.1, 16.5 71.9, 74 71.9 C 125 71.9, 150 30.9, 150 -27.1 C 150 -111.1, 112 -122.1, 0 -122.1 C -112 -122.1, -150 -111.1, -150 -27.1 C -150 30.9, -125 71.9, -74 71.9 C -16.5 71.9, -40 122.1, 0 122.1"/>
+</defs>
+
+<g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  {{setVar "rootTopPos" (math (math (math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight) '+' (math spec.items.label.shape.height '/' 2)) '+' spec.items.label.shape.offsetY)}}
+  <g transform="translate(0, {{rootTopPos}})">
+    <line x1="0" y1="0" x2="{{spec.items.ticks.line.width}}" y2="0" stroke="#E4E4E7" stroke-linecap="round"/>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">0</text>
+    <line x1="0" y1="-{{spec.items.rect.base.totalHeight}}" x2="{{spec.items.ticks.line.width}}" y2="-{{spec.items.rect.base.totalHeight}}" stroke="#E4E4E7"  stroke-dasharray="8" stroke-linecap="round"/>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="-{{spec.items.rect.base.totalHeight}}" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">تشکیل هویت</text>
+    <line x1="0" y1="-{{math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight}}" x2="{{spec.items.ticks.line.width}}" y2="-{{math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight}}" stroke="#E4E4E7"  stroke-dasharray="8" stroke-linecap="round"/>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="-{{math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight}}" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">{{spec.items.maxValue}}</text>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="{{spec.items.label.title.offsetY}}" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">هویت‌ها</text>
+
+    <g transform="translate({{spec.items.offsetX1}}, 0)">
+      {{#each items as | item index |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          <g transform="translate({{math index '*' itemsSpec.distanceX}}, 0)">
+            <text x="-{{itemsSpec.thresholdsNumber.offsetX}}" y="-{{math itemsSpec.rect.base.totalHeight '-' itemsSpec.thresholdsNumber.offsetY}}" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="2.5">{{lookup itemsSpec.thresholds item.label.eng}}</text>
+            <text x="{{math itemsSpec.rect.width '/' 2}}" y="{{itemsSpec.label.title.offsetY}}" text-anchor="middle" font-size="18" font-weight="400" fill="{{ternary item.exceedThreshold item.fill '#4B5563'}}" dy="3">{{item.label.fr}}</text>
+            {{#if item.exceedThreshold}}
+              <path d="M 0 0 V -{{itemsSpec.rect.base.totalHeight}} H {{itemsSpec.rect.width}} V 0 Z" fill="#F4F4F5"/>
+              <path d="M 0 0 V -{{itemsSpec.rect.base.totalHeight}} H {{itemsSpec.rect.width}} V 0 Z" fill="url(#hatching)"/>
+              <path d="M 0 -{{itemsSpec.rect.base.totalHeight}} V -{{math item.height '-' itemsSpec.rect.body.borderRadius}} A {{itemsSpec.rect.body.borderRadius}} {{itemsSpec.rect.body.borderRadius}} 90 0 1 {{itemsSpec.rect.body.borderRadius}} -{{item.height}} H {{math itemsSpec.rect.width '-' itemsSpec.rect.body.borderRadius}} A {{itemsSpec.rect.body.borderRadius}} {{itemsSpec.rect.body.borderRadius}} 90 0 1 {{itemsSpec.rect.width}} -{{math item.height '-' itemsSpec.rect.body.borderRadius}} V -{{itemsSpec.rect.base.totalHeight}} Z" fill="{{item.fill}}"/> 
+            {{else}}
+              <path d="M 0 0 V -{{math item.height '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.base.borderRadius}} -{{item.height}} H {{math itemsSpec.rect.width '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.width}} -{{math item.height '-' itemsSpec.rect.base.borderRadius}} V 0 z" fill="#F4F4F5"/>
+              <path d="M 0 0 V -{{math item.height '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.base.borderRadius}} -{{item.height}} H {{math itemsSpec.rect.width '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.width}} -{{math item.height '-' itemsSpec.rect.base.borderRadius}} V 0 z" fill="url(#hatching)"/>
+            {{/if}}
+            <g transform="translate({{math itemsSpec.rect.width '/' 2}}, -{{math item.height '+' itemsSpec.label.shape.offsetY}})">
+              <svg width="{{itemsSpec.label.shape.width}}" height="{{itemsSpec.label.shape.height}}" x="0" y="0" viewBox="0 0 300 244.2" overflow="visible">
+                <use href="#badge" fill="{{ternary item.exceedThreshold item.fill '#9CA3AF'}}"/>
+              </svg>
+              <text x="0" y="0" text-anchor="middle" font-size="18" font-weight="600" fill="white" dy="3">{{item.mark}}</text>
+            </g>
+          </g>
+        {{/with}}
+      {{/each}}
+    </g>
+  </g>
+</g>
+
+{{/layout}}

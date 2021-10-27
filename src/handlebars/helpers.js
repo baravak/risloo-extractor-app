@@ -2,6 +2,7 @@ const boolean = require('./helpers/boolean');
 const math = require('./helpers/math');
 const ternary = require('./helpers/ternary');
 const lineWrap = require('./helpers/lineWrap');
+const wrapOnNewline = require('./helpers/wrapOnNewline');
 const ellipsisLines = require('./helpers/ellipsisLines');
 const ellipsisChars = require('./helpers/ellipsisChars');
 const setVar = require('./helpers/setVar');
@@ -25,6 +26,7 @@ const helpers = {
   math,
   ternary,
   lineWrap,
+  wrapOnNewline,
   ellipsisLines,
   ellipsisChars,
   setVar,

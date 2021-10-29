@@ -124,7 +124,7 @@ async function createPNG(xml, outputPath) {
   xml = xml.replace(/<style.*>.*<\/style>/s, "");
   const buf = Buffer.from(xml, "utf8");
   return new Promise((resolve, reject) => {
-    sharp(buf, { density: 500 }).toFile(outputPath, (err, info) => {
+    sharp(buf, { density: 100 }).toFile(outputPath, (err, info) => {
       if (err) return reject(err);
       resolve(info);
     });

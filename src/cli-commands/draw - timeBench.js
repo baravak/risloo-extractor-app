@@ -88,9 +88,11 @@ async function ensureDirExistence(dir) {
   try {
     await fs.access(dir, constants.F_OK);
   } catch (err) {
-    mkdir(dir, (err) => {
+    try {
+      await fs.mkdir(dir, { recursive: true });
+    } catch (err) {
       if (err) throw err;
-    });
+    }
   }
 }
 
@@ -115,25 +117,23 @@ async function createSVG(xml, outputPath) {
 async function createPNG(xml, outputPath) {
   xml = xml.replace(/<style.*>.*<\/style>/s, "");
   const buf = Buffer.from(xml, "utf8");
-  let png;
-  try {
-    png = await sharp(buf, { density: 500 });
-  } catch (err) {
-    if (err) throw err;
-  }
-
-  await png.toFile(outputPath, (err) => {
-    if (err) throw err;
+  return new Promise((resolve, reject) => {
+    sharp(buf, { density: 500 }).toFile(outputPath, (err, info) => {
+      if (err) return reject(err);
+      resolve(info);
+    });
   });
 }
 
-function createOutputName(options, id) {
-  return {
-    outputFileName: `${options.dev ? options.profileName : id}${
-      options.profileVariant === "with-sidebar" ? "" : ".raw"
-    }${options.measure ? "-m" : ""}`,
-    outputPath: path.join(options.outputAddress, !options.dev ? id : ""),
-  };
+function createOutputName(options) {
+  const fileName = path.basename(
+    options.inputData,
+    path.extname(options.inputData)
+  );
+  const outputFileName = `${options.name || fileName}${
+    options.profileVariant === "with-sidebar" ? "" : ".raw"
+  }${options.measure ? "-m" : ""}`;
+  return outputFileName;
 }
 
 async function createProfile(options, dataset) {
@@ -160,10 +160,7 @@ async function createProfile(options, dataset) {
     } Seconds`
   );
 
-  const { outputFileName, outputPath } = createOutputName(
-    options,
-    ctx.dataset.info.id
-  );
+  const outputFileName = createOutputName(options);
 
   dates[4] = Date.now();
 
@@ -171,7 +168,7 @@ async function createProfile(options, dataset) {
     `Output Name Finished! It Took ${(dates[4] - dates[3]) / 1000} Seconds`
   );
 
-  await ensureDirExistence(outputPath);
+  await ensureDirExistence(options.outputAddress);
 
   dates[5] = Date.now();
 
@@ -181,11 +178,11 @@ async function createProfile(options, dataset) {
     } Seconds`
   );
 
-  createSVG(xml, path.join(outputPath, `${outputFileName}.svg`));
+  await createSVG(xml, path.join(options.outputAddress, `${outputFileName}.svg`));
   dates[6] = Date.now();
 
   console.log(`SVG Created! It Took ${(dates[6] - dates[5]) / 1000} Seconds`);
-  createPNG(xml, path.join(outputPath, `${outputFileName}.png`));
+  await createPNG(xml, path.join(options.outputAddress, `${outputFileName}.png`));
   dates[7] = Date.now();
 
   console.log(`PNG Created! It Took ${(dates[7] - dates[6]) / 1000} Seconds`);

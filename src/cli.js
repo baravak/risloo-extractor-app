@@ -46,7 +46,7 @@ function parseArgumentsIntoOptions(rawArgs) {
       new Option("-m, --measure", "measure feature in SVG").default(false)
     )
 
-    .addOption(new Option("-v, --dev", "dev mode").default(false))
+    .addOption(new Option("-n, --name <name>", "name of output profile"))
 
     .action((profileName, options, command) => {
       output = {

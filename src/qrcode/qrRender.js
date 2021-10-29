@@ -233,6 +233,7 @@ export const qrRender = (qrData, customOptions, cb) => {
     <g id="qr" style="color: ${moduleColor}">${qrSvg}</g>
   </defs>
   <g clip-path="url(#main-mask)">
+    <rect x="0" y="0" width="${options.width || 250}" height="${options.height || 250}" fill="transparent"/>
     <use x="0" y="0" xlink:href="#qr" transform="scale(1)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
   </g>
 </svg>

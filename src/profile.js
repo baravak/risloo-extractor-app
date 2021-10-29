@@ -1,6 +1,6 @@
 import moment from "moment-jalaali";
 import fa from "moment/src/locale/fa";
-import qrCodeGenerator from "./qrcode/qrCodeGenerator"
+import qrCodeGenerator from "./qrcode/qrCodeGenerator";
 
 moment.locale("fa", fa);
 moment.loadPersian({ dialect: "persian-modern" });
@@ -325,11 +325,11 @@ export class Profile {
   }
 
   _generateQRCode() {
-    const {dataset, canvas} = this;
+    const { dataset, canvas } = this;
     const width = (canvas.sidebar && canvas.sidebar.qrcode.width) || 120;
     const height = (canvas.sidebar && canvas.sidebar.qrcode.height) || 120;
-    const data = `https://r1l.ir/${dataset.info.id}`;
-    this.qrcode = qrCodeGenerator(data, {width, height})
+    const data = `https://r1l.ir/${dataset.info.id}/?utm_source=risloo.ir&utm_medium=profile&utm_campaign=${dataset.info.id}`;
+    this.qrcode = { link: data, svg: qrCodeGenerator(data, { width, height }) };
   }
 
   getTemplateEngineParams() {

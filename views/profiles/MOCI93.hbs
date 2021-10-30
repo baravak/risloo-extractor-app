@@ -11,7 +11,7 @@
             <rect x="0" y="{{math @root.spec.items.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.items.rect.width}}" height="{{@root.spec.items.rect.height}}"/>
             {{#if @last}}
               <g transform="translate({{math @root.spec.items.rect.width '/' 2}}, {{math (math @root.spec.items.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.items.rect.height '/' 2)}})">
-                <text x="0" y="0" font-size="18" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)">{{item.maxValue}}</text>
+                <text x="0" y="0" font-size="18" font-weight="500" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)">{{item.maxValue}}</text>
               </g>
             {{/if}}
           {{/forLoop}}
@@ -21,7 +21,7 @@
               <rect x="0" y="{{math @root.spec.items.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.items.rect.width}}" height="{{@root.spec.items.rect.height}}"  fill-opacity="{{math (math (math (math (math 0.5 '/' (math (math item.maxValue '/' @root.spec.items.step) '-' 1)) '*' (math @i '-' 1)) '+' 0.5) '*' 100) '/' 100}}"/>
               {{#if @last}}
                 <g transform="translate({{math @root.spec.items.rect.width '/' 2}}, {{math (math @root.spec.items.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.items.rect.height '/' 2)}})">
-                  <text x="0" y="0" font-size="22" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)">{{item.mark}}</text>
+                  <text x="0" y="0" font-size="22" font-weight="500" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)">{{item.mark}}</text>
                 </g>
               {{/if}}
             {{/forLoop}}
@@ -38,7 +38,7 @@
               <rect x="0" y="{{math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.raw.rect.width}}" height="{{@root.spec.raw.rect.height}}"/>
               {{#if @last}}
                 <g transform="translate({{math @root.spec.raw.rect.width '/' 2}}, {{math (math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.raw.rect.height '/' 2)}})">
-                  <text x="0" y="0" font-size="18" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)">{{@root.spec.raw.maxValue}}</text>
+                  <text x="0" y="0" font-size="18" font-weight="500" fill="#D1D5DB" text-anchor="middle" dy="5.5" transform="scale(1, -1)">{{@root.spec.raw.maxValue}}</text>
                 </g>
               {{/if}}
             {{/forLoop}}
@@ -48,7 +48,7 @@
               <rect x="0" y="{{math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)}}" width="{{@root.spec.raw.rect.width}}" height="{{@root.spec.raw.rect.height}}"  fill-opacity="{{math (math (math (math (math 0.5 '/' (math (math @root.spec.raw.maxValue '/' @root.spec.raw.step) '-' 1)) '*' (math @i '-' 1)) '+' 0.5) '*' 100) '/' 100}}"/>
               {{#if @last}}
                 <g transform="translate({{math @root.spec.raw.rect.width '/' 2}}, {{math (math @root.spec.raw.rect.distanceY '*' (math @i '-' 1)) '+' (math @root.spec.raw.rect.height '/' 2)}})">
-                  <text x="0" y="0" font-size="22" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)">{{@root.raw.mark}}</text>
+                  <text x="0" y="0" font-size="22" font-weight="500" fill="white" text-anchor="middle" dy="8" transform="scale(1, -1)">{{@root.raw.mark}}</text>
                 </g>
               {{/if}}
             {{/forLoop}}

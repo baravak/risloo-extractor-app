@@ -48,10 +48,10 @@ const defaultSpec = {
       },
       dataPoints: {
         maxValue: 20 /* Maximum value of marks provided by the dataset */,
-        radius: 15 /* Radius of the circle of the data point */,
+        radius: 12 /* Radius of the circle of the data point */,
         fills: [
+          "#166534",
           "#DC2626",
-          "#047857",
           "#D97706",
         ] /* Colors used for theming data points */,
       },

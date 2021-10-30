@@ -45,13 +45,13 @@ const defaultSpec = {
       maxValue: 225, /* Maximum value of items mark */
       markToRadius: FS.createLine(
         { x: 45, y: 50 },
-        { x: 225, y: 90 }
+        { x: 225, y: 80 }
       ) /* The function used for converting mark to the radius of the circle */,
       get maxRadius() {
         return this.markToRadius(this.maxValue);
       },  /* Maximum radius of items circle */
       offset: {
-        x: 20 /* Horizontal offset between items */,
+        x: 10 /* Horizontal offset between items */,
         y: 10 /* Vertical offset between items and their labels */,
       },
       get distance() {

@@ -1,5 +1,4 @@
 import { Command, Option } from "commander/esm.mjs";
-import draw from "./cli-commands/draw";
 
 const program = new Command();
 
@@ -48,6 +47,8 @@ function parseArgumentsIntoOptions(rawArgs) {
 
     .addOption(new Option("-n, --name <name>", "name of output profile"))
 
+    .addOption(new Option("-b, --benchmark", "time benchmarking"))
+
     .action((profileName, options, command) => {
       output = {
         command: command.name(),
@@ -72,6 +73,7 @@ export function cli(args) {
 
   switch (options.command) {
     case "draw":
+      const draw = require(`./cli-commands/draw${options.benchmark ? "_benchmark" : ""}`)
       draw(options)
         .then(() => console.log("0 (Success): Profile Successfully Created!"))
         .catch((err) => console.error(err));

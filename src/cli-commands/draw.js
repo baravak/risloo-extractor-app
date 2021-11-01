@@ -166,7 +166,7 @@ async function createProfile(options, dataset) {
   );
 }
 
-export default async function draw(options) {
+async function draw(options) {
   // Suppose that both input & output type are "local"
 
   const dataset = await loadInputDataFile(options.inputData);
@@ -181,3 +181,5 @@ export default async function draw(options) {
     await createProfile(options, dataset);
   }
 }
+
+module.exports = draw;

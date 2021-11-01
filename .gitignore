@@ -7,8 +7,6 @@ src/test.js
 src/chart - old version.js
 public
 node_modules
-src/profiles/Test.js
-views/profiles/Test.eta
+src/profiles/empty.js
+views/profiles/empty.hbs
 views/measure.js
-views/header.eta
-views/footer.eta

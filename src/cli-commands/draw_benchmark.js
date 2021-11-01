@@ -4,12 +4,13 @@ import path from "path";
 import { Buffer } from "buffer";
 import sharp from 'sharp';
 const Handlebars = require("../handlebars/init");
+const Benchmarker = require('./Benchmarker')
 
 // Profiles JS Files and Template Files Directory
 const profilesJSDir = path.join(__dirname, "..", "profiles");
 const profilesTemplatesDir = path.join(__dirname, "..", "..", "views", "profiles");
 
-let dates = [];
+const benchmarker = new Benchmarker();
 
 async function loadInputDataFile(inputData) {
   // Check Whether Input Data File Exists or Not
@@ -28,15 +29,26 @@ async function prepareProfileCTX(
   profileVariant,
   measure
 ) {
+
+  benchmarker.start("Context Creation");
+
   const profileClass = await loadProfileJSFile(profileName);
+
+  benchmarker.addStep("JS File Loading");
 
   try {
     const profileObj = new profileClass(dataset, profileVariant);
+
+    benchmarker.addStep("Profile Object Instantiating");
+
     const ctx = {
       ...profileObj.getTemplateEngineParams(),
       variant: profileVariant,
       measure: measure,
     };
+
+    benchmarker.addStep("CTX calculation");
+    benchmarker.end();
 
     return ctx;
   } catch (err) {
@@ -46,16 +58,29 @@ async function prepareProfileCTX(
 }
 
 async function loadProfileJSFile(profileName) {
+
+  benchmarker.start("JS File Loading");
+
   const jsFileDir = path.join(profilesJSDir, `${profileName}.js`);
+
+  benchmarker.addStep("Path Joining");
 
   // Check Whether JS File Exists or Not
   try {
     await fs.access(jsFileDir, constants.F_OK);
+
+    benchmarker.addStep("JS File Existence Checking");
+
   } catch (err) {
     throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
   }
 
-  return require(jsFileDir);
+  const profile = require(jsFileDir);
+
+  benchmarker.addStep("JS File Require");
+  benchmarker.end();
+
+  return profile;
 }
 
 async function loadProfileTemplateFile(profileName) {
@@ -97,6 +122,9 @@ async function ensureDirExistence(dir) {
 }
 
 async function createSVG(xml, outputPath) {
+
+  benchmarker.start("SVG Creation");
+
   const mapObj = {
     'text-anchor="start"': 'text-anchor="end"',
     'text-anchor="end"': 'text-anchor="start"',
@@ -107,20 +135,39 @@ async function createSVG(xml, outputPath) {
     (matched) => mapObj[matched]
   );
 
+  benchmarker.addStep("XML Replace");
+
   try {
     await fs.writeFile(outputPath, svg);
+
+    benchmarker.addStep("Writing SVG File");
+    benchmarker.end();
+
   } catch (err) {
     if (err) throw err;
   }
 }
 
 async function createPNG(xml, outputPath) {
+
+  benchmarker.start("PNG Creation");
+
   xml = xml.replace(/<style.*>.*<\/style>/s, "");
+
+  benchmarker.addStep("XML Removing Style");
+
   const buf = Buffer.from(xml, "utf8");
+
+  benchmarker.addStep("Buffer From String");
+
   return new Promise((resolve, reject) => {
     sharp(buf, { density: 100 }).toFile(outputPath, (err, info) => {
       if (err) return reject(err);
       resolve(info);
+
+      benchmarker.addStep("Sharp Resolving");
+      benchmarker.end();
+
     });
   });
 }
@@ -137,6 +184,7 @@ function createOutputName(options) {
 }
 
 async function createProfile(options, dataset) {
+  
   const ctx = await prepareProfileCTX(
     options.profileName,
     dataset,
@@ -144,63 +192,39 @@ async function createProfile(options, dataset) {
     options.measure
   );
 
-  dates[2] = Date.now();
-
-  console.log(
-    `Context Creating Finished! It Took ${(dates[2] - dates[1]) / 1000} Seconds`
-  );
+  benchmarker.addStep("Context Creation");
 
   const xml = await renderTemplate(options.profileName, ctx);
 
-  dates[3] = Date.now();
-
-  console.log(
-    `Handlebars Rendering Finished! It Took ${
-      (dates[3] - dates[2]) / 1000
-    } Seconds`
-  );
+  benchmarker.addStep("Handlebars Rendering");
 
   const outputFileName = createOutputName(options);
 
-  dates[4] = Date.now();
-
-  console.log(
-    `Output Name Finished! It Took ${(dates[4] - dates[3]) / 1000} Seconds`
-  );
+  benchmarker.addStep("Output Name Creation");
 
   await ensureDirExistence(options.outputAddress);
 
-  dates[5] = Date.now();
-
-  console.log(
-    `Ensuring Dir Existence Finished! It Took ${
-      (dates[5] - dates[4]) / 1000
-    } Seconds`
-  );
+  benchmarker.addStep("Ensuring Dir Existence");
 
   await createSVG(xml, path.join(options.outputAddress, `${outputFileName}.svg`));
-  dates[6] = Date.now();
 
-  console.log(`SVG Created! It Took ${(dates[6] - dates[5]) / 1000} Seconds`);
+  benchmarker.addStep("SVG Creation");
+
   await createPNG(xml, path.join(options.outputAddress, `${outputFileName}.png`));
-  dates[7] = Date.now();
 
-  console.log(`PNG Created! It Took ${(dates[7] - dates[6]) / 1000} Seconds`);
-  console.log(`Total Time: ${(dates[7] - dates[0]) / 1000} Seconds`);
+  benchmarker.addStep("PNG Creation");
+
+  benchmarker.end();
 }
 
-export default async function draw(options) {
+async function draw(options) {
   // Suppose that both input & output type are "local"
 
-  dates[0] = Date.now();
+  benchmarker.start("Draw Command");
 
   const dataset = await loadInputDataFile(options.inputData);
 
-  dates[1] = Date.now();
-
-  console.log(
-    `Dataset Loading Finished! It Took ${(dates[1] - dates[0]) / 1000} Seconds`
-  );
+  benchmarker.addStep('Dataset Loading');
 
   if (options.profileVariant === "both") {
     await createProfile({ ...options, profileVariant: "raw" }, dataset);
@@ -212,3 +236,5 @@ export default async function draw(options) {
     await createProfile(options, dataset);
   }
 }
+
+module.exports = draw;

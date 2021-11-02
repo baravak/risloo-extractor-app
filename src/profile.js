@@ -142,8 +142,8 @@ class Dataset {
     for (let field of fields) {
       let temp = prerequisites.find((item) => item.label === field.eng);
       if (temp)
-        if (temp.answer.type !== "select") field.value = temp.user_answered;
-        else field.value = temp.answer.options[temp.user_answered - 1];
+        if (temp.answer.type !== "select") field.value = temp.user_answered || "-";
+        else field.value = temp.answer.options[temp.user_answered - 1] || "-";
     }
 
     // Create Data Array with Label and Mark Taken from Dataset
@@ -342,6 +342,9 @@ export class Profile {
       qrcode,
       context,
     } = this;
+
+    console.log(dataset)
+    console.log(dataset.info.fields)
 
     return {
       canvas,

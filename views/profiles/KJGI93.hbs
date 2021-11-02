@@ -25,16 +25,16 @@
           width="{{@root.spec.interpretRects.width}}"
           height="{{@root.spec.interpretRects.height}}"
           transform="translate(-{{math @root.spec.interpretRects.width '/' 2}}, -{{math @root.spec.interpretRects.height '/' 2}})"
-          fill="{{ternary (boolean label '==' @root.interpret) '#007BA4' '#F9FAFB'}}"
+          fill="{{ternary (boolean label.eng '==' @root.interpret) '#007BA4' '#F9FAFB'}}"
           rx="{{@root.spec.interpretRects.borderRadius}}" />
         <text
           x="0"
           y="0"
           text-anchor="middle"
           dy="5"
-          fill="{{ternary (boolean label '==' @root.interpret) 'white' '#6B7280'}}"
-          font-weight="{{ternary (boolean label '==' @root.interpret) 'bold' 'normal'}}">
-          {{label}}
+          fill="{{ternary (boolean label.eng '==' @root.interpret) 'white' '#6B7280'}}"
+          font-weight="{{ternary (boolean label.eng '==' @root.interpret) 'bold' 'normal'}}">
+          {{label.fr}}
         </text>
       </g>
       {{/each}}

@@ -31,25 +31,25 @@ const defaultSpec = {
     },
     /* "raw" is the general term used for total data element in the profile */
     raw: {
-      maxValue: 225, /* Maximum value of raw mark */
+      maxValue: 225 /* Maximum value of raw mark */,
       markToRadius: FS.createLine(
         { x: 45, y: 90 },
         { x: 225, y: 225 }
       ) /* The function used for converting mark to the radius of the circle */,
       get maxRadius() {
         return this.markToRadius(this.maxValue);
-      }, /* Maximum radius of raw circle */
+      } /* Maximum radius of raw circle */,
     },
     /* "items" is the general term used for independent data elements to be drawn in the profile */
     items: {
-      maxValue: 225, /* Maximum value of items mark */
+      maxValue: 225 /* Maximum value of items mark */,
       markToRadius: FS.createLine(
         { x: 45, y: 50 },
         { x: 225, y: 80 }
       ) /* The function used for converting mark to the radius of the circle */,
       get maxRadius() {
         return this.markToRadius(this.maxValue);
-      },  /* Maximum radius of items circle */
+      } /* Maximum radius of items circle */,
       offset: {
         x: 10 /* Horizontal offset between items */,
         y: 10 /* Vertical offset between items and their labels */,
@@ -72,9 +72,9 @@ const defaultSpec = {
         return this.width + this.offsetX;
       } /* Horizontal distance between two adjacent interpretation rectangles */,
       labels: [
-        "احساس گناه کم",
-        "احساس گناه متوسط",
-        "احساس گناه زیاد",
+        { eng: "mild", fr: "احساس گناه کم" },
+        { eng: "moderate", fr: "احساس گناه متوسط" },
+        { eng: "severe", fr: "احساس گناه زیاد" },
       ] /* labels of interpretation rectangles */,
     },
     /* "labels" part which has to be provided for each profile */
@@ -102,11 +102,7 @@ class KJGI93 extends Profile {
     } = this;
 
     // Deconstructing the Spec of the Profile
-    let {
-      raw: rawSpec,
-      items: itemsSpec,
-      // itemHeights,
-    } = spec;
+    let { raw: rawSpec, items: itemsSpec } = spec;
 
     // Separate Raw Data from the Dataset
     let rawData = dataset.score.shift();

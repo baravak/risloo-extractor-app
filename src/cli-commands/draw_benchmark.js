@@ -30,16 +30,16 @@ async function prepareProfileCTX(
   measure
 ) {
 
-  benchmarker.start("Context Creation");
+  // benchmarker.start("Context Creation");
 
   const profileClass = await loadProfileJSFile(profileName);
 
-  benchmarker.addStep("JS File Loading");
+  // benchmarker.addStep("JS File Loading");
 
   try {
     const profileObj = new profileClass(dataset, profileVariant);
 
-    benchmarker.addStep("Profile Object Instantiating");
+    // benchmarker.addStep("Profile Object Instantiating");
 
     const ctx = {
       ...profileObj.getTemplateEngineParams(),
@@ -47,8 +47,8 @@ async function prepareProfileCTX(
       measure: measure,
     };
 
-    benchmarker.addStep("CTX calculation");
-    benchmarker.end();
+    // benchmarker.addStep("CTX calculation");
+    // benchmarker.end();
 
     return ctx;
   } catch (err) {
@@ -59,17 +59,17 @@ async function prepareProfileCTX(
 
 async function loadProfileJSFile(profileName) {
 
-  benchmarker.start("JS File Loading");
+  // benchmarker.start("JS File Loading");
 
   const jsFileDir = path.join(profilesJSDir, `${profileName}.js`);
 
-  benchmarker.addStep("Path Joining");
+  // benchmarker.addStep("Path Joining");
 
   // Check Whether JS File Exists or Not
   try {
     await fs.access(jsFileDir, constants.F_OK);
 
-    benchmarker.addStep("JS File Existence Checking");
+    // benchmarker.addStep("JS File Existence Checking");
 
   } catch (err) {
     throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
@@ -77,8 +77,8 @@ async function loadProfileJSFile(profileName) {
 
   const profile = require(jsFileDir);
 
-  benchmarker.addStep("JS File Require");
-  benchmarker.end();
+  // benchmarker.addStep("JS File Require");
+  // benchmarker.end();
 
   return profile;
 }
@@ -123,7 +123,7 @@ async function ensureDirExistence(dir) {
 
 async function createSVG(xml, outputPath) {
 
-  benchmarker.start("SVG Creation");
+  // benchmarker.start("SVG Creation");
 
   const mapObj = {
     'text-anchor="start"': 'text-anchor="end"',
@@ -135,13 +135,13 @@ async function createSVG(xml, outputPath) {
     (matched) => mapObj[matched]
   );
 
-  benchmarker.addStep("XML Replace");
+  // benchmarker.addStep("XML Replace");
 
   try {
     await fs.writeFile(outputPath, svg);
 
-    benchmarker.addStep("Writing SVG File");
-    benchmarker.end();
+    // benchmarker.addStep("Writing SVG File");
+    // benchmarker.end();
 
   } catch (err) {
     if (err) throw err;
@@ -150,23 +150,23 @@ async function createSVG(xml, outputPath) {
 
 async function createPNG(xml, outputPath) {
 
-  benchmarker.start("PNG Creation");
+  // benchmarker.start("PNG Creation");
 
   xml = xml.replace(/<style.*>.*<\/style>/s, "");
 
-  benchmarker.addStep("XML Removing Style");
+  // benchmarker.addStep("XML Removing Style");
 
   const buf = Buffer.from(xml, "utf8");
 
-  benchmarker.addStep("Buffer From String");
+  // benchmarker.addStep("Buffer From String");
 
   return new Promise((resolve, reject) => {
     sharp(buf, { density: 100 }).toFile(outputPath, (err, info) => {
       if (err) return reject(err);
       resolve(info);
 
-      benchmarker.addStep("Sharp Resolving");
-      benchmarker.end();
+      // benchmarker.addStep("Sharp Resolving");
+      // benchmarker.end();
 
     });
   });

@@ -56,7 +56,7 @@
                   {{/unless}}
                 {{/unless}}
               {{/each}}
-              <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 30}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'start' 'end'}}" fill="{{fill}}" font-size="24" font-weight="600" dy="6.5">{{lookup item.mark item.label.eng}}</text>
+              <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 30}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'start' 'end'}}" fill="{{fill}}" font-size="24" font-weight="600" dy="6.5">{{item.mark.value}}</text>
             {{/with}}
           </g>
         {{/with}}

@@ -117,7 +117,7 @@ class STAIY93 extends Profile {
       label: data.label,
       mark: data.mark,
       angle: this._markToAngle(
-        data.mark[data.label.eng],
+        data.mark.value,
         itemsSpec.minValue,
         itemsSpec.maxValue,
         itemsSpec[data.label.eng].circle.angles,

@@ -343,9 +343,6 @@ export class Profile {
       context,
     } = this;
 
-    console.log(dataset)
-    console.log(dataset.info.fields)
-
     return {
       canvas,
       dataset,

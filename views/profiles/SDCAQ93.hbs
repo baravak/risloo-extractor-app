@@ -47,7 +47,7 @@
   <g transform="translate({{rawLeftPos}}, {{tickTotalHeight}})">
     <path d="M 0 0 v -{{math (math spec.raw.heightCoeff '*' spec.raw.maxValue) '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math (math spec.raw.heightCoeff '*' spec.raw.maxValue) '-' spec.raw.rect.borderRadius}} z" fill="#F4F4F5"/>
     <path d="M 0 0 v -{{math raw.height '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math raw.height '-' spec.raw.rect.borderRadius}} z" fill="#52525B"/>
-    <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="22" font-weight="700" fill="white" dy="6">{{raw.mark}}</text>
+    <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="22" font-weight="700" fill="white" dy="6" transform="translate(0, 9)">{{raw.mark}}</text>
     <text x="0" y="-22" text-anchor="start" font--size="18" font-weight="500" fill="#71717A" dy="5" transform="rotate(-90)">نمره کل</text>
     <g transform="scale(1, -1)">
       <rect x="-1" y="0" width="{{math spec.raw.rect.width '+' 2}}" height="1" fill="#FFFFFF" rx="1"/>

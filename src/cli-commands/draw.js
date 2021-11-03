@@ -33,7 +33,7 @@ async function checkAndImport(dir) {
       return import(dir);
     })
     .catch((err) => {
-      throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
+      throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
     });
 }
 
@@ -99,8 +99,8 @@ async function createProfile(dataset, profileClass, options, promises) {
   }
 
   return promises[0]
-    .then((templateBuffer) => {
-      const template = Handlebars.compile(templateBuffer.toString(), "utf-8");
+    .then(async (templateBuffer) => {
+      const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
       xml = template(ctx);
 
       return promises[1];
@@ -135,11 +135,17 @@ async function draw(options) {
   );
 
   const promisesGroup1 = [
-    checkAndLoad(options.inputData),
-    checkAndImport(profileJSDir),
+    checkAndLoad(options.inputData).catch((err) => {
+      throw new Error("1 (Not Found): Input Data File Does Not Exist!");
+    }),
+    checkAndImport(profileJSDir).catch((err) => {
+      throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
+    }),
   ];
   const promisesGroup2 = [
-    checkAndLoad(templateFileDir),
+    checkAndLoad(templateFileDir).catch((err) => {
+      throw new Error("4 (Not Found): Profile Template File Does Not Exist");
+    }),
     ensureDirExistence(options.outputAddress),
   ];
 

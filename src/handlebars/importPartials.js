@@ -1,22 +1,31 @@
-const fs = require("fs/promises");
+const fs = require("fs");
+const { readdir } = require("fs/promises");
 const path = require("path");
 
 async function importPartials(hbs) {
   const partialsDir = path.join(__dirname, "..", "..", "views");
 
-  const partialFiles = await fs.readdir(partialsDir);
+  const partialFiles = await readdir(partialsDir);
 
-  partialFiles.forEach(async function (partialFile) {
-    const matches = /^([^.]+).(hbs|css|js)$/.exec(partialFile);
-    if (!matches) return;
-    const name = matches[1];
-    const template = await fs.readFile(
-      path.join(partialsDir, partialFile),
-      "utf-8"
-    );
+  let addPartialsPromises = partialFiles.map(
+    (partialFile) =>
+      new Promise(async function (resolve, reject) {
+        const matches = /^([^.]+).(hbs|css|js)$/.exec(partialFile);
+        if (!matches) return resolve(true);
+        const name = matches[1];
+        fs.readFile(
+          path.join(partialsDir, partialFile),
+          "utf-8",
+          (err, template) => {
+            if (err) reject(err);
+            hbs.registerPartial(name, template);
+            resolve(true);
+          }
+        );
+      })
+  );
 
-    hbs.registerPartial(name, template);
-  });
+  return Promise.all(addPartialsPromises);
 }
 
 module.exports = importPartials;

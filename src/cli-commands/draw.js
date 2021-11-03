@@ -15,91 +15,32 @@ const profilesTemplatesDir = path.join(
   "profiles"
 );
 
-async function loadInputDataFile(inputData) {
-  // Check Whether Input Data File Exists or Not
-  try {
-    await fs.access(inputData, constants.F_OK);
-  } catch (err) {
-    throw new Error("1 (Not Found): Input Data File Does Not Exist!");
-  }
-
-  return JSON.parse(await fs.readFile(inputData));
+async function checkAndLoad(dir) {
+  return fs
+    .access(dir, constants.F_OK)
+    .then(() => {
+      return fs.readFile(dir);
+    })
+    .catch((err) => {
+      throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
+    });
 }
 
-async function prepareProfileCTX(
-  profileName,
-  dataset,
-  profileVariant,
-  measure
-) {
-  const profileClass = await loadProfileJSFile(profileName);
-
-  try {
-    const profileObj = new profileClass(dataset, profileVariant);
-    const ctx = {
-      ...profileObj.getTemplateEngineParams(),
-      variant: profileVariant,
-      measure: measure,
-    };
-
-    return ctx;
-  } catch (err) {
-    // throw err
-    throw new Error(
-      "2 (Profile JS Error): Error in Instantiating the Profile Object"
-    );
-  }
-}
-
-async function loadProfileJSFile(profileName) {
-  const jsFileDir = path.join(profilesJSDir, `${profileName}.js`);
-
-  // Check Whether JS File Exists or Not
-  try {
-    await fs.access(jsFileDir, constants.F_OK);
-  } catch (err) {
-    throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
-  }
-
-  return require(jsFileDir);
-}
-
-async function loadProfileTemplateFile(profileName) {
-  const templateFileDir = path.join(profilesTemplatesDir, `${profileName}.hbs`);
-
-  // Check Whether Template File Exists or Not
-  try {
-    await fs.access(templateFileDir, constants.F_OK);
-  } catch (err) {
-    throw new Error("4 (Not Found): Profile Template File Does Not Exist");
-  }
-
-  const data = await fs.readFile(templateFileDir);
-  return data.toString();
-}
-
-async function renderTemplate(profileName, ctx) {
-  const templateFile = await loadProfileTemplateFile(profileName);
-  const template = Handlebars.compile(templateFile, "utf-8");
-  try {
-    const xml = template(ctx);
-
-    return xml;
-  } catch (err) {
-    throw err;
-  }
+async function checkAndImport(dir) {
+  return fs
+    .access(dir, constants.F_OK)
+    .then(() => {
+      return import(dir);
+    })
+    .catch((err) => {
+      throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
+    });
 }
 
 async function ensureDirExistence(dir) {
-  try {
-    await fs.access(dir, constants.F_OK);
-  } catch (err) {
-    try {
-      await fs.mkdir(dir, { recursive: true });
-    } catch (err) {
-      if (err) throw err;
-    }
-  }
+  return fs.access(dir, constants.F_OK).catch(() => {
+    return fs.mkdir(dir, { recursive: true });
+  });
 }
 
 async function createSVG(xml, outputPath) {
@@ -113,15 +54,11 @@ async function createSVG(xml, outputPath) {
     (matched) => mapObj[matched]
   );
 
-  try {
-    await fs.writeFile(outputPath, svg);
-  } catch (err) {
-    if (err) throw err;
-  }
+  return fs.writeFile(outputPath, svg);
 }
 
 async function createPNG(xml, outputPath) {
-  xml = xml.replace(/<style.*>.*<\/style>/s, "");
+  xml = xml.replace(/<style.*?>.*?<\/style>/s, "");
   const buf = Buffer.from(xml, "utf8");
   return new Promise((resolve, reject) => {
     sharp(buf, { density: 100 }).toFile(outputPath, (err, info) => {
@@ -142,44 +79,102 @@ function createOutputName(options) {
   return outputFileName;
 }
 
-async function createProfile(options, dataset) {
-  const ctx = await prepareProfileCTX(
-    options.profileName,
-    dataset,
-    options.profileVariant,
-    options.measure
-  );
-
-  const xml = await renderTemplate(options.profileName, ctx);
+async function createProfile(dataset, profileClass, options, promises) {
+  let ctx, xml;
 
   const outputFileName = createOutputName(options);
 
-  await ensureDirExistence(options.outputAddress);
+  try {
+    const profileObj = new profileClass(dataset, options.profileVariant);
+    ctx = {
+      ...profileObj.getTemplateEngineParams(),
+      variant: options.profileVariant,
+      measure: options.measure,
+    };
+  } catch (err) {
+    // throw err;
+    throw new Error(
+      "2 (Profile JS Error): Error in Instantiating the Profile Object"
+    );
+  }
 
-  await createSVG(
-    xml,
-    path.join(options.outputAddress, `${outputFileName}.svg`)
-  );
-  await createPNG(
-    xml,
-    path.join(options.outputAddress, `${outputFileName}.png`)
-  );
+  return promises[0]
+    .then((templateBuffer) => {
+      const template = Handlebars.compile(templateBuffer.toString(), "utf-8");
+      xml = template(ctx);
+
+      return promises[1];
+    })
+    .then(() => {
+      return Promise.all([
+        createSVG(
+          xml,
+          path.join(options.outputAddress, `${outputFileName}.svg`)
+        ),
+        createPNG(
+          xml,
+          path.join(options.outputAddress, `${outputFileName}.png`)
+        ),
+      ]);
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
 
 async function draw(options) {
   // Suppose that both input & output type are "local"
 
-  const dataset = await loadInputDataFile(options.inputData);
+  // Directory of profile JS file
+  const profileJSDir = path.join(profilesJSDir, `${options.profileName}.js`);
 
-  if (options.profileVariant === "both") {
-    await createProfile({ ...options, profileVariant: "raw" }, dataset);
-    await createProfile(
-      { ...options, profileVariant: "with-sidebar" },
-      dataset
-    );
-  } else {
-    await createProfile(options, dataset);
-  }
+  // Directory of profile template file
+  const templateFileDir = path.join(
+    profilesTemplatesDir,
+    `${options.profileName}.hbs`
+  );
+
+  const promisesGroup1 = [
+    checkAndLoad(options.inputData),
+    checkAndImport(profileJSDir),
+  ];
+  const promisesGroup2 = [
+    checkAndLoad(templateFileDir),
+    ensureDirExistence(options.outputAddress),
+  ];
+
+  return new Promise(function (resolve, reject) {
+    Promise.all(promisesGroup1)
+      .then((results) => {
+        const dataset = JSON.parse(results[0]);
+        const profileClass = results[1].default;
+
+        if (options.profileVariant === "both") {
+          return Promise.all([
+            createProfile(
+              dataset,
+              profileClass,
+              { ...options, profileVariant: "with-sidebar" },
+              promisesGroup2
+            ),
+            createProfile(
+              dataset,
+              profileClass,
+              { ...options, profileVariant: "raw" },
+              promisesGroup2
+            ),
+          ]);
+        } else {
+          return createProfile(dataset, profileClass, options, promisesGroup2);
+        }
+      })
+      .then(() => resolve(true))
+      .catch((err) => reject(err));
+
+    Promise.all(promisesGroup2).catch((err) => {
+      reject(err);
+    });
+  });
 }
 
 module.exports = draw;

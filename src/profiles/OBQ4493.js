@@ -103,7 +103,7 @@ const defaultSpec = {
   },
 };
 
-class OBQ4493 extends Profile {
+export default class OBQ4493 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -151,5 +151,3 @@ class OBQ4493 extends Profile {
     };
   }
 }
-
-module.exports = OBQ4493;

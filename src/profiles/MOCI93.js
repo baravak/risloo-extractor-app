@@ -100,7 +100,7 @@ const defaultSpec = {
   },
 };
 
-class MOCI93 extends Profile {
+export default class MOCI93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -144,5 +144,3 @@ class MOCI93 extends Profile {
     return { items, raw };
   }
 }
-
-module.exports = MOCI93;

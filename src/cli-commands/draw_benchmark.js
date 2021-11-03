@@ -2,129 +2,51 @@ import fs from "fs/promises";
 import { constants } from "fs";
 import path from "path";
 import { Buffer } from "buffer";
-import sharp from 'sharp';
+import sharp from "sharp";
 const Handlebars = require("../handlebars/init");
-const Benchmarker = require('./Benchmarker')
-
-// Profiles JS Files and Template Files Directory
-const profilesJSDir = path.join(__dirname, "..", "profiles");
-const profilesTemplatesDir = path.join(__dirname, "..", "..", "views", "profiles");
+const Benchmarker = require("./Benchmarker");
 
 const benchmarker = new Benchmarker();
 
-async function loadInputDataFile(inputData) {
-  // Check Whether Input Data File Exists or Not
-  try {
-    await fs.access(inputData, constants.F_OK);
-  } catch (err) {
-    throw new Error("1 (Not Found): Input Data File Does Not Exist!");
-  }
+// Profiles JS Files and Template Files Directory
+const profilesJSDir = path.join(__dirname, "..", "profiles");
+const profilesTemplatesDir = path.join(
+  __dirname,
+  "..",
+  "..",
+  "views",
+  "profiles"
+);
 
-  return JSON.parse(await fs.readFile(inputData));
+async function checkAndLoad(dir) {
+  return fs
+    .access(dir, constants.F_OK)
+    .then(() => {
+      return fs.readFile(dir);
+    })
+    .catch((err) => {
+      throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
+    });
 }
 
-async function prepareProfileCTX(
-  profileName,
-  dataset,
-  profileVariant,
-  measure
-) {
-
-  // benchmarker.start("Context Creation");
-
-  const profileClass = await loadProfileJSFile(profileName);
-
-  // benchmarker.addStep("JS File Loading");
-
-  try {
-    const profileObj = new profileClass(dataset, profileVariant);
-
-    // benchmarker.addStep("Profile Object Instantiating");
-
-    const ctx = {
-      ...profileObj.getTemplateEngineParams(),
-      variant: profileVariant,
-      measure: measure,
-    };
-
-    // benchmarker.addStep("CTX calculation");
-    // benchmarker.end();
-
-    return ctx;
-  } catch (err) {
-    // throw err
-    throw new Error("2 (Profile JS Error): Error in Instantiating the Profile Object");
-  }
-}
-
-async function loadProfileJSFile(profileName) {
-
-  // benchmarker.start("JS File Loading");
-
-  const jsFileDir = path.join(profilesJSDir, `${profileName}.js`);
-
-  // benchmarker.addStep("Path Joining");
-
-  // Check Whether JS File Exists or Not
-  try {
-    await fs.access(jsFileDir, constants.F_OK);
-
-    // benchmarker.addStep("JS File Existence Checking");
-
-  } catch (err) {
-    throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
-  }
-
-  const profile = require(jsFileDir);
-
-  // benchmarker.addStep("JS File Require");
-  // benchmarker.end();
-
-  return profile;
-}
-
-async function loadProfileTemplateFile(profileName) {
-  const templateFileDir = path.join(profilesTemplatesDir, `${profileName}.hbs`);
-
-  // Check Whether Template File Exists or Not
-  try {
-    await fs.access(templateFileDir, constants.F_OK);
-  } catch (err) {
-    throw new Error("4 (Not Found): Profile Template File Does Not Exist");
-  }
-
-  const data = await fs.readFile(templateFileDir);
-  return data.toString();
-}
-
-async function renderTemplate(profileName, ctx) {
-  const templateFile = await loadProfileTemplateFile(profileName);
-  const template = Handlebars.compile(templateFile, "utf-8");
-  try {
-    const xml = template(ctx);
-
-    return xml;
-  } catch (err) {
-    throw err;
-  }
+async function checkAndImport(dir) {
+  return fs
+    .access(dir, constants.F_OK)
+    .then(() => {
+      return import(dir);
+    })
+    .catch((err) => {
+      throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
+    });
 }
 
 async function ensureDirExistence(dir) {
-  try {
-    await fs.access(dir, constants.F_OK);
-  } catch (err) {
-    try {
-      await fs.mkdir(dir, { recursive: true });
-    } catch (err) {
-      if (err) throw err;
-    }
-  }
+  return fs.access(dir, constants.F_OK).catch(() => {
+    return fs.mkdir(dir, { recursive: true });
+  });
 }
 
 async function createSVG(xml, outputPath) {
-
-  // benchmarker.start("SVG Creation");
-
   const mapObj = {
     'text-anchor="start"': 'text-anchor="end"',
     'text-anchor="end"': 'text-anchor="start"',
@@ -135,39 +57,16 @@ async function createSVG(xml, outputPath) {
     (matched) => mapObj[matched]
   );
 
-  // benchmarker.addStep("XML Replace");
-
-  try {
-    await fs.writeFile(outputPath, svg);
-
-    // benchmarker.addStep("Writing SVG File");
-    // benchmarker.end();
-
-  } catch (err) {
-    if (err) throw err;
-  }
+  return fs.writeFile(outputPath, svg);
 }
 
 async function createPNG(xml, outputPath) {
-
-  // benchmarker.start("PNG Creation");
-
-  xml = xml.replace(/<style.*>.*<\/style>/s, "");
-
-  // benchmarker.addStep("XML Removing Style");
-
+  xml = xml.replace(/<style.*?>.*?<\/style>/s, "");
   const buf = Buffer.from(xml, "utf8");
-
-  // benchmarker.addStep("Buffer From String");
-
   return new Promise((resolve, reject) => {
     sharp(buf, { density: 100 }).toFile(outputPath, (err, info) => {
       if (err) return reject(err);
       resolve(info);
-
-      // benchmarker.addStep("Sharp Resolving");
-      // benchmarker.end();
-
     });
   });
 }
@@ -183,38 +82,47 @@ function createOutputName(options) {
   return outputFileName;
 }
 
-async function createProfile(options, dataset) {
-  
-  const ctx = await prepareProfileCTX(
-    options.profileName,
-    dataset,
-    options.profileVariant,
-    options.measure
-  );
-
-  benchmarker.addStep("Context Creation");
-
-  const xml = await renderTemplate(options.profileName, ctx);
-
-  benchmarker.addStep("Handlebars Rendering");
+async function createProfile(dataset, profileClass, options, promises) {
+  let ctx, xml;
 
   const outputFileName = createOutputName(options);
 
-  benchmarker.addStep("Output Name Creation");
+  try {
+    const profileObj = new profileClass(dataset, options.profileVariant);
+    ctx = {
+      ...profileObj.getTemplateEngineParams(),
+      variant: options.profileVariant,
+      measure: options.measure,
+    };
+  } catch (err) {
+    // throw err;
+    throw new Error(
+      "2 (Profile JS Error): Error in Instantiating the Profile Object"
+    );
+  }
 
-  await ensureDirExistence(options.outputAddress);
+  return promises[0]
+    .then((templateBuffer) => {
+      const template = Handlebars.compile(templateBuffer.toString(), "utf-8");
+      xml = template(ctx);
 
-  benchmarker.addStep("Ensuring Dir Existence");
-
-  await createSVG(xml, path.join(options.outputAddress, `${outputFileName}.svg`));
-
-  benchmarker.addStep("SVG Creation");
-
-  await createPNG(xml, path.join(options.outputAddress, `${outputFileName}.png`));
-
-  benchmarker.addStep("PNG Creation");
-
-  benchmarker.end();
+      return promises[1];
+    })
+    .then(() => {
+      return Promise.all([
+        createSVG(
+          xml,
+          path.join(options.outputAddress, `${outputFileName}.svg`)
+        ),
+        createPNG(
+          xml,
+          path.join(options.outputAddress, `${outputFileName}.png`)
+        ),
+      ]);
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
 
 async function draw(options) {
@@ -222,19 +130,59 @@ async function draw(options) {
 
   benchmarker.start("Draw Command");
 
-  const dataset = await loadInputDataFile(options.inputData);
+  // Directory of profile JS file
+  const profileJSDir = path.join(profilesJSDir, `${options.profileName}.js`);
 
-  benchmarker.addStep('Dataset Loading');
+  // Directory of profile template file
+  const templateFileDir = path.join(
+    profilesTemplatesDir,
+    `${options.profileName}.hbs`
+  );
 
-  if (options.profileVariant === "both") {
-    await createProfile({ ...options, profileVariant: "raw" }, dataset);
-    await createProfile(
-      { ...options, profileVariant: "with-sidebar" },
-      dataset
-    );
-  } else {
-    await createProfile(options, dataset);
-  }
+  const promisesGroup1 = [
+    checkAndLoad(options.inputData),
+    checkAndImport(profileJSDir),
+  ];
+  const promisesGroup2 = [
+    checkAndLoad(templateFileDir),
+    ensureDirExistence(options.outputAddress),
+  ];
+
+  return new Promise(function (resolve, reject) {
+    Promise.all(promisesGroup1)
+      .then((results) => {
+        const dataset = JSON.parse(results[0]);
+        const profileClass = results[1].default;
+
+        if (options.profileVariant === "both") {
+          return Promise.all([
+            createProfile(
+              dataset,
+              profileClass,
+              { ...options, profileVariant: "with-sidebar" },
+              promisesGroup2
+            ),
+            createProfile(
+              dataset,
+              profileClass,
+              { ...options, profileVariant: "raw" },
+              promisesGroup2
+            ),
+          ]);
+        } else {
+          return createProfile(dataset, profileClass, options, promisesGroup2);
+        }
+      })
+      .then(() => {
+        benchmarker.end();
+        resolve(true);
+      })
+      .catch((err) => reject(err));
+
+    Promise.all(promisesGroup2).catch((err) => {
+      reject(err);
+    });
+  });
 }
 
 module.exports = draw;

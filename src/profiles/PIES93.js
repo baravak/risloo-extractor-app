@@ -166,7 +166,7 @@ const defaultSpec = {
   },
 };
 
-class PIES93 extends Profile {
+export default class PIES93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -250,5 +250,3 @@ class PIES93 extends Profile {
     };
   }
 }
-
-module.exports = PIES93;

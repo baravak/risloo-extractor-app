@@ -73,7 +73,9 @@ export function cli(args) {
 
   switch (options.command) {
     case "draw":
-      const draw = require(`./cli-commands/draw${options.benchmark ? "_benchmark" : ""}`)
+      const draw = require(`./cli-commands/draw${
+        options.benchmark ? "_benchmark" : ""
+      }`);
       draw(options)
         .then(() => console.log("0 (Success): Profile Successfully Created!"))
         .catch((err) => console.error(err));

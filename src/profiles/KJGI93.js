@@ -88,7 +88,7 @@ const defaultSpec = {
   },
 };
 
-class KJGI93 extends Profile {
+export default class KJGI93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -133,5 +133,3 @@ class KJGI93 extends Profile {
     };
   }
 }
-
-module.exports = KJGI93;

@@ -145,7 +145,7 @@ const defaultSpec = {
   },
 };
 
-class IUS93 extends Profile {
+export default class IUS93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -224,5 +224,3 @@ class IUS93 extends Profile {
     return { raw, items };
   }
 }
-
-module.exports = IUS93;

@@ -114,7 +114,7 @@ const defaultSpec = {
   },
 };
 
-class SDCAQ93 extends Profile {
+export default class SDCAQ93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -185,5 +185,3 @@ class SDCAQ93 extends Profile {
     };
   }
 }
-
-module.exports = SDCAQ93;

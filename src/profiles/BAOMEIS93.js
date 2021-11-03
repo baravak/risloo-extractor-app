@@ -104,7 +104,7 @@ const defaultSpec = {
   },
 };
 
-class BAOMEIS93 extends Profile {
+export default class BAOMEIS93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -146,5 +146,3 @@ class BAOMEIS93 extends Profile {
     return { items };
   }
 }
-
-module.exports = BAOMEIS93;

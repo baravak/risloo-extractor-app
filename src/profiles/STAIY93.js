@@ -94,7 +94,7 @@ const defaultSpec = {
   },
 };
 
-class STAIY93 extends Profile {
+export default class STAIY93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -157,5 +157,3 @@ class STAIY93 extends Profile {
     return direction ? 2 * Math.PI - deltaTheta + theta0 : deltaTheta + theta0;
   }
 }
-
-module.exports = STAIY93;

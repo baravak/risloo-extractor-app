@@ -130,7 +130,7 @@ const defaultSpec = {
   },
 };
 
-class CERQ93 extends Profile {
+export default class CERQ93 extends Profile {
   constructor(dataset, config = {}) {
     super(dataset, config, defaultSpec);
   }
@@ -211,5 +211,3 @@ class CERQ93 extends Profile {
     return { raw, items, rawTicks, itemsTicks };
   }
 }
-
-module.exports = CERQ93;

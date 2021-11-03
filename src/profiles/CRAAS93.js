@@ -74,7 +74,7 @@ const defaultSpec = {
   },
 };
 
-export class CRAAS93 extends Profile {
+export default class CRAAS93 extends Profile {
   constructor(dataset, profileVariant, config = {}) {
     super(dataset, profileVariant, config, defaultSpec);
   }
@@ -231,5 +231,3 @@ export class CRAAS93 extends Profile {
     };
   }
 }
-
-module.exports = CRAAS93;

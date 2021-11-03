@@ -54,7 +54,7 @@ class Benchmarker {
 
     let lastBranch = branches.pop();
     const totalTime =
-      (lastBranch.timeSteps[lastBranch.currentStep] - lastBranch.timeSteps[0]) /
+      (Date.now() - lastBranch.timeSteps[0]) /
       1000;
     const timeColor = this._timeColor(totalTime);
 

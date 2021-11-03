@@ -51,8 +51,8 @@ const defaultSpec = {
         radius: 12 /* Radius of the circle of the data point */,
         fills: [
           "#166534",
-          "#DC2626",
           "#D97706",
+          "#DC2626",
         ] /* Colors used for theming data points */,
       },
     },
@@ -62,13 +62,13 @@ const defaultSpec = {
         name: "نزدیک بودن",
         type: "دلبستگی ایمن",
       },
-      anxiety: {
-        name: "اضطراب",
-        type: "دلبستگی اضطرابی-دوسوگرا",
-      },
       dependance: {
         name: "وابستگی",
         type: "دلبستگی اجتنابی",
+      },
+      anxiety: {
+        name: "اضطراب",
+        type: "دلبستگی اضطرابی-دوسوگرا",
       },
     },
   },

@@ -23,18 +23,18 @@
         {{#with @root.spec.items as | itemsSpec |}}
           <g transform="translate({{math index '*' itemsSpec.distanceX}}, 0)">
             <text x="-{{itemsSpec.thresholdsNumber.offsetX}}" y="-{{math itemsSpec.rect.base.totalHeight '-' itemsSpec.thresholdsNumber.offsetY}}" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="2.5">{{lookup itemsSpec.thresholds item.label.eng}}</text>
-            <text x="{{math itemsSpec.rect.width '/' 2}}" y="{{itemsSpec.label.title.offsetY}}" text-anchor="middle" font-size="18" font-weight="400" fill="{{ternary item.exceedThreshold item.fill '#4B5563'}}" dy="3">{{item.label.fr}}</text>
+            <text x="{{math itemsSpec.rect.width '/' 2}}" y="{{itemsSpec.label.title.offsetY}}" text-anchor="middle" font-size="18" font-weight="400" fill="{{ternary item.exceedThreshold item.fill.label '#4B5563'}}" dy="3">{{item.label.fr}}</text>
             {{#if item.exceedThreshold}}
               <path d="M 0 0 V -{{itemsSpec.rect.base.totalHeight}} H {{itemsSpec.rect.width}} V 0 Z" fill="#F4F4F5"/>
               <path d="M 0 0 V -{{itemsSpec.rect.base.totalHeight}} H {{itemsSpec.rect.width}} V 0 Z" fill="url(#hatching)"/>
-              <path d="M 0 -{{itemsSpec.rect.base.totalHeight}} V -{{math item.height '-' itemsSpec.rect.body.borderRadius}} A {{itemsSpec.rect.body.borderRadius}} {{itemsSpec.rect.body.borderRadius}} 90 0 1 {{itemsSpec.rect.body.borderRadius}} -{{item.height}} H {{math itemsSpec.rect.width '-' itemsSpec.rect.body.borderRadius}} A {{itemsSpec.rect.body.borderRadius}} {{itemsSpec.rect.body.borderRadius}} 90 0 1 {{itemsSpec.rect.width}} -{{math item.height '-' itemsSpec.rect.body.borderRadius}} V -{{itemsSpec.rect.base.totalHeight}} Z" fill="{{item.fill}}"/> 
+              <path d="M 0 -{{itemsSpec.rect.base.totalHeight}} V -{{math item.height '-' itemsSpec.rect.body.borderRadius}} A {{itemsSpec.rect.body.borderRadius}} {{itemsSpec.rect.body.borderRadius}} 90 0 1 {{itemsSpec.rect.body.borderRadius}} -{{item.height}} H {{math itemsSpec.rect.width '-' itemsSpec.rect.body.borderRadius}} A {{itemsSpec.rect.body.borderRadius}} {{itemsSpec.rect.body.borderRadius}} 90 0 1 {{itemsSpec.rect.width}} -{{math item.height '-' itemsSpec.rect.body.borderRadius}} V -{{itemsSpec.rect.base.totalHeight}} Z" fill="{{item.fill.body}}"/> 
             {{else}}
               <path d="M 0 0 V -{{math item.height '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.base.borderRadius}} -{{item.height}} H {{math itemsSpec.rect.width '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.width}} -{{math item.height '-' itemsSpec.rect.base.borderRadius}} V 0 z" fill="#F4F4F5"/>
               <path d="M 0 0 V -{{math item.height '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.base.borderRadius}} -{{item.height}} H {{math itemsSpec.rect.width '-' itemsSpec.rect.base.borderRadius}} A {{itemsSpec.rect.base.borderRadius}} {{itemsSpec.rect.base.borderRadius}} 90 0 1 {{itemsSpec.rect.width}} -{{math item.height '-' itemsSpec.rect.base.borderRadius}} V 0 z" fill="url(#hatching)"/>
             {{/if}}
             <g transform="translate({{math itemsSpec.rect.width '/' 2}}, -{{math item.height '+' itemsSpec.label.shape.offsetY}})">
               <svg width="{{itemsSpec.label.shape.width}}" height="{{itemsSpec.label.shape.height}}" x="0" y="0" viewBox="0 0 300 244.2" overflow="visible">
-                <use href="#badge" fill="{{ternary item.exceedThreshold item.fill '#9CA3AF'}}"/>
+                <use href="#badge" fill="{{ternary item.exceedThreshold item.fill.body '#9CA3AF'}}"/>
               </svg>
               <text x="0" y="0" text-anchor="middle" font-size="18" font-weight="600" fill="white" dy="3">{{item.mark}}</text>
             </g>

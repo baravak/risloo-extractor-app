@@ -86,6 +86,12 @@ const defaultSpec = {
           height: 40.88,
           offsetY: 30,
         },
+        colors: {
+          diffusion: "#EF4444",
+          foreclosure: "#FBBF24",
+          moratorium: "#3B82F6",
+          achievement: "#10B981",
+        } /* Colors used for theming labels */,
       },
     },
     /* "labels" part which has to be provided for each profile */
@@ -131,7 +137,10 @@ class BAOMEIS93 extends Profile {
               itemsSpec.rect.base.maxHeight +
             itemsSpec.rect.base.height,
       exceedThreshold: data.mark > itemsSpec.thresholds[data.label.eng],
-      fill: itemsSpec.rect.body.colors[data.label.eng],
+      fill: {
+        body: itemsSpec.rect.body.colors[data.label.eng],
+        label: itemsSpec.label.colors[data.label.eng],
+      },
     }));
 
     return { items };

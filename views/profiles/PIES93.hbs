@@ -15,7 +15,7 @@
     <g transform="translate({{spec.items.base.rect.width}}, 0)">
       {{#each itemsTicks as |tick index|}}
         <line x1="{{tick.leftPos}}" y1="0" x2="{{tick.leftPos}}" y2="{{math ../spec.items.totalHeight '+' (math 2 '*' ../spec.items.ticks.heightOffset)}}" stroke="#E5E7EB" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="2"/>
-        <text x="{{math tick.leftPos '-' ../spec.items.ticks.numberOffset.x}}" y="{{../spec.items.ticks.numberOffset.y}}" fill="#9CA3AF" text-anchor="middle" font-size="16" dy="5">{{tick.number}}</text>
+        <text x="{{math tick.leftPos '-' ../spec.items.ticks.numberOffset.x}}" y="{{../spec.items.ticks.numberOffset.y}}" fill="#9CA3AF" text-anchor="middle" font-size="16" font-weight="500" dy="5">{{tick.number}}</text>
       {{/each}}
     </g>
     <g transform="translate({{math spec.items.base.rect.width '-' spec.items.base.rect.borderRadius}}, {{spec.items.ticks.heightOffset}})">
@@ -23,7 +23,7 @@
         <g transform="translate(0, {{math (math index '*' ../spec.items.distanceY) '+' 1}})">
           <rect x="0" y="0" width="{{item.width}}" height="{{../spec.items.base.rect.height}}" rx="{{../spec.items.base.rect.borderRadius}}" fill="{{item.body.color}}" fill-opacity="{{item.body.opacity}}"/>
           <g transform="translate({{../spec.items.base.rect.borderRadius}}, {{../spec.items.base.rect.borderRadius}})">
-            <text x="{{math item.width '-' ../spec.items.base.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="22" dy="7" transform="translate(-{{../spec.items.base.rect.borderRadius}}, 0)">{{item.mark}}</text>
+            <text x="{{math item.width '-' ../spec.items.base.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6" transform="translate(-{{math ../spec.items.base.rect.borderRadius '+' 6}}, 0)">{{item.mark}}</text>
           </g>
         </g>
       {{/each}}
@@ -38,8 +38,8 @@
           <rect x="0" y="0" width="{{../spec.items.base.rect.width}}" height="{{../spec.items.base.rect.height}}" fill="{{item.baseColor}}" clip-path="url(#left-round-corner)"/>
           <g transform="translate({{../spec.items.base.rect.borderRadius}}, {{../spec.items.base.rect.borderRadius}})">
             <circle cx="0" cy="0" r="{{../spec.items.base.label.circle.radius}}" fill="white"/>
-            <text x="0" y="0" fill="{{item.baseColor}}" text-anchor="middle" dy="6.5">{{item.label.abbr}}</text>
-            <text x="{{../spec.items.base.label.offsetX}}" y="0" fill="white" text-anchor="start" dy="5.5">{{item.label.fr}}</text>
+            <text x="0" y="0" fill="{{item.baseColor}}" text-anchor="middle" font-size="20" font-weight="400" dy="6.5">{{item.label.abbr}}</text>
+            <text x="{{../spec.items.base.label.offsetX}}" y="0" fill="white" font-size="20" font-weight="500" text-anchor="start" dy="5.5">{{item.label.fr}}</text>
           </g>
         </g>
       {{/each}}
@@ -50,7 +50,7 @@
         {{#each rawTicks as |tick index|}}
           <line x1="0" y1="{{tick.bottomPos}}" x2="{{../spec.raw.ticks.line.width}}" y2="{{tick.bottomPos}}" stroke="#E5E7EB" stroke-dasharray="3" stroke-linecap="round" stroke-width="2"/>
           <g transform="translate({{math ../spec.raw.ticks.line.width '+' ../spec.raw.ticks.number.offsetX}}, {{tick.bottomPos}})">
-            <text x="0" y="0" fill="#9CA3AF" text-anchor="middle" font-size="14" dy="4" transform="scale(1, -1)">{{tick.number}}</text>
+            <text x="0" y="0" fill="#9CA3AF" text-anchor="middle" font-size="14" font-weight="500" dy="4" transform="scale(1, -1)">{{tick.number}}</text>
           </g>
         {{/each}}
       </g>
@@ -58,10 +58,10 @@
       <rect x="0" y="0" width="{{spec.raw.rect.width}}" height="{{raw.height}}" rx="{{spec.raw.rect.borderRadius}}" fill="#374151"/>
     <g transform="translate({{spec.raw.rect.borderRadius}}, {{spec.raw.rect.borderRadius}})">
       <g transform="translate(0, {{math raw.height '-' (math 2 '*' spec.raw.rect.borderRadius)}})">
-        <text x="0" y="0" fill="white" text-anchor="middle" font-size="20" dy="6.5" transform="scale(1, -1)">{{raw.mark}}</text>
+        <text x="0" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="700" dy="6.5" transform="scale(1, -1) translate(0, 12)">{{raw.mark}}</text>
       </g>
       <g>
-        <text x="0" y="0" fill="white" text-anchor="start" font-size="20" dy="4" transform="scale(1, -1) rotate(-90)">{{raw.label.fr}}</text>
+        <text x="0" y="0" fill="white" text-anchor="start" font-size="18" font-weight="500" dy="4" transform="scale(1, -1) rotate(-90)">{{raw.label.fr}}</text>
       </g>
     </g>
   </g>

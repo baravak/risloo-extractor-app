@@ -107,6 +107,10 @@ const defaultSpec = {
           width: 42 /* Width of the category label rectangle of the items */,
           borderRadius: 5 /* Border radius of the category label rectangle of the items */,
         },
+        colors: [
+          "#369379",
+          "#F26969",
+        ] /* Colors used for theming items label rectangle */,
       },
     },
     /* "labels" part which has to be provided for each profile */

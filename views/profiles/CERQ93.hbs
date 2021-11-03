@@ -23,7 +23,7 @@
   </g>
   <g transform="translate(0, {{spec.items.ticks.heightOffset}})">
     <g transform="rotate(-90) translate(-{{spec.items.totalHeights.[0]}}, 0)">
-      <rect x="0" y="0" width="{{spec.items.totalHeights.[0]}}" height="{{spec.items.label.rect.width}}" fill="{{spec.items.rect.colors.[0]}}" rx="{{spec.items.label.rect.borderRadius}}"/>
+      <rect x="0" y="0" width="{{spec.items.totalHeights.[0]}}" height="{{spec.items.label.rect.width}}" fill="{{spec.items.label.colors.[0]}}" rx="{{spec.items.label.rect.borderRadius}}"/>
       <text x="{{math spec.items.totalHeights.[0] '/' 2}}" y="{{math spec.items.label.rect.width '/' 2}}" text-anchor="middle" font-size="18" font-weight="500" fill="white" dy="5">{{raw.[0].label.fr}}</text>
     </g>
     <g transform="translate({{math spec.items.offsetX '+' spec.items.label.rect.width}}, 0)">
@@ -49,7 +49,7 @@
     <g transform="translate({{rawLeftPos}}, {{spec.items.totalHeights.[0]}})">
       <path d="M 0 0 v -{{math (math spec.raw.heightCoeff '*' spec.raw.maxValues.[0]) '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math (math spec.raw.heightCoeff '*' spec.raw.maxValues.[0]) '-' spec.raw.rect.borderRadius}} z" fill="#F4F4F5"/>
       <path d="M 0 0 v -{{math raw.[0].height '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math raw.[0].height '-' spec.raw.rect.borderRadius}} z" fill="#52525B"/>
-      <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.[0].height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="20" font-weight="700" fill="white" dy="6">{{raw.[0].mark}}</text>
+      <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.[0].height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="20" font-weight="700" fill="white" dy="6" transform="translate(0, 10)">{{raw.[0].mark}}</text>
       <text x="0" y="-22" text-anchor="start" font--size="18" font-weight="500" fill="#71717A" dy="5" transform="rotate(-90)">نمره کل</text>
       <g transform="scale(1, -1)">
         <rect x="-1" y="0" width="{{math spec.raw.rect.width '+' 2}}" height="1" fill="#FFFFFF" rx="1"/>
@@ -68,7 +68,7 @@
   </g>
   <g transform="translate(0, {{math (math spec.items.ticks.heightOffset '+' spec.items.totalHeights.[0]) '+' spec.items.offsetY2}})">
     <g transform="rotate(-90) translate(-{{spec.items.totalHeights.[1]}}, 0)">
-      <rect x="0" y="0" width="{{spec.items.totalHeights.[1]}}" height="{{spec.items.label.rect.width}}" fill="{{spec.items.rect.colors.[1]}}" rx="{{spec.items.label.rect.borderRadius}}"/>
+      <rect x="0" y="0" width="{{spec.items.totalHeights.[1]}}" height="{{spec.items.label.rect.width}}" fill="{{spec.items.label.colors.[1]}}" rx="{{spec.items.label.rect.borderRadius}}"/>
       <text x="{{math spec.items.totalHeights.[1] '/' 2}}" y="{{math spec.items.label.rect.width '/' 2}}" text-anchor="middle" font-size="18" font-weight="500" fill="white" dy="5">{{raw.[1].label.fr}}</text>
     </g>
     <g transform="translate({{math spec.items.offsetX '+' spec.items.label.rect.width}}, 0)">
@@ -93,7 +93,7 @@
     <g transform="translate({{rawLeftPos}}, {{spec.items.totalHeights.[1]}})">
       <path d="M 0 0 v -{{math (math spec.raw.heightCoeff '*' spec.raw.maxValues.[1]) '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math (math spec.raw.heightCoeff '*' spec.raw.maxValues.[1]) '-' spec.raw.rect.borderRadius}} z" fill="#F4F4F5"/>
       <path d="M 0 0 v -{{math raw.[1].height '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math raw.[1].height '-' spec.raw.rect.borderRadius}} z" fill="#52525B"/>
-      <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.[1].height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="20" font-weight="700" fill="white" dy="6">{{raw.[1].mark}}</text>
+      <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.[1].height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="20" font-weight="700" fill="white" transform="translate(0, 10)" dy="6">{{raw.[1].mark}}</text>
       <text x="0" y="-22" text-anchor="start" font--size="18" font-weight="500" fill="#71717A" dy="5" transform="rotate(-90)">نمره کل</text>
       <g transform="scale(1, -1)">
         <rect x="-1" y="0" width="{{math spec.raw.rect.width '+' 2}}" height="1" fill="#FFFFFF" rx="1"/>

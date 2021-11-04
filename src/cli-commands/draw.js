@@ -26,6 +26,26 @@ async function checkAndLoad(dir) {
     });
 }
 
+async function loadStdin() {
+  process.stdin.resume();
+  process.stdin.setEncoding("utf8");
+
+  let json = "";
+
+  process.stdin.on("data", function (chunk) {
+    json += chunk;
+  });
+
+  return new Promise(function (resolve, reject) {
+    process.stdin.on("end", function () {
+      resolve(json);
+    });
+    process.stdin.on("error", function () {
+      reject(error);
+    });
+  });
+}
+
 async function checkAndImport(dir) {
   return fs
     .access(dir, constants.F_OK)
@@ -69,10 +89,11 @@ async function createPNG(xml, outputPath) {
 }
 
 function createOutputName(options) {
-  const fileName = path.basename(
-    options.inputData,
-    path.extname(options.inputData)
-  );
+  const fileName = options.profileName;
+  // const fileName = path.basename(
+  //   options.inputData,
+  //   path.extname(options.inputData)
+  // );
   const outputFileName = `${options.name || fileName}${
     options.profileVariant === "with-sidebar" ? "" : ".raw"
   }${options.measure ? "-m" : ""}`;
@@ -100,7 +121,10 @@ async function createProfile(dataset, profileClass, options, promises) {
 
   return promises[0]
     .then(async (templateBuffer) => {
-      const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
+      const template = (await Handlebars).compile(
+        templateBuffer.toString(),
+        "utf-8"
+      );
       xml = template(ctx);
 
       return promises[1];
@@ -134,20 +158,30 @@ async function draw(options) {
     `${options.profileName}.hbs`
   );
 
-  const promisesGroup1 = [
-    checkAndLoad(options.inputData).catch((err) => {
+  // Creating initial promises
+  let datasetPromise;
+  const jsPromise = checkAndImport(profileJSDir).catch(() => {
+    throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
+  });
+  const templatePromise = checkAndLoad(templateFileDir).catch(() => {
+    throw new Error("4 (Not Found): Profile Template File Does Not Exist");
+  });
+  const ensureDirPromise = ensureDirExistence(options.outputAddress);
+
+  // Check for input type
+  if (options.inputType === "local") {
+    if (!options.inputData) throw new Error("No Input Data Provided.");
+    datasetPromise = checkAndLoad(options.inputData).catch(() => {
       throw new Error("1 (Not Found): Input Data File Does Not Exist!");
-    }),
-    checkAndImport(profileJSDir).catch((err) => {
-      throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
-    }),
-  ];
-  const promisesGroup2 = [
-    checkAndLoad(templateFileDir).catch((err) => {
-      throw new Error("4 (Not Found): Profile Template File Does Not Exist");
-    }),
-    ensureDirExistence(options.outputAddress),
-  ];
+    });
+  } else if (options.inputType === "stdin") {
+    datasetPromise = loadStdin();
+  }
+
+  // console.log(process.stdin)
+
+  const promisesGroup1 = [datasetPromise, jsPromise];
+  const promisesGroup2 = [templatePromise, ensureDirPromise];
 
   return new Promise(function (resolve, reject) {
     Promise.all(promisesGroup1)

@@ -18,14 +18,12 @@ function parseArgumentsIntoOptions(rawArgs) {
     )
     .addOption(
       new Option("-i, --input-type <type>", "input type")
-        .choices(["local", "remote", "raw-json"])
+        .choices(["local", "remote", "raw-json", "stdin"])
         .default("local")
         .makeOptionMandatory()
     )
 
-    .addOption(
-      new Option("-d, --input-data <data>", "input data").makeOptionMandatory()
-    )
+    .addOption(new Option("-d, --input-data <data>", "input data"))
 
     .addOption(
       new Option("-o, --output-type <type>", "output type")

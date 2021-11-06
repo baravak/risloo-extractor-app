@@ -55,6 +55,22 @@ function parseArgumentsIntoOptions(rawArgs) {
       };
     });
 
+  program
+    .command("test")
+    .alias("T")
+    .description("You can test commands of the cli.")
+    .addOption(
+      new Option("-c, --command-test <name>", "command name to be tested")
+        .choices(["draw"])
+        .makeOptionMandatory()
+    )
+    .action((options, command) => {
+      output = {
+        command: command.name(),
+        ...options,
+      };
+    });
+
   program.name("risloo").usage("draw <profileName> [options]");
 
   program.showHelpAfterError();
@@ -76,6 +92,12 @@ export function cli(args) {
       }`);
       draw(options)
         .then(() => console.log("0 (Success): Profile Successfully Created!"))
+        .catch((err) => console.error(err));
+      break;
+    case "test":
+      const test = require('./cli-commands/test');
+      test(options)
+        .then(() => console.log("0 (Success): Draw Command Tested Completely!"))
         .catch((err) => console.error(err));
       break;
   }

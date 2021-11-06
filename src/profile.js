@@ -132,10 +132,6 @@ class Dataset {
       { eng: "age", fr: "سن", value: "-" },
       { eng: "education", fr: "تحصیلات", value: "-" },
       { eng: "marital_status", fr: "وضعیت تأهل", value: "-" },
-      // { eng: "job", fr: "شغل", value: "-" },
-      // { eng: "economical_status", fr: "وضعیت اقتصادی", value: "-" },
-      // { eng: "reason", fr: "علت مراجعه", value: "-" },
-      // { eng: "days", fr: "تعداد روز بستری بودن", value: "-" },
     ];
 
     // Extract Fields
@@ -215,29 +211,29 @@ export class SVG {
   }
 }
 
-export class Color {
-  static colors = {
-    red: "#DC2626",
-    green: "#047857",
-    yellow: "#D97706",
-  };
+// export class Color {
+//   static colors = {
+//     red: "#DC2626",
+//     green: "#047857",
+//     yellow: "#D97706",
+//   };
 
-  static getRandomColorArr(n) {
-    const colors = Object.entries(this.colors);
-    let len = colors.length;
+//   static getRandomColorArr(n) {
+//     const colors = Object.entries(this.colors);
+//     let len = colors.length;
 
-    const output = [];
-    while (output.length < n) {
-      let ran = Math.floor(Math.random() * len);
-      let color = colors[ran][1];
-      if (!output.includes(color)) {
-        output.push(color);
-      }
-    }
+//     const output = [];
+//     while (output.length < n) {
+//       let ran = Math.floor(Math.random() * len);
+//       let color = colors[ran][1];
+//       if (!output.includes(color)) {
+//         output.push(color);
+//       }
+//     }
 
-    return output;
-  }
-}
+//     return output;
+//   }
+// }
 
 class Spec {
   constructor(config, profileSpec) {

@@ -89,11 +89,9 @@ async function createPNG(xml, outputPath) {
 }
 
 function createOutputName(options) {
-  const fileName = options.profileName;
-  // const fileName = path.basename(
-  //   options.inputData,
-  //   path.extname(options.inputData)
-  // );
+  const fileName =
+    options.inputData &&
+    path.basename(options.inputData, path.extname(options.inputData));
   const outputFileName = `${options.name || fileName}${
     options.profileVariant === "with-sidebar" ? "" : ".raw"
   }${options.measure ? "-m" : ""}`;
@@ -175,10 +173,9 @@ async function draw(options) {
       throw new Error("1 (Not Found): Input Data File Does Not Exist!");
     });
   } else if (options.inputType === "stdin") {
+    if (!options.name) throw new Error("Output File Name Not Provided!");
     datasetPromise = loadStdin();
   }
-
-  // console.log(process.stdin)
 
   const promisesGroup1 = [datasetPromise, jsPromise];
   const promisesGroup2 = [templatePromise, ensureDirPromise];

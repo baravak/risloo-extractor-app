@@ -114,13 +114,14 @@ class Canvas {
 class Dataset {
   static clean(dataset, labels) {
     // Destructure Data that is Needed
-    const {
+    let {
       id = "-",
       scale: { title = "-" } = {},
       client: { name: clientName = "-" } = {},
       room: { manager: { name: managerName = "-" } = {} } = {},
       center: { detail: { title: centerTitle = "-" } = {} } = {},
       started_at = "-",
+      scored_at = "-",
       cornometer = "-",
       prerequisites,
       score,
@@ -132,13 +133,18 @@ class Dataset {
       { eng: "age", fr: "سن", value: "-" },
       { eng: "education", fr: "تحصیلات", value: "-" },
       { eng: "marital_status", fr: "وضعیت تأهل", value: "-" },
+      // { eng: "job", fr: "شغل", value: "-" },
+      // { eng: "reason", fr: "علت مراجعه", value: "-" },
+      // { eng: "economical_situation", fr: "وضعیت اقتصادی", value: "-" },
+      // { eng: "number", fr: "تعداد روز بستری بودن", value: "-" },
     ];
 
     // Extract Fields
     for (let field of fields) {
       let temp = prerequisites.find((item) => item.label === field.eng);
       if (temp)
-        if (temp.answer.type !== "select") field.value = temp.user_answered || "-";
+        if (temp.answer.type !== "select")
+          field.value = temp.user_answered || "-";
         else field.value = temp.answer.options[temp.user_answered - 1] || "-";
     }
 
@@ -152,10 +158,12 @@ class Dataset {
     }
 
     // Change Timestamp to Proper Date Format
-    let date = "-";
-    if (started_at !== "-") {
-      date = moment(started_at * 1000).format("dddd، jYYYY.jMM.jD");
-    }
+    started_at =
+      started_at !== "-"
+        ? moment(started_at * 1000).format("dddd، jYYYY.jMM.jD")
+        : "-";
+    scored_at =
+      scored_at !== "-" ? moment(scored_at * 1000).format("jYYYY.jMM.jD") : "-";
 
     // Change Time to Hour & Minute Format
     let time = {
@@ -178,7 +186,8 @@ class Dataset {
         managerName: managerName,
         centerTitle: centerTitle,
         time: time,
-        date,
+        started_at,
+        scored_at,
         fields,
       },
       score: data,
@@ -284,7 +293,7 @@ class Spec {
               paddingX: 13,
             },
             qrcode: {
-              width: 86,
+              width: 80,
               get height() {
                 return this.width;
               },

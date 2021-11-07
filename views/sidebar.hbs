@@ -41,7 +41,7 @@
   </g>
   <g transform="translate({{canvas.profile.width}}, {{canvas.header.height}})">
     <rect x="0" y="0" width="{{canvas.sidebar.width}}" height="{{canvas.sidebar.height}}" fill="#F3F4F6" />
-    <g transform="translate(0, 32)">
+    <g transform="translate(0, 27)">
       <g transform="translate({{math canvas.sidebar.width '/' 2}}, 0)" text-anchor="middle">
         <text x="0" y="0" fill="#4B5563" font-size="12"> اتاق درمانی </text>
         {{setVar "managerNameLines" (ellipsisLines (lineWrap info.managerName 22) 2)}}
@@ -60,7 +60,7 @@
           {{/each}}
         </g>
 
-        <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, {{math (math centerTitleLines.length '*' canvas.sidebar.lineHeight.medium) '+' 14}})">
+        <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, {{math (math centerTitleLines.length '*' canvas.sidebar.lineHeight.medium) '+' 9}})">
           <g transform="translate(0, {{math canvas.sidebar.icons.offsetY '*' 0}})">
             <text
               x="0"
@@ -91,7 +91,7 @@
               text-anchor="end"
               dy="3"
               fill="#374151">
-              {{info.date}}
+              {{info.started_at}}
             </text>
             <svg
               width="{{canvas.sidebar.icons.calender.width}}"
@@ -125,7 +125,7 @@
             </svg>
           </g>
 
-          <g transform="translate(0, {{math (math canvas.sidebar.icons.offsetY '*' 2) '+' 30}})">
+          <g transform="translate(0, {{math (math canvas.sidebar.icons.offsetY '*' 2) '+' 25}})">
             {{setVar "fieldsLength" (math info.fields.length '*' canvas.sidebar.fields.offsetY)}}
             <rect x="0" y="0" width="4" height="4" fill="#D1D5DB" transform="rotate(45)" />
             <line
@@ -153,7 +153,7 @@
                     font-weight="500"
                     fill="#374151"
                     dy="3">
-                    {{ellipsisChars field.value 20}}
+                    {{ellipsisChars field.value 18}}
                   </text>
                 </g>
               {{/each}}
@@ -166,7 +166,12 @@
     <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, 215)">
       
     </g>
-    <g transform="translate({{math canvas.sidebar.width '/' 2}}, 620)">
+    <g transform="translate(0, 615)">
+      <g font-size="10" font-weight="400">
+        <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="0" text-anchor="end" fill="#71717A" dy="3">تاریخ نمره‌دهی:</text>
+        <text x="{{canvas.sidebar.padding.x}}" y="0" text-anchor="start" fill="#52525B" dy="3">{{info.scored_at}}</text>
+      </g>
+      <g transform="translate({{math canvas.sidebar.width '/' 2}}, 20)">
       <g transform="translate(-{{math canvas.sidebar.qrcode.width '/' 2}}, 0)"><a href="{{qrcode.link}}" target="_blank">{{{qrcode.svg}}}</a></g>
       <text
         class="eng-font"
@@ -176,11 +181,12 @@
         fill="#374151"
         font-size="14"
         dy="4"
-        letter-spacing="0.1em"
+        letter-spacing="0.6"
         font-family="Dana"
-        direction="ltr"
-        >{{info.id}}</text
-      >
+        direction="ltr">
+        {{info.id}}
+      </text>
+      </g>
     </g>
   </g>
 </g>

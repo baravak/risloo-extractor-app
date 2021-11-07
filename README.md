@@ -1,6 +1,6 @@
 # Introduction
 
-**Risloo Profile CLI** is a library for creating profiles for *psychological* tests in SVG and PNG format in Persian.
+**Risloo Profile CLI** is a library for creating profiles and reports for *psychological* tests.
 
 # Installation
 
@@ -12,7 +12,7 @@ npm install -g risloo-profile-cli
 
 # How Does It Work?
 
-This library is equipped with a CLI in order to create profiles.
+This library is equipped with a CLI in order to create the profiles and reports you need for your tests.
 The structure of the CLI is as follows:
 
 ### Main Structure
@@ -25,18 +25,22 @@ risloo [command]
 
 ```
 draw|D <profileName> [options]
+test|T [options]
 ```
 
 ### **draw** Command Options
 
+Using this command, you can draw profiles in SVG and PNG format for common psychological tests.
+
 ```
 -p, --profile-variant <variant>     Variant of the Profile, Choices: {both, raw, with-sidebar}, Default: both
--i, --input-type <type>             Type of Input, Choices: {local, remote, raw-json}, Default: local
+-i, --input-type <type>             Type of Input, Choices: {local, remote, raw-json, stdin}, Default: local
 -d, --input-data <data>             Input Data
 -o, --output-type <type>            Type of Output, Choices: {local, remote}, Default: local
 -a, --output-address <address>      Output Address
+-n, --name <name>                   Name of Output Profile (Required in "stdin" Input Type)
 -m, --measure                       Additional Feature for Measuring Dimensions and Distances, Default: false
--v, --dev                           Dev Mode, Default: false
+-b, --benchmark                     Time Benchmarking of Command, Default: false
 ```
 
 # CLI Status Codes

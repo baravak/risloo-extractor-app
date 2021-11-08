@@ -121,6 +121,7 @@ class Dataset {
       room: { manager: { name: managerName = "-" } = {} } = {},
       center: { detail: { title: centerTitle = "-" } = {} } = {},
       started_at = "-",
+      closed_at = "-",
       scored_at = "-",
       cornometer = "-",
       prerequisites,
@@ -160,10 +161,16 @@ class Dataset {
     // Change Timestamp to Proper Date Format
     started_at =
       started_at !== "-"
-        ? moment(started_at * 1000).format("dddd، jYYYY.jMM.jD")
+        ? moment(started_at * 1000).format("jYYYY.jMM.jD - HH:mm")
+        : "-";
+    closed_at =
+      closed_at !== "-"
+        ? moment(closed_at * 1000).format("jYYYY.jMM.jD - HH:mm")
         : "-";
     scored_at =
-      scored_at !== "-" ? moment(scored_at * 1000).format("jYYYY.jMM.jD") : "-";
+      scored_at !== "-"
+        ? moment(scored_at * 1000).format("jYYYY.jMM.jD - HH:mm")
+        : "-";
 
     // Change Time to Hour & Minute Format
     let time = {
@@ -187,6 +194,7 @@ class Dataset {
         centerTitle: centerTitle,
         time: time,
         started_at,
+        closed_at,
         scored_at,
         fields,
       },

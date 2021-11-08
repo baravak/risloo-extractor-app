@@ -1,0 +1,74 @@
+{{#> layout}}
+
+  <defs>
+    {{#with spec.raw.circle}}
+      <clipPath id="raw-circle-roll">
+        {{gauge R r (object start=brs.start end=brs.end) (object start=angles.start end=angles.end) false}}
+      </clipPath>
+    {{/with}}
+    {{#with spec.items.circle}}
+      <clipPath id="items-circle-roll">
+        {{gauge R r (object start=brs.start end=brs.end) (object start=angles.start end=angles.end) false}}
+      </clipPath>
+    {{/with}}
+  </defs>
+
+  <g font-family="Dana-FaNum" transform="translate(0, {{spec.profile.padding.y}})">
+    <g transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{spec.raw.circle.R}})">
+      {{#with spec.raw.circle}}
+        {{gauge R r (object start=0 end=0) (object start=angles.start end=angles.end) direction clip-path="url(#raw-circle-roll)" fill="#F3F4F6"}}
+        {{gauge R r (object start=0 end=0) (object start=angles.start end=@root.raw.zeta) direction clip-path="url(#raw-circle-roll)" fill=@root.spec.raw.fill fill-opacity=@root.raw.opacity}}
+      {{/with}}
+      <text x="0" y="0" text-anchor="middle" font-size="28" font-weight="600" fill="{{spec.raw.fill}}" dy="9">{{raw.mark}}</text>
+      {{#each raw.ticks as | tick |}}
+        {{setVar "rm" (math (math @root.spec.raw.circle.R '+' @root.spec.raw.circle.r) '/' 2)}}
+        {{setVar "p" (polarToCartesian rm tick.angle)}}
+        <text x="{{p.x}}" y="{{p.y}}" font-size="16" font-weight="500" fill="#D4D4D8" text-anchor="middle" dy="4" transform="translate(-{{ternary @first @root.spec.raw.ticks.number.offset 0}}, -{{ternary @last @root.spec.raw.ticks.number.offset 0}})">{{tick.number}}</text>
+      {{/each}}
+      <g transform="translate(0, {{math spec.raw.circle.R '+' spec.raw.label.offsetY}})">
+        <text x="0" y="0" font-size="20" font-weight="500" fill="{{raw.fill}}" text-anchor="middle" dy="5">{{raw.label.fr}}</text>
+      </g>
+
+      <g transform="translate(0, {{math (math spec.raw.circle.R '+' spec.items.offsetY1) '+' spec.items.circle.R}})">
+        {{#each items.[0] as |item index|}}
+          <g transform="translate({{math (lookup (object 0=3 1=1 2=-1 3=-3) index) '*' (math @root.spec.items.distanceX1 '/' 2)}}, 0)">
+            {{#with @root.spec.items.circle}}
+              {{gauge R r (object start=0 end=0) (object start=angles.start end=angles.end) direction clip-path="url(#items-circle-roll)" fill="#F3F4F6"}}
+              {{gauge R r (object start=0 end=0) (object start=angles.start end=item.zeta) direction clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}
+            {{/with}}
+            <text x="0" y="0" text-anchor="middle" font-size="18" font-weight="500" fill="{{item.fill}}" dy="5">{{item.mark}}</text>
+            {{#each item.ticks as | tick |}}
+              {{setVar "rm" (math (math @root.spec.items.circle.R '+' @root.spec.items.circle.r) '/' 2)}}
+              {{setVar "p" (polarToCartesian rm tick.angle)}}
+              <text x="{{p.x}}" y="{{p.y}}" font-size="12" font-weight="500" fill="#D4D4D8" text-anchor="middle" dy="2.5" transform="translate(-{{ternary @first @root.spec.items.ticks.number.offset 0}}, -{{ternary @last @root.spec.items.ticks.number.offset 0}})">{{tick.number}}</text>
+            {{/each}}
+            <g transform="translate(0, {{math @root.spec.items.circle.R '+' @root.spec.items.label.offsetY}})">
+              <text x="0" y="0" font-size="14" text-anchor="middle"><tspan font-weight="400" fill="#71717A" dy="5">ارتباط فرد با </tspan><tspan font-weight="500" fill="{{item.fill}}">{{item.label.fr}}</tspan></text>
+            </g>
+          </g>
+        {{/each}}
+
+        <g transform="translate(0, {{math (math spec.items.circle.R '*' 2) '+' spec.items.offsetY2}})">
+          {{#each items.[1] as |item index|}}
+            <g transform="translate({{math (lookup (object 0=0 1=1 2=-1) index) '*' @root.spec.items.distanceX2}}, 0)">
+              {{#with @root.spec.items.circle}}
+                {{gauge R r (object start=0 end=0) (object start=angles.start end=angles.end) direction clip-path="url(#items-circle-roll)" fill="#F3F4F6"}}
+                {{gauge R r (object start=0 end=0) (object start=angles.start end=item.zeta) direction clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}
+              {{/with}}
+              <text x="0" y="0" text-anchor="middle" font-size="18" font-weight="500" fill="{{item.fill}}" dy="5">{{item.mark}}</text>
+              {{#each item.ticks as | tick |}}
+                {{setVar "rm" (math (math @root.spec.items.circle.R '+' @root.spec.items.circle.r) '/' 2)}}
+                {{setVar "p" (polarToCartesian rm tick.angle)}}
+                <text x="{{p.x}}" y="{{p.y}}" font-size="12" font-weight="500" fill="#D4D4D8" text-anchor="middle" dy="2.5" transform="translate(-{{ternary @first @root.spec.items.ticks.number.offset 0}}, -{{ternary @last @root.spec.items.ticks.number.offset 0}})">{{tick.number}}</text>
+              {{/each}}
+              <g transform="translate(0, {{math @root.spec.items.circle.R '+' @root.spec.items.label.offsetY}})">
+                <text x="0" y="0" font-size="14" text-anchor="middle"><tspan font-weight="400" fill="#71717A" dy="5">ارتباط فرد با </tspan><tspan font-weight="500" fill="{{item.fill}}">{{item.label.fr}}</tspan></text>
+              </g>
+            </g>
+          {{/each}}
+        </g>
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

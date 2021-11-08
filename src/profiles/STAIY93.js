@@ -24,6 +24,7 @@ const defaultSpec = {
         y: 70,
       },
     },
+    /* "items" is the general term used for independent data elements to be drawn in the profile */
     items: {
       rect: {
         width: 180 /* Width of label rectangle */,

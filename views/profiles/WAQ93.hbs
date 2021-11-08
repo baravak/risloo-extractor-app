@@ -50,7 +50,7 @@
 
         <g transform="translate(0, {{math (math spec.items.circle.R '*' 2) '+' spec.items.offsetY2}})">
           {{#each items.[1] as |item index|}}
-            <g transform="translate({{math (lookup (object 0=0 1=1 2=-1) index) '*' @root.spec.items.distanceX2}}, 0)">
+            <g transform="translate({{math (lookup (object 0=1 1=0 2=-1) index) '*' @root.spec.items.distanceX2}}, 0)">
               {{#with @root.spec.items.circle}}
                 {{gauge R r (object start=0 end=0) (object start=angles.start end=angles.end) direction clip-path="url(#items-circle-roll)" fill="#F3F4F6"}}
                 {{gauge R r (object start=0 end=0) (object start=angles.start end=item.zeta) direction clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}

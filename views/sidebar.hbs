@@ -53,14 +53,14 @@
       </g>
 
       {{setVar "centerTitleLines" (ellipsisLines (lineWrap info.centerTitle 22) 2)}}
-      <g transform="translate(0, {{math (math (math managerNameLines.length '*' canvas.sidebar.lineHeight.medium) '+' canvas.sidebar.lineHeight.high) '+' 12}})">
+      <g transform="translate(0, {{math (math (math managerNameLines.length '*' canvas.sidebar.lineHeight.medium) '+' canvas.sidebar.lineHeight.high) '+' 5}})">
         <g transform="translate({{math canvas.sidebar.width '/' 2}}, 0)" text-anchor="middle" font-size="12" fill="#007BA4">
           {{#each centerTitleLines as |line index|}}
-            <text x="0" y="{{math ../canvas.sidebar.lineHeight.medium '*' index}}">{{line}}</text>
+            <text x="0" y="{{math ../canvas.sidebar.lineHeight.low '*' index}}">{{line}}</text>
           {{/each}}
         </g>
 
-        <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, {{math (math centerTitleLines.length '*' canvas.sidebar.lineHeight.medium) '+' 9}})">
+        <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, {{math (math centerTitleLines.length '*' canvas.sidebar.lineHeight.low) '+' 11}})">
           <g transform="translate(0, {{math canvas.sidebar.icons.offsetY '*' 0}})">
             <text
               x="0"
@@ -90,9 +90,8 @@
               font-size="12"
               text-anchor="end"
               dy="3"
-              fill="#374151">
-              {{info.started_at}}
-            </text>
+              fill="#374151"
+              xml:space="preserve">{{info.started_at}}</text>
             <svg
               width="{{canvas.sidebar.icons.calender.width}}"
               height="{{math canvas.sidebar.icons.calender.width '/' canvas.sidebar.icons.calender.ratio}}"
@@ -125,7 +124,7 @@
             </svg>
           </g>
 
-          <g transform="translate(0, {{math (math canvas.sidebar.icons.offsetY '*' 2) '+' 25}})">
+          <g transform="translate(0, {{math (math canvas.sidebar.icons.offsetY '*' 2) '+' 22}})">
             {{setVar "fieldsLength" (math info.fields.length '*' canvas.sidebar.fields.offsetY)}}
             <rect x="0" y="0" width="4" height="4" fill="#D1D5DB" transform="rotate(45)" />
             <line
@@ -141,7 +140,7 @@
               height="4"
               fill="#D1D5DB"
               transform="translate(0, {{fieldsLength}}) rotate(45)" />
-            <g transform="translate(-{{canvas.sidebar.fields.paddingX}}, 15)">
+            <g transform="translate(-{{canvas.sidebar.fields.paddingX}}, 12)">
               {{#each info.fields as |field index|}}
                 <g transform="translate(0, {{math index '*' ../canvas.sidebar.fields.offsetY}})">
                   <text x="0" y="0" text-anchor="end" font-size="12" fill="#6B7280" dy="3">{{field.fr}}</text>
@@ -166,19 +165,19 @@
     <g transform="translate({{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}, 215)">
       
     </g>
-    <g transform="translate(0, 600)">
-      <g font-size="10" font-weight="400">
+    <g transform="translate(0, 613)">
+      <g font-size="9" font-weight="400">
         <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="0" text-anchor="end" fill="#71717A" dy="3">بسته شدن:</text>
-        <text x="{{canvas.sidebar.padding.x}}" y="0" text-anchor="start" fill="#52525B" dy="3">{{info.closed_at}}</text>
-        <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="20" text-anchor="end" fill="#71717A" dy="3">نمره‌دهی:</text>
-        <text x="{{canvas.sidebar.padding.x}}" y="20" text-anchor="start" fill="#52525B" dy="3">{{info.scored_at}}</text>
+        <text x="{{canvas.sidebar.padding.x}}" y="0" text-anchor="start" fill="#52525B" dy="3.5" xml:space="preserve">{{info.closed_at}}</text>
+        <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="16" text-anchor="end" fill="#71717A" dy="3">نمره‌دهی:</text>
+        <text x="{{canvas.sidebar.padding.x}}" y="16" text-anchor="start" fill="#52525B" dy="3.5" xml:space="preserve">{{info.scored_at}}</text>
       </g>
-      <g transform="translate({{math canvas.sidebar.width '/' 2}}, 40)">
+      <g transform="translate({{math canvas.sidebar.width '/' 2}}, 34)">
       <g transform="translate(-{{math canvas.sidebar.qrcode.width '/' 2}}, 0)"><a href="{{qrcode.link}}" target="_blank">{{{qrcode.svg}}}</a></g>
       <text
         class="eng-font"
         x="0"
-        y="{{math canvas.sidebar.qrcode.height '+' 13}}"
+        y="{{math canvas.sidebar.qrcode.height '+' 11}}"
         text-anchor="middle"
         fill="#374151"
         font-size="14"

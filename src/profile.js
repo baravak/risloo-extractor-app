@@ -161,15 +161,15 @@ class Dataset {
     // Change Timestamp to Proper Date Format
     started_at =
       started_at !== "-"
-        ? moment(started_at * 1000).format("jYYYY.jMM.jD - HH:mm")
+        ? moment(started_at * 1000).format("jYYYY.jMM.jD  -  HH:mm")
         : "-";
     closed_at =
       closed_at !== "-"
-        ? moment(closed_at * 1000).format("jYYYY.jMM.jD - HH:mm")
+        ? moment(closed_at * 1000).format("jYYYY.jMM.jD  -  HH:mm")
         : "-";
     scored_at =
       scored_at !== "-"
-        ? moment(scored_at * 1000).format("jYYYY.jMM.jD - HH:mm")
+        ? moment(scored_at * 1000).format("jYYYY.jMM.jD  -  HH:mm")
         : "-";
 
     // Change Time to Hour & Minute Format
@@ -277,7 +277,7 @@ class Spec {
             lineHeight: {
               low: 19,
               medium: 20,
-              high: 22,
+              high: 21,
             },
             icons: {
               offsetY: 27,
@@ -298,7 +298,7 @@ class Spec {
             fields: {
               lineHeight: 20,
               offsetY: 46,
-              paddingX: 13,
+              paddingX: 11,
             },
             qrcode: {
               width: 80,

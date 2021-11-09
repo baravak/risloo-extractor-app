@@ -157,7 +157,8 @@ export class Dataset {
     } = dataset;
 
     // Extract Answers if test.answers === true
-    const answers = test.answers && dataset.items;
+    // *** Remember That You Should Have A Copy of Arrays Taken from Dataset
+    const answers = test.answers && [...dataset.items];
 
     // Default Fields (gender, age, education, marital status)
     let defaultFields = [
@@ -168,9 +169,10 @@ export class Dataset {
     ];
 
     // Specifying Fields that are Going to Be Extracted
+    // *** Remember That You Should Have A Copy of Arrays Taken from Spec of the Profile
     let fields = test.defaultFields
-      ? test.fields.concat(defaultFields)
-      : test.fields;
+      ? [...test.fields, ...defaultFields]
+      : [...test.fields];
 
     // Extract Fields
     for (let field of fields) {

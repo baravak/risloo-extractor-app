@@ -14,8 +14,10 @@ const tan = require('./helpers/tan');
 const toDeg = require('./helpers/toDeg');
 const toRad = require('./helpers/toRad');
 const roundToTwo = require('./helpers/roundToTwo');
+const objectEntries = require('./helpers/objectEntries');
 const object = require('./helpers/object');
 const array = require('./helpers/array');
+const reverse = require('./helpers/reverse');
 const polarToCartesian = require('./helpers/polarToCartesian');
 const abs = require('./helpers/abs');
 
@@ -38,8 +40,10 @@ const helpers = {
   toDeg,
   toRad,
   roundToTwo,
+  objectEntries,
   object,
   array,
+  reverse,
   polarToCartesian,
   abs,
   gauge

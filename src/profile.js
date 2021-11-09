@@ -5,6 +5,14 @@ import qrCodeGenerator from "./qrcode/qrCodeGenerator";
 moment.locale("fa", fa);
 moment.loadPersian({ dialect: "persian-modern" });
 
+// Implement String.prototype.format
+String.prototype.format = function () {
+  var args = arguments;
+  return this.replace(/{(\d+)}/g, function (match, number) {
+    return typeof args[number] != "undefined" ? args[number] : match;
+  });
+};
+
 export class FS {
   static calcDistance(pt1, pt2) {
     return Math.sqrt(Math.pow(pt2.x - pt1.x, 2) + Math.pow(pt2.y - pt1.y, 2));
@@ -111,8 +119,28 @@ class Canvas {
   }
 }
 
-class Dataset {
-  static clean(dataset, labels) {
+export class Dataset {
+  static merge(field1, field2, combinedFieldfr, combinedFieldFormat) {
+    const newField = {
+      eng: `combined_${field1.eng}_${field2.eng}`,
+      fr: combinedFieldfr,
+      value: combinedFieldFormat.format(field1.value, field2.value),
+    };
+
+    return newField;
+  }
+
+  static clean(dataset, spec) {
+    // Default Test Info for the Profile
+    const defaultTest = {
+      answers: false,
+      defaultFields: true,
+      fields: [],
+    };
+
+    // Destructure Required Info from Spec of the Profile
+    const { labels, test = defaultTest } = spec;
+
     // Destructure Data that is Needed
     let {
       id = "-",
@@ -128,17 +156,21 @@ class Dataset {
       score,
     } = dataset;
 
-    // Specifying Fields that are Going to Be Extracted (gender, age, education, marital status)
-    let fields = [
+    // Extract Answers if test.answers === true
+    const answers = test.answers && dataset.items;
+
+    // Default Fields (gender, age, education, marital status)
+    let defaultFields = [
       { eng: "gender", fr: "جنسیت", value: "-" },
       { eng: "age", fr: "سن", value: "-" },
       { eng: "education", fr: "تحصیلات", value: "-" },
       { eng: "marital_status", fr: "وضعیت تأهل", value: "-" },
-      // { eng: "job", fr: "شغل", value: "-" },
-      // { eng: "reason", fr: "علت مراجعه", value: "-" },
-      // { eng: "economical_situation", fr: "وضعیت اقتصادی", value: "-" },
-      // { eng: "number", fr: "تعداد روز بستری بودن", value: "-" },
     ];
+
+    // Specifying Fields that are Going to Be Extracted
+    let fields = test.defaultFields
+      ? test.fields.concat(defaultFields)
+      : test.fields;
 
     // Extract Fields
     for (let field of fields) {
@@ -198,6 +230,7 @@ class Dataset {
         scored_at,
         fields,
       },
+      answers,
       score: data,
     };
   }
@@ -331,7 +364,7 @@ export class Profile {
     this.canvas = new Canvas(canvas, profileVariant);
     this.dataset = Dataset.clean(
       dataset,
-      this.spec.parameters[this.constructor.name].labels
+      this.spec.parameters[this.constructor.name]
     );
     this._generateQRCode();
     this.context = this._calcContext();

@@ -36,6 +36,7 @@ async function checkAndImport(dir) {
       return import(dir);
     })
     .catch((err) => {
+      // throw err
       throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
     });
 }
@@ -114,7 +115,7 @@ async function createProfile(dataset, profileClass, options, promises) {
       measure: options.measure,
     };
   } catch (err) {
-    throw err;
+    // throw err;
     throw new Error(
       "2 (Profile JS Error): Error in Instantiating the Profile Object"
     );
@@ -163,7 +164,8 @@ async function draw(options) {
 
   // Creating initial promises
   let datasetPromise;
-  const jsPromise = checkAndImport(profileJSDir).catch(() => {
+  const jsPromise = checkAndImport(profileJSDir).catch((err) => {
+    // throw err;
     throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
   });
   const templatePromise = checkAndLoad(templateFileDir).catch(() => {

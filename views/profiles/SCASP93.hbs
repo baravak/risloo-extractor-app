@@ -1,0 +1,94 @@
+{{#> layout}}
+
+  <defs>
+    <clipPath id="raw-rect">
+      <rect x="0" y="0" width="{{spec.raw.rect.width}}" height="{{spec.raw.rect.height}}" rx="{{spec.raw.rect.br}}"/>
+    </clipPath>
+  </defs>
+
+  <g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(0, {{spec.items.header.offsetY1}})">
+      <g transform="translate(0, 8)" font-size="16" font-weight="400">
+        <g transform="translate({{spec.items.leftPosArr.[0]}}, 0)"><text x="0" y="0" text-anchor="end" fill="#A1A1AA">نمره</text></g>
+        <g transform="translate({{spec.items.leftPosArr.[1]}}, 0)"><text x="0" y="0" text-anchor="end" fill="#A1A1AA">عنوان</text></g>
+        <g transform="translate({{spec.items.leftPosArr.[2]}}, 0)"><text x="0" y="0" text-anchor="start" fill="#A1A1AA">سؤالات</text></g>
+      </g>
+      <g transform="translate({{spec.items.header.legend.leftPos}}, 0)">
+        {{setVar "intensitiesArr" (reverse (objectEntries spec.items.rect.intensities))}}
+        {{#each intensitiesArr as | intensity index |}}
+          {{#with @root.spec.items.header.legend.rect}}
+            <rect x="{{math index '*' distanceX}}" y="0" width="{{width}}" height="{{height}}" rx="{{br}}" fill="{{intensity.[1].fill}}" stroke="{{intensity.[1].stroke}}"/>
+          {{/with}}
+        {{/each}}
+        <g transform="translate({{math spec.items.header.legend.rect.width '/' 2}}, -6)" font-size="12" font-weight="400">
+          {{#each intensitiesArr as | intensity index |}}
+            <text x="{{math index '*' @root.spec.items.header.legend.rect.distanceX}}" y="0" text-anchor="middle" fill="#A1A1AA">{{intensity.[0]}}</text>
+          {{/each}}
+        </g>
+      </g>
+
+      <g transform="translate(0, {{spec.items.header.offsetY2}})">
+        <line x1="0" y1="0" x2="{{spec.items.separatorLine.length}}" y2="0" stroke="#F4F4F5"/>
+
+        {{#each items as | item itemIndex |}}
+          {{#with @root.spec.items as | itemsSpec |}}
+            <g transform="translate(0, {{math itemIndex '*' itemsSpec.offsetY}})">
+              <g transform="translate(0, {{itemsSpec.paddingY}})">
+                <g transform="translate(0, {{math itemsSpec.rect.height '/' 2}})">
+                  <g transform="translate({{itemsSpec.leftPosArr.[0]}}, 0)">
+                    <text x="0" y="0" font-size="16" font-weight="600" text-anchor="end" fill="#3F3F46" dy="5">{{item.mark}}</text>
+                    <text x="-22" y="0" font-size="10" font-weight="400" text-anchor="end" fill="#71717A" dy="3">از {{item.maxValue}}</text>
+                  </g>
+                  <g transform="translate({{itemsSpec.leftPosArr.[1]}}, 0)">
+                    <text x="0" y="0" font-size="16" font-weight="400" text-anchor="end" fill="#3F3F46" dy="4.5">{{item.label.fr}}</text>
+                  </g>
+                </g>
+                <g transform="translate({{itemsSpec.leftPosArr.[2]}}, 0)">
+                  {{#each item.questions as | question index |}}
+                    <g transform="translate({{math index '*' itemsSpec.rect.distanceX}}, 0)">
+                      <rect x="0" y="0" width="{{itemsSpec.rect.width}}" height="{{itemsSpec.rect.height}}" rx="{{itemsSpec.rect.br}}" fill="{{question.intensity.fill}}" stroke="{{question.intensity.stroke}}"/>
+                      <text x="{{math itemsSpec.rect.width '/' 2}}" y="{{math itemsSpec.rect.height '/' 2}}" font-size="16" font-weight="500" text-anchor="middle" fill="{{question.intensity.textFill}}" dy="5">{{question.number}}</text>
+                    </g>
+                  {{/each}}
+                </g>
+              </g>
+              <line x1="0" y1="{{itemsSpec.offsetY}}" x2="{{itemsSpec.separatorLine.length}}" y2="{{itemsSpec.offsetY}}" stroke="#F4F4F5"/>
+            </g>
+          {{/with}}
+        {{/each}}
+
+        <g transform="translate(0, {{math (math items.length '*' spec.items.offsetY) '+' spec.raw.offsetY}})">
+          <g transform="translate({{spec.raw.leftPos}}, 0)">
+            <rect x="0" y="0" width="{{spec.raw.rect.width}}" height="{{spec.raw.rect.height}}" fill="#F5F5F4" clip-path="url(#raw-rect)"/>
+            <rect x="0" y="0" width="{{raw.width}}" height="{{spec.raw.rect.height}}" fill="#57534E" clip-path="url(#raw-rect)"/>
+
+            <g transform="translate({{raw.width}}, -{{spec.raw.mark.line.offsetY}})">
+              <line x1="0" y1="0" x2="0" y2="-{{spec.raw.mark.line.length}}" stroke="#71717A" stroke-dasharray="2" stroke-linecap="round" stroke-width="1"/>
+              <text x="0" y="-{{math spec.raw.mark.line.length '+' spec.raw.mark.number.offsetY}}" font-size="16" font-weight="600" text-anchor="middle" fill="#52525B" dy="4.5">{{raw.mark}}</text>
+            </g>
+
+            <g transform="translate(0, {{math spec.raw.rect.height '/' 2}})">
+              <text x="-{{spec.raw.label.offsetX}}" y="0" font-size="16" font-weight="500" text-anchor="end" fill="#44403C" dy="4.5">{{raw.label.fr}}</text>
+              <text x="{{math spec.raw.rect.width '+' spec.raw.mark.maxValueOffsetX}}" y="0" font-size="12" font-weight="400" text-anchor="start" fill="#A1A1AA" dy="3">{{spec.raw.maxValue}}</text>
+            </g>
+          </g>
+
+          <g transform="translate(0, {{math spec.raw.rect.height '+' spec.descAnswer.offsetY}})">
+            <rect x="0" y="0" width="{{spec.descAnswer.rect.width}}" height="{{spec.descAnswer.rect.height}}" rx="{{spec.descAnswer.rect.br}}" fill="#FAFAFA" stroke="#D4D4D8"/>
+            <g transform="translate({{math spec.descAnswer.rect.width '-' spec.descAnswer.rect.padding}}, 0)">
+              <text x="0" y="28" font-size="14" font-weight="500" text-anchor="end" fill="#52525B">پاسخ سؤال تشریحی:</text>
+              {{setVar "descAnswerLines" (ellipsisLines (lineWrap descAnswer 132) 2)}}
+              <g transform="translate(0, 56)" fill="#71717A" font-size="14" font-weight="400" text-anchor="end">
+                {{#each descAnswerLines as | line index |}}
+                  <text x="0" y="{{math index '*' @root.spec.descAnswer.content.lineHeight}}">{{line}}</text>
+                {{/each}}
+              </g>
+            </g>
+          </g>
+        </g>
+
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

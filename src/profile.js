@@ -171,7 +171,7 @@ export class Dataset {
     // Specifying Fields that are Going to Be Extracted
     // *** Remember That You Should Have A Copy of Arrays Taken from Spec of the Profile
     let fields = test.defaultFields
-      ? [...test.fields, ...defaultFields]
+      ? [...defaultFields, ...test.fields]
       : [...test.fields];
 
     // Extract Fields

@@ -22,6 +22,7 @@ const polarToCartesian = require('./helpers/polarToCartesian');
 const abs = require('./helpers/abs');
 
 const gauge = require('./helpers/profiles/gauge')
+const bar = require('./helpers/profiles/bar')
 
 const helpers = {
   boolean,
@@ -46,7 +47,8 @@ const helpers = {
   reverse,
   polarToCartesian,
   abs,
-  gauge
+  gauge,
+  bar,
 };
 
 module.exports = helpers;

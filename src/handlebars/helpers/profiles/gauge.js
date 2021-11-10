@@ -14,6 +14,7 @@ function gauge(R, r, brs, angles, directionFlag, options) {
     attributes.push(escapedKey + '="' + escapedValue + '"');
   });
 
+  // Normalize the angles to be in the range (-PI, PI]
   for (let key in angles) angles[key] = normalizeAngle(angles[key]);
 
   let isGreater = true;
@@ -45,6 +46,7 @@ function gauge(R, r, brs, angles, directionFlag, options) {
   dAttr += `A ${R} ${R} 1 ${totalAngle > Math.PI ? 1 : 0} ${
     directionFlag ? 0 : 1
   } ${endEndpoints.P1.x} ${endEndpoints.P1.y}`;
+  
   if (brs.end) {
     dAttr += `A ${brs.end} ${brs.end} 1 0 ${directionFlag ? 0 : 1} ${
       endEndpoints.P2.x
@@ -56,6 +58,7 @@ function gauge(R, r, brs, angles, directionFlag, options) {
   } else {
     dAttr += `L ${endEndpoints.P2.x} ${endEndpoints.P2.y}`;
   }
+  
   if (brs.start) {
     dAttr += `A ${r} ${r} 1 ${totalAngle > Math.PI ? 1 : 0} ${
       directionFlag ? 1 : 0

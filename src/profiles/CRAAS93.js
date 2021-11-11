@@ -1,7 +1,18 @@
 import { Profile, SVG, FS } from "../profile";
 
-const defaultSpec = {
-  CRAAS93: {
+export default class CRAAS93 extends Profile {
+  profileSpec = {
+    /* "test" determines some important info about the test and profile */
+    /* Default prerequisites: 1. gender, 2. age, 3. education, 4. marital_status */
+    /* "prerequisites" is synonym to "fields" in our program */
+    test: {
+      name: "پرسشنامه دلبستگی کولینز و رید" /* Name of the test */,
+      multiProfile: false /* Whether the test has multiple profiles or not */,
+      answers: false /* Determines whether to get answers from inital dataset or not */,
+      defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
+      fields:
+        [] /* In case you want to get some additional fields and show in the profile */,
+    },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
@@ -9,9 +20,7 @@ const defaultSpec = {
         {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
-          width:
-            800 +
-            spec.profile.padding.x * 2,
+          width: 800 + spec.profile.padding.x * 2,
           height:
             (spec.polygons.radius + spec.items.labels.offset) *
               (1 + (FS.isOdd(n) ? Math.cos((2 * Math.PI) / n / 2) : 1)) +
@@ -71,19 +80,16 @@ const defaultSpec = {
         type: "دلبستگی اضطرابی-دوسوگرا",
       },
     },
-  },
-};
+  };
 
-export default class CRAAS93 extends Profile {
   constructor(dataset, profileVariant, config = {}) {
-    super(dataset, profileVariant, config, defaultSpec);
+    super();
+    this._init(dataset, profileVariant, config);
   }
 
   _calcContext() {
     const {
-      spec: {
-        parameters: { CRAAS93: spec },
-      },
+      spec: { parameters: spec },
       dataset,
     } = this;
 

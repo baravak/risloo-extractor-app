@@ -1,7 +1,18 @@
 import { Profile, FS } from "../profile";
 
-const defaultSpec = {
-  IUS93: {
+export default class IUS93 extends Profile {
+  profileSpec = {
+    /* "test" determines some important info about the test and profile */
+    /* Default prerequisites: 1. gender, 2. age, 3. education, 4. marital_status */
+    /* "prerequisites" is synonym to "fields" in our program */
+    test: {
+      name: "پرسشنامه عدم تحمل بلاتکلیفی" /* Name of the test */,
+      multiProfile: false /* Whether the test has multiple profiles or not */,
+      answers: false /* Determines whether to get answers from inital dataset or not */,
+      defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
+      fields:
+        [] /* In case you want to get some additional fields and show in the profile */,
+    },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
@@ -143,19 +154,16 @@ const defaultSpec = {
         desc: "بلاتکلیفی غیرمنصفانه است و همه چیز را تباه می‌کند",
       },
     },
-  },
-};
+  };
 
-export default class IUS93 extends Profile {
-  constructor(dataset, config = {}) {
-    super(dataset, config, defaultSpec);
+  constructor(dataset, profileVariant, config = {}) {
+    super();
+    this._init(dataset, profileVariant, config);
   }
 
   _calcContext() {
     const {
-      spec: {
-        parameters: { IUS93: spec },
-      },
+      spec: { parameters: spec },
       dataset,
     } = this;
 
@@ -210,7 +218,8 @@ export default class IUS93 extends Profile {
       mark: data.mark,
       zeta:
         (data.mark / itemsSpec.maxValues[data.label.eng]) *
-        itemsSpec.circle.totalAngle + itemsSpec.circle.angles.start,
+          itemsSpec.circle.totalAngle +
+        itemsSpec.circle.angles.start,
       fill: itemsSpec.fills[data.label.eng],
       opacity: FS.roundTo2(
         0.5 * (1 + data.mark / itemsSpec.maxValues[data.label.eng])
@@ -218,7 +227,9 @@ export default class IUS93 extends Profile {
       ticks: itemsTicksNumbers[data.label.eng].map((tick) => ({
         number: tick,
         angle:
-          (tick / itemsSpec.maxValues[data.label.eng]) * itemsSpec.circle.totalAngle + itemsSpec.circle.angles.start,
+          (tick / itemsSpec.maxValues[data.label.eng]) *
+            itemsSpec.circle.totalAngle +
+          itemsSpec.circle.angles.start,
       })),
     }));
 

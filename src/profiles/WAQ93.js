@@ -1,7 +1,18 @@
 import { Profile, FS } from "../profile";
 
-const defaultSpec = {
-  WAQ93: {
+export default class WAQ93 extends Profile {
+  profileSpec = {
+    /* "test" determines some important info about the test and profile */
+    /* Default prerequisites: 1. gender, 2. age, 3. education, 4. marital_status */
+    /* "prerequisites" is synonym to "fields" in our program */
+    test: {
+      name: "پرسشنامه سنجش عقل میردریکوندی" /* Name of the test */,
+      multiProfile: false /* Whether the test has multiple profiles or not */,
+      answers: false /* Determines whether to get answers from inital dataset or not */,
+      defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
+      fields:
+        [] /* In case you want to get some additional fields and show in the profile */,
+    },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
@@ -146,19 +157,16 @@ const defaultSpec = {
         fr: "دین و آخرت",
       },
     },
-  },
-};
+  };
 
-export default class WAQ93 extends Profile {
-  constructor(dataset, config = {}) {
-    super(dataset, config, defaultSpec);
+  constructor(dataset, profileVariant, config = {}) {
+    super();
+    this._init(dataset, profileVariant, config);
   }
 
   _calcContext() {
     const {
-      spec: {
-        parameters: { WAQ93: spec },
-      },
+      spec: { parameters: spec },
       dataset,
     } = this;
 

@@ -1,34 +1,13 @@
 import { Profile, FS, Dataset } from "../profile";
 
-const defaultSpec = {
-  SCASP93: {
-    /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
-    /* calculating its dimensions carefully is of great importance */
-    profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
-        return {
-          width: spec.descAnswer.rect.width + spec.profile.padding.x * 2,
-          height:
-            spec.items.header.height +
-            spec.items.offsetY * 6 +
-            spec.raw.offsetY +
-            spec.raw.rect.height +
-            spec.descAnswer.offsetY +
-            spec.descAnswer.rect.height +
-            spec.profile.padding.y * 2,
-        };
-      },
-      padding: {
-        x: 0,
-        y: 13,
-      },
-    },
-    /* "test" determines which prerequisites are required for the profile and whether to get answers from intial dataset or not */
+export default class SCASP93 extends Profile {
+  profileSpec = {
+    /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education, 4. marital_status */
-    /* prerequisites synonym to fields in our program */
+    /* "prerequisites" is synonym to "fields" in our program */
     test: {
+      name: "پرسشنامه اضطراب کودکان اسپنس - نسخه والدین" /* Name of the test */,
+      multiProfile: false /* Whether the test has multiple profiles or not */,
       answers: true /* Determines whether to get answers from inital dataset or not */,
       defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
@@ -51,6 +30,29 @@ const defaultSpec = {
         { eng: "mother_education", fr: "میزان تحصیلات مادر", value: "-" },
         { eng: "mother_job", fr: "شغل مادر", value: "-" },
       ] /* In case you want to get some additional fields and show in the profile */,
+    },
+    /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
+    /* calculating its dimensions carefully is of great importance */
+    profile: {
+      dimensions:
+        {} /* To be calculated in the class with the function provided */,
+      calcDim: function (spec, n) {
+        return {
+          width: spec.descAnswer.rect.width + spec.profile.padding.x * 2,
+          height:
+            spec.items.header.height +
+            spec.items.offsetY * 6 +
+            spec.raw.offsetY +
+            spec.raw.rect.height +
+            spec.descAnswer.offsetY +
+            spec.descAnswer.rect.height +
+            spec.profile.padding.y * 2,
+        };
+      },
+      padding: {
+        x: 0,
+        y: 13,
+      },
     },
     /* "raw" is the general term used for total data element in the profile */
     raw: {
@@ -188,18 +190,17 @@ const defaultSpec = {
         fr: "اضطراب عمومی (فراگیر)",
       },
     },
-  },
-};
+  };
 
-export default class SCASP93 extends Profile {
-  constructor(dataset, config = {}) {
-    super(dataset, config, defaultSpec);
+  constructor(dataset, profileVariant, config = {}) {
+    super();
+    this._init(dataset, profileVariant, config);
   }
 
   _calcContext() {
     const {
       spec: {
-        parameters: { SCASP93: spec },
+        parameters: spec,
       },
       dataset,
     } = this;
@@ -249,7 +250,9 @@ export default class SCASP93 extends Profile {
     } = this;
 
     const sonsFieldIndex = fields.findIndex((field) => field.eng === "sons");
-    const daughtersFieldIndex = fields.findIndex((field) => field.eng === "daughters");
+    const daughtersFieldIndex = fields.findIndex(
+      (field) => field.eng === "daughters"
+    );
 
     const newField1 = Dataset.merge(
       fields[sonsFieldIndex],
@@ -260,7 +263,9 @@ export default class SCASP93 extends Profile {
 
     fields.splice(sonsFieldIndex, 2, newField1);
 
-    const childAgeIndex = fields.findIndex((field) => field.eng === "child_age");
+    const childAgeIndex = fields.findIndex(
+      (field) => field.eng === "child_age"
+    );
     const genderIndex = fields.findIndex((field) => field.eng === "gender");
 
     const newField2 = Dataset.merge(

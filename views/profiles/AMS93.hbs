@@ -1,7 +1,97 @@
 {{#> layout}}
 
+  <defs>
+    <linearGradient id="horizontal-shadow">
+      <stop offset="0%"  stop-color="black" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+  </defs>
+
   <g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
-    
+    <g transform="translate({{math spec.items.offsetX '+' spec.items.label.rect.width}}, 0)">
+      {{setVar "tickTotalHeight" (math (math (math (math (math (math 2 '*' spec.items.ticks.heightOffset) '+' spec.items.totalHeights.[0]) '+' spec.items.offsetY2) '+' spec.items.totalHeights.[1]) '+' spec.items.offsetY2) '+' spec.items.totalHeights.[2])}}
+      {{#each itemsTicks as | tick index |}}
+        <g transform="translate({{tick.leftPos}}, 0)">
+          <line x1="0" y1="0" x2="0" y2="{{../tickTotalHeight}}" stroke="#E4E4E7" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="2"/>
+          <text x="-{{@root.spec.items.ticks.numberOffset.x}}" y="{{@root.spec.items.ticks.numberOffset.y}}" fill="#A1A1AA" text-anchor="end" font-size="16" font-weight="500" dy="5">{{tick.number}}</text>
+        </g>
+      {{/each}}
+    </g>
+
+    <g transform="translate(0, {{spec.items.ticks.heightOffset}})">
+      <g transform="rotate(-90) translate(-{{spec.items.totalHeights.[0]}}, 0)">
+        <rect x="0" y="0" width="{{spec.items.totalHeights.[0]}}" height="{{spec.items.label.rect.width}}" fill="{{spec.items.label.colors.[0]}}" rx="{{spec.items.label.rect.borderRadius}}"/>
+        <text x="{{math spec.items.totalHeights.[0] '/' 2}}" y="{{math spec.items.label.rect.width '/' 2}}" text-anchor="middle" font-size="18" font-weight="500" fill="white" dy="5">انگیزش درونی</text>
+      </g>
+      <g transform="translate({{math spec.items.offsetX '+' spec.items.label.rect.width}}, 0)">
+        {{#each items.[0] as | item index |}}
+          {{#with @root.spec.items as | itemsSpec |}}
+           <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+             {{bar item.width itemsSpec.rect.height (object tl=0 bl=0 tr=itemsSpec.rect.borderRadius br=itemsSpec.rect.borderRadius) (toRad 0) fill=item.fill fill-opacity=item.opacity}}
+             <g transform="translate(0, {{itemsSpec.rect.borderRadius}})">
+               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="end" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
+               <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6">{{item.mark}}</text>
+             </g>
+           </g>
+          {{/with}}
+        {{/each}}
+
+        <g transform="translate(-1, -1)">
+          <rect x="0" y="0" width="1" height="{{math spec.items.totalHeights.[0] '+' 2}}" fill="#FFFFFF" rx="1"/>
+          <rect x="1" y="0" width="5" height="{{math spec.items.totalHeights.[0] '+' 2}}" fill="url('#horizontal-shadow')" fill-opacity="0.2"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(0, {{math (math spec.items.ticks.heightOffset '+' spec.items.totalHeights.[0]) '+' spec.items.offsetY2}})">
+      <g transform="rotate(-90) translate(-{{spec.items.totalHeights.[1]}}, 0)">
+        <rect x="0" y="0" width="{{spec.items.totalHeights.[1]}}" height="{{spec.items.label.rect.width}}" fill="{{spec.items.label.colors.[1]}}" rx="{{spec.items.label.rect.borderRadius}}"/>
+        <text x="{{math spec.items.totalHeights.[1] '/' 2}}" y="{{math spec.items.label.rect.width '/' 2}}" text-anchor="middle" font-size="18" font-weight="500" fill="white" dy="5">انگیزش بیرونی</text>
+      </g>
+      <g transform="translate({{math spec.items.offsetX '+' spec.items.label.rect.width}}, 0)">
+        {{#each items.[1] as | item index |}}
+          {{#with @root.spec.items as | itemsSpec |}}
+           <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+             {{bar item.width itemsSpec.rect.height (object tl=0 bl=0 tr=itemsSpec.rect.borderRadius br=itemsSpec.rect.borderRadius) (toRad 0) fill=item.fill fill-opacity=item.opacity}}
+             <g transform="translate(0, {{itemsSpec.rect.borderRadius}})">
+               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="end" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
+               <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6">{{item.mark}}</text>
+             </g>
+           </g>
+          {{/with}}
+        {{/each}}
+
+        <g transform="translate(-1, -1)">
+          <rect x="0" y="0" width="1" height="{{math spec.items.totalHeights.[1] '+' 2}}" fill="#FFFFFF" rx="1"/>
+          <rect x="1" y="0" width="5" height="{{math spec.items.totalHeights.[1] '+' 2}}" fill="url('#horizontal-shadow')" fill-opacity="0.2"/>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(0, {{math (math (math (math spec.items.ticks.heightOffset '+' spec.items.totalHeights.[0]) '+' spec.items.offsetY2) '+' spec.items.totalHeights.[1]) '+' spec.items.offsetY2}})">
+      <g transform="rotate(-90) translate(-{{spec.items.totalHeights.[2]}}, 0)">
+        <rect x="0" y="0" width="{{spec.items.totalHeights.[2]}}" height="{{spec.items.label.rect.width}}" fill="{{spec.items.label.colors.[2]}}" rx="{{spec.items.label.rect.borderRadius}}"/>
+        <text x="{{math spec.items.totalHeights.[2] '/' 2}}" y="{{math spec.items.label.rect.width '/' 2}}" text-anchor="middle" font-size="18" font-weight="500" fill="white" dy="5"></text>
+      </g>
+      <g transform="translate({{math spec.items.offsetX '+' spec.items.label.rect.width}}, 0)">
+        {{#each items.[2] as | item index |}}
+          {{#with @root.spec.items as | itemsSpec |}}
+           <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+             {{bar item.width itemsSpec.rect.height (object tl=0 bl=0 tr=itemsSpec.rect.borderRadius br=itemsSpec.rect.borderRadius) (toRad 0) fill=item.fill fill-opacity=item.opacity}}
+             <g transform="translate(0, {{itemsSpec.rect.borderRadius}})">
+               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="end" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
+               <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6">{{item.mark}}</text>
+             </g>
+           </g>
+          {{/with}}
+        {{/each}}
+
+        <g transform="translate(-1, -1)">
+          <rect x="0" y="0" width="1" height="{{math spec.items.totalHeights.[2] '+' 2}}" fill="#FFFFFF" rx="1"/>
+          <rect x="1" y="0" width="5" height="{{math spec.items.totalHeights.[2] '+' 2}}" fill="url('#horizontal-shadow')" fill-opacity="0.2"/>
+        </g>
+      </g>
+    </g>
   </g>
 
 {{/layout}}

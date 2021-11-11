@@ -1,7 +1,18 @@
 import { Profile, FS } from "../profile";
 
-const defaultSpec = {
-  AMS93: {
+export default class AMS93 extends Profile {
+  profileSpec = {
+    /* "test" determines some important info about the test and profile */
+    /* Default prerequisites: 1. gender, 2. age, 3. education, 4. marital_status */
+    /* "prerequisites" is synonym to "fields" in our program */
+    test: {
+      name: "پرسشنامه انگیزش تحصیلی والراند" /* Name of the test */,
+      multiProfile: false /* Whether the test has multiple profiles or not */,
+      answers: false /* Determines whether to get answers from inital dataset or not */,
+      defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
+      fields:
+        [] /* In case you want to get some additional fields and show in the profile */,
+    },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
@@ -9,13 +20,24 @@ const defaultSpec = {
         {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
-          width: 642 + spec.profile.padding.x * 2,
-          height: 530 + spec.profile.padding.y * 2,
+          width:
+            spec.items.label.rect.width +
+            spec.items.offsetX +
+            spec.items.maxValue * spec.items.widthCoeff +
+            spec.profile.padding.x * 2,
+          height:
+            2 * spec.items.ticks.heightOffset +
+            spec.items.totalHeights[0] +
+            spec.items.offsetY2 +
+            spec.items.totalHeights[1] +
+            spec.items.offsetY2 +
+            spec.items.totalHeights[2] +
+            spec.profile.padding.y * 2,
         };
       },
       padding: {
         x: 0,
-        y: 0,
+        y: 93,
       },
     },
     /* "items" is the general term used for independent data elements to be drawn in the profile */
@@ -24,7 +46,7 @@ const defaultSpec = {
       maxValue: 28 /* Maximum value of items mark provided by the dataset */,
       offsetX: 200 /* Horizontal offset between items and category label rectangle */,
       offsetY1: 10 /* Vertical offset between two consecutive item in the profile */,
-      offsetY2: 64 /* Vertical offset between two categories of items */,
+      offsetY2: 60 /* Vertical offset between two categories of items */,
       get distanceY() {
         return this.offsetY1 + this.rect.height;
       } /* Distance between two consecutive item in the profile */,
@@ -69,7 +91,7 @@ const defaultSpec = {
         colors: [
           "#A27DF8",
           "#F06DAD",
-          "#898E99"
+          "#898E99",
         ] /* Colors used for theming items label rectangle */,
       },
     },
@@ -85,31 +107,60 @@ const defaultSpec = {
       extrinsic_motivation_external_regulation: { fr: "تنظیم بیرونی" },
       unmotivation: { fr: "بی‌انگیزگی" },
     },
-  },
-};
+  };
 
-export default class AMS93 extends Profile {
-  constructor(dataset, config = {}) {
-    super(dataset, config, defaultSpec);
+  constructor(dataset, profileVariant, config = {}) {
+    super();
+    this._init(dataset, profileVariant, config);
   }
 
   _calcContext() {
     const {
       spec: {
-        parameters: { AMS93: spec },
+        parameters: spec,
       },
       dataset,
     } = this;
 
-    const { raw: rawSpec, items: itemsSpec } = spec;
+    const { items: itemsSpec } = spec;
 
     // Categorize Items Dataset
-    const itemsDatasets = [dataset.score.slice(0, 5), dataset.score.slice(5)];
+    const itemsDatasets = [
+      dataset.score.slice(0, 3),
+      dataset.score.slice(3, 6),
+      dataset.score.slice(6),
+    ];
 
     // ّInit Spec
     spec.items.totalHeights = itemsDatasets.map((dataset) =>
       spec.items.calcTotalHeight(dataset.length)
     );
     spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
+
+    // Gather Required Info for Items
+    const items = itemsDatasets.map((dataset, datasetIndex) =>
+      dataset.map((data) => ({
+        label: data.label,
+        mark: data.mark,
+        width: data.mark * itemsSpec.widthCoeff,
+        fill: itemsSpec.rect.colors[datasetIndex],
+        opacity: FS.mapInRange(data.mark, itemsSpec.rect.opacityMapping),
+      }))
+    );
+
+    // Calculate Ticks Numbers Array for Items
+    const itemsTicksNumbers = FS.createArithmeticSequence(
+      itemsSpec.minValue,
+      (itemsSpec.maxValue - itemsSpec.minValue) / (itemsSpec.ticks.num - 1),
+      itemsSpec.ticks.num
+    );
+
+    // Gather Required Info for Items Ticks
+    const itemsTicks = itemsTicksNumbers.map((tick) => ({
+      number: tick,
+      leftPos: tick * itemsSpec.widthCoeff,
+    }));
+
+    return { items, itemsTicks };
   }
 }

@@ -358,17 +358,17 @@ class Spec {
 }
 
 export class Profile {
-  constructor(dataset, profileVariant, config = {}, profileSpec) {
+  constructor() {
     if (this.constructor.name === "Profile")
       throw new Error("Can't Instantiate Abstract Class");
-    this.spec = new Spec(config, profileSpec);
+  }
+
+  _init(dataset, profileVariant, config) {
+    this.spec = new Spec(config, this.profileSpec);
     const { canvas } = this.spec.parameters;
     this.canvas = new Canvas(canvas, profileVariant);
-    this.dataset = Dataset.clean(
-      dataset,
-      this.spec.parameters[this.constructor.name]
-    );
-    this._generateQRCode();
+    this.dataset = Dataset.clean(dataset, this.spec.parameters);
+    if (profileVariant === "with-sidebar") this._generateQRCode();
     this.context = this._calcContext();
   }
 
@@ -385,7 +385,7 @@ export class Profile {
       canvas,
       dataset,
       spec: {
-        parameters: { [this.constructor.name]: spec },
+        parameters: spec,
       },
       qrcode,
       context,

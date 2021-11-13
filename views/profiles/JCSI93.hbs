@@ -1,0 +1,68 @@
+{{#> layout}}
+
+  <defs>
+    <clipPath id="raw-rect">
+      <rect x="0" y="0" width="{{spec.raw.rect.width}}" height="{{spec.raw.rect.height}}" rx="{{spec.raw.rect.br}}"/>
+    </clipPath>
+    <path id="badge" d="M 0 153.25 C 3 153.25, 7.5 150.25, 9 148.25 L 38 101.75 L 67 101.75 C 110 101.75, 149.5 62.25, 149.5 22.25 L 149.5 -22.75 C 149.5 -63.75, 110 -101.75, 70 -101.75 L -70 -101.75 C -110 -101.75, -149.5 -63.75, -149.5 -22.75 L -149.5 22.25 C -149.5 62.25, -110 101.75, -67 101.75 L -38 101.75 L -9 148.25 C -7.5 150.25, -3 153.25, 0 153.25"/>
+  </defs>
+
+  <g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate({{math spec.items.baseline.width '/' 2}}, {{spec.items.topPos}})">
+      {{#each items as | item index |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          <g transform="translate({{math (math index '-' 2) '*' itemsSpec.distanceX}}, 0)">
+            <g transform="translate(-{{math itemsSpec.rect.base.width '/' 2}}, 0)">
+              {{bar item.height.base itemsSpec.rect.base.width (object tl=0 tr=itemsSpec.rect.base.br br=itemsSpec.rect.base.br bl=0) (toRad -90) fill=itemsSpec.rect.base.color}}
+            </g>
+            <text x="0" y="-{{math item.height.base '+' 12}}" font-size="12" font-weight="400" text-anchor="middle" fill="#D4D4D8" dy="3">{{item.maxValue}}</text>
+            <g fill="{{item.fill}}">
+              <g transform="translate(-{{math itemsSpec.rect.body.width '/' 2}}, 0)">
+                {{#forLoop 0 item.mark 1}}
+                  <rect x="0" y="-{{math (math i '+' 1) '*' itemsSpec.rect.body.distanceY}}" width="{{itemsSpec.rect.body.width}}" height="{{itemsSpec.rect.body.height}}" rx="{{itemsSpec.rect.body.br}}"/>
+                {{/forLoop}}
+              </g>
+              <text x="{{math (math itemsSpec.rect.body.width '/' 2) '+' 16}}" y="-{{math item.mark '*' itemsSpec.rect.body.distanceY}}" font-size="16" font-weight="500" text-anchor="middle" dy="4">{{item.mark}}</text>
+              <text x="0" y="20" font-size="14" font-weight="400" text-anchor="middle" dy="5">{{item.label.fr}}</text>
+            </g>
+          </g>
+        {{/with}}
+      {{/each}}
+      <line x1="-{{math spec.items.baseline.width '/' 2}}" y1="0" x2="{{math spec.items.baseline.width '/' 2}}" y2="0" stroke="#A1A1AA" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(0, {{math spec.items.topPos '+' spec.raw.offsetY}})">
+      <text x="0" y="-20" font-size="14" font-weight="400" text-anchor="start" fill="#52525B" dy="4">{{raw.label.fr}}</text>
+      <rect x="0" y="{{math (math spec.raw.rect.body.height '-' spec.raw.rect.base.height) '/' 2}}" width="{{spec.raw.rect.base.width}}" height="{{spec.raw.rect.base.height}}" rx="{{spec.raw.rect.base.br}}" fill="#F4F4F5"/>
+      <rect x="0" y="0" width="{{raw.width}}" height="{{spec.raw.rect.body.height}}" rx="{{spec.raw.rect.body.br}}" fill="{{raw.interpret.fill}}"/>
+      <g transform="translate({{raw.width}}, -{{spec.raw.label.shape.offsetY}})">
+        <svg width="{{spec.raw.label.shape.width}}" height="{{spec.raw.label.shape.height}}" x="0" y="0" viewBox="0 0 299 255" overflow="visible">
+          <use href="#badge" fill="{{raw.interpret.fill}}"/>
+        </svg>
+        <text x="0" y="0" font-size="18" font-weight="600" text-anchor="middle" fill="white" dy="5">{{raw.mark}}</text>
+      </g>
+
+      <g transform="translate(0, {{math spec.raw.rect.body.height '+' 6}})">
+        {{#each raw.stops as | stop index |}}
+          {{#with @root.spec.raw as | rawSpec |}}
+            <g transform="translate({{stop.width}}, 0)">
+              <line x1="0" y1="0" x2="0" y2="{{rawSpec.label.stops.line.length}}" stroke="#A1A1AA" stroke-dasharray="2" stroke-linecap="round" stroke-width="1"/>
+              <text x="0" y="{{math rawSpec.label.stops.line.length '+' rawSpec.label.stops.number.offsetY}}" font-size="12" font-weight="400" text-anchor="middle" fill="#A1A1AA" dy="3">{{stop.mark}}</text>
+            </g>
+            {{#unless @first}}
+              {{setVar "prevStopWidth" (lookup (lookup @root.raw.stops (math index '-' 1)) 'width')}}
+              {{setVar "Wm" (math (math prevStopWidth '+' stop.width) '/' 2)}}
+              {{setVar "interpret" (lookup (lookup @root.spec.raw.interprets (math index '-' 1)) 'fr')}}
+              {{setVar "isChosen" (boolean interpret '===' @root.raw.interpret.fr)}}
+              <g transform="translate({{Wm}}, {{math rawSpec.label.stops.line.length '+' rawSpec.label.stops.number.offsetY}})" fill="{{ternary isChosen @root.raw.interpret.fill '#A1A1AA'}}">
+                <text x="0" y="-8" font-size="10" font-weight="400" text-anchor="middle">مهارت‌های ارتباطی</text>
+                <text x="0" y="8" font-size="{{ternary isChosen 16 14}}" font-weight="{{ternary isChosen 600 400}}" text-anchor="middle" dy="3">{{interpret}}</text>
+              </g>
+            {{/unless}}
+          {{/with}}
+        {{/each}}
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

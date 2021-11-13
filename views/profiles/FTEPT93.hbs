@@ -20,7 +20,11 @@
               {{bar item.height.body itemsSpec.rect.body.width (object tl=0 tr=itemsSpec.rect.body.br br=itemsSpec.rect.body.br bl=0) (toRad -90) fill=item.fill}}
               <g transform="translate({{math itemsSpec.rect.body.width '/' 2}}, 0)" fill="{{item.fill}}">
                 <text x="0" y="-{{math item.height.body '+' 13}}" font-size="16" font-weight="500" text-anchor="middle" dy="4">{{item.mark}}</text>
-                <text x="0" y="20" font-size="14" font-weight="400" text-anchor="middle" dy="5">{{item.label.fr}}</text>
+                <g transform="translate(0, 20)">
+                  {{#each (wrapOnNewline item.label.fr) as | line index |}}
+                    <text x="0" y="{{math index '*' 18}}" font-size="14" font-weight="400" text-anchor="middle" dy="5">{{line}}</text>
+                  {{/each}}
+                </g>
               </g>
             </g>
           {{/with}}

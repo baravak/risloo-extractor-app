@@ -114,13 +114,13 @@ export default class FTEPT93 extends Profile {
         fr: "خودکارآمدی",
       },
       emotional_effects: {
-        fr: "تأثیرات هیجانی",
+        fr: "تأثیرات\nهیجانی",
       },
       planning: {
         fr: "برنامه‌ریزی",
       },
       lack_of_consequence_control: {
-        fr: "فقدان کنترل پیامد",
+        fr: "فقدان\nکنترل پیامد",
       },
       motivation: {
         fr: "انگیزش",

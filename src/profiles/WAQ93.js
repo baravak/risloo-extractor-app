@@ -3,7 +3,7 @@ import { Profile, FS } from "../profile";
 export default class WAQ93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
-    /* Default prerequisites: 1. gender, 2. age, 3. education, 4. marital_status */
+    /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
     test: {
       name: "پرسشنامه سنجش عقل میردریکوندی" /* Name of the test */,

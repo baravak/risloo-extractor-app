@@ -160,12 +160,11 @@ export class Dataset {
     // *** Remember That You Should Have A Copy of Arrays Taken from Dataset
     const answers = test.answers && [...dataset.items];
 
-    // Default Fields (gender, age, education, marital status)
+    // Default Fields (gender, age, education)
     let defaultFields = [
       { eng: "gender", fr: "جنسیت", value: "-" },
       { eng: "age", fr: "سن", value: "-" },
       { eng: "education", fr: "تحصیلات", value: "-" },
-      { eng: "marital_status", fr: "وضعیت تأهل", value: "-" },
     ];
 
     // Specifying Fields that are Going to Be Extracted

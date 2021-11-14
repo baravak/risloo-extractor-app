@@ -3,7 +3,7 @@ import { Profile, FS } from "../profile";
 export default class JCSI93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
-    /* Default prerequisites: 1. gender, 2. age, 3. education, 4. marital_status */
+    /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
     test: {
       name: "پرسشنامه مهارت‌های ارتباطی جرابک" /* Name of the test */,
@@ -88,7 +88,7 @@ export default class JCSI93 extends Profile {
         awareness: 25,
         assertiveness: 25,
       } /* Maximum values of items marks provided by the dataset */,
-      topPos: 425 /* Top position of the baseline of items */,
+      topPos: 430 /* Top position of the baseline of items */,
       offsetX: 100 /* Horizontal offset between two consecutive item */,
       get distanceX() {
         return this.offsetX + this.rect.body.width;
@@ -184,7 +184,7 @@ export default class JCSI93 extends Profile {
       mark: data.mark,
       maxValue: itemsSpec.maxValues[data.label.eng],
       height: {
-        base: itemsSpec.maxValues[data.label.eng] * itemsSpec.rect.heightCoeff,
+        base: itemsSpec.maxValues[data.label.eng] * itemsSpec.rect.heightCoeff + 5,
       },
       fill: itemsSpec.rect.body.colors[index],
     }));

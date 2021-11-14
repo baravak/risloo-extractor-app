@@ -3,12 +3,12 @@
 <defs>
   {{#with spec.items.rect as | rect |}}
   <clipPath id="items-rect">
-    <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" rx="{{rect.br}}"/>
+    {{bar (math rect.width '/' 2) rect.height (object tl=0 tr=rect.br bl=0 br=rect.br) (toRad 0)}}
   </clipPath>
   {{/with}}
   {{#with spec.raw.rect as | rect |}}
   <clipPath id="raw-rect">
-    <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" rx="{{rect.br}}"/>
+    {{bar (math rect.width '/' 2) rect.height (object tl=0 tr=rect.br bl=0 br=rect.br) (toRad 0)}}
   </clipPath>
   {{/with}}
 </defs>
@@ -17,9 +17,10 @@
   {{#each items as | item itemIndex |}}
     {{#with @root.spec.items}}
     <g transform="translate(0, {{math itemIndex '*' rect.distanceY}})">
-      <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" fill="#F4F4F5" transform="translate(-{{math rect.width '/' 2}}, 0)" clip-path="url(#items-rect)"/>
+      <rect x="0" y="0" width="{{math rect.width '/' 2}}" height="{{rect.height}}" fill="#F4F4F5" clip-path="url(#items-rect)"/>
+      <rect x="0" y="0" width="{{math rect.width '/' 2}}" height="{{rect.height}}" fill="#F4F4F5" transform="scale(-1, 1)" clip-path="url(#items-rect)"/>
       {{setVar "isPositive" (boolean item.mark '>' 0)}}
-      <rect x="0" y="0" width="{{item.width}}" height="{{rect.height}}" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" transform="scale({{ternary isPositive 1 -1}}, 1)"/>
+      <rect x="0" y="0" width="{{item.width}}" height="{{rect.height}}" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" transform="scale({{ternary isPositive 1 -1}}, 1)" clip-path="url(#items-rect)"/>
       <g transform="translate({{ternary isPositive item.width (math -1 '*' item.width)}}, 0)">
         <line x1="0" y1="-2" x2="0" y2="-8" stroke="{{ternary isPositive '#B91C1C' '#007BA4'}}" stroke-dasharray="2" stroke-linecap="round" stroke-width="1"/>
         <text x="0" y="-20" text-anchor="middle" font-size="16" font-weight="600" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" dy="5">{{abs item.mark}}{{ternary isPositive '+' '-'}}</text>
@@ -35,9 +36,10 @@
   {{/each}}
   <g transform="translate(0, {{math (math (math (math items.length '-' 1) '*' spec.items.rect.distanceY) '+' spec.items.rect.height) '+' spec.raw.rect.offsetY}})">
     {{#with @root.spec.raw}}
-      <rect x="0" y="0" width="{{rect.width}}" height="{{rect.height}}" fill="#F4F4F5" transform="translate(-{{math rect.width '/' 2}}, 0)" clip-path="url(#raw-rect)"/>
+      <rect x="0" y="0" width="{{math rect.width '/' 2}}" height="{{rect.height}}" fill="#F4F4F5" clip-path="url(#raw-rect)"/>
+      <rect x="0" y="0" width="{{math rect.width '/' 2}}" height="{{rect.height}}" fill="#F4F4F5" transform="scale(-1, 1)" clip-path="url(#raw-rect)"/>
       {{setVar "isPositive" (boolean ../raw.mark '>' 0)}}
-      <rect x="0" y="0" width="{{../raw.width}}" height="{{rect.height}}" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" transform="scale({{ternary isPositive 1 -1}}, 1)"/>
+      <rect x="0" y="0" width="{{../raw.width}}" height="{{rect.height}}" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" transform="scale({{ternary isPositive 1 -1}}, 1)" clip-path="url(#raw-rect)"/>
       <g transform="translate({{ternary isPositive ../raw.width (math -1 '*' ../raw.width)}}, 0)">
         <line x1="0" y1="-2" x2="0" y2="-8" stroke="{{ternary isPositive '#B91C1C' '#007BA4'}}" stroke-dasharray="2" stroke-linecap="round" stroke-width="1"/>
         <text x="0" y="-20" text-anchor="middle" font-size="16" font-weight="600" fill="{{ternary isPositive '#B91C1C' '#007BA4'}}" dy="5">{{abs ../raw.mark}}{{ternary isPositive '+' '-'}}</text>

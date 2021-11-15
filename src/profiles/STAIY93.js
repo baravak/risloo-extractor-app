@@ -132,11 +132,6 @@ export default class STAIY93 extends Profile {
         itemsSpec[data.label.eng].circle.angles,
         itemsSpec[data.label.eng].circle.direction
       ),
-      totalAngle: this._calcDiffAngle(
-        itemsSpec[data.label.eng].circle.angles.end,
-        itemsSpec[data.label.eng].circle.angles.start,
-        itemsSpec[data.label.eng].circle.direction
-      ),
       stops: itemsSpec[data.label.eng].stops.map((stop) => ({
         mark: stop,
         angle: this._markToAngle(

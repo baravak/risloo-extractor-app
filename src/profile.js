@@ -187,7 +187,7 @@ class Dataset {
 
     requiredPreqs.forEach((reqPreq) => {
       preq = preqs.find((item) => item.label === reqPreq);
-      field = { eng: reqPreq, fr: preq?.text || , value: "-" };
+      field = { eng: reqPreq, fr: preq?.text || "-", value: "-" };
       if (preq)
         if (preq.answer.type !== "select")
           field.value = preq.user_answered || "-";

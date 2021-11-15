@@ -1,8 +1,7 @@
-import fs from "fs/promises";
-import { constants } from "fs";
-import path from "path";
-import { Buffer } from "buffer";
-import sharp from "sharp";
+const fs = require("fs/promises");
+const { constants } = require("fs");
+const path = require("path");
+const sharp = require("sharp");
 const Handlebars = require("../handlebars/init");
 const Benchmarker = require("./Benchmarker");
 
@@ -33,7 +32,7 @@ async function checkAndImport(dir) {
   return fs
     .access(dir, constants.F_OK)
     .then(() => {
-      return import(dir);
+      return require(dir);
     })
     .catch((err) => {
       // throw err
@@ -191,7 +190,7 @@ async function draw(options) {
     Promise.all(promisesGroup1)
       .then((results) => {
         const dataset = JSON.parse(results[0]);
-        const profileClass = results[1].default;
+        const profileClass = results[1];
 
         if (options.profileVariant === "both") {
           return Promise.all([

@@ -1,4 +1,4 @@
-import { Command, Option } from "commander/esm.mjs";
+const { Command, Option } = require("commander");
 
 const program = new Command();
 
@@ -82,14 +82,12 @@ function parseArgumentsIntoOptions(rawArgs) {
   return output;
 }
 
-export function cli(args) {
+function cli(args) {
   let options = parseArgumentsIntoOptions(args);
 
   switch (options.command) {
     case "draw":
-      const draw = require(`./cli-commands/draw${
-        options.benchmark ? "_benchmark" : ""
-      }`);
+      const draw = require('./cli-commands/draw');
       draw(options)
         .then(() => console.log("0 (Success): Profile Successfully Created!"))
         .catch((err) => console.error(err));
@@ -102,3 +100,5 @@ export function cli(args) {
       break;
   }
 }
+
+module.exports = {cli};

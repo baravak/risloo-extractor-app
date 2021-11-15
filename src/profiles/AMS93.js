@@ -1,6 +1,6 @@
-import { Profile, FS } from "../profile";
+const { Profile, FS } = require("../profile");
 
-export default class AMS93 extends Profile {
+class AMS93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
@@ -164,3 +164,5 @@ export default class AMS93 extends Profile {
     return { items, itemsTicks };
   }
 }
+
+module.exports = AMS93;

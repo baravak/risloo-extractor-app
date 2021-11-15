@@ -1,7 +1,7 @@
-import QRCode from "qrcode";
-import { qrRender } from "./qrRender";
+const QRCode = require("qrcode");
+const { qrRender } = require("./qrRender");
 
-export default function qrCodeGenerator(data, options) {
+function qrCodeGenerator(data, options) {
   const opts = {
     color: "colored",
     logo: "none",
@@ -13,3 +13,5 @@ export default function qrCodeGenerator(data, options) {
   );
   return qrSvg;
 }
+
+module.exports = qrCodeGenerator;

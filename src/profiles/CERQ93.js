@@ -1,6 +1,6 @@
-import { Profile, FS } from "../profile";
+const { Profile, FS } = require("../profile");
 
-export default class CERQ93 extends Profile {
+class CERQ93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
@@ -11,7 +11,7 @@ export default class CERQ93 extends Profile {
       answers: false /* Determines whether to get answers from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
-        { eng: "marital_status", fr: "وضعیت تأهل", value: "-" },
+        "marital_status",
       ] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
@@ -220,3 +220,5 @@ export default class CERQ93 extends Profile {
     return { raw, items, rawTicks, itemsTicks };
   }
 }
+
+module.exports = CERQ93;

@@ -1,6 +1,6 @@
-import { Profile, FS, Dataset } from "../profile";
+const { Profile, FS, Dataset } = require("../profile");
 
-export default class SCASP93 extends Profile {
+class SCASP93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
@@ -11,24 +11,16 @@ export default class SCASP93 extends Profile {
       answers: true /* Determines whether to get answers from inital dataset or not */,
       defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
-        { eng: "child_name", fr: "نام کودک", value: "-" },
-        { eng: "child_age", fr: "سن کودک", value: "-" },
-        { eng: "gender", fr: "جنسیت", value: "-" },
-        { eng: "birth_order", fr: "فرزند چندم", value: "-" },
-        {
-          eng: "sons",
-          fr: "تعداد فرزندان پسر",
-          value: "-",
-        },
-        {
-          eng: "daughters",
-          fr: "تعداد فرزندان دختر",
-          value: "-",
-        },
-        { eng: "father_education", fr: "میزان تحصیلات پدر", value: "-" },
-        { eng: "father_job", fr: "شغل پدر", value: "-" },
-        { eng: "mother_education", fr: "میزان تحصیلات مادر", value: "-" },
-        { eng: "mother_job", fr: "شغل مادر", value: "-" },
+        "child_name",
+        "child_age",
+        "gender",
+        "birth_order",
+        "sons",
+        "daughters",
+        "father_education",
+        "father_job",
+        "mother_education",
+        "mother_job",
       ] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
@@ -199,9 +191,7 @@ export default class SCASP93 extends Profile {
 
   _calcContext() {
     const {
-      spec: {
-        parameters: spec,
-      },
+      spec: { parameters: spec },
       dataset,
     } = this;
 
@@ -249,6 +239,9 @@ export default class SCASP93 extends Profile {
       },
     } = this;
 
+    const birthOrderField = fields.find((field) => field.eng === "birth_order") 
+    birthOrderField.fr = "فرزند چندم";
+
     const sonsFieldIndex = fields.findIndex((field) => field.eng === "sons");
     const daughtersFieldIndex = fields.findIndex(
       (field) => field.eng === "daughters"
@@ -278,3 +271,5 @@ export default class SCASP93 extends Profile {
     fields.splice(childAgeIndex, 2, newField2);
   }
 }
+
+module.exports = SCASP93;

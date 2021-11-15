@@ -130,7 +130,7 @@ const qrModulesDataRender = (data, size, moduleSize) => {
   return svg;
 };
 
-export const qrRender = (qrData, customOptions, cb) => {
+const qrRender = (qrData, customOptions, cb) => {
   const options = {
     color: "colored",
     logo: "fillstuff",
@@ -190,9 +190,11 @@ export const qrRender = (qrData, customOptions, cb) => {
 	`;
 
   const qrSvg = `
-<svg viewBox="0 0 ${moduleSize * size} ${
-    moduleSize * size
-  }" width="${options.width || 250}" height="${options.height || 250}" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 ${moduleSize * size} ${moduleSize * size}" width="${
+    options.width || 250
+  }" height="${
+    options.height || 250
+  }" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <rect id="rect" width="100" height="100" fill="currentColor"/>
     <path id="empty" d="M0,28.6v42.9C0,87.3,12.8,100,28.6,100h42.9c15.9,0,28.6-12.8,28.6-28.6V28.6C100,12.7,87.2,0,71.4,0H28.6 C12.8,0,0,12.8,0,28.6z" fill="currentColor"/>
@@ -228,12 +230,18 @@ export const qrRender = (qrData, customOptions, cb) => {
 `;
 
   const svg = `
-<svg width="${options.width || 250}" height="${options.height || 250}" viewBox="0 0 ${options.width || 250} ${options.height || 250}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="${options.width || 250}" height="${
+    options.height || 250
+  }" viewBox="0 0 ${options.width || 250} ${
+    options.height || 250
+  }" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <g id="qr" style="color: ${moduleColor}">${qrSvg}</g>
   </defs>
   <g clip-path="url(#main-mask)">
-    <rect x="0" y="0" width="${options.width || 250}" height="${options.height || 250}" fill="transparent"/>
+    <rect x="0" y="0" width="${options.width || 250}" height="${
+    options.height || 250
+  }" fill="transparent"/>
     <use x="0" y="0" xlink:href="#qr" transform="scale(1)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
   </g>
 </svg>
@@ -245,3 +253,5 @@ export const qrRender = (qrData, customOptions, cb) => {
 
   return svg;
 };
+
+module.exports = { qrRender };

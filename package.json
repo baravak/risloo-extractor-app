@@ -21,7 +21,6 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^8.2.0",
-    "esm": "^3.2.25",
     "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.10.0",
     "moment": "^2.29.1",

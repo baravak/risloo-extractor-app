@@ -1,8 +1,7 @@
-import fs from "fs/promises";
-import { constants } from "fs";
-import path from "path";
-import { Buffer } from "buffer";
-import sharp from "sharp";
+const fs = require("fs/promises");
+const { constants } = require("fs");
+const path = require("path");
+const sharp = require("sharp");
 const Handlebars = require("../handlebars/init");
 
 // Profiles JS Files and Template Files Directory
@@ -50,7 +49,7 @@ async function checkAndImport(dir) {
   return fs
     .access(dir, constants.F_OK)
     .then(() => {
-      return import(dir);
+      return require(dir);
     })
     .catch((err) => {
       throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
@@ -147,6 +146,14 @@ async function createProfile(dataset, profileClass, options, promises) {
 async function draw(options) {
   // Suppose that both input & output type are "local"
 
+  let benchmarker;
+
+  if (options.benchmark) {
+    const Benchmarker = require("./Benchmarker");
+    benchmarker = new Benchmarker();
+    benchmarker.start("Draw Command");
+  }
+
   // Directory of profile JS file
   const profileJSDir = path.join(profilesJSDir, `${options.profileName}.js`);
 
@@ -184,7 +191,7 @@ async function draw(options) {
     Promise.all(promisesGroup1)
       .then((results) => {
         const dataset = JSON.parse(results[0]);
-        const profileClass = results[1].default;
+        const profileClass = results[1];
 
         if (options.profileVariant === "both") {
           return Promise.all([
@@ -205,7 +212,10 @@ async function draw(options) {
           return createProfile(dataset, profileClass, options, promisesGroup2);
         }
       })
-      .then(() => resolve(true))
+      .then(() => {
+        if (options.benchmark) benchmarker.end();
+        resolve(true);
+      })
       .catch((err) => reject(err));
 
     Promise.all(promisesGroup2).catch((err) => {

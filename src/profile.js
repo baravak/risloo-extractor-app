@@ -1,8 +1,7 @@
-import moment from "moment-jalaali";
-import fa from "moment/src/locale/fa";
-import qrCodeGenerator from "./qrcode/qrCodeGenerator";
+const moment = require("moment-jalaali");
+const qrCodeGenerator = require("./qrcode/qrCodeGenerator");
 
-moment.locale("fa", fa);
+moment.locale("fa");
 moment.loadPersian({ dialect: "persian-modern" });
 
 // Implement String.prototype.format
@@ -13,7 +12,7 @@ String.prototype.format = function () {
   });
 };
 
-export class FS {
+class FS {
   static calcDistance(pt1, pt2) {
     return Math.sqrt(Math.pow(pt2.x - pt1.x, 2) + Math.pow(pt2.y - pt1.y, 2));
   }
@@ -119,7 +118,99 @@ class Canvas {
   }
 }
 
-export class Dataset {
+class Dataset {
+  // Default Test Info for the Profile
+  defaultTest = {
+    answers: false,
+    defaultFields: true,
+    fields: [],
+  };
+
+  // Default Prerequisites to Be Shown in the Sidebar
+  defaultFields = ["gender", "age", "education"];
+
+  constructor(dataset, spec) {
+    // Getting Class Fields
+    const { defaultTest, defaultFields } = this;
+
+    // Destructure Required Info from Spec of the Profile
+    const { labels, test = defaultTest } = spec;
+
+    // Specifying Prerequisites that are Going to Be Extracted
+    // *** Remember That You Should Get The Copy of Arrays Taken from Spec of the Profile
+    const requiredPreqs = test.defaultFields
+      ? [...defaultFields, ...test.fields]
+      : [...test.fields];
+
+    this.info = {
+      id: dataset.id || "-",
+      title: dataset.scale?.title || "-",
+      clientName: dataset.client?.name || "-",
+      managerName: dataset.room?.manager?.name || "-",
+      centerTitle: dataset.center?.detail?.title || "-",
+      started_at:
+        (dataset.started_at && this._formatDate(dataset.started_at)) || "-",
+      closed_at:
+        (dataset.closed_at && this._formatDate(dataset.closed_at)) || "-",
+      scored_at:
+        (dataset.scored_at && this._formatDate(dataset.scored_at)) || "-",
+      time: (dataset.cornometer && this._formatTime(dataset.cornometer)) || "-",
+      fields: this._extractFields(dataset.prerequisites, requiredPreqs),
+    };
+
+    // Extract Answers if test.answers === true
+    // *** Remember That You Should Get The Copy of Arrays Taken from Dataset
+    this.answers = test.answers && [...dataset.items];
+
+    this.score = this._extractData(dataset.score, labels);
+  }
+
+  // Convert Given Timestamp to Proper Format for Profile
+  _formatDate(timeStamp) {
+    return moment(timeStamp * 1000).format("jYYYY.jMM.jD  -  HH:mm");
+  }
+
+  // Convert Given Time to Proper Format for Profile
+  _formatTime(sec) {
+    return {
+      hour: Math.floor(sec / 60),
+      minute: sec % 60,
+    };
+  }
+
+  // Extract Fields Using the Prerequisities Array
+  _extractFields(preqs, requiredPreqs) {
+    // "Fields" is the Output of the Method
+    const fields = [];
+
+    let field, preq;
+
+    requiredPreqs.forEach((reqPreq) => {
+      preq = preqs.find((item) => item.label === reqPreq);
+      field = { eng: reqPreq, fr: preq?.text || , value: "-" };
+      if (preq)
+        if (preq.answer.type !== "select")
+          field.value = preq.user_answered || "-";
+        else field.value = preq.answer.options[preq.user_answered - 1] || "-";
+      fields.push(field);
+    });
+
+    return fields;
+  }
+
+  // Create Data Array with Label and Mark Taken from Dataset
+  _extractData(score, labels) {
+    let data = [];
+    for (let index in labels) {
+      data.push({
+        label: { eng: index, ...labels[index] },
+        mark: score[index],
+      });
+    }
+
+    return data;
+  }
+
   static merge(field1, field2, combinedFieldfr, combinedFieldFormat) {
     const newField = {
       eng: `combined_${field1.eng}_${field2.eng}`,
@@ -129,115 +220,9 @@ export class Dataset {
 
     return newField;
   }
-
-  static clean(dataset, spec) {
-    // Default Test Info for the Profile
-    const defaultTest = {
-      answers: false,
-      defaultFields: true,
-      fields: [],
-    };
-
-    // Destructure Required Info from Spec of the Profile
-    const { labels, test = defaultTest } = spec;
-
-    // Destructure Data that is Needed
-    let {
-      id = "-",
-      scale: { title = "-" } = {},
-      client: { name: clientName = "-" } = {},
-      room: { manager: { name: managerName = "-" } = {} } = {},
-      center: { detail: { title: centerTitle = "-" } = {} } = {},
-      started_at = "-",
-      closed_at = "-",
-      scored_at = "-",
-      cornometer = "-",
-      prerequisites,
-      score,
-    } = dataset;
-
-    // Extract Answers if test.answers === true
-    // *** Remember That You Should Have A Copy of Arrays Taken from Dataset
-    const answers = test.answers && [...dataset.items];
-
-    // Default Fields (gender, age, education)
-    let defaultFields = [
-      { eng: "gender", fr: "جنسیت", value: "-" },
-      { eng: "age", fr: "سن", value: "-" },
-      { eng: "education", fr: "تحصیلات", value: "-" },
-    ];
-
-    // Specifying Fields that are Going to Be Extracted
-    // *** Remember That You Should Have A Copy of Arrays Taken from Spec of the Profile
-    let fields = test.defaultFields
-      ? [...defaultFields, ...test.fields]
-      : [...test.fields];
-
-    // Extract Fields
-    for (let field of fields) {
-      let temp = prerequisites.find((item) => item.label === field.eng);
-      if (temp)
-        if (temp.answer.type !== "select")
-          field.value = temp.user_answered || "-";
-        else field.value = temp.answer.options[temp.user_answered - 1] || "-";
-    }
-
-    // Create Data Array with Label and Mark Taken from Dataset
-    let data = [];
-    for (let index in labels) {
-      data.push({
-        label: { eng: index, ...labels[index] },
-        mark: score[index],
-      });
-    }
-
-    // Change Timestamp to Proper Date Format
-    started_at =
-      started_at !== "-"
-        ? moment(started_at * 1000).format("jYYYY.jMM.jD  -  HH:mm")
-        : "-";
-    closed_at =
-      closed_at !== "-"
-        ? moment(closed_at * 1000).format("jYYYY.jMM.jD  -  HH:mm")
-        : "-";
-    scored_at =
-      scored_at !== "-"
-        ? moment(scored_at * 1000).format("jYYYY.jMM.jD  -  HH:mm")
-        : "-";
-
-    // Change Time to Hour & Minute Format
-    let time = {
-      hour: 0,
-      minute: "-",
-    };
-
-    if (cornometer !== "-") {
-      time = {
-        hour: Math.floor(cornometer / 60),
-        minute: cornometer % 60,
-      };
-    }
-
-    return {
-      info: {
-        id: id,
-        title: title,
-        clientName: clientName,
-        managerName: managerName,
-        centerTitle: centerTitle,
-        time: time,
-        started_at,
-        closed_at,
-        scored_at,
-        fields,
-      },
-      answers,
-      score: data,
-    };
-  }
 }
 
-export class SVG {
+class SVG {
   // Calculate "d" Attribute for a Path Tag using Given Points Array
   static calcPathDAttr(points) {
     let d = points.reduce(
@@ -356,7 +341,7 @@ class Spec {
   }
 }
 
-export class Profile {
+class Profile {
   constructor() {
     if (this.constructor.name === "Profile")
       throw new Error("Can't Instantiate Abstract Class");
@@ -366,15 +351,15 @@ export class Profile {
     this.spec = new Spec(config, this.profileSpec);
     const { canvas } = this.spec.parameters;
     this.canvas = new Canvas(canvas, profileVariant);
-    this.dataset = Dataset.clean(dataset, this.spec.parameters);
+    this.dataset = new Dataset(dataset, this.spec.parameters);
     if (profileVariant === "with-sidebar") this._generateQRCode();
     this.context = this._calcContext();
   }
 
   _generateQRCode() {
     const { dataset, canvas } = this;
-    const width = (canvas.sidebar && canvas.sidebar.qrcode.width) || 120;
-    const height = (canvas.sidebar && canvas.sidebar.qrcode.height) || 120;
+    const width = canvas.sidebar?.qrcode?.width || 120;
+    const height = canvas.sidebar?.qrcode?.height || 120;
     const data = `https://r1l.ir/${dataset.info.id}/?utm_source=risloo.ir&utm_medium=profile&utm_campaign=${dataset.info.id}`;
     this.qrcode = { link: data, svg: qrCodeGenerator(data, { width, height }) };
   }
@@ -383,9 +368,7 @@ export class Profile {
     const {
       canvas,
       dataset,
-      spec: {
-        parameters: spec,
-      },
+      spec: { parameters: spec },
       qrcode,
       context,
     } = this;
@@ -399,3 +382,5 @@ export class Profile {
     };
   }
 }
+
+module.exports = { Profile, SVG, Dataset, FS };

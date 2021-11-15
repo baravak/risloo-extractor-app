@@ -1,6 +1,6 @@
-import { Profile, FS } from "../profile";
+const { Profile, FS } = require("../profile");
 
-export default class JCSI93 extends Profile {
+class JCSI93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
@@ -192,3 +192,5 @@ export default class JCSI93 extends Profile {
     return { raw, items };
   }
 }
+
+module.exports = JCSI93;

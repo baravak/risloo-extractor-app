@@ -52,6 +52,7 @@ async function checkAndImport(dir) {
       return require(dir);
     })
     .catch((err) => {
+      // throw err;
       throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
     });
 }
@@ -82,65 +83,79 @@ async function createPNG(xml, outputPath) {
   return new Promise((resolve, reject) => {
     sharp(buf, { density: 100 }).toFile(outputPath, (err) => {
       if (err) return reject(err);
-      resolve(true);
+      resolve();
     });
   });
 }
 
+// This function creates both SVG & PNG of the profile and returns an array of two promises
+async function createOutputFiles(xml, pathObj) {
+  const { outputAddress, fileName } = pathObj;
+  return Promise.all([
+    createSVG(xml, path.join(outputAddress, `${fileName}.svg`)),
+    createPNG(xml, path.join(outputAddress, `${fileName}.png`)),
+  ]);
+}
+
 function createOutputName(options) {
+  let profileVariantSuffix = {
+    raw: ".raw",
+    "with-sidebar": "",
+  }[options.profileVariant];
+  let measureSuffix = options.measure ? "-m" : "";
+
   const fileName =
     options.inputData &&
     path.basename(options.inputData, path.extname(options.inputData));
-  const outputFileName = `${options.name || fileName}${
-    options.profileVariant === "with-sidebar" ? "" : ".raw"
-  }${options.measure ? "-m" : ""}`;
-  return outputFileName;
+
+  return `${options.name || fileName}${profileVariantSuffix}${measureSuffix}`;
 }
 
-async function createProfile(dataset, profileClass, options, promises) {
-  let ctx, xml;
+async function createProfile(dataset, profileClass, options, ensureDirPromise) {
+  let ctxArr, xml;
 
   const outputFileName = createOutputName(options);
 
   try {
-    const profileObj = new profileClass(dataset, options.profileVariant);
-    ctx = {
-      ...profileObj.getTemplateEngineParams(),
-      variant: options.profileVariant,
-      measure: options.measure,
-    };
+    ctxArr = new profileClass(dataset, options).getTemplateEngineParams();
   } catch (err) {
-    // throw err;
     throw new Error(
       "2 (Profile JS Error): Error in Instantiating the Profile Object"
     );
   }
 
-  return promises[0]
-    .then(async (templateBuffer) => {
-      const template = (await Handlebars).compile(
-        templateBuffer.toString(),
-        "utf-8"
+  return Promise.all(
+    ctxArr.map((ctx, index) => {
+      let fileName = `${outputFileName}${
+        index !== 0 ? ".page" + (index + 1) : ""
+      }`;
+      let templateFileDir = path.join(
+        profilesTemplatesDir,
+        `${options.profileName}${
+          ctxArr.length !== 1 ? "_" + (index + 1) : ""
+        }.hbs`
       );
-      xml = template(ctx);
+      return checkAndLoad(templateFileDir)
+        .then(async (templateBuffer) => {
+          const template = (await Handlebars).compile(
+            templateBuffer.toString(),
+            "utf-8"
+          );
+          xml = template(ctx);
 
-      return promises[1];
+          return ensureDirPromise;
+        })
+        .then(() => {
+          return createOutputFiles(xml, {
+            outputAddress: options.outputAddress,
+            fileName,
+          });
+        })
+        .catch((err) => {
+          throw err;
+        });
     })
-    .then(() => {
-      return Promise.all([
-        createSVG(
-          xml,
-          path.join(options.outputAddress, `${outputFileName}.svg`)
-        ),
-        createPNG(
-          xml,
-          path.join(options.outputAddress, `${outputFileName}.png`)
-        ),
-      ]);
-    })
-    .catch((err) => {
-      throw err;
-    });
+  );
 }
 
 async function draw(options) {
@@ -157,19 +172,10 @@ async function draw(options) {
   // Directory of profile JS file
   const profileJSDir = path.join(profilesJSDir, `${options.profileName}.js`);
 
-  // Directory of profile template file
-  const templateFileDir = path.join(
-    profilesTemplatesDir,
-    `${options.profileName}.hbs`
-  );
-
   // Creating initial promises
   let datasetPromise;
-  const jsPromise = checkAndImport(profileJSDir).catch(() => {
+  const jsPromise = checkAndImport(profileJSDir).catch((err) => {
     throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
-  });
-  const templatePromise = checkAndLoad(templateFileDir).catch(() => {
-    throw new Error("4 (Not Found): Profile Template File Does Not Exist");
   });
   const ensureDirPromise = ensureDirExistence(options.outputAddress);
 
@@ -184,41 +190,36 @@ async function draw(options) {
     datasetPromise = loadStdin();
   }
 
-  const promisesGroup1 = [datasetPromise, jsPromise];
-  const promisesGroup2 = [templatePromise, ensureDirPromise];
-
   return new Promise(function (resolve, reject) {
-    Promise.all(promisesGroup1)
+    Promise.all([datasetPromise, jsPromise])
       .then((results) => {
         const dataset = JSON.parse(results[0]);
         const profileClass = results[1];
 
-        if (options.profileVariant === "both") {
-          return Promise.all([
+        let profileVariants = {
+          both: ["raw", "with-sidebar"],
+          raw: ["raw"],
+          "with-sidebar": ["with-sidebar"],
+        }[options.profileVariant];
+
+        return Promise.all(
+          profileVariants.map((profileVariant) =>
             createProfile(
               dataset,
               profileClass,
-              { ...options, profileVariant: "with-sidebar" },
-              promisesGroup2
-            ),
-            createProfile(
-              dataset,
-              profileClass,
-              { ...options, profileVariant: "raw" },
-              promisesGroup2
-            ),
-          ]);
-        } else {
-          return createProfile(dataset, profileClass, options, promisesGroup2);
-        }
+              { ...options, profileVariant },
+              ensureDirPromise
+            )
+          )
+        );
       })
       .then(() => {
         if (options.benchmark) benchmarker.end();
-        resolve(true);
+        resolve();
       })
       .catch((err) => reject(err));
 
-    Promise.all(promisesGroup2).catch((err) => {
+    ensureDirPromise.catch((err) => {
       reject(err);
     });
   });

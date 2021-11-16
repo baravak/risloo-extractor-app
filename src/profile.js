@@ -211,6 +211,23 @@ class Dataset {
     return data;
   }
 
+  // Group By Special Property of the Label of the Dataset Score
+  groupBy(prop) {
+    const { score } = this;
+
+    const scoreGroups = score.reduce((groups, data, index) => {
+      const group = groups.find(
+        (group) =>
+          group[0].label[prop] === data.label[prop] && data.label[prop] !== "-"
+      );
+      if (group) group.push(data);
+      else groups.push([data]);
+      return groups;
+    }, []);
+
+    return scoreGroups;
+  }
+
   static merge(field1, field2, combinedFieldfr, combinedFieldFormat) {
     const newField = {
       eng: `combined_${field1.eng}_${field2.eng}`,
@@ -347,13 +364,20 @@ class Profile {
       throw new Error("Can't Instantiate Abstract Class");
   }
 
-  _init(dataset, profileVariant, config) {
+  _init(dataset, options, config) {
+    const { profileVariant, measure }= options;
+    this.profileVariant = profileVariant;
+    this.measure = measure;
+
     this.spec = new Spec(config, this.profileSpec);
     const { canvas } = this.spec.parameters;
     this.canvas = new Canvas(canvas, profileVariant);
+
     this.dataset = new Dataset(dataset, this.spec.parameters);
-    if (profileVariant === "with-sidebar") this._generateQRCode();
-    this.context = this._calcContext();
+
+    if (this.profileVariant === "with-sidebar") this._generateQRCode();
+
+    this.contextArr = this._calcContext();
   }
 
   _generateQRCode() {
@@ -366,20 +390,24 @@ class Profile {
 
   getTemplateEngineParams() {
     const {
+      profileVariant,
+      measure,
       canvas,
       dataset,
       spec: { parameters: spec },
       qrcode,
-      context,
+      contextArr,
     } = this;
 
-    return {
+    return contextArr.map((context) => ({
       canvas,
       dataset,
       spec,
       qrcode,
       ...context,
-    };
+      profileVariant,
+      measure,
+    }));
   }
 }
 

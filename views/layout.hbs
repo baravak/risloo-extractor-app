@@ -22,13 +22,13 @@
     height="{{canvas.height}}"
     fill="white"
   ></rect>
-  {{#if (boolean variant "===" "with-sidebar")}}
+  {{#if (boolean profileVariant "===" "with-sidebar")}}
     {{> sidebar canvas=canvas info=dataset.info qrcode=qrcode}}
   {{/if}}
   <svg
     x="{{canvas.profile.padding}}"
     y="{{math
-      (ternary (boolean variant "===" "with-sidebar") canvas.header.height 0)
+      (ternary (boolean profileVariant "===" "with-sidebar") canvas.header.height 0)
       "+"
       canvas.profile.padding
     }}"

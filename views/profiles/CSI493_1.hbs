@@ -1,0 +1,110 @@
+{{#> layout}}
+
+  <defs>
+    <clipPath id="item-bar">
+      {{#with spec.items.rect.itemBar}}
+        <rect x="0" y="0" width="{{width}}" height="{{height}}" rx="{{br}}"/>
+      {{/with}}
+    </clipPath>
+  </defs>
+
+  <g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate({{spec.profile.dimensions.width}}, 0)">
+
+      <g transform="translate(0, 0)" font-size="12" font-weight="500" fill="#A1A1AA" text-anchor="end">
+        <g transform="translate(0, {{math 34 '/' 2}})">
+          <g transform="translate(-{{spec.items.rightPosArr.[0]}}, 0)">
+            <text x="0" y="0" dy="3">گروه</text>
+          </g>
+          <g transform="translate(-{{spec.items.rightPosArr.[1]}}, 0)">
+            <text x="0" y="0" dy="3">نوع اختلال / بیماری</text>
+          </g>
+          <g transform="translate(-{{spec.items.rightPosArr.[2]}}, 0)">
+            <text x="0" y="0" dy="3">گروه‌های دیگر بیماری که امکان وجود آن‌ها باید بررسی و حذف شود</text>
+          </g>
+          <g transform="translate(-{{spec.items.rightPosArr.[3]}}, 0)">
+            <text x="0" y="0" dy="3">نمره</text>
+          </g>
+        </g>
+      </g>
+
+      {{setVar "topPos" (math spec.items.rect.distanceY '+' 4)}}
+
+      {{#each itemsGroups.[0] as | item itemIndex |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          {{#unless @first}}
+            <g transform="translate(0, {{@root.topPos}})" font-size="12" font-weight="400" fill="#3F3F46" text-anchor="end">
+              <rect x="0" y="0" width="{{itemsSpec.rect.width}}" height="{{itemsSpec.rect.height}}" rx="{{itemsSpec.rect.br}}" fill="{{lookup itemsSpec.rect.colors (modulo (math itemIndex '-' 1) 2)}}" transform="scale(-1, 1)"/>
+              <g transform="translate(0, {{math itemsSpec.rect.height '*' 0.5}})">
+                <g transform="translate(-{{itemsSpec.rightPosArr.[0]}}, 0)">
+                  <text x="0" y="0" dy="2.5" class="eng-font" font-family="Dana">{{ternary (boolean itemIndex '===' 1) 'A الف' 'A'}}</text>
+                </g>
+                <g transform="translate(-{{itemsSpec.rightPosArr.[1]}}, 0)">
+                  <text x="0" y="0" dy="2.5">{{ternary (boolean itemIndex '===' 1) 'بیش‌ فعالی / اختلال توجه نوع بیش جنب بدون تأمل' 'بیش‌ فعالی / اختلال توجه نوع فاقد تمرکز حواس'}}</text>
+                </g>
+                <g transform="translate(-{{itemsSpec.rightPosArr.[2]}}, 0)">
+                  <text x="0" y="0" dy="2.5" class="eng-font" font-family="Dana">{{join item.relatedGroups ' , '}}</text>
+                </g>
+                <g transform="translate(-{{itemsSpec.rightPosArr.[3]}}, 0)">
+                  <text x="0" y="0" dy="2.5">{{item.mark}}</text>
+                </g>
+                <g transform="translate(-{{itemsSpec.rightPosArr.[4]}}, 0)" font-size="10" fill="#A1A1AA" text-anchor="start">
+                  <text x="0" y="0" dy="2.5">{{itemsSpec.minValue}}</text>
+                  <g transform="translate(10, -{{math itemsSpec.rect.itemBar.height '/' 2}})">
+                    <rect x="0" y="0" width="{{itemsSpec.rect.itemBar.width}}" height="{{itemsSpec.rect.itemBar.height}}" fill="{{itemsSpec.rect.itemBar.defaultFill}}" clip-path="url(#item-bar)"/>
+                    <rect x="0" y="0" width="{{item.width}}" height="{{itemsSpec.rect.itemBar.height}}" fill="{{itemsSpec.rect.itemBar.fill}}" clip-path="url(#item-bar)"/>
+                  </g>
+                  <text x="90" y="0" dy="2.5">{{lookup itemsSpec.maxValues item.label.eng}}</text>
+                </g>
+              </g>
+            </g>
+            {{assignGlobal "topPos" (math (math @root.topPos '+' itemsSpec.rect.height) '+' itemsSpec.rect.offsetY)}}
+          {{/unless}}
+        {{/with}}
+      {{/each}}
+
+      {{#each itemsGroups as | items itemsIndex |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          <g transform="translate(0, {{@root.topPos}})" font-size="12" font-weight="400" fill="#3F3F46" text-anchor="end">
+            <rect x="0" y="0" width="{{itemsSpec.rect.width}}" height="{{math itemsSpec.rect.height '*' items.length}}" rx="{{itemsSpec.rect.br}}" fill="{{lookup itemsSpec.rect.colors (modulo itemsIndex 2)}}" transform="scale(-1, 1)"/>
+            {{#each items as | item itemIndex |}}
+              <g transform="translate(0, {{math itemsSpec.rect.height '*' (math itemIndex '+' 0.5)}})">
+                <g transform="translate(-{{itemsSpec.rightPosArr.[1]}}, 0)">
+                  <text x="0" y="0" dy="2.5" xml:space="preserve">{{ternary @first item.label.fr (prepend item.label.fr "   - ")}}</text>
+                </g>
+                {{#if @first}}
+                  <g transform="translate(-{{itemsSpec.rightPosArr.[0]}}, 0)">
+                    <text x="0" y="0" dy="2.5" class="eng-font" font-family="Dana">{{lookup (split item.label.group "_") 0}}</text>
+                  </g>
+                  <g transform="translate(-{{itemsSpec.rightPosArr.[2]}}, 0)">
+                    <text x="0" y="0" dy="2.5" class="eng-font" font-family="Dana">{{join item.relatedGroups ' , '}}</text>
+                  </g>
+                {{/if}}
+                <g transform="translate(-{{itemsSpec.rightPosArr.[3]}}, 0)">
+                  <text x="0" y="0" dy="2.5">{{item.mark}}</text>
+                </g>
+                <g transform="translate(-{{itemsSpec.rightPosArr.[4]}}, 0)" font-size="10" fill="#A1A1AA" text-anchor="start">
+                  <text x="0" y="0" dy="2.5">{{itemsSpec.minValue}}</text>
+                  <g transform="translate(10, -{{math itemsSpec.rect.itemBar.height '/' 2}})">
+                    <rect x="0" y="0" width="{{itemsSpec.rect.itemBar.width}}" height="{{itemsSpec.rect.itemBar.height}}" fill="{{itemsSpec.rect.itemBar.defaultFill}}" clip-path="url(#item-bar)"/>
+                    <rect x="0" y="0" width="{{item.width}}" height="{{itemsSpec.rect.itemBar.height}}" fill="{{itemsSpec.rect.itemBar.fill}}" clip-path="url(#item-bar)"/>
+                  </g>
+                  <text x="90" y="0" dy="2.5">{{lookup itemsSpec.maxValues item.label.eng}}</text>
+                </g>
+              </g>
+            {{/each}}
+          </g>
+          {{assignGlobal "topPos" (math (math @root.topPos '+' (math itemsSpec.rect.height '*' items.length)) '+' itemsSpec.rect.offsetY)}}
+        {{/with}}
+      {{/each}}
+
+      {{#if (boolean profileVariant '!==' 'raw')}}
+        <g transform="translate(-{{math spec.profile.dimensions.width '-' 65}}, {{math topPos '+' 25}})">
+          <text x="0" y="0" font-size="12" font-weight="400" fill="#71717A" text-anchor="end" dy="3">صفحه 1 از 2</text>
+        </g>
+      {{/if}}
+
+    </g>
+  </g>
+
+{{/layout}}

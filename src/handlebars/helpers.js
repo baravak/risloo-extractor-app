@@ -6,6 +6,7 @@ const wrapOnNewline = require('./helpers/wrapOnNewline');
 const ellipsisLines = require('./helpers/ellipsisLines');
 const ellipsisChars = require('./helpers/ellipsisChars');
 const setVar = require('./helpers/setVar');
+const assignGlobal = require('./helpers/assignGlobal');
 const forLoop = require('./helpers/forLoop');
 const concat = require('./helpers/concat');
 const sin = require('./helpers/sin');
@@ -33,6 +34,7 @@ const helpers = {
   ellipsisLines,
   ellipsisChars,
   setVar,
+  assignGlobal,
   forLoop,
   concat,
   sin,

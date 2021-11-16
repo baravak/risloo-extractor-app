@@ -217,7 +217,7 @@ class CERQ93 extends Profile {
       leftPos: tick * itemsSpec.widthCoeff,
     }));
 
-    return { raw, items, rawTicks, itemsTicks };
+    return [{ raw, items, rawTicks, itemsTicks }];
   }
 }
 

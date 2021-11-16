@@ -150,7 +150,7 @@ class MOCI93 extends Profile {
       fill: colors[index],
     }));
 
-    return { items, raw };
+    return [{ items, raw }];
   }
 }
 

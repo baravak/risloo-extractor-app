@@ -119,7 +119,7 @@ class CARSP93 extends Profile {
       })),
     };
 
-    return { item };
+    return [{ item }];
   }
 
   _markToAngle(mark, min, max, angles, direction) {

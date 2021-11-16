@@ -229,7 +229,7 @@ class SCASP93 extends Profile {
     const descAnswer =
       dataset.answers[dataset.answers.length - 1].user_answered;
 
-    return { raw, items, descAnswer };
+    return [{ raw, items, descAnswer }];
   }
 
   _processFields() {

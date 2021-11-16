@@ -152,7 +152,7 @@ class BAOMEIS93 extends Profile {
       },
     }));
 
-    return { items };
+    return [{ items }];
   }
 }
 

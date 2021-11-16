@@ -145,7 +145,7 @@ class STAIY93 extends Profile {
       })),
     }));
 
-    return { items };
+    return [{ items }];
   }
 
   _markToAngle(mark, min, max, angles, direction) {

@@ -154,10 +154,10 @@ class OBQ4493 extends Profile {
 
     // console.log(items);
 
-    return {
+    return [{
       raw,
       items,
-    };
+    }];
   }
 }
 

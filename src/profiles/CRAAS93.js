@@ -201,11 +201,11 @@ class CRAAS93 extends Profile {
       number: ticksNumbers[index],
     }));
 
-    return {
+    return [{
       polygons,
       items,
       ticks,
-    };
+    }];
   }
 
   _calcPolygonPoints(radiuses, angles) {

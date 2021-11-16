@@ -135,11 +135,11 @@ class KJGI93 extends Profile {
       radius: FS.roundTo2(itemsSpec.markToRadius(data.mark)),
     }));
 
-    return {
+    return [{
       raw,
       interpret,
       items,
-    };
+    }];
   }
 }
 

@@ -253,12 +253,12 @@ class PIES93 extends Profile {
       leftPos: tick * widthCoeff,
     }));
 
-    return {
+    return [{
       raw,
       items,
       rawTicks,
       itemsTicks,
-    };
+    }];
   }
 }
 

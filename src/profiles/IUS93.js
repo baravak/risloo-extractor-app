@@ -234,7 +234,7 @@ class IUS93 extends Profile {
       })),
     }));
 
-    return { raw, items };
+    return [{ raw, items }];
   }
 }
 

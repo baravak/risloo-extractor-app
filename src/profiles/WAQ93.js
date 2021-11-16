@@ -238,7 +238,7 @@ class WAQ93 extends Profile {
 
     items = [items.slice(0, 4), items.slice(4)];
 
-    return { raw, items };
+    return [{ raw, items }];
   }
 }
 

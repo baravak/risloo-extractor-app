@@ -178,7 +178,7 @@ class FTEPT93 extends Profile {
       fill: itemsSpec.rect.body.colors[index],
     }));
 
-    return { raw, items };
+    return [{ raw, items }];
   }
 }
 

@@ -186,12 +186,12 @@ class SDCAQ93 extends Profile {
       leftPos: tick * itemsSpec.widthCoeff,
     }));
 
-    return {
+    return [{
       raw,
       items,
       rawTicks,
       itemsTicks,
-    };
+    }];
   }
 }
 

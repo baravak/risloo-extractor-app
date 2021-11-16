@@ -161,7 +161,7 @@ class AMS93 extends Profile {
       leftPos: tick * itemsSpec.widthCoeff,
     }));
 
-    return { items, itemsTicks };
+    return [{ items, itemsTicks }];
   }
 }
 

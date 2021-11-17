@@ -1,0 +1,32 @@
+{{#> layout}}
+
+  <g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(330, 288)">
+      <circle cx="0" cy="0" r="{{spec.raw.circle.R}}" fill="#F4F4F5"/>
+      <circle cx="0" cy="0" r="{{spec.raw.circle.r}}" fill="white"/>
+      <text x="0" y="0" font-size="28" font-weight="600" fill="#27272A" text-anchor="middle" dy="8.5">{{raw.mark}}</text>
+      {{gauge spec.raw.circle.R spec.raw.circle.r spec.raw.circle.brs (object start=spec.raw.circle.angles.start end=raw.stops.[0].angle) spec.raw.circle.direction fill="#E7E5E4"}}
+      {{gauge spec.raw.circle.R spec.raw.circle.r spec.raw.circle.brs (object start=raw.stops.[0].angle end=raw.angle) spec.raw.circle.direction fill=raw.interpret.fill}}
+      {{#each raw.stops as | stop stopIndex |}}
+        {{#with @root.spec.raw as | rawSpec |}}
+          {{setVar "p1" (polarToCartesian (math rawSpec.circle.R '+' 8) stop.angle)}}
+          {{setVar "p2" (polarToCartesian (math rawSpec.circle.R '+' 38) stop.angle)}}
+          {{setVar "p3" (polarToCartesian (math rawSpec.circle.R '+' 50) stop.angle)}}
+          <line x1="{{p1.x}}" y1="{{p1.y}}" x2="{{p2.x}}" y2="{{p2.y}}" stroke="#D4D4D8" stroke-dasharray="3"/>
+          <text x="{{p3.x}}" y="{{p3.y}}" font-size="12" font-weight="400" fill="#A1A1AA" text-anchor="middle" dy="3">{{stop.mark}}</text>
+          {{#unless @first}}
+            {{setVar "prevStopAngle" (lookup (lookup @root.raw.stops (math stopIndex '-' 1)) 'angle')}}
+            {{setVar "thetam" (math (math stop.angle '+' prevStopAngle) '/' 2)}}
+            {{setVar "pm1" (polarToCartesian (math rawSpec.circle.R '+' 35) thetam)}}
+            {{setVar "pm2" (polarToCartesian (math rawSpec.circle.R '+' 55) thetam)}}
+            {{setVar "interpret" (lookup @root.spec.raw.interprets (math stopIndex '-' 1))}}
+            {{setVar "isChosen" (boolean interpret.eng '===' @root.raw.interpret.eng)}}
+            <circle cx="{{pm1.x}}" cy="{{pm1.y}}" r="{{ternary isChosen 3.5 2.5}}" fill="{{ternary isChosen @root.raw.interpret.fill '#E4E4E7'}}"/>
+            <text x="{{pm2.x}}" y="{{pm2.y}}" text-anchor="{{lookup (object 1='start' 2='middle' 3='end') stopIndex}}" fill="{{ternary isChosen @root.raw.interpret.fill '#A1A1AA'}}" font-weight="{{ternary isChosen 500 400}}" font-size="{{ternary isChosen 16 14}}" dy="5">{{interpret.fr}}</text>
+          {{/unless}}
+        {{/with}}
+      {{/each}}
+    </g>
+  </g>
+
+{{/layout}}

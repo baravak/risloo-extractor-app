@@ -240,7 +240,10 @@ async function draw(options) {
         outputJSON1.setMessage("0 (Success): Profiles Successfully Created!");
         resolve(outputJSON1.showOutput());
       })
-      .catch(() => reject(outputJSON1.showOutput()));
+      .catch((err) => {
+        // console.error(err);
+        reject(outputJSON1.showOutput());
+      });
 
     ensureDirPromise.catch(() => {
       reject(outputJSON1.showOutput());

@@ -17,11 +17,11 @@ class Benchmarker {
     newBranch.timeSteps.push(Date.now());
     this.branches.push(newBranch);
 
-    console.log(
-      chalk`${"".padStart(newBranch.depth * 2)}{magenta.bold ${
-        newBranch.name
-      }}${newBranch.depth ? "" : " Benchmarking"} Started!`
-    );
+    // console.log(
+    //   chalk`${"".padStart(newBranch.depth * 2)}{magenta.bold ${
+    //     newBranch.name
+    //   }}${newBranch.depth ? "" : " Benchmarking"} Started!`
+    // );
   }
 
   addStep(stepName) {
@@ -37,14 +37,14 @@ class Benchmarker {
       1000;
     const timeColor = this._timeColor(time);
 
-    console.log(
-      chalk`${"".padStart(lastBranch.depth * 2 + 2)}{italic Step #${
-        lastBranch.currentStep
-      }:} {blue.bold ${stepName}}: {${timeColor}.bold ${time}} Seconds.`.padStart(
-        lastBranch.depth * 2,
-        " "
-      )
-    );
+    // console.log(
+    //   chalk`${"".padStart(lastBranch.depth * 2 + 2)}{italic Step #${
+    //     lastBranch.currentStep
+    //   }:} {blue.bold ${stepName}}: {${timeColor}.bold ${time}} Seconds.`.padStart(
+    //     lastBranch.depth * 2,
+    //     " "
+    //   )
+    // );
   }
 
   end() {
@@ -58,13 +58,15 @@ class Benchmarker {
       1000;
     const timeColor = this._timeColor(totalTime);
 
-    console.log(
-      chalk`${"".padStart(lastBranch.depth * 2)}{magenta.bold ${
-        lastBranch.name
-      }}${
-        lastBranch.depth ? "" : " Benchmarking"
-      } Completed. Total Time: {${timeColor}.bgGrey.bold  ${totalTime} } Seconds`
-    );
+    this.totalTime = totalTime;
+
+    // console.log(
+    //   chalk`${"".padStart(lastBranch.depth * 2)}{magenta.bold ${
+    //     lastBranch.name
+    //   }}${
+    //     lastBranch.depth ? "" : " Benchmarking"
+    //   } Completed. Total Time: {${timeColor}.bgGrey.bold  ${totalTime} } Seconds`
+    // );
   }
 
   _timeColor(time) {

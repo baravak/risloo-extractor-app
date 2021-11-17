@@ -1,8 +1,11 @@
 const fs = require("fs/promises");
-const { constants } = require("fs");
+const { constants, writeFile } = require("fs");
 const path = require("path");
 const sharp = require("sharp");
 const Handlebars = require("../handlebars/init");
+const outputJSON = require("./outputJSON");
+
+const outputJSON1 = new outputJSON(0);
 
 // Profiles JS Files and Template Files Directory
 const profilesJSDir = path.join(__dirname, "..", "profiles");
@@ -21,7 +24,9 @@ async function checkAndLoad(dir) {
       return fs.readFile(dir);
     })
     .catch((err) => {
-      throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
+      // outputJSON1.setMessage(`1 (Not Found): File in ${dir} Does Not Exist!`);
+      throw err;
+      // throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
     });
 }
 
@@ -53,7 +58,8 @@ async function checkAndImport(dir) {
     })
     .catch((err) => {
       // throw err;
-      throw new Error(`1 (Not Found): File in ${dir} Does Not Exist!`);
+      // outputJSON1.setMessage(`1 (Not Found): File in ${dir} Does Not Exist!`);
+      throw err;
     });
 }
 
@@ -74,7 +80,13 @@ async function createSVG(xml, outputPath) {
     (matched) => mapObj[matched]
   );
 
-  return fs.writeFile(outputPath, svg);
+  return new Promise((resolve, reject) => {
+    writeFile(outputPath, svg, (err) => {
+      if (err) reject(err);
+      outputJSON1.addOutput(outputPath);
+      resolve();
+    });
+  });
 }
 
 async function createPNG(xml, outputPath) {
@@ -83,6 +95,7 @@ async function createPNG(xml, outputPath) {
   return new Promise((resolve, reject) => {
     sharp(buf, { density: 100 }).toFile(outputPath, (err) => {
       if (err) return reject(err);
+      outputJSON1.addOutput(outputPath);
       resolve();
     });
   });
@@ -119,9 +132,10 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
   try {
     ctxArr = new profileClass(dataset, options).getTemplateEngineParams();
   } catch (err) {
-    throw new Error(
+    outputJSON1.setMessage(
       "2 (Profile JS Error): Error in Instantiating the Profile Object"
     );
+    throw err;
   }
 
   return Promise.all(
@@ -152,6 +166,9 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
           });
         })
         .catch((err) => {
+          outputJSON1.setMessage(
+            "4 (Not Found): Profile Template File Does Not Exist"
+          );
           throw err;
         });
     })
@@ -175,15 +192,17 @@ async function draw(options) {
   // Creating initial promises
   let datasetPromise;
   const jsPromise = checkAndImport(profileJSDir).catch((err) => {
-    throw new Error("3 (Invalid Name): Profile Name Is Not Valid");
+    outputJSON1.setMessage("3 (Invalid Name): Profile Name Is Not Valid");
+    throw err;
   });
   const ensureDirPromise = ensureDirExistence(options.outputAddress);
 
   // Check for input type
   if (options.inputType === "local") {
     if (!options.inputData) throw new Error("No Input Data Provided.");
-    datasetPromise = checkAndLoad(options.inputData).catch(() => {
-      throw new Error("1 (Not Found): Input Data File Does Not Exist!");
+    datasetPromise = checkAndLoad(options.inputData).catch((err) => {
+      outputJSON1.setMessage("1 (Not Found): Input Data File Does Not Exist!");
+      throw err;
     });
   } else if (options.inputType === "stdin") {
     if (!options.name) throw new Error("Output File Name Not Provided!");
@@ -214,13 +233,17 @@ async function draw(options) {
         );
       })
       .then(() => {
-        if (options.benchmark) benchmarker.end();
-        resolve();
+        if (options.benchmark) {
+          benchmarker.end();
+          outputJSON1.setTime(benchmarker.totalTime);
+        }
+        outputJSON1.setMessage("0 (Success): Profiles Successfully Created!");
+        resolve(outputJSON1.showOutput());
       })
-      .catch((err) => reject(err));
+      .catch(() => reject(outputJSON1.showOutput()));
 
-    ensureDirPromise.catch((err) => {
-      reject(err);
+    ensureDirPromise.catch(() => {
+      reject(outputJSON1.showOutput());
     });
   });
 }

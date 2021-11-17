@@ -89,8 +89,8 @@ function cli(args) {
     case "draw":
       const draw = require('./cli-commands/draw');
       draw(options)
-        .then(() => console.log("0 (Success): Profile Successfully Created!"))
-        .catch((err) => console.error(err));
+        .then((json) => console.log(json))
+        .catch((json) => console.log(json));
       break;
     case "test":
       const test = require('./cli-commands/test');

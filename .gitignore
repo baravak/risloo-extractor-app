@@ -2,6 +2,7 @@ src/svg/
 src/bin/
 src/output/
 src/json
+src/cli-commands/draw_benchmark.js
 views/functions
 src/test.js
 src/chart - old version.js

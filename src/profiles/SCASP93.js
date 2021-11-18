@@ -13,7 +13,7 @@ class SCASP93 extends Profile {
       fields: [
         "child_name",
         "child_age",
-        "gender",
+        "child_gender",
         "birth_order",
         "sons",
         "daughters",
@@ -151,7 +151,7 @@ class SCASP93 extends Profile {
             textFill: "white",
           },
           3: {
-            fill: "#B91C1C",
+            fill: "#B91C1C",  
             stroke: "none",
             textFill: "white",
           } /* Fill and stroke of different intensities of items rectangles */,
@@ -259,11 +259,11 @@ class SCASP93 extends Profile {
     const childAgeIndex = fields.findIndex(
       (field) => field.eng === "child_age"
     );
-    const genderIndex = fields.findIndex((field) => field.eng === "gender");
+    const childGenderIndex = fields.findIndex((field) => field.eng === "child_gender");
 
     const newField2 = Dataset.merge(
       fields[childAgeIndex],
-      fields[genderIndex],
+      fields[childGenderIndex],
       "سن کودک / جنسیت",
       "{0} / {1}"
     );

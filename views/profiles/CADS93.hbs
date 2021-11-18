@@ -1,0 +1,104 @@
+{{#> layout}}
+
+  <defs>
+    <clipPath id="raw-rect">
+      <rect x="0" y="0" width="815" height="20" rx="5"/>
+    </clipPath>
+    <path id="ok" d="M5.11339 -4.90545L-2.36541 2.57335L-5.1134 -0.174636C-5.24663 -0.307865 -5.46266 -0.307865 -5.59592 -0.174636L-6.40008 0.629527C-6.53331 0.762766 -6.53331 0.978793 -6.40008 1.11205L-2.60669 4.90543C-2.47345 5.03867 -2.25742 5.03867 -2.12416 4.90543L6.40002 -3.61877C6.53333 -3.752 6.53333 -3.96803 6.40002 -4.10129L5.59585 -4.90545C5.46265 -5.03868 5.24659 -5.03868 5.11339 -4.90545Z" fill="#DC2626"/>
+    <path id="no" d="M1.37904 -0.000910358L5.54564 -4.09311L6.40494 -4.93702C6.53169 -5.06151 6.53169 -5.2638 6.40494 -5.38829L5.48551 -6.29124C5.35876 -6.41573 5.15279 -6.41573 5.02604 -6.29124L0.000178576 -1.35513L-5.02568 -6.29164C-5.15243 -6.41613 -5.35841 -6.41613 -5.48517 -6.29164L-6.40493 -5.38869C-6.53169 -5.2642 -6.53169 -5.0619 -6.40493 -4.93742L-1.37868 -0.000910358L-6.40493 4.93521C-6.53169 5.0597 -6.53169 5.26199 -6.40493 5.38648L-5.48557 6.28943C-5.35882 6.41392 -5.15284 6.41392 -5.02608 6.28943L0.000178576 1.35332L4.16679 5.44554L5.02604 6.28943C5.15279 6.41392 5.35876 6.41392 5.48551 6.28943L6.40494 5.38648C6.53169 5.26199 6.53169 5.0597 6.40494 4.93521L1.37904 -0.000910358Z" fill="#52525B"/>
+    <path id="badge" d="M 0 177 C 3 177, 9.31 174.88, 10.5 172.5 L 39 121 L 109 121 C 126 121, 150 104, 150 81 L 150 -80 C 150 -103, 128 -121, 110 -121 L -110 -121 C -128 -121, -150 -103, -150 -80 L -150 81 C -150 104, -126 121, -109 121 L -39 121 L -10.5 172.5 C -9.31 174.88, -3 177, 0 177"/>
+  </defs> 
+
+  <g font-family="Dana-FaNum" transform="translate(0, {{spec.profile.padding.y}})">
+    <g transform="translate({{math spec.profile.dimensions.width '-' spec.profile.padding.x}}, 0)">
+
+      {{#each questions.[0] as | question questionIndex |}}
+        {{#with @root.spec.questions as | questionsSpec |}}
+          <g transform="translate(0, {{math questionIndex '*' questionsSpec.distanceY}})" fill="{{lookup questionsSpec.colors (modulo questionIndex 2)}}" font-size="14" font-weight="400">
+            <g transform="translate(0, 0)">
+              <rect x="0" y="0" width="{{questionsSpec.rect1.width}}" height="{{questionsSpec.rect1.height}}" rx="{{questionsSpec.rect1.br}}" transform="scale(-1, 1)"/>
+              <text x="-{{math questionsSpec.rect1.width '/' 2}}" y="{{math questionsSpec.rect1.height '/' 2}}" fill="#52525B" text-anchor="middle" dy="4">{{question.number}}</text>
+            </g>
+            <g transform="translate(-{{math questionsSpec.rect1.width '+' questionsSpec.offsetX}}, 0)">
+              <rect x="0" y="0" width="{{questionsSpec.rect1.width}}" height="{{questionsSpec.rect1.height}}" rx="{{questionsSpec.rect1.br}}" transform="scale(-1, 1)"/>
+              <text x="-{{math questionsSpec.rect1.width '/' 2}}" y="{{math questionsSpec.rect1.height '/' 2}}" fill="{{question.answer.choice.fill}}" text-anchor="middle" dy="4">{{question.answer.choice.text}}</text>
+            </g>
+            <g transform="translate(-{{math 2 '*' (math questionsSpec.rect1.width '+' questionsSpec.offsetX)}}, 0)">
+              <rect x="0" y="0" width="{{questionsSpec.rect2.width}}" height="{{questionsSpec.rect2.height}}" rx="{{questionsSpec.rect2.br}}" transform="scale(-1, 1)"/>
+              <text x="-10" y="{{math questionsSpec.rect1.height '/' 2}}" fill="#52525B" text-anchor="end" dy="4">{{question.answer.text}}</text>
+            </g>
+          </g>
+        {{/with}}
+      {{/each}}
+
+      <g transform="translate(0, {{math (math questions.[0].length '*' spec.questions.distanceY) '+' 10}})" fill="{{lookup spec.questions.colors 0}}" font-size="14" font-weight="400">
+        <rect x="0" y="0" width="{{spec.questions.rect3.width}}" height="{{spec.questions.rect3.height}}" rx="{{spec.questions.rect3.br}}" transform="scale(-1, 1)"/>
+        <text x="-{{math spec.questions.rect3.width '/' 2}}" y="{{math spec.questions.rect3.height '/' 2}}" fill="#52525B" text-anchor="middle" dy="4">{{math questions.[0].length '+' 1}}</text>
+        <g transform="translate(-{{math spec.questions.rect3.width '+' spec.questions.offsetX}}, 0)">
+          {{assignGlobal "index" 0}}
+          {{#withGroup questions.[1] 4}}
+            <g transform="translate(-{{math @root.index '*' (math (math (math @root.spec.questions.rect4.width '+' @root.spec.questions.offsetX) '+' @root.spec.questions.rect1.width) '+' 10)}} ,0)">
+              {{#each this as | question questionIndex |}}
+                {{#with @root.spec.questions as | questionsSpec |}}
+                  <g transform="translate(0, {{math questionIndex '*' questionsSpec.distanceY}})">
+                    <rect x="0" y="0" width="{{questionsSpec.rect4.width}}" height="{{questionsSpec.rect4.height}}" rx="{{questionsSpec.rect4.br}}" transform="scale(-1, 1)"/>
+                    <text x="-10" y="{{math questionsSpec.rect4.height '/' 2}}" fill="#52525B" text-anchor="end" dy="4">{{question.text}}</text>
+                    <g transform="translate(-{{math questionsSpec.rect4.width '+' questionsSpec.offsetX}}, 0)">
+                      <rect x="0" y="0" width="{{questionsSpec.rect1.width}}" height="{{questionsSpec.rect1.height}}" rx="{{questionsSpec.rect1.br}}" transform="scale(-1, 1)"/>
+                      <g transform="translate(-{{math questionsSpec.rect1.width '/' 2}}, {{math questionsSpec.rect1.height '/' 2}})">
+                        <svg width="13" height="12.77" viewBox="0 0 13 12.77" overflow="visible">
+                          <use href="#{{lookup (object 0='ok' 1='no') question.answer}}"/>
+                        </svg>
+                      </g>
+                    </g>
+                  </g>
+                {{/with}}
+              {{/each}}
+            </g>
+            {{assignGlobal "index" 1}}
+          {{/withGroup}}
+        </g>
+
+        <g transform="translate(-{{math spec.raw.rect.width '+' 5}}, {{math spec.questions.rect3.height '+' 83}})">
+          <text x="-15" y="{{math spec.raw.rect.height '/' 2}}" font-size="12" font-weight="400" fill="#52525B" text-anchor="end" dy="3">{{raw.label.fr}}</text>
+          <rect x="0" y="0" width="{{spec.raw.rect.width}}" height="{{spec.raw.rect.height}}" fill="#F4F4F5" clip-path="url(#raw-rect)"/>
+          <rect x="0" y="0" width="{{raw.width}}" height="{{spec.raw.rect.height}}" fill="{{raw.interpret.fill}}" clip-path="url(#raw-rect)"/>
+          <g transform="translate({{raw.width}}, -{{spec.raw.label.shape.offsetY}})">
+            <svg width="{{spec.raw.label.shape.width}}" height="{{spec.raw.label.shape.height}}" x="0" y="0" viewBox="0 0 300 298" overflow="visible">
+              <use href="#badge" fill="{{raw.interpret.fill}}"/>
+            </svg>
+            <text x="0" y="0" font-size="18" font-weight="600" text-anchor="middle" fill="white" dy="5">{{raw.mark}}</text>
+          </g>
+
+          <g>
+            {{#each raw.stops as | stop index |}}
+              {{#with @root.spec.raw as | rawSpec |}}
+                <g transform="translate({{stop.width}}, 0)">
+                  <line x1="0" y1="0" x2="0" y2="{{rawSpec.label.stops.line.length}}" stroke="#A1A1AA" stroke-dasharray="3" stroke-linecap="round" stroke-width="1"/>
+                  <text x="0" y="{{math rawSpec.label.stops.line.length '+' rawSpec.label.stops.number.offsetY}}" font-size="12" font-weight="400" text-anchor="middle" fill="#A1A1AA" dy="3">{{stop.mark}}</text>
+                </g>
+                {{#unless @last}}
+                  {{setVar "afterStopWidth" (lookup (lookup @root.raw.stops (math index '+' 1)) 'width')}}
+                  {{setVar "Wm" (math (math afterStopWidth '+' stop.width) '/' 2)}}
+                  {{setVar "interpret" (lookup (lookup rawSpec.interprets (math index '+' 1)) 'fr')}}
+                  {{setVar "isChosen" (boolean interpret '===' @root.raw.interpret.fr)}}
+                  <g transform="translate({{Wm}}, {{math rawSpec.label.stops.line.length '+' rawSpec.label.stops.number.offsetY}})">
+                    <text x="0" y="0" font-size="12" font-weight="400" text-anchor="middle" fill="{{ternary isChosen @root.raw.interpret.fill '#A1A1AA'}}" dy="3">افسردگی</text>
+                    <text x="0" y="18" font-size="14" font-weight="{{ternary isChosen 700 400}}" text-anchor="middle" fill="{{ternary isChosen @root.raw.interpret.fill '#A1A1AA'}}" dy="3">{{interpret}}</text>
+                  </g>
+                {{/unless}}
+              {{/with}}
+            {{/each}}
+            {{setVar "isChosen" (boolean spec.raw.interprets.[0].eng '===' @root.raw.interpret.eng)}}
+            <g transform="translate(20, {{math spec.raw.label.stops.line.length '+' spec.raw.label.stops.number.offsetY}})" font-size="12" font-weight="400" text-anchor="middle">
+              <text x="0" y="0" fill="{{ternary isChosen raw.interpret.fill '#A1A1AA'}}" dy="3">فقدان</text>
+              <text x="0" y="18" fill="{{ternary isChosen raw.interpret.fill '#A1A1AA'}}" dy="3">افسردگی</text>
+            </g>
+          </g>
+        </g>
+      </g>
+
+    </g>
+  </g>
+
+{{/layout}}

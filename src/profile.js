@@ -154,7 +154,7 @@ class Dataset {
         (dataset.closed_at && this._formatDate(dataset.closed_at)) || "-",
       scored_at:
         (dataset.scored_at && this._formatDate(dataset.scored_at)) || "-",
-      time: (dataset.cornometer && this._formatTime(dataset.cornometer)) || "-",
+      time: this._formatTime(dataset.cornometer) || "-",
       fields: this._extractFields(dataset.prerequisites, requiredPreqs),
     };
 
@@ -172,10 +172,16 @@ class Dataset {
 
   // Convert Given Time to Proper Format for Profile
   _formatTime(sec) {
-    return {
+    const time = {
       hour: Math.floor(sec / 60),
       minute: sec % 60,
     };
+
+    return (
+      (time.hour ? `${time.hour} ساعت` : "") +
+      (time.hour && time.minute ? " و " : "") +
+      (time.minute ? `${time.minute} دقیقه` : "")
+    );
   }
 
   // Extract Fields Using the Prerequisities Array
@@ -365,7 +371,7 @@ class Profile {
   }
 
   _init(dataset, options, config) {
-    const { profileVariant, measure }= options;
+    const { profileVariant, measure } = options;
     this.profileVariant = profileVariant;
     this.measure = measure;
 

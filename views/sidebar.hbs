@@ -111,7 +111,7 @@
               text-anchor="end"
               dy="3"
               fill="#374151">
-              {{ternary (boolean info.time.hour '!==' 0) (concat info.time.hour " ساعت") ''}}{{ternary (boolean (boolean info.time.hour '!==' 0) '&&' (boolean info.time.minute '!==' 0)) ' و ' ''}}{{ternary (boolean info.time.minute '!==' 0) (concat info.time.minute " دقیقه") ''}}
+              {{info.time}}
             </text>
             <svg
               width="{{canvas.sidebar.icons.clock.width}}"

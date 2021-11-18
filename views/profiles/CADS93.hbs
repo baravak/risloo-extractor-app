@@ -31,7 +31,7 @@
         {{/with}}
       {{/each}}
 
-      <g transform="translate(0, {{math (math questions.[0].length '*' spec.questions.distanceY) '+' 4}})" fill="{{lookup spec.questions.colors 0}}" font-size="14" font-weight="400">
+      <g transform="translate(0, {{math (math questions.[0].length '*' spec.questions.distanceY) '+' 10}})" fill="{{lookup spec.questions.colors 0}}" font-size="14" font-weight="400">
         <rect x="0" y="0" width="{{spec.questions.rect3.width}}" height="{{spec.questions.rect3.height}}" rx="{{spec.questions.rect3.br}}" transform="scale(-1, 1)"/>
         <text x="-{{math spec.questions.rect3.width '/' 2}}" y="{{math spec.questions.rect3.height '/' 2}}" fill="#52525B" text-anchor="middle" dy="4">{{math questions.[0].length '+' 1}}</text>
         <g transform="translate(-{{math spec.questions.rect3.width '+' spec.questions.offsetX}}, 0)">

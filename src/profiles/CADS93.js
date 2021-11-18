@@ -96,7 +96,7 @@ class CADS93 extends Profile {
         { text: "ب", fill: "#FBBF24" },
         { text: "ج", fill: "#FB923C" },
         { text: "د", fill: "#EF4444" },
-        { text: "هـ", fill: "#B91C1C" },
+        { text: "ه", fill: "#B91C1C" },
       ],
     },
     /* "labels" part which has to be provided for each profile */

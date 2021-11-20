@@ -357,8 +357,6 @@ class Profile {
       contextArr,
     } = this;
 
-    console.log(spec.items)
-
     return contextArr.map((context) => ({
       canvas,
       dataset,

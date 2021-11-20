@@ -8,7 +8,7 @@ class SCASP93 extends Profile {
     test: {
       name: "پرسشنامه اضطراب کودکان اسپنس - نسخه والدین" /* Name of the test */,
       multiProfile: false /* Whether the test has multiple profiles or not */,
-      answers: true /* Determines whether to get answers from inital dataset or not */,
+      questions: true /* Determines whether to get questions from inital dataset or not */,
       defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
         "child_name",
@@ -221,13 +221,13 @@ class SCASP93 extends Profile {
         number,
         intensity:
           itemsSpec.rect.intensities[
-            dataset.answers[number - 1].user_answered - 1
+            dataset.questions[number - 1].user_answered - 1
           ],
       })),
     }));
 
     const descAnswer =
-      dataset.answers[dataset.answers.length - 1].user_answered;
+      dataset.questions[dataset.questions.length - 1].user_answered;
 
     return [{ raw, items, descAnswer }];
   }

@@ -8,7 +8,7 @@ class CADS93 extends Profile {
     test: {
       name: "پرسشنامه افسردگی کودکان و نوجوانان - جان‌بزرگی" /* Name of the test */,
       multiProfile: false /* Whether the test has multiple profiles or not */,
-      answers: true /* Determines whether to get answers from inital dataset or not */,
+      questions: true /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields:
         [] /* In case you want to get some additional fields and show in the profile */,
@@ -134,16 +134,16 @@ class CADS93 extends Profile {
     let interpret = dataset.score[1].mark;
 
     const questions = [
-      dataset.answers.slice(0, 12).map((answer, index) => ({
+      dataset.questions.slice(0, 12).map((question, index) => ({
         number: index + 1,
         answer: {
-          choice: questionsSpec.choices[answer.user_answered - 1],
-          text: answer.answer.options[answer.user_answered - 1],
+          choice: questionsSpec.choices[question.user_answered - 1],
+          text: question.answer.options[question.user_answered - 1],
         },
       })),
-      dataset.answers.slice(12).map((answer, index) => ({
-        text: answer.text,
-        answer: answer.user_answered - 1
+      dataset.questions.slice(12).map((question, index) => ({
+        text: question.text,
+        answer: question.user_answered - 1
       })),
     ];
 

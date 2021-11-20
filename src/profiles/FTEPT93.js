@@ -8,7 +8,7 @@ class FTEPT93 extends Profile {
     test: {
       name: "پرسشنامه عملکرد تحصیلی فام و تیلر (درتاج)" /* Name of the test */,
       multiProfile: false /* Whether the test has multiple profiles or not */,
-      answers: false /* Determines whether to get answers from inital dataset or not */,
+      questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
         "study_field",

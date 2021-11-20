@@ -121,7 +121,7 @@ class Canvas {
 class Dataset {
   // Default Test Info for the Profile
   defaultTest = {
-    answers: false,
+    questions: false,
     defaultFields: true,
     fields: [],
   };
@@ -158,9 +158,9 @@ class Dataset {
       fields: this._extractFields(dataset.prerequisites, requiredPreqs),
     };
 
-    // Extract Answers if test.answers === true
+    // Extract Questions if test.questions === true
     // *** Remember That You Should Get The Copy of Arrays Taken from Dataset
-    this.answers = test.answers && [...dataset.items];
+    this.questions = test.questions && [...dataset.items];
 
     this.score = this._extractData(dataset.score, labels);
   }

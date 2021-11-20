@@ -10,9 +10,8 @@ class CARSP93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       answers: false /* Determines whether to get answers from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields:
+        [] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */

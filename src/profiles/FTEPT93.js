@@ -11,7 +11,8 @@ class FTEPT93 extends Profile {
       answers: false /* Determines whether to get answers from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
-        "study_field"
+        "study_field",
+        "marital_status"
       ] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */

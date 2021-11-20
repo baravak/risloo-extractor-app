@@ -133,7 +133,8 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
     ctxArr = new profileClass(dataset, options).getTemplateEngineParams();
   } catch (err) {
     outputJSON1.setMessage(
-      "2 (Profile JS Error): Error in Instantiating the Profile Object"
+      2,
+      "(Profile JS Error): Error in Instantiating the Profile Object"
     );
     throw err;
   }
@@ -167,7 +168,8 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
         })
         .catch((err) => {
           outputJSON1.setMessage(
-            "4 (Not Found): Profile Template File Does Not Exist"
+            4,
+            "(Not Found): Profile Template File Does Not Exist"
           );
           throw err;
         });
@@ -192,7 +194,7 @@ async function draw(options) {
   // Creating initial promises
   let datasetPromise;
   const jsPromise = checkAndImport(profileJSDir).catch((err) => {
-    outputJSON1.setMessage("3 (Invalid Name): Profile Name Is Not Valid");
+    outputJSON1.setMessage(3, "(Invalid Name): Profile Name Is Not Valid");
     throw err;
   });
   const ensureDirPromise = ensureDirExistence(options.outputAddress);
@@ -201,7 +203,7 @@ async function draw(options) {
   if (options.inputType === "local") {
     if (!options.inputData) throw new Error("No Input Data Provided.");
     datasetPromise = checkAndLoad(options.inputData).catch((err) => {
-      outputJSON1.setMessage("1 (Not Found): Input Data File Does Not Exist!");
+      outputJSON1.setMessage(1, "(Not Found): Input Data File Does Not Exist!");
       throw err;
     });
   } else if (options.inputType === "stdin") {
@@ -237,7 +239,7 @@ async function draw(options) {
           benchmarker.end();
           outputJSON1.setTime(benchmarker.totalTime);
         }
-        outputJSON1.setMessage("0 (Success): Profiles Successfully Created!");
+        outputJSON1.setMessage(0, "(Success): Profiles Successfully Created!");
         resolve(outputJSON1.showOutput());
       })
       .catch((err) => {

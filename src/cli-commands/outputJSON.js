@@ -19,8 +19,12 @@ class outputJSON {
     this.filesObj[name] = [...(this.filesObj[name] || []), ext];
   }
 
-  setMessage(message) {
-    if (!this.message) this.message = message;
+  setMessage(messageCode, message) {
+    if (!this.messageCode && !this.message) {
+      this.messageCode = messageCode;
+      this.message = message;
+    }
+    process.exitCode = messageCode;
   }
 
   setTime(time) {
@@ -28,16 +32,15 @@ class outputJSON {
   }
 
   showOutput() {
-    const { code, filesObj, message, time } = this;
+    const { code, filesObj, messageCode, message, time } = this;
     const output = {
       [OutputCode[code]]: filesObj,
+      message_code: messageCode,
       message,
       time,
     };
 
-    // console.log(output)
-
-    return JSON.stringify(output)
+    return JSON.stringify(output);
   }
 }
 

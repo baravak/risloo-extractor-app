@@ -6,6 +6,12 @@ const calcGaugeEndpoints = require("./calcGaugeEndpoints");
 const normalizeAngle = require("./normalizeAngle");
 
 function gauge(R, r, brs, angles, directionFlag, options) {
+  // R: outer radius
+  // r: inner radius
+  // brs: border radiuses : {start, end}
+  // angles: {start, end}
+  // directionFlag: direction of gauge (false: clockwise, true: counterclockwise)
+
   const attributes = [];
 
   Object.keys(options.hash).forEach((key) => {

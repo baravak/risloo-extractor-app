@@ -245,55 +245,6 @@ class Dataset {
   }
 }
 
-class SVG {
-  // Calculate "d" Attribute for a Path Tag using Given Points Array
-  static calcPathDAttr(points) {
-    let d = points.reduce(
-      (accumulator, point, index) =>
-        accumulator + `${index === 0 ? "M " : " L "}${point.x} ${point.y}`,
-      ""
-    );
-    d += " Z";
-
-    return d;
-  }
-
-  // Calculate "points" Attribute for a Polygon Tag using Given Points Array
-  static calcPolygonPointsAttr(points) {
-    let pointsAttr = points.reduce(
-      (accumulator, point) => accumulator + `${point.x},${point.y} `,
-      ""
-    );
-
-    // Remove Whitespace from Both Sides of the Output String
-    return pointsAttr.trim();
-  }
-}
-
-// export class Color {
-//   static colors = {
-//     red: "#DC2626",
-//     green: "#047857",
-//     yellow: "#D97706",
-//   };
-
-//   static getRandomColorArr(n) {
-//     const colors = Object.entries(this.colors);
-//     let len = colors.length;
-
-//     const output = [];
-//     while (output.length < n) {
-//       let ran = Math.floor(Math.random() * len);
-//       let color = colors[ran][1];
-//       if (!output.includes(color)) {
-//         output.push(color);
-//       }
-//     }
-
-//     return output;
-//   }
-// }
-
 class Spec {
   constructor(config, profileSpec) {
     this.parameters = {
@@ -417,4 +368,4 @@ class Profile {
   }
 }
 
-module.exports = { Profile, SVG, Dataset, FS };
+module.exports = { Profile, Dataset, FS };

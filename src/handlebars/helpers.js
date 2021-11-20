@@ -21,7 +21,10 @@ const array = require('./helpers/array');
 const reverse = require('./helpers/reverse');
 const polarToCartesian = require('./helpers/polarToCartesian');
 const abs = require('./helpers/abs');
+const getArrOfProp = require('./helpers/getArrOfProp');
+const displacePoint = require('./helpers/displacePoint');
 
+const polygon = require('./helpers/profiles/polygon')
 const gauge = require('./helpers/profiles/gauge')
 const bar = require('./helpers/profiles/bar')
 
@@ -49,6 +52,9 @@ const helpers = {
   reverse,
   polarToCartesian,
   abs,
+  getArrOfProp,
+  displacePoint,
+  polygon,
   gauge,
   bar,
 };

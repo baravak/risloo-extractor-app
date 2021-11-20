@@ -1,0 +1,35 @@
+{{#> layout}}
+
+  <g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(346, 342)">
+      <g fill="none" stroke="#D4D4D8">
+        {{polygon spec.polygons.n spec.polygons.radius spec.polygons.startAngle}}
+        {{polygon spec.polygons.n spec.polygons.centerOffset spec.polygons.startAngle}}
+      </g>
+      <g fill="#007BA4" fill-opacity="0.1" stroke="#007BA4" stroke-width="2">
+        {{polygon spec.polygons.n (getArrOfProp items 'radius') spec.polygons.startAngle}}
+      </g>
+      <text x="0" y="-{{spec.raw.mark.paddingY}}" font-size="12" font-weight="400" fill="#71717A" text-anchor="middle" dy="3">{{raw.label.fr}} از {{spec.raw.maxValue}}</text>
+      <text x="0" y="+{{spec.raw.mark.paddingY}}" font-size="30" font-weight="600" fill="#27272A" text-anchor="middle" dy="8">{{raw.mark}}</text>
+      <g>
+        {{assignGlobal "labelOffset" (array 0 0 15 0 0 25 0)}}
+        {{#each items as |item index|}}
+          {{setVar "p1" (polarToCartesian @root.spec.polygons.radius item.angle)}}
+          {{setVar "p2" (polarToCartesian @root.spec.polygons.centerOffset item.angle)}}
+          <line x1="{{p1.x}}" y1="{{p1.y}}" x2="{{p2.x}}" y2="{{p2.y}}" stroke="{{item.fill}}" stroke-dasharray="5"/>
+          {{setVar "point" (polarToCartesian item.radius item.angle)}}
+          <g transform="translate({{point.x}}, {{point.y}})" fill="white">
+            <circle cx="0" cy="0" r="{{@root.spec.items.dataPoints.radius}}" stroke="{{item.fill}}" stroke-width="1"/>
+            <text x="0" y="0" font-size="12" font-weight="500" fill="{{item.fill}}" text-anchor="middle" dy="3">{{item.mark}}</text>
+          </g>
+          {{setVar "point" (polarToCartesian (math (math @root.spec.polygons.radius '+' @root.spec.items.labels.offset) '+' (lookup @root.labelOffset index)) item.angle)}}
+          <g transform="translate({{point.x}}, {{point.y}})">
+            <text x="0" y="0" transform="translate(0, -{{@root.spec.items.labels.paddingY}})" font-size="16" font-weight="400" fill="{{item.fill}}" text-anchor="middle" dy="5">{{item.label.fr}}</text>
+            <text x="0" y="0" transform="translate(0, +{{@root.spec.items.labels.paddingY}})" font-size="12" font-weight="400" fill="#A1A1AA" text-anchor="middle" dy="5">از {{item.maxValue}}</text>
+          </g>
+        {{/each}}
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

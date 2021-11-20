@@ -1,5 +1,6 @@
 const moment = require("moment-jalaali");
 const qrCodeGenerator = require("./qrcode/qrCodeGenerator");
+const _ = require("lodash");
 
 moment.locale("fa");
 moment.loadPersian({ dialect: "persian-modern" });
@@ -311,7 +312,7 @@ class Spec {
   _setConfig(config) {
     const { parameters } = this;
 
-    Object.assign(parameters, config);
+    _.merge(parameters, config);
   }
 }
 
@@ -355,6 +356,8 @@ class Profile {
       qrcode,
       contextArr,
     } = this;
+
+    console.log(spec.items)
 
     return contextArr.map((context) => ({
       canvas,

@@ -32,9 +32,7 @@ class Benchmarker {
     lastBranch.currentStep++;
 
     const time =
-      (lastBranch.timeSteps[lastBranch.currentStep] -
-        lastBranch.timeSteps[lastBranch.currentStep - 1]) /
-      1000;
+      (lastBranch.timeSteps[lastBranch.currentStep] - lastBranch.timeSteps[lastBranch.currentStep - 1]) / 1000;
     const timeColor = this._timeColor(time);
 
     // console.log(
@@ -53,9 +51,7 @@ class Benchmarker {
     this.depth--;
 
     let lastBranch = branches.pop();
-    const totalTime =
-      (Date.now() - lastBranch.timeSteps[0]) /
-      1000;
+    const totalTime = (Date.now() - lastBranch.timeSteps[0]) / 1000;
     const timeColor = this._timeColor(totalTime);
 
     this.totalTime = totalTime;

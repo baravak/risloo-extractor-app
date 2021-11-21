@@ -10,22 +10,15 @@ class MOCI93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
-          width:
-            spec.items.distanceX * (n - 2) +
-            spec.raw.distanceX +
-            spec.raw.rect.width +
-            spec.profile.padding.x * 2,
+          width: spec.items.distanceX * (n - 2) + spec.raw.distanceX + spec.raw.rect.width + spec.profile.padding.x * 2,
           height:
             (spec.raw.maxValue / spec.raw.step) * spec.raw.rect.distanceY -
             spec.raw.rect.offsetY +
@@ -71,12 +64,7 @@ class MOCI93 extends Profile {
           return this.height + this.offsetY;
         } /* Vertical distance between two consecutive items rectangle */,
         defaultColor: "#F3F4F6" /* Default color of the items rectangle */,
-        colors: [
-          "#4C1D95",
-          "#1E3A8A",
-          "#374151",
-          "#92400E",
-        ] /* Colors used for theming items */,
+        colors: ["#4C1D95", "#1E3A8A", "#374151", "#92400E"] /* Colors used for theming items */,
       },
       maxValues: {
         washing: 11,

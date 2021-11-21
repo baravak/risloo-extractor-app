@@ -40,7 +40,7 @@ function gauge(R, r, brs, angles, direction, options) {
 
   // Calculate "d" Attribute of Path
   let dAttr = `M ${sidePoints.start.P1.toString}`;
-  
+
   dAttr += `A ${R} ${R} 1 ${totalAngle > Math.PI ? 1 : 0} ${direction ? 0 : 1} ${sidePoints.end.P1.toString}`;
 
   dAttr += brs.tr ? `A ${brs.tr} ${brs.tr} 1 0 ${direction ? 0 : 1} ${sidePoints.end.P1_PRIME.toString}` : "";

@@ -10,15 +10,12 @@ class AMS93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width:
@@ -51,8 +48,7 @@ class AMS93 extends Profile {
       get distanceY() {
         return this.offsetY1 + this.rect.height;
       } /* Distance between two consecutive item in the profile */,
-      totalHeights:
-        [] /* To be calculated in the class with the function provided */,
+      totalHeights: [] /* To be calculated in the class with the function provided */,
       calcTotalHeight: function (n) {
         return this.distanceY * (n - 1) + this.rect.height;
       } /* Method for calculating the total height of items */,
@@ -69,11 +65,7 @@ class AMS93 extends Profile {
         get borderRadius() {
           return this.height / 2;
         } /* Border Radius of the items rectangle */,
-        colors: [
-          "#8B5CF6",
-          "#EC4899",
-          "#71717A",
-        ] /* Colors used for theming items body parts */,
+        colors: ["#8B5CF6", "#EC4899", "#71717A"] /* Colors used for theming items body parts */,
         opacityMapping: {
           28: 1,
           "21-27": 0.9,
@@ -89,11 +81,7 @@ class AMS93 extends Profile {
           width: 42 /* Width of the category label rectangle of the items */,
           borderRadius: 5 /* Border radius of the category label rectangle of the items */,
         },
-        colors: [
-          "#A27DF8",
-          "#F06DAD",
-          "#898E99",
-        ] /* Colors used for theming items label rectangle */,
+        colors: ["#A27DF8", "#F06DAD", "#898E99"] /* Colors used for theming items label rectangle */,
       },
     },
     /* "labels" part which has to be provided for each profile */
@@ -124,16 +112,10 @@ class AMS93 extends Profile {
     const { items: itemsSpec } = spec;
 
     // Categorize Items Dataset
-    const itemsDatasets = [
-      dataset.score.slice(0, 3),
-      dataset.score.slice(3, 6),
-      dataset.score.slice(6),
-    ];
+    const itemsDatasets = [dataset.score.slice(0, 3), dataset.score.slice(3, 6), dataset.score.slice(6)];
 
     // ّInit Spec
-    spec.items.totalHeights = itemsDatasets.map((dataset) =>
-      spec.items.calcTotalHeight(dataset.length)
-    );
+    spec.items.totalHeights = itemsDatasets.map((dataset) => spec.items.calcTotalHeight(dataset.length));
     spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Gather Required Info for Items

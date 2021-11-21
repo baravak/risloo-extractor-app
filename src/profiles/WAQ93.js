@@ -10,21 +10,15 @@ class WAQ93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields:
-        ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
-          width:
-            spec.items.distanceX1 * 3 +
-            spec.items.circle.R * 2 +
-            20 +
-            spec.profile.padding.x * 2,
+          width: spec.items.distanceX1 * 3 + spec.items.circle.R * 2 + 20 + spec.profile.padding.x * 2,
           height:
             spec.raw.circle.R * 2 +
             spec.items.offsetY1 +
@@ -48,10 +42,10 @@ class WAQ93 extends Profile {
         R: 104.5 /* Radius of the outer circle of the raw element */,
         r: 64.5 /* Radius of the inner circle of the raw element */,
         brs: {
-          tl: 8.5, /* Top left border radius */
-          bl: 8.5, /* Bottom left border radius */
-          tr: 8.5, /* Top right border radius */
-          br: 8.5, /* Bottom right border radius */
+          tl: 8.5 /* Top left border radius */,
+          bl: 8.5 /* Bottom left border radius */,
+          tr: 8.5 /* Top right border radius */,
+          br: 8.5 /* Bottom right border radius */,
         } /* Border radiuses at each end of the gauge of the raw element */,
         angles: {
           start: FS.toRadians(-90),
@@ -108,10 +102,10 @@ class WAQ93 extends Profile {
         R: 61.5 /* Radius of the outer circle of the items element */,
         r: 36.5 /* Radius of the inner circle of the items element */,
         brs: {
-          tl: 5, /* Top left border radius */
-          bl: 5, /* Bottom left border radius */
-          tr: 5, /* Top right border radius */
-          br: 5, /* Bottom right border radius */
+          tl: 5 /* Top left border radius */,
+          bl: 5 /* Bottom left border radius */,
+          tr: 5 /* Top right border radius */,
+          br: 5 /* Bottom right border radius */,
         } /* Border radiuses at each end of the gauge of the items element */,
         angles: {
           start: FS.toRadians(-90),
@@ -194,16 +188,12 @@ class WAQ93 extends Profile {
     const raw = {
       label: rawData.label,
       mark: rawData.mark,
-      zeta:
-        (rawData.mark / rawSpec.maxValue) * rawSpec.circle.totalAngle +
-        rawSpec.circle.angles.start,
+      zeta: (rawData.mark / rawSpec.maxValue) * rawSpec.circle.totalAngle + rawSpec.circle.angles.start,
       fill: rawSpec.fill,
       opacity: FS.roundTo2(0.5 * (1 + rawData.mark / rawSpec.maxValue)),
       ticks: rawTicksNumbers.map((tick) => ({
         number: tick,
-        angle:
-          (tick / rawSpec.maxValue) * rawSpec.circle.totalAngle +
-          rawSpec.circle.angles.start,
+        angle: (tick / rawSpec.maxValue) * rawSpec.circle.totalAngle + rawSpec.circle.angles.start,
       })),
     };
 
@@ -211,11 +201,7 @@ class WAQ93 extends Profile {
     const itemsTicksNumbers = Object.fromEntries(
       Object.entries(itemsSpec.maxValues).map((entry) => [
         entry[0],
-        FS.createArithmeticSequence(
-          entry[1],
-          -entry[1] / (itemsSpec.ticks.num - 1),
-          itemsSpec.ticks.num
-        ).reverse(),
+        FS.createArithmeticSequence(entry[1], -entry[1] / (itemsSpec.ticks.num - 1), itemsSpec.ticks.num).reverse(),
       ])
     );
 
@@ -224,19 +210,13 @@ class WAQ93 extends Profile {
       label: data.label,
       mark: data.mark,
       zeta:
-        (data.mark / itemsSpec.maxValues[data.label.eng]) *
-          itemsSpec.circle.totalAngle +
-        itemsSpec.circle.angles.start,
+        (data.mark / itemsSpec.maxValues[data.label.eng]) * itemsSpec.circle.totalAngle + itemsSpec.circle.angles.start,
       fill: itemsSpec.fills[data.label.eng],
-      opacity: FS.roundTo2(
-        0.5 * (1 + data.mark / itemsSpec.maxValues[data.label.eng])
-      ),
+      opacity: FS.roundTo2(0.5 * (1 + data.mark / itemsSpec.maxValues[data.label.eng])),
       ticks: itemsTicksNumbers[data.label.eng].map((tick) => ({
         number: tick,
         angle:
-          (tick / itemsSpec.maxValues[data.label.eng]) *
-            itemsSpec.circle.totalAngle +
-          itemsSpec.circle.angles.start,
+          (tick / itemsSpec.maxValues[data.label.eng]) * itemsSpec.circle.totalAngle + itemsSpec.circle.angles.start,
       })),
     }));
 

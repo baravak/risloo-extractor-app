@@ -5,12 +5,9 @@ function qrCodeGenerator(data, options) {
   const opts = {
     color: "colored",
     logo: "none",
-    ...options
+    ...options,
   };
-  const qrSvg = qrRender(
-    QRCode.create(data, { errorCorrectionLevel: "Q" }),
-    opts
-  );
+  const qrSvg = qrRender(QRCode.create(data, { errorCorrectionLevel: "Q" }), opts);
   return qrSvg;
 }
 

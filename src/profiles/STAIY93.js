@@ -10,25 +10,16 @@ class STAIY93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
-          width:
-            spec.items.rect.width * 2 +
-            spec.items.rect.offsetX +
-            spec.profile.padding.x * 2,
-          height:
-            spec.items.rect.distanceY +
-            spec.items.trait.circle.R * 2 +
-            spec.profile.padding.y * 2,
+          width: spec.items.rect.width * 2 + spec.items.rect.offsetX + spec.profile.padding.x * 2,
+          height: spec.items.rect.distanceY + spec.items.trait.circle.R * 2 + spec.profile.padding.y * 2,
         };
       },
       padding: {
@@ -61,10 +52,10 @@ class STAIY93 extends Profile {
           R: 175 /* Radius of the outer circle of the items element */,
           r: 130 /* Radius of the inner circle of the items element */,
           brs: {
-            tl: 0, /* Top left border radius */
-            bl: 0, /* Bottom left border radius */
-            tr: 0, /* Top right border radius */
-            br: 0, /* Bottom right border radius */
+            tl: 0 /* Top left border radius */,
+            bl: 0 /* Bottom left border radius */,
+            tr: 0 /* Top right border radius */,
+            br: 0 /* Bottom right border radius */,
           } /* Border radiuses at each end of the gauge of the items element */,
           angles: {
             start: FS.toRadians(-90),
@@ -80,10 +71,10 @@ class STAIY93 extends Profile {
           R: 175 /* Radius of the outer circle of the items element */,
           r: 130 /* Radius of the inner circle of the items element */,
           brs: {
-            tl: 0, /* Top left border radius */
-            bl: 0, /* Bottom left border radius */
-            tr: 0, /* Top right border radius */
-            br: 0, /* Bottom right border radius */
+            tl: 0 /* Top left border radius */,
+            bl: 0 /* Bottom left border radius */,
+            tr: 0 /* Top right border radius */,
+            br: 0 /* Bottom right border radius */,
           } /* Border radiuses at each end of the gauge of the items element */,
           angles: {
             start: FS.toRadians(-90),

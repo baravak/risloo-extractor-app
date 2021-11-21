@@ -10,15 +10,12 @@ class SDCAQ93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width:
@@ -31,10 +28,7 @@ class SDCAQ93 extends Profile {
             spec.raw.ticks.number.offsetX +
             23 +
             spec.profile.padding.x * 2,
-          height:
-            spec.items.totalHeight +
-            2 * spec.items.ticks.heightOffset +
-            spec.profile.padding.y * 2,
+          height: spec.items.totalHeight + 2 * spec.items.ticks.heightOffset + spec.profile.padding.y * 2,
         };
       },
       padding: {
@@ -74,8 +68,7 @@ class SDCAQ93 extends Profile {
       get distanceY() {
         return this.offsetY + this.rect.height;
       } /* Distance between two consecutive item in the profile */,
-      totalHeight:
-        "" /* To be calculated in the class with the function provided */,
+      totalHeight: "" /* To be calculated in the class with the function provided */,
       calcTotalHeight: function (n) {
         return this.distanceY * (n - 1) + this.rect.height;
       } /* Method for calculating the total height of items */,
@@ -92,13 +85,7 @@ class SDCAQ93 extends Profile {
         get borderRadius() {
           return this.height / 2;
         } /* Border Radius of the items rectangle */,
-        colors: [
-          "#A78BFA",
-          "#10B981",
-          "#EC4899",
-          "#F59E0B",
-          "#007BA4",
-        ] /* Colors used for theming items body parts */,
+        colors: ["#A78BFA", "#10B981", "#EC4899", "#F59E0B", "#007BA4"] /* Colors used for theming items body parts */,
       },
       widthCoeff: 16 /* Used for converting mark to the width */,
       label: {
@@ -186,12 +173,14 @@ class SDCAQ93 extends Profile {
       leftPos: tick * itemsSpec.widthCoeff,
     }));
 
-    return [{
-      raw,
-      items,
-      rawTicks,
-      itemsTicks,
-    }];
+    return [
+      {
+        raw,
+        items,
+        rawTicks,
+        itemsTicks,
+      },
+    ];
   }
 }
 

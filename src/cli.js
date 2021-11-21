@@ -32,16 +32,9 @@ function parseArgumentsIntoOptions(rawArgs) {
         .makeOptionMandatory()
     )
 
-    .addOption(
-      new Option(
-        "-a, --output-address <address>",
-        "output address"
-      ).makeOptionMandatory()
-    )
+    .addOption(new Option("-a, --output-address <address>", "output address").makeOptionMandatory())
 
-    .addOption(
-      new Option("-m, --measure", "measure feature in SVG").default(false)
-    )
+    .addOption(new Option("-m, --measure", "measure feature in SVG").default(false))
 
     .addOption(new Option("-n, --name <name>", "name of output profile"))
 
@@ -60,9 +53,7 @@ function parseArgumentsIntoOptions(rawArgs) {
     .alias("T")
     .description("You can test commands of the cli.")
     .addOption(
-      new Option("-c, --command-test <name>", "command name to be tested")
-        .choices(["draw"])
-        .makeOptionMandatory()
+      new Option("-c, --command-test <name>", "command name to be tested").choices(["draw"]).makeOptionMandatory()
     )
     .action((options, command) => {
       output = {
@@ -87,13 +78,13 @@ function cli(args) {
 
   switch (options.command) {
     case "draw":
-      const draw = require('./cli-commands/draw');
+      const draw = require("./cli-commands/draw");
       draw(options)
         .then((json) => console.log(json))
         .catch((json) => console.log(json));
       break;
     case "test":
-      const test = require('./cli-commands/test');
+      const test = require("./cli-commands/test");
       test(options)
         .then(() => console.log("0 (Success): Draw Command Tested Completely!"))
         .catch((err) => console.error(err));
@@ -101,4 +92,4 @@ function cli(args) {
   }
 }
 
-module.exports = {cli};
+module.exports = { cli };

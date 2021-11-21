@@ -13,7 +13,8 @@ const P2C = polarToCartesian;
  * @param  {boolean} direction - direction of the gauge (false: clockwise, true: counterclockwise)
  */
 function calcGaugeSidePoints(R, r, brs, angle, start, direction) {
-  const alpha = {}, theta = {};
+  const alpha = {},
+    theta = {};
   for (let key in brs) {
     alpha[key] = Math.asin(brs[key] / (R - brs[key]));
     theta[key] = angle + (start ^ direction ? 1 : -1) * alpha[key];
@@ -24,10 +25,8 @@ function calcGaugeSidePoints(R, r, brs, angle, start, direction) {
     P2: P2C(r, theta.bottom),
   };
 
-  if (brs.top)
-    points["P1_PRIME"] = P2C((R - brs.top) * Math.cos(alpha.top), angle);
-  if (brs.bottom)
-    points["P2_PRIME"] = P2C((r + brs.bottom) * Math.cos(alpha.bottom), angle);
+  if (brs.top) points["P1_PRIME"] = P2C((R - brs.top) * Math.cos(alpha.top), angle);
+  if (brs.bottom) points["P2_PRIME"] = P2C((r + brs.bottom) * Math.cos(alpha.bottom), angle);
 
   return points;
 }

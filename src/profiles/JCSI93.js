@@ -10,14 +10,12 @@ class JCSI93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields:
-        ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width: spec.items.baseline.width + 10 + spec.profile.padding.x * 2,
@@ -169,9 +167,7 @@ class JCSI93 extends Profile {
       mark: rawData.mark,
       label: rawData.label,
       width: rawData.mark * rawSpec.widthCoeff,
-      interpret: rawSpec.interprets.find(
-        (interpretation) => interpretation.eng === interpret
-      ),
+      interpret: rawSpec.interprets.find((interpretation) => interpretation.eng === interpret),
       stops: rawSpec.stops.map((stop) => ({
         mark: stop,
         width: stop * rawSpec.widthCoeff,

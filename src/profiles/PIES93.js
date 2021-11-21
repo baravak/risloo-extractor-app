@@ -10,15 +10,12 @@ class PIES93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width:
@@ -32,10 +29,7 @@ class PIES93 extends Profile {
             spec.raw.ticks.number.offsetX +
             30 +
             spec.profile.padding.x * 2,
-          height:
-            spec.items.calcTotalHeight(n) +
-            spec.items.ticks.heightOffset * 2 +
-            spec.profile.padding.y * 2,
+          height: spec.items.calcTotalHeight(n) + spec.items.ticks.heightOffset * 2 + spec.profile.padding.y * 2,
         };
       },
       padding: {
@@ -79,8 +73,7 @@ class PIES93 extends Profile {
       get distanceY() {
         return this.offsetY + this.base.rect.height;
       } /* Distance between two consecutive item in the profile */,
-      totalHeight:
-        "" /* To be calculated in the class with the function provided */,
+      totalHeight: "" /* To be calculated in the class with the function provided */,
       calcTotalHeight: function (n) {
         return this.distanceY * (n - 1) + this.base.rect.height;
       } /* Method for calculating the total height of items */,
@@ -253,12 +246,14 @@ class PIES93 extends Profile {
       leftPos: tick * widthCoeff,
     }));
 
-    return [{
-      raw,
-      items,
-      rawTicks,
-      itemsTicks,
-    }];
+    return [
+      {
+        raw,
+        items,
+        rawTicks,
+        itemsTicks,
+      },
+    ];
   }
 }
 

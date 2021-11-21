@@ -5,6 +5,12 @@
       "options": {
         "printWidth": 280
       }
+    },
+    {
+      "files": "*.js",
+      "options": {
+        "printWidth": 120
+      }
     }
   ]
 }

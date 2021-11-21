@@ -139,9 +139,7 @@ class Dataset {
 
     // Specifying Prerequisites that are Going to Be Extracted
     // *** Remember That You Should Get The Copy of Arrays Taken from Spec of the Profile
-    const requiredPreqs = test.defaultFields
-      ? [...defaultFields, ...test.fields]
-      : [...test.fields];
+    const requiredPreqs = test.defaultFields ? [...defaultFields, ...test.fields] : [...test.fields];
 
     this.info = {
       id: dataset.id || "-",
@@ -149,12 +147,9 @@ class Dataset {
       clientName: dataset.client?.name || "-",
       managerName: dataset.room?.manager?.name || "-",
       centerTitle: dataset.center?.detail?.title || "-",
-      started_at:
-        (dataset.started_at && this._formatDate(dataset.started_at)) || "-",
-      closed_at:
-        (dataset.closed_at && this._formatDate(dataset.closed_at)) || "-",
-      scored_at:
-        (dataset.scored_at && this._formatDate(dataset.scored_at)) || "-",
+      started_at: (dataset.started_at && this._formatDate(dataset.started_at)) || "-",
+      closed_at: (dataset.closed_at && this._formatDate(dataset.closed_at)) || "-",
+      scored_at: (dataset.scored_at && this._formatDate(dataset.scored_at)) || "-",
       time: this._formatTime(dataset.cornometer) || "-",
       fields: this._extractFields(dataset.prerequisites, requiredPreqs),
     };
@@ -196,8 +191,7 @@ class Dataset {
       preq = preqs.find((item) => item.label === reqPreq);
       field = { eng: reqPreq, fr: preq?.text || "-", value: "-" };
       if (preq)
-        if (preq.answer.type !== "select")
-          field.value = preq.user_answered || "-";
+        if (preq.answer.type !== "select") field.value = preq.user_answered || "-";
         else field.value = preq.answer.options[preq.user_answered - 1] || "-";
       fields.push(field);
     });
@@ -223,10 +217,7 @@ class Dataset {
     const { score } = this;
 
     const scoreGroups = score.reduce((groups, data, index) => {
-      const group = groups.find(
-        (group) =>
-          group[0].label[prop] === data.label[prop] && data.label[prop] !== "-"
-      );
+      const group = groups.find((group) => group[0].label[prop] === data.label[prop] && data.label[prop] !== "-");
       if (group) group.push(data);
       else groups.push([data]);
       return groups;
@@ -318,8 +309,7 @@ class Spec {
 
 class Profile {
   constructor() {
-    if (this.constructor.name === "Profile")
-      throw new Error("Can't Instantiate Abstract Class");
+    if (this.constructor.name === "Profile") throw new Error("Can't Instantiate Abstract Class");
   }
 
   _init(dataset, options, config) {

@@ -10,15 +10,11 @@ async function importPartials(hbs) {
 
   let baseProfilePromises = baseProfiles.map((profileName) => {
     new Promise(function (resolve, reject) {
-      fs.readFile(
-        path.join(partialsDir, "profiles", `${profileName}.hbs`),
-        "utf-8",
-        (err, template) => {
-          if (err) reject(err);
-          hbs.registerPartial(profileName, template);
-          resolve(true);
-        }
-      );
+      fs.readFile(path.join(partialsDir, "profiles", `${profileName}.hbs`), "utf-8", (err, template) => {
+        if (err) reject(err);
+        hbs.registerPartial(profileName, template);
+        resolve(true);
+      });
     });
   });
 
@@ -29,15 +25,11 @@ async function importPartials(hbs) {
           const matches = /^([^.]+).(hbs|css|js)$/.exec(partialFile);
           if (!matches) return resolve(true);
           const name = matches[1];
-          fs.readFile(
-            path.join(partialsDir, partialFile),
-            "utf-8",
-            (err, template) => {
-              if (err) reject(err);
-              hbs.registerPartial(name, template);
-              resolve(true);
-            }
-          );
+          fs.readFile(path.join(partialsDir, partialFile), "utf-8", (err, template) => {
+            if (err) reject(err);
+            hbs.registerPartial(name, template);
+            resolve(true);
+          });
         })
     );
 

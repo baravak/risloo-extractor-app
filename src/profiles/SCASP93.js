@@ -26,8 +26,7 @@ class SCASP93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width: spec.descAnswer.rect.width + spec.profile.padding.x * 2,
@@ -151,7 +150,7 @@ class SCASP93 extends Profile {
             textFill: "white",
           },
           3: {
-            fill: "#B91C1C",  
+            fill: "#B91C1C",
             stroke: "none",
             textFill: "white",
           } /* Fill and stroke of different intensities of items rectangles */,
@@ -219,15 +218,11 @@ class SCASP93 extends Profile {
       maxValue: itemsSpec.maxValues[data.label.eng],
       questions: itemsSpec.questionNumbers[data.label.eng].map((number) => ({
         number,
-        intensity:
-          itemsSpec.rect.intensities[
-            dataset.questions[number - 1].user_answered - 1
-          ],
+        intensity: itemsSpec.rect.intensities[dataset.questions[number - 1].user_answered - 1],
       })),
     }));
 
-    const descAnswer =
-      dataset.questions[dataset.questions.length - 1].user_answered;
+    const descAnswer = dataset.questions[dataset.questions.length - 1].user_answered;
 
     return [{ raw, items, descAnswer }];
   }
@@ -239,13 +234,11 @@ class SCASP93 extends Profile {
       },
     } = this;
 
-    const birthOrderField = fields.find((field) => field.eng === "birth_order") 
+    const birthOrderField = fields.find((field) => field.eng === "birth_order");
     birthOrderField.fr = "فرزند چندم";
 
     const sonsFieldIndex = fields.findIndex((field) => field.eng === "sons");
-    const daughtersFieldIndex = fields.findIndex(
-      (field) => field.eng === "daughters"
-    );
+    const daughtersFieldIndex = fields.findIndex((field) => field.eng === "daughters");
 
     const newField1 = Dataset.merge(
       fields[sonsFieldIndex],
@@ -256,17 +249,10 @@ class SCASP93 extends Profile {
 
     fields.splice(sonsFieldIndex, 2, newField1);
 
-    const childAgeIndex = fields.findIndex(
-      (field) => field.eng === "child_age"
-    );
+    const childAgeIndex = fields.findIndex((field) => field.eng === "child_age");
     const childGenderIndex = fields.findIndex((field) => field.eng === "child_gender");
 
-    const newField2 = Dataset.merge(
-      fields[childAgeIndex],
-      fields[childGenderIndex],
-      "سن کودک / جنسیت",
-      "{0} / {1}"
-    );
+    const newField2 = Dataset.merge(fields[childAgeIndex], fields[childGenderIndex], "سن کودک / جنسیت", "{0} / {1}");
 
     fields.splice(childAgeIndex, 2, newField2);
   }

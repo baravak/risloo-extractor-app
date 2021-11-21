@@ -15,7 +15,7 @@ const PI = Math.PI;
  * @param  {object} options
  */
 function polygon(n, radiuses, angle, options) {
-  if (!Array.isArray(radiuses)) radiuses = Array(n).fill(radiuses)
+  if (!Array.isArray(radiuses)) radiuses = Array(n).fill(radiuses);
 
   const attributes = [];
 
@@ -28,14 +28,9 @@ function polygon(n, radiuses, angle, options) {
   // theta is the angle of the polygon
   const theta = (2 * PI) / n;
 
-  const points = radiuses.map((radius, index) =>
-    P2C(radius, angle - index * theta)
-  );
+  const points = radiuses.map((radius, index) => P2C(radius, angle - index * theta));
 
-  let pointsAttr = points.reduce(
-    (accm, point) => accm + `${point.x},${point.y} `,
-    ""
-  );
+  let pointsAttr = points.reduce((accm, point) => accm + `${point.x},${point.y} `, "");
 
   let result = `<polygon points="${pointsAttr}" ${attributes.join(" ")}/>`;
 

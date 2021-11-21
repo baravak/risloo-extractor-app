@@ -10,15 +10,12 @@ class CERQ93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width:
@@ -47,12 +44,8 @@ class CERQ93 extends Profile {
     },
     /* "raw" is the general term used for total data element in the profile */
     raw: {
-      minValues: [
-        10, 8,
-      ] /* Minimum values of raw marks provided by the dataset */,
-      maxValues: [
-        50, 40,
-      ] /* Maximum values of raw marks provided by the dataset */,
+      minValues: [10, 8] /* Minimum values of raw marks provided by the dataset */,
+      maxValues: [50, 40] /* Maximum values of raw marks provided by the dataset */,
       offsetX: 110 /* Horizontal offset from items */,
       ticks: {
         num: 2 /* Number of ticks */,
@@ -82,8 +75,7 @@ class CERQ93 extends Profile {
       get distanceY() {
         return this.offsetY1 + this.rect.height;
       } /* Distance between two consecutive item in the profile */,
-      totalHeights:
-        [] /* To be calculated in the class with the function provided */,
+      totalHeights: [] /* To be calculated in the class with the function provided */,
       calcTotalHeight: function (n) {
         return this.distanceY * (n - 1) + this.rect.height;
       } /* Method for calculating the total height of items */,
@@ -100,10 +92,7 @@ class CERQ93 extends Profile {
         get borderRadius() {
           return this.height / 2;
         } /* Border Radius of the items rectangle */,
-        colors: [
-          "#047857",
-          "#EF4444",
-        ] /* Colors used for theming items body parts */,
+        colors: ["#047857", "#EF4444"] /* Colors used for theming items body parts */,
         opacityMapping: {
           "9-10": 1,
           "7-8": 0.9,
@@ -119,10 +108,7 @@ class CERQ93 extends Profile {
           width: 42 /* Width of the category label rectangle of the items */,
           borderRadius: 5 /* Border radius of the category label rectangle of the items */,
         },
-        colors: [
-          "#369379",
-          "#F26969",
-        ] /* Colors used for theming items label rectangle */,
+        colors: ["#369379", "#F26969"] /* Colors used for theming items label rectangle */,
       },
     },
     /* "labels" part which has to be provided for each profile */
@@ -161,9 +147,7 @@ class CERQ93 extends Profile {
     const itemsDatasets = [dataset.score.slice(0, 5), dataset.score.slice(5)];
 
     // ّInit Spec
-    spec.items.totalHeights = itemsDatasets.map((dataset) =>
-      spec.items.calcTotalHeight(dataset.length)
-    );
+    spec.items.totalHeights = itemsDatasets.map((dataset) => spec.items.calcTotalHeight(dataset.length));
     spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Gather Required Info for Raw
@@ -179,8 +163,7 @@ class CERQ93 extends Profile {
       rawTicksNumbers.push(
         FS.createArithmeticSequence(
           rawSpec.minValues[i],
-          (rawSpec.maxValues[i] - rawSpec.minValues[i]) /
-            (rawSpec.ticks.num - 1),
+          (rawSpec.maxValues[i] - rawSpec.minValues[i]) / (rawSpec.ticks.num - 1),
           rawSpec.ticks.num
         )
       );

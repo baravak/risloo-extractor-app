@@ -9,9 +9,7 @@ const outputDir = path.join(__dirname, "..", "output", "test");
 
 async function loadProfileNames() {
   return readdir(profilesJSDir).then((profileNames) =>
-    profileNames
-      .map((name) => name.split(".")[0])
-      .filter((name) => name !== "empty")
+    profileNames.map((name) => name.split(".")[0]).filter((name) => name !== "empty")
   );
 }
 

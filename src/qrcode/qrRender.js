@@ -1,8 +1,4 @@
-const removeModules = ({
-  matrix,
-  removeFinderPattern = false,
-  removeCenterModules = false,
-}) => {
+const removeModules = ({ matrix, removeFinderPattern = false, removeCenterModules = false }) => {
   let size = matrix.size;
 
   const finderPatternModules = removeFinderPattern ? size - 7 : 0;
@@ -73,12 +69,7 @@ const qrModulesDataRender = (data, size, moduleSize) => {
         })"><use xlink:href="#${moduleStyle}"/></g>`;
       }
 
-      if (
-        nextCol !== size &&
-        !nextValue &&
-        nextValueBRow &&
-        nextValueBRowNextCol
-      ) {
+      if (nextCol !== size && !nextValue && nextValueBRow && nextValueBRowNextCol) {
         moduleStyle = "n_lb";
 
         svg += `<g transform="translate(${nextCol * moduleSize}, ${
@@ -86,12 +77,7 @@ const qrModulesDataRender = (data, size, moduleSize) => {
         })"><use xlink:href="#${moduleStyle}"/></g>`;
       }
 
-      if (
-        nextCol !== size &&
-        !nextValue &&
-        prevValueTRow &&
-        prevValueTRowNextCol
-      ) {
+      if (nextCol !== size && !nextValue && prevValueTRow && prevValueTRowNextCol) {
         moduleStyle = "n_lt";
 
         svg += `<g transform="translate(${nextCol * moduleSize}, ${
@@ -153,9 +139,7 @@ const qrRender = (qrData, customOptions, cb) => {
 
   const logoSvg = `
     <g id="fillstuff_logo" stroke="none" stroke-width="1" fill="none">
-      <rect fill="currentColor" x="0" y="0" width="${moduleSize * 7}" height="${
-    moduleSize * 7
-  }" rx="150"/>
+      <rect fill="currentColor" x="0" y="0" width="${moduleSize * 7}" height="${moduleSize * 7}" rx="150"/>
       <g transform="translate(130, 130) scale(15)">
         <path fill="${logoModule1Color}" d="M5.86241276,8.09571286 C5.86241276,6.86229527 6.86229527,5.86241276 8.09571286,5.86241276 L20.0159522,5.86241276 C20.4784837,5.86241276 20.8534397,5.48745682 20.8534397,5.02492522 L20.8534397,3.62911266 C20.8534397,1.62480909 19.2286306,1.22728198e-16 17.2243271,0 L0.837487537,0 C0.374955942,-2.83218919e-17 5.66437837e-17,0.374955942 0,0.837487537 L0,17.2243271 C2.45456396e-16,19.2286306 1.62480909,20.8534397 3.62911266,20.8534397 L5.02492522,20.8534397 C5.48745682,20.8534397 5.86241276,20.4784837 5.86241276,20.0159522 L5.86241276,8.09571286 Z"/>
         <path fill="${logoModule2Color}" d="M13.5393819,15.7726819 C13.5393819,14.5392643 14.5392643,13.5393819 15.7726819,13.5393819 L23.449651,13.5393819 C23.6717666,13.5393819 23.8847848,13.4511468 24.0418441,13.2940875 C24.1989036,13.137028 24.2871386,12.9240098 24.2871386,12.7018943 L24.2871386,11.3060818 C24.2871386,9.30177815 22.6623295,7.67696909 20.6580259,7.67696909 L8.51445663,7.67696909 C8.05192504,7.67696909 7.67696909,8.05192504 7.67696909,8.51445663 L7.67696909,20.6580259 C7.67696909,22.6623295 9.30177815,24.2871386 11.3060818,24.2871386 L12.7018943,24.2871386 C12.9240098,24.2871386 13.137028,24.1989036 13.2940875,24.0418441 C13.4511468,23.8847848 13.5393819,23.6717666 13.5393819,23.449651 L13.5393819,15.7726819 Z"/>
@@ -164,18 +148,16 @@ const qrRender = (qrData, customOptions, cb) => {
     </g>
 	`;
   const logoSvgMask = `
-	  <use fill="none" fill-rule="evenodd" transform="translate(${
-      ((size - 7 * 3) / 2 + 7) * moduleSize
-    }, ${((size - 7 * 3) / 2 + 7) * moduleSize})" xlink:href="#fillstuff_logo"/>
+	  <use fill="none" fill-rule="evenodd" transform="translate(${((size - 7 * 3) / 2 + 7) * moduleSize}, ${
+    ((size - 7 * 3) / 2 + 7) * moduleSize
+  })" xlink:href="#fillstuff_logo"/>
 	`;
 
   const imageSvg = `
     <g id="image_center">
       <defs>
         <pattern id="image" x="0" y="0" height="100%" width="100%" viewBox="0 0 300 300">
-          <image x="0" y="0" width="300" height="300" xlink:href="${
-            options.image
-          }"/>
+          <image x="0" y="0" width="300" height="300" xlink:href="${options.image}"/>
         </pattern>
       </defs>
       <rect fill="url(#image)" x="0" y="0" width="${moduleSize * 7}" height="${
@@ -184,15 +166,13 @@ const qrRender = (qrData, customOptions, cb) => {
     </g>
 	`;
   const imageSvgMask = `
-	  <use fill="none" fill-rule="evenodd" transform="translate(${
-      ((size - 7 * 3) / 2 + 7) * moduleSize
-    }, ${((size - 7 * 3) / 2 + 7) * moduleSize})" xlink:href="#image_center"/>
+	  <use fill="none" fill-rule="evenodd" transform="translate(${((size - 7 * 3) / 2 + 7) * moduleSize}, ${
+    ((size - 7 * 3) / 2 + 7) * moduleSize
+  })" xlink:href="#image_center"/>
 	`;
 
   const qrSvg = `
-<svg viewBox="0 0 ${moduleSize * size} ${moduleSize * size}" width="${
-    options.width || 250
-  }" height="${
+<svg viewBox="0 0 ${moduleSize * size} ${moduleSize * size}" width="${options.width || 250}" height="${
     options.height || 250
   }" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -217,12 +197,8 @@ const qrRender = (qrData, customOptions, cb) => {
   <g transform="translate(0,0)">
     ${qrModulesDataRender(data, size, moduleSize)}
     <use fill-rule="evenodd" transform="translate(0,0)" xlink:href="#point"/>
-    <use fill-rule="evenodd" transform="translate(${
-      size * moduleSize - 700
-    },0)" xlink:href="#point"/>
-    <use fill-rule="evenodd" transform="translate(0,${
-      size * moduleSize - 700
-    })" xlink:href="#point"/>
+    <use fill-rule="evenodd" transform="translate(${size * moduleSize - 700},0)" xlink:href="#point"/>
+    <use fill-rule="evenodd" transform="translate(0,${size * moduleSize - 700})" xlink:href="#point"/>
     ${options.logo === "fillstuff" ? logoSvgMask : ""}
     ${options.logo === "image" && options.image ? imageSvgMask : ""}
   </g>
@@ -230,18 +206,14 @@ const qrRender = (qrData, customOptions, cb) => {
 `;
 
   const svg = `
-<svg width="${options.width || 250}" height="${
-    options.height || 250
-  }" viewBox="0 0 ${options.width || 250} ${
+<svg width="${options.width || 250}" height="${options.height || 250}" viewBox="0 0 ${options.width || 250} ${
     options.height || 250
   }" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <g id="qr" style="color: ${moduleColor}">${qrSvg}</g>
   </defs>
   <g clip-path="url(#main-mask)">
-    <rect x="0" y="0" width="${options.width || 250}" height="${
-    options.height || 250
-  }" fill="transparent"/>
+    <rect x="0" y="0" width="${options.width || 250}" height="${options.height || 250}" fill="transparent"/>
     <use x="0" y="0" xlink:href="#qr" transform="scale(1)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
   </g>
 </svg>

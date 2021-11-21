@@ -10,14 +10,12 @@ class CADS93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: true /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields:
-        [] /* In case you want to get some additional fields and show in the profile */,
+      fields: [] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width: 883 + spec.profile.padding.x * 2,
@@ -143,7 +141,7 @@ class CADS93 extends Profile {
       })),
       dataset.questions.slice(12).map((question, index) => ({
         text: question.text,
-        answer: question.user_answered - 1
+        answer: question.user_answered - 1,
       })),
     ];
 
@@ -151,14 +149,12 @@ class CADS93 extends Profile {
       mark: rawData.mark,
       label: rawData.label,
       width: rawData.mark !== 0 ? (rawData.mark - 1) * rawSpec.widthCoeff + 45 : 0,
-      interpret: rawSpec.interprets.find(
-        (interpretation) => interpretation.eng === interpret
-      ),
+      interpret: rawSpec.interprets.find((interpretation) => interpretation.eng === interpret),
       stops: rawSpec.stops.map((stop) => ({
         mark: stop,
         width: (stop - 1) * rawSpec.widthCoeff + 45,
       })),
-    }
+    };
 
     return [{ raw, questions }];
   }

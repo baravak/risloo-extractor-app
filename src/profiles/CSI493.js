@@ -11,14 +11,12 @@ class CSI4 extends Profile {
       pages: 2 /* Number of pages of the profile */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields:
-        [] /* In case you want to get some additional fields and show in the profile */,
+      fields: [] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width: 903 + spec.profile.padding.x * 2,
@@ -88,9 +86,7 @@ class CSI4 extends Profile {
         J: ["H", "F", "D"],
         "-": "-",
       },
-      rightPosArr: [
-        10, 92, 399, 759, 893,
-      ] /* Right position array of items table cells */,
+      rightPosArr: [10, 92, 399, 759, 893] /* Right position array of items table cells */,
       rect: {
         width: 903,
         height: 30,
@@ -268,17 +264,12 @@ class CSI4 extends Profile {
       dataset.map((data) => ({
         label: data.label,
         mark: data.mark,
-        width:
-          (data.mark / itemsSpec.maxValues[data.label.eng]) *
-          itemsSpec.rect.itemBar.width,
+        width: (data.mark / itemsSpec.maxValues[data.label.eng]) * itemsSpec.rect.itemBar.width,
         relatedGroups: itemsSpec.relatedGroups[data.label.group],
       }))
     );
 
-    return [
-      { itemsGroups: itemsGroups.slice(0, 10) },
-      { itemsGroups: itemsGroups.slice(10) },
-    ];
+    return [{ itemsGroups: itemsGroups.slice(0, 10) }, { itemsGroups: itemsGroups.slice(10) }];
   }
 }
 

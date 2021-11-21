@@ -6,7 +6,7 @@ const AMS93 = require("./AMS93");
 class AMS9A extends Profile {
   constructor(dataset, profileVariant, config = {}) {
     super();
-    Object.assign(this, new AMS93(dataset, profileVariant, config))
+    Object.assign(this, new AMS93(dataset, profileVariant, config));
   }
 }
 

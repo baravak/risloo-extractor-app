@@ -10,15 +10,12 @@ class CRAAS93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width: 1050 + spec.profile.padding.x * 2,
@@ -49,11 +46,7 @@ class CRAAS93 extends Profile {
       },
       dataPoints: {
         radius: 12 /* Radius of the circle of the data point */,
-        fills: [
-          "#166534",
-          "#D97706",
-          "#DC2626",
-        ] /* Colors used for theming data points */,
+        fills: ["#166534", "#D97706", "#DC2626"] /* Colors used for theming data points */,
       },
       ticks: {
         num: 5 /* Number of ticks */,
@@ -106,8 +99,7 @@ class CRAAS93 extends Profile {
       mark: data.mark,
       angle: polygonsSpec.startAngle - index * polygonsSpec.theta,
       radius:
-        (data.mark / itemsSpec.maxValue) *
-          (polygonsSpec.radius - polygonsSpec.centerOffset) +
+        (data.mark / itemsSpec.maxValue) * (polygonsSpec.radius - polygonsSpec.centerOffset) +
         polygonsSpec.centerOffset,
       fill: itemsSpec.dataPoints.fills[index],
     }));
@@ -123,8 +115,7 @@ class CRAAS93 extends Profile {
     );
     const ticksRadiuses = FS.createArithmeticSequence(
       polygonsSpec.centerOffset,
-      (polygonsSpec.radius - polygonsSpec.centerOffset) /
-        (itemsSpec.ticks.num - 1),
+      (polygonsSpec.radius - polygonsSpec.centerOffset) / (itemsSpec.ticks.num - 1),
       itemsSpec.ticks.num
     );
 
@@ -139,8 +130,7 @@ class CRAAS93 extends Profile {
 
     const ticks = ticksNumbers.map((number, index) => ({
       number,
-      angle:
-        polygonsSpec.startAngle - (itemsSpec.ticks.side - 1) * polygonsSpec.theta,
+      angle: polygonsSpec.startAngle - (itemsSpec.ticks.side - 1) * polygonsSpec.theta,
       radius: ticksRadiuses[index],
       disVector,
       disValue: disValue[index],

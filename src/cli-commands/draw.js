@@ -9,13 +9,7 @@ const outputJSON1 = new outputJSON(0);
 
 // Profiles JS Files and Template Files Directory
 const profilesJSDir = path.join(__dirname, "..", "profiles");
-const profilesTemplatesDir = path.join(
-  __dirname,
-  "..",
-  "..",
-  "views",
-  "profiles"
-);
+const profilesTemplatesDir = path.join(__dirname, "..", "..", "views", "profiles");
 
 async function checkAndLoad(dir) {
   return fs
@@ -75,10 +69,7 @@ async function createSVG(xml, outputPath) {
     'text-anchor="end"': 'text-anchor="start"',
   };
 
-  const svg = xml.replace(
-    /text-anchor="start"|text-anchor="end"/g,
-    (matched) => mapObj[matched]
-  );
+  const svg = xml.replace(/text-anchor="start"|text-anchor="end"/g, (matched) => mapObj[matched]);
 
   return new Promise((resolve, reject) => {
     writeFile(outputPath, svg, (err) => {
@@ -117,9 +108,7 @@ function createOutputName(options) {
   }[options.profileVariant];
   let measureSuffix = options.measure ? "-m" : "";
 
-  const fileName =
-    options.inputData &&
-    path.basename(options.inputData, path.extname(options.inputData));
+  const fileName = options.inputData && path.basename(options.inputData, path.extname(options.inputData));
 
   return `${options.name || fileName}${profileVariantSuffix}${measureSuffix}`;
 }
@@ -132,30 +121,20 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
   try {
     ctxArr = new profileClass(dataset, options).getTemplateEngineParams();
   } catch (err) {
-    outputJSON1.setMessage(
-      2,
-      "(Profile JS Error): Error in Instantiating the Profile Object"
-    );
+    outputJSON1.setMessage(2, "(Profile JS Error): Error in Instantiating the Profile Object");
     throw err;
   }
 
   return Promise.all(
     ctxArr.map((ctx, index) => {
-      let fileName = `${outputFileName}${
-        index !== 0 ? ".page" + (index + 1) : ""
-      }`;
+      let fileName = `${outputFileName}${index !== 0 ? ".page" + (index + 1) : ""}`;
       let templateFileDir = path.join(
         profilesTemplatesDir,
-        `${options.profileName}${
-          ctxArr.length !== 1 ? "_" + (index + 1) : ""
-        }.hbs`
+        `${options.profileName}${ctxArr.length !== 1 ? "_" + (index + 1) : ""}.hbs`
       );
       return checkAndLoad(templateFileDir)
         .then(async (templateBuffer) => {
-          const template = (await Handlebars).compile(
-            templateBuffer.toString(),
-            "utf-8"
-          );
+          const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
           xml = template(ctx);
 
           return ensureDirPromise;
@@ -167,10 +146,7 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
           });
         })
         .catch((err) => {
-          outputJSON1.setMessage(
-            4,
-            "(Not Found): Profile Template File Does Not Exist"
-          );
+          outputJSON1.setMessage(4, "(Not Found): Profile Template File Does Not Exist");
           throw err;
         });
     })
@@ -225,12 +201,7 @@ async function draw(options) {
 
         return Promise.all(
           profileVariants.map((profileVariant) =>
-            createProfile(
-              dataset,
-              profileClass,
-              { ...options, profileVariant },
-              ensureDirPromise
-            )
+            createProfile(dataset, profileClass, { ...options, profileVariant }, ensureDirPromise)
           )
         );
       })

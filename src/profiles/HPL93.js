@@ -10,15 +10,12 @@ class HPL93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [
-        "marital_status",
-      ] /* In case you want to get some additional fields and show in the profile */,
+      fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
           width: 770 + spec.profile.padding.x * 2,
@@ -130,8 +127,7 @@ class HPL93 extends Profile {
       maxValue: itemsSpec.maxValues[data.label.eng],
       angle: polygonsSpec.startAngle - index * polygonsSpec.theta,
       radius:
-        (data.mark / itemsSpec.maxValues[data.label.eng]) *
-          (polygonsSpec.radius - polygonsSpec.centerOffset) +
+        (data.mark / itemsSpec.maxValues[data.label.eng]) * (polygonsSpec.radius - polygonsSpec.centerOffset) +
         polygonsSpec.centerOffset,
       fill: itemsSpec.dataPoints.fills[data.label.eng],
     }));

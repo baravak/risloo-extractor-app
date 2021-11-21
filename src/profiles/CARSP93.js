@@ -10,27 +10,16 @@ class CARSP93 extends Profile {
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields:
-        [] /* In case you want to get some additional fields and show in the profile */,
+      fields: [] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions:
-        {} /* To be calculated in the class with the function provided */,
+      dimensions: {} /* To be calculated in the class with the function provided */,
       calcDim: function (spec, n) {
         return {
-          width:
-            spec.item.circle.main.R * 2 +
-            2 * 10 +
-            30 +
-            spec.profile.padding.x * 2,
-          height:
-            spec.item.circle.main.R +
-            spec.item.circle.center.radius +
-            10 +
-            12 +
-            spec.profile.padding.y * 2,
+          width: spec.item.circle.main.R * 2 + 2 * 10 + 30 + spec.profile.padding.x * 2,
+          height: spec.item.circle.main.R + spec.item.circle.center.radius + 10 + 12 + spec.profile.padding.y * 2,
         };
       },
       padding: {
@@ -51,10 +40,10 @@ class CARSP93 extends Profile {
           R: 340 /* Radius of the outer circle of the item element */,
           r: 290 /* Radius of the inner circle of the item element */,
           brs: {
-            tl: 0, /* Top left border radius */
-            bl: 0, /* Bottom left border radius */
-            tr: 0, /* Top right border radius */
-            br: 0, /* Bottom right border radius */
+            tl: 0 /* Top left border radius */,
+            bl: 0 /* Bottom left border radius */,
+            tr: 0 /* Top right border radius */,
+            br: 0 /* Bottom right border radius */,
           } /* Border radiuses at each end of the gauge of the item element */,
           angles: {
             start: FS.toRadians(-180),

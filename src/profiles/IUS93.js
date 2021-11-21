@@ -55,8 +55,10 @@ class IUS93 extends Profile {
         R: 140 /* Radius of the outer circle of the raw element */,
         r: 85 /* Radius of the inner circle of the raw element */,
         brs: {
-          start: 0,
-          end: 12,
+          tl: 0, /* Top left border radius */
+          bl: 0, /* Bottom left border radius */
+          tr: 12, /* Top right border radius */
+          br: 12, /* Bottom right border radius */
         } /* Border radiuses at each end of the gauge of the raw element */,
         angles: {
           start: FS.toRadians(-90),
@@ -105,8 +107,10 @@ class IUS93 extends Profile {
         R: 90 /* Radius of the outer circle of the items element */,
         r: 50 /* Radius of the inner circle of the items element */,
         brs: {
-          start: 0,
-          end: 12,
+          tl: 0, /* Top left border radius */
+          bl: 0, /* Bottom left border radius */
+          tr: 12, /* Top right border radius */
+          br: 12, /* Bottom right border radius */
         } /* Border radiuses at each end of the gauge of the items element */,
         angles: {
           start: FS.toRadians(-90),

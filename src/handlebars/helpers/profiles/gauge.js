@@ -2,16 +2,20 @@
 // This helper is used to provide the path tag for the gauge chart
 
 const Handlebars = require("handlebars");
-const calcGaugeEndpoints = require("./calcGaugeEndpoints");
+const calcGaugeSidePoints = require("./calcGaugeSidePoints");
 const normalizeAngle = require("./normalizeAngle");
 
-function gauge(R, r, brs, angles, directionFlag, options) {
-  // R: outer radius
-  // r: inner radius
-  // brs: border radiuses : {start, end}
-  // angles: {start, end}
-  // directionFlag: direction of gauge (false: clockwise, true: counterclockwise)
-
+/**
+ * Create path tag for the gauge element used in the profiles
+ * @param  {number} R - outer radius
+ * @param  {number} r - inner radius
+ * @param  {object} brs - border radiuses: {tl: top-left, tr: top-right, bl: bottom-left, br: bottom-right}
+ * @param  {object} angles - angles of sides of the gauge: {start, end}
+ * @param  {boolean} direction - direction of the gauge (false: clockwise, true: counterclockwise)
+ * @param  {object} options
+ */
+function gauge(R, r, brs, angles, direction, options) {
+  // Extract attributes out of options
   const attributes = [];
 
   Object.keys(options.hash).forEach((key) => {
@@ -26,63 +30,28 @@ function gauge(R, r, brs, angles, directionFlag, options) {
   let isGreater = true;
   if (angles.end < angles.start) isGreater = false;
 
-  const totalAngle = directionFlag ^ isGreater
-    ? Math.abs(angles.end - angles.start)
-    : 2 * Math.PI - Math.abs(angles.end - angles.start);
+  const totalAngle =
+    direction ^ isGreater ? Math.abs(angles.end - angles.start) : 2 * Math.PI - Math.abs(angles.end - angles.start);
 
-  const startEndpoints = calcGaugeEndpoints(
-    R,
-    r,
-    brs.start,
-    angles.start,
-    true,
-    directionFlag
-  );
-  const endEndpoints = calcGaugeEndpoints(
-    R,
-    r,
-    brs.end,
-    angles.end,
-    false,
-    directionFlag
-  );
+  const sidePoints = {
+    start: calcGaugeSidePoints(R, r, { top: brs.tl, bottom: brs.bl }, angles.start, true, direction),
+    end: calcGaugeSidePoints(R, r, { top: brs.tr, bottom: brs.br }, angles.end, false, direction),
+  };
 
   // Calculate "d" Attribute of Path
-  let dAttr = `M ${startEndpoints.P1.x} ${startEndpoints.P1.y}`;
-  dAttr += `A ${R} ${R} 1 ${totalAngle > Math.PI ? 1 : 0} ${
-    directionFlag ? 0 : 1
-  } ${endEndpoints.P1.x} ${endEndpoints.P1.y}`;
+  let dAttr = `M ${sidePoints.start.P1.toString}`;
   
-  if (brs.end) {
-    dAttr += `A ${brs.end} ${brs.end} 1 0 ${directionFlag ? 0 : 1} ${
-      endEndpoints.P2.x
-    } ${endEndpoints.P2.y}`;
-    dAttr += `L ${endEndpoints.P3.x} ${endEndpoints.P3.y} `;
-    dAttr += `A ${brs.end} ${brs.end} 1 0 ${directionFlag ? 0 : 1} ${
-      endEndpoints.P4.x
-    } ${endEndpoints.P4.y}`;
-  } else {
-    dAttr += `L ${endEndpoints.P2.x} ${endEndpoints.P2.y}`;
-  }
-  
-  if (brs.start) {
-    dAttr += `A ${r} ${r} 1 ${totalAngle > Math.PI ? 1 : 0} ${
-      directionFlag ? 1 : 0
-    } ${startEndpoints.P4.x} ${startEndpoints.P4.y}`;
+  dAttr += `A ${R} ${R} 1 ${totalAngle > Math.PI ? 1 : 0} ${direction ? 0 : 1} ${sidePoints.end.P1.toString}`;
 
-    dAttr += `A ${brs.start} ${brs.start} 1 0 ${directionFlag ? 0 : 1} ${
-      startEndpoints.P3.x
-    } ${startEndpoints.P3.y}`;
-    dAttr += `L ${startEndpoints.P2.x} ${startEndpoints.P2.y}`;
-    dAttr += `A ${brs.start} ${brs.start} 1 0 ${directionFlag ? 0 : 1} ${
-      startEndpoints.P1.x
-    } ${startEndpoints.P1.y}`;
-  } else {
-    dAttr += `A ${r} ${r} 1 ${totalAngle > Math.PI ? 1 : 0} ${
-      directionFlag ? 1 : 0
-    } ${startEndpoints.P2.x} ${startEndpoints.P2.y}`;
-    dAttr += `L ${startEndpoints.P1.x} ${startEndpoints.P1.y}`;
-  }
+  dAttr += brs.tr ? `A ${brs.tr} ${brs.tr} 1 0 ${direction ? 0 : 1} ${sidePoints.end.P1_PRIME.toString}` : "";
+  dAttr += `L ${sidePoints.end.P2_PRIME?.toString || sidePoints.end.P2.toString}`;
+  dAttr += brs.br ? `A ${brs.br} ${brs.br} 1 0 ${direction ? 0 : 1} ${sidePoints.end.P2.toString}` : "";
+
+  dAttr += `A ${r} ${r} 1 ${totalAngle > Math.PI ? 1 : 0} ${direction ? 1 : 0} ${sidePoints.start.P2.toString}`;
+
+  dAttr += brs.bl ? `A ${brs.bl} ${brs.bl} 1 0 ${direction ? 0 : 1} ${sidePoints.start.P2_PRIME.toString}` : "";
+  dAttr += `L ${sidePoints.start.P1_PRIME?.toString || sidePoints.start.P1.toString}`;
+  dAttr += brs.tl ? `A ${brs.tl} ${brs.tl} 1 0 ${direction ? 0 : 1} ${sidePoints.start.P1.toString}` : "";
 
   let result = `<path d="${dAttr}" ${attributes.join(" ")}/>`;
 

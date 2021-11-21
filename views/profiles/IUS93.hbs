@@ -3,12 +3,12 @@
   <defs>
     {{#with spec.raw.circle}}
       <clipPath id="raw-circle-roll">
-        {{gauge R r (object start=0 end=brs.end) (object start=angles.start end=angles.end) false}}
+        {{gauge R r brs (object start=angles.start end=angles.end) false}}
       </clipPath>
     {{/with}}
     {{#with spec.items.circle}}
       <clipPath id="items-circle-roll">
-        {{gauge R r (object start=0 end=brs.end) (object start=angles.start end=angles.end) false}}
+        {{gauge R r brs (object start=angles.start end=angles.end) false}}
       </clipPath>
     {{/with}}
   </defs>
@@ -31,8 +31,8 @@
         {{/with}}
       </g>
       {{#with spec.raw.circle}}
-        {{gauge R r (object start=0 end=0) (object start=angles.start end=angles.end) direction clip-path="url(#raw-circle-roll)" fill="#F3F4F6"}}
-        {{gauge R r (object start=0 end=0) (object start=angles.start end=@root.raw.zeta) direction clip-path="url(#raw-circle-roll)" fill=@root.spec.raw.fill fill-opacity=@root.raw.opacity}}
+        {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=angles.end) direction clip-path="url(#raw-circle-roll)" fill="#F3F4F6"}}
+        {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=@root.raw.zeta) direction clip-path="url(#raw-circle-roll)" fill=@root.spec.raw.fill fill-opacity=@root.raw.opacity}}
       {{/with}}
       <text x="0" y="0" text-anchor="middle" font-size="32" font-weight="700" fill="{{spec.raw.fill}}" dy="10">{{raw.mark}}</text>
       {{#each raw.ticks as |tick|}}
@@ -80,8 +80,8 @@
               {{/with}}
             </g>
             {{#with @root.spec.items.circle}}
-              {{gauge R r (object start=0 end=0) (object start=angles.start end=angles.end) direction clip-path="url(#items-circle-roll)" fill="#F3F4F6"}}
-              {{gauge R r (object start=0 end=0) (object start=angles.start end=item.zeta) direction clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}
+              {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=angles.end) direction clip-path="url(#items-circle-roll)" fill="#F3F4F6"}}
+              {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=item.zeta) direction clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}
             {{/with}}
             <text x="0" y="0" text-anchor="middle" font-size="24" font-weight="500" fill="{{item.fill}}" dy="8">{{item.mark}}</text>
             {{#each item.ticks as |tick|}}

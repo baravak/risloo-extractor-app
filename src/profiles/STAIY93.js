@@ -61,8 +61,10 @@ class STAIY93 extends Profile {
           R: 175 /* Radius of the outer circle of the items element */,
           r: 130 /* Radius of the inner circle of the items element */,
           brs: {
-            start: 0,
-            end: 0,
+            tl: 0, /* Top left border radius */
+            bl: 0, /* Bottom left border radius */
+            tr: 0, /* Top right border radius */
+            br: 0, /* Bottom right border radius */
           } /* Border radiuses at each end of the gauge of the items element */,
           angles: {
             start: FS.toRadians(-90),
@@ -78,8 +80,10 @@ class STAIY93 extends Profile {
           R: 175 /* Radius of the outer circle of the items element */,
           r: 130 /* Radius of the inner circle of the items element */,
           brs: {
-            start: 0,
-            end: 0,
+            tl: 0, /* Top left border radius */
+            bl: 0, /* Bottom left border radius */
+            tr: 0, /* Top right border radius */
+            br: 0, /* Bottom right border radius */
           } /* Border radiuses at each end of the gauge of the items element */,
           angles: {
             start: FS.toRadians(-90),

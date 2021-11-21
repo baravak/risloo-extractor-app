@@ -38,8 +38,10 @@ class PSWQ93 extends Profile {
         R: 230 /* Radius of the outer circle of the item element */,
         r: 40 /* Radius of the inner circle of the item element */,
         brs: {
-          start: 0,
-          end: 0,
+          tl: 0, /* Top left border radius */
+          bl: 0, /* Bottom left border radius */
+          tr: 0, /* Top right border radius */
+          br: 0, /* Bottom right border radius */
         } /* Border radiuses at each end of the gauge of the item element */,
         angles: {
           start: FS.toRadians(-90),

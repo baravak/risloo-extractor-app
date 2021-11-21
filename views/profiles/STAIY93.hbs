@@ -23,7 +23,7 @@
         {{#with @root.spec.items as | itemsSpec |}}
           <g transform="translate({{math (math (math -2 '*' itemIndex) '+' 1) '*' itemsSpec.offsetX}}, 0)">
             {{#with (lookup itemsSpec item.label.eng)}}
-              {{gauge circle.R circle.r (object start=circle.brs.start end=circle.brs.end) (object start=circle.angles.start end=circle.angles.end) circle.direction fill="#F4F4F5"}}
+              {{gauge circle.R circle.r circle.brs (object start=circle.angles.start end=circle.angles.end) circle.direction fill="#F4F4F5"}}
 
               {{#each item.stops as | stop stopIndex |}}
                 {{#unless (boolean @first '||' @last)}}
@@ -52,7 +52,7 @@
                     {{/if}}
                   {{/if}}
                   {{#unless halt}}
-                    {{gauge ../circle.R ../circle.r (object start=../circle.brs.start end=../circle.brs.end) (object start=prevStopAngle end=toAngle) ../circle.direction fill=../fill fill-opacity=interpret.opacity}}
+                    {{gauge ../circle.R ../circle.r ../circle.brs (object start=prevStopAngle end=toAngle) ../circle.direction fill=../fill fill-opacity=interpret.opacity}}
                   {{/unless}}
                 {{/unless}}
               {{/each}}

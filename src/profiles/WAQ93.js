@@ -48,8 +48,10 @@ class WAQ93 extends Profile {
         R: 104.5 /* Radius of the outer circle of the raw element */,
         r: 64.5 /* Radius of the inner circle of the raw element */,
         brs: {
-          start: 8.5,
-          end: 8.5,
+          tl: 8.5, /* Top left border radius */
+          bl: 8.5, /* Bottom left border radius */
+          tr: 8.5, /* Top right border radius */
+          br: 8.5, /* Bottom right border radius */
         } /* Border radiuses at each end of the gauge of the raw element */,
         angles: {
           start: FS.toRadians(-90),
@@ -106,8 +108,10 @@ class WAQ93 extends Profile {
         R: 61.5 /* Radius of the outer circle of the items element */,
         r: 36.5 /* Radius of the inner circle of the items element */,
         brs: {
-          start: 5,
-          end: 5,
+          tl: 5, /* Top left border radius */
+          bl: 5, /* Bottom left border radius */
+          tr: 5, /* Top right border radius */
+          br: 5, /* Bottom right border radius */
         } /* Border radiuses at each end of the gauge of the items element */,
         angles: {
           start: FS.toRadians(-90),

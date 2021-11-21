@@ -1,6 +1,6 @@
 {{#> layout}}
 
-<g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
   <g transform="translate(0, {{math (math (math spec.raw.maxValue '/' spec.raw.step) '*' spec.raw.rect.distanceY) '-' spec.raw.rect.offsetY}}) scale(1, -1)">
     {{#each items as |item index|}}
       <g transform="translate({{math @root.spec.items.distanceX '*' index}}, 0)">

@@ -13,7 +13,7 @@
   {{/with}}
 </defs>
 
-<g font-family="Dana-FaNum" transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{math spec.profile.padding.y '+' 30}})">
+<g transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{math spec.profile.padding.y '+' 30}})">
   {{#each items as | item itemIndex |}}
     {{#with @root.spec.items}}
     <g transform="translate(0, {{math itemIndex '*' rect.distanceY}})">

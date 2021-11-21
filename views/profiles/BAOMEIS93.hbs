@@ -7,7 +7,7 @@
   <path id="badge" d="M 0 122.1 C 40 122.1, 16.5 71.9, 74 71.9 C 125 71.9, 150 30.9, 150 -27.1 C 150 -111.1, 112 -122.1, 0 -122.1 C -112 -122.1, -150 -111.1, -150 -27.1 C -150 30.9, -125 71.9, -74 71.9 C -16.5 71.9, -40 122.1, 0 122.1"/>
 </defs>
 
-<g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
   {{setVar "rootTopPos" (math (math (math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight) '+' (math spec.items.label.shape.height '/' 2)) '+' spec.items.label.shape.offsetY)}}
   <g transform="translate(0, {{rootTopPos}})">
     <line x1="0" y1="0" x2="{{spec.items.ticks.line.width}}" y2="0" stroke="#E4E4E7" stroke-linecap="round"/>

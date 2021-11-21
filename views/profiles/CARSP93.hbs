@@ -1,6 +1,6 @@
 {{#> layout}}
 
-  <g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
     <g transform="translate({{math (math spec.item.circle.main.R '+' 10) '+' 8}}, {{math (math spec.item.circle.main.R '+' 10) '+' 12}})">
       <text x="0" y="0" font-size="26" font-weight="500" fill="#DB2777" text-anchor="middle" dy="8">{{item.mark}}</text>
       {{#with spec.item.circle as | circleSpec |}}

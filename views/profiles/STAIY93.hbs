@@ -1,6 +1,6 @@
 {{#> layout}}
 
-  <g font-family="Dana-FaNum" transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{spec.profile.padding.y}})">
+  <g transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{spec.profile.padding.y}})">
     {{#each items as | item itemIndex |}}
       {{#with @root.spec.items.rect as | rect |}}
       <g transform="translate({{math (math (math -2 '*' itemIndex) '+' 1) '*' (math rect.offsetX '/' 2)}}, 0) scale({{ternary (boolean itemIndex '===' 1) -1 1}}, 1)">

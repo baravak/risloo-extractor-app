@@ -13,7 +13,7 @@
     {{/with}}
   </defs>
 
-  <g font-family="Dana-FaNum" transform="translate(0, {{spec.profile.padding.y}})">
+  <g transform="translate(0, {{spec.profile.padding.y}})">
     <g transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{math (math (math (math spec.raw.circle.R '+' spec.raw.ticks.line.width) '+' spec.raw.ticks.line.offset) '+' spec.raw.ticks.number.offset) '+' 10}})">
       <g transform="translate(-{{spec.raw.rect.offsetX}}, -{{spec.raw.circle.R}})">
         {{#with spec.raw.rect}}

@@ -11,7 +11,7 @@
   </linearGradient>
 </defs>
 
-<g font-family="Dana-FaNum" transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
   <g transform="translate({{spec.items.offsetX}}, 0)">
     {{setVar "tickTotalHeight" (math (math 2 '*' spec.items.ticks.heightOffset) '+' spec.items.totalHeight)}}
     {{#each itemsTicks as | tick index |}}

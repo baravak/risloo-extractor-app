@@ -13,7 +13,7 @@
     {{/with}}
   </defs>
 
-  <g font-family="Dana-FaNum" transform="translate(0, {{spec.profile.padding.y}})">
+  <g transform="translate(0, {{spec.profile.padding.y}})">
     <g transform="translate({{math spec.profile.dimensions.width '/' 2}}, {{spec.raw.circle.R}})">
       {{#with spec.raw.circle}}
         {{gauge R r (object start=0 end=0) (object start=angles.start end=angles.end) direction clip-path="url(#raw-circle-roll)" fill="#F3F4F6"}}

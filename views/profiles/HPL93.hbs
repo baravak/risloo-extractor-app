@@ -12,7 +12,7 @@
       <text x="0" y="-{{spec.raw.mark.paddingY}}" font-size="12" font-weight="400" fill="#71717A" text-anchor="middle" dy="3">{{raw.label.fr}} از {{spec.raw.maxValue}}</text>
       <text x="0" y="+{{spec.raw.mark.paddingY}}" font-size="30" font-weight="600" fill="#27272A" text-anchor="middle" dy="8">{{raw.mark}}</text>
       <g>
-        {{assignGlobal "labelOffset" (array 0 0 15 0 0 15)}}
+        {{assignGlobal "labelOffset" (array 0 0 25 0 0 25)}}
         {{#each items as |item index|}}
           {{setVar "p1" (polarToCartesian @root.spec.polygons.radius item.angle)}}
           {{setVar "p2" (polarToCartesian @root.spec.polygons.centerOffset item.angle)}}

@@ -88,11 +88,11 @@ class KJGI93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: { fr: "نمره کل" },
-      moral_standards: { fr: "معیارهای اخلاقی" },
-      state_guilt: { fr: "حالت گناه" },
-      trait_guilt: { fr: "خصیصه گناه" },
-      interpretation: { fr: "تفسیر" },
+      raw: "نمره کل",
+      moral_standards: "معیارهای اخلاقی",
+      state_guilt: "حالت گناه",
+      trait_guilt: "خصیصه گناه",
+      interpretation: "تفسیر",
     },
   };
 

@@ -130,30 +130,14 @@ class WAQ93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: {
-        fr: "نمره کل",
-      },
-      relationship_with_god: {
-        fr: "خدا",
-      },
-      relationship_with_self: {
-        fr: "خود",
-      },
-      relationship_with_others: {
-        fr: "دیگران",
-      },
-      relationship_with_wisdom: {
-        fr: "دانش و حکمت",
-      },
-      relationship_with_religion: {
-        fr: "دین و مذهب",
-      },
-      relationship_with_right_and_wrong: {
-        fr: "حق و باطل",
-      },
-      relationship_with_hereafter: {
-        fr: "دین و آخرت",
-      },
+      raw: "نمره کل",
+      relationship_with_god: "خدا",
+      relationship_with_self: "خود",
+      relationship_with_others: "دیگران",
+      relationship_with_wisdom: "دانش و حکمت",
+      relationship_with_religion: "دین و مذهب",
+      relationship_with_right_and_wrong: "حق و باطل",
+      relationship_with_hereafter: "دین و آخرت",
     },
   };
 

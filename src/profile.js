@@ -202,10 +202,11 @@ class Dataset {
   // Create Data Array with Label and Mark Taken from Dataset
   _extractData(score, labels) {
     let data = [];
-    for (let index in labels) {
+    for (let labelEng in labels) {
+      let labelOthers = typeof labels[labelEng] === "string" ? { fr: labels[labelEng] } : labels[labelEng];
       data.push({
-        label: { eng: index, ...labels[index] },
-        mark: score[index],
+        label: { eng: labelEng, ...labelOthers },
+        mark: score[labelEng],
       });
     }
 

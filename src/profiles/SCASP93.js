@@ -159,27 +159,13 @@ class SCASP93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      total: {
-        fr: "نمره کل",
-      },
-      panic_attack_and_agorophobia: {
-        fr: "اختلال هراس و ترس از فضای باز",
-      },
-      separation_anxiety: {
-        fr: "اضطراب جدایی",
-      },
-      physical_injury_fears: {
-        fr: "ترس از آسیب فیزیکی",
-      },
-      social_phobia: {
-        fr: "ترس اجتماعی",
-      },
-      obsessive_compulsive: {
-        fr: "وسواس فکری - عملی",
-      },
-      generalized_anxiety_disorder: {
-        fr: "اضطراب عمومی (فراگیر)",
-      },
+      total: "نمره کل",
+      panic_attack_and_agorophobia: "اختلال هراس و ترس از فضای باز",
+      separation_anxiety: "اضطراب جدایی",
+      physical_injury_fears: "ترس از آسیب فیزیکی",
+      social_phobia: "ترس اجتماعی",
+      obsessive_compulsive: "وسواس فکری - عملی",
+      generalized_anxiety_disorder: "اضطراب عمومی (فراگیر)",
     },
   };
 

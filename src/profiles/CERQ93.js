@@ -113,17 +113,17 @@ class CERQ93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      acceptance: { fr: "پذیرش" },
-      positive_refocusing: { fr: "تمرکز مجدد مثبت" },
-      refocusing_on_planing: { fr: "تمرکز مجدد برنامه‌ریزی" },
-      positive_reappraisal: { fr: "ارزیابی مجدد مثبت" },
-      putting_to_perspective: { fr: "دیدگاه‌گیری" },
-      self_blame: { fr: "ملامت خویش" },
-      rumination: { fr: "نشخوارگی" },
-      catastrophizing: { fr: "فاجعه‌سازی" },
-      other_blame: { fr: "ملامت دیگران" },
-      adaptive_regulation: { fr: "نظم‌جویی انطباقی" },
-      unadaptive_regulation: { fr: "نظم‌جویی غیرانطباقی" },
+      acceptance: "پذیرش",
+      positive_refocusing: "تمرکز مجدد مثبت",
+      refocusing_on_planing: "تمرکز مجدد برنامه‌ریزی",
+      positive_reappraisal: "ارزیابی مجدد مثبت",
+      putting_to_perspective: "دیدگاه‌گیری",
+      self_blame: "ملامت خویش",
+      rumination: "نشخوارگی",
+      catastrophizing: "فاجعه‌سازی",
+      other_blame: "ملامت دیگران",
+      adaptive_regulation: "نظم‌جویی انطباقی",
+      unadaptive_regulation: "نظم‌جویی غیرانطباقی",
     },
   };
 

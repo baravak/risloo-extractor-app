@@ -108,25 +108,13 @@ class FTEPT93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: {
-        fr: "نمره کل",
-      },
-      efficacy: {
-        fr: "خودکارآمدی",
-      },
-      emotional_effects: {
-        fr: "تأثیرات\nهیجانی",
-      },
-      planning: {
-        fr: "برنامه‌ریزی",
-      },
-      lack_of_consequence_control: {
-        fr: "فقدان\nکنترل پیامد",
-      },
-      motivation: {
-        fr: "انگیزش",
-      },
-      interpretation: { fr: "تفسیر" },
+      raw: "نمره کل",
+      efficacy: "خودکارآمدی",
+      emotional_effects: "تأثیرات\nهیجانی",
+      planning: "برنامه‌ریزی",
+      lack_of_consequence_control: "فقدان\nکنترل پیامد",
+      motivation: "انگیزش",
+      interpretation: "تفسیر",
     },
   };
 

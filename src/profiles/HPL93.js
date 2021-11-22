@@ -72,27 +72,13 @@ class HPL93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: {
-        fr: "نمره کل",
-      },
-      spritual_growth: {
-        fr: "رشد معنوی و شکوفایی",
-      },
-      nutrition: {
-        fr: "تغذیه",
-      },
-      stress_management: {
-        fr: "مدیریت استرس",
-      },
-      physical_activity: {
-        fr: "ورزش و فعالیت بدنی",
-      },
-      health_self_responsibility: {
-        fr: "مسئولیت‌پذیری در مورد سلامت",
-      },
-      interpersonal_relationships: {
-        fr: "روابط بین‌ فردی",
-      },
+      raw: "نمره کل",
+      spritual_growth: "رشد معنوی و شکوفایی",
+      nutrition: "تغذیه",
+      stress_management: "مدیریت استرس",
+      physical_activity: "ورزش و فعالیت بدنی",
+      health_self_responsibility: "مسئولیت‌پذیری در مورد سلامت",
+      interpersonal_relationships: "روابط بین‌ فردی",
     },
   };
 

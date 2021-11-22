@@ -95,20 +95,12 @@ class SDCAQ93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      thought_suppression: { fr: "واپس زنی\nافکار نگران‌کننده" },
-      thought_substitution: {
-        fr: "جانشینی افکار مثبت\nبه جای افکار نگران‌کننده",
-      },
-      distraction_subscale: {
-        fr: "استفاده از توجه برگردانی\nبرای قطع روند نگرانی (حواس‌پرتی)",
-      },
-      avoidance_of_threatening_stimuli: {
-        fr: "اجتناب از موقعیت‌ها و فعالیت‌های\nفعال‌ساز افکار نگران‌کننده",
-      },
-      transformation_of_images_into_thoughts: {
-        fr: "تغییر تصاویر ذهنی\nبه افکار کلامی",
-      },
-      raw: { fr: "نمره کل" },
+      thought_suppression: "واپس زنی\nافکار نگران‌کننده",
+      thought_substitution: "جانشینی افکار مثبت\nبه جای افکار نگران‌کننده",
+      distraction_subscale: "استفاده از توجه برگردانی\nبرای قطع روند نگرانی (حواس‌پرتی)",
+      avoidance_of_threatening_stimuli: "اجتناب از موقعیت‌ها و فعالیت‌های\nفعال‌ساز افکار نگران‌کننده",
+      transformation_of_images_into_thoughts: "تغییر تصاویر ذهنی\nبه افکار کلامی",
+      raw: "نمره کل",
     },
   };
 

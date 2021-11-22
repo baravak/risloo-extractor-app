@@ -118,25 +118,13 @@ class JCSI93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: {
-        fr: "نمره کل",
-      },
-      listening: {
-        fr: "گوش دادن",
-      },
-      emotion_regulation: {
-        fr: "تنظیم عواطف",
-      },
-      understanding_message: {
-        fr: "درک پیام",
-      },
-      awareness: {
-        fr: "بینش",
-      },
-      assertiveness: {
-        fr: "قاطعیت",
-      },
-      interpretation: { fr: "تفسیر" },
+      raw: "نمره کل",
+      listening: "گوش دادن",
+      emotion_regulation: "تنظیم عواطف",
+      understanding_message: "درک پیام",
+      awareness: "بینش",
+      assertiveness: "قاطعیت",
+      interpretation: "تفسیر",
     },
   };
 

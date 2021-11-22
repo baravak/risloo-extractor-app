@@ -55,12 +55,8 @@ class PSWQ93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: {
-        fr: "نمره کل",
-      },
-      interpretation: {
-        fr: "تفسیر",
-      },
+      raw: "نمره کل",
+      interpretation: "تفسیر",
     },
   };
 

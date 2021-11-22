@@ -63,9 +63,7 @@ class CARSP93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      total: {
-        fr: "کل",
-      },
+      total: "کل",
     },
   };
 

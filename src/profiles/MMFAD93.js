@@ -74,30 +74,14 @@ class MMAFD93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      raw: {
-        fr: "نمره کل",
-      },
-      problem_solving: {
-        fr: "حل مشکل",
-      },
-      overall_performance: {
-        fr: "عملکرد کلی",
-      },
-      behaviour_control: {
-        fr: "کنترل رفتار",
-      },
-      affective_involvement: {
-        fr: "آمیزش عاطفی",
-      },
-      communication: {
-        fr: "ارتباط",
-      },
-      affective_responsiveness: {
-        fr: "همراهی عاطفی",
-      },
-      roles: {
-        fr: "نقش‌ها",
-      },
+      raw: "نمره کل",
+      problem_solving: "حل مشکل",
+      overall_performance: "عملکرد کلی",
+      behaviour_control: "کنترل رفتار",
+      affective_involvement: "آمیزش عاطفی",
+      communication: "ارتباط",
+      affective_responsiveness: "همراهی عاطفی",
+      roles: "نقش‌ها",
     },
   };
 

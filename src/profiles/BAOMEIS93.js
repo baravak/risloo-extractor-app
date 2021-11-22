@@ -101,10 +101,10 @@ class BAOMEIS93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      diffusion: { fr: "آشفته" },
-      foreclosure: { fr: "زود شکل گرفته" },
-      moratorium: { fr: "تعویق افتاده" },
-      achievement: { fr: "پیشرفته" },
+      diffusion: "آشفته",
+      foreclosure: "زود شکل گرفته",
+      moratorium: "تعویق افتاده",
+      achievement: "پیشرفته",
     },
   };
 

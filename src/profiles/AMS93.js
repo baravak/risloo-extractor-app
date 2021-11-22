@@ -86,15 +86,13 @@ class AMS93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      intrinsic_motivation_to_know: { fr: "برای فهمیدن" },
-      intrinsic_motivation_toward_accomplishment: { fr: "پیشرفت" },
-      intrinsic_motivation_to_experience_stimulation: {
-        fr: "برای تجربه تحریک",
-      },
-      extrinsic_motivation_identified: { fr: "تنظیم همانند شده" },
-      extrinsic_motivation_introjected: { fr: "تنظیم تزریقی" },
-      extrinsic_motivation_external_regulation: { fr: "تنظیم بیرونی" },
-      unmotivation: { fr: "بی‌انگیزگی" },
+      intrinsic_motivation_to_know: "برای فهمیدن",
+      intrinsic_motivation_toward_accomplishment: "پیشرفت",
+      intrinsic_motivation_to_experience_stimulation: "برای تجربه تحریک",
+      extrinsic_motivation_identified: "تنظیم همانند شده",
+      extrinsic_motivation_introjected: "تنظیم تزریقی",
+      extrinsic_motivation_external_regulation: "تنظیم بیرونی",
+      unmotivation: "بی‌انگیزگی",
     },
   };
 

@@ -92,12 +92,8 @@ class STAIY93 extends Profile {
     },
     /* "labels" part which has to be provided for each profile */
     labels: {
-      trait: {
-        fr: "رگه اضطراب",
-      },
-      state: {
-        fr: "حالت اضطراب",
-      },
+      trait: "رگه اضطراب",
+      state: "حالت اضطراب",
     },
   };
 

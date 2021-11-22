@@ -73,13 +73,15 @@
           </g>
         </g>
 
-        {{assignGlobal "markOffset" (array 0 0 0 5 10 12 10 5 0)}}
+        {{assignGlobal "markOffset" (array 0 0 0 -5 -10 -12 -10 -5 0)}}
+        {{assignGlobal "angleOffset" (array (toRad -2) (toRad 2) (toRad 4) (toRad 5) (toRad 4) (toRad 0) (toRad -4) (toRad -5) (toRad -4))}}
         {{#each items as | item index |}}
           {{#with @root.spec.items.circle as | circleSpec |}}
             {{gauge item.radius circleSpec.r circleSpec.brs (object start=(math item.angle '-' (math circleSpec.totalAngle '/' 2)) end=(math item.angle '+' (math circleSpec.totalAngle '/' 2))) circleSpec.direction fill=item.fill fill-opacity=circleSpec.opacity}}
 
-            {{setVar "p3" (polarToCartesian (math (math item.radius '-' 15) '-' (lookup @root.markOffset index)) item.angle)}}
+            {{setVar "p3" (polarToCartesian (math (math item.radius '+' -15) '+' (lookup @root.markOffset index)) (math item.angle '+' (ternary (boolean item.tScore '===' 1) (lookup @root.angleOffset index) 0)))}}
             {{setVar "p4" (polarToCartesian (math (last @root.spec.circles.radiuses) '+' 20) item.angle)}}
+
             <g transform="translate({{p3.x}}, {{p3.y}})" fill="white" text-anchor="middle">
               <text x="0" y="0" font-size="16" font-weight="600" dy="5">{{item.tScore}}</text>
               <text x="0" y="15" font-size="10" font-weight="400" dy="2">({{item.mark}})</text>

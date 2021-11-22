@@ -111,9 +111,9 @@ class OBQ4493 extends Profile {
     desc: "این آزمون هر چقدر به سمت مثبت برود، نشان‌دهنده باورهای وسواس بالاست و در صورت منفی بودن، باورهای وسواس پایین است.",
   };
 
-  constructor(dataset, profileVariant, config = {}) {
+  constructor(dataset, options, config = {}) {
     super();
-    this._init(dataset, profileVariant, config);
+    this._init(dataset, options, config);
   }
 
   _calcContext() {

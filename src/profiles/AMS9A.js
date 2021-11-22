@@ -4,9 +4,9 @@ const AMS93 = require("./AMS93");
 // This profile is completely identical to AMS93
 
 class AMS9A extends Profile {
-  constructor(dataset, profileVariant, config = {}) {
+  constructor(dataset, options, config = {}) {
     super();
-    Object.assign(this, new AMS93(dataset, profileVariant, config));
+    Object.assign(this, new AMS93(dataset, options, config));
   }
 }
 

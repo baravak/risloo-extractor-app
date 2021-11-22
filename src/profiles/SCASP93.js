@@ -183,9 +183,9 @@ class SCASP93 extends Profile {
     },
   };
 
-  constructor(dataset, profileVariant, config = {}) {
+  constructor(dataset, options, config = {}) {
     super();
-    this._init(dataset, profileVariant, config);
+    this._init(dataset, options, config);
   }
 
   _calcContext() {

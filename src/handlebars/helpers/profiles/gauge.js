@@ -3,7 +3,7 @@
 
 const Handlebars = require("handlebars");
 const calcGaugeSidePoints = require("./calcGaugeSidePoints");
-const normalizeAngle = require("./normalizeAngle");
+const normalizeAngle = require("../normalizeAngle");
 
 /**
  * Create path tag for the gauge element used in the profiles

@@ -1,0 +1,99 @@
+{{#> layout}}
+
+  <defs>
+    <path id="badge" d="M149.75 125.5L149.75 0V-125.5C149.75 -136.5 137.75 -150 126.25 -150L-127.75 -150C-135.75 -150 -149.75 -139 -149.75 -126.5V-46C-149.75 -46 -171.25 -14 -173.25 -11C-175.25 -8 -178.25 -7 -180.25 -7H-242.25C-245.25 -7 -247.75 -3.5 -247.75 0C-247.75 3.5 -245.25 7 -242.25 7H-180.25C-178.25 7 -175.25 8 -173.25 11C-171.25 14 -149.75 46 -149.75 46V126.5C-149.75 139 -135.75 150 -127.75 150H126.25C137.75 150 149.75 136.5 149.75 125.5Z"/>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(48, 16)">
+      <g transform="translate(0, 546.5)">
+        <text x="-5" y="0" font-size="14" font-weight="400" fill="#52525B" text-anchor="end" dy="-2">{{raw.label.fr}}</text>
+
+        {{#each spec.raw.stops as | stopMark stopMarkIndex |}}
+          {{#with @root.spec.raw as | rawSpec |}}
+            {{#unless @first}}
+              {{setVar "previousStopMark" (ternary (boolean stopMarkIndex '!==' 1) (lookup rawSpec.stops (math stopMarkIndex '-' 1)) 0)}}
+              {{setVar 'diffHeight' (math (math stopMark '-' previousStopMark) '*' rawSpec.heightCoeff)}}
+              {{setVar 'fill' (lookup (lookup @root.spec.items.interprets (math stopMarkIndex '-' 1)) 'fill')}}
+
+              {{setVar "halt" false}}
+              {{setVar "toDiffHeight" diffHeight}}
+              {{#if (boolean @root.raw.tScore '<=' stopMark)}}
+                {{setVar "toDiffHeight" (math (math @root.raw.tScore '-' previousStopMark) '*' rawSpec.heightCoeff)}}
+                {{#if (boolean @root.raw.tScore '<=' previousStopMark)}}
+                  {{setVar "halt" true}}
+                {{/if}}
+              {{/if}}
+
+              <g transform="translate(0, -{{math previousStopMark '*' rawSpec.heightCoeff}})">
+                {{bar diffHeight rawSpec.rect.width (ternary @last rawSpec.rect.brs (object tl=0 tr=0 bl=0 br=0)) (toRad -90) fill=fill fill-opacity=rawSpec.rect.opacity.default}}
+                {{#unless halt}}
+                  {{bar toDiffHeight rawSpec.rect.width (ternary @last rawSpec.rect.brs (object tl=0 tr=0 bl=0 br=0)) (toRad -90) fill=fill fill-opacity=rawSpec.rect.opacity.chosen}}
+                {{/unless}}
+              </g>
+            {{/unless}}
+            <g transform="translate(-5, -{{math stopMark '*' rawSpec.heightCoeff}})">
+              <line x1="0" y1="0" x2="-10" y2="0" stroke="#D4D4D8" stroke-dasharray="3"/>
+              <text x="-20" y="0" font-size="10" font-weight="400" fill="#A1A1AA" text-anchor="middle" dy="2">{{stopMark}}</text>
+            </g>
+          {{/with}}
+        {{/each}}
+
+        <g transform="translate({{math 30 '+' 39.5}}, -{{math raw.tScore '*' spec.raw.heightCoeff}})">
+          <svg width="{{spec.raw.label.shape.width}}" height="{{spec.raw.label.shape.height}}" x="0" y="0" viewBox="0 0 397.5 300" overflow="visible">
+            <use href="#badge" fill="{{raw.fill}}" fill-opacity="{{spec.raw.rect.opacity.chosen}}"/>
+          </svg>
+          <text x="0" y="-7" font-size="20" font-weight="600" fill="white" text-anchor="middle" dy="6">{{raw.tScore}}</text>
+          <text x="0" y="+11" font-size="10" font-weight="400" fill="white" text-anchor="middle" dy="2">({{raw.mark}})</text>
+        </g>
+
+        <g transform="translate(586, 86)">
+          {{assignGlobal 'distanceXArr' (array 0 104 192 331 416)}}
+          {{#each spec.items.interprets as | interpret index |}}
+            <g transform="translate(-{{lookup @root.distanceXArr index}}, 0)">
+              <rect x="0" y="0" width="8" height="8" fill="{{interpret.fill}}"/>
+              <text x="-5" y="{{math 8 '/' 2}}" font-size="12" font-weight="400" fill="#71717A" text-anchor="end" dy="3">{{interpret.fr}}</text>
+            </g>
+          {{/each}}
+        </g>
+      </g>
+      <g transform="translate(441.5, 275)">
+        <g fill="none" stroke="#E4E4E7">
+          {{#each spec.circles.radiuses as | radius |}}
+            <circle cx="0" cy="0" r="{{radius}}"/>
+          {{/each}}
+          
+          <g transform="rotate({{toDeg (math spec.circles.theta '/' 2)}})">
+            {{#forLoop 0 spec.circles.n 1}}
+              {{setVar "angle" (math @root.spec.circles.startAngle '-' (math i '*' @root.spec.circles.theta))}}
+              {{setVar "p1" (polarToCartesian (first @root.spec.circles.radiuses) angle)}}
+              {{setVar "p2" (polarToCartesian (last @root.spec.circles.radiuses) angle)}}
+              <line x1="{{p1.x}}" y1="{{p1.y}}" x2="{{p2.x}}" y2="{{p2.y}}"/>
+            {{/forLoop}}
+          </g>
+        </g>
+
+        {{assignGlobal "markOffset" (array 0 0 0 5 10 12 10 5 0)}}
+        {{#each items as | item index |}}
+          {{#with @root.spec.items.circle as | circleSpec |}}
+            {{gauge item.radius circleSpec.r circleSpec.brs (object start=(math item.angle '-' (math circleSpec.totalAngle '/' 2)) end=(math item.angle '+' (math circleSpec.totalAngle '/' 2))) circleSpec.direction fill=item.fill fill-opacity=circleSpec.opacity}}
+
+            {{setVar "p3" (polarToCartesian (math (math item.radius '-' 15) '-' (lookup @root.markOffset index)) item.angle)}}
+            {{setVar "p4" (polarToCartesian (math (last @root.spec.circles.radiuses) '+' 20) item.angle)}}
+            <g transform="translate({{p3.x}}, {{p3.y}})" fill="white" text-anchor="middle">
+              <text x="0" y="0" font-size="16" font-weight="600" dy="5">{{item.tScore}}</text>
+              <text x="0" y="15" font-size="10" font-weight="400" dy="2">({{item.mark}})</text>
+            </g>
+            {{setVar "normalizedAngle" (normalizeAngle item.angle)}}
+            {{setVar "betMinus180And0" (boolean (boolean normalizedAngle '>' (toRad -180)) '&&' (boolean normalizedAngle '<' (toRad 0)))}}
+            <g transform="translate({{p4.x}}, {{p4.y}}) rotate({{math (ternary betMinus180And0 90 -90) '+' (toDeg item.angle)}})">
+              <text x="0" y="0" font-size="14" font-weight="400" fill="#71717A" text-anchor="middle" dy="{{ternary betMinus180And0 0 5}}">{{item.label.fr}}</text>
+            </g>
+          {{/with}}
+        {{/each}}
+
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

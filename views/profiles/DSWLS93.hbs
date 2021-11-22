@@ -1,0 +1,26 @@
+{{#> layout}}
+
+  <defs>
+    {{#with spec.raw.circle}}
+      <clipPath id="raw-circle-roll">
+        {{gauge R r brs (object start=angles.start end=angles.end) false}}
+      </clipPath>
+    {{/with}}
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate({{spec.raw.circle.R}}, {{spec.raw.circle.R}})">
+      {{#with spec.raw.circle}}
+        {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=angles.end) direction clip-path="url(#raw-circle-roll)" fill="#F4F4F5" stroke="#E4E4E7"}}
+        {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=@root.raw.zeta) direction clip-path="url(#raw-circle-roll)" fill=@root.spec.raw.fill fill-opacity=@root.raw.opacity}}
+      {{/with}}
+      <text x="0" y="0" text-anchor="middle" font-size="42" font-weight="600" fill="{{spec.raw.fill}}" dy="12">{{raw.mark}}</text>
+      {{#each raw.ticks as | tick |}}
+        {{setVar "rm" (math (math @root.spec.raw.circle.R '+' @root.spec.raw.circle.r) '/' 2)}}
+        {{setVar "p" (polarToCartesian rm tick.angle)}}
+        <text x="{{p.x}}" y="{{p.y}}" font-size="18" font-weight="500" fill="#D4D4D8" text-anchor="middle" dy="5" transform="translate(-{{ternary @first @root.spec.raw.ticks.number.offset 0}}, -{{ternary @last @root.spec.raw.ticks.number.offset 0}})">{{tick.number}}</text>
+      {{/each}}
+    </g>
+  </g>
+
+{{/layout}}

@@ -1,7 +1,18 @@
 {{#> layout}}
 
+  <defs>
+    <linearGradient id="bg">
+      <stop offset="0%"  stop-color="#EF4444" stop-opacity="0" />
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+
   <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
-    
+    <g transform="translate(357, 348)">
+      {{#with spec.raw.circle}}
+        {{gauge R r brs angles direction fill="url(#bg)" stroke="#E4E4E7"}}
+      {{/with}}
+    </g>
   </g>
 
 {{/layout}}

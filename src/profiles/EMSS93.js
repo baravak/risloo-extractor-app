@@ -1,7 +1,7 @@
 const { intersection } = require("lodash");
 const { Profile, FS } = require("../profile");
 
-class EMSS4793 extends Profile {
+class EMSS93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
@@ -174,4 +174,4 @@ class EMSS4793 extends Profile {
   }
 }
 
-module.exports = EMSS4793;
+module.exports = EMSS93;

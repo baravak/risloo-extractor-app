@@ -214,7 +214,7 @@ async function draw(options) {
         resolve(outputJSON1.showOutput());
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
         reject(outputJSON1.showOutput());
       });
 

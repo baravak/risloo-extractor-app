@@ -23,7 +23,7 @@ class AEQ93 extends Profile {
         };
       },
       padding: {
-        x: 0,
+        x: 87,
         y: 0,
       },
     },

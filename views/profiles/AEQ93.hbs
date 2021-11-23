@@ -1,6 +1,7 @@
 {{#> layout}}
 
   <defs>
+    <path id="hand" d="M-6.0667 -2.91974C-7.66489 0.462016 -6.21902 4.49907 -2.83727 6.09725C0.354553 7.60568 4.13011 6.4024 5.88789 3.41913L217.632 0.423976L217.615 -0.323689L5.81974 -3.58459C5.15523 -4.66302 4.18094 -5.56759 2.95029 -6.14919C-0.431466 -7.74738 -4.46851 -6.3015 -6.0667 -2.91974Z"/>
     <linearGradient id="bg">
       <stop offset="0%"  stop-color="#EF4444" stop-opacity="0" />
       <stop offset="100%" stop-color="#EF4444" stop-opacity="1" />
@@ -12,6 +13,18 @@
       {{#with spec.raw.circle}}
         {{gauge R r brs angles direction fill="url(#bg)" stroke="#E4E4E7"}}
       {{/with}}
+      <use href="#hand" fill="#27272A" transform="scale(1.48) rotate({{toDeg raw.angle}})"/>
+      <text x="0" y="45" font-size="28" font-weight="600" fill="#27272A" text-anchor="middle" dy="7">{{raw.mark}}</text>
+
+      <g font-size="14" font-weight="400" fill="#71717A">
+        {{#each raw.ticks as | tick index |}}
+          {{#with @root.spec.raw as | rawSpec |}}
+            {{setVar "p" (polarToCartesian (math rawSpec.circle.R '+' 10) tick.angle)}}
+            {{setVar "betMinus90And90" (boolean (boolean tick.angle '>' (toRad -90)) '&&' (boolean tick.angle '<' (toRad 90)))}}
+            <text x="{{p.x}}" y="{{p.y}}" text-anchor="{{ternary betMinus90And90 'start' 'end'}}" dy="0">{{tick.mark}}</text>
+          {{/with}}
+        {{/each}}
+      </g>
     </g>
   </g>
 

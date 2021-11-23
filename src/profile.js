@@ -238,6 +238,19 @@ class Dataset {
   }
 }
 
+class Ticks {
+  constructor(min, max, n) {
+    this.numbers = this._calcNumbers(min, max, n)
+  }
+
+  _calcNumbers(min, max, n) {
+    let output = [min];
+    const commonDiff = FS.roundTo2((max - min) / (n - 1));
+    output.push(...FS.createArithmeticSequence(min + commonDiff, commonDiff, n - 2), max);
+    return output;
+  }
+}
+
 class Spec {
   constructor(config, profileSpec) {
     this.parameters = {
@@ -360,4 +373,4 @@ class Profile {
   }
 }
 
-module.exports = { Profile, Dataset, FS };
+module.exports = { Profile, Dataset, FS, Ticks };

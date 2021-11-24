@@ -1,4 +1,3 @@
-const { Profile, FS } = require("../profile");
 const MMAFD93 = require("./MMFAD93");
 
 const customConfig = {
@@ -23,10 +22,9 @@ const customConfig = {
 
 // This profile is completely identical to MMFAD9A
 
-class MMFAD9A extends Profile {
+class MMFAD9A extends MMAFD93 {
   constructor(dataset, options, config = customConfig) {
-    super();
-    Object.assign(this, new MMAFD93(dataset, options, config));
+    super(dataset, options, config);
   }
 }
 

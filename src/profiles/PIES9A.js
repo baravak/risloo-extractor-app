@@ -1,4 +1,3 @@
-const { Profile, FS } = require("../profile");
 const PIES93 = require("./PIES93");
 
 const customConfig = {
@@ -17,17 +16,16 @@ const customConfig = {
         "20-29": 0.8,
         "10-19": 0.7,
         "8-9": 0.6,
-      } /* Opacity mapping for marks */,
+      },
     }
   },
 };
 
 // This profile is completely identical to MMFAD9A
 
-class PIES9A extends Profile {
+class PIES9A extends PIES93 {
   constructor(dataset, options, config = customConfig) {
-    super();
-    Object.assign(this, new PIES93(dataset, options, config));
+    super(dataset, options, config);
   }
 }
 

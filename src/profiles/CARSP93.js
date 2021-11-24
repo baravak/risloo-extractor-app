@@ -9,8 +9,12 @@ class CARSP93 extends Profile {
       name: "پرسشنامه تشخیص کانرز - نسخه والدین" /* Name of the test */,
       multiProfile: false /* Whether the test has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
-      defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [] /* In case you want to get some additional fields and show in the profile */,
+      defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
+      fields: [
+        "child_gender",
+        "child_age",
+        "child_education",
+      ] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */

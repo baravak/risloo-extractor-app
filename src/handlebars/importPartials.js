@@ -3,7 +3,7 @@ const { readdir } = require("fs/promises");
 const path = require("path");
 
 // These are the profiles that might be used completely in other profiles
-const baseProfiles = ["AMS93", "MMFAD93"];
+const baseProfiles = ["AMS93", "MMFAD93", "PIES93"];
 
 async function importPartials(hbs) {
   const partialsDir = path.join(__dirname, "..", "..", "views");

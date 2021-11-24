@@ -20,14 +20,13 @@ class PIES93 extends Profile {
         return {
           width:
             spec.items.base.rect.width +
-            spec.items.maxValue * spec.items.body.widthCoeff -
-            spec.items.base.rect.borderRadius +
+            spec.items.body.rect.maxWidth +
             spec.raw.offsetX +
             spec.raw.rect.width +
             spec.raw.ticks.line.offsetX +
             spec.raw.ticks.line.width +
             spec.raw.ticks.number.offsetX +
-            30 +
+            12 +
             spec.profile.padding.x * 2,
           height: spec.items.calcTotalHeight(n) + spec.items.ticks.heightOffset * 2 + spec.profile.padding.y * 2,
         };
@@ -86,7 +85,15 @@ class PIES93 extends Profile {
         },
       },
       body: {
-        widthCoeff: 20 /* Used for converting mark to the width */,
+        rect: {
+          maxWidth: 400 /* Max width of the body part of items */,
+          brs: {
+            tl: 0 /* Top left border radius */,
+            bl: 0 /* Bottom left border radius */,
+            tr: 20 /* Top right border radius */,
+            br: 20 /* Bottom right border radius */,
+          } /* Border radiuses of the base rectangle */,
+        },
         colors: [
           "#8B5CF6",
           "#EC4899",
@@ -109,9 +116,12 @@ class PIES93 extends Profile {
         rect: {
           width: 220 /* Width of the items rectangle (base part) */,
           height: 40 /* Height of the items rectangle (base part) */,
-          get borderRadius() {
-            return this.height / 2;
-          } /* Border Radius of the items rectangle (base part) */,
+          brs: {
+            tl: 20 /* Top left border radius */,
+            bl: 20 /* Bottom left border radius */,
+            tr: 0 /* Top right border radius */,
+            br: 0 /* Bottom right border radius */,
+          } /* Border radiuses of the base rectangle */,
         },
         label: {
           circle: {
@@ -184,15 +194,7 @@ class PIES93 extends Profile {
     } = this;
 
     // Deconstructing the Spec of the Profile
-    const {
-      raw: { maxValue: rawMaxValue, ticks: rawTicksSpec, heightCoeff },
-      items: {
-        maxValue: itemsMaxValue,
-        ticks: itemsTicksSpec,
-        base: { colors: baseColors, rect },
-        body: { widthCoeff, colors: bodyColors, opacityMapping },
-      },
-    } = spec;
+    const { raw: rawSpec, items: itemsSpec } = spec;
 
     // Separate Raw Data from the Dataset
     const rawData = dataset.score.pop();
@@ -205,45 +207,45 @@ class PIES93 extends Profile {
     const raw = {
       label: rawData.label,
       mark: rawData.mark,
-      height: rawData.mark * heightCoeff,
+      height: (rawData.mark / rawSpec.maxValue) * rawSpec.rect.height,
     };
 
     // Gather Required Info for Items
     const items = dataset.score.map((data, index) => ({
       label: data.label,
-      width: data.mark * widthCoeff + rect.borderRadius,
+      width: (data.mark / itemsSpec.maxValue) * itemsSpec.body.rect.maxWidth,
       mark: data.mark,
-      baseColor: baseColors[index],
+      baseColor: itemsSpec.base.colors[index],
       body: {
-        color: bodyColors[index],
-        opacity: FS.mapInRange(data.mark, opacityMapping),
+        color: itemsSpec.body.colors[index],
+        opacity: FS.mapInRange(data.mark, itemsSpec.body.opacityMapping),
       },
     }));
 
     // Calculate Ticks Numbers Array for Raw
     const rawTicksNumbers = FS.createArithmeticSequence(
-      rawMaxValue,
-      -rawMaxValue / rawTicksSpec.num,
-      rawTicksSpec.num
+      rawSpec.maxValue,
+      -rawSpec.maxValue / rawSpec.ticks.num,
+      rawSpec.ticks.num
     ).reverse();
 
     // Gather Required Info for Raw Ticks
     const rawTicks = rawTicksNumbers.map((tick) => ({
       number: tick,
-      bottomPos: tick * heightCoeff,
+      bottomPos: (tick / rawSpec.maxValue) * rawSpec.rect.height,
     }));
 
     // Calculate Ticks Numbers Array for Items
     const itemsTicksNumbers = FS.createArithmeticSequence(
-      itemsMaxValue,
-      -itemsMaxValue / itemsTicksSpec.num,
-      itemsTicksSpec.num
+      itemsSpec.maxValue,
+      -itemsSpec.maxValue / itemsSpec.ticks.num,
+      itemsSpec.ticks.num
     ).reverse();
 
     // Gather Required Info for Items Ticks
     const itemsTicks = itemsTicksNumbers.map((tick) => ({
       number: tick,
-      leftPos: tick * widthCoeff,
+      leftPos: (tick / itemsSpec.maxValue) * itemsSpec.body.rect.maxWidth,
     }));
 
     return [

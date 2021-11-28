@@ -3,9 +3,9 @@ const { readdir } = require("fs/promises");
 const path = require("path");
 const chalk = require("chalk");
 
-const jsonDir = path.join(__dirname, "..", "json");
-const profilesJSDir = path.join(__dirname, "..", "profiles");
-const outputDir = path.join(__dirname, "..", "output", "test");
+const jsonDir = path.join(process.cwd(), "src", "json");
+const profilesJSDir = path.join(process.cwd(), "src", "samples");
+const outputDir = path.join(process.cwd(), "src", "output", "test");
 
 async function loadProfileNames() {
   return readdir(profilesJSDir).then((profileNames) =>

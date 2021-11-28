@@ -8,8 +8,8 @@ const outputJSON = require("./outputJSON");
 const outputJSON1 = new outputJSON(0);
 
 // Profiles JS Files and Template Files Directory
-const profilesJSDir = path.join(__dirname, "..", "profiles");
-const profilesTemplatesDir = path.join(__dirname, "..", "..", "views", "profiles");
+const profilesJSDir = path.join(process.cwd(), "src", "samples");
+const profilesTemplatesDir = path.join(process.cwd(), "views", "profiles", "samples");
 
 async function checkAndLoad(dir) {
   return fs

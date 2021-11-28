@@ -6,11 +6,11 @@ const path = require("path");
 const baseProfiles = ["AMS93", "MMFAD93", "PIES93"];
 
 async function importPartials(hbs) {
-  const partialsDir = path.join(__dirname, "..", "..", "views");
+  const partialsDir = path.join(process.cwd(), "views", "profiles");
 
   let baseProfilePromises = baseProfiles.map((profileName) => {
     new Promise(function (resolve, reject) {
-      fs.readFile(path.join(partialsDir, "profiles", `${profileName}.hbs`), "utf-8", (err, template) => {
+      fs.readFile(path.join(partialsDir, "samples", `${profileName}.hbs`), "utf-8", (err, template) => {
         if (err) reject(err);
         hbs.registerPartial(profileName, template);
         resolve(true);

@@ -1,0 +1,10 @@
+{{#> layout}}
+
+  <g transform="translate(100, 300)">
+    {{gauge 120 50 (object tl=4 tr=4 bl=15 br=0) (object start=(toRad (math 140 '-' 16)) end=(toRad (math 140 '+' 16))) false stroke="black" fill="none"}}
+    {{bar 200 30 (object tl=10 tr=5 bl=0 br=0) (toRad -45) stroke="black" fill="none"}}
+    {{polygon 6 (array 40 60 10 30 90 25) (toRad -60) stroke="black" fill="none"}}
+    <rect x="0" y="0" width="200" height="30" rx="10" stroke="black" fill="none"/>
+  </g>
+
+{{/layout}}

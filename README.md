@@ -1,6 +1,6 @@
 # Introduction
 
-**Risloo Profile CLI** is a library for creating profiles and reports for *psychological* tests.
+**Risloo Profile CLI** is a library for creating profiles, reports and sheets for *psychological* samples.
 
 # Installation
 
@@ -12,7 +12,7 @@ npm install -g risloo-profile-cli
 
 # How Does It Work?
 
-This library is equipped with a CLI in order to create the profiles and reports you need for your tests.
+This library is equipped with a CLI in order to create the profiles, reports and sheets you need for your samples.
 The structure of the CLI is as follows:
 
 ### Main Structure
@@ -24,36 +24,52 @@ risloo [command]
 ### Commands
 
 ```
-draw|D <profileName> [options]
+extract|D <sampleName> [sampleOutputs...] [options]
+gift|G [options]
 test|T [options]
 ```
 
-### **draw** Command Options
+### **extract** Command
 
-Using this command, you can draw profiles in SVG and PNG format for common psychological tests.
+Using this command, you can draw extract profiles, reports and sheets out of psychological samples.
 
 ```
--p, --profile-variant <variant>     Variant of the Profile, Choices: {both, raw, with-sidebar}, Default: both
--i, --input-type <type>             Type of Input, Choices: {local, remote, raw-json, stdin}, Default: local
--d, --input-data <data>             Input Data
--o, --output-type <type>            Type of Output, Choices: {local, remote}, Default: local
--a, --output-address <address>      Output Address
--n, --name <name>                   Name of Output Profile (Required in "stdin" Input Type)
--m, --measure                       Additional Feature for Measuring Dimensions and Distances, Default: false
--b, --benchmark                     Time Benchmarking of Command, Default: false
+Arguments:
+  sampleName                          Name of the Sample
+  sampleOutputs                       Outputs To Be Extracted Out of Sample, Choices: {profile, report, sheet}, Default: ["profile"]
+
+Options:
+  -p, --profile-variant <variant>     Variant of the Profile, Choices: {both, raw, with-sidebar}, Default: both
+  -i, --input-type <type>             Type of Input, Choices: {local, remote, raw-json, stdin}, Default: local
+  -d, --input-data <data>             Input Data
+  -o, --output-type <type>            Type of Output, Choices: {local, remote}, Default: local
+  -a, --output-address <address>      Output Address
+  -n, --name <name>                   Name of Output Profile (Required in "stdin" Input Type)
+  -m, --measure                       Additional Feature for Measuring Dimensions and Distances, Default: false
+  -b, --benchmark                     Time Benchmarking of Command, Default: false
 ```
 
 # CLI Status Codes
 
-The **Status Codes** after entering a command for creating a profile is as follows:
+The **Status Codes** after entering a command is as follows:
 
-| Status Code | Label | Description |
-| ----------- | ----- | ----------- |
-| 0 | Success | Profile Successfully Created! |
-| 1 | Not Found | Input Data File Does Not Exist! |
-| 2 | Profile JS Error | Error in Instantiating the Profile Object |
-| 3 | Invalid Name | Profile Name Is Not Valid |
-| 4 | Not Found | Profile Template File Does Not Exist |
+Profiles Status:
+
+  | Status Code | Label | Description |
+  | ----------- | ----- | ----------- |
+  | 0 | Success | Profiles Successfully Created! |
+  | 1 | Not Found | Input Data File Does Not Exist! |
+  | 2 | Profile JS Error | Error in Instantiating the Profile Object |
+  | 3 | Invalid Name | Profile Name Is Not Valid |
+  | 4 | Not Found | Profile Template File Does Not Exist |
+  | 5 | General Error | Something Went Wrong In The Input Data File! |
+  | 6 | General Error | Something Went Wrong In The JS Files! |
+
+Gifts Status:
+
+  | Status Code | Label | Description |
+  | ----------- | ----- | ----------- |
+  | 0 | Success | Gifts Successfully Created! |
 
 # Naming Variables Stratrgy
 

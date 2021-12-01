@@ -163,7 +163,7 @@ class Dataset {
 
   // Convert Given Timestamp to Proper Format for Profile
   _formatDate(timeStamp) {
-    return moment(timeStamp * 1000).format("jYYYY.jMM.jD  -  HH:mm");
+    return moment(timeStamp * 1000).format("jYYYY.jMM.jDD  -  HH:mm");
   }
 
   // Convert Given Time to Proper Format for Profile

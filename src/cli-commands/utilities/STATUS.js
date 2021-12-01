@@ -21,11 +21,11 @@ const PROFILES_STATUS = {
   },
   5: {
     code: 5,
-    message: "Something Went Wrong In The Input Data File!",
+    message: "(General Error): Something Went Wrong In The Input Data File!",
   },
   6: {
     code: 6,
-    message: "Something Went Wrong In The JS Files!",
+    message: "(General Error): Something Went Wrong In The JS Files!",
   },
 };
 

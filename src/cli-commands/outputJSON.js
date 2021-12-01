@@ -3,6 +3,7 @@ const path = require("path");
 const OutputCode = {
   0: "profiles",
   1: "report",
+  2: "gift",
 };
 
 class outputJSON {
@@ -19,12 +20,14 @@ class outputJSON {
     this.filesObj[name] = [...(this.filesObj[name] || []), ext];
   }
 
-  setMessage(messageCode, message) {
-    if (!this.messageCode && !this.message) {
-      this.messageCode = messageCode;
-      this.message = message;
+  setStatus({ code, message }) {
+    if (!this.status) {
+      this.status = {
+        code,
+        message,
+      };
     }
-    process.exitCode = messageCode;
+    process.exitCode = code;
   }
 
   setTime(time) {
@@ -32,15 +35,22 @@ class outputJSON {
   }
 
   showOutput() {
-    const { code, filesObj, messageCode, message, time } = this;
+    const { code, filesObj, status, time } = this;
     const output = {
       [OutputCode[code]]: filesObj,
-      message_code: messageCode,
-      message,
+      message_code: status?.code,
+      message: status?.message,
       time,
     };
 
-    return JSON.stringify(output);
+    console.log(JSON.stringify(output));
+    this._clear();
+  }
+
+  _clear() {
+    this.filesObj = {};
+    this.status = null;
+    this.time = null;
   }
 }
 

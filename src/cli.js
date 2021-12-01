@@ -1,4 +1,4 @@
-const { Command, Option } = require("commander");
+const { Argument, Command, Option } = require("commander");
 
 const program = new Command();
 
@@ -38,7 +38,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 
     .addOption(new Option("-n, --name <name>", "name of output profile"))
 
-    .addOption(new Option("-b, --benchmark", "time benchmarking"))
+    .addOption(new Option("-b, --benchmark", "time benchmarking").default(false))
 
     .action((profileName, options, command) => {
       output = {
@@ -51,7 +51,7 @@ function parseArgumentsIntoOptions(rawArgs) {
   program
     .command("test")
     .alias("T")
-    .description("You can test commands of the cli.")
+    .description("Test Commands of CLI")
     .addOption(
       new Option("-c, --command-test <name>", "command name to be tested").choices(["draw"]).makeOptionMandatory()
     )
@@ -62,7 +62,31 @@ function parseArgumentsIntoOptions(rawArgs) {
       };
     });
 
-  program.name("risloo").usage("draw <profileName> [options]");
+  program
+    .command("gift")
+    .alias("G")
+    .description("Create Gift Card")
+    .addOption(
+      new Option("-s, --gift-status <status>", "gift status")
+        .choices(["both", "open", "expired"])
+        .default("both")
+        .makeOptionMandatory()
+    )
+    .addOption(
+      new Option("-i, --input-type <type>", "input type")
+        .choices(["raw-json", "stdin"])
+        .default("stdin")
+        .makeOptionMandatory()
+    )
+    .addOption(new Option("-d, --input-data <data>", "input data"))
+    .addOption(new Option("-a, --output-address <address>", "output address").makeOptionMandatory())
+    .addOption(new Option("-b, --benchmark", "time benchmarking").default(false))
+    .action((options, command) => {
+      output = {
+        command: command.name(),
+        ...options,
+      };
+    });
 
   program.showHelpAfterError();
 
@@ -73,7 +97,7 @@ function parseArgumentsIntoOptions(rawArgs) {
   return output;
 }
 
-function cli(args) {
+async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
 
   switch (options.command) {
@@ -83,6 +107,9 @@ function cli(args) {
         .then((json) => console.log(json))
         .catch((json) => console.log(json));
       break;
+    case "gift":
+      const gift = require("./cli-commands/gift");
+      return gift(options);
     case "test":
       const test = require("./cli-commands/test");
       test(options)

@@ -49,6 +49,19 @@ Options:
   -b, --benchmark                     Time Benchmarking of Command, Default: false
 ```
 
+### **gift** Command
+
+Using this command, you can create special gifts for users and customers.
+
+```
+Options:
+  -s, --gift-status <status>          Gift Status, Choices: {both, open, expired}, Default: both
+  -i, --input-type <type>             Type of Input, Choices: {raw-json, stdin}, Default: stdin
+  -d, --input-data <data>             Input Data
+  -a, --output-address <address>      Output Address
+  -b, --benchmark                     Time Benchmarking of Command, Default: false
+```
+
 # CLI Status Codes
 
 The **Status Codes** after entering a command is as follows:

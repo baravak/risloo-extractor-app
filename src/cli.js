@@ -6,10 +6,13 @@ function parseArgumentsIntoOptions(rawArgs) {
   let output = {};
 
   program
-    .command("draw")
-    .alias("D")
-    .argument("<profileName>")
-    .description("You can draw a profile using this command!")
+    .command("extract")
+    .alias("E")
+    .argument("<sampleName>", "sample name")
+    .addArgument(
+      new Argument("[sampleOutputs...]", "sample outputs").choices(["profile", "report", "sheet"]).default(["profile"])
+    )
+    .description("Extract outputs of a sample")
     .addOption(
       new Option("-p, --profile-variant <variant>", "profile variant")
         .choices(["both", "raw", "with-sidebar"])
@@ -40,10 +43,11 @@ function parseArgumentsIntoOptions(rawArgs) {
 
     .addOption(new Option("-b, --benchmark", "time benchmarking").default(false))
 
-    .action((profileName, options, command) => {
+    .action((sampleName, sampleOutputs, options, command) => {
       output = {
         command: command.name(),
-        profileName,
+        sampleName,
+        sampleOutputs,
         ...options,
       };
     });
@@ -53,7 +57,7 @@ function parseArgumentsIntoOptions(rawArgs) {
     .alias("T")
     .description("Test Commands of CLI")
     .addOption(
-      new Option("-c, --command-test <name>", "command name to be tested").choices(["draw"]).makeOptionMandatory()
+      new Option("-c, --command-test <name>", "command name to be tested").choices(["extract"]).makeOptionMandatory()
     )
     .action((options, command) => {
       output = {
@@ -101,12 +105,9 @@ async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
 
   switch (options.command) {
-    case "draw":
-      const draw = require("./cli-commands/draw");
-      draw(options)
-        .then((json) => console.log(json))
-        .catch((json) => console.log(json));
-      break;
+    case "extract":
+      const extract = require("./cli-commands/extract");
+      return extract(options);
     case "gift":
       const gift = require("./cli-commands/gift");
       return gift(options);

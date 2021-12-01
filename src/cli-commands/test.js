@@ -1,4 +1,4 @@
-const draw = require("./draw");
+const extract = require("./extract");
 const { readdir } = require("fs/promises");
 const path = require("path");
 const chalk = require("chalk");
@@ -8,8 +8,8 @@ const profilesJSDir = path.join(process.cwd(), "src", "samples");
 const outputDir = path.join(process.cwd(), "src", "output", "test");
 
 async function loadProfileNames() {
-  return readdir(profilesJSDir).then((profileNames) =>
-    profileNames.map((name) => name.split(".")[0]).filter((name) => name !== "empty")
+  return readdir(profilesJSDir).then((sampleNames) =>
+    sampleNames.map((name) => name.split(".")[0]).filter((name) => name !== "empty")
   );
 }
 
@@ -25,37 +25,38 @@ async function test(options) {
 
   // Initial Draw Command Options
   let drawOptions = {
-    profileName: "",
+    sampleName: "",
     profileVariant: "",
     inputType: "local",
     outputType: "local",
     inputData: "",
     measure: false,
+    benchmark: true,
     outputAddress: outputDir,
   };
 
-  return loadProfileNames().then(async (profileNames) => {
-    const numProfiles = profileNames.length * profileVariants.length;
-    for (let profileName of profileNames) {
+  return loadProfileNames().then(async (sampleNames) => {
+    const numProfiles = sampleNames.length * profileVariants.length;
+    for (let sampleName of sampleNames) {
       for (let profileVariant of profileVariants) {
-        inputData = path.join(jsonDir, `${profileName}.json`);
+        inputData = path.join(jsonDir, `${sampleName}.json`);
         drawOptions = {
           ...drawOptions,
-          profileName,
+          sampleName,
           profileVariant,
           inputData,
         };
 
-        await draw(drawOptions)
+        await extract(drawOptions)
           .then(() =>
             console.log(
-              chalk`{green.bold ${profileName}} Profile of {italic ${profileVariant}} Variant Created With {green.bold Success}!`
+              chalk`{green.bold ${sampleName}} Profile of {italic ${profileVariant}} Variant Created With {green.bold Success}!`
             )
           )
           .catch(() => {
             erroneousProfiles++;
             console.log(
-              chalk`{red.bold ${profileName}} Profile of {italic ${profileVariant}} Variant Created With {red.bold Error}!`
+              chalk`{red.bold ${sampleName}} Profile of {italic ${profileVariant}} Variant Created With {red.bold Error}!`
             );
           });
       }

@@ -1,10 +1,10 @@
-const { loadStdin, ensureDirExistence, createPNG } = require("./BaseOps");
+const { loadStdin, ensureDirExistence, createPNG } = require("./utilities/BaseOps");
 const path = require("path");
 const fs = require("fs/promises");
 const Handlebars = require("../handlebars/init");
-const { GIFTS_STATUS } = require("./STATUS");
+const { GIFTS_STATUS } = require("./utilities/STATUS");
 const Gift = require("../Gift");
-const outputJSON = require("./outputJSON");
+const outputJSON = require("./utilities/outputJSON");
 
 const json = new outputJSON(2);
 
@@ -35,7 +35,7 @@ async function gift(options) {
   let benchmarker;
 
   if (options.benchmark) {
-    const Benchmarker = require("./Benchmarker");
+    const Benchmarker = require("./utilities/Benchmarker");
     benchmarker = new Benchmarker();
     benchmarker.start("Extract Command");
   }

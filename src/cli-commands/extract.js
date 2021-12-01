@@ -1,9 +1,15 @@
 const path = require("path");
 const Handlebars = require("../handlebars/init");
-const { FileNotFoundError } = require("./CustomErrors");
-const { PROFILES_STATUS } = require("./STATUS");
-const { checkAndLoad, checkAndImport, loadStdin, ensureDirExistence, createOutputFiles } = require("./BaseOps");
-const outputJSON = require("./outputJSON");
+const { FileNotFoundError } = require("./utilities/CustomErrors");
+const { PROFILES_STATUS } = require("./utilities/STATUS");
+const {
+  checkAndLoad,
+  checkAndImport,
+  loadStdin,
+  ensureDirExistence,
+  createOutputFiles,
+} = require("./utilities/BaseOps");
+const outputJSON = require("./utilities/outputJSON");
 
 const json = new outputJSON(0);
 
@@ -73,7 +79,7 @@ async function extract(options) {
   let benchmarker;
 
   if (options.benchmark) {
-    const Benchmarker = require("./Benchmarker");
+    const Benchmarker = require("./utilities/Benchmarker");
     benchmarker = new Benchmarker();
     benchmarker.start("Extract Command");
   }

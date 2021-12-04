@@ -20,16 +20,18 @@ async function createGift(dataset, options, { templatePromise, ensureDirPromise 
 
   const fileName = createOutputName(ctx.region.id, ctx.code);
 
-  return templatePromise
-    .then(async (templateBuffer) => {
-      const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
+  return (
+    templatePromise
+      .then(async (templateBuffer) => {
+        const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
 
-      xml = template(ctx);
+        xml = template(ctx);
 
-      return ensureDirPromise;
-    })
-    .then(() => createOutputFiles(xml, { outputAddress: options.outputAddress, fileName }, json));
-  // .then(() => createPNG(xml, path.join(options.outputAddress, `${fileName}.png`), json));
+        return ensureDirPromise;
+      })
+      // .then(() => createOutputFiles(xml, { outputAddress: options.outputAddress, fileName }, json));
+      .then(() => createPNG(xml, path.join(options.outputAddress, `${fileName}.png`), json))
+  );
 }
 
 async function gift(options) {

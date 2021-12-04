@@ -20,23 +20,17 @@ const checkAndImport = async (dir) =>
     })
     .then(() => require(dir));
 
-const loadStdin = async () => {
-  process.stdin.resume();
-  process.stdin.setEncoding("utf8");
+const loadStdin = async (encoding) => {
+  process.stdin.setEncoding(encoding);
 
-  let json = "";
+  let data = "";
 
-  process.stdin.on("data", function (chunk) {
-    json += chunk;
-  });
+  if (!process.stdin.isTTY) process.stdin.on("data", (chunk) => (data += chunk));
 
   return new Promise(function (resolve, reject) {
-    process.stdin.on("end", function () {
-      resolve(json);
-    });
-    process.stdin.on("error", function () {
-      reject(error);
-    });
+    if (!process.stdin.readableFlowing) resolve(data);
+    process.stdin.on("end", () => resolve(data));
+    process.stdin.on("error", (err) => reject(err));
   });
 };
 

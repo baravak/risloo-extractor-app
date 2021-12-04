@@ -104,7 +104,7 @@ async function extract(options) {
     });
   } else if (options.inputType === "stdin") {
     if (!options.name) throw new Error("Output File Name Not Provided!");
-    datasetPromise = loadStdin();
+    datasetPromise = loadStdin('utf-8');
   }
 
   return new Promise(function (resolve, reject) {

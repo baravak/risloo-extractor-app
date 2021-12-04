@@ -109,9 +109,8 @@ async function extract(options) {
 
   return new Promise(function (resolve, reject) {
     Promise.all([datasetPromise, jsPromise])
-      .then((results) => {
-        const dataset = JSON.parse(results[0]);
-        const profileClass = results[1];
+      .then(([json, profileClass]) => {
+        const dataset = JSON.parse(json);
 
         let profileVariants = {
           both: ["raw", "with-sidebar"],

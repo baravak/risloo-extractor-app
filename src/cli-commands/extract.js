@@ -14,8 +14,8 @@ const outputJSON = require("./utilities/outputJSON");
 const json = new outputJSON(0);
 
 // Profiles JS Files and Template Files Directory
-const profilesJSDir = path.join(process.cwd(), "src", "samples");
-const profilesTemplatesDir = path.join(process.cwd(), "views", "profiles", "samples");
+const profilesJSDir = path.join(__dirname, "..", "samples");
+const profilesTemplatesDir = path.join(__dirname, "..", "..", "views", "profiles", "samples");
 
 function createOutputName(options) {
   let profileVariantSuffix = {

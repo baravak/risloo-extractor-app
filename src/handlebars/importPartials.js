@@ -6,7 +6,7 @@ const path = require("path");
 const baseProfiles = ["AMS93", "MMFAD93", "PIES93"];
 
 async function importPartials(hbs) {
-  const partialsDir = path.join(process.cwd(), "views", "profiles");
+  const partialsDir = path.join(__dirname, "..", "..", "views", "profiles");
 
   let baseProfilePromises = baseProfiles.map((profileName) => {
     new Promise(function (resolve, reject) {

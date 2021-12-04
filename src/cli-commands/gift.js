@@ -8,8 +8,8 @@ const outputJSON = require("./utilities/outputJSON");
 
 const json = new outputJSON(2);
 
-const giftTemplateFile = path.join(process.cwd(), "views", "gift.hbs");
-const outputDir = path.join(process.cwd(), "src", "output", "gift");
+const giftTemplateFile = path.join(__dirname, "..", "..", "views", "gift.hbs");
+const outputDir = path.join(__dirname, "..", "output", "gift");
 
 const createOutputName = (regionId, code) => `${regionId}-${code}`;
 
@@ -52,26 +52,32 @@ async function gift(options) {
   if (options.inputType === "local") datasetPromise = checkAndLoad(options.inputData);
   else if (options.inputType === "raw-json") datasetPromise = Promise.resolve(options.inputData);
 
-  return Promise.all([datasetPromise, avatarPromise])
-    .then(([json, avatar]) => {
-      const dataset = JSON.parse(json);
-      const avatarBase64 = avatar && Buffer.from(avatar, "binary").toString("base64");
+  return new Promise(function (resolve, reject) {
+    Promise.all([datasetPromise, avatarPromise])
+      .then(([json, avatar]) => {
+        const dataset = JSON.parse(json);
+        const avatarBase64 = avatar && Buffer.from(avatar, "binary").toString("base64");
 
-      dataset.region.detail["avatarBase64"] = avatarBase64;
+        dataset.region.detail["avatarBase64"] = avatarBase64;
 
-      return createGift(dataset, options, { templatePromise, ensureDirPromise });
-    })
-    .then(() => {
-      if (options.benchmark) {
-        benchmarker.end();
-        json.setTime(benchmarker.totalTime);
-      }
-      json.setStatus(GIFTS_STATUS["0"]);
-    })
-    .catch((err) => {
-      throw err;
-    })
-    .finally(() => json.showOutput());
+        return createGift(dataset, options, { templatePromise, ensureDirPromise });
+      })
+      .then(() => {
+        if (options.benchmark) {
+          benchmarker.end();
+          json.setTime(benchmarker.totalTime);
+        }
+        json.setStatus(GIFTS_STATUS["0"]);
+
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      })
+      .finally(() => json.showOutput());
+
+    Promise.all([templatePromise, ensureDirPromise]).catch((err) => reject(err));
+  });
 }
 
 module.exports = gift;

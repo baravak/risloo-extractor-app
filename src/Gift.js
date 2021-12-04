@@ -4,18 +4,19 @@ moment.locale("fa");
 moment.loadPersian({ dialect: "persian-modern" });
 
 class Gift {
-  constructor(dataset, status) {
-    this.id = dataset.id || "-";
-    this.title = dataset.title || "-";
-    this.code = dataset.code || "-";
-    this.type = dataset.type || "-";
-    this.value = dataset.value || "-";
-    this.status = status;
-    (this.started_at = (dataset.started_at && this._formatDate(dataset.started_at)) || "-"),
-      (this.expires_at = (dataset.expires_at && this._formatDate(dataset.expires_at)) || ""),
+  constructor(gift) {
+    this.id = gift.id || "-";
+    this.title = gift.title || "-";
+    this.code = gift.code.slice(10) || "-";
+    this.type = gift.type || "-";
+    this.value = gift.value || "-";
+    (this.started_at = (gift.started_at && this._formatDate(gift.started_at)) || "-"),
+      (this.expires_at = (gift.expires_at && this._formatDate(gift.expires_at)) || ""),
       (this.region = {
-        id: dataset.region?.id || "-",
-        title: dataset.region?.detail?.title || "-",
+        id: gift.region.id || "-",
+        type: gift.region.type,
+        title: gift.region.detail.title || "-",
+        avatarBase64: gift.region.detail.avatarBase64,
       });
   }
 

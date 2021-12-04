@@ -71,15 +71,9 @@ function parseArgumentsIntoOptions(rawArgs) {
     .alias("G")
     .description("Create Gift Card")
     .addOption(
-      new Option("-s, --gift-status <status>", "gift status")
-        .choices(["both", "open", "expired"])
-        .default("both")
-        .makeOptionMandatory()
-    )
-    .addOption(
       new Option("-i, --input-type <type>", "input type")
-        .choices(["raw-json", "stdin"])
-        .default("stdin")
+        .choices(["raw-json", "local"])
+        .default("raw-json")
         .makeOptionMandatory()
     )
     .addOption(new Option("-d, --input-data <data>", "input data"))

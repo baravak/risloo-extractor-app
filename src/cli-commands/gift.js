@@ -1,4 +1,4 @@
-const { loadStdin, ensureDirExistence, createPNG } = require("./utilities/BaseOps");
+const { loadStdin, ensureDirExistence, createPNG, createOutputFiles, checkAndLoad } = require("./utilities/BaseOps");
 const path = require("path");
 const fs = require("fs/promises");
 const Handlebars = require("../handlebars/init");
@@ -11,14 +11,14 @@ const json = new outputJSON(2);
 const giftTemplateFile = path.join(process.cwd(), "views", "gift.hbs");
 const outputDir = path.join(process.cwd(), "src", "output", "gift");
 
-const createOutputName = (regionId, code, status) => `${regionId}-${code}.${status}`;
+const createOutputName = (regionId, code) => `${regionId}-${code}`;
 
 async function createGift(dataset, options, { templatePromise, ensureDirPromise }) {
   let xml;
 
-  const ctx = new Gift(dataset, options.giftStatus);
+  const ctx = new Gift(dataset);
 
-  const fileName = createOutputName(ctx.region.id, ctx.code, ctx.status);
+  const fileName = createOutputName(ctx.region.id, ctx.code);
 
   return templatePromise
     .then(async (templateBuffer) => {
@@ -28,7 +28,8 @@ async function createGift(dataset, options, { templatePromise, ensureDirPromise 
 
       return ensureDirPromise;
     })
-    .then(() => createPNG(xml, path.join(options.outputAddress, `${fileName}.png`), json));
+    .then(() => createOutputFiles(xml, { outputAddress: options.outputAddress, fileName }, json));
+  // .then(() => createPNG(xml, path.join(options.outputAddress, `${fileName}.png`), json));
 }
 
 async function gift(options) {
@@ -44,25 +45,19 @@ async function gift(options) {
 
   const ensureDirPromise = ensureDirExistence(outputDir);
   const templatePromise = fs.readFile(giftTemplateFile);
+  const avatarPromise = loadStdin("binary");
 
-  if (options.inputType === "stdin") datasetPromise = loadStdin();
+  if (options.inputType === "local") datasetPromise = checkAndLoad(options.inputData);
   else if (options.inputType === "raw-json") datasetPromise = Promise.resolve(options.inputData);
 
-  return datasetPromise
-    .then((json) => {
+  return Promise.all([datasetPromise, avatarPromise])
+    .then(([json, avatar]) => {
       const dataset = JSON.parse(json);
+      const avatarBase64 = avatar && Buffer.from(avatar, "binary").toString("base64");
 
-      let giftStatuses = {
-        both: ["open", "expired"],
-        open: ["open"],
-        expired: ["expired"],
-      }[options.giftStatus];
+      dataset.region.detail["avatarBase64"] = avatarBase64;
 
-      return Promise.all(
-        giftStatuses.map((giftStatus) =>
-          createGift(dataset, { ...options, giftStatus }, { templatePromise, ensureDirPromise })
-        )
-      );
+      return createGift(dataset, options, { templatePromise, ensureDirPromise });
     })
     .then(() => {
       if (options.benchmark) {

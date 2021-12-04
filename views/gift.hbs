@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" xml:lang="fa" direction="rtl">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:lang="fa" direction="rtl">
 
   <defs>
-    {{setVar 'isOpen' (boolean status '===' 'open')}}
-
-    <path id="value-rect" d="M-127.855 25.4134C-123.451 -11.7692 -121.249 -30.3605 -108.73 -41.6819C-96.2111 -53.0033 -77.4928 -53.3313 -40.0561 -53.9873L131.597 -56.995L117.413 52.6096L-131.595 56.9938L-127.855 25.4134Z" fill="{{ternary isOpen '#E11D48' '#A1A1AA'}}"/>
-    <path id="title-rect" d="M108.356 -47.6977C105.368 -13.0177 103.874 4.32222 92.4186 14.8465C80.9629 25.3708 63.5588 25.3925 28.7504 25.4357L-109.106 25.6069L-100.441 -35.422L108.603 -50.57L108.356 -47.6977Z" fill="{{ternary isOpen '#007BA4' '#52525B'}}"/>
+    <path id="value-rect" d="M-127.855 25.4134C-123.451 -11.7692 -121.249 -30.3605 -108.73 -41.6819C-96.2111 -53.0033 -77.4928 -53.3313 -40.0561 -53.9873L131.597 -56.995L117.413 52.6096L-131.595 56.9938L-127.855 25.4134Z" fill="#E11D48"/>
+    <path id="title-rect" d="M108.356 -47.6977C105.368 -13.0177 103.874 4.32222 92.4186 14.8465C80.9629 25.3708 63.5588 25.3925 28.7504 25.4357L-109.106 25.6069L-100.441 -35.422L108.603 -50.57L108.356 -47.6977Z" fill="#007BA4"/>
 
     <g id="lines" stroke-linecap="round" stroke-opacity="0.5">
-      <line x1="-18.7928" y1="20.1606" x2="148.947" y2="-0.435353" stroke="{{ternary isOpen '#9F1239' '#A1A1AA'}}"/>
-      <line x1="-105.227" y1="207.395" x2="2.73899" y2="192.414" stroke="{{ternary isOpen '#9F1239' '#A1A1AA'}}"/>
-      <line x1="113.608" y1="49.1664" x2="172.168" y2="41.9761" stroke="{{ternary isOpen '#9F1239' '#A1A1AA'}}"/>
-      <line x1="93.7753" y1="28.8383" x2="134.573" y2="23.829" stroke="{{ternary isOpen '#52525B' '#A1A1AA'}}"/>
-      <line x1="118.651" y1="120.165" x2="137.417" y2="117.193" stroke="{{ternary isOpen '#52525B' '#A1A1AA'}}"/>
-      <line x1="-122.62" y1="187.52" x2="-63.36" y2="178.13" stroke="{{ternary isOpen '#52525B' '#A1A1AA'}}"/>
-      <line x1="-172.73" y1="168.35" x2="-93.39" y2="158.05" stroke="{{ternary isOpen '#9F1239' '#A1A1AA'}}"/>
+      <line x1="-18.7928" y1="20.1606" x2="148.947" y2="-0.435353" stroke="#9F1239"/>
+      <line x1="-105.227" y1="207.395" x2="2.73899" y2="192.414" stroke="#9F1239"/>
+      <line x1="113.608" y1="49.1664" x2="172.168" y2="41.9761" stroke="#9F1239"/>
+      <line x1="93.7753" y1="28.8383" x2="134.573" y2="23.829" stroke="#52525B"/>
+      <line x1="118.651" y1="120.165" x2="137.417" y2="117.193" stroke="#52525B"/>
+      <line x1="-122.62" y1="187.52" x2="-63.36" y2="178.13" stroke="#52525B"/>
+      <line x1="-172.73" y1="168.35" x2="-93.39" y2="158.05" stroke="#9F1239"/>
     </g>
 
     <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -24,73 +22,114 @@
 
     <path id="gift-box" fill-rule="evenodd" clip-rule="evenodd" d="M-33.125 34.32V24.7401C-33.125 23.5 -31.625 22 -30.125 22H-19.4526L-25.625 18.75H-30.625C-34.125 18.75 -36.3856 22.5 -36.3856 24.7401V37.5H-31.625V66.5688C-31.625 68.5 -28.625 71.9 -25.625 71.9H25.6795C29.375 71.9 31.625 68.5 31.625 66V37.5917H36.375V24.2421C36.375 21 32.375 18.7421 30.875 18.7421H25.3017C25.5474 18.3919 25.7938 18.063 26.0345 17.7415C27.3357 16.0041 28.475 14.4829 28.475 11C28.475 6 24.375 0 17.375 0C9.82431 0 6.21915 8.28562 5.01737 11.0476C4.86628 11.3949 4.75318 11.6548 4.675 11.8C2.875 10.5 -3.125 10.5 -4.625 11.8C-6.625 7 -10.625 0 -17.625 0C-24.625 0 -28.045 6.5358 -28.045 8.35C-27.625 8.5 -25.625 9 -25.025 9.1C-23.625 6 -21.625 3.2 -17.625 3.2C-12.625 3.2 -9.125 9.1 -7.375 13.75C-8.625 16 -7.625 17.5 -6.525 18.3C-10.1401 19.6748 -13.9886 17.7051 -18.4135 15.4404C-22.6791 13.2573 -27.4805 10.8 -33.125 10.8C-39.125 10.8 -43.125 13.5 -43.625 15.5C-43.625 16.5 -43.0267 17.25 -41.625 17.25C-41.4174 17.1116 -41.1906 16.9492 -40.9433 16.7721C-39.4041 15.6702 -37.0713 14 -33.625 14C-28.9625 14 -25.2096 15.8366 -21.3001 17.7498C-17.0501 19.8296 -12.615 22 -6.625 22H-1.525V34.3244L-33.125 34.32ZM-25.4194 68.7367H-1.525V37.5934H-28.375V66C-28.375 67.1721 -26.625 68.7367 -25.4194 68.7367ZM28.375 37.5917V66.2638C28.375 67 26.875 68.729 25.6795 68.729H1.63929V37.5934L28.375 37.5917ZM1.625 34.3116V22H30.375C31.375 22 33.1912 23 33.1912 24.8793V34.3116H1.625ZM-0.125 14.2C1.375 14.2 4.775 14.5 4.775 15.6C4.775 16.7 1.375 17.2 -0.125 17.2C-0.819697 17.2 -1.29997 17.2 -1.625 17C-2.36124 15.8956 -3.09747 16.1464 -3.59427 16.3156C-3.77225 16.3762 -3.91949 16.4264 -4.025 16.4C-4.36962 16.1703 -4.5163 16.0725 -4.57873 15.9361C-4.625 15.8351 -4.625 15.7128 -4.625 15.5C-4.625 14.5 -1.625 14.2 -0.125 14.2ZM17.375 3.2C13.4934 3.2 9.875 7.5 7.375 13.8C9.375 17 6.075 18.75 6.075 18.75H17.375C21.375 18.75 25.175 15.5 25.175 11C25.175 5.5951 20.375 3.2 17.375 3.2Z"/>
     <path id="inf" d="M11.7855 7.5C9.79497 7.5 8.34613 5.56758 7.71429 4.53633C7.08244 5.56758 5.6336 7.5 3.64307 7.5C1.63398 7.5 0 5.81766 0 3.75C0 1.68234 1.63398 0 3.64307 0C5.63336 0 7.08244 1.93242 7.71429 2.96391C8.34613 1.93242 9.79497 0 11.7855 0C13.7946 0 15.4286 1.68234 15.4286 3.75C15.4286 5.81766 13.7946 7.5 11.7855 7.5ZM3.64307 0.75C2.05971 0.75 0.771429 2.09578 0.771429 3.75C0.771429 5.40422 2.05971 6.75 3.64307 6.75C5.52415 6.75 6.93297 4.39195 7.2818 3.75C6.93297 3.10805 5.52439 0.75 3.64307 0.75ZM11.7855 0.75C9.90442 0.75 8.4956 3.10805 8.14677 3.75C8.4956 4.39195 9.90442 6.75 11.7855 6.75C13.3689 6.75 14.6571 5.40422 14.6571 3.75C14.6571 2.09578 13.3689 0.75 11.7855 0.75Z"/>
-
-    <filter id="grayscale">
-      <feColorMatrix type="saturate" values="0.10"/>
-    </filter>
+    <path id="building" d="M-1.57143 -7.28932V-5.34141C-1.57143 -5.01868 -1.83528 -4.75703 -2.16071 -4.75703H-4.125C-4.45043 -4.75703 -4.71429 -5.01868 -4.71429 -5.34141V-7.28932C-4.71429 -7.61204 -4.45043 -7.8737 -4.125 -7.8737H-2.16071C-1.83528 -7.8737 -1.57143 -7.61204 -1.57143 -7.28932ZM4.125 -7.8737H2.1607C1.8353 -7.8737 1.5714 -7.61204 1.5714 -7.28932V-5.34141C1.5714 -5.01868 1.8353 -4.75703 2.1607 -4.75703H4.125C4.4504 -4.75703 4.7143 -5.01868 4.7143 -5.34141V-7.28932C4.7143 -7.61204 4.4504 -7.8737 4.125 -7.8737ZM-2.16071 -3.1987H-4.125C-4.45043 -3.1987 -4.71429 -2.93704 -4.71429 -2.61432V-0.6664C-4.71429 -0.3437 -4.45043 -0.0819998 -4.125 -0.0819998H-2.16071C-1.83528 -0.0819998 -1.57143 -0.3437 -1.57143 -0.6664V-2.61432C-1.57143 -2.93704 -1.83528 -3.1987 -2.16071 -3.1987ZM4.125 -3.1987H2.1607C1.8353 -3.1987 1.5714 -2.93704 1.5714 -2.61432V-0.6664C1.5714 -0.3437 1.8353 -0.0819998 2.1607 -0.0819998H4.125C4.4504 -0.0819998 4.7143 -0.3437 4.7143 -0.6664V-2.61432C4.7143 -2.93704 4.4504 -3.1987 4.125 -3.1987ZM-2.16071 1.4763H-4.125C-4.45043 1.4763 -4.71429 1.738 -4.71429 2.0607V4.0086C-4.71429 4.3313 -4.45043 4.593 -4.125 4.593H-2.16071C-1.83528 4.593 -1.57143 4.3313 -1.57143 4.0086V2.0607C-1.57143 1.738 -1.83528 1.4763 -2.16071 1.4763ZM4.125 1.4763H2.1607C1.8353 1.4763 1.5714 1.738 1.5714 2.0607V4.0086C1.5714 4.3313 1.8353 4.593 2.1607 4.593H4.125C4.4504 4.593 4.7143 4.3313 4.7143 4.0086V2.0607C4.7143 1.738 4.4504 1.4763 4.125 1.4763ZM11 11.4594V12.4333H-11V11.4594C-11 11.1367 -10.7361 10.875 -10.4107 10.875H-9.42857V-11.3312C-9.42857 -11.9767 -8.90092 -12.5 -8.25 -12.5H8.25C8.9009 -12.5 9.4286 -11.9767 9.4286 -11.3312V10.875H10.4107C10.7361 10.875 11 11.1367 11 11.4594ZM7.8571 10.875V-10.9417H-7.85714V10.875H-1.57143V6.7357C-1.57143 6.413 -1.30758 6.1513 -0.9821 6.1513H0.9821C1.3076 6.1513 1.5714 6.413 1.5714 6.7357V10.875H7.8571Z"/>
+    <path id="person" d="M4 1.5C2.7188 1.5 2.1027 2.25 0 2.25C-2.10268 2.25 -2.71429 1.5 -4 1.5C-7.3125 1.5 -10 4.3219 -10 7.8V9.75C-10 10.9922 -9.04018 12 -7.85714 12H7.8571C9.0402 12 10 10.9922 10 9.75V7.8C10 4.3219 7.3125 1.5 4 1.5ZM8.5714 9.75C8.5714 10.1625 8.25 10.5 7.8571 10.5H-7.85714C-8.25 10.5 -8.57143 10.1625 -8.57143 9.75V7.8C-8.57143 5.1516 -6.52232 3 -4 3C-3.125 3 -2.25446 3.75 0 3.75C2.25 3.75 3.125 3 4 3C6.5223 3 8.5714 5.1516 8.5714 7.8V9.75ZM0 0C3.1562 0 5.7143 -2.68594 5.7143 -6C5.7143 -9.31406 3.1562 -12 0 -12C-3.15625 -12 -5.71429 -9.31406 -5.71429 -6C-5.71429 -2.68594 -3.15625 0 0 0ZM0 -10.5C2.3616 -10.5 4.2857 -8.47969 4.2857 -6C4.2857 -3.52031 2.3616 -1.5 0 -1.5C-2.36161 -1.5 -4.28571 -3.52031 -4.28571 -6C-4.28571 -8.47969 -2.36161 -10.5 0 -10.5Z"/>
+    <clipPath id="avatar-circle">
+      <circle cx="0" cy="31" r="31"/>
+    </clipPath>
 
   </defs>
+
+  <script>
+    <![CDATA[{{> measure}}]]>
+  </script>
 
   <style type="text/css">
     <![CDATA[{{> fonts}}]]>
   </style>
 
   <g font-family="DanaFaNum">
-    <rect id="svg-container" x="0" y="0" width="800" height="450" fill="white"/>
-    <rect x="0" y="0" width="800" height="450" fill="{{ternary isOpen '#007BA4' '#000000'}}" fill-opacity="{{ternary isOpen 0.1 0.2}}"/>
-    <g transform="translate(20, 20)">
-      <rect x="0" y="0" width="760" height="410" fill="white" rx="30"/>
-      <g transform="translate(230, 0)">
-        <text x="0" y="35" font-size="22" font-weight="700" fill="{{ternary isOpen '#007BA4' '#52525B'}}" text-anchor="middle" dy="20">ریسلو</text>
-        <g transform="translate(28.64, 250) rotate(-7.55)">
+    <rect id="svg-container" x="0" y="0" width="512" height="512" fill="white"/>
+    <rect x="0" y="0" width="512" height="512" fill="#007BA4" fill-opacity="0.2"/>
+    <g transform="translate(10, 10)">
+      <rect x="0" y="0" width="492" height="492" fill="white" rx="30"/>
+      <g transform="translate(246, 0)">
+        <text x="0" y="16" font-size="22" font-weight="700" fill="#007BA4" text-anchor="middle" dy="20">ریسلو</text>
+        <g transform="translate(28.64, 223) rotate(-7.55)">
           <use href="#title-rect"/>
-          <text x="0" y="0" font-size="18" font-weight="500" fill="{{ternary isOpen 'white' '#E4E4E7'}}" text-anchor="middle" dy="3">{{title}}</text>
+          {{setVar "titleLines" (ellipsisLines (lineWrap title 30) 2)}}
+          <g transform="translate(0, {{ternary (boolean titleLines.length '===' 1) 0 -9}})" font-size="{{ternary (boolean titleLines.length '===' 1) 18 14}}" font-weight="500">
+            {{#each titleLines as |line index|}}
+              <text x="1" y="{{math (math 18 '*' index) '+' 1}}" fill="black" fill-opacity="0.3" text-anchor="middle" dy="3">{{line}}</text>
+              <text x="0" y="{{math 18 '*' index}}" fill="white" text-anchor="middle" dy="3">{{line}}</text>
+            {{/each}}
+          </g>
         </g>
-        <g transform="translate(-14.5, 173) rotate(-6.05)">
+        <g transform="translate(-14.5, 146) rotate(-6.05)">
           <use href="#value-rect"/>
           {{#if (boolean type '===' 'amount')}}
-            <text x="0" y="-8" font-size="50" font-weight="700" fill="{{ternary isOpen 'white' '#E4E4E7'}}" text-anchor="middle" dy="10">{{addCommas value}}</text>
-            <text x="0" y="30" font-size="20" font-weight="700" fill="{{ternary isOpen 'white' '#E4E4E7'}}" text-anchor="middle" dy="5">تومان</text>
+            <text x="2" y="-6" font-size="50" font-weight="700" fill="black" fill-opacity="0.3" text-anchor="middle" dy="10">{{addCommas value}}</text>
+            <text x="0" y="-8" font-size="50" font-weight="700" fill="white" text-anchor="middle" dy="10">{{addCommas value}}</text>
+            <text x="1" y="31" font-size="20" font-weight="700" fill="black" fill-opacity="0.3" text-anchor="middle" dy="5">تومانءءء</text>
+            <text x="0" y="30" font-size="20" font-weight="700" fill="white" text-anchor="middle" dy="5">تومانءءء</text>
           {{else if (boolean type '===' 'percent')}}
-            <text x="0" y="0" font-size="70" font-weight="700" fill="{{ternary isOpen 'white' '#E4E4E7'}}" text-anchor="middle" dy="25">{{value}}%</text>
+            <text x="2" y="2" font-size="70" font-weight="700" fill="black" fill-opacity="0.3" text-anchor="middle" dy="25">{{value}}%</text>
+            <text x="0" y="0" font-size="70" font-weight="700" fill="white" text-anchor="middle" dy="25">{{value}}%</text>
           {{/if}}
         </g>
-        <use y="92" href="#lines"/>
-        <text x="0" y="325" font-size="12" font-weight="400" fill="#71717A" text-anchor="middle" dy="3">{{region.title}}</text>
-        <g transform="translate(-207.459, 366)">
-          <rect x="0" y="0" width="413.905" height="40.2821" fill="url(#pattern0)" filter="{{ternary isOpen '' 'url(#grayscale)'}}"/>
-          <path d="M 413.9 25 l 22.75 1.76" stroke="#27272A" stroke-width="0.3"/>
-          <path d="M 0.5 26 l -21.25 0.25" stroke="#27272A" stroke-width="0.3"/>
+        <use y="65" href="#lines"/>
+        <g transform="translate(-207.459, 303)">
+          <rect x="0" y="0" width="413.905" height="40.2821" fill="url(#pattern0)"/>
+          <path d="M 413.9 25 l 39.5 1.76" stroke="#27272A" stroke-width="0.3"/>
+          <path d="M 0.5 26.25 l -39 0.25" stroke="#27272A" stroke-width="0.3"/>
         </g>
       </g>
-      <g transform="translate(460, 0)">
-        {{bar 300 410 (object tl=0 tr=30 bl=0 br=30) 0 fill="#007BA4"}}
-        <g transform="translate(150, 0)">
-          <use y="56" href="#gift-box" fill="white"/>
-          <text x="0" y="161" font-size="14" font-weight="400" fill="white" text-anchor="middle" dy="4">کد تخفیف</text>
-          <g transform="translate(0, 193)">
-            <rect x="-120" y="0" width="240" height="76" fill="white" fill-opacity="0.1"/>
-            <rect x="-119" y="1" width="238" height="74" fill="none" stroke="white" stroke-width="2" stroke-dasharray="8"/>
-            <g transform="translate(0, 38)" fill="{{ternary isOpen 'white' '#D4D4D8'}}" direction="ltr">
-              <text x="0" y="0" class="eng-font" font-family="Dana" font-size="28" font-weight="800" text-anchor="middle" dy="10" letter-spacing="0.05em">{{code}}</text>
-            </g>
-          </g>
-          <g transform="translate(0, 310)" fill="white">
-            <g transform="translate(120, 0)">
-              <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="end" dy="3">تاریخ شروع اعتبار</text>
-              <text x="0" y="15" font-size="12" font-weight="400" text-anchor="end" dy="3">تاریخ انقضا</text>
-            </g>
-            <g transform="translate(-120, 0)">
-              <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="start" dy="3">{{started_at}}</text>
-              {{#if expires_at}}
-                <text x="0" y="15" font-size="12" font-weight="400" text-anchor="start" dy="3">{{expires_at}}</text> 
-              {{else}}
-                <use y="10" href="#inf" fill="white"/>
+      <g transform="translate(0, 348)">
+        {{bar 492 144 (object tl=0 tr=0 bl=30 br=30) 0 fill="#007BA4"}}
+
+        <g transform="translate(0, 15)">
+
+          <g transform="translate(109, 0)">
+            {{#if region.avatarBase64}}
+              <image x="-31" width="62" height="62" preserveAspectRatio="xMidYMid meet" href="data:image/png;base64,{{region.avatarBase64}}" clip-path="url(#avatar-circle)"/>
+              <circle cx="0" cy="31" r="30.5" fill="none" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+            {{else}}
+              <circle cx="0" cy="31" r="27" fill="white"/>
+              {{#if (boolean region.type '===' 'personal')}}
+                <svg x="0" y="31" width="20" height="24" viewBox="0 0 20 24" overflow="visible">
+                  <use href="#person" fill="#D4D4D8"/>
+                </svg>
+              {{else if (boolean region.type '===' 'counseling_center')}}
+                <svg x="0" y="31" width="22" height="24.9" viewBox="0 0 22 24.9" overflow="visible">
+                  <use href="#building" fill="#D4D4D8"/>
+                </svg>
               {{/if}}
+            {{/if}}
+            <g transform="translate(0, 77)">
+              {{setVar "regionTitleLines" (ellipsisLines (lineWrap region.title 24) 3)}}
+              <g fill="white" font-size="14" font-weight="400">
+                {{#each regionTitleLines as |line index|}}
+                  <text x="0" y="{{math 17 '*' index}}" text-anchor="middle" dy="4">{{line}}</text>
+                {{/each}}
+              </g>
             </g>
           </g>
-          <text x="0" y="392" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="3" letter-spacing="0.1em">RISLOO.IR</text>
+
+          <g transform="translate(232, 0)">
+            <rect x="0" y="0" width="240" height="62" fill="white" fill-opacity="0.1"/>
+            <rect x="1" y="1" width="238" height="60" fill="none" stroke="white" stroke-width="2" stroke-dasharray="8"/>
+            <g transform="translate(120, 31)" fill="white" direction="ltr">
+              <text x="0" y="0" class="eng-font" font-family="Dana" font-size="28" font-weight="800" text-anchor="middle" dy="10" letter-spacing="0.1em">{{code}}</text>
+            </g>
+
+            <g transform="translate(0, 93)" fill="white">
+              <g transform="translate(240, 0)">
+                <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="end" dy="3">تاریخ شروع اعتبار</text>
+                <text x="0" y="13" font-size="12" font-weight="400" text-anchor="end" dy="3">تاریخ انقضا</text>
+              </g>
+              <g transform="translate(0, 0)">
+                <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="start" dy="3">{{started_at}}</text>
+                {{#if expires_at}}
+                  <text x="0" y="13" font-size="12" font-weight="400" text-anchor="start" dy="3">{{expires_at}}</text> 
+                {{else}}
+                  <use y="8" href="#inf"/>
+                {{/if}}
+              </g>
+            </g>
+          </g>
+
         </g>
+
       </g>
     </g>
   </g>

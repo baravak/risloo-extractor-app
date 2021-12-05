@@ -5,7 +5,7 @@ moment.loadPersian({ dialect: "persian-modern" });
 
 class Gift {
   constructor(gift) {
-    this.id = gift.id || "-";
+    this.name = gift.code;
     this.title = gift.title || "-";
     this.code = gift.code.slice(10) || "-";
     this.type = gift.type || "-";

@@ -9,16 +9,13 @@ const outputJSON = require("./utilities/outputJSON");
 const json = new outputJSON(2);
 
 const giftTemplateFile = path.join(__dirname, "..", "..", "views", "gift.hbs");
-const outputDir = path.join(__dirname, "..", "output", "gift");
 
-const createOutputName = (regionId, code) => `${regionId}-${code}`;
+// const createOutputName = (name) => `${regionId}-${code}`;
 
 async function createGift(dataset, options, { templatePromise, ensureDirPromise }) {
   let xml;
 
   const ctx = new Gift(dataset);
-
-  const fileName = createOutputName(ctx.region.id, ctx.code);
 
   return (
     templatePromise
@@ -30,7 +27,7 @@ async function createGift(dataset, options, { templatePromise, ensureDirPromise 
         return ensureDirPromise;
       })
       // .then(() => createOutputFiles(xml, { outputAddress: options.outputAddress, fileName }, json));
-      .then(() => createPNG(xml, path.join(options.outputAddress, `${fileName}.png`), json))
+      .then(() => createPNG(xml, path.join(options.outputAddress, `${ctx.name}.png`), json))
   );
 }
 
@@ -45,7 +42,7 @@ async function gift(options) {
 
   let datasetPromise;
 
-  const ensureDirPromise = ensureDirExistence(outputDir);
+  const ensureDirPromise = ensureDirExistence(options.outputAddress);
   const templatePromise = fs.readFile(giftTemplateFile);
   const avatarPromise = loadStdin("binary");
 

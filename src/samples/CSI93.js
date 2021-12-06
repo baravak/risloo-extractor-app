@@ -10,8 +10,13 @@ class CSI93 extends Profile {
       multiProfile: true /* Whether the test has multiple profiles or not */,
       pages: 2 /* Number of pages of the profile */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
-      defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
-      fields: [] /* In case you want to get some additional fields and show in the profile */,
+      defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
+      fields: [
+        "child_gender",
+        "child_age",
+        "child_education",
+        "parent_role",
+      ] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
@@ -258,6 +263,9 @@ class CSI93 extends Profile {
     // Init Spec
     spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
+    // Process Fields
+    this._processFields();
+
     const datasetGroups = dataset.groupBy("group");
 
     const itemsGroups = datasetGroups.map((dataset) =>
@@ -270,6 +278,17 @@ class CSI93 extends Profile {
     );
 
     return [{ itemsGroups: itemsGroups.slice(0, 10) }, { itemsGroups: itemsGroups.slice(10) }];
+  }
+
+  _processFields() {
+    const {
+      dataset: {
+        info: { fields },
+      },
+    } = this;
+
+    const parentRoleField = fields.find((field) => field.eng === "parent_role");
+    parentRoleField.fr = "نسبت پاسخ‌دهنده با کودک";
   }
 }
 

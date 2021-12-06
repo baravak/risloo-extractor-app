@@ -92,6 +92,7 @@ async function extract(options) {
   const jsPromise = checkAndImport(profileJSDir).catch((err) => {
     if (err instanceof FileNotFoundError) json.setStatus(PROFILES_STATUS["3"]);
     else json.setStatus(PROFILES_STATUS["6"]);
+    throw err;
   });
   const ensureDirPromise = ensureDirExistence(options.outputAddress);
 
@@ -101,6 +102,7 @@ async function extract(options) {
     datasetPromise = checkAndLoad(options.inputData).catch((err) => {
       if (err instanceof FileNotFoundError) json.setStatus(PROFILES_STATUS["1"]);
       else json.setStatus(PROFILES_STATUS["5"]);
+      throw err;
     });
   } else if (options.inputType === "stdin") {
     if (!options.name) throw new Error("Output File Name Not Provided!");

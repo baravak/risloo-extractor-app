@@ -1,6 +1,6 @@
 const { Profile, FS } = require("../profile");
 
-class CSI4 extends Profile {
+class CSI93 extends Profile {
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
@@ -273,4 +273,4 @@ class CSI4 extends Profile {
   }
 }
 
-module.exports = CSI4;
+module.exports = CSI93;

@@ -1,4 +1,4 @@
-const { Profile, FS } = require("../profile");
+const { Profile, FS } = require("../Profile");
 
 class SASQ93 extends Profile {
   profileSpec = {

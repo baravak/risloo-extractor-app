@@ -1,4 +1,4 @@
-const { Profile, FS } = require("../profile");
+const { Profile, FS } = require("../Profile");
 
 class IUS93 extends Profile {
   profileSpec = {

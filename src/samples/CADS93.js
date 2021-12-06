@@ -1,4 +1,4 @@
-const { Profile, FS, Dataset } = require("../profile");
+const { Profile, FS, Dataset } = require("../Profile");
 
 class CADS93 extends Profile {
   profileSpec = {

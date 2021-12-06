@@ -1,4 +1,4 @@
-const { Profile, FS, Ticks } = require("../profile");
+const { Profile, FS, Ticks } = require("../Profile");
 
 class AEQ93 extends Profile {
   profileSpec = {

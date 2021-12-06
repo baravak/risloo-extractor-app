@@ -1,5 +1,5 @@
 const { intersection } = require("lodash");
-const { Profile, FS } = require("../profile");
+const { Profile, FS } = require("../Profile");
 
 class EMSS93 extends Profile {
   profileSpec = {

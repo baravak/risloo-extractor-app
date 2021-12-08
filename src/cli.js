@@ -100,8 +100,8 @@ async function cli(args) {
 
   switch (options.command) {
     case "extract":
-      const extract = require("./cli-commands/extract");
-      return extract(options);
+      const ExtractExecutor = require("./cli-commands/ExtractExecutor");
+      return new ExtractExecutor(options);
     case "gift":
       const gift = require("./cli-commands/gift");
       return gift(options);

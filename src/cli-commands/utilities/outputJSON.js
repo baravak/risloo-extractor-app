@@ -2,8 +2,7 @@ const path = require("path");
 
 const OutputCode = {
   0: "profiles",
-  1: "report",
-  2: "gift",
+  1: "gift",
 };
 
 class outputJSON {

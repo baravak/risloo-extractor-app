@@ -76,6 +76,8 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
 async function extract(options) {
   // Suppose that both input & output type are "local"
 
+  console.log(options)
+
   let benchmarker;
 
   if (options.benchmark) {

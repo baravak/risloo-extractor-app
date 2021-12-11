@@ -1,4 +1,6 @@
-const { checkAndLoad, loadStdin, ensureDirExistence } = require("./utilities/BaseOps");
+const { checkAndLoad, loadStdin, ensureDirExistence, createSVG, createPNG } = require("./utilities/BaseOps");
+const Handlebars = require("../handlebars/init");
+const path = require('path')
 const Benchmarker = require("./utilities/Benchmarker");
 const outputJSON = require("./utilities/outputJSON");
 
@@ -13,8 +15,8 @@ class Executor {
       type: options.outputType,
       address: options.outputAddress,
     };
-    if (options.benchmark) this._initBenchmarker();
     this.response = new outputJSON(0);
+    if (options.benchmark) this._initBenchmarker();
     this._initPromises();
   }
 
@@ -28,12 +30,11 @@ class Executor {
   _initPromises() {
     this.promises = {};
 
-    this._createInputPromise();
-    this._createOutputPromise();
+    this._addInputPromise();
+    this._addOutputPromise();
   }
 
-
-  _createInputPromise() {
+  _addInputPromise() {
     const {
       input: { type, data },
     } = this;
@@ -56,10 +57,10 @@ class Executor {
         break;
     }
 
-    this.promises["input"] = jsonPromise.then(json => Promise.resolve(JSON.parse(json)))
+    this.promises["input"] = jsonPromise.then((json) => Promise.resolve(JSON.parse(json)));
   }
 
-  _createOutputPromise() {
+  _addOutputPromise() {
     const {
       output: { type, address },
     } = this;
@@ -71,6 +72,39 @@ class Executor {
       case "raw-json":
         break;
     }
+  }
+
+  _renderAndCreateOutputs(contexts, templatePromises, { address, outputFileName }, extensions) {
+    const { promises, response } = this;
+    let xml,
+      fileName,
+      outputPromises = [];
+
+    return Promise.all(
+      templatePromises.map((templatePromise, index) =>
+        templatePromise
+          .then(async (templateBuffer) => {
+            const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
+            xml = template(contexts[index]);
+            fileName = `${outputFileName}${index !== 0 ? ".page" + (index + 1) : ""}`;
+
+            return promises.output;
+          })
+          .then(() => {
+            if (extensions.includes("SVG"))
+              outputPromises.push(createSVG(xml, path.join(address, `${fileName}.svg`), response));
+            if (extensions.includes("PNG"))
+              outputPromises.push(createPNG(xml, path.join(address, `${fileName}.png`), response));
+            return Promise.all(outputPromises);
+          })
+      )
+    );
+  }
+
+  getFinalPromise() {
+    const { promises, response } = this;
+
+    return Promise.all(Object.values(promises)).finally(() => response.showOutput());
   }
 }
 

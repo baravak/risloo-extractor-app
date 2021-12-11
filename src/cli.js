@@ -77,6 +77,12 @@ function parseArgumentsIntoOptions(rawArgs) {
         .makeOptionMandatory()
     )
     .addOption(new Option("-d, --input-data <data>", "input data"))
+    .addOption(
+      new Option("-o, --output-type <type>", "output type")
+        .choices(["local", "remote"])
+        .default("local")
+        .makeOptionMandatory()
+    )
     .addOption(new Option("-a, --output-address <address>", "output address").makeOptionMandatory())
     .addOption(new Option("-b, --benchmark", "time benchmarking").default(false))
     .action((options, command) => {
@@ -101,10 +107,10 @@ async function cli(args) {
   switch (options.command) {
     case "extract":
       const ExtractExecutor = require("./cli-commands/ExtractExecutor");
-      return new ExtractExecutor(options);
+      return new ExtractExecutor(options).getFinalPromise();
     case "gift":
-      const gift = require("./cli-commands/gift");
-      return gift(options);
+      const GiftExecutor = require("./cli-commands/GiftExecutor");
+      return new GiftExecutor(options).getFinalPromise();
     case "test":
       const test = require("./cli-commands/test");
       test(options)

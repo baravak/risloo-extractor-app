@@ -1,7 +1,7 @@
 const path = require("path");
 const Handlebars = require("../handlebars/init");
 const { FileNotFoundError } = require("./utilities/CustomErrors");
-const { PROFILES_STATUS } = require("./utilities/STATUS");
+const { PROFILES_STATUS } = require("./utilities/RES_STATUS");
 const {
   checkAndLoad,
   checkAndImport,
@@ -75,8 +75,6 @@ async function createProfile(dataset, profileClass, options, ensureDirPromise) {
 
 async function extract(options) {
   // Suppose that both input & output type are "local"
-
-  console.log(options)
 
   let benchmarker;
 

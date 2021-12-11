@@ -64,7 +64,7 @@
         {{/with}}
       {{/each}}
 
-      {{#if (boolean profileVariant '!==' 'raw')}}
+      {{#if (boolean variant '!==' 'raw')}}
         <g transform="translate(-{{math spec.profile.dimensions.width '-' 65}}, {{math topPos '+' 25}})">
           <text x="0" y="0" font-size="12" font-weight="400" fill="#71717A" text-anchor="end" dy="3">صفحه 2 از 2</text>
         </g>

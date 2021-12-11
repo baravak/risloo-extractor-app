@@ -99,15 +99,15 @@ class FS {
 // Classes
 
 class Canvas {
-  constructor(canvas, profileVariant) {
+  constructor(canvas, variant) {
     this.width = canvas.width;
     this.height = canvas.height;
-    this._init(canvas, profileVariant);
+    this._init(canvas, variant);
   }
 
-  _init(canvas, profileVariant) {
+  _init(canvas, variant) {
     this.profile = { width: this.width, height: this.height };
-    if (profileVariant === "with-sidebar") {
+    if (variant === "with-sidebar") {
       this.header = canvas["sidebar-variant"].header;
       this.sidebar = canvas["sidebar-variant"].sidebar;
       this.profile = {
@@ -327,17 +327,17 @@ class Profile {
   }
 
   _init(dataset, options, config) {
-    const { profileVariant, measure } = options;
-    this.profileVariant = profileVariant;
+    const { variant, measure } = options;
+    this.variant = variant;
     this.measure = measure;
 
     this.spec = new Spec(config, this.profileSpec);
     const { canvas } = this.spec.parameters;
-    this.canvas = new Canvas(canvas, profileVariant);
+    this.canvas = new Canvas(canvas, variant);
 
     this.dataset = new Dataset(dataset, this.spec.parameters);
 
-    if (this.profileVariant === "with-sidebar") this._generateQRCode();
+    if (this.variant === "with-sidebar") this._generateQRCode();
 
     this.contextArr = this._calcContext();
   }
@@ -352,7 +352,7 @@ class Profile {
 
   getTemplateEngineParams() {
     const {
-      profileVariant,
+      variant,
       measure,
       canvas,
       dataset,
@@ -367,7 +367,7 @@ class Profile {
       spec,
       qrcode,
       ...context,
-      profileVariant,
+      variant,
       measure,
     }));
   }

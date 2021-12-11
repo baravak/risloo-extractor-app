@@ -9,10 +9,10 @@
     <![CDATA[{{> fonts}}]]>
   </style>
   <rect id="svg-container" x="0" y="0" width="{{canvas.width}}" height="{{canvas.height}}" fill="white"/>
-  {{#if (boolean profileVariant "===" "with-sidebar")}}
+  {{#if (boolean variant "===" "with-sidebar")}}
     {{> sidebar canvas=canvas info=dataset.info qrcode=qrcode}}
   {{/if}}
-  <svg x="{{canvas.profile.padding}}" y="{{math (ternary (boolean profileVariant '===' 'with-sidebar') canvas.header.height 0) '+' canvas.profile.padding}}"
+  <svg x="{{canvas.profile.padding}}" y="{{math (ternary (boolean variant '===' 'with-sidebar') canvas.header.height 0) '+' canvas.profile.padding}}"
     width="{{math canvas.profile.width '-' (math 2 '*' canvas.profile.padding)}}"
     height="{{math canvas.profile.height '-' (math 2 '*' canvas.profile.padding)}}"
     viewBox="0 0 {{spec.profile.dimensions.width}} {{spec.profile.dimensions.height}}"

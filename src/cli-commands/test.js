@@ -1,7 +1,8 @@
-const extract = require("./extract");
+// const extract = require("./extract");
 const { readdir } = require("fs/promises");
 const path = require("path");
 const chalk = require("chalk");
+const ExtractExecutor = require("./ExtractExecutor");
 
 const jsonDir = path.join(__dirname, "..", "json");
 const profilesJSDir = path.join(__dirname, "..", "samples");
@@ -26,6 +27,7 @@ async function test(options) {
   // Initial Draw Command Options
   let drawOptions = {
     sampleName: "",
+    sampleOutputs: ['profile'],
     profileVariant: "",
     inputType: "local",
     outputType: "local",
@@ -47,7 +49,8 @@ async function test(options) {
           inputData,
         };
 
-        await extract(drawOptions)
+        await new ExtractExecutor(drawOptions)
+          .getFinalPromise()
           .then(() =>
             console.log(
               chalk`{green.bold ${sampleName}} Profile of {italic ${profileVariant}} Variant Created With {green.bold Success}!`

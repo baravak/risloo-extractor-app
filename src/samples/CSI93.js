@@ -1,6 +1,9 @@
 const { Profile, FS } = require("../Profile");
 
 class CSI93 extends Profile {
+  // Number of pages
+  static pages = 2;
+
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
@@ -8,7 +11,6 @@ class CSI93 extends Profile {
     test: {
       name: "پرسشنامه ارزیابی سلامت روانی کودکان" /* Name of the test */,
       multiProfile: true /* Whether the test has multiple profiles or not */,
-      pages: 2 /* Number of pages of the profile */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
       fields: [

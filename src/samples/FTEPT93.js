@@ -1,6 +1,9 @@
 const { Profile, FS } = require("../Profile");
 
 class FTEPT93 extends Profile {
+  // Number of pages
+  static pages = 1;
+
   profileSpec = {
     /* "test" determines some important info about the test and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */

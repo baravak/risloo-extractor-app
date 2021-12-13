@@ -42,18 +42,11 @@ class GiftExecutor extends Executor {
   }
 
   async _createGift() {
-    const {
-      promises,
-      output: { address },
-    } = this;
+    const { promises } = this;
 
-    return Promise.all([promises.input, promises.avatar]).then(([dataset, avatar]) => {
-      const avatarBase64 = avatar && Buffer.from(avatar, "binary").toString("base64");
-      dataset.region.detail["avatarBase64"] = avatarBase64;
-      let ctx = new Gift(dataset);
-
-      return this._renderAndCreateOutputs([ctx], [promises.template], { address, outputFileName: ctx.name }, ["PNG"]);
-    });
+    return Promise.all([promises.input, promises.avatar])
+      .then(([dataset, avatar]) => new Gift(dataset, avatar))
+      .then((ctx) => this._renderAndCreateOutputs([ctx], [promises.template], ctx.name, ["PNG"]));
   }
 }
 

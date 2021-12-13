@@ -4,7 +4,7 @@ moment.locale("fa");
 moment.loadPersian({ dialect: "persian-modern" });
 
 class Gift {
-  constructor(gift) {
+  constructor(gift, avatar) {
     this.name = gift.code;
     this.title = gift.title || "-";
     this.code = gift.code.slice(10) || "-";
@@ -16,7 +16,7 @@ class Gift {
         id: gift.region.id || "-",
         type: gift.region.type,
         title: gift.region.detail.title || "-",
-        avatarBase64: gift.region.detail.avatarBase64,
+        avatarBase64: avatar && Buffer.from(avatar, "binary").toString("base64"),
       });
   }
 

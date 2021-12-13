@@ -16,7 +16,6 @@ class ExtractExecutor extends Executor {
     };
 
     this._addJSPromise();
-
     this._initSettings(options);
 
     this._extract();
@@ -34,14 +33,14 @@ class ExtractExecutor extends Executor {
     });
   }
 
-  _addTemplatePromises() {
+  _addProfilesTemplatePromises() {
     const {
       sample,
       profilesTemplatesDir,
       promises,
       response,
       settings: {
-        profile: { pagesNum: n },
+        profile: { pages: n },
       },
     } = this;
 
@@ -61,7 +60,7 @@ class ExtractExecutor extends Executor {
   }
 
   _initSettings(options) {
-    const { sample } = this;
+    const { sample, promises } = this;
 
     let settings = {};
 
@@ -77,6 +76,11 @@ class ExtractExecutor extends Executor {
         variants,
         name: options.name,
       };
+
+      promises["js"].then((Profile) => {
+        settings.profile["pages"] = Profile.pages;
+        this._addProfilesTemplatePromises();
+      });
     }
 
     this.settings = settings;
@@ -112,25 +116,20 @@ class ExtractExecutor extends Executor {
     const {
       promises,
       response,
-      output: { address },
       settings: { profile },
     } = this;
 
     const outputFileName = this._createProfileOutputName(variant);
 
     return Promise.all([promises.input, promises.js])
-      .then(([dataset, profileClass]) =>
-        new profileClass(dataset, { variant, measure: profile.measure }).getTemplateEngineParams()
+      .then(([dataset, Profile]) =>
+        new Profile(dataset, { variant, measure: profile.measure }).getTemplateEngineParams()
       )
       .catch((err) => {
         response.setStatus(PROFILE_STATUS["JS_ERROR"]);
         throw err;
       })
-      .then((contexts) => {
-        profile["pagesNum"] = contexts.length;
-        this._addTemplatePromises();
-        return this._renderAndCreateOutputs(contexts, promises.templates, { address, outputFileName }, ["SVG", "PNG"]);
-      });
+      .then((contexts) => this._renderAndCreateOutputs(contexts, promises.templates, outputFileName, ["SVG", "PNG"]));
   }
 
   _createProfileOutputName(variant) {

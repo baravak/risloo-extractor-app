@@ -1,6 +1,6 @@
 const { checkAndLoad, loadStdin, ensureDirExistence, createSVG, createPNG } = require("./utilities/BaseOps");
 const Handlebars = require("../handlebars/init");
-const path = require('path')
+const path = require("path");
 const Benchmarker = require("./utilities/Benchmarker");
 const outputJSON = require("./utilities/outputJSON");
 
@@ -74,8 +74,12 @@ class Executor {
     }
   }
 
-  _renderAndCreateOutputs(contexts, templatePromises, { address, outputFileName }, extensions) {
-    const { promises, response } = this;
+  _renderAndCreateOutputs(contexts, templatePromises, outputFileName, extensions) {
+    const {
+      promises,
+      output: { address },
+      response,
+    } = this;
     let xml,
       fileName,
       outputPromises = [];

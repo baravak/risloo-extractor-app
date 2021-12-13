@@ -2,7 +2,7 @@ const { checkAndLoad, loadStdin, ensureDirExistence, createSVG, createPNG } = re
 const Handlebars = require("../handlebars/init");
 const path = require("path");
 const Benchmarker = require("./utilities/Benchmarker");
-const outputJSON = require("./utilities/outputJSON");
+const Response = require("./utilities/Response");
 
 class Executor {
   constructor(options) {
@@ -15,7 +15,7 @@ class Executor {
       type: options.outputType,
       address: options.outputAddress,
     };
-    this.response = new outputJSON(0);
+    this.response = new Response();
     if (options.benchmark) this._initBenchmarker();
     this._initPromises();
   }
@@ -74,34 +74,37 @@ class Executor {
     }
   }
 
-  _renderAndCreateOutputs(contexts, templatePromises, outputFileName, extensions) {
+  async _renderTemplate(ctx, templateBuffer) {
+    const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
+    return template(ctx);
+  }
+
+  async _createOutput(xml, { address, fileName }, ext) {
+    const dir = path.join(address, `${fileName}.${ext}`);
+    return ext === "svg" ? createSVG(xml, dir) : ext === "png" ? createPNG(xml, dir) : Promise.resolve();
+  }
+
+  async _renderAndCreateOutput(ctx, templatePromise, fileName, extensions) {
     const {
       promises,
       output: { address },
-      response,
     } = this;
-    let xml,
-      fileName,
-      outputPromises = [];
+    let xml;
 
+    return templatePromise
+      .then(async (templateBuffer) => {
+        xml = await this._renderTemplate(ctx, templateBuffer);
+        return promises.output;
+      })
+      .then(() => Promise.all(extensions.map((ext) => this._createOutput(xml, { address, fileName }, ext))));
+  }
+
+  async _renderAndCreateOutputs(contexts, templatePromises, outputFileName, extensions) {
     return Promise.all(
-      templatePromises.map((templatePromise, index) =>
-        templatePromise
-          .then(async (templateBuffer) => {
-            const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
-            xml = template(contexts[index]);
-            fileName = `${outputFileName}${index !== 0 ? ".page" + (index + 1) : ""}`;
-
-            return promises.output;
-          })
-          .then(() => {
-            if (extensions.includes("SVG"))
-              outputPromises.push(createSVG(xml, path.join(address, `${fileName}.svg`), response));
-            if (extensions.includes("PNG"))
-              outputPromises.push(createPNG(xml, path.join(address, `${fileName}.png`), response));
-            return Promise.all(outputPromises);
-          })
-      )
+      templatePromises.map((templatePromise, index) => {
+        let fileName = `${outputFileName}${index !== 0 ? ".page" + (index + 1) : ""}`;
+        return this._renderAndCreateOutput(contexts[index], templatePromise, fileName, extensions);
+      })
     );
   }
 

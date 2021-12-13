@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 const Executor = require("./Executor");
-const { GIFT_STATUS } = require("./utilities/RES_STATUS");
+const { GIFT_STATUS } = require("./utilities/STATUSES");
 const Gift = require("../Gift");
 const { loadStdin } = require("./utilities/BaseOps");
 
@@ -32,6 +32,8 @@ class GiftExecutor extends Executor {
   _gift() {
     const { promises, response, benchmarker } = this;
 
+    response.addBranch("gifts");
+
     promises["gift"] = this._createGift().then(() => {
       if (benchmarker) {
         benchmarker.end();
@@ -42,11 +44,12 @@ class GiftExecutor extends Executor {
   }
 
   async _createGift() {
-    const { promises } = this;
+    const { promises, response } = this;
 
     return Promise.all([promises.input, promises.avatar])
       .then(([dataset, avatar]) => new Gift(dataset, avatar))
-      .then((ctx) => this._renderAndCreateOutputs([ctx], [promises.template], ctx.name, ["PNG"]));
+      .then((ctx) => this._renderAndCreateOutput(ctx, promises.template, ctx.name, ["png"]))
+      .then((dirs) => dirs.map((dir) => response.addOutput(dir, "gifts")));
   }
 }
 

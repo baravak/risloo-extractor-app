@@ -1,7 +1,7 @@
 const path = require("path");
 const Executor = require("./Executor");
 const { checkAndImport, checkAndLoad } = require("./utilities/BaseOps");
-const { PROFILE_STATUS } = require("./utilities/RES_STATUS");
+const { EXTRACT_STATUS } = require("./utilities/STATUSES");
 const { FileNotFoundError } = require("./utilities/CustomErrors");
 
 class ExtractExecutor extends Executor {
@@ -27,40 +27,30 @@ class ExtractExecutor extends Executor {
     const sampleJSDir = path.join(samplesJSDir, `${sample.name}.js`);
 
     promises["js"] = checkAndImport(sampleJSDir).catch((err) => {
-      if (err instanceof FileNotFoundError) response.setStatus(PROFILE_STATUS["INVALID_SAMPLE_NAME"]);
-      else response.setStatus(PROFILE_STATUS["GENERAL_ERROR"]);
-      throw err;
+      if (err instanceof FileNotFoundError) response.setStatus(EXTRACT_STATUS["INVALID_SAMPLE_NAME"], err);
+      else response.setStatus(EXTRACT_STATUS["GENERAL_ERROR"], err);
     });
   }
 
   _addProfilesTemplatePromises() {
-    const {
-      sample,
-      profilesTemplatesDir,
-      promises,
-      response,
-      settings: {
-        profile: { pages: n },
-      },
-    } = this;
+    const { sample, profilesTemplatesDir, promises, response } = this;
 
-    const templatePromises = [];
+    promises["templates"] = [];
 
-    for (let i = 0; i < n; i++) {
-      let templateFileDir = path.join(profilesTemplatesDir, `${sample.name}${n !== 1 ? "_" + (i + 1) : ""}.hbs`);
-      templatePromises.push(
-        checkAndLoad(templateFileDir).catch((err) => {
-          response.setStatus(PROFILE_STATUS["TEMPLATE_NOT_FOUND"]);
-          throw err;
-        })
-      );
-    }
-
-    promises["templates"] = templatePromises;
+    promises["miscellaneous_1"] = promises["js"].then((Profile) => {
+      let n = Profile.pages;
+      for (let i = 0; i < n; i++) {
+        let templateFileDir = path.join(profilesTemplatesDir, `${sample.name}${n !== 1 ? "_" + (i + 1) : ""}.hbs`);
+        promises["templates"].push(
+          checkAndLoad(templateFileDir).catch((err) => response.setStatus(EXTRACT_STATUS["TEMPLATE_NOT_FOUND"], err))
+        );
+      }
+      return Promise.all(promises.templates);
+    });
   }
 
   _initSettings(options) {
-    const { sample, promises } = this;
+    const { sample } = this;
 
     let settings = {};
 
@@ -77,10 +67,7 @@ class ExtractExecutor extends Executor {
         name: options.name,
       };
 
-      promises["js"].then((Profile) => {
-        settings.profile["pages"] = Profile.pages;
-        this._addProfilesTemplatePromises();
-      });
+      this._addProfilesTemplatePromises();
     }
 
     this.settings = settings;
@@ -93,43 +80,40 @@ class ExtractExecutor extends Executor {
 
     if (sample.outputs.includes("profile")) {
       let { variants } = settings["profile"];
+      response.addBranch("profiles");
 
-      extractPromises.push(
-        Promise.all(variants.map((variant) => this._createProfile(variant))).then(() => {
-          if (benchmarker) {
-            benchmarker.end();
-            response.setTime(benchmarker.totalTime);
-          }
-          response.setStatus(PROFILE_STATUS["SUCCESS"]);
-        })
-      );
+      extractPromises.push(Promise.all(variants.map((variant) => this._createProfile(variant))));
     }
 
     if (sample.outputs.includes("report")) extractPromises.push(this._createReport(options));
 
     if (sample.outputs.includes("sheet")) extractPromises.push(this._createSheet(options));
 
-    promises["extract"] = Promise.all(extractPromises);
+    promises["extract"] = Promise.all(extractPromises).then(() => {
+      if (benchmarker) {
+        benchmarker.end();
+        response.setTime(benchmarker.totalTime);
+      }
+      response.setStatus(EXTRACT_STATUS["SUCCESS"]);
+    });
   }
 
   async _createProfile(variant) {
     const {
       promises,
       response,
-      settings: { profile },
+      settings: {
+        profile: { measure },
+      },
     } = this;
 
     const outputFileName = this._createProfileOutputName(variant);
 
     return Promise.all([promises.input, promises.js])
-      .then(([dataset, Profile]) =>
-        new Profile(dataset, { variant, measure: profile.measure }).getTemplateEngineParams()
-      )
-      .catch((err) => {
-        response.setStatus(PROFILE_STATUS["JS_ERROR"]);
-        throw err;
-      })
-      .then((contexts) => this._renderAndCreateOutputs(contexts, promises.templates, outputFileName, ["SVG", "PNG"]));
+      .then(([dataset, Profile]) => new Profile(dataset, { variant, measure }).getTemplateEngineParams())
+      .catch((err) => response.setStatus(EXTRACT_STATUS["JS_ERROR"], err))
+      .then((contexts) => this._renderAndCreateOutputs(contexts, promises.templates, outputFileName, ["svg", "png"]))
+      .then((pages) => pages.map((dirs) => dirs.map((dir) => response.addOutput(dir, "profiles"))));
   }
 
   _createProfileOutputName(variant) {

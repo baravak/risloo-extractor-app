@@ -37,7 +37,7 @@ const loadStdin = async (encoding) => {
 const ensureDirExistence = async (dir) =>
   fs.access(dir, constants.F_OK).catch(() => fs.mkdir(dir, { recursive: true }));
 
-async function createSVG(xml, outputPath, res = null) {
+async function createSVG(xml, dir) {
   const mapObj = {
     'text-anchor="start"': 'text-anchor="end"',
     'text-anchor="end"': 'text-anchor="start"',
@@ -46,22 +46,20 @@ async function createSVG(xml, outputPath, res = null) {
   const svg = xml.replace(/text-anchor="start"|text-anchor="end"/g, (matched) => mapObj[matched]);
 
   return new Promise((resolve, reject) => {
-    writeFile(outputPath, svg, (err) => {
+    writeFile(dir, svg, (err) => {
       if (err) reject(err);
-      res?.addOutput(outputPath);
-      resolve();
+      resolve(dir);
     });
   });
 }
 
-async function createPNG(xml, outputPath, res = null) {
+async function createPNG(xml, dir) {
   xml = xml.replace(/<style.*?>.*?<\/style>/s, "");
   const buf = Buffer.from(xml, "utf8");
   return new Promise((resolve, reject) => {
-    sharp(buf, { density: 100 }).toFile(outputPath, (err) => {
+    sharp(buf, { density: 100 }).toFile(dir, (err) => {
       if (err) return reject(err);
-      res?.addOutput(outputPath);
-      resolve();
+      resolve(dir);
     });
   });
 }

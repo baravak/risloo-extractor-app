@@ -1,7 +1,7 @@
 const Status = require("./Status");
 
-const PROFILE_STATUS = {
-  SUCCESS: new Status(0, "Success", "Profiles Successfully Created!"),
+const EXTRACT_STATUS = {
+  SUCCESS: new Status(0, "Success", "Outputs Successfully Extracted!"),
   "INPUT_NOT_FOUND": new Status(1, "Not Found", "Input Data File Does Not Exist!"),
   "JS_ERROR": new Status(2, "Profile JS Error", "Error in Instantiating the Profile Object"),
   "INVALID_SAMPLE_NAME": new Status(3, "Invalid Name", "Sample Name Is Not Valid"),
@@ -13,4 +13,4 @@ const GIFT_STATUS = {
   SUCCESS: new Status(0, "Success", "Gift Successfully Created!"),
 };
 
-module.exports = { PROFILE_STATUS, GIFT_STATUS };
+module.exports = { EXTRACT_STATUS, GIFT_STATUS };

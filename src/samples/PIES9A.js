@@ -1,3 +1,4 @@
+const { Mappings } = require("../Profile");
 const PIES93 = require("./PIES93");
 
 const customConfig = {
@@ -10,14 +11,13 @@ const customConfig = {
   items: {
     maxValue: 40,
     body: {
-      opacityMapping: {
-        40: 1,
-        "30-39": 0.9,
-        "20-29": 0.8,
-        "10-19": 0.7,
-        "8-9": 0.6,
-      },
-    }
+      opacityMappings: new Mappings()
+        .addMapping("8-9", 0.6)
+        .addMapping("10-19", 0.7)
+        .addMapping("20-29", 0.8)
+        .addMapping("30-39", 0.9)
+        .addMapping("40", 1) /* Opacity mapping for marks */,
+    },
   },
 };
 

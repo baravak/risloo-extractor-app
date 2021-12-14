@@ -81,19 +81,6 @@ class FS {
   static isEmpty(obj) {
     return Object.keys(obj).length === 0;
   }
-
-  // Get the Corresponding Result from Value Acc. to Mapping Object
-  static mapInRange(value, mappingObj) {
-    for (let range in mappingObj) {
-      let split = range.split("-");
-
-      if (split.length === 1) {
-        if (value === +split[0]) return mappingObj[range];
-      } else {
-        if (value <= +split[1] && value >= +split[0]) return mappingObj[range];
-      }
-    }
-  }
 }
 
 // Classes
@@ -238,9 +225,30 @@ class Dataset {
   }
 }
 
+class Mappings {
+  #depth = 0;
+
+  addMapping(range, value) {
+    this[this.#depth++] = { range, value };
+    return this;
+  }
+
+  map(val) {
+    const me = this;
+    for (let mapping of Object.values(me)) {
+      const splitted = mapping.range.split("-");
+      if (splitted.length === 1) {
+        if (+splitted[0] === val) return mapping.value;
+      } else if (+splitted[0] <= val && val <= +splitted[1]) {
+        return mapping.value;
+      }
+    }
+  }
+}
+
 class Ticks {
   constructor(min, max, n) {
-    this.numbers = this._calcNumbers(min, max, n)
+    this.numbers = this._calcNumbers(min, max, n);
   }
 
   _calcNumbers(min, max, n) {
@@ -373,4 +381,4 @@ class Profile {
   }
 }
 
-module.exports = { Profile, Dataset, FS, Ticks };
+module.exports = { Profile, Dataset, FS, Ticks, Mappings };

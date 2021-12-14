@@ -1,4 +1,4 @@
-const { Profile, FS } = require("../Profile");
+const { Profile, FS, Mappings } = require("../Profile");
 
 class AMS93 extends Profile {
   // Number of pages
@@ -69,13 +69,12 @@ class AMS93 extends Profile {
           return this.height / 2;
         } /* Border Radius of the items rectangle */,
         colors: ["#8B5CF6", "#EC4899", "#71717A"] /* Colors used for theming items body parts */,
-        opacityMapping: {
-          28: 1,
-          "21-27": 0.9,
-          "13-20": 0.8,
-          "5-12": 0.7,
-          4: 0.6,
-        } /* Opacity mapping for marks */,
+        opacityMappings: new Mappings()
+          .addMapping("4", 0.6)
+          .addMapping("5-12", 0.7)
+          .addMapping("13-20", 0.8)
+          .addMapping("21-27", 0.9)
+          .addMapping("28", 1) /* Opacity mapping for marks */,
       },
       widthCoeff: 15 /* Used for converting mark to the width */,
       label: {
@@ -126,7 +125,7 @@ class AMS93 extends Profile {
         mark: data.mark,
         width: data.mark * itemsSpec.widthCoeff,
         fill: itemsSpec.rect.colors[datasetIndex],
-        opacity: FS.mapInRange(data.mark, itemsSpec.rect.opacityMapping),
+        opacity: itemsSpec.rect.opacityMappings.map(data.mark)
       }))
     );
 

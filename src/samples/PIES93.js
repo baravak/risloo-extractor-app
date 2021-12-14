@@ -1,4 +1,4 @@
-const { Profile, FS } = require("../Profile");
+const { Profile, FS, Mappings } = require("../Profile");
 
 class PIES93 extends Profile {
   // Number of pages
@@ -107,13 +107,12 @@ class PIES93 extends Profile {
           "#6B7280",
           "#047857",
         ] /* Colors used for theming items body parts */,
-        opacityMapping: {
-          20: 1,
-          "16-19": 0.9,
-          "11-15": 0.8,
-          "6-10": 0.7,
-          "1-5": 0.6,
-        } /* Opacity mapping for marks */,
+        opacityMappings: new Mappings()
+          .addMapping("1-5", 0.6)
+          .addMapping("6-10", 0.7)
+          .addMapping("11-15", 0.8)
+          .addMapping("16-19", 0.9)
+          .addMapping("20", 1) /* Opacity mapping for marks */,
       },
       base: {
         rect: {
@@ -221,7 +220,7 @@ class PIES93 extends Profile {
       baseColor: itemsSpec.base.colors[index],
       body: {
         color: itemsSpec.body.colors[index],
-        opacity: FS.mapInRange(data.mark, itemsSpec.body.opacityMapping),
+        opacity: itemsSpec.body.opacityMappings.map(data.mark)
       },
     }));
 

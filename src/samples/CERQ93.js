@@ -1,4 +1,4 @@
-const { Profile, FS } = require("../Profile");
+const { Profile, FS, Mappings } = require("../Profile");
 
 class CERQ93 extends Profile {
   // Number of pages
@@ -96,13 +96,12 @@ class CERQ93 extends Profile {
           return this.height / 2;
         } /* Border Radius of the items rectangle */,
         colors: ["#047857", "#EF4444"] /* Colors used for theming items body parts */,
-        opacityMapping: {
-          "9-10": 1,
-          "7-8": 0.9,
-          "5-6": 0.8,
-          "3-4": 0.7,
-          2: 0.6,
-        } /* Opacity mapping for marks */,
+        opacityMappings: new Mappings()
+          .addMapping("2", 0.6)
+          .addMapping("3-4", 0.7)
+          .addMapping("5-6", 0.8)
+          .addMapping("7-8", 0.9)
+          .addMapping("9-10", 1) /* Opacity mapping for marks */,
       },
       widthCoeff: 40 /* Used for converting mark to the width */,
       label: {
@@ -186,7 +185,7 @@ class CERQ93 extends Profile {
         mark: data.mark,
         width: data.mark * itemsSpec.widthCoeff,
         fill: itemsSpec.rect.colors[datasetIndex],
-        opacity: FS.mapInRange(data.mark, itemsSpec.rect.opacityMapping),
+        opacity: itemsSpec.rect.opacityMappings.map(data.mark)
       }))
     );
 

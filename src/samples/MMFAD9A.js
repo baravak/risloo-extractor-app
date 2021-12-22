@@ -20,7 +20,7 @@ const customConfig = {
   },
 };
 
-// This profile is completely identical to MMFAD9A
+// This profile is completely identical to MMFAD93
 
 class MMFAD9A extends MMAFD93 {
   constructor(dataset, options, config = customConfig) {

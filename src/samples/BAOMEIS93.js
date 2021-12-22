@@ -1,16 +1,24 @@
-const { Profile, FS } = require("../Profile");
+const { Profile } = require("../Profile");
 
 class BAOMEIS93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "diffusion", fr: "آشفته" },
+    L2: { eng: "foreclosure", fr: "زود شکل گرفته" },
+    L3: { eng: "moratorium", fr: "تعویق افتاده" },
+    L4: { eng: "achievement", fr: "پیشرفته" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه حالات هویت بنیون و آدامز" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه حالات هویت بنیون و آدامز" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -51,10 +59,10 @@ class BAOMEIS93 extends Profile {
         offsetY: 18,
       },
       thresholds: {
-        diffusion: 52,
-        foreclosure: 52,
-        moratorium: 62,
-        achievement: 72,
+        [this.labels.L1.eng]: 52,
+        [this.labels.L2.eng]: 52,
+        [this.labels.L3.eng]: 62,
+        [this.labels.L4.eng]: 72,
       } /* Thresholds for the items marks */,
       ticks: {
         line: {
@@ -78,10 +86,10 @@ class BAOMEIS93 extends Profile {
           maxHeight: 260 /* Height of the body rectangle between threshold and maximum value */,
           borderRadius: 8 /* Border radius of the body rectangle */,
           colors: {
-            diffusion: "#F87171",
-            foreclosure: "#FCD34D",
-            moratorium: "#93C5FD",
-            achievement: "#6EE7B7",
+            [this.labels.L1.eng]: "#F87171",
+            [this.labels.L2.eng]: "#FCD34D",
+            [this.labels.L3.eng]: "#93C5FD",
+            [this.labels.L4.eng]: "#6EE7B7",
           } /* Colors used for theming items body parts */,
         },
       },
@@ -95,20 +103,15 @@ class BAOMEIS93 extends Profile {
           offsetY: 30,
         },
         colors: {
-          diffusion: "#EF4444",
-          foreclosure: "#FBBF24",
-          moratorium: "#3B82F6",
-          achievement: "#10B981",
+          [this.labels.L1.eng]: "#EF4444",
+          [this.labels.L2.eng]: "#FBBF24",
+          [this.labels.L3.eng]: "#3B82F6",
+          [this.labels.L4.eng]: "#10B981",
         } /* Colors used for theming labels */,
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      diffusion: "آشفته",
-      foreclosure: "زود شکل گرفته",
-      moratorium: "تعویق افتاده",
-      achievement: "پیشرفته",
-    },
+    labels: Object.values(this.labels)
   };
 
   constructor(dataset, options, config = {}) {

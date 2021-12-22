@@ -4,13 +4,19 @@ class SASQ93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "raw", fr: "نمره کل" },
+    L2: { eng: "interpretation", fr: "تفسیر" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه ارزیابی اضطراب شینان" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه ارزیابی اضطراب شینان" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -61,10 +67,7 @@ class SASQ93 extends Profile {
       ],
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      raw: "نمره کل",
-      interpretation: "تفسیر",
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

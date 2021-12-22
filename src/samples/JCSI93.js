@@ -1,16 +1,27 @@
-const { Profile, FS } = require("../Profile");
+const { Profile } = require("../Profile");
 
 class JCSI93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "raw", fr: "نمره کل" },
+    L2: { eng: "listening", fr: "گوش دادن" },
+    L3: { eng: "emotion_regulation", fr: "تنظیم عواطف" },
+    L4: { eng: "understanding_message", fr: "درک پیام" },
+    L5: { eng: "awareness", fr: "بینش" },
+    L6: { eng: "assertiveness", fr: "قاطعیت" },
+    L7: { eng: "interpretation", fr: "تفسیر" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه مهارت‌های ارتباطی جرابک" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه مهارت‌های ارتباطی جرابک" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -83,11 +94,11 @@ class JCSI93 extends Profile {
         width: 680 /* Width of the baseline below items */,
       },
       maxValues: {
-        listening: 35,
-        emotion_regulation: 40,
-        understanding_message: 45,
-        awareness: 25,
-        assertiveness: 25,
+        [this.labels.L2.eng]: 35,
+        [this.labels.L3.eng]: 40,
+        [this.labels.L4.eng]: 45,
+        [this.labels.L5.eng]: 25,
+        [this.labels.L6.eng]: 25,
       } /* Maximum values of items marks provided by the dataset */,
       topPos: 430 /* Top position of the baseline of items */,
       offsetX: 100 /* Horizontal offset between two consecutive item */,
@@ -120,15 +131,7 @@ class JCSI93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      raw: "نمره کل",
-      listening: "گوش دادن",
-      emotion_regulation: "تنظیم عواطف",
-      understanding_message: "درک پیام",
-      awareness: "بینش",
-      assertiveness: "قاطعیت",
-      interpretation: "تفسیر",
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

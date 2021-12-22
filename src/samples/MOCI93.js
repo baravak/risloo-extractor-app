@@ -1,16 +1,25 @@
-const { Profile, FS } = require("../Profile");
+const { Profile } = require("../Profile");
 
 class MOCI93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "washing", fr: "شستشو", abbr: "W" },
+    L2: { eng: "control", fr: "وارسی", abbr: "C" },
+    L3: { eng: "slowing_repeat", fr: "کندی - تکرار", abbr: "SR" },
+    L4: { eng: "doubt", fr: "تردید", abbr: "D" },
+    L5: { eng: "total", fr: "نمره کل", abbr: "T" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "مقیاس وسواس فکری - علمی مادزلی" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "مقیاس وسواس فکری - علمی مادزلی" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -70,36 +79,15 @@ class MOCI93 extends Profile {
         colors: ["#4C1D95", "#1E3A8A", "#374151", "#92400E"] /* Colors used for theming items */,
       },
       maxValues: {
-        washing: 11,
-        control: 9,
-        slowing_repeat: 7,
-        doubt: 7,
+        [this.labels.L1.eng]: 11,
+        [this.labels.L2.eng]: 9,
+        [this.labels.L3.eng]: 7,
+        [this.labels.L4.eng]: 7,
       } /* Maximum values of items marks provided by the dataset */,
       step: 1 /* Step is used to divide the mark in drawing the profile */,
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      washing: {
-        abbr: "W",
-        fr: "شستشو",
-      },
-      control: {
-        abbr: "C",
-        fr: "وارسی",
-      },
-      slowing_repeat: {
-        abbr: "SR",
-        fr: "کندی - تکرار",
-      },
-      doubt: {
-        abbr: "D",
-        fr: "تردید",
-      },
-      total: {
-        abbr: "T",
-        fr: "نمره کل",
-      },
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

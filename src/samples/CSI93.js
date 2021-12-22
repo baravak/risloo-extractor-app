@@ -4,13 +4,182 @@ class CSI93 extends Profile {
   // Number of pages
   static pages = 2;
 
+  // Labels of the sample
+  labels = {
+    L1: {
+      eng: "attention_deficity_and_hyper_activity_disorder_total",
+      fr: "بیش فعالی / اختلال توجه نوع مرکب",
+      group: "A",
+    },
+    L2: {
+      eng: "attention_deficity_and_hyper_activity_disorder_type_a",
+      fr: "سؤالات 1 تا 9",
+      group: "A",
+    },
+    L3: {
+      eng: "attention_deficity_and_hyper_activity_disorder_type_b",
+      fr: "سؤالات 10 تا 18",
+      group: "A",
+    },
+    L4: {
+      eng: "oppositional_defant_disorder",
+      fr: "اختلال نافرمانی مقابله‌ای",
+      group: "B",
+    },
+    L5: {
+      eng: "conduct_disorder",
+      fr: "اختلال سلوک",
+      group: "C",
+    },
+    L6: {
+      eng: "generalized_anxiety_disorder_total",
+      fr: "اختلال اضطراب تعمیم‌یافته",
+      group: "D",
+    },
+    L7: {
+      eng: "generalized_anxiety_disorder_type_a",
+      fr: "سؤال 42",
+      group: "D",
+    },
+    L8: {
+      eng: "generalized_anxiety_disorder_type_b",
+      fr: "سؤال 43",
+      group: "D",
+    },
+    L9: {
+      eng: "generalized_anxiety_disorder_type_c",
+      fr: "سؤال 62، 2، 46، 45، 44",
+      group: "D",
+    },
+    L10: {
+      eng: "special_phobia",
+      fr: "ترس‌های مرضی خاص",
+      group: "E049",
+    },
+    L11: {
+      eng: "obssesive",
+      fr: "افکار وسواسی",
+      group: "E050",
+    },
+    L12: {
+      eng: "compulsive",
+      fr: "اعمال وسواسی",
+      group: "E051",
+    },
+    L13: {
+      eng: "post_terumatic_stress_disorder",
+      fr: "اختلال استرس پس از حادثه",
+      group: "E052",
+    },
+    L14: {
+      eng: "motor_tics",
+      fr: "تیک‌های حرکتی",
+      group: "E053",
+    },
+    L15: {
+      eng: "vocal_tics",
+      fr: "تیک‌های صورتی",
+      group: "E054",
+    },
+    L16: {
+      eng: "schizophernia",
+      fr: "اسکیزوفرنیا",
+      group: "F",
+    },
+    L17: {
+      eng: "major_depression_total",
+      fr: "اختلال افسردگی شدید",
+      group: "G_1",
+    },
+    L18: {
+      eng: "major_depression_type_a",
+      fr: "الف",
+      group: "G_1",
+    },
+    L19: {
+      eng: "major_depression_type_b",
+      fr: "ب",
+      group: "G_1",
+    },
+    L20: {
+      eng: "dysthymia_total",
+      fr: "اختلال افسردگی خویی",
+      group: "G_2",
+    },
+    L21: {
+      eng: "dysthymia_type_a",
+      fr: "الف",
+      group: "G_2",
+    },
+    L22: {
+      eng: "dysthymia_type_b",
+      fr: "سؤالات 62 تا 66 و 68",
+      group: "G_2",
+    },
+    L23: {
+      eng: "autistic_disorder_total",
+      fr: "اختلال آتیستیک",
+      group: "H_1",
+    },
+    L24: {
+      eng: "autistic_disorder_type_a",
+      fr: "سؤالات 70 تا 73",
+      group: "H_1",
+    },
+    L25: {
+      eng: "autistic_disorder_type_b",
+      fr: "سؤالات 74 تا 77",
+      group: "H_1",
+    },
+    L26: {
+      eng: "autistic_disorder_type_c",
+      fr: "سؤالات 78 تا 81",
+      group: "H_1",
+    },
+    L27: {
+      eng: "asperger_disorder_total",
+      fr: "اختلال اسپرگر",
+      group: "H_2",
+    },
+    L28: {
+      eng: "asperger_disorder_type_a",
+      fr: "سؤالات 70 تا 73",
+      group: "H_2",
+    },
+    L29: {
+      eng: "asperger_disorder_type_b",
+      fr: "سؤالات 78 تا 81",
+      group: "H_2",
+    },
+    L30: {
+      eng: "social_phobia",
+      fr: "ترس مرضی اجتماعی",
+      group: "I",
+    },
+    L31: {
+      eng: "seperation_anxiety_disorder",
+      fr: "اختلال اضطراب جدایی",
+      group: "J",
+    },
+    L32: {
+      eng: "enuresis",
+      fr: "شب ادراری",
+      group: "-",
+    },
+    L33: {
+      eng: "encopresis",
+      fr: "ادرار یا دفع بی‌موقع در حالت بیداری",
+      group: "-",
+    },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه ارزیابی سلامت روانی کودکان" /* Name of the test */,
-      multiProfile: true /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه ارزیابی سلامت روانی کودکان" /* Name of the sample */,
+      multiProfile: true /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
@@ -39,39 +208,39 @@ class CSI93 extends Profile {
     items: {
       minValue: 0,
       maxValues: {
-        attention_deficity_and_hyper_activity_disorder_total: 18,
-        attention_deficity_and_hyper_activity_disorder_type_a: 9,
-        attention_deficity_and_hyper_activity_disorder_type_b: 9,
-        oppositional_defant_disorder: 8,
-        conduct_disorder: 15,
-        generalized_anxiety_disorder_total: 7,
-        generalized_anxiety_disorder_type_a: 1,
-        generalized_anxiety_disorder_type_b: 1,
-        generalized_anxiety_disorder_type_c: 5,
-        special_phobia: 1,
-        obssesive: 1,
-        compulsive: 1,
-        post_terumatic_stress_disorder: 1,
-        motor_tics: 1,
-        vocal_tics: 1,
-        schizophernia: 5,
-        major_depression_total: 10,
-        major_depression_type_a: 3,
-        major_depression_type_b: 7,
-        dysthymia_total: 8,
-        dysthymia_type_a: 2,
-        dysthymia_type_b: 6,
-        autistic_disorder_total: 12,
-        autistic_disorder_type_a: 4,
-        autistic_disorder_type_b: 4,
-        autistic_disorder_type_c: 4,
-        asperger_disorder_total: 8,
-        asperger_disorder_type_a: 4,
-        asperger_disorder_type_b: 4,
-        social_phobia: 4,
-        seperation_anxiety_disorder: 8,
-        enuresis: 1,
-        encopresis: 1,
+        [this.labels.L1.eng]: 18,
+        [this.labels.L2.eng]: 9,
+        [this.labels.L3.eng]: 9,
+        [this.labels.L4.eng]: 8,
+        [this.labels.L5.eng]: 15,
+        [this.labels.L6.eng]: 7,
+        [this.labels.L7.eng]: 1,
+        [this.labels.L8.eng]: 1,
+        [this.labels.L9.eng]: 5,
+        [this.labels.L10.eng]: 1,
+        [this.labels.L11.eng]: 1,
+        [this.labels.L12.eng]: 1,
+        [this.labels.L13.eng]: 1,
+        [this.labels.L14.eng]: 1,
+        [this.labels.L15.eng]: 1,
+        [this.labels.L16.eng]: 5,
+        [this.labels.L17.eng]: 10,
+        [this.labels.L18.eng]: 3,
+        [this.labels.L19.eng]: 7,
+        [this.labels.L20.eng]: 8,
+        [this.labels.L21.eng]: 2,
+        [this.labels.L22.eng]: 6,
+        [this.labels.L23.eng]: 12,
+        [this.labels.L24.eng]: 4,
+        [this.labels.L25.eng]: 4,
+        [this.labels.L26.eng]: 4,
+        [this.labels.L27.eng]: 8,
+        [this.labels.L28.eng]: 4,
+        [this.labels.L29.eng]: 4,
+        [this.labels.L30.eng]: 4,
+        [this.labels.L31.eng]: 8,
+        [this.labels.L32.eng]: 1,
+        [this.labels.L33.eng]: 1,
       },
       relatedGroups: {
         A: "D تا J",
@@ -113,140 +282,7 @@ class CSI93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      attention_deficity_and_hyper_activity_disorder_total: {
-        group: "A",
-        fr: "بیش فعالی / اختلال توجه نوع مرکب",
-      },
-      attention_deficity_and_hyper_activity_disorder_type_a: {
-        group: "A",
-        fr: "سؤالات 1 تا 9",
-      },
-      attention_deficity_and_hyper_activity_disorder_type_b: {
-        group: "A",
-        fr: "سؤالات 10 تا 18",
-      },
-      oppositional_defant_disorder: {
-        group: "B",
-        fr: "اختلال نافرمانی مقابله‌ای",
-      },
-      conduct_disorder: {
-        group: "C",
-        fr: "اختلال سلوک",
-      },
-      generalized_anxiety_disorder_total: {
-        group: "D",
-        fr: "اختلال اضطراب تعمیم‌یافته",
-      },
-      generalized_anxiety_disorder_type_a: {
-        group: "D",
-        fr: "سؤال 42",
-      },
-      generalized_anxiety_disorder_type_b: {
-        group: "D",
-        fr: "سؤال 43",
-      },
-      generalized_anxiety_disorder_type_c: {
-        group: "D",
-        fr: "سؤال 62، 2، 46، 45، 44",
-      },
-      special_phobia: {
-        group: "E049",
-        fr: "ترس‌های مرضی خاص",
-      },
-      obssesive: {
-        group: "E050",
-        fr: "افکار وسواسی",
-      },
-      compulsive: {
-        group: "E051",
-        fr: "اعمال وسواسی",
-      },
-      post_terumatic_stress_disorder: {
-        group: "E052",
-        fr: "اختلال استرس پس از حادثه",
-      },
-      motor_tics: {
-        group: "E053",
-        fr: "تیک‌های حرکتی",
-      },
-      vocal_tics: {
-        group: "E054",
-        fr: "تیک‌های صورتی",
-      },
-      schizophernia: {
-        group: "F",
-        fr: "اسکیزوفرنیا",
-      },
-      major_depression_total: {
-        group: "G_1",
-        fr: "اختلال افسردگی شدید",
-      },
-      major_depression_type_a: {
-        group: "G_1",
-        fr: "الف",
-      },
-      major_depression_type_b: {
-        group: "G_1",
-        fr: "ب",
-      },
-      dysthymia_total: {
-        group: "G_2",
-        fr: "اختلال افسردگی خویی",
-      },
-      dysthymia_type_a: {
-        group: "G_2",
-        fr: "الف",
-      },
-      dysthymia_type_b: {
-        group: "G_2",
-        fr: "سؤالات 62 تا 66 و 68",
-      },
-      autistic_disorder_total: {
-        group: "H_1",
-        fr: "اختلال آتیستیک",
-      },
-      autistic_disorder_type_a: {
-        group: "H_1",
-        fr: "سؤالات 70 تا 73",
-      },
-      autistic_disorder_type_b: {
-        group: "H_1",
-        fr: "سؤالات 74 تا 77",
-      },
-      autistic_disorder_type_c: {
-        group: "H_1",
-        fr: "سؤالات 78 تا 81",
-      },
-      asperger_disorder_total: {
-        group: "H_2",
-        fr: "اختلال اسپرگر",
-      },
-      asperger_disorder_type_a: {
-        group: "H_2",
-        fr: "سؤالات 70 تا 73",
-      },
-      asperger_disorder_type_b: {
-        group: "H_2",
-        fr: "سؤالات 78 تا 81",
-      },
-      social_phobia: {
-        group: "I",
-        fr: "ترس مرضی اجتماعی",
-      },
-      seperation_anxiety_disorder: {
-        group: "J",
-        fr: "اختلال اضطراب جدایی",
-      },
-      enuresis: {
-        group: "-",
-        fr: "شب ادراری",
-      },
-      encopresis: {
-        group: "-",
-        fr: "ادرار یا دفع بی‌موقع در حالت بیداری",
-      },
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

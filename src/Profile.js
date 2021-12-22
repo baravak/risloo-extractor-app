@@ -1,6 +1,5 @@
 const moment = require("moment-jalaali");
 const qrCodeGenerator = require("./qrcode/qrCodeGenerator");
-const _ = require("lodash");
 
 moment.locale("fa");
 moment.loadPersian({ dialect: "persian-modern" });
@@ -81,6 +80,23 @@ class FS {
   static isEmpty(obj) {
     return Object.keys(obj).length === 0;
   }
+
+  static isObject(item) {
+    return item && typeof item === "object" && !Array.isArray(item);
+  }
+
+  static deepMerge(target, source) {
+    if (FS.isObject(target) && FS.isObject(source)) {
+      for (const key in source) {
+        if (FS.isObject(source[key])) {
+          if (!target[key]) Object.assign(target, { [key]: {} });
+          FS.deepMerge(target[key], source[key]);
+        } else {
+          Object.assign(target, { [key]: source[key] });
+        }
+      }
+    }
+  }
 }
 
 // Classes
@@ -107,8 +123,8 @@ class Canvas {
 }
 
 class Dataset {
-  // Default Test Info for the Profile
-  defaultTest = {
+  // Default Sample Info for the Profile
+  defaultSample = {
     questions: false,
     defaultFields: true,
     fields: [],
@@ -119,14 +135,14 @@ class Dataset {
 
   constructor(dataset, spec) {
     // Getting Class Fields
-    const { defaultTest, defaultFields } = this;
+    const { defaultSample, defaultFields } = this;
 
     // Destructure Required Info from Spec of the Profile
-    const { labels, test = defaultTest } = spec;
+    const { labels, sample = defaultSample } = spec;
 
     // Specifying Prerequisites that are Going to Be Extracted
     // *** Remember That You Should Get The Copy of Arrays Taken from Spec of the Profile
-    const requiredPreqs = test.defaultFields ? [...defaultFields, ...test.fields] : [...test.fields];
+    const requiredPreqs = sample.defaultFields ? [...defaultFields, ...sample.fields] : [...sample.fields];
 
     this.info = {
       id: dataset.id || "-",
@@ -141,9 +157,9 @@ class Dataset {
       fields: this._extractFields(dataset.prerequisites, requiredPreqs),
     };
 
-    // Extract Questions if test.questions === true
+    // Extract Questions if sample.questions === true
     // *** Remember That You Should Get The Copy of Arrays Taken from Dataset
-    this.questions = test.questions && [...dataset.items];
+    this.questions = sample.questions && [...dataset.items];
 
     this.score = this._extractData(dataset.score, labels);
   }
@@ -188,16 +204,7 @@ class Dataset {
 
   // Create Data Array with Label and Mark Taken from Dataset
   _extractData(score, labels) {
-    let data = [];
-    for (let labelEng in labels) {
-      let labelOthers = typeof labels[labelEng] === "string" ? { fr: labels[labelEng] } : labels[labelEng];
-      data.push({
-        label: { eng: labelEng, ...labelOthers },
-        mark: score[labelEng],
-      });
-    }
-
-    return data;
+    return labels.map((label) => ({ label, mark: score[label.eng] }));
   }
 
   // Group By Special Property of the Label of the Dataset Score
@@ -225,17 +232,15 @@ class Dataset {
   }
 }
 
-class Mappings {
-  #depth = 0;
-
+class Mappings extends Array {
   addMapping(range, value) {
-    this[this.#depth++] = { range, value };
+    this.push({ range, value });
     return this;
   }
 
   map(val) {
     const me = this;
-    for (let mapping of Object.values(me)) {
+    for (let mapping of me) {
       const splitted = mapping.range.split("-");
       if (splitted.length === 1) {
         if (+splitted[0] === val) return mapping.value;
@@ -321,11 +326,10 @@ class Spec {
     this._setConfig(config);
   }
 
-  // Deep Merge (Not Implemented Yet)
   _setConfig(config) {
     const { parameters } = this;
 
-    _.merge(parameters, config);
+    FS.deepMerge(parameters, config);
   }
 }
 

@@ -1,16 +1,27 @@
-const { Profile, FS } = require("../Profile");
+const { Profile } = require("../Profile");
 
 class FTEPT93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "raw", fr: "نمره کل" },
+    L2: { eng: "efficacy", fr: "خودکارآمدی" },
+    L3: { eng: "emotional_effects", fr: "تأثیرات\nهیجانی" },
+    L4: { eng: "planning", fr: "برنامه‌ریزی" },
+    L5: { eng: "lack_of_consequence_control", fr: "فقدان\nکنترل پیامد" },
+    L6: { eng: "motivation", fr: "انگیزش" },
+    L7: { eng: "interpretation", fr: "تفسیر" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه عملکرد تحصیلی فام و تیلر (درتاج)" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه عملکرد تحصیلی فام و تیلر (درتاج)" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
@@ -78,11 +89,11 @@ class FTEPT93 extends Profile {
         width: 740 /* Width of the baseline below items */,
       },
       maxValues: {
-        efficacy: 40,
-        emotional_effects: 40,
-        planning: 70,
-        lack_of_consequence_control: 25,
-        motivation: 65,
+        [this.labels.L2.eng]: 40,
+        [this.labels.L3.eng]: 40,
+        [this.labels.L4.eng]: 70,
+        [this.labels.L5.eng]: 25,
+        [this.labels.L6.eng]: 65,
       } /* Maximum values of items marks provided by the dataset */,
       topPos: 425 /* Top position of the baseline of items */,
       offsetX: 100 /* Horizontal offset between two consecutive item */,
@@ -110,15 +121,7 @@ class FTEPT93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      raw: "نمره کل",
-      efficacy: "خودکارآمدی",
-      emotional_effects: "تأثیرات\nهیجانی",
-      planning: "برنامه‌ریزی",
-      lack_of_consequence_control: "فقدان\nکنترل پیامد",
-      motivation: "انگیزش",
-      interpretation: "تفسیر",
-    },
+    labels: Object.values(this.labels)
   };
 
   constructor(dataset, options, config = {}) {

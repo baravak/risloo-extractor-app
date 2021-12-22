@@ -1,16 +1,27 @@
-const { Profile, FS, Dataset } = require("../Profile");
+const { Profile, Dataset } = require("../Profile");
 
 class SCASP93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "total", fr: "نمره کل" },
+    L2: { eng: "panic_attack_and_agorophobia", fr: "اختلال هراس و ترس از فضای باز" },
+    L3: { eng: "separation_anxiety", fr: "اضطراب جدایی" },
+    L4: { eng: "physical_injury_fears", fr: "ترس از آسیب فیزیکی" },
+    L5: { eng: "social_phobia", fr: "ترس اجتماعی" },
+    L6: { eng: "obsessive_compulsive", fr: "وسواس فکری - عملی" },
+    L7: { eng: "generalized_anxiety_disorder", fr: "اضطراب عمومی (فراگیر)" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه اضطراب کودکان اسپنس - نسخه والدین" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه اضطراب کودکان اسپنس - نسخه والدین" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: true /* Determines whether to get questions from inital dataset or not */,
       defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
@@ -110,20 +121,20 @@ class SCASP93 extends Profile {
         length: 840 /* Length of separator line between each row of the items table */,
       },
       maxValues: {
-        panic_attack_and_agorophobia: 27,
-        separation_anxiety: 18,
-        physical_injury_fears: 15,
-        social_phobia: 18,
-        obsessive_compulsive: 18,
-        generalized_anxiety_disorder: 18,
+        [this.labels.L2.eng]: 27,
+        [this.labels.L3.eng]: 18,
+        [this.labels.L4.eng]: 15,
+        [this.labels.L5.eng]: 18,
+        [this.labels.L6.eng]: 18,
+        [this.labels.L7.eng]: 18,
       } /* Maximum value of items */,
       questionNumbers: {
-        panic_attack_and_agorophobia: [12, 19, 25, 27, 28, 30, 32, 33, 34],
-        separation_anxiety: [5, 8, 11, 14, 15, 38],
-        physical_injury_fears: [2, 16, 21, 23, 29],
-        social_phobia: [6, 7, 9, 10, 26, 31],
-        obsessive_compulsive: [13, 17, 24, 35, 36, 37],
-        generalized_anxiety_disorder: [1, 3, 4, 18, 20, 22],
+        [this.labels.L2.eng]: [12, 19, 25, 27, 28, 30, 32, 33, 34],
+        [this.labels.L3.eng]: [5, 8, 11, 14, 15, 38],
+        [this.labels.L4.eng]: [2, 16, 21, 23, 29],
+        [this.labels.L5.eng]: [6, 7, 9, 10, 26, 31],
+        [this.labels.L6.eng]: [13, 17, 24, 35, 36, 37],
+        [this.labels.L7.eng]: [1, 3, 4, 18, 20, 22],
       } /* Questions numbers array of each item */,
       offsetY: 60 /* Vertical offset between two items */,
       leftPosArr: [50, 282, 312] /* Left position array of items table cells */,
@@ -161,15 +172,7 @@ class SCASP93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      total: "نمره کل",
-      panic_attack_and_agorophobia: "اختلال هراس و ترس از فضای باز",
-      separation_anxiety: "اضطراب جدایی",
-      physical_injury_fears: "ترس از آسیب فیزیکی",
-      social_phobia: "ترس اجتماعی",
-      obsessive_compulsive: "وسواس فکری - عملی",
-      generalized_anxiety_disorder: "اضطراب عمومی (فراگیر)",
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

@@ -4,13 +4,26 @@ class PIES93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "hope", fr: "امید", abbr: "HO" },
+    L2: { eng: "will", fr: "اراده (خواسته)", abbr: "W" },
+    L3: { eng: "purpose", fr: "هدفمندی", abbr: "PU" },
+    L4: { eng: "competence", fr: "شایستگی", abbr: "CO" },
+    L5: { eng: "fidelity", fr: "صداقت (وفاداری)", abbr: "FI" },
+    L6: { eng: "love", fr: "عشق", abbr: "LO" },
+    L7: { eng: "care", fr: "مراقبت", abbr: "CA" },
+    L8: { eng: "wisdom", fr: "خرد (فرزانگی)", abbr: "WI" },
+    L9: { eng: "raw", fr: "نمره کل", abbr: "#" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه سیاهه روانی - اجتماعی نیرومندی من ۳۲ سؤالی" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه سیاهه روانی - اجتماعی نیرومندی من ۳۲ سؤالی" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -144,44 +157,7 @@ class PIES93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      hope: {
-        abbr: "HO",
-        fr: "امید",
-      },
-      will: {
-        abbr: "W",
-        fr: "اراده (خواسته)",
-      },
-      purpose: {
-        abbr: "PU",
-        fr: "هدف‌مندی",
-      },
-      competence: {
-        abbr: "CO",
-        fr: "شایستگی",
-      },
-      fidelity: {
-        abbr: "FI",
-        fr: "صداقت (وفاداری)",
-      },
-      love: {
-        abbr: "LO",
-        fr: "عشق",
-      },
-      care: {
-        abbr: "CA",
-        fr: "مراقبت",
-      },
-      wisdom: {
-        abbr: "WI",
-        fr: "خرد (فرزانگی)",
-      },
-      raw: {
-        abbr: "#",
-        fr: "نمره کل",
-      },
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {
@@ -220,7 +196,7 @@ class PIES93 extends Profile {
       baseColor: itemsSpec.base.colors[index],
       body: {
         color: itemsSpec.body.colors[index],
-        opacity: itemsSpec.body.opacityMappings.map(data.mark)
+        opacity: itemsSpec.body.opacityMappings.map(data.mark),
       },
     }));
 

@@ -4,13 +4,28 @@ class CERQ93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "acceptance", fr: "پذیرش" },
+    L2: { eng: "positive_refocusing", fr: "تمرکز مجدد مثبت" },
+    L3: { eng: "refocusing_on_planing", fr: "تمرکز مجدد برنامه‌ریزی" },
+    L4: { eng: "positive_reappraisal", fr: "ارزیابی مجدد مثبت" },
+    L5: { eng: "putting_to_perspective", fr: "دیدگاه‌گیری" },
+    L6: { eng: "self_blame", fr: "ملامت خویش" },
+    L7: { eng: "rumination", fr: "نشخوارگی" },
+    L8: { eng: "catastrophizing", fr: "فاجعه‌سازی" },
+    L9: { eng: "other_blame", fr: "ملامت دیگران" },
+    L10: { eng: "adaptive_regulation", fr: "نظم‌جویی انطباقی" },
+    L11: { eng: "unadaptive_regulation", fr: "نظم‌جویی غیرانطباقی" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه نظم‌جویی شناختی - هیجانی (فرم کوتاه)" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه نظم‌جویی شناختی - هیجانی (فرم کوتاه)" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -114,19 +129,7 @@ class CERQ93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      acceptance: "پذیرش",
-      positive_refocusing: "تمرکز مجدد مثبت",
-      refocusing_on_planing: "تمرکز مجدد برنامه‌ریزی",
-      positive_reappraisal: "ارزیابی مجدد مثبت",
-      putting_to_perspective: "دیدگاه‌گیری",
-      self_blame: "ملامت خویش",
-      rumination: "نشخوارگی",
-      catastrophizing: "فاجعه‌سازی",
-      other_blame: "ملامت دیگران",
-      adaptive_regulation: "نظم‌جویی انطباقی",
-      unadaptive_regulation: "نظم‌جویی غیرانطباقی",
-    },
+    labels: Object.values(this.labels)
   };
 
   constructor(dataset, options, config = {}) {
@@ -185,7 +188,7 @@ class CERQ93 extends Profile {
         mark: data.mark,
         width: data.mark * itemsSpec.widthCoeff,
         fill: itemsSpec.rect.colors[datasetIndex],
-        opacity: itemsSpec.rect.opacityMappings.map(data.mark)
+        opacity: itemsSpec.rect.opacityMappings.map(data.mark),
       }))
     );
 

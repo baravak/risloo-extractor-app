@@ -4,13 +4,38 @@ class EMSS93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "raw", fr: "نمره کل" },
+    L2: { eng: "t_score", fr: "نمره t" },
+    L3: { eng: "t_score_summary", fr: "خلاصه نمره t" },
+    L4: { eng: "personality_issues", fr: "موضوعات شخصیتی" },
+    L5: { eng: "religious_orientation", fr: "جهت‌گیری مذهبی" },
+    L6: { eng: "family_and_friends", fr: "اقوام و دوستان" },
+    L7: { eng: "children_and_marriage", fr: "ازدواج و فرزندان" },
+    L8: { eng: "sexual_relationship", fr: "روابط جنسی" },
+    L9: { eng: "leisure_activities", fr: "فعالیت‌های اوقات فراغت" },
+    L10: { eng: "financial_management", fr: "مدیریت مالی" },
+    L11: { eng: "Conflict_resolution", fr: "حل تعارض" },
+    L12: { eng: "marital_communication", fr: "ارتباط زناشویی" },
+    L13: { eng: "personality_issues_interpretation", fr: "تفسیر موضوعات شخصیتی" },
+    L14: { eng: "religious_orientation_interpretation", fr: "تفسیر جهت‌گیری مذهبی" },
+    L15: { eng: "family_and_friends_interpretation", fr: "تفسیر اقوام و دوستان" },
+    L16: { eng: "children_and_marriage_interpretation", fr: "تفسیر ازدواج و فرزندان" },
+    L17: { eng: "sexual_relationship_interpretation", fr: "تفسیر روابط جنسی" },
+    L18: { eng: "leisure_activities_interpretation", fr: "تفسیر فعالیت‌های اوقات فراغت" },
+    L19: { eng: "financial_management_interpretation", fr: "تفسیر مدیریت مالی" },
+    L20: { eng: "Conflict_resolution_interpretation", fr: "تفسیر حل تعارض" },
+    L21: { eng: "marital_communication_interpretation", fr: "تفسیر ارتباط زناشویی" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه رضایت زناشویی انریچ ۴۷ سؤالی" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه رضایت زناشویی انریچ ۴۷ سؤالی" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -68,15 +93,15 @@ class EMSS93 extends Profile {
     /* "items" is the general term used for independent data elements to be drawn in the profile */
     items: {
       maxValues: {
-        personality_issues: 30,
-        religious_orientation: 25,
-        family_and_friends: 25,
-        children_and_marriage: 25,
-        sexual_relationship: 25,
-        leisure_activities: 25,
-        financial_management: 25,
-        Conflict_resolution: 25,
-        marital_communication: 30,
+        [this.labels.L4.eng]: 30,
+        [this.labels.L5.eng]: 25,
+        [this.labels.L6.eng]: 25,
+        [this.labels.L7.eng]: 25,
+        [this.labels.L8.eng]: 25,
+        [this.labels.L9.eng]: 25,
+        [this.labels.L10.eng]: 25,
+        [this.labels.L11.eng]: 25,
+        [this.labels.L12.eng]: 30,
       } /* Maximum values of marks provided by the dataset */,
       circle: {
         r: 50,
@@ -102,29 +127,7 @@ class EMSS93 extends Profile {
       ],
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      raw: "نمره کل",
-      t_score: "نمره t",
-      t_score_summary: "خلاصه نمره t",
-      personality_issues: "موضوعات شخصیتی",
-      religious_orientation: "جهت‌گیری مذهبی",
-      family_and_friends: "اقوام و دوستان",
-      children_and_marriage: "ازدواج و فرزندان",
-      sexual_relationship: "روابط جنسی",
-      leisure_activities: "فعالیت‌های اوقات فراغت",
-      financial_management: "مدیریت مالی",
-      Conflict_resolution: "حل تعارض",
-      marital_communication: "ارتباط زناشویی",
-      personality_issues_interpretation: "تفسیر موضوعات شخصیتی",
-      religious_orientation_interpretation: "تفسیر جهت‌گیری مذهبی",
-      family_and_friends_interpretation: "تفسیر اقوام و دوستان",
-      children_and_marriage_interpretation: "تفسیر ازدواج و فرزندان",
-      sexual_relationship_interpretation: "تفسیر روابط جنسی",
-      leisure_activities_interpretation: "تفسیر فعالیت‌های اوقات فراغت",
-      financial_management_interpretation: "تفسیر مدیریت مالی",
-      Conflict_resolution_interpretation: "تفسیر حل تعارض",
-      marital_communication_interpretation: "تفسیر ارتباط زناشویی",
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

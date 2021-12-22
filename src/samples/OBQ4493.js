@@ -1,16 +1,26 @@
-const { Profile, FS } = require("../Profile");
+const { Profile } = require("../Profile");
 
 class OBQ4493 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "complete_performance", fr: "عملکرد کامل", abbr: "CP" },
+    L2: { eng: "importance_and_control_of_thought", fr: "اهمیت و کنترل فکر", abbr: "ICT" },
+    L3: { eng: "responsibility_and_threat_estimation", fr: "مسئولیت و تخمین تهدید", abbr: "RT" },
+    L4: { eng: "perfectionism_certainty", fr: "کمال‌گرایی / یقین", abbr: "PC" },
+    L5: { eng: "general", fr: "عمومی", abbr: "G" },
+    L6: { eng: "raw", fr: "مجموع", abbr: "T" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه باورهای احساسی" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه باورهای احساسی" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -59,11 +69,11 @@ class OBQ4493 extends Profile {
       },
       maxValuesOffsetX: 10,
       maxValues: {
-        complete_performance: 15,
-        importance_and_control_of_thought: 16,
-        responsibility_and_threat_estimation: 21,
-        perfectionism_certainty: 30,
-        general: 48,
+        [this.labels.L1.eng]: 15,
+        [this.labels.L2.eng]: 16,
+        [this.labels.L3.eng]: 21,
+        [this.labels.L4.eng]: 30,
+        [this.labels.L5.eng]: 48,
       },
       rect: {
         width: 800,
@@ -85,32 +95,7 @@ class OBQ4493 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      complete_performance: {
-        abbr: "CP",
-        fr: "عملکرد کامل",
-      },
-      importance_and_control_of_thought: {
-        abbr: "ICT",
-        fr: "اهمیت و کنترل فکر",
-      },
-      responsibility_and_threat_estimation: {
-        abbr: "RT",
-        fr: "مسئولیت و تخمین تهدید",
-      },
-      perfectionism_certainty: {
-        abbr: "PC",
-        fr: "کمال‌گرایی / یقین",
-      },
-      general: {
-        abbr: "G",
-        fr: "عمومی",
-      },
-      raw: {
-        abbr: "T",
-        fr: "مجموع",
-      },
-    },
+    labels: Object.values(this.labels),
     desc: "این آزمون هر چقدر به سمت مثبت برود، نشان‌دهنده باورهای وسواس بالاست و در صورت منفی بودن، باورهای وسواس پایین است.",
   };
 

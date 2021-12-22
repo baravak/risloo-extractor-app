@@ -4,13 +4,25 @@ class MMAFD93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "raw", fr: "نمره کل" },
+    L2: { eng: "problem_solving", fr: "حل مشکل" },
+    L3: { eng: "overall_performance", fr: "عملکرد کلی" },
+    L4: { eng: "behaviour_control", fr: "کنترل رفتار" },
+    L5: { eng: "affective_involvement", fr: "آمیزش عاطفی" },
+    L6: { eng: "communication", fr: "ارتباط" },
+    L7: { eng: "affective_responsiveness", fr: "همراهی عاطفی" },
+    L8: { eng: "roles", fr: "نقش‌ها" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه عملکرد خانواده ۵۳ سؤالی" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه عملکرد خانواده ۵۳ سؤالی" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -50,13 +62,13 @@ class MMAFD93 extends Profile {
     /* "items" is the general term used for independent data elements to be drawn in the profile */
     items: {
       maxValues: {
-        problem_solving: 20,
-        roles: 40,
-        affective_responsiveness: 35,
-        communication: 30,
-        affective_involvement: 40,
-        behaviour_control: 40,
-        overall_performance: 60,
+        [this.labels.L2.eng]: 20,
+        [this.labels.L3.eng]: 60,
+        [this.labels.L4.eng]: 40,
+        [this.labels.L5.eng]: 40,
+        [this.labels.L6.eng]: 30,
+        [this.labels.L7.eng]: 35,
+        [this.labels.L8.eng]: 40,
       } /* Maximum value of marks provided by the dataset */,
       labels: {
         offset: 50 /* Offset of the label from the vertice of the polygon */,
@@ -65,27 +77,18 @@ class MMAFD93 extends Profile {
       dataPoints: {
         radius: 12 /* Radius of the circle of the data point */,
         fills: {
-          problem_solving: "#F59E0B",
-          roles: "#71717A",
-          affective_responsiveness: "#DC2626",
-          communication: "#059669",
-          affective_involvement: "#2563EB",
-          behaviour_control: "#9333EA",
-          overall_performance: "#DB2777",
+          [this.labels.L2.eng]: "#F59E0B",
+          [this.labels.L3.eng]: "#DB2777",
+          [this.labels.L4.eng]: "#9333EA",
+          [this.labels.L5.eng]: "#2563EB",
+          [this.labels.L6.eng]: "#059669",
+          [this.labels.L7.eng]: "#DC2626",
+          [this.labels.L8.eng]: "#71717A",
         } /* Colors used for theming data points */,
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      raw: "نمره کل",
-      problem_solving: "حل مشکل",
-      overall_performance: "عملکرد کلی",
-      behaviour_control: "کنترل رفتار",
-      affective_involvement: "آمیزش عاطفی",
-      communication: "ارتباط",
-      affective_responsiveness: "همراهی عاطفی",
-      roles: "نقش‌ها",
-    },
+    labels: Object.values(this.labels)
   };
 
   constructor(dataset, options, config = {}) {

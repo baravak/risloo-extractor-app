@@ -4,13 +4,24 @@ class AMS93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "intrinsic_motivation_to_know", fr: "برای فهمیدن" },
+    L2: { eng: "intrinsic_motivation_toward_accomplishment", fr: "پیشرفت" },
+    L3: { eng: "intrinsic_motivation_to_experience_stimulation", fr: "برای تجربه تحریک" },
+    L4: { eng: "extrinsic_motivation_identified", fr: "تنظیم همانند شده" },
+    L5: { eng: "extrinsic_motivation_introjected", fr: "تنظیم تزریقی" },
+    L6: { eng: "extrinsic_motivation_external_regulation", fr: "تنظیم بیرونی" },
+    L7: { eng: "unmotivation", fr: "بی‌انگیزگی" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه انگیزش تحصیلی والراند" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه انگیزش تحصیلی والراند" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -87,15 +98,7 @@ class AMS93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      intrinsic_motivation_to_know: "برای فهمیدن",
-      intrinsic_motivation_toward_accomplishment: "پیشرفت",
-      intrinsic_motivation_to_experience_stimulation: "برای تجربه تحریک",
-      extrinsic_motivation_identified: "تنظیم همانند شده",
-      extrinsic_motivation_introjected: "تنظیم تزریقی",
-      extrinsic_motivation_external_regulation: "تنظیم بیرونی",
-      unmotivation: "بی‌انگیزگی",
-    },
+    labels: Object.values(this.labels)
   };
 
   constructor(dataset, options, config = {}) {
@@ -125,7 +128,7 @@ class AMS93 extends Profile {
         mark: data.mark,
         width: data.mark * itemsSpec.widthCoeff,
         fill: itemsSpec.rect.colors[datasetIndex],
-        opacity: itemsSpec.rect.opacityMappings.map(data.mark)
+        opacity: itemsSpec.rect.opacityMappings.map(data.mark),
       }))
     );
 

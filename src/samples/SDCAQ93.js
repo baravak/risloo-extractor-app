@@ -4,13 +4,23 @@ class SDCAQ93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "thought_suppression", fr: "واپس زنی\nافکار نگران‌کننده" },
+    L2: { eng: "thought_substitution", fr: "جانشینی افکار مثبت\nبه جای افکار نگران‌کننده" },
+    L3: { eng: "distraction_subscale", fr: "استفاده از توجه برگردانی\nبرای قطع روند نگرانی (حواس‌پرتی)" },
+    L4: { eng: "avoidance_of_threatening_stimuli", fr: "اجتناب از موقعیت‌ها و فعالیت‌های\nفعال‌ساز افکار نگران‌کننده" },
+    L5: { eng: "transformation_of_images_into_thoughts", fr: "تغییر تصاویر ذهنی\nبه افکار کلامی" },
+    L6: { eng: "raw", fr: "نمره کل" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه اجتناب شناختی سکستون وداگاس" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه اجتناب شناختی سکستون وداگاس" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -97,14 +107,7 @@ class SDCAQ93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      thought_suppression: "واپس زنی\nافکار نگران‌کننده",
-      thought_substitution: "جانشینی افکار مثبت\nبه جای افکار نگران‌کننده",
-      distraction_subscale: "استفاده از توجه برگردانی\nبرای قطع روند نگرانی (حواس‌پرتی)",
-      avoidance_of_threatening_stimuli: "اجتناب از موقعیت‌ها و فعالیت‌های\nفعال‌ساز افکار نگران‌کننده",
-      transformation_of_images_into_thoughts: "تغییر تصاویر ذهنی\nبه افکار کلامی",
-      raw: "نمره کل",
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

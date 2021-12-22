@@ -4,13 +4,25 @@ class WAQ93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "raw", fr: "نمره کل" },
+    L2: { eng: "relationship_with_god", fr: "خدا" },
+    L3: { eng: "relationship_with_self", fr: "خود" },
+    L4: { eng: "relationship_with_others", fr: "دیگران" },
+    L5: { eng: "relationship_with_wisdom", fr: "دانش و حکمت" },
+    L6: { eng: "relationship_with_religion", fr: "دین و مذهب" },
+    L7: { eng: "relationship_with_right_and_wrong", fr: "حق و باطل" },
+    L8: { eng: "relationship_with_hereafter", fr: "دین و آخرت" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه سنجش عقل میردریکوندی" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه سنجش عقل میردریکوندی" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -84,22 +96,22 @@ class WAQ93 extends Profile {
         return this.offsetX2 + this.circle.R * 2;
       } /* Horizontal distance between two top items */,
       maxValues: {
-        relationship_with_god: 90,
-        relationship_with_self: 335,
-        relationship_with_others: 305,
-        relationship_with_wisdom: 55,
-        relationship_with_religion: 50,
-        relationship_with_right_and_wrong: 25,
-        relationship_with_hereafter: 40,
+        [this.labels.L2.eng]: 90,
+        [this.labels.L3.eng]: 335,
+        [this.labels.L4.eng]: 305,
+        [this.labels.L5.eng]: 55,
+        [this.labels.L6.eng]: 50,
+        [this.labels.L7.eng]: 25,
+        [this.labels.L8.eng]: 40,
       } /* Maximum value of items */,
       fills: {
-        relationship_with_god: "#16A34A",
-        relationship_with_self: "#F59E0B",
-        relationship_with_others: "#E11D48",
-        relationship_with_wisdom: "#C026D3",
-        relationship_with_religion: "#7C3AED",
-        relationship_with_right_and_wrong: "#14B8A6",
-        relationship_with_hereafter: "#0EA5E9",
+        [this.labels.L2.eng]: "#16A34A",
+        [this.labels.L3.eng]: "#F59E0B",
+        [this.labels.L4.eng]: "#E11D48",
+        [this.labels.L5.eng]: "#C026D3",
+        [this.labels.L6.eng]: "#7C3AED",
+        [this.labels.L7.eng]: "#14B8A6",
+        [this.labels.L8.eng]: "#0EA5E9",
       } /* Color used in items */,
       circle: {
         R: 61.5 /* Radius of the outer circle of the items element */,
@@ -132,16 +144,7 @@ class WAQ93 extends Profile {
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      raw: "نمره کل",
-      relationship_with_god: "خدا",
-      relationship_with_self: "خود",
-      relationship_with_others: "دیگران",
-      relationship_with_wisdom: "دانش و حکمت",
-      relationship_with_religion: "دین و مذهب",
-      relationship_with_right_and_wrong: "حق و باطل",
-      relationship_with_hereafter: "دین و آخرت",
-    },
+    labels: Object.values(this.labels),
   };
 
   constructor(dataset, options, config = {}) {

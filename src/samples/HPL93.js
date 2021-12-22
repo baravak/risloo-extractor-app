@@ -4,13 +4,24 @@ class HPL93 extends Profile {
   // Number of pages
   static pages = 1;
 
+  // Labels of the sample
+  labels = {
+    L1: { eng: "raw", fr: "نمره کل" },
+    L2: { eng: "spritual_growth", fr: "رشد معنوی و شکوفایی" },
+    L3: { eng: "nutrition", fr: "تغذیه" },
+    L4: { eng: "stress_management", fr: "مدیریت استرس" },
+    L5: { eng: "physical_activity", fr: "ورزش و فعالیت بدنی" },
+    L6: { eng: "health_self_responsibility", fr: "مسئولیت‌پذیری در مورد سلامت" },
+    L7: { eng: "interpersonal_relationships", fr: "روابط بین‌ فردی" },
+  };
+
   profileSpec = {
-    /* "test" determines some important info about the test and profile */
+    /* "sample" determines some important info about the sample and profile */
     /* Default prerequisites: 1. gender, 2. age, 3. education */
     /* "prerequisites" is synonym to "fields" in our program */
-    test: {
-      name: "پرسشنامه سبک زندگی ارتقادهنده سلامت" /* Name of the test */,
-      multiProfile: false /* Whether the test has multiple profiles or not */,
+    sample: {
+      name: "پرسشنامه سبک زندگی ارتقادهنده سلامت" /* Name of the sample */,
+      multiProfile: false /* Whether the sample has multiple profiles or not */,
       questions: false /* Determines whether to get questions from inital dataset or not */,
       defaultFields: true /* Determines whether to have default prerequisites in the profile or not */,
       fields: ["marital_status"] /* In case you want to get some additional fields and show in the profile */,
@@ -50,12 +61,12 @@ class HPL93 extends Profile {
     /* "items" is the general term used for independent data elements to be drawn in the profile */
     items: {
       maxValues: {
-        spritual_growth: 40,
-        nutrition: 28,
-        stress_management: 24,
-        physical_activity: 36,
-        health_self_responsibility: 56,
-        interpersonal_relationships: 28,
+        [this.labels.L2.eng]: 40,
+        [this.labels.L3.eng]: 28,
+        [this.labels.L4.eng]: 24,
+        [this.labels.L5.eng]: 36,
+        [this.labels.L6.eng]: 56,
+        [this.labels.L7.eng]: 28,
       } /* Maximum value of marks provided by the dataset */,
       labels: {
         offset: 50 /* Offset of the label from the vertice of the polygon */,
@@ -64,25 +75,17 @@ class HPL93 extends Profile {
       dataPoints: {
         radius: 12 /* Radius of the circle of the data point */,
         fills: {
-          spritual_growth: "#C026D3",
-          nutrition: "#EA580C",
-          stress_management: "#52525B",
-          physical_activity: "#2563EB",
-          health_self_responsibility: "#059669",
-          interpersonal_relationships: "#E11D48",
+          [this.labels.L2.eng]: "#C026D3",
+          [this.labels.L3.eng]: "#EA580C",
+          [this.labels.L4.eng]: "#52525B",
+          [this.labels.L5.eng]: "#2563EB",
+          [this.labels.L6.eng]: "#059669",
+          [this.labels.L7.eng]: "#E11D48",
         } /* Colors used for theming data points */,
       },
     },
     /* "labels" part which has to be provided for each profile */
-    labels: {
-      raw: "نمره کل",
-      spritual_growth: "رشد معنوی و شکوفایی",
-      nutrition: "تغذیه",
-      stress_management: "مدیریت استرس",
-      physical_activity: "ورزش و فعالیت بدنی",
-      health_self_responsibility: "مسئولیت‌پذیری در مورد سلامت",
-      interpersonal_relationships: "روابط بین‌ فردی",
-    },
+    labels: Object.values(this.labels)
   };
 
   constructor(dataset, options, config = {}) {

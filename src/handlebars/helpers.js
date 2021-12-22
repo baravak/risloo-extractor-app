@@ -1,5 +1,7 @@
+const addCommas = require("./helpers/addCommas");
 const boolean = require("./helpers/boolean");
 const math = require("./helpers/math");
+const modulo = require("./helpers/modulo");
 const ternary = require("./helpers/ternary");
 const lineWrap = require("./helpers/lineWrap");
 const wrapOnNewline = require("./helpers/wrapOnNewline");
@@ -19,19 +21,28 @@ const objectEntries = require("./helpers/objectEntries");
 const object = require("./helpers/object");
 const array = require("./helpers/array");
 const reverse = require("./helpers/reverse");
+const prepend = require("./helpers/prepend");
 const polarToCartesian = require("./helpers/polarToCartesian");
 const abs = require("./helpers/abs");
 const getArrOfProp = require("./helpers/getArrOfProp");
 const displacePoint = require("./helpers/displacePoint");
 const normalizeAngle = require("./helpers/normalizeAngle");
+const withGroup = require("./helpers/withGroup");
+const join = require("./helpers/join");
+const split = require("./helpers/split");
+const first = require("./helpers/first");
+const last = require("./helpers/last");
+const ceil = require("./helpers/ceil");
 
 const polygon = require("./helpers/profiles/polygon");
 const gauge = require("./helpers/profiles/gauge");
 const bar = require("./helpers/profiles/bar");
 
 const helpers = {
+  addCommas,
   boolean,
   math,
+  modulo,
   ternary,
   lineWrap,
   wrapOnNewline,
@@ -51,11 +62,18 @@ const helpers = {
   object,
   array,
   reverse,
+  prepend,
   polarToCartesian,
   abs,
   getArrOfProp,
   displacePoint,
   normalizeAngle,
+  withGroup,
+  join,
+  split,
+  first,
+  last,
+  ceil,
   polygon,
   gauge,
   bar,

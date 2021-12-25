@@ -25,29 +25,11 @@ class IUS93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width:
-            spec.items.circle.R * 4 +
-            spec.items.offsetX +
-            spec.items.ticks.line.width +
-            spec.items.ticks.line.offset +
-            spec.items.ticks.number.offset +
-            20 +
-            spec.profile.padding.x * 2,
-          height:
-            spec.raw.ticks.line.width +
-            spec.raw.ticks.line.offset +
-            spec.raw.ticks.number.offset +
-            spec.raw.circle.R * 2 +
-            spec.items.offsetY +
-            spec.items.circle.R * 2 +
-            spec.items.label.offsetY +
-            spec.items.label.lineHeight +
-            25 +
-            spec.profile.padding.y * 2,
-        };
+          width: 506 + 2 * this.padding.x,
+          height: 627 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 10,
@@ -171,9 +153,6 @@ class IUS93 extends Profile {
 
     // Separate Raw Data from the Dataset
     const rawData = dataset.score.shift();
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Calculate Ticks Numbers Array for Raw
     const rawTicksNumbers = FS.createArithmeticSequence(

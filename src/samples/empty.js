@@ -21,12 +21,11 @@ class empty extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: 500 + spec.profile.padding.x * 2,
-          height: 500 + spec.profile.padding.y * 2,
-        };
+          width: 500 + 2 * this.padding.x,
+          height: 500 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 0,
@@ -46,9 +45,6 @@ class empty extends Profile {
       spec: { parameters: spec },
       dataset,
     } = this;
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     return [{}];
   }

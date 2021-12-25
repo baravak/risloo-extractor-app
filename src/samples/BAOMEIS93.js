@@ -26,19 +26,11 @@ class BAOMEIS93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.items.ticks.line.width + spec.items.ticks.label.offsetX + 78 + spec.profile.padding.x * 2,
-          height:
-            spec.items.rect.base.totalHeight +
-            spec.items.rect.body.maxHeight +
-            spec.items.label.shape.height / 2 +
-            spec.items.label.shape.offsetY +
-            spec.items.label.title.offsetY +
-            15 +
-            spec.profile.padding.y * 2,
-        };
+          width: 696 + 2 * this.padding.x,
+          height: 565.44 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 103,
@@ -126,9 +118,6 @@ class BAOMEIS93 extends Profile {
     } = this;
 
     const { items: itemsSpec } = spec;
-
-    // Init Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     const items = dataset.score.map((data) => ({
       label: data.label,

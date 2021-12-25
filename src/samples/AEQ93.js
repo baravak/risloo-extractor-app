@@ -23,12 +23,11 @@ class AEQ93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: 728 + spec.profile.padding.x * 2,
-          height: 415 + spec.profile.padding.y * 2,
-        };
+          width: 728 + 2 * this.padding.x,
+          height: 415 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 87,
@@ -74,9 +73,6 @@ class AEQ93 extends Profile {
     } = this;
 
     const { raw: rawSpec } = spec;
-
-    // Init Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     const rawData = dataset.score[0];
 

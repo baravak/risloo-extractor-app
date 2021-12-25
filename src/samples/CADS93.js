@@ -24,12 +24,11 @@ class CADS93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: 883 + spec.profile.padding.x * 2,
-          height: 705 + spec.profile.padding.y * 2,
-        };
+          width: 883 + 2 * this.padding.x,
+          height: 705 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 0,
@@ -123,9 +122,6 @@ class CADS93 extends Profile {
 
     // Deconstructing the Spec of the Profile
     const { raw: rawSpec, questions: questionsSpec } = spec;
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Separate Raw Data from the Dataset
     let rawData = dataset.score[0];

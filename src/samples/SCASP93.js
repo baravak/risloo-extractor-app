@@ -40,19 +40,11 @@ class SCASP93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.descAnswer.rect.width + spec.profile.padding.x * 2,
-          height:
-            spec.items.header.height +
-            spec.items.offsetY * 6 +
-            spec.raw.offsetY +
-            spec.raw.rect.height +
-            spec.descAnswer.offsetY +
-            spec.descAnswer.rect.height +
-            spec.profile.padding.y * 2,
-        };
+          width: 840 + 2 * this.padding.x,
+          height: 679 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 0,
@@ -188,9 +180,6 @@ class SCASP93 extends Profile {
 
     // Deconstructing the Spec of the Profile
     const { raw: rawSpec, items: itemsSpec } = spec;
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Process Fields
     this._processFields();

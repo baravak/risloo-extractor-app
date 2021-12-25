@@ -29,12 +29,11 @@ class HPL93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: 770 + spec.profile.padding.x * 2,
-          height: 600 + spec.profile.padding.y * 2,
-        };
+          width: 770 + 2 * this.padding.x,
+          height: 600 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 50,
@@ -101,9 +100,6 @@ class HPL93 extends Profile {
 
     // Deconstructing the Spec of the Profile
     let { polygons: polygonsSpec, items: itemsSpec } = spec;
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, 6);
 
     const rawData = dataset.score.shift();
 

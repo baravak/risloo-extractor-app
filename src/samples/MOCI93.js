@@ -27,16 +27,11 @@ class MOCI93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.items.distanceX * (n - 2) + spec.raw.distanceX + spec.raw.rect.width + spec.profile.padding.x * 2,
-          height:
-            (spec.raw.maxValue / spec.raw.step) * spec.raw.rect.distanceY -
-            spec.raw.rect.offsetY +
-            108 +
-            spec.profile.padding.y * 2,
-        };
+          width: 620 + 2 * this.padding.x,
+          height: 586 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 15,
@@ -108,9 +103,6 @@ class MOCI93 extends Profile {
         rect: { colors },
       },
     } = spec;
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Separate Raw Data from the Dataset
     const rawData = dataset.score.pop();

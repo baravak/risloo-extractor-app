@@ -33,27 +33,11 @@ class CERQ93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width:
-            spec.items.label.rect.width +
-            spec.items.offsetX +
-            spec.items.maxValue * spec.items.widthCoeff +
-            spec.raw.offsetX +
-            spec.raw.rect.width +
-            spec.raw.ticks.line.offsetX +
-            spec.raw.ticks.line.width +
-            spec.raw.ticks.number.offsetX +
-            20 +
-            spec.profile.padding.x * 2,
-          height:
-            2 * spec.items.ticks.heightOffset +
-            spec.items.totalHeights[0] +
-            spec.items.offsetY2 +
-            spec.items.totalHeights[1] +
-            spec.profile.padding.y * 2,
-        };
+          width: 828 + 2 * this.padding.x,
+          height: 580 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 38,
@@ -153,7 +137,6 @@ class CERQ93 extends Profile {
 
     // ّInit Spec
     spec.items.totalHeights = itemsDatasets.map((dataset) => spec.items.calcTotalHeight(dataset.length));
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Gather Required Info for Raw
     const raw = rawDataset.map((data) => ({

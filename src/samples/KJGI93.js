@@ -27,23 +27,11 @@ class KJGI93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width:
-            spec.items.distance.x * (n - 1) +
-            2 * spec.items.markToRadius(spec.items.maxValue) +
-            spec.profile.padding.x * 2,
-          height:
-            spec.raw.markToRadius(spec.raw.maxValue) * 2 +
-            spec.interpretRects.height +
-            spec.interpretRects.offsetY1 +
-            spec.interpretRects.offsetY2 +
-            spec.items.markToRadius(spec.items.maxValue) * 2 +
-            spec.items.offset.y +
-            20 +
-            spec.profile.padding.y * 2,
-        };
+          width: 500 + 2 * this.padding.x,
+          height: 785 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 10,
@@ -121,9 +109,6 @@ class KJGI93 extends Profile {
 
     // Separate Interpretation from the Dataset
     let interpret = dataset.score.pop().mark;
-
-    // ّInit Spec (Do Not Forget To Separate Raw)
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Gather Required Info for Raw
     const raw = {

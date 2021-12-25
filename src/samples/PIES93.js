@@ -31,21 +31,11 @@ class PIES93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width:
-            spec.items.base.rect.width +
-            spec.items.body.rect.maxWidth +
-            spec.raw.offsetX +
-            spec.raw.rect.width +
-            spec.raw.ticks.line.offsetX +
-            spec.raw.ticks.line.width +
-            spec.raw.ticks.number.offsetX +
-            12 +
-            spec.profile.padding.x * 2,
-          height: spec.items.calcTotalHeight(n) + spec.items.ticks.heightOffset * 2 + spec.profile.padding.y * 2,
-        };
+          width: 821 + 2 * this.padding.x,
+          height: 610 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 40,
@@ -176,9 +166,7 @@ class PIES93 extends Profile {
 
     // Separate Raw Data from the Dataset
     const rawData = dataset.score.pop();
-
-    // ّInit Spec (Do Not Forget To Separate Raw)
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
+    
     spec.items.totalHeight = spec.items.calcTotalHeight(dataset.score.length);
 
     // Gather Required Info for Raw

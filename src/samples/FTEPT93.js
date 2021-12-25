@@ -32,18 +32,11 @@ class FTEPT93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.items.baseline.width + spec.profile.padding.x * 2,
-          height:
-            spec.items.topPos +
-            spec.raw.offsetY +
-            spec.raw.label.stops.line.length +
-            spec.raw.label.stops.number.offsetY +
-            10 +
-            spec.profile.padding.y * 2,
-        };
+          width: 740 + 2 * this.padding.x,
+          height: 632 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 0,
@@ -136,9 +129,6 @@ class FTEPT93 extends Profile {
     } = this;
 
     const { raw: rawSpec, items: itemsSpec } = spec;
-
-    // Init Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Separate Raw Data from the Dataset
     let rawData = dataset.score.shift();

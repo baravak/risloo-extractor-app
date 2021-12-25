@@ -30,19 +30,11 @@ class WAQ93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.items.distanceX1 * 3 + spec.items.circle.R * 2 + 20 + spec.profile.padding.x * 2,
-          height:
-            spec.raw.circle.R * 2 +
-            spec.items.offsetY1 +
-            spec.items.circle.R * 4 +
-            spec.items.offsetY2 +
-            spec.items.label.offsetY +
-            13 +
-            spec.profile.padding.y * 2,
-        };
+          width: 701 + 2 * this.padding.x,
+          height: 646 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 0,
@@ -163,9 +155,6 @@ class WAQ93 extends Profile {
 
     // Separate Raw Data from the Dataset
     const rawData = dataset.score.shift();
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Calculate Ticks Numbers Array for Raw
     const rawTicksNumbers = FS.createArithmeticSequence(

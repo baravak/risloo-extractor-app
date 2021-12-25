@@ -28,21 +28,11 @@ class SDCAQ93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width:
-            spec.items.offsetX +
-            spec.items.maxValue * spec.items.widthCoeff +
-            spec.raw.offsetX +
-            spec.raw.rect.width +
-            spec.raw.ticks.line.offsetX +
-            spec.raw.ticks.line.width +
-            spec.raw.ticks.number.offsetX +
-            23 +
-            spec.profile.padding.x * 2,
-          height: spec.items.totalHeight + 2 * spec.items.ticks.heightOffset + spec.profile.padding.y * 2,
-        };
+          width: 832 + 2 * this.padding.x,
+          height: 500 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 35,
@@ -128,7 +118,6 @@ class SDCAQ93 extends Profile {
 
     // ّInit Spec
     spec.items.totalHeight = spec.items.calcTotalHeight(dataset.score.length);
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Gather Required Info for Raw
     const raw = {

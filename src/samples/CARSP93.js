@@ -27,12 +27,11 @@ class CARSP93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.item.circle.main.R * 2 + 2 * 10 + 30 + spec.profile.padding.x * 2,
-          height: spec.item.circle.main.R + spec.item.circle.center.radius + 10 + 12 + spec.profile.padding.y * 2,
-        };
+          width: 730 + 2 * this.padding.x,
+          height: 404.5 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 80,
@@ -89,9 +88,6 @@ class CARSP93 extends Profile {
     } = this;
 
     const { item: itemSpec } = spec;
-
-    // Init Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     const itemData = dataset.score[0];
 

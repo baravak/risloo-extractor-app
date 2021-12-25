@@ -28,20 +28,11 @@ class OBQ4493 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.separator.line.width + spec.profile.padding.x * 2,
-          height:
-            spec.items.rect.distanceY * 4 +
-            spec.items.rect.height +
-            spec.raw.rect.offsetY +
-            spec.raw.rect.height +
-            spec.separator.line.offsetY +
-            spec.separator.desc.offsetY +
-            40 +
-            spec.profile.padding.y * 2,
-        };
+          width: 903 + 2 * this.padding.x,
+          height: 708 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 0,
@@ -112,9 +103,6 @@ class OBQ4493 extends Profile {
 
     const { items: itemsSpec, raw: rawSpec } = spec;
 
-    // ّInit Spec (Do Not Forget To Separate Raw)
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
-
     // Separate Raw Data from the Dataset
     const rawData = dataset.score.pop();
 
@@ -131,8 +119,6 @@ class OBQ4493 extends Profile {
       maxValue: itemsSpec.maxValues[data.label.eng],
       width: Math.abs((data.mark / itemsSpec.maxValues[data.label.eng]) * (itemsSpec.rect.width / 2)),
     }));
-
-    // console.log(items);
 
     return [
       {

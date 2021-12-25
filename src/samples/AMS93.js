@@ -29,23 +29,11 @@ class AMS93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width:
-            spec.items.label.rect.width +
-            spec.items.offsetX +
-            spec.items.maxValue * spec.items.widthCoeff +
-            spec.profile.padding.x * 2,
-          height:
-            2 * spec.items.ticks.heightOffset +
-            spec.items.totalHeights[0] +
-            spec.items.offsetY2 +
-            spec.items.totalHeights[1] +
-            spec.items.offsetY2 +
-            spec.items.totalHeights[2] +
-            spec.profile.padding.y * 2,
-        };
+          width: 662 + 2 * this.padding.x,
+          height: 530 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 0,
@@ -119,7 +107,6 @@ class AMS93 extends Profile {
 
     // ّInit Spec
     spec.items.totalHeights = itemsDatasets.map((dataset) => spec.items.calcTotalHeight(dataset.length));
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     // Gather Required Info for Items
     const items = itemsDatasets.map((dataset, datasetIndex) =>

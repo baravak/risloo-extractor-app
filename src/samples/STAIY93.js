@@ -24,12 +24,11 @@ class STAIY93 extends Profile {
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
     /* calculating its dimensions carefully is of great importance */
     profile: {
-      dimensions: {} /* To be calculated in the class with the function provided */,
-      calcDim: function (spec, n) {
+      get dimensions() {
         return {
-          width: spec.items.rect.width * 2 + spec.items.rect.offsetX + spec.profile.padding.x * 2,
-          height: spec.items.rect.distanceY + spec.items.trait.circle.R * 2 + spec.profile.padding.y * 2,
-        };
+          width: 550 + 2 * this.padding.x,
+          height: 476 + 2 * this.padding.y,
+        }
       },
       padding: {
         x: 70,
@@ -116,9 +115,6 @@ class STAIY93 extends Profile {
 
     // Deconstructing the Spec of the Profile
     const { items: itemsSpec } = spec;
-
-    // ّInit Spec
-    spec.profile.dimensions = spec.profile.calcDim(spec, dataset.score.length);
 
     const items = dataset.score.map((data) => ({
       label: data.label,

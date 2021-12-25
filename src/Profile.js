@@ -88,11 +88,14 @@ class FS {
   static deepMerge(target, source) {
     if (FS.isObject(target) && FS.isObject(source)) {
       for (const key in source) {
-        if (FS.isObject(source[key])) {
+        const descriptor = Object.getOwnPropertyDescriptor(source, key);
+        if (FS.isObject(source[key]) && !(descriptor["get"] || descriptor["set"])) {
           if (!target[key]) Object.assign(target, { [key]: {} });
           FS.deepMerge(target[key], source[key]);
         } else {
-          Object.assign(target, { [key]: source[key] });
+          Object.defineProperties(target, {
+            [key]: descriptor,
+          });
         }
       }
     }

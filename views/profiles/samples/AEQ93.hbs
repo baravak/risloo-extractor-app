@@ -21,7 +21,7 @@
           {{#with @root.spec.raw as | rawSpec |}}
             {{setVar "p" (polarToCartesian (math rawSpec.circle.R '+' 10) tick.angle)}}
             {{setVar "betMinus90And90" (boolean (boolean tick.angle '>' (toRad -90)) '&&' (boolean tick.angle '<' (toRad 90)))}}
-            <text x="{{p.x}}" y="{{p.y}}" text-anchor="{{ternary betMinus90And90 'start' 'end'}}" dy="0">{{tick.mark}}</text>
+            <text x="{{p.x}}" y="{{p.y}}" text-anchor="{{ternary betMinus90And90 'end' 'start'}}" dy="0">{{tick.mark}}</text>
           {{/with}}
         {{/each}}
       </g>

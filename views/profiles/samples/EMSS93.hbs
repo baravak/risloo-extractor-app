@@ -7,7 +7,7 @@
   <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
     <g transform="translate(48, 16)">
       <g transform="translate(0, 546.5)">
-        <text x="-5" y="0" font-size="14" font-weight="400" fill="#52525B" text-anchor="end" dy="-2">{{raw.label.fr}}</text>
+        <text x="-5" y="0" font-size="14" font-weight="400" fill="#52525B" text-anchor="start" dy="-2">{{raw.label.fr}}</text>
 
         {{#each spec.raw.stops as | stopMark stopMarkIndex |}}
           {{#with @root.spec.raw as | rawSpec |}}
@@ -52,7 +52,7 @@
           {{#each spec.items.interprets as | interpret index |}}
             <g transform="translate(-{{lookup @root.distanceXArr index}}, 0)">
               <rect x="0" y="0" width="8" height="8" fill="{{interpret.fill}}"/>
-              <text x="-5" y="{{math 8 '/' 2}}" font-size="12" font-weight="400" fill="#71717A" text-anchor="end" dy="3">{{interpret.fr}}</text>
+              <text x="-5" y="{{math 8 '/' 2}}" font-size="12" font-weight="400" fill="#71717A" text-anchor="start" dy="3">{{interpret.fr}}</text>
             </g>
           {{/each}}
         </g>

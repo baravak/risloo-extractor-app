@@ -22,7 +22,7 @@
             {{setVar "interpret" (lookup @root.spec.raw.interprets (math stopIndex '-' 1))}}
             {{setVar "isChosen" (boolean interpret.eng '===' @root.raw.interpret.eng)}}
             <circle cx="{{pm1.x}}" cy="{{pm1.y}}" r="{{ternary isChosen 3.5 2.5}}" fill="{{ternary isChosen @root.raw.interpret.fill '#E4E4E7'}}"/>
-            <text x="{{pm2.x}}" y="{{pm2.y}}" text-anchor="{{lookup (object 1='start' 2='middle' 3='end') stopIndex}}" fill="{{ternary isChosen @root.raw.interpret.fill '#A1A1AA'}}" font-weight="{{ternary isChosen 500 400}}" font-size="{{ternary isChosen 16 14}}" dy="5">{{interpret.fr}}</text>
+            <text x="{{pm2.x}}" y="{{pm2.y}}" text-anchor="{{lookup (object 1='end' 2='middle' 3='start') stopIndex}}" fill="{{ternary isChosen @root.raw.interpret.fill '#A1A1AA'}}" font-weight="{{ternary isChosen 500 400}}" font-size="{{ternary isChosen 16 14}}" dy="5">{{interpret.fr}}</text>
           {{/unless}}
         {{/with}}
       {{/each}}

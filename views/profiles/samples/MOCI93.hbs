@@ -4,7 +4,7 @@
   <g transform="translate(0, {{math (math (math spec.raw.maxValue '/' spec.raw.step) '*' spec.raw.rect.distanceY) '-' spec.raw.rect.offsetY}}) scale(1, -1)">
     {{#each items as |item index|}}
       <g transform="translate({{math @root.spec.items.distanceX '*' index}}, 0)">
-        <text x="0" y="0" text-anchor="end" fill="{{item.fill}}" transform="translate({{math (math @root.spec.items.rect.width '/' 2) '+' 5}}, -25) rotate(45) scale(1, -1)"><tspan font-size="18">{{item.label.fr}}</tspan><tspan font-size="14"> ({{item.label.abbr}})</tspan></text>
+        <text x="0" y="0" text-anchor="start" fill="{{item.fill}}" transform="translate({{math (math @root.spec.items.rect.width '/' 2) '+' 5}}, -25) rotate(45) scale(1, -1)" xml:space="preserve"><tspan font-size="18">{{item.label.fr}}</tspan><tspan font-size="14"> ({{item.label.abbr}})</tspan></text>
         <g>
           <g fill="{{@root.spec.items.rect.defaultColor}}">
           {{#forLoop 1 (math (math item.maxValue '/' @root.spec.items.step) '+' 1) 1 }}
@@ -31,7 +31,7 @@
     {{/each}}
 
     <g transform="translate({{math (math spec.items.distanceX '*' (math items.length '-' 1)) '+' spec.raw.distanceX}}, 0)">
-        <text x="0" y="0" text-anchor="end" fill="{{spec.raw.rect.color}}" transform="translate({{math (math spec.items.rect.width '/' 2) '+' 10}}, -25) rotate(45) scale(1, -1)"><tspan font-size="18">{{raw.label.fr}}</tspan><tspan font-size="14"> ({{raw.label.abbr}})</tspan></text>
+        <text x="0" y="0" text-anchor="start" fill="{{spec.raw.rect.color}}" transform="translate({{math (math spec.items.rect.width '/' 2) '+' 10}}, -25) rotate(45) scale(1, -1)" xml:space="preserve"><tspan font-size="18">{{raw.label.fr}}</tspan><tspan font-size="14"> ({{raw.label.abbr}})</tspan></text>
         <g>
           <g fill="{{spec.raw.rect.defaultColor}}">
             {{#forLoop 1 (math (math spec.raw.maxValue '/' spec.raw.step) '+' 1) 1 }}

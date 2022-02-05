@@ -27,8 +27,8 @@
       </g>
       <g transform="translate(0, {{math rect.height '/' 2}})">
         <line x1="0" y1="{{math (math rect.height '/' 2) '+' 1}}" x2="0" y2="-{{math (math rect.height '/' 2) '+' 1}}" stroke="#A1A1AA" stroke-dasharray="2.5" stroke-linecap="round" stroke-width="1"/>
-        <text x="{{math (math rect.width '/' 2) '+' maxValuesOffsetX}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{item.maxValue}}+</text>
-        <text x="{{math -1 '*' (math (math rect.width '/' 2) '+' maxValuesOffsetX)}}" y="0" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{item.maxValue}}-</text>
+        <text x="{{math (math rect.width '/' 2) '+' maxValuesOffsetX}}" y="0" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{item.maxValue}}+</text>
+        <text x="{{math -1 '*' (math (math rect.width '/' 2) '+' maxValuesOffsetX)}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{item.maxValue}}-</text>
       </g>
       <text x="0" y="{{math rect.height '+' labels.offsetY}}" text-anchor="middle" font-size="14" font-weight="500" fill="#52525B" dy="4">{{item.label.fr}} ({{item.label.abbr}})</text>
     </g>
@@ -46,14 +46,14 @@
       </g>
       <g transform="translate(0, {{math rect.height '/' 2}})">
         <line x1="0" y1="{{math (math rect.height '/' 2) '+' 1}}" x2="0" y2="-{{math (math rect.height '/' 2) '+' 1}}" stroke="#A1A1AA" stroke-dasharray="2.5" stroke-linecap="round" stroke-width="1"/>
-        <text x="{{math (math rect.width '/' 2) '+' maxValuesOffsetX}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{../raw.maxValue}}+</text>
-        <text x="{{math -1 '*' (math (math rect.width '/' 2) '+' maxValuesOffsetX)}}" y="0" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{../raw.maxValue}}-</text>
+        <text x="{{math (math rect.width '/' 2) '+' maxValuesOffsetX}}" y="0" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{../raw.maxValue}}+</text>
+        <text x="{{math -1 '*' (math (math rect.width '/' 2) '+' maxValuesOffsetX)}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="4">{{../raw.maxValue}}-</text>
       </g>
       <text x="0" y="{{math rect.height '+' labels.offsetY}}" text-anchor="middle" font-size="14" font-weight="500" fill="#52525B" dy="4">{{../raw.label.fr}} ({{../raw.label.abbr}})</text>
     {{/with}}
     <g transform="translate(0, {{math spec.raw.rect.height '+' spec.separator.line.offsetY}})">
       <line x1="{{math (math -1 '*' spec.separator.line.width) '/' 2}}" y1="0" x2="{{math spec.separator.line.width '/' 2}}" y2="0" stroke="#A1A1AA"/>
-      <text x="{{math spec.separator.line.width '/' 2}}" y="{{spec.separator.desc.offsetY}}" fill="#71717A" text-anchor="end" font-size="14" font-weight="400" dy="4">{{spec.desc}}</text>
+      <text x="{{math spec.separator.line.width '/' 2}}" y="{{spec.separator.desc.offsetY}}" fill="#71717A" text-anchor="start" font-size="14" font-weight="400" dy="4">{{spec.desc}}</text>
     </g>
   </g>
 </g>

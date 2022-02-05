@@ -9,9 +9,9 @@
   <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
     <g transform="translate(0, {{spec.items.header.offsetY1}})">
       <g transform="translate(0, 8)" font-size="16" font-weight="400">
-        <g transform="translate({{spec.items.leftPosArr.[0]}}, 0)"><text x="0" y="0" text-anchor="end" fill="#A1A1AA">نمره</text></g>
-        <g transform="translate({{spec.items.leftPosArr.[1]}}, 0)"><text x="0" y="0" text-anchor="end" fill="#A1A1AA">عنوان</text></g>
-        <g transform="translate({{spec.items.leftPosArr.[2]}}, 0)"><text x="0" y="0" text-anchor="start" fill="#A1A1AA">سؤالات</text></g>
+        <g transform="translate({{spec.items.leftPosArr.[0]}}, 0)"><text x="0" y="0" text-anchor="start" fill="#A1A1AA">نمره</text></g>
+        <g transform="translate({{spec.items.leftPosArr.[1]}}, 0)"><text x="0" y="0" text-anchor="start" fill="#A1A1AA">عنوان</text></g>
+        <g transform="translate({{spec.items.leftPosArr.[2]}}, 0)"><text x="0" y="0" text-anchor="end" fill="#A1A1AA">سؤالات</text></g>
       </g>
       <g transform="translate({{spec.items.header.legend.leftPos}}, 0)">
         {{setVar "intensitiesArr" (reverse (objectEntries spec.items.rect.intensities))}}
@@ -36,11 +36,11 @@
               <g transform="translate(0, {{itemsSpec.paddingY}})">
                 <g transform="translate(0, {{math itemsSpec.rect.height '/' 2}})">
                   <g transform="translate({{itemsSpec.leftPosArr.[0]}}, 0)">
-                    <text x="0" y="0" font-size="16" font-weight="600" text-anchor="end" fill="#3F3F46" dy="5">{{item.mark}}</text>
-                    <text x="-22" y="0" font-size="10" font-weight="400" text-anchor="end" fill="#71717A" dy="3">از {{item.maxValue}}</text>
+                    <text x="0" y="0" font-size="16" font-weight="600" text-anchor="start" fill="#3F3F46" dy="5">{{item.mark}}</text>
+                    <text x="-22" y="0" font-size="10" font-weight="400" text-anchor="start" fill="#71717A" dy="3">از {{item.maxValue}}</text>
                   </g>
                   <g transform="translate({{itemsSpec.leftPosArr.[1]}}, 0)">
-                    <text x="0" y="0" font-size="16" font-weight="400" text-anchor="end" fill="#3F3F46" dy="4.5">{{item.label.fr}}</text>
+                    <text x="0" y="0" font-size="16" font-weight="400" text-anchor="start" fill="#3F3F46" dy="4.5">{{item.label.fr}}</text>
                   </g>
                 </g>
                 <g transform="translate({{itemsSpec.leftPosArr.[2]}}, 0)">
@@ -68,17 +68,17 @@
             </g>
 
             <g transform="translate(0, {{math spec.raw.rect.height '/' 2}})">
-              <text x="-{{spec.raw.label.offsetX}}" y="0" font-size="16" font-weight="500" text-anchor="end" fill="#44403C" dy="4.5">{{raw.label.fr}}</text>
-              <text x="{{math spec.raw.rect.width '+' spec.raw.mark.maxValueOffsetX}}" y="0" font-size="12" font-weight="400" text-anchor="start" fill="#A1A1AA" dy="3">{{spec.raw.maxValue}}</text>
+              <text x="-{{spec.raw.label.offsetX}}" y="0" font-size="16" font-weight="500" text-anchor="start" fill="#44403C" dy="4.5">{{raw.label.fr}}</text>
+              <text x="{{math spec.raw.rect.width '+' spec.raw.mark.maxValueOffsetX}}" y="0" font-size="12" font-weight="400" text-anchor="end" fill="#A1A1AA" dy="3">{{spec.raw.maxValue}}</text>
             </g>
           </g>
 
           <g transform="translate(0, {{math spec.raw.rect.height '+' spec.descAnswer.offsetY}})">
             <rect x="0" y="0" width="{{spec.descAnswer.rect.width}}" height="{{spec.descAnswer.rect.height}}" rx="{{spec.descAnswer.rect.br}}" fill="#FAFAFA" stroke="#D4D4D8"/>
             <g transform="translate({{math spec.descAnswer.rect.width '-' spec.descAnswer.rect.padding}}, 0)">
-              <text x="0" y="28" font-size="14" font-weight="500" text-anchor="end" fill="#52525B">پاسخ سؤال تشریحی:</text>
+              <text x="0" y="28" font-size="14" font-weight="500" text-anchor="start" fill="#52525B">پاسخ سؤال تشریحی:</text>
               {{setVar "descAnswerLines" (ellipsisLines (lineWrap descAnswer 132) 2)}}
-              <g transform="translate(0, 56)" fill="#71717A" font-size="14" font-weight="400" text-anchor="end">
+              <g transform="translate(0, 56)" fill="#71717A" font-size="14" font-weight="400" text-anchor="start">
                 {{#each descAnswerLines as | line index |}}
                   <text x="0" y="{{math index '*' @root.spec.descAnswer.content.lineHeight}}">{{line}}</text>
                 {{/each}}

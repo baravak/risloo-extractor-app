@@ -15,7 +15,7 @@
             <g transform="translate({{math (math index '-' 2) '*' itemsSpec.distanceX}}, 0)">
               <g transform="translate(-5, 0)">
                 {{bar item.height.base itemsSpec.rect.base.width (object tl=0 tr=itemsSpec.rect.base.br br=itemsSpec.rect.base.br bl=0) (toRad -90) fill=itemsSpec.rect.base.color}}
-                <text x="-5" y="-{{math item.height.base '-' 4}}" font-size="12" font-weight="400" text-anchor="end" fill="#D4D4D8" dy="3">{{item.maxValue}}</text>
+                <text x="-5" y="-{{math item.height.base '-' 4}}" font-size="12" font-weight="400" text-anchor="start" fill="#D4D4D8" dy="3">{{item.maxValue}}</text>
               </g>
               {{bar item.height.body itemsSpec.rect.body.width (object tl=0 tr=itemsSpec.rect.body.br br=itemsSpec.rect.body.br bl=0) (toRad -90) fill=item.fill}}
               <g transform="translate({{math itemsSpec.rect.body.width '/' 2}}, 0)" fill="{{item.fill}}">
@@ -34,7 +34,7 @@
     </g>
 
     <g transform="translate({{spec.raw.leftPos}}, {{math spec.items.topPos '+' spec.raw.offsetY}})">
-      <text x="0" y="-20" font-size="14" font-weight="400" text-anchor="start" fill="#52525B" dy="4">{{raw.label.fr}}</text>
+      <text x="0" y="-20" font-size="14" font-weight="400" text-anchor="end" fill="#52525B" dy="4">{{raw.label.fr}}</text>
       <rect x="0" y="0" width="{{spec.raw.rect.width}}" height="{{spec.raw.rect.height}}" fill="#F4F4F5" clip-path="url(#raw-rect)"/>
       <rect x="0" y="0" width="{{raw.width}}" height="{{spec.raw.rect.height}}" fill="{{raw.interpret.fill}}" clip-path="url(#raw-rect)"/>
       <g transform="translate({{raw.width}}, -{{spec.raw.label.shape.offsetY}})">

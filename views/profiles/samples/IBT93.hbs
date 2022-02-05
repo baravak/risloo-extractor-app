@@ -36,7 +36,7 @@
           <g transform="translate({{math ../spec.items.base.rect.height '/' 2}}, {{math ../spec.items.base.rect.height '/' 2}})">
             <circle cx="0" cy="0" r="{{../spec.items.base.label.circle.radius}}" fill="white"/>
             <text x="0" y="0" fill="{{item.baseColor}}" text-anchor="middle" font-size="16" font-weight="400" dy="5.5">{{item.label.abbr}}</text>
-            <text x="{{../spec.items.base.label.offsetX}}" y="0" fill="white" font-size="18" font-weight="500" text-anchor="start" dy="4.5">{{item.label.fr}}</text>
+            <text x="{{../spec.items.base.label.offsetX}}" y="0" fill="white" font-size="18" font-weight="500" text-anchor="end" dy="4.5">{{item.label.fr}}</text>
           </g>
         </g>
       {{/each}}
@@ -58,7 +58,7 @@
         <text x="0" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6.5" transform="scale(1, -1) translate(0, 12)">{{raw.mark}}</text>
       </g>
       <g>
-        <text x="0" y="0" fill="white" text-anchor="start" font-size="18" font-weight="500" dy="4" transform="scale(1, -1) rotate(-90)">{{raw.label.fr}}</text>
+        <text x="0" y="0" fill="white" text-anchor="end" font-size="18" font-weight="500" dy="4" transform="scale(1, -1) rotate(-90)">{{raw.label.fr}}</text>
       </g>
     </g>
   </g>

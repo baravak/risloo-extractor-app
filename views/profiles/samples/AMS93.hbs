@@ -13,7 +13,7 @@
       {{#each itemsTicks as | tick index |}}
         <g transform="translate({{tick.leftPos}}, 0)">
           <line x1="0" y1="0" x2="0" y2="{{../tickTotalHeight}}" stroke="#E4E4E7" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="2"/>
-          <text x="-{{@root.spec.items.ticks.numberOffset.x}}" y="{{@root.spec.items.ticks.numberOffset.y}}" fill="#A1A1AA" text-anchor="end" font-size="16" font-weight="500" dy="5">{{tick.number}}</text>
+          <text x="-{{@root.spec.items.ticks.numberOffset.x}}" y="{{@root.spec.items.ticks.numberOffset.y}}" fill="#A1A1AA" text-anchor="start" font-size="16" font-weight="500" dy="5">{{tick.number}}</text>
         </g>
       {{/each}}
     </g>
@@ -29,7 +29,7 @@
            <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
              {{bar item.width itemsSpec.rect.height (object tl=0 bl=0 tr=itemsSpec.rect.borderRadius br=itemsSpec.rect.borderRadius) (toRad 0) fill=item.fill fill-opacity=item.opacity}}
              <g transform="translate(0, {{itemsSpec.rect.borderRadius}})">
-               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="end" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
+               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="start" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
                <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6">{{item.mark}}</text>
              </g>
            </g>
@@ -54,7 +54,7 @@
            <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
              {{bar item.width itemsSpec.rect.height (object tl=0 bl=0 tr=itemsSpec.rect.borderRadius br=itemsSpec.rect.borderRadius) (toRad 0) fill=item.fill fill-opacity=item.opacity}}
              <g transform="translate(0, {{itemsSpec.rect.borderRadius}})">
-               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="end" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
+               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="start" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
                <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6">{{item.mark}}</text>
              </g>
            </g>
@@ -79,7 +79,7 @@
            <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
              {{bar item.width itemsSpec.rect.height (object tl=0 bl=0 tr=itemsSpec.rect.borderRadius br=itemsSpec.rect.borderRadius) (toRad 0) fill=item.fill fill-opacity=item.opacity}}
              <g transform="translate(0, {{itemsSpec.rect.borderRadius}})">
-               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="end" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
+               <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="start" font-size="18" font-weight="400" dy="3">{{item.label.fr}}</text>
                <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6">{{item.mark}}</text>
              </g>
            </g>

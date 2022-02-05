@@ -17,7 +17,7 @@
     {{#each itemsTicks as | tick index |}}
       <g transform="translate({{tick.leftPos}}, 0)">
         <line x1="0" y1="0" x2="0" y2="{{../tickTotalHeight}}" stroke="#E4E4E7" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="2"/>
-        <text x="-{{@root.spec.items.ticks.numberOffset.x}}" y="{{@root.spec.items.ticks.numberOffset.y}}" fill="#A1A1AA" text-anchor="end" font-size="16" font-weight="500" dy="5">{{tick.number}}</text>
+        <text x="-{{@root.spec.items.ticks.numberOffset.x}}" y="{{@root.spec.items.ticks.numberOffset.y}}" fill="#A1A1AA" text-anchor="start" font-size="16" font-weight="500" dy="5">{{tick.number}}</text>
       </g>
     {{/each}}
     
@@ -28,7 +28,7 @@
             <path d="M 0 0 h {{math item.width '-' itemsSpec.rect.borderRadius}} a {{itemsSpec.rect.borderRadius}} {{itemsSpec.rect.borderRadius}} 180 0 1 0 {{itemsSpec.rect.height}} h -{{math item.width '-' itemsSpec.rect.borderRadius}} z" fill="{{item.fill}}"/>
             <g transform="translate(0, {{math itemsSpec.rect.height '/' 2}})">
               {{#each (wrapOnNewline item.label.fr) as | line index |}}
-                <text x="-{{itemsSpec.label.offsetX}}" y="{{math (math (math 2 '*' index) '-' 1) '*' itemsSpec.label.offsetY}}" fill="#52525B" text-anchor="end" font-size="16" font-weight="400" dy="3">{{line}}</text>
+                <text x="-{{itemsSpec.label.offsetX}}" y="{{math (math (math 2 '*' index) '-' 1) '*' itemsSpec.label.offsetY}}" fill="#52525B" text-anchor="start" font-size="16" font-weight="400" dy="3">{{line}}</text>
               {{/each}}
               <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="20" font-weight="600" dy="6">{{item.mark}}</text>
             </g>
@@ -48,7 +48,7 @@
     <path d="M 0 0 v -{{math (math spec.raw.heightCoeff '*' spec.raw.maxValue) '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math (math spec.raw.heightCoeff '*' spec.raw.maxValue) '-' spec.raw.rect.borderRadius}} z" fill="#F4F4F5"/>
     <path d="M 0 0 v -{{math raw.height '-' spec.raw.rect.borderRadius}} a {{spec.raw.rect.borderRadius}} {{spec.raw.rect.borderRadius}} 180 0 1 {{spec.raw.rect.width}} 0 v {{math raw.height '-' spec.raw.rect.borderRadius}} z" fill="#52525B"/>
     <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="22" font-weight="700" fill="white" dy="6" transform="translate(0, 9)">{{raw.mark}}</text>
-    <text x="0" y="-22" text-anchor="start" font--size="18" font-weight="500" fill="#71717A" dy="5" transform="rotate(-90)">نمره کل</text>
+    <text x="0" y="-22" text-anchor="end" font--size="18" font-weight="500" fill="#71717A" dy="5" transform="rotate(-90)">نمره کل</text>
     <g transform="scale(1, -1)">
       <rect x="-1" y="0" width="{{math spec.raw.rect.width '+' 2}}" height="1" fill="#FFFFFF" rx="1"/>
       <rect x="-1" y="0" width="{{math spec.raw.rect.width '+' 2}}" height="5" fill="url('#vertical-shadow')" fill-opacity="0.2"/>
@@ -58,7 +58,7 @@
       {{#each rawTicks as | tick index |}}
         <line x1="0" y1="-{{tick.bottomPos}}" x2="{{@root.spec.raw.ticks.line.width}}" y2="-{{tick.bottomPos}}" stroke="#E4E4E7" stroke-dasharray="3" stroke-linecap="round" stroke-width="2"/>
         <g transform="translate({{math @root.spec.raw.ticks.line.width '+' @root.spec.raw.ticks.number.offsetX}}, -{{tick.bottomPos}})">
-          <text x="0" y="0" fill="#A1A1AA" text-anchor="start" font-size="14" font-weight="500" dy="4">{{tick.number}}</text>
+          <text x="0" y="0" fill="#A1A1AA" text-anchor="end" font-size="14" font-weight="500" dy="4">{{tick.number}}</text>
         </g>
       {{/each}}
     </g>

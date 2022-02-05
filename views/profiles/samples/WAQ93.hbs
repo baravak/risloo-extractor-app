@@ -43,7 +43,7 @@
               <text x="{{p.x}}" y="{{p.y}}" font-size="12" font-weight="500" fill="#D4D4D8" text-anchor="middle" dy="2.5" transform="translate(-{{ternary @first @root.spec.items.ticks.number.offset 0}}, -{{ternary @last @root.spec.items.ticks.number.offset 0}})">{{tick.number}}</text>
             {{/each}}
             <g transform="translate(0, {{math @root.spec.items.circle.R '+' @root.spec.items.label.offsetY}})">
-              <text x="0" y="0" font-size="14" text-anchor="middle"><tspan font-weight="400" fill="#71717A" dy="5">ارتباط فرد با </tspan><tspan font-weight="500" fill="{{item.fill}}">{{item.label.fr}}</tspan></text>
+              <text x="0" y="0" font-size="14" text-anchor="middle" xml:space="preserve"><tspan font-weight="400" fill="#71717A" dy="5">ارتباط فرد با </tspan><tspan font-weight="500" fill="{{item.fill}}">{{item.label.fr}}</tspan></text>
             </g>
           </g>
         {{/each}}
@@ -62,7 +62,7 @@
                 <text x="{{p.x}}" y="{{p.y}}" font-size="12" font-weight="500" fill="#D4D4D8" text-anchor="middle" dy="2.5" transform="translate(-{{ternary @first @root.spec.items.ticks.number.offset 0}}, -{{ternary @last @root.spec.items.ticks.number.offset 0}})">{{tick.number}}</text>
               {{/each}}
               <g transform="translate(0, {{math @root.spec.items.circle.R '+' @root.spec.items.label.offsetY}})">
-                <text x="0" y="0" font-size="14" text-anchor="middle"><tspan font-weight="400" fill="#71717A" dy="5">ارتباط فرد با </tspan><tspan font-weight="500" fill="{{item.fill}}">{{item.label.fr}}</tspan></text>
+                <text x="0" y="0" font-size="14" text-anchor="middle" xml:space="preserve"><tspan font-weight="400" fill="#71717A" dy="5">ارتباط فرد با </tspan><tspan font-weight="500" fill="{{item.fill}}">{{item.label.fr}}</tspan></text>
               </g>
             </g>
           {{/each}}

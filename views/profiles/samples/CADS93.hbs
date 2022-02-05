@@ -25,7 +25,7 @@
             </g>
             <g transform="translate(-{{math 2 '*' (math questionsSpec.rect1.width '+' questionsSpec.offsetX)}}, 0)">
               <rect x="0" y="0" width="{{questionsSpec.rect2.width}}" height="{{questionsSpec.rect2.height}}" rx="{{questionsSpec.rect2.br}}" transform="scale(-1, 1)"/>
-              <text x="-10" y="{{math questionsSpec.rect1.height '/' 2}}" fill="#52525B" text-anchor="end" dy="4">{{question.answer.text}}</text>
+              <text x="-10" y="{{math questionsSpec.rect1.height '/' 2}}" fill="#52525B" text-anchor="start" dy="4">{{question.answer.text}}</text>
             </g>
           </g>
         {{/with}}
@@ -42,7 +42,7 @@
                 {{#with @root.spec.questions as | questionsSpec |}}
                   <g transform="translate(0, {{math questionIndex '*' questionsSpec.distanceY}})">
                     <rect x="0" y="0" width="{{questionsSpec.rect4.width}}" height="{{questionsSpec.rect4.height}}" rx="{{questionsSpec.rect4.br}}" transform="scale(-1, 1)"/>
-                    <text x="-10" y="{{math questionsSpec.rect4.height '/' 2}}" fill="#52525B" text-anchor="end" dy="4">{{question.text}}</text>
+                    <text x="-10" y="{{math questionsSpec.rect4.height '/' 2}}" fill="#52525B" text-anchor="start" dy="4">{{question.text}}</text>
                     <g transform="translate(-{{math questionsSpec.rect4.width '+' questionsSpec.offsetX}}, 0)">
                       <rect x="0" y="0" width="{{questionsSpec.rect1.width}}" height="{{questionsSpec.rect1.height}}" rx="{{questionsSpec.rect1.br}}" transform="scale(-1, 1)"/>
                       <g transform="translate(-{{math questionsSpec.rect1.width '/' 2}}, {{math questionsSpec.rect1.height '/' 2}})">
@@ -60,7 +60,7 @@
         </g>
 
         <g transform="translate(-{{math spec.raw.rect.width '+' 5}}, {{math spec.questions.rect3.height '+' 83}})">
-          <text x="-15" y="{{math spec.raw.rect.height '/' 2}}" font-size="12" font-weight="400" fill="#52525B" text-anchor="end" dy="3">{{raw.label.fr}}</text>
+          <text x="-15" y="{{math spec.raw.rect.height '/' 2}}" font-size="12" font-weight="400" fill="#52525B" text-anchor="start" dy="3">{{raw.label.fr}}</text>
           <rect x="0" y="0" width="{{spec.raw.rect.width}}" height="{{spec.raw.rect.height}}" fill="#F4F4F5" clip-path="url(#raw-rect)"/>
           <rect x="0" y="0" width="{{raw.width}}" height="{{spec.raw.rect.height}}" fill="{{raw.interpret.fill}}" clip-path="url(#raw-rect)"/>
           <g transform="translate({{raw.width}}, -{{spec.raw.label.shape.offsetY}})">

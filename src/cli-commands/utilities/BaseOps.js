@@ -38,15 +38,8 @@ const ensureDirExistence = async (dir) =>
   fs.access(dir, constants.F_OK).catch(() => fs.mkdir(dir, { recursive: true }));
 
 async function createSVG(xml, dir) {
-  const mapObj = {
-    'text-anchor="start"': 'text-anchor="end"',
-    'text-anchor="end"': 'text-anchor="start"',
-  };
-
-  const svg = xml.replace(/text-anchor="start"|text-anchor="end"/g, (matched) => mapObj[matched]);
-
   return new Promise((resolve, reject) => {
-    writeFile(dir, svg, (err) => {
+    writeFile(dir, xml, (err) => {
       if (err) reject(err);
       resolve(dir);
     });

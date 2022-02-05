@@ -11,7 +11,7 @@
   <g transform="translate(0, {{spec.profile.padding.y}})">
     <g transform="translate({{math spec.profile.dimensions.width '-' spec.profile.padding.x}}, 0)">
 
-      <g transform="translate(0, 0)" font-size="12" font-weight="500" fill="#A1A1AA" text-anchor="end">
+      <g transform="translate(0, 0)" font-size="12" font-weight="500" fill="#A1A1AA" text-anchor="start">
         <g transform="translate(0, {{math 34 '/' 2}})">
           <g transform="translate(-{{spec.items.rightPosArr.[0]}}, 0)">
             <text x="0" y="0" dy="3">گروه</text>
@@ -33,7 +33,7 @@
       {{#each itemsGroups.[0] as | item itemIndex |}}
         {{#with @root.spec.items as | itemsSpec |}}
           {{#unless @first}}
-            <g transform="translate(0, {{@root.topPos}})" font-size="12" font-weight="400" fill="#3F3F46" text-anchor="end">
+            <g transform="translate(0, {{@root.topPos}})" font-size="12" font-weight="400" fill="#3F3F46" text-anchor="start">
               <rect x="0" y="0" width="{{itemsSpec.rect.width}}" height="{{itemsSpec.rect.height}}" rx="{{itemsSpec.rect.br}}" fill="{{lookup itemsSpec.rect.colors (modulo (math itemIndex '-' 1) 2)}}" transform="scale(-1, 1)"/>
               <g transform="translate(0, {{math itemsSpec.rect.height '*' 0.5}})">
                 <g transform="translate(-{{itemsSpec.rightPosArr.[0]}}, 0)">
@@ -48,7 +48,7 @@
                 <g transform="translate(-{{itemsSpec.rightPosArr.[3]}}, 0)">
                   <text x="0" y="0" dy="2.5">{{item.mark}}</text>
                 </g>
-                <g transform="translate(-{{itemsSpec.rightPosArr.[4]}}, 0)" font-size="10" fill="#A1A1AA" text-anchor="start">
+                <g transform="translate(-{{itemsSpec.rightPosArr.[4]}}, 0)" font-size="10" fill="#A1A1AA" text-anchor="end">
                   <text x="0" y="0" dy="2.5">{{itemsSpec.minValue}}</text>
                   <g transform="translate(10, -{{math itemsSpec.rect.itemBar.height '/' 2}})">
                     <rect x="0" y="0" width="{{itemsSpec.rect.itemBar.width}}" height="{{itemsSpec.rect.itemBar.height}}" fill="{{itemsSpec.rect.itemBar.defaultFill}}" clip-path="url(#item-bar)"/>
@@ -65,7 +65,7 @@
 
       {{#each itemsGroups as | items itemsIndex |}}
         {{#with @root.spec.items as | itemsSpec |}}
-          <g transform="translate(0, {{@root.topPos}})" font-size="12" font-weight="400" fill="#3F3F46" text-anchor="end">
+          <g transform="translate(0, {{@root.topPos}})" font-size="12" font-weight="400" fill="#3F3F46" text-anchor="start">
             <rect x="0" y="0" width="{{itemsSpec.rect.width}}" height="{{math itemsSpec.rect.height '*' items.length}}" rx="{{itemsSpec.rect.br}}" fill="{{lookup itemsSpec.rect.colors (modulo itemsIndex 2)}}" transform="scale(-1, 1)"/>
             {{#each items as | item itemIndex |}}
               <g transform="translate(0, {{math itemsSpec.rect.height '*' (math itemIndex '+' 0.5)}})">
@@ -83,7 +83,7 @@
                 <g transform="translate(-{{itemsSpec.rightPosArr.[3]}}, 0)">
                   <text x="0" y="0" dy="2.5">{{item.mark}}</text>
                 </g>
-                <g transform="translate(-{{itemsSpec.rightPosArr.[4]}}, 0)" font-size="10" fill="#A1A1AA" text-anchor="start">
+                <g transform="translate(-{{itemsSpec.rightPosArr.[4]}}, 0)" font-size="10" fill="#A1A1AA" text-anchor="end">
                   <text x="0" y="0" dy="2.5">{{itemsSpec.minValue}}</text>
                   <g transform="translate(10, -{{math itemsSpec.rect.itemBar.height '/' 2}})">
                     <rect x="0" y="0" width="{{itemsSpec.rect.itemBar.width}}" height="{{itemsSpec.rect.itemBar.height}}" fill="{{itemsSpec.rect.itemBar.defaultFill}}" clip-path="url(#item-bar)"/>
@@ -100,7 +100,7 @@
 
       {{#if (boolean variant '!==' 'raw')}}
         <g transform="translate(-{{math spec.profile.dimensions.width '-' 65}}, {{math topPos '+' 25}})">
-          <text x="0" y="0" font-size="12" font-weight="400" fill="#71717A" text-anchor="end" dy="3">صفحه 1 از 2</text>
+          <text x="0" y="0" font-size="12" font-weight="400" fill="#71717A" text-anchor="start" dy="3">صفحه 1 از 2</text>
         </g>
       {{/if}}
 

@@ -11,18 +11,18 @@
   {{setVar "rootTopPos" (math (math (math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight) '+' (math spec.items.label.shape.height '/' 2)) '+' spec.items.label.shape.offsetY)}}
   <g transform="translate(0, {{rootTopPos}})">
     <line x1="0" y1="0" x2="{{spec.items.ticks.line.width}}" y2="0" stroke="#E4E4E7" stroke-linecap="round"/>
-    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="0" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">0</text>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="0" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">0</text>
     <line x1="0" y1="-{{spec.items.rect.base.totalHeight}}" x2="{{spec.items.ticks.line.width}}" y2="-{{spec.items.rect.base.totalHeight}}" stroke="#E4E4E7"  stroke-dasharray="8" stroke-linecap="round"/>
-    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="-{{spec.items.rect.base.totalHeight}}" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">تشکیل هویت</text>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="-{{spec.items.rect.base.totalHeight}}" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">تشکیل هویت</text>
     <line x1="0" y1="-{{math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight}}" x2="{{spec.items.ticks.line.width}}" y2="-{{math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight}}" stroke="#E4E4E7"  stroke-dasharray="8" stroke-linecap="round"/>
-    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="-{{math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight}}" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">{{spec.items.maxValue}}</text>
-    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="{{spec.items.label.title.offsetY}}" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">هویت‌ها</text>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="-{{math spec.items.rect.base.totalHeight '+' spec.items.rect.body.maxHeight}}" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">{{spec.items.maxValue}}</text>
+    <text x="{{math spec.items.ticks.line.width '+' spec.items.ticks.label.offsetX}}" y="{{spec.items.label.title.offsetY}}" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="3">هویت‌ها</text>
 
     <g transform="translate({{spec.items.offsetX1}}, 0)">
       {{#each items as | item index |}}
         {{#with @root.spec.items as | itemsSpec |}}
           <g transform="translate({{math index '*' itemsSpec.distanceX}}, 0)">
-            <text x="-{{itemsSpec.thresholdsNumber.offsetX}}" y="-{{math itemsSpec.rect.base.totalHeight '-' itemsSpec.thresholdsNumber.offsetY}}" text-anchor="end" font-size="14" font-weight="400" fill="#A1A1AA" dy="2.5">{{lookup itemsSpec.thresholds item.label.eng}}</text>
+            <text x="-{{itemsSpec.thresholdsNumber.offsetX}}" y="-{{math itemsSpec.rect.base.totalHeight '-' itemsSpec.thresholdsNumber.offsetY}}" text-anchor="start" font-size="14" font-weight="400" fill="#A1A1AA" dy="2.5">{{lookup itemsSpec.thresholds item.label.eng}}</text>
             <text x="{{math itemsSpec.rect.width '/' 2}}" y="{{itemsSpec.label.title.offsetY}}" text-anchor="middle" font-size="18" font-weight="400" fill="{{ternary item.exceedThreshold item.fill.label '#4B5563'}}" dy="3">{{item.label.fr}}</text>
             {{#if item.exceedThreshold}}
               <path d="M 0 0 V -{{itemsSpec.rect.base.totalHeight}} H {{itemsSpec.rect.width}} V 0 Z" fill="#F4F4F5"/>

@@ -22,7 +22,7 @@
               {{setVar "isChosen" (boolean interpret.eng '===' @root.raw.interpretation)}}
               {{setVar "betMinus180AndMinus90" (boolean (boolean (toDeg thetam) '>' -180) '&&' (boolean (toDeg thetam) '<' -90))}}
               <circle cx="0" cy="0" r="{{ternary isChosen 3.5 2.5}}" fill="{{ternary isChosen @root.spec.raw.fill '#D4D4D8'}}"/>
-              <text x="{{ternary betMinus180AndMinus90 -15 15}}" y="0" text-anchor="{{ternary betMinus180AndMinus90 'end' 'start'}}" fill="{{ternary isChosen @root.spec.raw.fill '#A1A1AA'}}" font-weight="{{ternary isChosen 600 400}}" font-size="{{ternary isChosen 16 14}}" dy="3">{{interpret.fr}}</text>
+              <text x="{{ternary betMinus180AndMinus90 -15 15}}" y="0" text-anchor="{{ternary betMinus180AndMinus90 'start' 'end'}}" fill="{{ternary isChosen @root.spec.raw.fill '#A1A1AA'}}" font-weight="{{ternary isChosen 600 400}}" font-size="{{ternary isChosen 16 14}}" dy="3">{{interpret.fr}}</text>
             </g>
 
             {{setVar "halt" false}}

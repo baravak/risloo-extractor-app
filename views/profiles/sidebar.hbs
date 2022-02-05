@@ -21,7 +21,7 @@
       x="100%"
       y="{{math canvas.header.height '/' 2}}"
       transform="translate(-{{canvas.header.paddingX}}, 0)"
-      text-anchor="end"
+      text-anchor="start"
       dy="4">
       {{info.title}}
     </text>
@@ -32,7 +32,7 @@
         y="{{math canvas.header.height '/' 2}}"
         transform="translate({{canvas.header.paddingX}}, 0)"
         font-family="Dana"
-        text-anchor="start"
+        text-anchor="end"
         letter-spacing="2"
         dy="5">
         RISLOO.IR
@@ -67,7 +67,7 @@
               y="0"
               transform="translate(-{{math canvas.sidebar.icons.paddingX '+' canvas.sidebar.icons.person.width}}, 0)"
               font-size="12"
-              text-anchor="end"
+              text-anchor="start"
               dy="3"
               fill="#374151">
               {{ellipsisChars info.clientName 20}}
@@ -88,7 +88,7 @@
               y="0"
               transform="translate(-{{math canvas.sidebar.icons.paddingX '+' canvas.sidebar.icons.person.width}}, 0)"
               font-size="12"
-              text-anchor="end"
+              text-anchor="start"
               dy="3"
               fill="#374151"
               xml:space="preserve">{{info.started_at}}</text>
@@ -108,7 +108,7 @@
               y="0"
               transform="translate(-{{math canvas.sidebar.icons.paddingX '+' canvas.sidebar.icons.person.width}}, 0)"
               font-size="12"
-              text-anchor="end"
+              text-anchor="start"
               dy="3"
               fill="#374151">
               {{info.time}}
@@ -143,11 +143,11 @@
             <g transform="translate(-{{canvas.sidebar.fields.paddingX}}, 12)">
               {{#each info.fields as |field index|}}
                 <g transform="translate(0, {{math index '*' ../canvas.sidebar.fields.offsetY}})">
-                  <text x="0" y="0" text-anchor="end" font-size="12" fill="#6B7280" dy="3">{{field.fr}}</text>
+                  <text x="0" y="0" text-anchor="start" font-size="12" fill="#6B7280" dy="3">{{field.fr}}</text>
                   <text
                     x="0"
                     y="{{../canvas.sidebar.fields.lineHeight}}"
-                    text-anchor="end"
+                    text-anchor="start"
                     font-size="14"
                     font-weight="500"
                     fill="#374151"
@@ -167,10 +167,10 @@
     </g>
     <g transform="translate(0, 613)">
       <g font-size="9" font-weight="400">
-        <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="0" text-anchor="end" fill="#71717A" dy="3">بسته شدن:</text>
-        <text x="{{canvas.sidebar.padding.x}}" y="0" text-anchor="start" fill="#52525B" dy="3.5" xml:space="preserve">{{info.closed_at}}</text>
-        <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="16" text-anchor="end" fill="#71717A" dy="3">نمره‌دهی:</text>
-        <text x="{{canvas.sidebar.padding.x}}" y="16" text-anchor="start" fill="#52525B" dy="3.5" xml:space="preserve">{{info.scored_at}}</text>
+        <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="0" text-anchor="start" fill="#71717A" dy="3">بسته شدن:</text>
+        <text x="{{canvas.sidebar.padding.x}}" y="0" text-anchor="end" fill="#52525B" dy="3.5" xml:space="preserve">{{info.closed_at}}</text>
+        <text x="{{math canvas.sidebar.width '-' canvas.sidebar.padding.x}}" y="16" text-anchor="start" fill="#71717A" dy="3">نمره‌دهی:</text>
+        <text x="{{canvas.sidebar.padding.x}}" y="16" text-anchor="end" fill="#52525B" dy="3.5" xml:space="preserve">{{info.scored_at}}</text>
       </g>
       <g transform="translate({{math canvas.sidebar.width '/' 2}}, 34)">
       <g transform="translate(-{{math canvas.sidebar.qrcode.width '/' 2}}, 0)"><a href="{{qrcode.link}}" target="_blank">{{{qrcode.svg}}}</a></g>

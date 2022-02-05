@@ -40,7 +40,7 @@
                     {{setVar "interpret" (lookup @root.spec.items.interprets (math stopIndex '-' 1))}}
                     {{setVar "isChosen" (boolean interpret.eng '===' item.mark.interpretation)}}
                     <circle cx="0" cy="0" r="{{ternary isChosen 3.5 2.5}}" fill="{{ternary isChosen ../fill '#E4E4E7'}}"/>
-                    <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 15}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'start' 'end'}}" fill="{{ternary isChosen ../fill '#A1A1AA'}}" font-weight="{{ternary isChosen 500 400}}" font-size="{{ternary isChosen 16 14}}" dy="3">{{interpret.fr}}</text>
+                    <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 15}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'end' 'start'}}" fill="{{ternary isChosen ../fill '#A1A1AA'}}" font-weight="{{ternary isChosen 500 400}}" font-size="{{ternary isChosen 16 14}}" dy="3">{{interpret.fr}}</text>
                   </g>
 
                   {{setVar "halt" false}}
@@ -56,7 +56,7 @@
                   {{/unless}}
                 {{/unless}}
               {{/each}}
-              <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 30}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'start' 'end'}}" fill="{{fill}}" font-size="24" font-weight="600" dy="6.5">{{item.mark.value}}</text>
+              <text x="{{math (math (math -2 '*' itemIndex) '+' 1) '*' 30}}" y="0" text-anchor="{{ternary (boolean itemIndex '===' 0) 'end' 'start'}}" fill="{{fill}}" font-size="24" font-weight="600" dy="6.5">{{item.mark.value}}</text>
             {{/with}}
           </g>
         {{/with}}

@@ -137,13 +137,13 @@
 
             <g transform="translate(0, 93)" fill="white">
               <g transform="translate(240, 0)">
-                <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="end" dy="3">تاریخ شروع اعتبار</text>
-                <text x="0" y="13" font-size="12" font-weight="400" text-anchor="end" dy="3">تاریخ انقضا</text>
+                <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="start" dy="3">تاریخ شروع اعتبار</text>
+                <text x="0" y="13" font-size="12" font-weight="400" text-anchor="start" dy="3">تاریخ انقضا</text>
               </g>
               <g transform="translate(0, 0)">
-                <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="start" dy="3">{{started_at}}</text>
+                <text x="0" y="-10" font-size="12" font-weight="400" text-anchor="end" dy="3">{{started_at}}</text>
                 {{#if expires_at}}
-                  <text x="0" y="13" font-size="12" font-weight="400" text-anchor="start" dy="3">{{expires_at}}</text> 
+                  <text x="0" y="13" font-size="12" font-weight="400" text-anchor="end" dy="3">{{expires_at}}</text> 
                 {{else}}
                   <use y="8" href="#inf"/>
                 {{/if}}

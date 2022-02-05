@@ -29,7 +29,7 @@
     </g>
 
     <g transform="translate(0, {{math spec.items.topPos '+' spec.raw.offsetY}})">
-      <text x="0" y="-20" font-size="14" font-weight="400" text-anchor="start" fill="#52525B" dy="4">{{raw.label.fr}}</text>
+      <text x="0" y="-20" font-size="14" font-weight="400" text-anchor="end" fill="#52525B" dy="4">{{raw.label.fr}}</text>
       <rect x="0" y="{{math (math spec.raw.rect.body.height '-' spec.raw.rect.base.height) '/' 2}}" width="{{spec.raw.rect.base.width}}" height="{{spec.raw.rect.base.height}}" rx="{{spec.raw.rect.base.br}}" fill="#F4F4F5"/>
       <rect x="0" y="0" width="{{raw.width}}" height="{{spec.raw.rect.body.height}}" rx="{{spec.raw.rect.body.br}}" fill="{{raw.interpret.fill}}"/>
       <g transform="translate({{raw.width}}, -{{spec.raw.label.shape.offsetY}})">

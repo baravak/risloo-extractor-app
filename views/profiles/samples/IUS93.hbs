@@ -54,7 +54,7 @@
         <text
           x="{{p.x}}"
           y="{{p.y}}"
-          text-anchor="{{ternary (boolean (boolean tick.angle '===' (toRad -90)) '||' (boolean tick.angle '===' (toRad 90))) 'middle' (ternary (boolean tick.angle '>' (toRad 90)) 'end' 'start')}}"
+          text-anchor="{{ternary (boolean (boolean tick.angle '===' (toRad -90)) '||' (boolean tick.angle '===' (toRad 90))) 'middle' (ternary (boolean tick.angle '>' (toRad 90)) 'start' 'end')}}"
           font-size="16"
           fill="#D4D4D8"
           dy="5"
@@ -103,7 +103,7 @@
               <text
                 x="{{p.x}}"
                 y="{{p.y}}"
-                text-anchor="{{ternary (boolean (boolean tick.angle '===' (toRad -90)) '||' (boolean tick.angle '===' (toRad 90))) 'middle' (ternary (boolean tick.angle '>' (toRad 90)) 'end' 'start')}}"
+                text-anchor="{{ternary (boolean (boolean tick.angle '===' (toRad -90)) '||' (boolean tick.angle '===' (toRad 90))) 'middle' (ternary (boolean tick.angle '>' (toRad 90)) 'start' 'end')}}"
                 font-size="16"
                 fill="#D4D4D8"
                 dy="5"

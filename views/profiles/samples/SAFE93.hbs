@@ -1,0 +1,118 @@
+{{#> layout}}
+
+  <defs>
+    <g id="couple">
+      <circle cx="13" cy="11.2" r="2.5" fill="#BE185D"/>
+      <path d="M18.5582 20.8867L13.4718 18.1806L13.0021 17.9306L12.5324 18.1806L7.44606 20.8868L7.24654 15.1287L7.2281 14.597L6.77682 14.3152L1.89001 11.2634L6.77682 8.21157L7.2281 7.92975L7.24654 7.39802L7.44607 1.64001L12.5324 4.34621L13.0021 4.59612L13.4718 4.34621L18.5582 1.64001L18.7577 7.39802L18.7761 7.92975L19.2274 8.21157L24.1142 11.2634L19.2274 14.3152L18.7761 14.597L18.7577 15.1287L18.5582 20.8867Z" stroke="#BE185D" stroke-width="2"/>
+    </g>
+    <g id="children">
+      <circle cx="11.5" cy="11.5" r="2.5" fill="#7E22CE"/>
+      <circle cx="11.5" cy="11.5" r="10.3" stroke="#7E22CE" stroke-width="2"/>
+    </g>
+    <g id="parents">
+      <circle cx="12.8" cy="14" r="2.5" fill="#115E59"/>
+      <path d="M1.73999 20.75L12.5653 2L23.3906 20.75H1.73999Z" stroke="#115E59" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <text x="40" y="5" fill="#71717A" font-size="16" font-weight="400" text-anchor="middle" dy="5">ساختار</text>
+    <text x="690" y="645" fill="#71717A" font-size="16" font-weight="400" text-anchor="middle" dy="5">تعامل</text>
+    <text x="0" y="677" fill="#71717A" font-size="16" font-weight="400" text-anchor="end" dy="4">6</text>
+    <g transform="translate(0, {{math 27 '+' 620}})">
+      {{#forLoop 1 5 1}}
+        <text x="0" y="-{{math @i '*' 149}}" fill="#71717A" font-size="16" font-weight="400" text-anchor="end" dy="4">{{math 6 '+' (math @i '*' 6)}}</text>
+      {{/forLoop}}
+    </g>
+    <g transform="translate(35, {{math (math 27 '+' 620) '+' 30}})">
+      {{#forLoop 1 5 1}}
+        <text x="{{math @i '*' 149}}" y="0" fill="#71717A" font-size="16" font-weight="400" text-anchor="end" dy="4">{{math 6 '+' (math @i '*' 6)}}</text>
+      {{/forLoop}}
+    </g>
+    <g transform="translate(40, 27)">
+      <g transform="translate(0, 620)">
+        <g transform="translate(0, -300)">
+          <rect x="0" y="0" width="300" height="300" fill="#FDE047" fill-opacity="0.1"/>
+          <rect x="300" y="0" width="300" height="300" fill="#06B6D4" fill-opacity="0.1"/>
+        </g>
+        <g transform="translate(0, -600)">
+          <rect x="0" y="0" width="300" height="300" fill="#DC2626" fill-opacity="0.1"/>
+          <rect x="300" y="0" width="300" height="300" fill="#15803D" fill-opacity="0.1"/>
+        </g>
+        {{#forLoop 1 24 1}}
+          {{setVar "isMiddle" (boolean @i '===' (ceil (math 23 '/' 2)))}}
+          <line x1="{{math @i '*' 25}}" y1="0" x2="{{math @i '*' 25}}" y2="-603" stroke="{{ternary isMiddle '#D4D4D8' '#E4E4E7'}}" stroke-width="{{ternary isMiddle 2 1}}" stroke-linecap="round"/>
+          <line x1="0" y1="-{{math @i '*' 25}}" x2="603" y2="-{{math @i '*' 25}}" stroke="{{ternary isMiddle '#D4D4D8' '#E4E4E7'}}" stroke-width="{{ternary isMiddle 2 1}}" stroke-linecap="round"/>
+        {{/forLoop}}
+        <line x1="0" y1="-620" x2="0" y2="0" stroke="#A1A1AA" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="620" y2="0" stroke="#A1A1AA" stroke-width="3" stroke-linecap="round"/>
+        <g transform="translate({{items.[0].coordinates.x}}, -{{items.[0].coordinates.y}})">
+          <svg width="24.6" height="21" viewBox="13.5 11.5 27 23" overflow="visible" fill="none">
+            <use href="#couple"/>
+          </svg>
+        </g>
+        <g transform="translate({{items.[1].coordinates.x}}, -{{items.[1].coordinates.y}})">
+          <svg width="23" height="23" viewBox="11.5 11.5 23 23" overflow="visible" fill="none">
+            <use href="#children"/>
+          </svg>
+        </g>
+        <g transform="translate({{items.[2].coordinates.x}}, -{{items.[2].coordinates.y}})">
+          <svg width="26" height="22" viewBox="13 11 26 22" overflow="visible" fill="none">
+            <use href="#parents"/>
+          </svg>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(851, 60)">
+      <g transform="translate(0, 0)">
+        <svg x="-24.6" width="24.6" height="21" viewBox="0 0 27 23" fill="none">
+          <use href="#couple"/>
+        </svg>
+        <text x="0" y="37" fill="#BE185D" font-size="14" font-weight="400" text-anchor="start" dy="4">رابطه با شریک جنسی / همسر</text>
+        <g transform="translate(0, 63)">
+          <text x="0" y="0" fill="#71717A" font-size="12" font-weight="400" text-anchor="start" dy="3">تعامل: <tspan font-size="14" font-weight="600" fill="#3F3F46">{{items.[0].mark.interaction}}</tspan></text>
+          <text x="-80" y="0" fill="#71717A" font-size="12" font-weight="400" text-anchor="start" dy="3">ساختار: <tspan font-size="14" font-weight="600" fill="#3F3F46">{{items.[0].mark.structure}}</tspan></text>
+        </g>
+      </g>
+      <g transform="translate(0, 90)">
+        <svg x="-23" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <use href="#children"/>
+        </svg>
+        <text x="0" y="37" fill="#7E22CE" font-size="14" font-weight="400" text-anchor="start" dy="4">رابطه با فرزندان</text>
+        <g transform="translate(0, 63)">
+          <text x="0" y="0" fill="#71717A" font-size="12" font-weight="400" text-anchor="start" dy="3">تعامل: <tspan font-size="14" font-weight="600" fill="#3F3F46">{{items.[1].mark.interaction}}</tspan></text>
+          <text x="-80" y="0" fill="#71717A" font-size="12" font-weight="400" text-anchor="start" dy="3">ساختار: <tspan font-size="14" font-weight="600" fill="#3F3F46">{{items.[1].mark.structure}}</tspan></text>
+        </g>
+      </g>
+      <g transform="translate(0, 180)">
+        <svg x="-26" width="26" height="22" viewBox="0 0 26 22" fill="none">
+          <use href="#parents"/>
+        </svg>
+        <text x="0" y="37" fill="#115E59" font-size="14" font-weight="400" text-anchor="start" dy="4">رابطه با والدین</text>
+        <g transform="translate(0, 63)">
+          <text x="0" y="0" fill="#71717A" font-size="12" font-weight="400" text-anchor="start" dy="3">تعامل: <tspan font-size="14" font-weight="600" fill="#3F3F46">{{items.[2].mark.interaction}}</tspan></text>
+          <text x="-80" y="0" fill="#71717A" font-size="12" font-weight="400" text-anchor="start" dy="3">ساختار: <tspan font-size="14" font-weight="600" fill="#3F3F46">{{items.[2].mark.structure}}</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(851, 431)">
+      <g transform="translate(0, 0)">
+        <rect x="-20" y="0" width="20" height="20" fill="#FDE047" fill-opacity="0.15"/>
+        <text x="-30" y="10" fill="#71717A" font-size="14" font-weight="400" text-anchor="start" dy="2">بی‌هدف / جهت‌نایافته</text>
+      </g>
+      <g transform="translate(0, 36)">
+        <rect x="-20" y="0" width="20" height="20" fill="#06B6D4" fill-opacity="0.15"/>
+        <text x="-30" y="10" fill="#71717A" font-size="14" font-weight="400" text-anchor="start" dy="2">بی‌نظم / هرج و مرج</text>
+      </g>
+      <g transform="translate(0, 72)">
+        <rect x="-20" y="0" width="20" height="20" fill="#DC2626" fill-opacity="0.15"/>
+        <text x="-30" y="10" fill="#71717A" font-size="14" font-weight="400" text-anchor="start" dy="2">ناسازگار</text>
+      </g>
+      <g transform="translate(0, 108)">
+        <rect x="-20" y="0" width="20" height="20" fill="#15803D" fill-opacity="0.15"/>
+        <text x="-30" y="10" fill="#71717A" font-size="14" font-weight="400" text-anchor="start" dy="2">شایسته</text>
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

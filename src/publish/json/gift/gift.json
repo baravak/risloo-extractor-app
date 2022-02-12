@@ -1,0 +1,16 @@
+{
+  "id": "GF966666H",
+  "title": "عید سعید غدیر خم",
+  "code": "RS966667Q-96654TD3NH",
+  "type": "numeral",
+  "value": "25000",
+  "started_at": 1638011202,
+  "expires_at": 1638014444,
+  "region": {
+    "id": "1638011202",
+    "type": "counseling_center",
+    "detail": {
+      "title": "مرکز خدمات روان‌شناسی و مشاوره طلیعه سلامت"
+    }
+  }
+}

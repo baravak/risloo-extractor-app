@@ -1,0 +1,98 @@
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "پرسشنامه سیاهه روانی - اجتماعی نیرومندی من (ایگو) - فرم ۳۲ سؤالی"
+  },
+  "client": {
+    "id": "GH96666D7",
+    "name": "مهدی امیرآبادی"
+  },
+  "center": {
+    "detail": {
+      "title": "کلینیک شخصی بروبچه‌های ریسلو و رفقا"
+    }
+  },
+  "started_at": 1630907666,
+  "cornometer": 1,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nافراد از این جمله‌ها ممکن است برای توصیف خودشان استفاده کنند. لطفا هر جمله را به دقت بخوانید و ببینید که چقدر به آن جمله اعتقاد دارید یا بر اساس مقیاس فراوانی به آن پاسخ دهید. ",
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "23"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "score": {
+    "state": {
+      "value": 48,
+      "interpretation": "mild"
+    },
+    "trait": {
+      "value": 31,
+      "interpretation": "none"
+    }
+  }
+}

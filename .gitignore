@@ -1,3 +1,4 @@
+.env
 src/svg/
 src/bin/
 src/output/
@@ -6,3 +7,4 @@ node_modules
 src/profiles/empty.js
 views/profiles/empty.hbs
 views/profiles/measure.js
+src/cli-commands/test.js

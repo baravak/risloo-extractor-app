@@ -1,0 +1,611 @@
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "پرسشنامه اضطراب کودکان اسپنس - نسخه والدین"
+  },
+  "client": {
+    "id": "GH96666D7",
+    "name": "مهدی امیرآبادی"
+  },
+  "center": {
+    "detail": {
+      "title": "کلینیک شخصی بروبچه‌های ریسلو و رفقا"
+    }
+  },
+  "started_at": 1630907666,
+  "closed_at": 1711907666,
+  "scored_at": 1731907666,
+  "cornometer": 1,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nافراد از این جمله‌ها ممکن است برای توصیف خودشان استفاده کنند. لطفا هر جمله را به دقت بخوانید و ببینید که چقدر به آن جمله اعتقاد دارید یا بر اساس مقیاس فراوانی به آن پاسخ دهید. ",
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "child_name",
+      "text": "نام کودک",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "child_name",
+      "force": true,
+      "user_answered": "محمد مهدی"
+    },
+    {
+      "type": "text",
+      "label": "child_age",
+      "text": "سن کودک",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "child_age",
+      "force": true,
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "label": "birth_order",
+      "text": "کودک آزمودنی شما فرزند چندم خانواده است؟",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "birth_order",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "daughters",
+      "text": "تعداد فرزندان دختر",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "daughters",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "sons",
+      "text": "تعداد فرزندان پسر",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "sons",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "father_education",
+      "text": "تحصیلات پدر",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "father_education",
+      "force": true,
+      "user_answered": "9"
+    },
+    {
+      "type": "text",
+      "label": "father_job",
+      "text": "شغل پدر",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "father_job",
+      "force": true,
+      "user_answered": "استاد دانشگاه"
+    },
+    {
+      "type": "text",
+      "label": "mother_education",
+      "text": "تحصیلات مادر",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "mother_education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "mother_job",
+      "text": "شغل مادر",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "mother_job",
+      "force": true,
+      "user_answered": "خانه‌دار"
+    },
+    {
+      "type": "text",
+      "label": "child_gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["مؤنث", "مذکر"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    }
+  ],
+  "items": [
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من درباره همه چیز نگران است. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از تاریکی می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "هر موقع کودک من مشکلی دارد احساس عجیبی در دلش پیدا می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من احساس ترس می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از تنها ماندن در خانه احساس ترس می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از امتحان دادن می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من موقعی که مجبور است از حمام یا توالت‌های عمومی استفاده کند، می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من زمانی که از من یا ما دور می‌شود نگران می‌گردد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من می‌ترسد رفتارش به گونه‌ای باشد که مردم مسخره‌اش کنند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من نگران است که کارهای مدرسه‌اش را بد انجام بدهد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من نگران است که اتفاق بدی برای یکی از اعضای خانواده بیافتد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من احساس می‌کند که انگار نمی‌تواند نفس بکشد بدون آنکه دلیلی وجود داشته باشد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من مجبور است همه چیز را به طور دائم کنترل کند که درست انجام داده باشد. (برای مثال چراغ را خاموش و یا در را بسته باشد)",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از تنها خوابیدن می‌ترسد.",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من سختش است که صبح‌ها به مدرسه برود چون اعصابش ناراحت است و احساس ترس می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از سگ می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "به نظر نمی‌رسد که افکار بد و بچگانه از سر کودک من بیرون بیاید. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من وقتی مشکلی دارد از اینکه قلبش تند می‌زند، شکایت دارد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من ناگهان بدون هیچ دلیلی شروع به لرزش می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من نگران است که اتفاق بدی برایش بیافتد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از رفتن به دکتر یا دندانپزشک می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من هر موقع مشکلی داشته باشد، احساس بی‌ثباتی می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از مکان‌های مرتفع، جاهای بلند و ارتفاعات (برای مثال بالای صخره) می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من مجبور است افکار خاصی بکند (مثل اعداد یا کلمات) تا از اتفاق‌های بد جلوگیری بکند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از مسافرت با ماشین یا قطار یا اتوبوس می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من نگران است که دیگران راجع به او چه فکر می‌کنند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از جاهای شلوغ می‌ترسد (مانند مراکز خرید - سینما - اتوبوس - زمین‌بازی)",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من ناگهان بدون دلیل احساس ترس می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از عنکبوت یا حشرات می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من بدون هیچ دلیلی احساس غش و سرگیجه می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از صحبت کردن در کلاس درس و مقابل سایر دانش‌آموزان می‌ترسد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از اینکه قلبش به طور ناگهانی و بدون هیچ دلیلی شروع به طپش می‌کند، شکایت دارد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من نگران است که احساس ترس بکند بدون آنکه هیچ دلیلی وجود داشته باشد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من از اینکه در جاهای کوچک و بسته باشد، می‌ترسد. (مثل تونل‌ها یا اتاق‌های کوچک)",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من احساس اجبار می‌کند که بعضی کارها را به طور تکراری انجام دهد (مثل شستن دستهایش و یا تمیز کردن یا قرار دادن چیزها به ترتیب خاص)",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "افکار یا تصاویر بچگانه در ذهن کودک من او را آزار می‌دهد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من احساس اجبار می‌کند چیزهایی را به شیوه‌ای کاملا درست انجام دهد تا اتفاق بدی نیافتد. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "کودک من اگر مجبور شود در طول شب از خانه دور شود احساس ترس می‌کند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["هرگز", "گاه گاهی", "غالبا", "همیشه"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "category": "",
+      "type": "text",
+      "description": "",
+      "text": "اگر چیز دیگری هست که بچه شما از آن بترسد لطفا بنویسید که آن چیست و هر چند وقت یکبار از آن می‌ترسد.",
+      "answer": {
+        "type": "descriptive"
+      },
+      "user_answered": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، "
+    }
+  ],
+  "score": {
+    "total": 71,
+    "panic_attack_and_agorophobia": 14,
+    "separation_anxiety": 9,
+    "physical_injury_fears": 11,
+    "social_phobia": 11,
+    "obsessive_compulsive": 16,
+    "generalized_anxiety_disorder": 10
+  }
+}

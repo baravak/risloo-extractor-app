@@ -1,0 +1,116 @@
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "پرسشنامه رضایت زناشویی انریچ ۴۷ سؤالی"
+  },
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96666D7",
+    "name": "مهدی امیرآبادی"
+  },
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nعبارات زیر جملاتی هستند که ممکن است افراد از آن‌ها برای توصیف خود استفاده کنند. خواهشمند است هر عبارت را به دقت بخوانید و تعیین کنید تا چه میزانی آن عبارت می‌تواند شما را توصیف کند. سپس میزان درست بودن آن عبارت را بر اساس درجه‌بندی در ستون مقابل علامت بزنید.",
+  "room": {
+    "manager": {
+      "name": "دکتر مسعود جان‌بزرگی"
+    }
+  },
+  "center": {
+    "detail": {
+      "title": "کلینیک شخصی"
+    }
+  },
+  "started_at": 1630907666,
+  "cornometer": 1,
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "23"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "score": {
+    "raw": 140,
+    "t_score": 36,
+    "t_score_summary": "dissatisfaction",
+    "marital_communication": 8,
+    "personality_issues": 13,
+    "religious_orientation": 17,
+    "Conflict_resolution": 24,
+    "financial_management": 15,
+    "leisure_activities": 7,
+    "sexual_relationship": 21,
+    "children_and_marriage": 25,
+    "family_and_friends": 10,
+    "personality_issues_interpretation": "dissatisfaction",
+    "marital_communication_interpretation": "severe_dissatisfaction",
+    "Conflict_resolution_interpretation": "extreme_satisfaction",
+    "financial_management_interpretation": "moderate_satisfaction",
+    "leisure_activities_interpretation": "severe_dissatisfaction",
+    "sexual_relationship_interpretation": "severe_satisfaction",
+    "children_and_marriage_interpretation": "extreme_satisfaction",
+    "family_and_friends_interpretation": "dissatisfaction",
+    "religious_orientation_interpretation": "moderate_satisfaction"
+  }
+}

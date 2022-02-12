@@ -1,0 +1,106 @@
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "پرسشنامه باورهای غیرمنطقی جونز"
+  },
+  "client": {
+    "id": "GH96666D7",
+    "name": "مهدی امیرآبادی فراهانی اصل"
+  },
+  "center": {
+    "detail": {
+      "title": "مرکز خدمات روان‌شناسی و مشاوره طلیعه سلامت و دوستداران روان‌شناسی"
+    }
+  },
+  "started_at": 1630907666,
+  "cornometer": 9,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nافراد از این جمله‌ها ممکن است برای توصیف خودشان استفاده کنند. لطفا هر جمله را به دقت بخوانید و ببینید که چقدر به آن جمله اعتقاد دارید یا بر اساس مقیاس فراوانی به آن پاسخ دهید. ",
+  "room": {
+    "manager": {
+      "name": "دکتر مسعود جان‌بزرگی طباطبایی‌زاده یزدی اردکانی اصل"
+    }
+  },
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "23"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "score": {
+    "raw": 302,
+    "da": 10,
+    "hse": 22,
+    "bp": 45,
+    "fr": 33,
+    "ei": 48,
+    "ao": 12,
+    "pa": 25,
+    "d": 39,
+    "hc": 50,
+    "p": 18
+  }
+}

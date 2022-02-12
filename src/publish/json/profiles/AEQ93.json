@@ -1,0 +1,96 @@
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "پرسشنامه ارزیابی سطح کلی اضطراب"
+  },
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96666D7",
+    "name": "مهدی امیرآبادی"
+  },
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nعبارات زیر جملاتی هستند که ممکن است افراد از آن‌ها برای توصیف خود استفاده کنند. خواهشمند است هر عبارت را به دقت بخوانید و تعیین کنید تا چه میزانی آن عبارت می‌تواند شما را توصیف کند. سپس میزان درست بودن آن عبارت را بر اساس درجه‌بندی در ستون مقابل علامت بزنید.",
+  "room": {
+    "manager": {
+      "name": "دکتر مسعود جان‌بزرگی"
+    }
+  },
+  "center": {
+    "detail": {
+      "title": "کلینیک شخصی"
+    }
+  },
+  "started_at": 1630907666,
+  "cornometer": 1,
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "23"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "score": {
+    "raw": 117
+  }
+}

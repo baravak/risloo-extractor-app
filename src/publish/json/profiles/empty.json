@@ -1,0 +1,139 @@
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "آزمون دلبستگی کولینز و رید"
+  },
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96666D7",
+    "name": "نام کاربر در این اتاق"
+  },
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nعبارات زیر جملاتی هستند که ممکن است افراد از آن‌ها برای توصیف خود استفاده کنند. خواهشمند است هر عبارت را به دقت بخوانید و تعیین کنید تا چه میزانی آن عبارت می‌تواند شما را توصیف کند. سپس میزان درست بودن آن عبارت را بر اساس درجه‌بندی در ستون مقابل علامت بزنید.",
+  "room": {
+    "manager": {
+      "name": "نام اتاق / درمانگر که از قضا طولانی هم شده است!"
+    }
+  },
+  "center": {
+    "detail": {
+      "title": "اتاق درمانی شخصی یا نام مرکز درمانی"
+    }
+  },
+  "started_at": 1630907666,
+  "closed_at": 1711907666,
+  "scored_at": 1731907666,
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "35"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "job",
+      "text": "شغل",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "job",
+      "force": true,
+      "user_answered": "آزاد"
+    },
+    {
+      "type": "text",
+      "label": "reason",
+      "text": "علت مراجعه",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "reason",
+      "force": true,
+      "user_answered": "مشکلات خانوادگی و زناشویی"
+    },
+    {
+      "type": "text",
+      "label": "economical_situation",
+      "text": "وضعیت اقتصادی",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "economical_situation",
+      "force": true,
+      "user_answered": "بسیار خوب"
+    },
+    {
+      "type": "text",
+      "label": "number",
+      "text": "تعداد روز بستری بودن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "number",
+      "force": true,
+      "user_answered": "10"
+    }
+  ],
+  "score": {}
+}

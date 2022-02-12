@@ -1,0 +1,143 @@
+{
+  "id": "$X1HQ2G3J3",
+  "scale": {
+    "id": "$PIES-93",
+    "title": "پرسشنامه ارزیابی سلامت روانی کودکان"
+  },
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96666D7",
+    "name": "مهدی امیرآبادی"
+  },
+  "filler": "client",
+  "description": "## دستور اجرای آزمون\n\nعبارات زیر جملاتی هستند که ممکن است افراد از آن‌ها برای توصیف خود استفاده کنند. خواهشمند است هر عبارت را به دقت بخوانید و تعیین کنید تا چه میزانی آن عبارت می‌تواند شما را توصیف کند. سپس میزان درست بودن آن عبارت را بر اساس درجه‌بندی در ستون مقابل علامت بزنید.",
+  "room": {
+    "manager": {
+      "name": "دکتر مسعود جان‌بزرگی"
+    }
+  },
+  "center": {
+    "detail": {
+      "title": "کلینیک شخصی"
+    }
+  },
+  "started_at": 1630907666,
+  "cornometer": 1,
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "23"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "score": {
+    "attention_deficity_and_hyper_activity_disorder_type_a": 5,
+    "attention_deficity_and_hyper_activity_disorder_type_b": 8,
+    "attention_deficity_and_hyper_activity_disorder_total": 13,
+    "oppositional_defant_disorder": 2,
+    "conduct_disorder": 13,
+    "generalized_anxiety_disorder_type_a": 1,
+    "generalized_anxiety_disorder_type_b": 1,
+    "generalized_anxiety_disorder_type_c": 3,
+    "generalized_anxiety_disorder_total": 5,
+    "special_phobia": 1,
+    "obssesive": 1,
+    "compulsive": 1,
+    "post_terumatic_stress_disorder": 1,
+    "motor_tics": 1,
+    "vocal_tics": 1,
+    "schizophernia": 4,
+    "major_depression_type_a": 2,
+    "major_depression_type_b": 3,
+    "major_depression_total": 5,
+    "dysthymia_total": 4,
+    "autistic_disorder_type_a": 4,
+    "autistic_disorder_type_b": 3,
+    "autistic_disorder_type_c": 3,
+    "autistic_disorder_total": 10,
+    "asperger_disorder_type_a": 3,
+    "asperger_disorder_type_b": 2,
+    "asperger_disorder_total": 5,
+    "social_phobia": 1,
+    "seperation_anxiety_disorder": 8,
+    "enuresis": 1,
+    "dysthymia_type_a": 1,
+    "dysthymia_type_b": 3,
+    "encopresis": 1,
+    "96": 1,
+    "97": 1,
+    "98": 0,
+    "99": 1,
+    "100": 1,
+    "101": 1,
+    "102": 1,
+    "103": 1,
+    "104": 0,
+    "105": 1,
+    "106": 1,
+    "107": 1,
+    "108": 1,
+    "109": 0,
+    "110": 0
+  }
+}

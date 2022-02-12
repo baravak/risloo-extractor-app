@@ -1,4 +1,5 @@
 const path = require("path");
+const chokidar = require("chokidar");
 const Executor = require("./Executor");
 const { checkAndImport, checkAndLoad } = require("./utilities/BaseOps");
 const { EXTRACT_STATUS } = require("./utilities/STATUSES");
@@ -15,16 +16,22 @@ class ExtractExecutor extends Executor {
       outputs: options.sampleOutputs,
     };
 
+    this.dirs = {};
+
     this._addJSPromise();
     this._initSettings(options);
 
     this._extract();
+
+    if (options.watch) this._watch();
   }
 
   _addJSPromise() {
-    const { sample, samplesJSDir, response, promises } = this;
+    const { sample, dirs, samplesJSDir, response, promises } = this;
 
     const sampleJSDir = path.join(samplesJSDir, `${sample.name}.js`);
+
+    dirs["sampleJS"] = sampleJSDir;
 
     promises["js"] = checkAndImport(sampleJSDir).catch((err) => {
       if (err instanceof FileNotFoundError) response.setStatus(EXTRACT_STATUS["INVALID_SAMPLE_NAME"], err);
@@ -33,14 +40,17 @@ class ExtractExecutor extends Executor {
   }
 
   _addProfilesTemplatePromises() {
-    const { sample, profilesTemplatesDir, promises, response } = this;
+    const { sample, dirs, profilesTemplatesDir, promises, response } = this;
 
     promises["templates"] = [];
+
+    dirs["templates"] = [];
 
     promises["miscellaneous_1"] = promises["js"].then((Profile) => {
       let n = Profile.pages;
       for (let i = 0; i < n; i++) {
         let templateFileDir = path.join(profilesTemplatesDir, `${sample.name}${n !== 1 ? "_" + (i + 1) : ""}.hbs`);
+        dirs["templates"].push(templateFileDir);
         promises["templates"].push(
           checkAndLoad(templateFileDir).catch((err) => response.setStatus(EXTRACT_STATUS["TEMPLATE_NOT_FOUND"], err))
         );
@@ -80,7 +90,6 @@ class ExtractExecutor extends Executor {
 
     if (sample.outputs.includes("profile")) {
       let { variants } = settings["profile"];
-      response.addBranch("profiles");
 
       extractPromises.push(Promise.all(variants.map((variant) => this._createProfile(variant))));
     }
@@ -90,15 +99,13 @@ class ExtractExecutor extends Executor {
     if (sample.outputs.includes("sheet")) extractPromises.push(this._createSheet(options));
 
     promises["extract"] = Promise.all(extractPromises).then(() => {
-      if (benchmarker) {
-        benchmarker.end();
-        response.setTime(benchmarker.totalTime);
-      }
+      benchmarker?.end();
+      response.setTime(benchmarker?.totalTime);
       response.setStatus(EXTRACT_STATUS["SUCCESS"]);
     });
   }
 
-  async _createProfile(variant) {
+  async _createProfile(variant, exts = ["svg", "png"]) {
     const {
       promises,
       response,
@@ -112,8 +119,43 @@ class ExtractExecutor extends Executor {
     return Promise.all([promises.input, promises.js])
       .then(([dataset, Profile]) => new Profile(dataset, { variant, measure }).getTemplateEngineParams())
       .catch((err) => response.setStatus(EXTRACT_STATUS["JS_ERROR"], err))
-      .then((contexts) => this._renderAndCreateOutputs(contexts, promises.templates, outputFileName, ["svg", "png"]))
+      .then((contexts) => this._renderAndCreateOutputs(contexts, promises.templates, outputFileName, exts))
       .then((pages) => pages.map((dirs) => dirs.map((dir) => response.addOutput(dir, "profiles"))));
+  }
+
+  _watch() {
+    const { command, dirs, response, benchmarker, promises } = this;
+
+    const opts = {
+      awaitWriteFinish: {
+        stabilityThreshold: 500,
+        pollInterval: 100,
+      },
+    };
+
+    promises["js"].then(() => {
+      dirs.templates.map((templateFileDir, index) => {
+        chokidar.watch(templateFileDir, opts).on("change", () => {
+          promises["templates"][index] = checkAndLoad(templateFileDir);
+          benchmarker?.restart(command);
+          this._createProfile("with-sidebar", ["svg"]).then(() => {
+            benchmarker?.end();
+            response.setTime(benchmarker?.totalTime);
+            response.showOutput();
+          });
+        });
+      });
+    });
+
+    chokidar.watch(dirs.sampleJS, opts).on("change", () => {
+      promises["js"] = checkAndImport(dirs.sampleJS);
+      benchmarker?.restart(command);
+      this._createProfile("with-sidebar", ["svg"]).then(() => {
+        benchmarker?.end();
+        response.setTime(benchmarker?.totalTime);
+        response.showOutput();
+      });
+    });
   }
 
   _createProfileOutputName(variant) {

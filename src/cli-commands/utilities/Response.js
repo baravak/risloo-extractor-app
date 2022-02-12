@@ -14,6 +14,8 @@ class Response {
     let ext = base.pop();
     let name = base.join(".") || "_";
 
+    if (!this.files[branch]) this.addBranch(branch)
+
     this.files[branch][name] = [...(this.files[branch][name] || []), ext];
   }
 
@@ -48,7 +50,7 @@ class Response {
   }
 
   _clear() {
-    this.filesObj = {};
+    this.files = {};
     this.status = null;
     this.time = null;
   }

@@ -43,6 +43,8 @@ function parseArgumentsIntoOptions(rawArgs) {
 
     .addOption(new Option("-b, --benchmark", "time benchmarking").default(false))
 
+    .addOption(new Option("-w, --watch", "watch files").default(false))
+
     .action((sampleName, sampleOutputs, options, command) => {
       output = {
         command: command.name(),

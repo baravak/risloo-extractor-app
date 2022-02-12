@@ -65,6 +65,12 @@ class Benchmarker {
     // );
   }
 
+  restart(name) {
+    this.depth = 0;
+    this.branches = [];
+    this.start(name)
+  }
+
   _timeColor(time) {
     // time <= 0.4s ==> Good
     // 0.4s < time <= 1s ==> Medium

@@ -1,6 +1,5 @@
 const { FileNotFoundError } = require("./CustomErrors");
 const fs = require("fs/promises");
-const path = require("path");
 const { writeFile, constants } = require("fs");
 const sharp = require("sharp");
 
@@ -12,13 +11,18 @@ const checkAndLoad = async (dir) =>
     })
     .then(() => fs.readFile(dir));
 
+function requireUncached(dir) {
+  delete require.cache[require.resolve(dir)];
+  return require(dir);
+}
+
 const checkAndImport = async (dir) =>
   fs
     .access(dir, constants.F_OK)
     .catch(() => {
       throw new FileNotFoundError(dir);
     })
-    .then(() => require(dir));
+    .then(() => requireUncached(dir));
 
 const loadStdin = async (encoding) => {
   process.stdin.setEncoding(encoding);

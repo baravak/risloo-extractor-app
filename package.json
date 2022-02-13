@@ -12,7 +12,7 @@
   "scripts": {
     "bot": "node ./src/publish/bot.js",
     "test": "node ./src/publish/test.js",
-    "prepublish": "npm test",
+    "prepublishOnly": "npm test",
     "postpublish": "npm run bot",
     "start": "node app"
   },

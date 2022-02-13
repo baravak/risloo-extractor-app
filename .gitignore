@@ -5,6 +5,7 @@ src/output/
 src/json
 node_modules
 src/profiles/empty.js
+src/http.js
 views/profiles/empty.hbs
 views/profiles/measure.js
 src/cli-commands/test.js

@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "node ./src/publish/test.js",
+    "prepublish": "npm test",
     "postpublish": "node ./src/publish/bot.js",
     "start": "node app"
   },

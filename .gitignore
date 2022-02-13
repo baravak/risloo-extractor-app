@@ -1,4 +1,5 @@
 .env
+.github/workflows/publish.yml
 src/svg/
 src/bin/
 src/output/

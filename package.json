@@ -10,9 +10,10 @@
     "risloo": "./bin/risloo.js"
   },
   "scripts": {
+    "bot": "node ./src/publish/bot.js",
     "test": "node ./src/publish/test.js",
     "prepublish": "npm test",
-    "postpublish": "node ./src/publish/bot.js",
+    "postpublish": "npm run bot",
     "start": "node app"
   },
   "repository": {

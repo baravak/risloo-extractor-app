@@ -1,4 +1,5 @@
 const fs = require("fs/promises");
+const FormData = require("form-data");
 const path = require("path");
 const sharp = require("sharp");
 const Handlebars = require("handlebars");
@@ -50,7 +51,7 @@ async function createReleaseImage() {
       const xml = template(ctx);
 
       const buf = Buffer.from(xml, "utf8");
-      return sharp(buf).jpeg({ quality: 100 }).toBuffer();
+      return sharp(buf).resize({ width: 350 }).jpeg({ quality: 100 }).toBuffer();
     })
     .catch((err) => {
       throw err;
@@ -60,24 +61,21 @@ async function createReleaseImage() {
 async function sendReleaseNotes() {
   // Text to be Sent
   const caption = `Version *${version}* Released!\n\n_Release Notes:_\n${releaseNotes.join("\n")}`;
-  // const photoBuf = await createReleaseImage();
+  const photoBuf = await createReleaseImage();
 
-  // Data in JSON
-  const data = JSON.stringify({
-    chat_id: chatId,
-    text: caption,
-    parse_mode: "Markdown"
-  });
+  let form = new FormData();
+
+  form.append("chat_id", chatId);
+  form.append("photo", photoBuf, { filename: "image.jpeg" });
+  form.append("caption", caption);
+  form.append("parse_mode", "Markdown");
 
   // HTTP Request Options (URL & Headers & Method)
   const options = {
     hostname: "api.telegram.org",
-    path: `/bot${token}/sendMessage`,
+    path: `/bot${token}/sendPhoto`,
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": data.length,
-    },
+    headers: form.getHeaders(),
   };
 
   const req = https.request(options, (res) => {
@@ -88,10 +86,11 @@ async function sendReleaseNotes() {
     });
   });
 
+  form.pipe(req);
+
   req.on("error", (error) => {
     console.error(error);
   });
 
-  req.write(data);
   req.end();
 }

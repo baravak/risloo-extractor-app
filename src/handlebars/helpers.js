@@ -1,3 +1,4 @@
+const isArray = require("./helpers/isArray");
 const addCommas = require("./helpers/addCommas");
 const boolean = require("./helpers/boolean");
 const math = require("./helpers/math");
@@ -39,6 +40,7 @@ const gauge = require("./helpers/profiles/gauge");
 const bar = require("./helpers/profiles/bar");
 
 const helpers = {
+  isArray,
   addCommas,
   boolean,
   math,

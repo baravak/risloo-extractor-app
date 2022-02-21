@@ -2,7 +2,8 @@
 // This helper is used to reverse an array elements
 
 function reverse(arr) {
-  return arr.reverse();
+  const newArr = arr.slice();
+  return newArr.reverse();
 }
 
 module.exports = reverse;

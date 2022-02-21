@@ -124,7 +124,7 @@ class ExtractExecutor extends Executor {
   }
 
   _watch() {
-    const { command, dirs, response, benchmarker, promises } = this;
+    const { command, dirs, input, response, benchmarker, promises } = this;
 
     const opts = {
       awaitWriteFinish: {
@@ -156,6 +156,17 @@ class ExtractExecutor extends Executor {
         response.showOutput();
       });
     });
+    
+    if(input.type === 'local') chokidar.watch(input.data, opts).on('change', () => {
+      promises["input"] = checkAndLoad(input.data).then((json) => Promise.resolve(JSON.parse(json)));
+      benchmarker?.restart(command);
+      this._createProfile("with-sidebar", ["svg"]).then(() => {
+        benchmarker?.end();
+        response.setTime(benchmarker?.totalTime);
+        response.showOutput();
+      });
+
+    })
   }
 
   _createProfileOutputName(variant) {

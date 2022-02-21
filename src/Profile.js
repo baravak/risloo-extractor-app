@@ -191,18 +191,38 @@ class Dataset {
     // "Fields" is the Output of the Method
     const fields = [];
 
-    let field, preq;
+    let field;
 
     requiredPreqs.forEach((reqPreq) => {
-      preq = preqs.find((item) => item.label === reqPreq);
-      field = { eng: reqPreq, fr: preq?.text || "-", value: "-" };
-      if (preq)
-        if (preq.answer.type !== "select") field.value = preq.user_answered || "-";
-        else field.value = preq.answer.options[preq.user_answered - 1] || "-";
+      if ((FS.isObject(reqPreq) && reqPreq["eng"]) || !FS.isObject(reqPreq)) field = this._extractField(preqs, reqPreq);
+      else field = this._mergeFields(preqs, reqPreq);
       fields.push(field);
     });
 
     return fields;
+  }
+
+  _extractField(preqs, reqPreq) {
+    let engLabel = reqPreq.eng || reqPreq;
+    let preq = preqs.find((item) => item.label === engLabel);
+    return { eng: engLabel, fr: reqPreq.fr || preq?.text || "-", value: this._extractValue(preq) };
+  }
+
+  _mergeFields(preqs, reqPreq) {
+    let values = reqPreq["merge"].map((label) => {
+      let preq = preqs.find((item) => item.label === label);
+      return this._extractValue(preq);
+    });
+    return { eng: reqPreq["merge"].join("+"), fr: reqPreq.fr, value: reqPreq.valueFormat.format(...values) };
+  }
+
+  _extractValue(preq) {
+    let val;
+
+    if (preq?.answer.type !== "select") val = preq?.user_answered || "-";
+    else val = preq?.answer.options[preq.user_answered - 1] || "-";
+
+    return val;
   }
 
   // Create Data Array with Label and Mark Taken from Dataset
@@ -222,16 +242,6 @@ class Dataset {
     }, []);
 
     return scoreGroups;
-  }
-
-  static merge(field1, field2, combinedFieldfr, combinedFieldFormat) {
-    const newField = {
-      eng: `combined_${field1.eng}_${field2.eng}`,
-      fr: combinedFieldfr,
-      value: combinedFieldFormat.format(field1.value, field2.value),
-    };
-
-    return newField;
   }
 }
 

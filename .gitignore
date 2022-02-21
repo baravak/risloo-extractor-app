@@ -2,7 +2,7 @@
 .github/workflows/publish.yml
 src/svg/
 src/bin/
-src/output/
+src/**/output/
 src/json
 node_modules
 src/profiles/empty.js

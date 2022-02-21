@@ -186,7 +186,7 @@ class CSI93 extends Profile {
         "child_gender",
         "child_age",
         "child_education",
-        "parent_role",
+        { eng: "parent_role", fr: "نسبت پاسخ‌دهنده با کودک" },
       ] /* In case you want to get some additional fields and show in the profile */,
     },
     /* "profile" determines the dimensions of the drawn profile (to be used in svg tag viewbox) */
@@ -196,7 +196,7 @@ class CSI93 extends Profile {
         return {
           width: 903 + 2 * this.padding.x,
           height: 704 + 2 * this.padding.y,
-        }
+        };
       },
       padding: {
         x: 0,
@@ -297,9 +297,6 @@ class CSI93 extends Profile {
 
     const { items: itemsSpec } = spec;
 
-    // Process Fields
-    this._processFields();
-
     const datasetGroups = dataset.groupBy("group");
 
     const itemsGroups = datasetGroups.map((dataset) =>
@@ -312,17 +309,6 @@ class CSI93 extends Profile {
     );
 
     return [{ itemsGroups: itemsGroups.slice(0, 10) }, { itemsGroups: itemsGroups.slice(10) }];
-  }
-
-  _processFields() {
-    const {
-      dataset: {
-        info: { fields },
-      },
-    } = this;
-
-    const parentRoleField = fields.find((field) => field.eng === "parent_role");
-    parentRoleField.fr = "نسبت پاسخ‌دهنده با کودک";
   }
 }
 

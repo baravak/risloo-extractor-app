@@ -26,11 +26,9 @@ class SCASP93 extends Profile {
       defaultFields: false /* Determines whether to have default prerequisites in the profile or not */,
       fields: [
         "child_name",
-        "child_age",
-        "child_gender",
-        "birth_order",
-        "sons",
-        "daughters",
+        { merge: ["child_age", "child_gender"], fr: "سن کودک / جنسیت", valueFormat: "{0} / {1}" },
+        { eng: "birth_order", fr: "فرزند چندم" },
+        { merge: ["sons", "daughters"], fr: "تعداد فرزندان (دختر / پسر)", valueFormat: "{1} دختر / {0} پسر" },
         "father_education",
         "father_job",
         "mother_education",
@@ -44,7 +42,7 @@ class SCASP93 extends Profile {
         return {
           width: 840 + 2 * this.padding.x,
           height: 679 + 2 * this.padding.y,
-        }
+        };
       },
       padding: {
         x: 0,
@@ -181,9 +179,6 @@ class SCASP93 extends Profile {
     // Deconstructing the Spec of the Profile
     const { raw: rawSpec, items: itemsSpec } = spec;
 
-    // Process Fields
-    this._processFields();
-
     // Separate Raw Data from the Dataset
     const rawData = dataset.score.shift();
 
@@ -206,36 +201,6 @@ class SCASP93 extends Profile {
     const descAnswer = dataset.questions[dataset.questions.length - 1].user_answered;
 
     return [{ raw, items, descAnswer }];
-  }
-
-  _processFields() {
-    const {
-      dataset: {
-        info: { fields },
-      },
-    } = this;
-
-    const birthOrderField = fields.find((field) => field.eng === "birth_order");
-    birthOrderField.fr = "فرزند چندم";
-
-    const sonsFieldIndex = fields.findIndex((field) => field.eng === "sons");
-    const daughtersFieldIndex = fields.findIndex((field) => field.eng === "daughters");
-
-    const newField1 = Dataset.merge(
-      fields[sonsFieldIndex],
-      fields[daughtersFieldIndex],
-      "تعداد فرزندان (دختر / پسر)",
-      "{1} دختر / {0} پسر"
-    );
-
-    fields.splice(sonsFieldIndex, 2, newField1);
-
-    const childAgeIndex = fields.findIndex((field) => field.eng === "child_age");
-    const childGenderIndex = fields.findIndex((field) => field.eng === "child_gender");
-
-    const newField2 = Dataset.merge(fields[childAgeIndex], fields[childGenderIndex], "سن کودک / جنسیت", "{0} / {1}");
-
-    fields.splice(childAgeIndex, 2, newField2);
   }
 }
 

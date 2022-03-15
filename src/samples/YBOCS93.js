@@ -437,11 +437,11 @@ class YBOCS93 extends Profile {
     /* "raw" is the general term used for total data element in the profile */
     raw: {
       interprets: {
-        'sub_clinical': 'غیر بالینی',
-        'mild': 'خفیف',
-        'moderate': 'متوسط',
-        'severe': 'شدید',
-        'extreme': 'خیلی شدید',
+        sub_clinical: "غیر بالینی",
+        mild: "خفیف",
+        moderate: "متوسط",
+        severe: "شدید",
+        extreme: "خیلی شدید",
       },
       stops: [0, 7, 15, 23, 31, 54],
       heightCoeff: 10,
@@ -488,7 +488,13 @@ class YBOCS93 extends Profile {
       },
     },
     questionItems: {
-      fills: ["#D4D4D8", "#FBBF24", "#F97316", "#EC4899", "#B91C1C"],
+      answers: [
+        { fill: "#D4D4D8", fr: "صدق نمی‌کند" },
+        { fill: "#FBBF24", fr: "خیلی کم" },
+        { fill: "#F97316", fr: "کم" },
+        { fill: "#EC4899", fr: "زیاد" },
+        { fill: "#B91C1C", fr: "خیلی زیاد" },
+      ],
     },
     /* "labels" part which has to be provided for each profile */
     labels: Object.values(this.labels),
@@ -518,19 +524,27 @@ class YBOCS93 extends Profile {
       interpret: {
         eng: rawData[1].mark,
         fr: rawSpec.interprets[rawData[1].mark],
-      }
+      },
     };
 
     // Gathering required info for questions
-    const questionItemsPart1 = dataset.questions.slice(0, 58).map((question, index) => ({
-      ...QA[index],
-      answer: question.user_answered - 1,
-      fill: questionItemsSpec.fills[question.user_answered - 1],
+    const questionItemsPart1Count = questionItemsSpec.answers.map((answerSpec, index) => ({
+      answer: index,
+      ...answerSpec,
+      count: 0,
     }));
+    const questionItemsPart1 = dataset.questions.slice(0, 58).map((question, index) => {
+      questionItemsPart1Count[question.user_answered - 1].count++;
+      return {
+        ...QA[index],
+        answer: question.user_answered - 1,
+        fill: questionItemsSpec.answers[question.user_answered - 1].fill,
+      };
+    });
     const questionItemsPart2 = dataset.questions.slice(58).map((question, index) => ({
       ...QA[index + 58],
       answer: question.user_answered - 1,
-      fill: questionItemsSpec.fills[question.user_answered - 1],
+      fill: questionItemsSpec.answers[question.user_answered - 1].fill,
     }));
 
     const questionItemsPart1Sorted = [...questionItemsPart1].sort((q1, q2) => q2.answer - q1.answer);
@@ -548,8 +562,20 @@ class YBOCS93 extends Profile {
 
     return [
       { items: page1Items, raw, suicideThoughts: questionItemsPart2[13].answer },
-      { titleAppend: ' - مرتب شده بر اساس سؤالات', questionItemsPart1, questionItemsPart2, raw },
-      { titleAppend: ' - مرتب شده بر اساس پاسخ‌ها', questionItemsPart1Sorted, questionItemsPart2, raw },
+      {
+        titleAppend: " - مرتب شده بر اساس سؤالات",
+        questionItemsPart1Count,
+        questionItemsPart1,
+        questionItemsPart2,
+        raw,
+      },
+      {
+        titleAppend: " - مرتب شده بر اساس پاسخ‌ها",
+        questionItemsPart1Count,
+        questionItemsPart1Sorted,
+        questionItemsPart2,
+        raw,
+      },
     ];
   }
 }

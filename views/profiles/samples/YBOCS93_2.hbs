@@ -99,41 +99,16 @@
       <text x="224" y="21" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">شدت وسواس: <tspan font-size="16" font-weight="600" fill="#52525B">{{raw.mark}} {{raw.interpret.fr}}</tspan></text>
     </g>
     <g transform="translate(860, 694)">
-      <g transform="translate(0, 0)">
-        <g transform="translate(-9, 9)">
-          <circle cx="0" cy="0" r="9" fill="#D4D4D8" />
-          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">0</text>
+      {{setVar "qCountDistanceXArr" (array 0 -136 -247 -326 -409)}}
+      {{#each questionItemsPart1Count as | qCount index |}}
+        <g transform="translate({{lookup ../qCountDistanceXArr index}}, 0)">
+          <g transform="translate(-9, 9)">
+            <circle cx="0" cy="0" r="9" fill="{{qCount.fill}}" />
+            <text x="0" y="0" font-size="12" font-weight="500"  fill="white" text-anchor="middle" dy="3">{{qCount.answer}}</text>
+          </g>
+          <text x="-24" y="9" font-size="13" font-weight="400"  fill="#71717A" text-anchor="start" dy="3">{{qCount.fr}} ({{qCount.count}})</text>
         </g>
-        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">صدق نمی‌کند (18)</text>
-      </g>
-      <g transform="translate(-136, 0)">
-        <g transform="translate(-9, 9)">
-          <circle cx="0" cy="0" r="9" fill="#FBBF24" />
-          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">1</text>
-        </g>
-        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">خیلی کم (16)</text>
-      </g>
-      <g transform="translate(-247, 0)">
-        <g transform="translate(-9, 9)">
-          <circle cx="0" cy="0" r="9" fill="#F97316" />
-          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">2</text>
-        </g>
-        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">کم (4)</text>
-      </g>
-      <g transform="translate(-326, 0)">
-        <g transform="translate(-9, 9)">
-          <circle cx="0" cy="0" r="9" fill="#EC4899" />
-          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">3</text>
-        </g>
-        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">زیاد (9)</text>
-      </g>
-      <g transform="translate(-409, 0)">
-        <g transform="translate(-9, 9)">
-          <circle cx="0" cy="0" r="9" fill="#B91C1C" />
-          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">4</text>
-        </g>
-        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">خیلی زیاد (25)</text>
-      </g>
+      {{/each}}
     </g>
   </g>
 

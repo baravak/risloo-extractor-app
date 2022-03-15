@@ -1,0 +1,96 @@
+{{#> layout}}
+
+  <defs>
+    <clipPath id="first-raw">
+      {{bar 70 46 (object tl=4 tr=0 bl=4 br=0) (toRad -90)}}
+    </clipPath>
+    <clipPath id="last-raw">
+      {{bar 230 46 (object tl=0 tr=4 bl=0 br=4) (toRad -90)}}
+    </clipPath>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.[0].x}}, {{spec.profile.padding.[0].y}})">
+    <text x="0" y="0" font-size="14" font-weight="500" fill="#4B5563" text-anchor="middle" transform="translate(15, 172) rotate(-90)">وسواس‌ها</text>
+    <text x="0" y="0" font-size="14" font-weight="500" fill="#4B5563" text-anchor="middle" transform="translate(15, 503) rotate(-90)">اجبارها یا بی‌اختیاری‌ها</text>
+    <g transform="translate(124, 0)">
+      <line x1="0" y1="0" x2="0" y2="643" stroke="#D4D4D8" stroke-width="2" stroke-linecap="round" />
+      <g transform="translate(1, 20)">
+        {{#each (first items 8) as | item index |}}
+          {{#with @root.spec.page1.items as | itemsSpec |}}
+            <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+              <text x="-12" y="8" font-size="14" font-weight="400" fill="#86198F" text-anchor="start">{{item.label.fr}}</text>
+              <rect x="0" y="{{math itemsSpec.rect.body.height '-' itemsSpec.rect.base.height}}" width="{{item.width.base}}" height="{{itemsSpec.rect.base.height}}" fill="#E4E4E7" />
+              {{#if (boolean item.mark '!==' 0)}}
+                {{bar item.width.body itemsSpec.rect.body.height itemsSpec.rect.body.brs 0 fill="#A21CAF"}}
+              {{/if}}
+              <text x="{{math item.width.base '+' 18}}" y="8" font-size="12" font-weight="400" fill="#D4D4D8" text-anchor="middle">{{item.maxValue}}</text>
+              <text x="{{math item.width.body '+' (ternary (boolean item.mark '!==' 0) 0 7)}}" y="-6" font-size="14" font-weight="500" fill="#A21CAF" text-anchor="middle">{{item.mark}}</text>
+            </g>
+          {{/with}}
+        {{/each}}
+        <g transform="translate(0, 355)">
+          {{#each (last items 7) as | item index |}}
+            {{#with @root.spec.page1.items as | itemsSpec |}}
+              <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+                <text x="-12" y="8" font-size="14" font-weight="400" fill="#86198F" text-anchor="start">{{item.label.fr}}</text>
+                <rect x="0" y="{{math itemsSpec.rect.body.height '-' itemsSpec.rect.base.height}}" width="{{item.width.base}}" height="{{itemsSpec.rect.base.height}}" fill="#E4E4E7" />
+                {{#if (boolean item.mark '!==' 0)}}
+                  {{bar item.width.body itemsSpec.rect.body.height itemsSpec.rect.body.brs 0 fill="#A21CAF"}}
+                {{/if}}
+                <text x="{{math item.width.base '+' 18}}" y="8" font-size="12" font-weight="400" fill="#D4D4D8" text-anchor="middle">{{item.maxValue}}</text>
+                <text x="{{math item.width.body '+' (ternary (boolean item.mark '!==' 0) 0 7)}}" y="-6" font-size="14" font-weight="500" fill="#A21CAF" text-anchor="middle">{{item.mark}}</text>
+              </g>
+            {{/with}}
+          {{/each}}
+        </g>
+      </g>
+    </g>
+    <g transform="translate(545, 540)">
+      <g transform="translate(0, 35)">
+        <text x="23" y="0" font-size="28" font-weight="700" fill="#9F1239" text-anchor="middle" dy="5">{{raw.mark}}</text>
+        <text x="62" y="0" font-size="16" font-weight="400" fill="#71717A" text-anchor="end" dy="3">شدت وسواس:</text>
+      </g>
+      <g transform="translate(0, 78)">
+        <text x="23" y="0" font-size="18" font-weight="600" fill="#71717A" text-anchor="middle" dy="5">{{suicideThoughts}}</text>
+        <text x="62" y="0" font-size="14" font-weight="400" fill="#71717A" text-anchor="end" dy="3">پاسخ افکار خودکشی:</text>
+      </g>
+      {{bar 540 46 (object tl=4 tr=4 bl=4 br=4) (toRad -90) fill="#F4F4F5"}}
+      {{#each spec.raw.stops as | stopMark stopMarkIndex |}}
+        {{#with @root.spec.raw as | rawSpec |}}
+          {{#unless @first}}
+            {{setVar "prevStopMark" (lookup rawSpec.stops (math stopMarkIndex '-' 1))}}
+            {{setVar "interpretHeight" (math (math (math prevStopMark '+' stopMark) '/' 2) '*' rawSpec.heightCoeff)}}
+            {{setVar "isChosen" (boolean @root.raw.interpret.eng '===' (lookup (lookup (objectEntries rawSpec.interprets) (math stopMarkIndex '-' 1)) 0))}}
+            <g transform="translate(62, -{{interpretHeight}})">
+              <circle cx="{{ternary isChosen '3.5' '2.5'}}" cy="0" r="{{ternary isChosen '3.5' '2.5'}}" fill="{{ternary isChosen '#991B1B' '#D4D4D8'}}" />
+              <text x="16" y="0" font-size="{{ternary isChosen '16' '14'}}" font-weight="{{ternary isChosen '600' '400'}}" fill="{{ternary isChosen '#991B1B' '#A1A1AA'}}" text-anchor="end" dy="4">{{lookup (lookup (objectEntries rawSpec.interprets) (math stopMarkIndex '-' 1)) 1}}</text>
+            </g>
+            <g transform="translate(0, -{{math stopMark '*' rawSpec.heightCoeff}})">
+              {{#unless @last}}<line x1="3" y1="0" x2="43" y2="0" stroke="white" />{{/unless}}
+              <text x="-22" y="0" font-size="14" font-weight="400" fill="#D4D4D8" text-anchor="middle" dy="4">{{stopMark}}</text>
+            </g>
+            {{#if (boolean stopMarkIndex '===' 1)}}
+              {{setVar "clipPath" "url(#first-raw)"}}
+            {{else if (boolean stopMarkIndex '===' 5)}}
+              {{setVar "clipPath" "url(#last-raw)"}}
+            {{else}}
+              {{setVar "clipPath" ""}}
+            {{/if}}
+            {{#if (boolean @root.raw.mark '<' stopMark)}}
+              {{#if (boolean @root.raw.mark '>' prevStopMark)}}
+                <g transform="translate(0, -{{math prevStopMark '*' rawSpec.heightCoeff}})">
+                  {{bar (math (math @root.raw.mark '-' prevStopMark) '*' rawSpec.heightCoeff) 46 (object tl=0 tr=0 bl=0 br=0) (toRad -90) fill="#991B1B" fill-opacity=(lookup (array 0.6 0.7 0.8 0.9 1) (math stopMarkIndex '-' 1)) clip-path=clipPath}}
+                </g>
+              {{/if}}
+            {{else}}
+            <g transform="translate(0, -{{math prevStopMark '*' rawSpec.heightCoeff}})">
+              {{bar (math (math stopMark '-' prevStopMark) '*' rawSpec.heightCoeff) 46 (object tl=0 tr=0 bl=0 br=0) (toRad -90) fill="#991B1B" fill-opacity=(lookup (array 0.6 0.7 0.8 0.9 1) (math stopMarkIndex '-' 1)) clip-path=clipPath}}
+            </g>
+            {{/if}}
+          {{/unless}}
+        {{/with}}
+      {{/each}}
+    </g>
+  </g>
+
+{{/layout}}

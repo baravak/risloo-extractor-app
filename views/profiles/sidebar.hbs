@@ -23,7 +23,7 @@
       transform="translate(-{{canvas.header.paddingX}}, 0)"
       text-anchor="start"
       dy="4">
-      {{info.title}}
+      {{concat info.title (ternary titleAppend titleAppend '')}}
     </text>
     <a href="http://risloo.ir" target="_blank" fill="white">
       <text

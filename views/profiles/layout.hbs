@@ -10,7 +10,7 @@
   </style>
   <rect id="svg-container" x="0" y="0" width="{{canvas.width}}" height="{{canvas.height}}" fill="white"/>
   {{#if (boolean variant "===" "with-sidebar")}}
-    {{> sidebar canvas=canvas info=dataset.info qrcode=qrcode}}
+    {{> sidebar canvas=canvas info=dataset.info qrcode=qrcode titleAppend=titleAppend}}
   {{/if}}
   {{#if (isArray spec.profile.dimensions)}}
     {{setVar "profDim" (lookup spec.profile.dimensions (math page '-' 1))}}

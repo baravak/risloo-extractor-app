@@ -1,0 +1,140 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.[1].x}}, {{spec.profile.padding.[1].y}})">
+    {{assignGlobal "prev" 0}}
+    {{assignGlobal "curr" 0}}
+    <g transform="translate(903, 0)">
+      {{#each questionItemsPart1 as | question index |}}
+        <g transform="translate({{math (floor (math index '/' 24)) '*' -303}}, 0)">
+          <g transform="translate(0, {{math (modulo index 24) '*' 28}})">
+            {{#unless @last}}
+              {{setVar "nextCat" (lookup (lookup @root.questionItemsPart1 (math index '+' 1)) "cat")}}
+              {{#if (boolean question.cat '!==' nextCat)}}
+                {{assignGlobal "prev" @root.curr}}
+                {{assignGlobal "curr" (math index '+' 1)}}
+                {{setVar "diff" (math @root.curr '-' @root.prev)}}
+                <g transform="translate(-82, 0)">
+                  {{setVar "height" (math (math (math diff '-' 1) '*' 28) '+' 24)}}
+                  <rect x="0" y="-{{math height '-' 24}}" width="82" height="{{height}}" fill="#F4F4F5" rx="4" />
+                  <text x="42" y="{{math -1 '*' (math (math height '-' 44) '/' 2)}}" font-size="13" font-weight="400" fill="#52525B" text-anchor="middle" dy="3.5">{{question.cat}}</text>
+                </g>
+              {{else}}
+              {{/if}}
+            {{/unless}}
+            {{#if @last}}
+              {{assignGlobal "curr" index}}
+              {{setVar "diff" (math @root.curr '-' @root.prev)}}
+              <g transform="translate(-82, 0)">
+                {{setVar "height" (math (math (math diff '-' 1) '*' 28) '+' 24)}}
+                <rect x="0" y="-{{math height '-' 24}}" width="82" height="{{height}}" fill="#F4F4F5" rx="4" />
+                <text x="42" y="{{math -1 '*' (math (math height '-' 44) '/' 2)}}" font-size="13" font-weight="400" fill="#52525B" text-anchor="middle" dy="3.5">{{question.cat}}</text>
+              </g>
+            {{/if}}
+            <g transform="translate(-116, 0)">
+              <rect x="0" y="0" width="32" height="24" fill="#F4F4F5" rx="4" />
+              <text x="{{math 32 '/' 2}}" y="{{math 24 '/' 2}}" font-size="13" font-weight="400" fill="#52525B" text-anchor="middle" dy="3.5">{{question.num}}</text>
+            </g>
+            <g transform="translate(-297, 0)">
+              <rect x="0" y="0" width="179" height="24" fill="#F4F4F5" rx="4" />
+              <text x="170" y="{{math 24 '/' 2}}" font-size="13" font-weight="500" fill="#52525B" text-anchor="start" dy="3.5">{{question.title}}</text>
+              <g transform="translate(12, 12)">
+                <circle cx="0" cy="0" r="10" fill="{{question.fill}}" />
+                <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="3">{{question.answer}}</text>
+              </g>
+            </g>
+          </g>
+        </g>
+      {{/each}}
+    </g>
+    {{assignGlobal "prev" 0}}
+    {{assignGlobal "curr" 0}}
+    <g transform="translate(0, 280)">
+      <rect x="0" y="0" width="297" height="388" rx="4" stroke="#A1A1AA" fill="none" />
+      <g transform="translate(292, 6)">
+        {{#each questionItemsPart2 as | question index |}}
+          <g transform="translate(0, {{math index '*' 27}})">
+            {{#unless @last}}
+              {{setVar "nextCat" (lookup (lookup @root.questionItemsPart2 (math index '+' 1)) "cat")}}
+              {{#if (boolean question.cat '!==' nextCat)}}
+                {{assignGlobal "prev" @root.curr}}
+                {{assignGlobal "curr" (math index '+' 1)}}
+                {{setVar "diff" (math @root.curr '-' @root.prev)}}
+                <g transform="translate(-77, 0)">
+                  {{setVar "height" (math (math (math diff '-' 1) '*' 27) '+' 24)}}
+                  <rect x="0" y="-{{math height '-' 24}}" width="77" height="{{height}}" fill="{{ternary (boolean (boolean index '===' 10) '||' (boolean index '===' 13)) '#E4E4E7' '#F4F4F5'}}" rx="4" />
+                  <g transform="translate(38.5, {{math -1 '*' (math (math height '-' 47) '/' 2)}})">
+                    {{setVar "catLines" (wrapOnNewline question.cat)}}
+                    {{#each catLines as | line index |}}
+                      <text x="0" y="{{ternary (boolean ../catLines.length '!==' 1) (math (lookup (array -1 1) index) '*' 8) 0}}" font-size="13" font-weight="400" fill="#52525B" text-anchor="middle" dy="3.5">{{line}}</text>
+                    {{/each}}
+                  </g>
+                </g>
+              {{else}}
+              {{/if}}
+            {{/unless}}
+            {{#if (boolean question.cat '===' '-')}}
+              <g transform="translate(-77, 0)">
+                <rect x="0" y="0" width="77" height="24" fill="{{ternary (boolean (boolean index '===' 10) '||' (boolean index '===' 13)) '#E4E4E7' '#F4F4F5'}}" rx="4" />
+                <text x="38.5" y="12" font-size="13" font-weight="400" fill="#52525B" text-anchor="middle" dy="3.5">{{question.cat}}</text>
+              </g>
+            {{/if}}
+            <g transform="translate(-111, 0)">
+              <rect x="0" y="0" width="32" height="24" fill="{{ternary (boolean (boolean index '===' 10) '||' (boolean index '===' 13)) '#E4E4E7' '#F4F4F5'}}" rx="4" />
+              <text x="{{math 32 '/' 2}}" y="{{math 24 '/' 2}}" font-size="13" font-weight="400" fill="#52525B" text-anchor="middle" dy="3.5">{{question.num}}</text>
+            </g>
+            <g transform="translate(-287, 0)">
+              <rect x="0" y="0" width="174" height="24" fill="{{ternary (boolean (boolean index '===' 10) '||' (boolean index '===' 13)) '#E4E4E7' '#F4F4F5'}}" rx="4" />
+              <text x="165" y="{{math 24 '/' 2}}" font-size="13" font-weight="500" fill="#52525B" text-anchor="start" dy="3.5">{{question.title}}</text>
+              <g transform="translate(12, 12)">
+                <circle cx="0" cy="0" r="10" fill="{{question.fill}}" />
+                <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="3">{{question.answer}}</text>
+              </g>
+            </g>
+          </g>
+        {{/each}}
+      </g>
+    </g>
+    <g transform="translate(0, 672)">
+      <rect x="0" y="0" width="297" height="42" rx="4" stroke="#A1A1AA" fill="none" />
+      <text x="224" y="21" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">شدت وسواس: <tspan font-size="16" font-weight="600" fill="#52525B">{{raw.mark}} {{raw.interpret.fr}}</tspan></text>
+    </g>
+    <g transform="translate(860, 694)">
+      <g transform="translate(0, 0)">
+        <g transform="translate(-9, 9)">
+          <circle cx="0" cy="0" r="9" fill="#D4D4D8" />
+          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">0</text>
+        </g>
+        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">صدق نمی‌کند (18)</text>
+      </g>
+      <g transform="translate(-136, 0)">
+        <g transform="translate(-9, 9)">
+          <circle cx="0" cy="0" r="9" fill="#FBBF24" />
+          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">1</text>
+        </g>
+        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">خیلی کم (16)</text>
+      </g>
+      <g transform="translate(-247, 0)">
+        <g transform="translate(-9, 9)">
+          <circle cx="0" cy="0" r="9" fill="#F97316" />
+          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">2</text>
+        </g>
+        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">کم (4)</text>
+      </g>
+      <g transform="translate(-326, 0)">
+        <g transform="translate(-9, 9)">
+          <circle cx="0" cy="0" r="9" fill="#EC4899" />
+          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">3</text>
+        </g>
+        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">زیاد (9)</text>
+      </g>
+      <g transform="translate(-409, 0)">
+        <g transform="translate(-9, 9)">
+          <circle cx="0" cy="0" r="9" fill="#B91C1C" />
+          <text x="0" y="0" font-size="12" font-weight="500" fill="white" text-anchor="middle" dy="2.5">4</text>
+        </g>
+        <text x="-24" y="9" font-size="13" font-weight="400" fill="#71717A" text-anchor="start" dy="3">خیلی زیاد (25)</text>
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

@@ -386,7 +386,8 @@ class Profile {
       contextArr,
     } = this;
 
-    return contextArr.map((context) => ({
+    return contextArr.map((context, index) => ({
+      page: index + 1,
       canvas,
       dataset,
       spec,

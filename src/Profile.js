@@ -152,7 +152,7 @@ class Dataset {
       title: dataset.scale?.title || "-",
       clientName: dataset.client?.name || "-",
       managerName: dataset.room?.manager?.name || "-",
-      centerTitle: dataset.center?.detail?.title || "-",
+      centerTitle: dataset.room?.center?.detail?.title || "-",
       started_at: (dataset.started_at && this._formatDate(dataset.started_at)) || "-",
       closed_at: (dataset.closed_at && this._formatDate(dataset.closed_at)) || "-",
       scored_at: (dataset.scored_at && this._formatDate(dataset.scored_at)) || "-",

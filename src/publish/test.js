@@ -1,5 +1,5 @@
 const chalk = require("chalk");
-const { readdir, rmdir } = require("fs/promises");
+const { readdir, rm } = require("fs/promises");
 const path = require("path");
 const ExtractExecutor = require("../cli-commands/ExtractExecutor");
 const GiftExecutor = require("../cli-commands/GiftExecutor");
@@ -98,7 +98,7 @@ async function testGift() {
 const test = async () =>
   testExtract()
     .then(() => testGift())
-    .then(() => rmdir(outputDir, { recursive: true }))
+    .then(() => rm(outputDir, { recursive: true }))
     .then(() => {
       if (errors) return Promise.reject(new Error("Test Failed"));
     });

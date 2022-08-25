@@ -70,7 +70,7 @@
            <path d="M 0 0 h {{math item.width '-' itemsSpec.rect.borderRadius}} a {{itemsSpec.rect.borderRadius}} {{itemsSpec.rect.borderRadius}} 180 0 1 0 {{itemsSpec.rect.height}} h -{{math item.width '-' itemsSpec.rect.borderRadius}} z" fill="{{item.fill}}" fill-opacity="{{item.opacity}}"/>
            <g transform="translate(0, {{itemsSpec.rect.borderRadius}})">
              <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="start" font-size="16" font-weight="500" dy="3">{{item.label.fr}} <tspan fill="#71717A" font-size="14" font-weight="400">({{item.overallMark.mark}} از {{item.overallMark.maxValue}})</tspan></text>
-             <text x="{{math item.width '-' itemsSpec.rect.borderRadius}}" y="0" fill="white" text-anchor="middle" font-size="18" font-weight="600" dy="6">{{item.mark}}</text>
+             <text x="{{math (math item.width '-' itemsSpec.rect.borderRadius) '-' 10}}" y="0" fill="white" text-anchor="middle" font-size="18" font-weight="600" dy="6">{{item.mark}}</text>
            </g>
          </g>
         {{/with}}

@@ -10,3 +10,11 @@ src/http.js
 views/profiles/empty.hbs
 views/profiles/measure.js
 src/cli-commands/test.js
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

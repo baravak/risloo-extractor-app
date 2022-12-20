@@ -1,0 +1,2511 @@
+{
+  "id": "$X1HH6GUSQ",
+  "scale": {
+    "id": "$RIASEC-93",
+    "title": "کدهای هالند"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96664HU",
+    "name": "رضوانه رضایی",
+    "user_id": "IR963X89"
+  },
+  "room": {
+    "id": "RS9666663",
+    "manager": {
+      "id": "GH9666663",
+      "name": "محمد رضا سالاری فر",
+      "user_id": "IR963U3H",
+      "avatar": null
+    },
+    "center": {
+      "id": "RS966666D",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز تحقیقات، آموزش و مشاوره خانواده",
+        "avatar": [
+          {
+            "id": "F96DKWM",
+            "file_name": "P9666AGE_large.png",
+            "slug": "storage/public/Files_1000/P9666AGE_large.png",
+            "mode": "large",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_large.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DKWH",
+            "file_name": "P9666AGE_medium.png",
+            "slug": "storage/public/Files_1000/P9666AGE_medium.png",
+            "mode": "medium",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_medium.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DKWQ",
+            "file_name": "P9666AGE_original.png",
+            "slug": "storage/public/Files_1000/P9666AGE_original.png",
+            "mode": "original",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_original.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DKWV",
+            "file_name": "P9666AGE_small.png",
+            "slug": "storage/public/Files_1000/P9666AGE_small.png",
+            "mode": "small",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_small.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          }
+        ]
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1670344367,
+  "started_at": 1670344380,
+  "scored_at": 1670344383,
+  "closed_at": 1670344380,
+  "total_amount": 50,
+  "prepayment": true,
+  "purchased": false,
+  "amount": 50,
+  "billing": null,
+  "description": null,
+  "psychologist_description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "نصب وسایل الکتریکی",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تعمیر اتوموبیل",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ساختن اشیاء چوبی",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "راندن کامیون یا تراکتور",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "استفاده از ابزار ماشینی یا فلزکاری",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تغییر ابتکاری موتور اتوموبیل و موتورسیکلت",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره کارگاه",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره طراحی مکانیکی",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره درودگری (کارهای چوبی)",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره خیاطی",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره اتومکانیک (مکانیک خودرو)",
+      "category": "علاقه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خواندن کتاب‌ها یا مجلات علمی",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کار در آزمایشگاه",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "کار بر روی یک پروژه علمی",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "ساخت مدل‌هایی از هواپیما (ماکت)",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کار با وسایل و مواد شیمیایی",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مطالعه آزاد درباره موضوعات خاص",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "حل معماهای ریاضی و شطرنج",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره فیزیک",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره شیمی",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره هندسه یا مثلثات",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره زیست‌شناسی",
+      "category": "علاقه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "طراحی، ترسیم، نقاشی",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بازیگری تئاتر یا سینما",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "طراحی داخلی ساختمان یا دکوراسیون",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نوازندگی در گروه موسیقی و سرود",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نوازندگی یکی از آلات موسیقی",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "رفتن به برنامه‌های اجرای موسیقی",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "خواندن داستان‌های معروف",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نقاشی از روی مدل یا عکس",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نقد نمایشنامه‌ها",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "خواندن شعر یا سرودن شعر",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره‌ هنری",
+      "category": "علاقه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نامه‌نگاری با دوستان",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "شرکت در برنامه‌های مذهبی",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "عضویت در انجمن‌ها و مراکز فرهنگی و اجتماعی",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "کمک به حل مشکلات شخصی دیگران",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مراقبت از کودکان",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "شرکت در میهمانی‌ها و مراسم جشن و سرور",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بیان مطالب شنیدنی و لطیفه در جمع دوستان",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مطالعه کتاب‌های روانشناسی",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "حضور درجلسات و سمینارها",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "شرکت در کلاس‌های ورزشی",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "پیدا کردن دوستان و افراد جدید",
+      "category": "علاقه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تأثیر گذاشتن روی دیگران",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "فروشندگی اجناس",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بحث درباره مسائل سیاسی",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "کارکردن در مغازه یا فروشگاه شخصی",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "شرکت فعال در سمینارها",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "سخنرانی",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خدمت به عنوان مدیر یک گروه",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "سرپرستی و نظارت بر کار دیگران",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ملاقات با شخصیت‌های مهم",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "رهبری یک گروه برای رسیدن به هدف",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مشارکت در فعالیت‌های سیاسی",
+      "category": "علاقه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دقت در تمیز نگه‌داشتن کتاب‌ها و لوازم‌التحریر خود",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "ماشین‌نویسی اوراق یا نامه‌ها برای خود و دیگران",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "حسابداری",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کار با انواع ماشین‌های اداری (حساب، کامپیوتر و غیره)",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "ثبت و نگهداری اسناد هزینه‌ها و درآمدها",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره ماشین‌نویسی",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره بازرگانی",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره دفترداری",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گذراندن دوره حسابداری مالی",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بایگانی نامه‌ها، گزارش‌ها، سوابق و غیره",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نوشتن نامه‌های اداری و رسمی",
+      "category": "علاقه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از ابزارهای برقی کارگاه نجاری مانند اره، ماشین‌تراش یا ماشین سنباده استفاده کرده‌ام",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کار کردن با ولت‌متر را می‌دانم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم کاربراتور را تنظیم کنم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "با ابزارهای برقی مانند مته، اسباب، خرد‌کن و چرخ خیاطی کار کرده‌ام",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "کار جلازدن، و لکه‌زدایی مبلمان یا کارهای چوبی را می‌توانم انجام دهم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم نقشه ساختمان و طرح ماشین را بخوانم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تعمیرات ساده وسایل برقی را می‌توانم انجام دهم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم وسایل چوبی (صندلی، میز و ...) را تعمیر کنم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "رسم‌های فنی را می‌توانم بکشم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم تعمیرات ساده تلویزیون را انجام دهم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تعمیرات ساده لوله‌کشی را می‌توانم انجام دهم",
+      "category": "تجربه‌ها - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "طرز کار لامپ خلأ (لوله خالی از هوا) را می‌دانم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم سه غذا را که از لحاظ مواد پروتئینی غنی هستند نام ببرم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مفهوم نیمه‌عمر عنصر رادیواکتیو را می‌دانم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم جدول مندلیف را توضیح دهم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم از خط‌کش محاسبه برای ضرب یا تقسیم استفاده کنم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از میکروسکوپ می‌توانم استفاده کنم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "سه نوع صورت فلکی ستارگان را می‌توانم شناسایی کنم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "چگونگی عملکرد گلبول‌های سفید خون را می‌توانم توضیح دهم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "فرمول‌های ساده شیمی را می‌توانم تفسیر کنم",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌دانم که چرا ماهواره‌ها به زمین نمی‌افتند",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در سمینار یا مسابقه علمی شرکت کرده‌ام",
+      "category": "تجربه‌ها - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم در نمایشنامه نقشی را بازی کنم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم شعر یا نوشته‌ای را دکلمه کنم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم در نمایش عروسکی بازی کنم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم افراد را طوری نقاشی کنم که قابل شناسایی باشند",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم نقاشی یا مجسمه‌سازی‌ کنم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم سفالگری کنم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "طراحی لباس، پوستر یا وسایل چوبی را می‌توانم انجام دهم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم به خوبی شعر بگویم یا داستان بنویسم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم یکی از آلات موسیقی را بنوازم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در سرودهای دو تا چهار نفره می‌توانم شرکت کنم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم یکی از آلات موسیقی را در یک جمع رسمی بنوازم",
+      "category": "تجربه‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم به خوبی مطالب را برای دیگران توضیح دهم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در امور خیریه یا جمع‌آوری کمک‌های مردمی شرکت کرده‌ام",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "با دیگران به خوبی کار و تشریک مساعی می‌کنم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در سرگرم کردن افراد بزرگ‌تر از خود مهارت دارم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم میزبان خوبی باشم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به راحتی می‌توانم به کودکان آموزش دهم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم برای سرگرمی دیگران در یک مهمانی برنامه‌ریزی کنم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به خوبی می‌توانم به افراد مضطرب یا دارای مشکل کمک کنم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "داوطلبانه در بیمارستان، کلینیک یا مراکز امدادرسانی (هلال احمر و ...) کار کرده‌ام",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "برای امور خیریه مربوط به مدرسه یا مسجد می‌توانم برنامه‌ریزی کنم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "درباره شخصیت افراد به خوبی می‌توانم قضاوت کنم",
+      "category": "تجربه‌ها - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در مدرسه به عنوان نماینده انتخاب شده‌ام",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم کار دیگران را سرپرستی کنم",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اشتیاق و انرژی فوق‌العاده‌ای در انجام کارهایم دارم",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به خوبی می‌توانم مردم را به انجام کارهای مورد علاقه خودم وادارم",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در فروشندگی مهارت دارم",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به عنوان نماینده یک گروه در ارائه پیشنهادات و یا شکایات به مقام بالاتر انجام وظیفه کرده‌ام",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در کار فروشندگی یا رهبری گروه پاداش گرفته‌ام",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "باشگاه، گروه یا دسته‌ای را سازمان داده‌ام",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اقدام به ایجاد کسب و کار نموده‌ام",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌دانم چگونه سردسته یا نماینده موفقی باشم",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مباحثه‌گر خوبی هستم",
+      "category": "تجربه‌ها - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در هر دقیقه می‌توانم چهل کلمه تایپ کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم با دستگاه فتوکپی یا ماشین جمع‌بندی قسمت کالا کار کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم تندنویسی کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم نامه‌ها و سایر اوراق را بایگانی کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در امور اداری کار کرده‌ام",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم زمان‌بندی مشخصی برای کارهایم داشته باشم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم مقدار زیادی از کارهای دفتری را در مدت کوتاهی انجام دهم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از ماشین‌حساب می‌توانم استفاده کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم از کامپیوتر استفاده کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم بدهی‌ها و طلب‌ها (ترازنامه) را در دفتر کل وارد کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم گزارش‌های دقیق پرداخت‌ها و فروش‌ها را نگهداری و تنظیم کنم",
+      "category": "تجربه‌ها - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["تجربه دارم", "تجربه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مکانیک هواپیما",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "متخصص موجودات آبزی و وحشی",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مکانیک اتومبیل",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نجار",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "راننده خاک‌برداری برقی (جرثقیل)",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نقشه‌بردار",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بازرس ساختمان",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مهندس مخابرات",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "جوشکار",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "پرورش‌دهنده گل‌ها و گیاهان",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "راننده تاکسی سرویس (آژانس)",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مهندس لوکوموتیو",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خیاط",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "برق‌کار",
+      "category": "علاقه شغلی - گروه «و»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "متخصص هواشناسی",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "زیست‌شناس",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ستاره‌شناس (منجّم)",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تکنیسین آزمایشگاه پزشکی",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مردم‌شناس",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دامپزشک",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "شیمی‌دان",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "پژوهشگر (محقق)",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نویسنده مقالات علمی",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "سردبیر یک مجله علمی",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "زمین‌شناس",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گیاه‌شناس",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کارشناس تحقیقات علمی",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "فیزیک‌دان",
+      "category": "علاقه شغلی - گروه «ج»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "شاعر",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "رهبر ارکستر",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "موسیقی‌دان",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نویسنده",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنرمند آگهی‌های تبلیغاتی",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نویسنده ادبیات کودکان",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بازیگر سینما و تئاتر",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خبرنگار",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "صورتگر (نقاش)",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خواننده سرود",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آهنگ‌ساز",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مجسمه‌ساز",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نمایشنامه‌نویس",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "فیلم‌ساز",
+      "category": "علاقه شغلی - گروه «ه‍»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "جامعه‌شناس",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دبیر دبیرستان",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "متخصص اصلاح و تربیت رفتار",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "گفتار درمان‌گر",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مشاور ازدواج",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مدیر مدرسه",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "سرپرست خوابگاه",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "روان‌شناس",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دبیر علوم اجتماعی",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مدیر امور خیریه",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مربی ورزش",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مشاور",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دستیار امور روان‌پزشکی",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "راهنما و مشاور شغلی",
+      "category": "علاقه شغلی - گروه «الف»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "معامله‌گر، واسطه‌گر امور تجاری",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مأمور خرید",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مدیر اجرایی آگهی‌ و مسئول تبلیغات",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نماینده فروش کارخانه تولیدی",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تولید‌کننده برنامه‌های تلویزیونی",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مدیر هتل",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مدیر شرکت‌های بازرگانی",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مدیر رستوران",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مدیر مراسم و تشریفات",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "فروشنده",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "واسطه‌گر معاملات ملکی یا اتومبیل",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مدیر تبلیغات یا مدیر روابط عمومی",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مؤسس باشگاه ورزشی",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مدیر فروش",
+      "category": "علاقه شغلی - گروه «م»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دفتردار",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "معلم درس ماشین‌نویسی",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مسئول برنامه‌های بودجه (ذی‌حساب)",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "حسابدار تحصیل‌کرده",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بازرس مالی اداری",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تندنویس دادگاه",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تحویل‌دار بانک",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "کارشناس مالیات",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "ناظر صورت‌برداری از موجودی",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اپراتور کامپیوتر",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "ارزیاب هزینه‌ها (کارپرداز)",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "کارشناس امور مالی",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کارمند امور مالی",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بازرس بانک",
+      "category": "علاقه شغلی - گروه «ق»",
+      "answer": {
+        "type": "optional",
+        "options": ["علاقه دارم", "علاقه ندارم"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "توانایی مکانیکی",
+      "category": "خودسنجی توانایی‌ها - گروه «و»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "توانایی علمی",
+      "category": "خودسنجی توانایی‌ها - گروه «ج»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "7"
+    },
+    {
+      "type": "text",
+      "text": "توانایی هنری",
+      "category": "خودسنجی توانایی‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "توانایی تدریس",
+      "category": "خودسنجی توانایی‌ها - گروه «الف»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "توانایی فروشندگی",
+      "category": "خودسنجی توانایی‌ها - گروه «م»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "7"
+    },
+    {
+      "type": "text",
+      "text": "توانایی اداری و مالی",
+      "category": "خودسنجی توانایی‌ها - گروه «ق»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مهارت‌های دستی (استفاده از ابزار)",
+      "category": "خودسنجی مهارت‌ها - گروه «و»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "مهارت‌های ریاضی یا علوم تجربی",
+      "category": "خودسنجی مهارت‌ها - گروه «ج»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "مهارت‌های نقاشی، خط یا موسیقی",
+      "category": "خودسنجی مهارت‌ها - گروه «ه‍»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "مهارت‌های دوستی و تعاون",
+      "category": "خودسنجی مهارت‌ها - گروه «الف»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مهارت‌های مدیریت",
+      "category": "خودسنجی مهارت‌ها - گروه «م»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مهارت‌های امور اداری و مالی",
+      "category": "خودسنجی مهارت‌ها - گروه «ف»",
+      "answer": {
+        "type": "range",
+        "min": 1,
+        "max": 7
+      },
+      "user_answered": "7"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "52"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "entities": [
+    {
+      "offset": 0,
+      "title": "بخش اول: علاقه‌ها",
+      "description": "هر کدام از فعالیت‌هایی که به آن‌ها علاقه‌دارید را مشخص کنید؛ هرچند آن فعالیت مورد علاقه را تا کنون انجام نداده باشید."
+    },
+    {
+      "offset": 66,
+      "title": "بخش دوم: تجربه‌ها",
+      "description": "هر کدام از فعالیت‌هایی که آن‌ها را تجربه کردید را مشخص کنید؛ هرچند آن تجربه ناچیز بوده باشد."
+    },
+    {
+      "offset": 132,
+      "title": "بخش سوم: علاقه شغلی",
+      "description": "هر کدام از مشاغلی که به آن علاقه دارید را مشخص کنید. البته لازم نیست که علاقه شما، حتما همان شغل انتخابی شما در آینده باشد."
+    },
+    {
+      "offset": 216,
+      "title": "بخش چهارم: خودسنجی توانایی‌ها",
+      "description": "خودتان را با همسالان‌تان مقایسه کنید و نسبت به توانایی‌هایی که عنوان شده، بین ۱ تا ۷ به خودتان نمره بدهید."
+    },
+    {
+      "offset": 222,
+      "title": "بخش چهارم: خودسنجی مهارت‌ها",
+      "description": "خودتان را با همسالان‌تان مقایسه کنید و نسبت به مهارت‌هایی که عنوان شده، بین ۱ تا ۷ به خودتان نمره بدهید."
+    }
+  ],
+  "cornometer": 0,
+  "score": {
+    "realistic": 23,
+    "investigative": 28,
+    "artistic": 21,
+    "social": 19,
+    "enterprising": 29,
+    "conventional": 22
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0",
+  "profiles": [
+    {
+      "id": "F96D8BS",
+      "file_name": "X1HH6GUSQ.json",
+      "slug": "storage/profiles/X1HH6GUSQrYjSab3pDPjhazUaDTYsGY5g8hhmvIfPKG51M2WjNa9dQmlQZ4UI4mDZS8n9LpiPZU718EdXmmuiHtflSGaXEWKYLx9cRVZ6PVrcd6gBNHcBxzKzUS55l4dQ/X1HH6GUSQ.json",
+      "mode": "profile_json",
+      "url": "https://api.risloo.local/storage/profiles/X1HH6GUSQrYjSab3pDPjhazUaDTYsGY5g8hhmvIfPKG51M2WjNa9dQmlQZ4UI4mDZS8n9LpiPZU718EdXmmuiHtflSGaXEWKYLx9cRVZ6PVrcd6gBNHcBxzKzUS55l4dQ/X1HH6GUSQ.json",
+      "type": "data",
+      "mime": "application/json",
+      "exec": "json"
+    },
+    {
+      "id": "F96D8BX",
+      "file_name": "X1HH6GUSQ.xlsx",
+      "slug": "storage/profiles/X1HH6GUSQrYjSab3pDPjhazUaDTYsGY5g8hhmvIfPKG51M2WjNa9dQmlQZ4UI4mDZS8n9LpiPZU718EdXmmuiHtflSGaXEWKYLx9cRVZ6PVrcd6gBNHcBxzKzUS55l4dQ/X1HH6GUSQ.xlsx",
+      "mode": "profile_xlsx",
+      "url": "https://api.risloo.local/storage/profiles/X1HH6GUSQrYjSab3pDPjhazUaDTYsGY5g8hhmvIfPKG51M2WjNa9dQmlQZ4UI4mDZS8n9LpiPZU718EdXmmuiHtflSGaXEWKYLx9cRVZ6PVrcd6gBNHcBxzKzUS55l4dQ/X1HH6GUSQ.xlsx",
+      "type": "document",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "exec": "xlsx"
+    }
+  ]
+}

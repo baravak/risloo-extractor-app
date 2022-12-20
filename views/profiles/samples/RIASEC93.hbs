@@ -1,0 +1,38 @@
+{{#> layout}}
+
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  <g transform="translate(100, 20)">
+    <line x1="0" y1="-10" x2="0" y2="214" stroke="#D4D4D8" stroke-width="2" stroke-linecap="round" />
+    {{#each items as | item index |}}
+      {{#with @root.spec.items as | itemsSpec |}}
+        <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+          <text x="-12" y="8" font-size="14" font-weight="400" fill="#7E22CE" text-anchor="start">{{item.label.fr}}</text>
+          <rect x="0" y="{{math itemsSpec.rect.body.height '-' itemsSpec.rect.base.height}}" width="500" height="{{itemsSpec.rect.base.height}}" fill="#F4F4F5" />
+          {{#if (boolean item.mark '!==' 0)}}
+            {{bar item.width itemsSpec.rect.body.height itemsSpec.rect.body.brs 0 fill="#7E22CE" fill-opacity=item.opacity}}
+          {{/if}}
+          <text x="{{math item.width '+' (ternary (boolean item.mark '!==' 0) 0 7)}}" y="-6" font-size="14" font-weight="500" fill="#7E22CE" text-anchor="middle">{{item.mark}}</text>
+        </g>
+      {{/with}}
+    {{/each}}
+    <text x="500" y="235" font-size="12" font-weight="400" fill="#D4D4D8" text-anchor="middle">50</text>
+  </g>
+  <g transform="translate(398, 329)">
+    {{#each questionItems as | item index |}}
+      <g transform="translate(0, {{ math index '*' 56 }})">
+        <text x="64" y="25" font-size="14" font-weight="400" fill="#3F3F46" text-anchor="end">{{ item.label }}</text>
+        {{#each item.marks as | mark markIndex |}}
+          <g transform="translate({{math -1 '*' (math markIndex '*' 64)}}, 0)">
+            {{#if (boolean index '===' 0)}}
+              <text x="20" y="-21" font-size="14" font-weight="400" fill="#3F3F46" text-anchor="middle">{{lookup (array 'و' 'ج' 'ه' 'الف' 'م' 'ق') markIndex}}</text>
+            {{/if}}
+            <rect x="0" y="0" width="40" height="40" fill="#F4F4F5" rx="4" />
+            <text x="20" y="25" font-size="16" font-weight="500" fill="#312E81" text-anchor="middle">{{ mark }}</text>
+          </g>
+        {{/each}}
+      </g>
+    {{/each}}
+  </g>
+</g>
+
+{{/layout}}

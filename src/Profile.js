@@ -204,7 +204,7 @@ class Dataset {
 
   _extractField(preqs, reqPreq) {
     let engLabel = reqPreq.eng || reqPreq;
-    let preq = preqs.find((item) => item.label === engLabel);
+    let preq = preqs?.find((item) => item.label === engLabel);
     return { eng: engLabel, fr: reqPreq.fr || preq?.text || "-", value: this._extractValue(preq) };
   }
 

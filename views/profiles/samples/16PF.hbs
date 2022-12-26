@@ -1,0 +1,54 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <text x="335" y="13" font-size="12.6" font-weight="400" fill="#1E40AF" text-anchor="middle">1</text>
+    <text x="190" y="13" font-size="12.6" font-weight="400" fill="#155E75" text-anchor="middle">10</text>
+    <g transform="translate(240, 0)">
+      {{#if (boolean status '===' "invalid")}}
+        <rect x="0" y="0" width="46.8" height="16.2" rx="3.6" fill="#FEE2E2" />
+        <text x="23.4" y="8.1" fill="#B91C1C" font-size="12.6" font-weight="400" text-anchor="middle" dy="3">نامعتبر</text>
+      {{/if}}
+    </g>
+    <g transform="translate(327.2, 27)">
+      <rect x="0" y="0" width="16.2" height="529.2" fill="#1D4ED8" fill-opacity="0.1" rx="3.6" />
+      <rect x="-16.2" y="0" width="16.2" height="529.2" fill="#1D4ED8" fill-opacity="0.07" rx="3.6" />
+      <rect x="-32.4" y="0" width="16.2" height="529.2" fill="#1D4ED8" fill-opacity="0.05" rx="3.6" />
+      <rect x="-48.6" y="0" width="16.2" height="529.2" fill="#E4E4E7" fill-opacity="0.15" rx="3.6" />
+      <rect x="-97.2" y="0" width="16.2" height="529.2" fill="#E4E4E7" fill-opacity="0.15" rx="3.6" />
+      <rect x="-113.4" y="0" width="16.2" height="529.2" fill="#0E7490" fill-opacity="0.05" rx="3.6" />
+      <rect x="-129.6" y="0" width="16.2" height="529.2" fill="#0E7490" fill-opacity="0.07" rx="3.6" />
+      <rect x="-145.8" y="0" width="16.2" height="529.2" fill="#0E7490" fill-opacity="0.1" rx="3.6" />
+      {{#each items as | item index |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          <g transform="translate(0, {{math index '*' itemsSpec.offsetY}})">
+            <g transform="translate(0, 7.2)">
+              <line x1="18" y1="0" x2="-147.6" y2="0" stroke="#E4E4E7" />
+              <g font-size="14.4" font-weight="400">
+                <text x="220" y="0" fill="#71717A" font-weight="500" text-anchor="middle" dy="3">{{item.label.fr}}</text>
+                <text x="32.4" y="0" fill="#1E40AF" text-anchor="end" dy="3">{{item.label.right}}</text>
+                <text x="-162.5" y="0" fill="#155E75" text-anchor="start" dy="3">{{item.label.left}}</text>
+              </g>
+            </g>
+            <g transform="translate(-{{item.offset}}, 0)">
+              <rect x="0" y="0" width="16.2" height="16.2" fill="{{item.fill}}" fill-opacity="{{item.opacity}}" rx="3.6" />
+              <text x="8.1" y="8.1" fill="#FFFFFF" font-size="12.6" font-weight="400" text-anchor="middle" dy="3.5">{{item.mark}}</text>
+            </g>
+          </g>
+        {{/with}}
+      {{/each}}
+    </g>
+    <g transform="translate(0, 623.7)">
+      {{#each gaugeItems as | item index |}}
+        {{#with @root.spec.gaugeItems}}
+          <g transform="translate({{math index '*' offsetX}}, 0)">
+            {{gauge circle.R circle.r circle.brs circle.angles direction fill="#F4F4F5"}}
+            {{gauge circle.R circle.r circle.brs (object start=circle.angles.start end=item.zeta) direction fill="#65A30D"}}
+            <text x="0" y="0" font-size="14.4" font-weight="600" fill="#65A30D" text-anchor="middle" dy="4">{{item.mark}}</text>
+            <text x="0" y="47" font-size="14.4" font-weight="400" fill="#52525B" text-anchor="middle" dy="5">{{item.label.fr}}</text>
+          </g>
+        {{/with}}
+      {{/each}}
+    </g>
+  </g>
+
+{{/layout}}

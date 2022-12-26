@@ -1,0 +1,201 @@
+{
+  "id": "$X1HHBDG96",
+  "scale": {
+    "id": "$CAATS-93",
+    "title": "پرسشنامه شخصیت کتل (16pf)"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96664HU",
+    "name": "رضوانه رضایی",
+    "user_id": "IR963X89"
+  },
+  "room": {
+    "id": "RS9666663",
+    "manager": {
+      "id": "GH9666663",
+      "name": "محمد رضا سالاری فر",
+      "user_id": "IR963U3H",
+      "avatar": null
+    },
+    "center": {
+      "id": "RS966666D",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز تحقیقات، آموزش و مشاوره خانواده",
+        "avatar": [
+          {
+            "id": "F96DKWM",
+            "file_name": "P9666AGE_large.png",
+            "slug": "storage/public/Files_1000/P9666AGE_large.png",
+            "mode": "large",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_large.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DKWH",
+            "file_name": "P9666AGE_medium.png",
+            "slug": "storage/public/Files_1000/P9666AGE_medium.png",
+            "mode": "medium",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_medium.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DKWQ",
+            "file_name": "P9666AGE_original.png",
+            "slug": "storage/public/Files_1000/P9666AGE_original.png",
+            "mode": "original",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_original.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DKWV",
+            "file_name": "P9666AGE_small.png",
+            "slug": "storage/public/Files_1000/P9666AGE_small.png",
+            "mode": "small",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666AGE_small.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          }
+        ]
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "23"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "case": null,
+  "code": null,
+  "created_at": 1671777735,
+  "started_at": 1671777778,
+  "scored_at": 1671779582,
+  "closed_at": 1671777778,
+  "total_amount": null,
+  "prepayment": false,
+  "purchased": true,
+  "amount": null,
+  "billing": null,
+  "description": "## دستور اجرای آزمون\n\nجهت تکمیل روند جلسه استعدادسنجی فرم زیر را با دقت تکمیل نمایید. این بخش برای افزایش بینش مراجع و مشاور است و نقش بسزایی در نتیجه دقیق استعدادسنجی دارد. از اینکه با حوصله و صادقانه فرم را پر می‌کنید، سپاس‌گزاریم.",
+  "psychologist_description": null,
+  "cornometer": 0,
+  "score": {
+    "a": 7,
+    "b": 1,
+    "c": 2,
+    "e": 7,
+    "f": 6,
+    "g": 2,
+    "h": 6,
+    "i": 5,
+    "l": 5,
+    "m": 5,
+    "n": 8,
+    "o": 5,
+    "q1": 4,
+    "q2": 7,
+    "q3": 1,
+    "q4": 5,
+    "raw_a": 9,
+    "raw_b": 4,
+    "raw_c": 8,
+    "raw_e": 14,
+    "raw_f": 13,
+    "raw_g": 7,
+    "raw_h": 13,
+    "raw_i": 8,
+    "raw_l": 11,
+    "raw_m": 11,
+    "raw_n": 14,
+    "raw_o": 9,
+    "raw_q1": 8,
+    "raw_q2": 12,
+    "raw_q3": 5,
+    "raw_q4": 10,
+    "extraversion": 5.8,
+    "anxiety": 6.6,
+    "flexibility": 6.5,
+    "independence": 6.2,
+    "selfcontrol": 0.8,
+    "adjustment": 3.6,
+    "leadership": 4,
+    "creativity": 3.4,
+    "status": "invalid"
+  }
+}

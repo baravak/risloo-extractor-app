@@ -74,23 +74,18 @@ async function sendReleaseNotes() {
   const options = {
     hostname: "api.telegram.org",
     path: `/bot${token}/sendPhoto`,
-    method: "POST",
-    headers: form.getHeaders(),
+    protocol: "https:",
   };
 
-  const req = https.request(options, (res) => {
+  form.submit(options, (err, res) => {
     console.log(`statusCode: ${res.statusCode}`);
 
     res.on("data", (d) => {
       process.stdout.write(d);
     });
+
+    if (err) console.log(err);
+
+    res.emit("end");
   });
-
-  form.pipe(req);
-
-  req.on("error", (error) => {
-    console.error(error);
-  });
-
-  req.end();
 }

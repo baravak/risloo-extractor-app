@@ -38,7 +38,7 @@
       {{/each}}
     </g>
     <g transform="translate(0, 623.7)">
-      {{#each gaugeItems as | item index |}}
+      {{#each (reverse gaugeItems) as | item index |}}
         {{#with @root.spec.gaugeItems}}
           <g transform="translate({{math index '*' offsetX}}, 0)">
             {{gauge circle.R circle.r circle.brs circle.angles direction fill="#F4F4F5"}}

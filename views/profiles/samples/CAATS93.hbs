@@ -1,0 +1,251 @@
+{{#> layout}}
+
+  <defs>
+    <linearGradient id="horizontal-shadow">
+      <stop offset="0%"  stop-color="black" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+    <linearGradient id="vertical-shadow" gradientTransform="rotate(90)">
+      <stop offset="0%"  stop-color="black" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+    <clipPath id="raw-rect">
+      <rect x="0" y="0" width="300" height="16" ry="8"/>
+    </clipPath>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <line x1="385" y1="0" x2="385" y2="714" stroke="#E4E4E7" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" />
+    <line x1="400" y1="177.5" x2="902" y2="177.5" stroke="#E4E4E7" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" />
+    <line x1="400" y1="400" x2="902" y2="400" stroke="#E4E4E7" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" />
+    <line x1="0" y1="400" x2="373" y2="400" stroke="#E4E4E7" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" />
+    <line x1="0" y1="632" x2="373" y2="632" stroke="#E4E4E7" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" />
+    <text x="-140" y="10" font-size="10" font-weight="400" fill="#A1A1AA" transform="rotate(-90)">شخصیت کتل (16pf)</text>
+    <g transform="translate(36, 0)">
+      {{#with _16PF_Context}}
+        <text x="170" y="10" font-size="7" font-weight="400" fill="#1E40AF" text-anchor="middle">1</text>
+        <text x="88" y="10" font-size="7" font-weight="400" fill="#155E75" text-anchor="middle">10</text>
+        <g transform="translate(117, 0)">
+          {{#if (boolean status '===' "invalid")}}
+            <rect x="0" y="0" width="26" height="9" rx="2" fill="#FEE2E2" />
+            <text x="13" y="4.5" fill="#B91C1C" font-size="7" font-weight="400" text-anchor="middle" dy="1.5">نامعتبر</text>
+          {{/if}}
+        </g>
+        <g transform="translate(165, 15)">
+          <rect x="0" y="0" width="9" height="294" fill="#1D4ED8" fill-opacity="0.1" rx="3.6" />
+          <rect x="-9" y="0" width="9" height="294" fill="#1D4ED8" fill-opacity="0.07" rx="3.6" />
+          <rect x="-18" y="0" width="9" height="294" fill="#1D4ED8" fill-opacity="0.05" rx="3.6" />
+          <rect x="-27" y="0" width="9" height="294" fill="#E4E4E7" fill-opacity="0.15" rx="3.6" />
+          <rect x="-54" y="0" width="9" height="294" fill="#E4E4E7" fill-opacity="0.15" rx="3.6" />
+          <rect x="-63" y="0" width="9" height="294" fill="#0E7490" fill-opacity="0.05" rx="3.6" />
+          <rect x="-72" y="0" width="9" height="294" fill="#0E7490" fill-opacity="0.07" rx="3.6" />
+          <rect x="-81" y="0" width="9" height="294" fill="#0E7490" fill-opacity="0.1" rx="3.6" />
+          {{#each items as | item index |}}
+            {{#with @root._16PF_Context.spec.items as | itemsSpec |}}
+              <g transform="translate(0, {{math index '*' itemsSpec.offsetY}})">
+                <g transform="translate(0, 4)">
+                  <line x1="10" y1="0" x2="-82" y2="0" stroke="#E4E4E7" />
+                  <g font-size="8" font-weight="400">
+                    <text x="124" y="0" fill="#71717A" font-weight="500" text-anchor="middle" dy="2">{{item.label.fr}}</text>
+                    <text x="18" y="0" fill="#1E40AF" text-anchor="end" dy="2">{{item.label.right}}</text>
+                    <text x="-90" y="0" fill="#155E75" text-anchor="start" dy="2">{{item.label.left}}</text>
+                  </g>
+                </g>
+                <g transform="translate(-{{item.offset}}, 0)">
+                  <rect x="0" y="0" width="9" height="9" fill="{{item.fill}}" fill-opacity="{{item.opacity}}" rx="2" />
+                  <text x="4.5" y="4.5" fill="#FFFFFF" font-size="7" font-weight="400" text-anchor="middle" dy="2">{{item.mark}}</text>
+                </g>
+              </g>
+            {{/with}}
+          {{/each}}
+        </g>
+        <g transform="translate(0, 345)">
+          {{#each (reverse gaugeItems) as | item index |}}
+            {{#with @root._16PF_Context.spec.gaugeItems}}
+              <g transform="translate({{math index '*' offsetX}}, 0)">
+                {{gauge circle.R circle.r circle.brs circle.angles direction fill="#F4F4F5"}}
+                {{gauge circle.R circle.r circle.brs (object start=circle.angles.start end=item.zeta) direction fill="#65A30D"}}
+                <text x="0" y="0" font-size="8" font-weight="600" fill="#65A30D" text-anchor="middle" dy="3">{{item.mark}}</text>
+                <text x="0" y="23" font-size="8" font-weight="400" fill="#52525B" text-anchor="middle" dy="5">{{item.label.fr}}</text>
+              </g>
+            {{/with}}
+          {{/each}}
+        </g>
+      {{/with }}
+    </g> 
+    <g transform="translate(400, 5)">
+      <g transform="translate(496, 9)">
+        <text x="0" y="0" font-size="10" font-weight="400" fill="#A1A1AA" transform="rotate(-90)">هوش‌های چندگانه گاردنر (GMI)</text>
+      </g>
+      {{#with GMIT_Context}}
+        <g transform="translate({{spec.items.offsetX}}, 0)">
+          {{setVar "tickTotalHeight" (math (math 2 '*' spec.items.ticks.heightOffset) '+' spec.items.totalHeight)}}
+          {{#each itemsTicks as | tick index |}}
+            <g transform="translate({{tick.leftPos}}, 0)">
+              <line x1="0" y1="0" x2="0" y2="{{../tickTotalHeight}}" stroke="#F4F4F5" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="1"/>
+              <text x="-{{@root.GMIT_Context.spec.items.ticks.numberOffset.x}}" y="{{@root.GMIT_Context.spec.items.ticks.numberOffset.y}}" fill="#A1A1AA" text-anchor="start" font-size="8" font-weight="500" dy="3">{{tick.number}}</text>
+            </g>
+          {{/each}}
+
+          <g transform="translate(0, {{spec.items.ticks.heightOffset}})">
+            {{#each items as | item index |}}
+              {{#with @root.GMIT_Context.spec.items as | itemsSpec |}}
+                <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+                  <path d="M 0 0 h {{math item.width '-' itemsSpec.rect.borderRadius}} a {{itemsSpec.rect.borderRadius}} {{itemsSpec.rect.borderRadius}} 180 0 1 0 {{itemsSpec.rect.height}} h -{{math item.width '-' itemsSpec.rect.borderRadius}} z" fill="{{item.fill}}" fill-opacity="{{item.opacity}}"/>
+                  <g transform="translate(0, {{math itemsSpec.rect.height '/' 2}})">
+                    <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="start" font-size="8" font-weight="400" dy="1.5">{{item.label.fr}}</text>
+                    <text x="{{math (math item.width '-' itemsSpec.rect.borderRadius) '-' 4}}" y="0" fill="white" text-anchor="middle" font-size="8" font-weight="600" dy="2.5">{{item.mark}}</text>
+                  </g>
+                </g>
+              {{/with}}
+            {{/each}}
+
+            <g transform="translate(-1, -1)">
+              <rect x="0" y="0" width="1" height="{{math spec.items.totalHeight '+' 2}}" fill="#FFFFFF" rx="1"/>
+              <rect x="1" y="0" width="5" height="{{math spec.items.totalHeight '+' 2}}" fill="url('#horizontal-shadow')" fill-opacity="0.2"/>
+            </g>
+          </g>
+        </g>
+      {{/with}}
+    </g>
+  </g>
+
+  <g transform="translate(356, 205)">
+    <g transform="translate(540, 9)">
+      <text x="0" y="0" font-size="10" font-weight="400" fill="#A1A1AA" transform="rotate(-90)">رغبت‌سنجی تحصیلی - شغلی (هالند)</text>
+    </g>
+    {{#with RIASEC_Context}}
+      <g transform="translate(100, 20)">
+        <line x1="0" y1="-10" x2="0" y2="125" stroke="#D4D4D8" stroke-width="1" stroke-linecap="round" />
+        {{#each items as | item index |}}
+          {{#with @root.RIASEC_Context.spec.items as | itemsSpec |}}
+            <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+              <text x="-12" y="4" font-size="8" font-weight="400" fill="#7E22CE" text-anchor="start">{{item.label.fr}}</text>
+              <rect x="0" y="{{math itemsSpec.rect.body.height '-' itemsSpec.rect.base.height}}" width="175" height="{{itemsSpec.rect.base.height}}" fill="#F4F4F5" />
+              {{#if (boolean item.mark '!==' 0)}}
+                {{bar item.width itemsSpec.rect.body.height itemsSpec.rect.body.brs 0 fill="#7E22CE" fill-opacity=item.opacity}}
+              {{/if}}
+              <text x="{{math item.width '+' (ternary (boolean item.mark '!==' 0) 0 7)}}" y="-6" font-size="8" font-weight="500" fill="#7E22CE" text-anchor="middle">{{item.mark}}</text>
+            </g>
+          {{/with}}
+        {{/each}}
+        <text x="175" y="135" font-size="8" font-weight="400" fill="#D4D4D8" text-anchor="middle">50</text>
+      </g>
+      <g transform="translate(433, 28)">
+        {{#each questionItems as | item index |}}
+          <g transform="translate(0, {{ math index '*' 26 }})">
+            <text x="35" y="12.5" font-size="8" font-weight="400" fill="#3F3F46" text-anchor="end">{{ item.label }}</text>
+            {{#each item.marks as | mark markIndex |}}
+              <g transform="translate({{math -1 '*' (math markIndex '*' 26)}}, 0)">
+                {{#if (boolean index '===' 0)}}
+                  <text x="10" y="-15" font-size="8" font-weight="400" fill="#3F3F46" text-anchor="middle">{{lookup (array 'و' 'ج' 'ه' 'الف' 'م' 'ق') markIndex}}</text>
+                {{/if}}
+                <rect x="0" y="0" width="20" height="20" fill="#F4F4F5" rx="4" />
+                <text x="10" y="12.5" font-size="10" font-weight="500" fill="#312E81" text-anchor="middle">{{ mark }}</text>
+              </g>
+            {{/each}}
+          </g>
+        {{/each}}
+      </g>
+    {{/with}}
+  </g>
+
+  <g transform="translate(903, 430)">
+    <text x="0" y="0" font-size="10" font-weight="500" fill="#3F3F46">کارگاه‌های مورد نیاز:</text>
+    <g transform="translate(-8, 13.5)">
+      {{setVar "labels1" (array "مدیریت زمان" "مدیریت عواطف" "مهارت‌های ارتباطی" "خلاقیت" "قاطعیت")}}
+      {{setVar "offsets" (array 0 -108 -216 -324 -432)}}
+      {{#each labels1 as | label index |}}
+        <g transform="translate({{lookup @root.offsets index}}, 0)">
+          <rect x="0" y="0" width="8" height="8" fill="none" stroke="#A1A1AA" rx="1" />
+          <text x="-4" y="6" font-size="8" font-weight="400" fill="#52525B">{{label}}</text>
+        </g>
+      {{/each}}
+      {{setVar "labels2" (array "کمال‌گرایی افراطی" "فن بیان" "خودآگاهی" "مهارت‌های مدیریتی" "فرزندپروری")}}
+      {{setVar "offsets" (array 0 -108 -216 -324 -432)}}
+      {{#each labels2 as | label index |}}
+        <g transform="translate({{lookup @root.offsets index}}, 19)">
+          <rect x="0" y="0" width="8" height="8" fill="none" stroke="#A1A1AA" rx="1" />
+          <text x="-4" y="6" font-size="8" font-weight="400" fill="#52525B">{{label}}</text>
+        </g>
+      {{/each}}
+      {{setVar "labels3" (array "ارتباط مؤثر همسران" "تندخوانی" "حافظه" "تمرکز" "کنترل خشم")}}
+      {{setVar "offsets" (array 0 -108 -216 -324 -432)}}
+      {{#each labels3 as | label index |}}
+        <g transform="translate({{lookup @root.offsets index}}, 38)">
+          <rect x="0" y="0" width="8" height="8" fill="none" stroke="#A1A1AA" rx="1" />
+          <text x="-4" y="6" font-size="8" font-weight="400" fill="#52525B">{{label}}</text>
+        </g>
+      {{/each}}
+    </g>
+    <g transform="translate(0, 86)">
+      <text x="0" y="0" font-size="10" font-weight="500" fill="#3F3F46">تعیین اولویت‌های شغلی و درسی:</text>
+      <text x="0" y="54" font-size="10" font-weight="500" fill="#3F3F46">توصیه‌ها:</text>
+      <text x="0" y="108" font-size="10" font-weight="500" fill="#3F3F46">نکات:</text>
+      <text x="0" y="162" font-size="10" font-weight="500" fill="#3F3F46">ارجاعات:</text>
+    </g>
+  </g>
+
+  <g transform="translate(0, 443)">
+    <g transform="translate(10, 9)">
+      <text x="0" y="0" font-size="10" font-weight="400" fill="#A1A1AA" transform="rotate(-90)">شخصیت تیپ‌نمای مایرز-بریگز (MBTI)</text>
+    </g>
+    {{#with MBTI_Context}}
+      <g transform="translate(84, 0)">
+        <g transform="translate(0, 0)">
+          <line x1="0" y1="75" x2="180" y2="75" stroke="#F4F4F5" />
+          <text x="188" y="80" font-size="14" font-weight="600" fill="#BE185D" text-anchor="end" letter-spacing="3">{{report}}</text>
+          {{#each (first items 4) as | item index |}}
+            <g transform="translate({{math index '*' 40}}, 0)">
+              <text x="12" y="-8" font-size="10" font-weight="{{ternary item.active 600 400}}" fill="{{ternary item.active "#BE185D" "#A1A1AA"}}" text-anchor="middle">{{item.label.fr}}</text>
+              {{bar 24 item.height (object tl=2 bl=0 tr=2 br=0) (toRad 0) fill=(ternary item.active "#DB2777" "#F4F4F5")}}
+              {{#if (boolean item.mark '!==' 0)}}<text x="12" y="{{ternary item.active 11 8}}" font-size="6" font-weight="400" fill="{{ternary item.active "#FFFFFF" "#A1A1AA"}}" text-anchor="middle">{{item.mark}}</text>{{/if}}
+            </g>
+          {{/each}}
+        </g>
+        <g transform="translate(24, 150)">
+          {{#each (last items 4) as | item index |}}
+            <g transform="translate({{math index '*' 40}}, 0)">
+              <text x="-12" y="14" font-size="10" font-weight="{{ternary item.active 600 400}}" fill="{{ternary item.active "#BE185D" "#A1A1AA"}}" text-anchor="middle">{{item.label.fr}}</text>
+              {{bar 24 item.height (object tl=2 bl=0 tr=2 br=0) (toRad 180) fill=(ternary item.active "#DB2777" "#F4F4F5")}}
+              {{#if (boolean item.mark '!==' 0)}}<text x="-12" y="-{{ternary item.active 8 5}}" font-size="6" font-weight="400" fill="{{ternary item.active "#FFFFFF" "#A1A1AA"}}" text-anchor="middle">{{item.mark}}</text>{{/if}}
+            </g>
+          {{/each}}
+        </g>
+      </g>
+    {{/with}}
+  </g>
+
+  <g transform="translate(0, 650)">
+    <g transform="translate(10, 18)">
+      <text x="0" y="0" font-size="10" font-weight="400" fill="#A1A1AA" transform="rotate(-90)">ریون</text>
+    </g>
+    {{#with RAVEN_Context}}
+      <g transform="translate(40, 30)">
+        {{#each item.stops as | stop index |}}
+          {{#unless @first}}
+          <g transform="translate({{stop.width}}, 16)">
+            <line x1="0" y1="0" x2="0" y2="8" stroke="#F4F4F5" stroke-dasharray="2" stroke-linecap="round" stroke-width="1"/>
+            <text x="0" y="12" font-size="6" font-weight="400" text-anchor="middle" fill="#D4D4D8" dy="3">{{stop.mark}}</text>
+          </g>
+            {{setVar "prevStopWidth" (lookup (lookup @root.RAVEN_Context.item.stops (math index '-' 1)) 'width')}}
+            {{setVar "Wm" (math (math prevStopWidth '+' stop.width) '/' 2)}}
+            {{setVar "interpret" (lookup @root.spec.ravenItem.interprets (math index '-' 1))}}
+            {{setVar "isChosen" (boolean @root.RAVEN_Context.item.level '===' interpret.level)}}
+            <g transform="translate({{Wm}}, -17)" fill="{{ternary isChosen '#14B8A6' '#D4D4D8'}}">
+              {{setVar "titleLines" (wrapOnNewline interpret.title)}}
+              {{#each titleLines as | line index |}}
+                <text x="0" y="{{ternary (boolean ../titleLines.length '!==' 1) (math (math (lookup (array -1 1) index) '*' 4) '-' 4) 0}}" font-size="7" font-weight="{{ternary isChosen 500 400}}" text-anchor="middle" dy="3">{{line}}</text>
+              {{/each}}
+              <circle cx="0" cy="12" r="{{ternary isChosen 1.5 1}}" />
+            </g>
+          {{/unless}}
+        {{/each}}
+        <rect x="0" y="0" width="300" height="16" fill="#F4F4F5" clip-path="url(#raw-rect)"/>
+        <rect x="0" y="0" width="{{item.width}}" height="16" fill="#14B8A6" clip-path="url(#raw-rect)"/>
+        <text x="{{math item.width '-' 10}}" y="8" font-size="10" font-weight="500" text-anchor="middle" fill="white" dy="3">{{item.mark}}</text>
+      </g>
+    {{/with}}
+  </g>
+
+{{/layout}}

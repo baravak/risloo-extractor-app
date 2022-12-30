@@ -136,7 +136,7 @@ class _16PF extends Profile {
     const items = dataset.score.slice(0, 16).map((data) => ({
       label: data.label,
       mark: data.mark,
-      offset: (data.mark - 1) * 16.2,
+      offset: (data.mark - 1) * itemsSpec.widthCoeff,
       ...itemsSpec.fillAndOpacity[data.mark],
     }));
 

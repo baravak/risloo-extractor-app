@@ -141,7 +141,7 @@ class Dataset {
     const { defaultSample, defaultFields } = this;
 
     // Destructure Required Info from Spec of the Profile
-    const { labels, sample = defaultSample } = spec;
+    const { labels, sample = defaultSample, labelsPrefix } = spec;
 
     // Specifying Prerequisites that are Going to Be Extracted
     // *** Remember That You Should Get The Copy of Arrays Taken from Spec of the Profile
@@ -157,14 +157,14 @@ class Dataset {
       closed_at: (dataset.closed_at && this._formatDate(dataset.closed_at)) || "-",
       scored_at: (dataset.scored_at && this._formatDate(dataset.scored_at)) || "-",
       time: this._formatTime(dataset.cornometer) || "-",
-      fields: this._extractFields(dataset.prerequisites, requiredPreqs),
+      fields: dataset.prerequisites ? this._extractFields(dataset.prerequisites, requiredPreqs) : dataset.fields,
     };
 
     // Extract Questions if sample.questions === true
     // *** Remember That You Should Get The Copy of Arrays Taken from Dataset
     this.questions = sample.questions && [...dataset.items];
 
-    this.score = this._extractData(dataset.score, labels);
+    this.score = this._extractData(dataset.score, labels, labelsPrefix);
   }
 
   // Convert Given Timestamp to Proper Format for Profile
@@ -226,8 +226,11 @@ class Dataset {
   }
 
   // Create Data Array with Label and Mark Taken from Dataset
-  _extractData(score, labels) {
-    return labels.map((label) => ({ label, mark: score[label.eng] }));
+  _extractData(score, labels, labelsPrefix) {
+    return labels.map((label) => ({
+      label,
+      mark: score[label.eng] || score[`${labelsPrefix}_${label.eng}`],
+    }));
   }
 
   // Group By Special Property of the Label of the Dataset Score

@@ -1,0 +1,118 @@
+{{#> layout}}
+
+<defs>
+  <linearGradient id="horizontal-shadow">
+    <stop offset="0%"  stop-color="black" />
+    <stop offset="100%" stop-color="transparent" />
+  </linearGradient>
+  {{#with spec.gaugeItems.circle}}
+    <clipPath id="items-circle-roll">
+      {{gauge R r brs (object start=angles.start end=angles.end) false}}
+    </clipPath>
+  {{/with}}
+</defs>
+
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  <g transform="translate(95, 0)">
+    {{#each itemsTicks as | tick index |}}
+      <g transform="translate({{tick.leftPos}}, 0)">
+        <line x1="0" y1="0" x2="0" y2="450" stroke="#F4F4F5" stroke-dasharray="3.5" stroke-linecap="round" stroke-width="1"/>
+        <text x="-{{@root.spec.items.ticks.numberOffset.x}}" y="{{@root.spec.items.ticks.numberOffset.y}}" fill="#A1A1AA" text-anchor="start" font-size="8" font-weight="500" dy="3">{{tick.number}}</text>
+      </g>
+    {{/each}}
+    <g transform="translate(0, {{spec.items.ticks.heightOffset}})">
+      {{#each items as | item index |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          <g transform="translate(0, {{math index '*' itemsSpec.distanceY}})">
+            {{bar item.width itemsSpec.rect.height (object tl=0 bl=0 tr=itemsSpec.rect.borderRadius br=itemsSpec.rect.borderRadius) (toRad 0) fill=item.fill fill-opacity=item.opacity}}
+            <g transform="translate(0, {{math itemsSpec.rect.height '/' 2}})">
+              <text x="-{{itemsSpec.label.offsetX}}" y="0" fill="#52525B" text-anchor="start" font-size="10" font-weight="400" dy="1.5">{{item.label.fr}}</text>
+              <text x="{{math (math item.width '-' itemsSpec.rect.borderRadius) '-' 4}}" y="0" fill="white" text-anchor="middle" font-size="10" font-weight="600" dy="2.5">{{item.mark}}</text>
+            </g>
+          </g>
+        {{/with}}
+      {{/each}}
+      <g transform="translate(-1, -15)">
+        <rect x="0" y="0" width="1" height="440" fill="#FFFFFF" rx="1"/>
+        <rect x="1" y="0" width="5" height="440" fill="url('#horizontal-shadow')" fill-opacity="0.2"/>
+      </g>
+    </g>
+
+    <g transform="translate(382, 450)">
+      {{bar spec.raw.rect.height spec.raw.rect.width (object tl=0 bl=0 tr=spec.raw.rect.borderRadius br=spec.raw.rect.borderRadius) (toRad -90) fill="#F4F4F5"}}
+      {{bar raw.height spec.raw.rect.width (object tl=0 bl=0 tr=spec.raw.rect.borderRadius br=spec.raw.rect.borderRadius) (toRad -90) fill="#52525B"}}
+      <text x="{{spec.raw.rect.borderRadius}}" y="-{{math raw.height '-' spec.raw.rect.borderRadius}}" text-anchor="middle" font-size="12" font-weight="600" fill="white" transform="translate(0, 6)">{{raw.mark}}</text>
+      <text x="0" y="-18" text-anchor="end" font-size="12" font-weight="500" fill="#71717A" dy="5" transform="rotate(-90)">نمره کل</text>
+      <g transform="scale(1, -1)">
+        <rect x="-1" y="0" width="{{math spec.raw.rect.width '+' 2}}" height="1" fill="#FFFFFF" rx="1"/>
+        <rect x="-1" y="0" width="{{math spec.raw.rect.width '+' 2}}" height="5" fill="url('#vertical-shadow')" fill-opacity="0.2"/>
+      </g>
+
+      <g transform="translate({{math spec.raw.rect.width '+' spec.raw.ticks.line.offsetX}}, 0)">
+        {{#each rawTicks as | tick index |}}
+          <line x1="0" y1="-{{tick.bottomPos}}" x2="{{@root.spec.raw.ticks.line.width}}" y2="-{{tick.bottomPos}}" stroke="#E4E4E7" stroke-dasharray="3" stroke-linecap="round" stroke-width="2"/>
+          <g transform="translate({{math @root.spec.raw.ticks.line.width '+' @root.spec.raw.ticks.number.offsetX}}, -{{tick.bottomPos}})">
+            <text x="0" y="0" fill="#A1A1AA" text-anchor="end" font-size="10" font-weight="500" dy="2">{{tick.number}}</text>
+          </g>
+        {{/each}}
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(703.6, 571.5)">
+    {{#each gaugeItems as |item index|}}
+      <g transform="translate(-{{math index '*' @root.spec.gaugeItems.distanceX}}, 0)">
+        {{#with @root.spec.gaugeItems.circle}}
+          {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=angles.end) direction clip-path="url(#items-circle-roll)" fill="#F4F4F5"}}
+          {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=item.zeta) direction clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}
+        {{/with}}
+        <text x="0" y="0" text-anchor="middle" font-size="16" font-weight="600" fill="{{item.fill}}" dy="5">{{item.mark}}</text>
+        <text x="-8" y="-40" font-size="10" font-weight="500" fill="#D4D4D8">0</text>
+        <text x="-42" y="-8" font-size="10" font-weight="500" fill="#D4D4D8" text-anchor="middle">{{lookup @root.spec.gaugeItems.maxValues item.label.eng}}</text>
+        <g transform="translate(0, 70)">
+          <text x="0" y="0" font-size="12" font-weight="500" fill="{{item.fill}}" text-anchor="middle">{{item.label.fr}}</text>
+          {{#each (wrapOnNewline item.label.desc) as | line index |}}
+            <text x="0" y="{{math 15 '+' (math index '*' 15)}}" font-size="10" font-weight="400" fill="#A1A1AA" text-anchor="middle" dy="5">{{line}}</text>
+          {{/each}}
+        </g>
+      </g>
+    {{/each}}
+  </g>
+
+  <g transform="translate(729, 0)">
+    <rect x="0" y="0" width="114" height="28" fill="#F4F4F5" />
+    <text x="57" y="14" font-size="10" font-weight="600" fill="#52525B" text-anchor="middle" dy="1">خرده مقیاس‌ها</text>
+
+    <g transform="translate(-50, 0)">
+      <rect x="0" y="0" width="48" height="28" fill="#F4F4F5" />
+      <text x="24" y="14" font-size="10" font-weight="600" fill="#52525B" text-anchor="middle" dy="1">میانگین</text>
+    </g>
+
+    <g transform="translate(-119, 0)">
+      <rect x="0" y="0" width="67" height="28" fill="#F4F4F5" />
+      <text x="33.5" y="14" font-size="10" font-weight="600" fill="#52525B" text-anchor="middle" dy="1">انحراف معیار</text>
+    </g>
+
+    <g transform="translate(0, 32)">
+      {{#each spec.tableItems as | item index |}}
+        <g transform="translate(0, {{math index '*' 27}})">
+          <rect x="0" y="0" width="114" height="28" fill="#F8FAFC" />
+          <text x="57" y="14" font-size="10" font-weight="400" fill="#71717A" text-anchor="middle" dy="1">{{item.label}}</text>
+
+          <g transform="translate(-50, 0)">
+            <rect x="0" y="0" width="48" height="28" fill="#F8FAFC" />
+            <text x="24" y="14" font-size="10" font-weight="400" fill="#71717A" text-anchor="middle" dy="1">{{item.avg}}</text>
+          </g>
+
+          <g transform="translate(-119, 0)">
+            <rect x="0" y="0" width="67" height="28" fill="#F8FAFC" />
+            <text x="33.5" y="14" font-size="10" font-weight="400" fill="#71717A" text-anchor="middle" dy="1">{{item.dev}}</text>
+          </g>
+        </g>
+      {{/each}}
+    </g>
+  </g>
+
+</g>
+
+{{/layout}}

@@ -1,0 +1,1589 @@
+{
+  "id": "$X1HHV2QBJ",
+  "scale": {
+    "id": "$BEQI-93",
+    "title": "پرسشنامه هوش هیجانی بار-آن"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96664GE",
+    "name": "مرضیه کلهری"
+  },
+  "room": {
+    "id": "RS96662E5",
+    "manager": {
+      "id": "GH96664AN",
+      "name": "دکتر همتی",
+      "user_id": "IR963XPP",
+      "avatar": null
+    },
+    "center": {
+      "id": "RS96662EV",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز مشاوره و خدمات روان‌شناسی روشنان",
+        "avatar": [
+          {
+            "id": "F96DUMD",
+            "file_name": "P9666FW9_large.png",
+            "slug": "storage/public/Files_1000/P9666FW9_large.png",
+            "mode": "large",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_large.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DUM3",
+            "file_name": "P9666FW9_medium.png",
+            "slug": "storage/public/Files_1000/P9666FW9_medium.png",
+            "mode": "medium",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_medium.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DUM9",
+            "file_name": "P9666FW9_original.png",
+            "slug": "storage/public/Files_1000/P9666FW9_original.png",
+            "mode": "original",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_original.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          },
+          {
+            "id": "F96DUMT",
+            "file_name": "P9666FW9_small.png",
+            "slug": "storage/public/Files_1000/P9666FW9_small.png",
+            "mode": "small",
+            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_small.png",
+            "type": "image",
+            "mime": "image/png",
+            "exec": "png"
+          }
+        ]
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "case": {
+    "id": "CS9666N3T"
+  },
+  "code": null,
+  "created_at": 1673193951,
+  "started_at": 1673194339,
+  "scored_at": 1673264827,
+  "closed_at": 1673204019,
+  "total_amount": 110000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 110000,
+  "billing": {
+    "id": "BL969FG8",
+    "creditor": {
+      "id": "TE96TWH9",
+      "symbol": "rs96662ev",
+      "title": "کیف پول مرکز RS96662EV",
+      "creditable": true,
+      "chargeable": true,
+      "my_treasury": false
+    },
+    "debtor": {
+      "id": "TE96TQ66",
+      "symbol": "wallet",
+      "title": "کیف پول",
+      "creditable": true,
+      "chargeable": true,
+      "my_treasury": false
+    },
+    "amount": 110000,
+    "type": "final",
+    "action": "samples",
+    "action_serial": "$X1HHV2QBJ",
+    "title": "انجام نمونه",
+    "created_at": 1673194149,
+    "updated_at": 1673194149
+  },
+  "description": "## دستور اجرای آزمون\n\nلطفا عبارت‌های زیر را با دقت بخوانید و پاسخ خود را از بین گزینه‌های مطرح مشخص کنید.",
+  "psychologist_description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "به نظر من برای غلبه بر مشکلات باید گام به گام پیش رفت.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "لذت بردن از زندگی برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "شغلی را ترجیح می‌دهم که حتی‌الامکان من تصمیم‌گیرنده باشم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم بدون تنش زیاد با مشکلات مقابله کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم برای معنا دادن به زندگی، تا حد امکان تلاش کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نسبت به هیجاناتم آگاهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "سعی می‌کنم بدون خیال‌پردازی، واقعیت امور را در نظر بگیرم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به راحتی با دیگران دوست می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "معتقدم توانایی تسلط بر شرایط دشوار را دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "بیشتر مواقع به خودم اطمینان دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "کنترل خشم برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "شروع دوباره برایم سخت است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کمک کردن به دیگران را دوست دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به خوبی می‌توانم احساسات دیگران را درک کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "هنگامی که دیگران خشمگین می‌شوند، نمی‌توانم با آن‌ها در این مورد صحبت کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "هنگام رویارویی با یک موقعیت دشوار، دوست دارم تا حد ممکن در مورد آن اطلاعات جمع آوری کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خندیدن برایم سخت است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنگام کار  کردن با دیگران، بیشتر پیرو افکار آن‌ها هستم تا  فکر خودم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "نمی‌توانم به خوبی استرس‌ها را تحمل کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در چند سالی گذشته کمتر کاری را به نتیجه رسانده‌ایم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به سختی می‌توانم احساسات عمیقم را با دیگران در میان بگذارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دیگران نمی‌فهمند من چه فکری دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "به خوبی با دیگران همفکری می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "به اغلب کارهایی که می‌کنم، خوش‌بین هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "برای خودم احترام قائل هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "عصبی بودنم مشکل ایجاد می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به سختی می‌توانم فکرم را در مورد مسایل تغییر دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "کمک به دیگران مرا کسل نمی‌کند، به خصوص اگر شایستگی آن را داشته باشند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دوستانم می‌توانند مسایل خصوصی خودشان را با من در میان بگذارند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم مخالفتم را با دیگران ابراز نمایم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "هنگام مواجهه با یک مشکل، اولین کاری که انجام می‌دهم دست نگه داشتن و فکر کردن است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "فرد با نشاطی هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ترجیح می‌دهم دیگران برایم تصمیم بگیرند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم کنترل اضطراب برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "از کارهایی که می‌کنم راضی نیستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "به سختی می‌فهمم چه احساسی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "تمایل دارم با آنچه در اطرافم می‌گذرد روبرو نشوم و از برخورد با آن‌ها طفره می‌روم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "روابط صمیمی با دوستانم برای هر دو طرفمان اهمیت دارد.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "حتی در موقعیت‌های دشوار، معمولا برای ادامه کار انگیزه دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "نمی‌توانم خودم را این طور که هستم بپذیرم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "دیگران به من می‌گویند هنگام بحث، آرام تر صحبت کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به آسانی با شرایط جدید سازگار می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "به کودک گمشده کمک می‌کنم، حتی اگر همان موقع جای دیگری کار داشته باشم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به اتفاقی که برای دیگران می‌افتد توجه دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نه گفتن برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنگام تلاش برای حل یک مشکل، راه حل‌های ممکن را در نظر می‌گیرم، سپس بهترین را انتخاب می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "از زندگی‌ام راضی‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تصمیم‌گیری برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "می‌دانم در شرایط دشوار، چگونه آرامش‌ام را حفظ می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "هیچ چیز در من علاقه ایجاد نمی‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "از احساسی که دارم آگاهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "در تصورات و خیال‌پردازی‌هایم غرق می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "با دیگران رابطه خوبی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "معمولا انتظار دارم مشکلات به خوبی ختم شوند، هر چند گاهی چنین نمی‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از اندام و ظاهر خود راضی هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "کم صبر هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "می‌توانم عادات قبلی‌ام را تغییر دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اگر لازم باششد با زیر پا گذاشتن قانون از موقعیتی فرار کنم، این کار را انجام می‌دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "نسبت به احساسات دیگران حساس هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "می‌وانم به راحتی افکارم را به دیگران بگویم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "هنگام حل مسئله، به سختی می‌توانم در مورد انتخاب بهترین راه‌حل تصمیم‌گیری کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اهل شوخی هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در انجام کارها و امور مختلف به دیگران وابسته‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "رویارویی با مسایل ناخوشایند برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "حتی‌الامکان کارهایی را به عهده می‌گیرم که برایم لذت بخش‌اند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "حتی هنگام آشفتگی، از آنچه در من اتفاق می‌افتد آگاهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تمایل به مبالغه گویی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "به نظرم دیگران من آدم اجتماعی هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به توانایی‌ام برای مقابله با دشوارترین مسایل اطمینان دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "از شیوه نگرش و فکرم راضی هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "بدجوری خشمگین می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "معمولا تغییر ایجاد کردن در زندگی روزانه برایم سخت است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "قادر هستم احترام به دیگران را حفظ کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دیدن رنج دیگران برایم سخت است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به نظر دیگران من نمی‌توانم احساسات و افکارم را بروز دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "هنگام روبرو شدن با شرایط دشوار، سعی می‌کنم در مورد راه حل‌های ممکن فکر کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "افسرده هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "فکر می‌کنم به دیگران بیشتر احتیاج دارم، تا دیگران به من.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مضطرب هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در مورد آنچه می‌خواهم در زندگی انجام دهم، فکر مشخص و خوبی ندارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "به سختی می‌توانم از امور برداشت صحیحی داشته باشم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به سختی می‌توانم احساساتم را بیان کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "با دوستانم رابطه صمیمی برقرار می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "قبل از شروع کارهای جدید، معمولا احساس می‌کنم شکست خواهم خورد.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنگام بررسی نقاط ضعف و قوتم، باز هم احساس خوبی در مورد خودم دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنگام عصبانیت ود از کوره در می‌روم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اگر مجبور به ترک وطن باشم، سازگاری برایم دشوار خواهد بود.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به نظر من پایبندی یک شهروند به قانون مهم است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "از جریحه‌دار کردن احساسات دیگران خودداری می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مشکل می‌توانم از حق خودم دفاع کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نظری ندارم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "25"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مجرد",
+          "متأهل"
+        ]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 161,
+  "score": {
+    "raw": 270,
+    "problem_solving": 23,
+    "happiness": 21,
+    "independence": 13,
+    "stress_tolerance": 12,
+    "self_actualize": 20,
+    "emotional_self_awareness": 18,
+    "reality_testing": 18,
+    "interpersonal_relationship": 19,
+    "optimism": 17,
+    "self_regard": 20,
+    "impulse_control": 13,
+    "flexibility": 16,
+    "responsibility": 23,
+    "empathy": 23,
+    "assertiveness": 14,
+    "intrapersonal_skills": 85,
+    "interpersonal_skills": 65,
+    "adjustment": 57,
+    "general_mood": 38,
+    "stress_management": 25
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0",
+  "profiles": [
+    {
+      "id": "F96DSSS",
+      "file_name": "X1HHV2QBJ.json",
+      "slug": "storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.json",
+      "mode": "profile_json",
+      "url": "https://api.risloo.ir/storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.json",
+      "type": "data",
+      "mime": "application/json",
+      "exec": "json"
+    },
+    {
+      "id": "F96DSSX",
+      "file_name": "X1HHV2QBJ.xlsx",
+      "slug": "storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.xlsx",
+      "mode": "profile_xlsx",
+      "url": "https://api.risloo.ir/storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.xlsx",
+      "type": "document",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "exec": "xlsx"
+    }
+  ]
+}

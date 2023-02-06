@@ -134,7 +134,7 @@ class Dataset {
   };
 
   // Default Prerequisites to Be Shown in the Sidebar
-  defaultFields = ["gender", "age", "education"];
+  defaultFields = ["gender", "age", "education", "marital_status"];
 
   constructor(dataset, spec) {
     // Getting Class Fields

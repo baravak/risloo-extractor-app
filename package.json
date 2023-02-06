@@ -1,6 +1,6 @@
 {
   "name": "risloo-profile-cli",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "",
   "main": "bin/risloo.js",
   "publishConfig": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DeeepDev/risloo-extractor-app"
+    "url": "https://github.com/baravak/risloo-extractor-app.git"
   },
   "author": "Mahdi Amirabadi",
   "license": "MIT",

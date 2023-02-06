@@ -1,13 +1,13 @@
 {
-  "name": "risloo-profile-cli",
+  "name": "@baravak/risloo-profile-cli",
   "version": "3.1.0",
-  "description": "",
+  "description": "**Risloo Profile CLI** is a library for creating profiles, reports and sheets for *psychological* samples.",
   "main": "bin/risloo.js",
   "publishConfig": {
     "access": "public"
   },
   "bin": {
-    "risloo": "./bin/risloo.js"
+    "risloo": "bin/risloo.js"
   },
   "scripts": {
     "bot": "node ./src/publish/bot.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/baravak/risloo-extractor-app.git"
+    "url": "git+https://github.com/baravak/risloo-extractor-app.git"
   },
   "author": "Mahdi Amirabadi",
   "license": "MIT",
@@ -35,5 +35,10 @@
     "qrcode": "^1.5.0",
     "sharp": "^0.30.1"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "bugs": {
+    "url": "https://github.com/baravak/risloo-extractor-app/issues"
+  },
+  "homepage": "https://github.com/baravak/risloo-extractor-app#readme",
+  "devDependencies": {}
 }

@@ -15,14 +15,14 @@
     {{!-- <rect x="0" y="0" width="702" height="450" fill="#E2E8F0"/> --}}
     {{#each dataset.score}}
         <g transform="translate(0, {{math 5  '+' ( math 51 '*' @key )}})">
-            <text y="0" x="129" dominant-baseline="hanging" text-anchor="start" font-size="18px" font-weight="400">{{label.fr}}</text>
+            <text y="0" x="129" text-anchor="start" font-size="18px" font-weight="400" dy="18px">{{label.fr}}</text>
             <g transform="translate(147, 0)">
                 {{bar (math label.width '*' 4.5) 30 (object tl=0 tr=15 bl=0 br=15) (toRad 0) fill=label.background opacity='.8'}}
                 {{bar (math mark '*' 4.5) 30 (object tl=0 tr=15 bl=0 br=15) (toRad 0) fill=label.fill opacity='.8'}}
-                <text y="17" x="{{math (math label.width '*' 4.5) '+' 7.5 }}" dominant-baseline="middle" text-anchor="start" font-size="24px" fill="{{label.fill}}" font-weight="500" direction="ltr">
+                <text y="17" x="{{math (math label.width '*' 4.5) '+' 7.5 }}" dy="6px" text-anchor="start" font-size="24px" fill="{{label.fill}}" font-weight="500" direction="ltr">
                     {{mark}}
                     <tspan font-size="18px" fill="#D4D4D8" font-weight="400">/ {{label.width}}</tspan>
-                </text>
+                </text> 
             </g>
         </g>
     {{/each}}
@@ -32,8 +32,8 @@
             {{bar 9 markSum (object tl=0 tr=0 bl=4.5 br=4.5) (toRad 180) fill='#52525B'}}
         </g>
         <text x="4.5" y="-387" dominant-baseline="auto" text-anchor="middle" fill="#A1A1AA" font-size="18px" font-weight="400">378</text>
-        <text x="21" y="{{math markSum '*' -1}}" dominant-baseline="middle" text-anchor="start" font-size="24px" fill="#3F3F46" font-weight="500" direction="ltr">{{markSum}}</text>
-        <text transform="rotate(-90, 0, 0)" x="-3" y="-28" dominant-baseline="hanging" text-anchor="end" font-size="18px" font-weight="400">نمره کل</text>
+        <text x="21" y="{{math markSum '*' -1}}" dy="6" text-anchor="start" font-size="24px" fill="#3F3F46" font-weight="500" direction="ltr">{{markSum}}</text>
+        <text transform="rotate(-90, 0, 0)" x="-3" y="-28" dy="14" text-anchor="end" font-size="18px" font-weight="400">نمره کل</text>
 
         <rect x="-3" y="0" width="15" height="3" fill="#FFFFFF" style="filter: drop-shadow(0 -3px 5px rgba(0,0,0, .5));"/>
     </g>

@@ -1,0 +1,273 @@
+{{#> layout}}
+
+  <defs>
+    <linearGradient id="axis_8_1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F43F5E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B91C1C;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="axis_3_1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FDBA74;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="axis_3" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#A1A1AA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#52525B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(0, 0)">
+        <circle cx="8" cy="8" r="8" fill="none" stroke="#A1A1AA"  stroke-dasharray="4,2"/>
+        <text x="8" y="8" text-anchor="middle" dy="3.5" font-size="10px" fill="#52525B">۷</text>
+        <text x="-45" y="4" transform="rotate(-90, 0, 0)" text-anchor="start" dy="3.5" font-size="10px" fill="#52525B">کارکرد شخصیت</text>
+        <g transform="translate(16, 0)">
+            {{#with JPFQ93_Context}}
+                <g transform="scale(.3333333, .3333333)">
+                    {{> JPFQ93_partial}}
+                </g>
+            {{/with}}
+        </g>
+        <g transform="translate(0, 175)">
+            {{#with axis_7_2}}
+            <text x="-39" y="4" transform="rotate(-90, 0, 0)" text-anchor="start" dy="3.5" font-size="10px" fill="#52525B">آمادگی‌ها بر اساس نظریه اریکسون</text>
+            <g transform="translate(30, 0)">
+                <g transform="translate(0, 156)">
+                    {{#each items}}
+                    <g transform="translate({{math 12 '+' (math @key '*' 39)}}, 0)">
+                        <g transform="translate(2, 0)">
+                            {{bar 2 (math label.max '*' 3)  (object tl=0 tr=0 bl=1 br=1) (toRad 180) fill='#E4E4E7'}}
+                            <text x="-3" y="{{math -1 '+' (math -1 '*' (math label.max '*' 3))}}" text-anchor="start"  font-size="10px" fill="#71717A" font-weight="400">{{label.max}}</text>
+                            <text x="0" y="4" text-anchor="middle"  dy="7" font-size="8px" fill="#0E7490" font-weight="400">{{label.fr}}</text>
+                            <g transform="translate(4, 0)">
+                                {{bar 6 (math mark '*' 3) (object tl=0 tr=0 bl=1 br=1) (toRad 180) fill='#0E7490'}}
+                                <text x="2" y="{{math -1 '+' (math -1 '*' (math mark '*' 3))}}" text-anchor="end"  font-size="12px" fill="#0E7490" font-weight="500">{{mark}}</text>
+                            </g>
+                        </g>
+                    </g>
+                    {{/each}}
+                    {{bar 225 1 (object tl=0 tr=0 bl=0 br=0) (toRad 0) fill='#D4D4D8'}}
+                </g>
+                                
+
+
+            </g>
+            <g transform="translate(30, 181)">
+                <text x="0" y="12" text-anchor="end" dy="6" font-size="8px" fill="#52525B">نمره کل</text>
+                <g transform="translate(33, 18)">
+                    {{bar 176 2 (object tl=1 tr=1 bl=1 br=1) (toRad 0) fill='#E4E4E7'}}
+                </g>
+                <g transform="translate(33, 14)">
+                    {{bar raw.mark 6 (object tl=1 tr=1 bl=1 br=1) (toRad 0) fill='#166534'}}
+                </g>
+                <text x="{{math raw.mark '+' 33}}" y="0" text-anchor="start" dy="8" font-size="12px" fill="#14532D" font-weight="400px">{{raw.mark}}</text>
+                <text x="{{math raw.mark '+' 33}}" y="27" text-anchor="start" dy="5" font-size="10px" fill="#52525B" font-weight="400px">٪{{percentage.mark}}</text>
+                <text x="216" y="16" text-anchor="end" dy="5" font-size="8px" fill="#71717A" font-weight="400px">176</text>
+            </g>
+            {{/with}}
+        </g>
+        <g transform="translate(0, 435)">
+            <g transform="translate(39, 0)">
+                {{#each axis_8_1.items}}
+                    <g transform="translate(2, {{math 2 '+' (math @key '*'  21)}})">
+                        <text x="52" y="5" text-anchor="start" dy="3.5" font-size="8px" fill="#9F1239">{{label.fr}}</text>
+                        <g transform="translate(54, 6)">
+                            {{bar (math label.max '*' 2) 2 (object tl=0 tr=0 bl=0 br=0) (toRad 0) fill="#F4F4F5"}}
+                            <text x="{{math 11 '+' (math label.max '*' 2)}}" dy="2" text-anchor="left" font-size="8px" fill="#71717A" font-weight="400">{{label.max}}</text>
+                            <g transform="translate(0, -2)">
+                                <text x="{{math 5 '+' (math mark '*' 2)}}" text-anchor="left" font-size="10px" fill="#BE123C" font-weight="500">{{mark}}</text>
+                                {{#if mark }}
+                                {{bar (math mark '*' 2) 4 (object tl=0 tr=4 bl=0 br=0) (toRad 0) fill="url(#axis_8_1)"}}
+                                {{/if}}
+                            </g>
+                        </g>
+                    </g>
+                {{/each}}
+                <line x1="56" x2="56" y1="2" y2="56" stroke="#E4E4E7" />
+            </g>
+            <g transform="translate(207, 16)">
+                <text x="0" y="0" text-anchor="middle" dy="3.5" font-size="16px" fill="#2563EB" font-weight="600">{{axis_8_1.raw.mark}}</text>
+                <text x="0" y="10" text-anchor="middle" dy="3.5" font-size="8px" fill="#71717A" font-weight="400">٪{{axis_8_1.percentage.mark}}</text>
+                <text x="0" y="15" text-anchor="middle" dy="3.5" font-size="8px" fill="#2563EB" font-weight="500" transform="rotate(-90,0,0)">نمره کل</text>
+            </g>
+            <g transform="translate(34, 76)">
+                {{#forLoop 0 35 1 }}
+                    {{bar 4 24 (object tl=1 tr=1 bl=1 br=1) (toRad 0) fill=(ternary (boolean i '<' @root.dswls.raw.mark) '#65A30D' '#F4F4F5' ) transform=(concat (concat "translate(" (math i '*' 6)) ",0)")}}
+                {{/forLoop}}
+                <text x="{{math @root.dswls.raw.mark '*' 6 }}" y="40" dx="4" font-size="12px" fill="#4D7C0F" font-weight="500">{{@root.dswls.raw.mark}}</text>
+                <text x="226" y="15" font-size="8px" fill="#71717A" font-weight="400">35</text>
+            </g>
+        </g>
+    </g>
+
+    <g transform="translate(0, 421)">
+        <circle cx="4" cy="4" r="8" fill="none" stroke="#A1A1AA"  stroke-dasharray="4,2"/>
+        <text x="4" y="4" text-anchor="middle" dy="3.5" font-size="10px" fill="#52525B">۸</text>
+        <text x="-23" y="4" transform="rotate(-90, 0, 0)" text-anchor="start" dy="3.5" font-size="10px" fill="#52525B">سلامت جسم</text>
+        <text x="-94" y="4" transform="rotate(-90, 0, 0)" text-anchor="start" dy="3.5" font-size="10px" fill="#52525B">داینر</text>
+    </g>
+
+    <g transform="translate(0, 581)">
+        <circle cx="4" cy="4" r="8" fill="none" stroke="#A1A1AA"  stroke-dasharray="4,2"/>
+        <text x="4" y="4" text-anchor="middle" dy="3.5" font-size="10px" fill="#52525B">۹</text>
+        <text x="-34" y="4" transform="rotate(-90, 0, 0)" text-anchor="start" dy="3.5" font-size="10px" fill="#52525B">ارزش‌های آلپورت</text>
+
+        <g transform="translate(37, 0)">
+            {{#with alvvct}}
+                {{#each items}}
+                    <text x="4" text-anchor="middle" dy="3.5" font-size="10px" font-weight="500" fill="#57534E" transform="{{concat "translate(" (concat (math 33 '+' (math @key '*' 32)) ", 7)")}}">{{mark}}</text>
+                    {{bar 8 105 (object tl=0 tr=0 br=2 bl=2) (toRad 180) fill="#F4F4F5" transform=(concat "translate(" (concat (math 41 '+' (math @key '*' 32)) ", 120)"))}}
+                    {{bar 8 (math (math mark '*' 105) '/' 70) (object tl=0 tr=0 br=2 bl=2) (toRad 180) fill=(ternary (boolean (math @key '%' 2) '==' 0) '#78716C' '#6B7280') transform=(concat "translate(" (concat (math 41 '+' (math @key '*' 32)) ", 120)"))}}
+                    <text x="4" y="4" text-anchor="middle" dy="3.5" font-size="8px" font-weight="400" fill="#57534E" transform="{{concat "translate(" (concat (math 33 '+' (math @key '*' 32)) ", 124)")}}">{{label.fr}}</text>
+                {{/each}}
+            <line x1="18" x2="28" y1="16" y2="16" stroke="#D4D4D8" stroke-width="1px" stroke-dasharray="2,2" />
+            <text x="5" y="16" text-anchor="end" dy="2" font-size="8px" font-weight="400" fill="#71717A">70</text>
+
+            <line x1="18" x2="28" y1="105" y2="105" stroke="#D4D4D8" stroke-width="1px" stroke-dasharray="2,2" />
+            <text x="5" y="105" text-anchor="end" dy="2" font-size="8px" font-weight="400" fill="#71717A">10</text>
+
+            <line x1="0" x2="224" y1="120" y2="120" stroke="#A1A1AA" stroke-width="1px" />
+            {{/with}}
+        </g>
+    </g>
+
+    <g transform="translate(642, 125)">
+        <circle cx="0" cy="0" r="8" fill="none" stroke="#A1A1AA"  stroke-dasharray="4,2" transform="translate(8, 26)"/>
+        <text text-anchor="middle" dy="3.5" font-size="10px" fill="#52525B" transform="translate(8, 26)">3</text>
+        <g transform="translate(0, 34)">
+            <text x="-45" y="4" transform="rotate(-90, 0, 0)" text-anchor="middle" dy="5" font-size="10px" fill="#52525B">معیار انتخاب</text>
+            <g transform="translate(84, 0)">
+                {{#each axis_3.selection.items}}
+                    <g transform="translate(2, {{math 11 '+' (math @key '*'  18)}})">
+                        <rect x="59px" y="-2" width="{{math label.max '*' 3}}px" height="2px" fill="#F4F4F5"/>
+                        {{#if (boolean mark '>' 0)}}
+                            {{bar (math mark '*' 3) 4 (object tl=0 tr=4 bl=0 br=0) (toRad 0) fill="url(#axis_3_1)" transform="translate(59, -4)"}}
+                        {{/if}}
+                        <text x="{{math 59 '+' (math mark '*' 3)}}" y="-7"  text-anchor="end" font-size="10px" font-weight="500" fill="#EA580C">{{ternary (boolean mark '>=' 1) mark '0'}}</text>
+                        <text x="{{math 61 '+' (math label.max '*' 3)}}" y="0"  text-anchor="end" font-size="8px" fill="#52525B">{{label.max}}</text>
+                        <text x="56" y="0"  text-anchor="start" font-size="8px" fill="#C2410C">{{label.fr}}</text>
+                    </g>
+                {{/each}}
+                <rect x="61px" y="2px" width="1px" height="88px" fill="#E4E4E7"/>
+            </g>
+            <rect x="48px" y="{{math 13 '+' (math 76 '-' axis_3.selection.raw.label.max) }}px" width="2px" height="{{axis_3.selection.raw.label.max}}px" fill="#F4F4F5"/>
+            <text x="50" y="{{math 7 '+' (math 76 '-' axis_3.selection.raw.label.max) }}px"  text-anchor="middle" font-size="8px" font-weight="400" fill="#71717A">{{axis_3.selection.raw.label.max}}</text>
+            {{bar 4 axis_3.selection.raw.mark (object tl=0 tr=0 bl=4 br=0) (toRad 180) fill="url(#axis_3)" transform="translate(52, 89)"}}
+            {{bar 6 1 (object tl=0.5 tr=0.5 bl=0.5 br=0.5) (toRad 0) fill="#E4E4E7" transform="translate(47, 89)"}}
+            <text x="-89" y="43"  text-anchor="end" font-size="8px" font-weight="400" fill="#3F3F46" transform="rotate(-90, 0, 0)">نمره کل</text>
+            <text x="{{math -89 '+' axis_3.selection.raw.mark}}" y="43"  text-anchor="end" font-size="8px" font-weight="400" fill="#52525B" transform="rotate(-90, 0, 0)">٪{{axis_3.selection.percentage.mark}}</text>
+        </g>
+        <g transform="translate(0, 142)">
+            <text x="-28.5" y="4" transform="rotate(-90, 0, 0)" text-anchor="middle" dy="5" font-size="10px" fill="#52525B">قصد و نیت</text>
+            <g transform="translate(32, 0)">
+                {{#each (array 10 10 10 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100)}}
+                    {{bar 3 (math @key '*' 2) (object tl=1 tr=1 bl=1 br=1) (toRad 180)
+                    fill=(ternary (boolean @key '>=' @root.axis_3_intention.raw.mark) '#A1A1AA' '#65A30D')
+                    opacity= (math (math this '/' 100) '*' (ternary (boolean @key '>=' @root.axis_3_intention.raw.mark) 0.7 1))
+                    transform=(concat "translate(" (concat (math 3 '+' (math @key '*' 4)) ", 42)"))}}
+                {{/each}}
+                <text transform="translate({{math @root.axis_3_intention.raw.mark '*' 4}}, {{math 40 '-' (math @root.axis_3_intention.raw.mark '*' 2) }}) rotate(-30, 0, 0)"
+                    text-anchor="{{ternary (boolean @root.axis_3_intention.raw.mark '>=' 5 ) 'start' 'end'}}" font-size="10px" fill="#52525B">٪{{@root.axis_3_intention.percentage.mark}}</text>
+
+                <text x="{{math @root.axis_3_intention.raw.mark '*' 4}}" y="52"  font-weight="500" text-anchor="middle" font-size="12px" fill="#4D7C0F">{{@root.axis_3_intention.raw.mark}}</text>
+                <text x="90" y="42"  font-weight="400" text-anchor="end" font-size="8px" fill="#52525B">22</text>
+            </g>
+            <g transform="translate(155, 0)">
+                {{bar 56 12 (object tl=1 tr=1 bl=1 br=1) (toRad 0) fill="#C026D3"}}
+                <text x="28" y="8"  font-weight="500" text-anchor="middle" font-size="8px" fill="#FFFFFF">نمره کل محور 3</text>
+                <text x="28" y="26"  font-weight="600" text-anchor="middle" font-size="14px" fill="#C026D3">{{axis_3.raw.mark}}</text>
+                <text x="28" y="35"  font-weight="400" text-anchor="middle" font-size="8px" fill="#52525B">٪{{axis_3.percentage.mark}}</text>
+            </g>
+        </g>
+    </g>
+
+    <g transform="translate(642, 358)">
+        {{!-- <rect width="261" height="226px" opacity=".1" /> --}}
+        <circle cx="0" cy="0" r="8" fill="none" stroke="#A1A1AA"  stroke-dasharray="4,2" transform="translate(8, 26)"/>
+        <text text-anchor="middle" dy="3.5" font-size="10px" fill="#52525B" transform="translate(8, 26)">4</text>
+        <text x="-60" y="4" transform="rotate(-90, 0, 0)" text-anchor="start" dy="5" font-size="10px" fill="#52525B">باورهای غیرمنطقی</text>
+        <g transform="translate(30, 0)">
+            {{#with mibq}}
+                {{#each items as | item itemKey |}}
+                    {{bar 1 (math 3 '+' (math label.max '*' 2)) (object br=0.5 bl=0.5 tr=0 tl=0) (toRad 180) fill="#E4E4E7" transform=(concat 'translate(' (concat (math 25 '+' (math @key '*' 40)) ',165)'))}}
+                    {{#forLoop 0 mark 1}}
+                        {{bar 9 2 (object tl=1 tr=1 bl=1 br=1) (toRad 0) fill=item.label.bg
+                            transform=(concat 'translate('(concat
+                            (math 20 '+' (math @key '*' 40))
+                            (concat ',' (concat
+                                (math 163 '-' (math i '*' 2))
+                            ')'))
+                            ))
+                        }}
+                    {{/forLoop}}
+                <text x="{{math 31 '+' (math @key '*' 40) }}" y="{{math 163 '-' (math mark '*' 2)}}" text-anchor="end" font-size="12px" font-weight="500" fill="{{label.bg}}">{{mark}}</text>
+                <text x="{{math 25 '+' (math @key '*' 40) }}" y="{{math 159 '-' (math label.max '*' 2)}}" text-anchor="start" font-size="8px" font-weight="400" fill="#71717A">{{mark}}</text>
+                    {{#each (wrapOnNewline label.fr) as | line index |}}
+                        <text x="{{math 25 '+' (math itemKey '*' 40) }}" y="{{math 175 '+' (math index '*' 10)}}" text-anchor="middle" font-size="8px" font-weight="400" fill="{{item.label.color}}">{{line}}</text>
+                    {{/each}}
+                {{/each}}
+            {{/with}}
+            <rect y="165px" width="215" height="1" fill="#A1A1AA" />
+        </g>
+        <g transform="translate(0, 196)">
+            <text y="19" text-anchor="end" font-size="8px" font-weight="400" fill="#52525B">نمره کل</text>
+            <rect x="31" y="16" width="215" height="2" fill="#E4E4E7" />
+            {{bar mibq.raw.mark 6 (object tl=1 tr=0 bl=1 br=0) (toRad 0) fill="#065F46" transform="translate(31, 14)"}}
+            <rect x="{{math 30 '+' mibq.raw.mark}}" y="12" width="1" height="10" fill="#065F46" />
+            <text x="{{math 30 '+' mibq.raw.mark}}" y="11" text-anchor="middle"  font-size="12px" font-weight="500" fill="#064E3B">{{mibq.raw.mark}}</text>
+            <text x="{{math 30 '+' mibq.raw.mark}}" y="32" text-anchor="middle"  font-size="10px" font-weight="400" fill="#71717A">٪{{mibq.percentage.mark}}</text>
+            <text x="249" y="19" text-anchor="end"  font-size="8px" font-weight="400" fill="#71717A">216</text>
+        </g>
+    </g>
+
+        <g transform="translate(643, 600)">
+            <circle cx="0" cy="0" r="8" fill="none" stroke="#A1A1AA"  stroke-dasharray="4,2" transform="translate(8, 26)"/>
+            <text text-anchor="middle" dy="3.5" font-size="10px" fill="#52525B" transform="translate(8, 26)">5</text>
+            <text x="-70" y="4" transform="rotate(-90, 0, 0)" text-anchor="middle" dy="5" font-size="10px" fill="#52525B">وضعیت مالی</text>
+            {{#with axis_5}}
+                <g transform="translate(6, 12)">
+                        {{#forLoop 1 5 1}}
+                            <line x1="{{math 53 '+' (math i '*' 40)}}" x2="{{math 53 '+' (math i '*' 40)}}" y1="3" y2="103" stroke="#F4F4F5" stroke-width="1px" stroke-dasharray="3 3"/>
+                            <text x="{{math 50 '+' (math i '*' 40)}}" y="9" text-anchor="start" font-size="8px" fill="#52525B" font-weight="400">{{math i '*' 4}}</text>
+                        {{/forLoop}}
+                        {{#each items}}
+                            <g transform="translate(0, {{math 11 '+' (math @key '*' 18)}})">
+                                {{#if (boolean mark '<' 2)}}
+                                    {{bar (math 7 '+' (math mark '*' 3)) 16 (object tr=8 br=8 tl=0 bl=0) (toRad 0) fill=label.color transform="translate(54, 0)"}}
+                                    <text x="{{math 60 '+' (math mark '*' 1)}}" y="12" text-anchor="start" font-size="12px" fill="#FFFFFF" font-weight="500">{{mark}}</text>
+                                {{else}}
+                                    {{bar (math 10 '*' mark) 16 (object tr=8 br=8 tl=0 bl=0) (toRad 0) fill=label.color transform="translate(54, 0)"}}
+                                    <text x="{{math 50 '+' (math mark '*' 10)}}" y="12" text-anchor="start" font-size="12px" fill="#FFFFFF" font-weight="500">{{mark}}</text>
+                                {{/if}}
+                                <text x="49" y="10" text-anchor="start" font-size="8px" fill="#3F3F46" font-weight="400">{{label.fr}}</text>
+                            </g>
+                        {{/each}}
+                        <rect x="53" y="8" width="1" height="95" rx="1" fill="#FFFFFF" style="filter: drop-shadow(1px 0px 3px rgba(0,0,0, .5));"/>
+                </g>
+                <g transform="translate(224, 12)">
+                    <text x="18" y="9" text-anchor="middle" font-size="8px" fill="#52525B" font-weight="400">80</text>
+                    {{bar 3 80 (object tl=1.5 tr=1.5 br=0 bl=0) (toRad 0) fill="#E4E4E7" transform="translate(15, 16)"}}
+                    {{bar 3 raw.mark (object tl=0 tr=0 br=1.5 bl=1.5) (toRad 180) fill="#52525B" transform="translate(18, 96)"}}
+                    <rect x="14" y="96" width="5" height="1" fill="#FFFFFF" style="filter: drop-shadow(0 -1px 3px rgba(0,0,0, .5));"/>
+                    <text x="-97" y="8"  text-anchor="end" font-size="8px" font-weight="400" fill="#3F3F46" transform="rotate(-90, 0, 0)">نمره کل</text>
+                    <text x="-16" y="8"  text-anchor="start" font-size="8px" font-weight="400" fill="#52525B" transform="rotate(-90, 0, 0)">٪{{percentage.mark}}</text>
+                    <text x="21" y="{{math 20 '+' (math 80 '-' raw.mark)}}" text-anchor="end" font-size="12px" fill="#3F3F46" font-weight="500">{{raw.mark}}</text>
+                </g>
+            {{/with}}
+        </g>
+
+    <line x1="278" x2="278" y1="0" y2="732" stroke="#E4E4E7" stroke-width="2px" stroke-dasharray="10 10"/>
+    <line x1="625" x2="625" y1="0" y2="732" stroke="#E4E4E7" stroke-width="2px" stroke-dasharray="10 10"/>
+
+    <line x1="0" x2="281" y1="405" y2="405" stroke="#E4E4E7" stroke-width="2px" stroke-dasharray="10 10"/>
+    <line x1="0" x2="281" y1="565" y2="565" stroke="#E4E4E7" stroke-width="2px" stroke-dasharray="10 10"/>
+
+    <line x1="643" x2="903" y1="125" y2="125" stroke="#E4E4E7" stroke-width="2px" stroke-dasharray="10 10"/>
+    <line x1="643" x2="903" y1="342" y2="342" stroke="#E4E4E7" stroke-width="2px" stroke-dasharray="10 10"/>
+    <line x1="643" x2="903" y1="600" y2="600" stroke="#E4E4E7" stroke-width="2px" stroke-dasharray="10 10"/>
+
+</g>
+
+{{/ layout}}

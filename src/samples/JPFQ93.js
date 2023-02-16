@@ -6,16 +6,16 @@ class JPFQ93 extends Profile {
 
   // Labels of the sample
   labels = {
-    L1: { eng: "identity", fr: "هویت", fill:"#8B5CF6 ", background:"#EDE9FE", width: 69},
-    L2: { eng: "intimacy", fr: "صمیمیت" , fill:"#8B5CF6 ", background:"#EDE9FE", width: 33},
-    L3: { eng: "empathy", fr: "همدلی" , fill:"#8B5CF6 ", background:"#EDE9FE", width: 33},
-    L4: { eng: "self_direction", fr: "خودراهبری" , fill:"#8B5CF6 ", background:"#EDE9FE", width: 30},
+    L1: { eng: "identity", fr: "هویت", fill:"#8B5CF6 ", background:"#EDE9FE", fontColor:"#7C3AED", width: 69},
+    L2: { eng: "intimacy", fr: "صمیمیت" , fill:"#8B5CF6 ", background:"#EDE9FE", fontColor:"#7C3AED", width: 33},
+    L3: { eng: "empathy", fr: "همدلی" , fill:"#8B5CF6 ", background:"#EDE9FE", fontColor:"#7C3AED", width: 33},
+    L4: { eng: "self_direction", fr: "خودراهبری" , fill:"#8B5CF6 ", background:"#EDE9FE", fontColor:"#7C3AED", width: 30},
 
-    L5: { eng: "psychoticism", fr: "سایکوزگرایی", fill:"#EC4899 ", background:"#FCE7F3", width: 33},
-    L6: { eng: "detachment", fr: "دل‌بریدگی", fill:"#EC4899 ", background:"#FCE7F3", width: 27},
-    L7: { eng: "disinhibition", fr: "مهارگسیختگی", fill:"#EC4899 ", background:"#FCE7F3", width: 66},
-    L8: { eng: "negative_affectivity", fr: "عاطفه‌پذیری منفی", fill:"#EC4899 ", background:"#FCE7F3", width: 45},
-    L9: { eng: "antagonism", fr: "تضادورزی", fill:"#EC4899 ", background:"#FCE7F3", width: 42},
+    L5: { eng: "psychoticism", fr: "سایکوزگرایی", fill:"#EC4899 ", background:"#FCE7F3", fontColor:"#DB2777", width: 33},
+    L6: { eng: "detachment", fr: "دل‌بریدگی", fill:"#EC4899 ", background:"#FCE7F3", fontColor:"#DB2777", width: 27},
+    L7: { eng: "disinhibition", fr: "مهارگسیختگی", fill:"#EC4899 ", background:"#FCE7F3", fontColor:"#DB2777", width: 66},
+    L8: { eng: "negative_affectivity", fr: "عاطفه‌پذیری منفی", fill:"#EC4899 ", background:"#FCE7F3", fontColor:"#DB2777", width: 45},
+    L9: { eng: "antagonism", fr: "تضادورزی", fill:"#EC4899 ", background:"#FCE7F3", fontColor:"#DB2777", width: 42},
   };
 
   profileSpec = {
@@ -34,13 +34,13 @@ class JPFQ93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: 702 + 2 * this.padding.x,
-          height: 450 + 2 * this.padding.y,
+          width: 735 + 2 * this.padding.x,
+          height: 456 + 2 * this.padding.y,
         };
       },
       padding: {
-        x: 120.5,
-        y: 152,
+        x: 84,
+        y: 89,
       },
     },
     /* "labels" part which has to be provided for each profile */

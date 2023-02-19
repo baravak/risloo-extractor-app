@@ -1,0 +1,13 @@
+{{#each items.bottom as | item index |}}
+    {{#with ../spec.page2.items.bottom as | itemsSpec |}}
+        <g transform="translate(0, {{math index '*' (math itemsSpec.rect.body.height '+' 20)}})">
+        <text x="150" y="{{math itemsSpec.rect.body.height '/' 2}}" font-size="16" font-weight="400" text-anchor="start" fill="#52525B" dy="4">{{item.label.fr}}</text>
+        <g transform="translate(168, 0)">
+            <rect x="0" y="{{math (math itemsSpec.rect.body.height '-' itemsSpec.rect.base.height) '/' 2}}" width="{{itemsSpec.rect.base.width}}" height="{{itemsSpec.rect.base.height}}" rx="{{itemsSpec.rect.base.br}}" fill="#F4F4F5"/>
+            <text x="{{math itemsSpec.rect.base.width '+' 27}}" y="{{math itemsSpec.rect.body.height '/' 2}}" font-size="12" font-weight="400" text-anchor="middle" fill="#A1A1AA" dy="3">{{itemsSpec.maxValue}}</text>
+            <rect x="0" y="0" width="{{item.width}}" height="{{itemsSpec.rect.body.height}}" rx="{{itemsSpec.rect.body.br}}" fill="url(#bg)"/>
+            <text x="{{math item.width '-' 18}}" y="{{math itemsSpec.rect.body.height '/' 2}}" font-size="16" font-weight="600" text-anchor="middle" fill="white" dy="4">{{item.mark}}</text>
+        </g>
+        </g>
+    {{/with}}
+{{/each}}

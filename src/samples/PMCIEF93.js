@@ -1,5 +1,6 @@
 const { Profile, FS } = require("../Profile");
 const JPFQ93 = require("./JPFQ93");
+const FACES93 = require("./FACES93");
 const Handlebars = require("handlebars");
 
 class PMCIEF93 extends Profile {
@@ -59,12 +60,12 @@ class PMCIEF93 extends Profile {
     L42 : {"eng" : "faces_flexibility", "fr" : ""},
     L43 : {"eng" : "faces_interpretation", "fr" : ""},
 
-    L44 : {"eng" : "pastq_raw", "fr" : ""},
-    L45 : {"eng" : "pastq_authoritarian_family", "fr" : ""},
-    L46 : {"eng" : "pastq_family_structure", "fr" : ""},
-    L47 : {"eng" : "pastq_authoritative_family", "fr" : ""},
-    L48 : {"eng" : "pastq_permissive_family", "fr" : ""},
-    L49 : {"eng" : "pastq_neglectful_family", "fr" : ""},
+    L44 : {"eng" : "pastq_raw", "fr" : "", max:140},
+    L45 : {"eng" : "pastq_authoritarian_family", "fr" : "خانواده سخت‌گیر", max:32},
+    L46 : {"eng" : "pastq_authoritative_family", "fr" : "خانواده مقتدر", max:44},
+    L47 : {"eng" : "pastq_permissive_family", "fr" : "سهل‌گیر", max:12},
+    L48 : {"eng" : "pastq_neglectful_family", "fr" : "بی‌تفاوت", max:12},
+    L49 : {"eng" : "pastq_family_structure", "fr" : "شاخص ساخت خانوادگی", max:28},
 
     L50 : {"eng" : "jpfq_identity", "fr" : ""},
     L51 : {"eng" : "jpfq_self_direction", "fr" : ""},
@@ -224,7 +225,43 @@ class PMCIEF93 extends Profile {
       percentage: axis_5_items[1],
       items:axis_5_items.slice(2)
     }
-    return [{ axis_5, mibq, axis_3_intention, axis_3, alvvct, dswls, axis_8_1, axis_7_2, JPFQ93_Context }];
+
+    const pastq_items = dataset.score.slice(43, 49)
+    const pastq = {
+      raw: pastq_items[0],
+      items:pastq_items.slice(1)
+    }
+
+
+    const [FACES93_Context_page1, FACES93_Context_page2] = new FACES93(
+      {
+        score: Object.fromEntries(dataset.score.slice(32, 43).map((s) =>[s.label.eng, s.mark])),
+        fields: dataset.info.fields,
+      },
+      {},
+      {
+        items: {
+          offsetY: 19,
+          widthCoeff: 9,
+          label: {
+            offsetX: 9,
+          },
+        },
+        gaugeItems: {
+          offsetX: 46,
+          circle: {
+            R: 16.5,
+            r: 12,
+          },
+        },
+        labelsPrefix: "faces",
+      }
+    ).getTemplateEngineParams();
+    const axis_2 = {
+      raw: dataset.score[0],
+      percentage: dataset.score[1]
+    }
+    return [{ axis_2, pastq, FACES93_Context_page2, FACES93_Context_page1, axis_5, mibq, axis_3_intention, axis_3, alvvct, dswls, axis_8_1, axis_7_2, JPFQ93_Context }];
   }
 }
 

@@ -9,42 +9,11 @@
 
   <g transform="translate({{spec.profile.padding.[1].x}}, {{spec.profile.padding.[1].y}})">
     <g transform="translate({{math spec.page2.items.top.baseline.width '/' 2}}, {{spec.page2.items.top.topPos}})">
-      {{#each items.top as | item index |}}
-        {{#with @root.spec.page2.items.top as | itemsSpec |}}
-          <g transform="translate({{lookup (array -320 -210 -100 100 210 320) index}}, 0)">
-            <g transform="translate(-{{math itemsSpec.rect.base.width '/' 2}}, 0)">
-              {{bar item.height.base itemsSpec.rect.base.width (object tl=0 tr=itemsSpec.rect.base.br br=itemsSpec.rect.base.br bl=0) (toRad -90) fill=itemsSpec.rect.base.color}}
-            </g>
-            <text x="0" y="-{{math item.height.base '+' 12}}" font-size="12" font-weight="400" text-anchor="middle" fill="#D4D4D8" dy="3">{{item.maxValue}}</text>
-            <g fill="{{item.fill}}">
-              <g transform="translate(-{{math itemsSpec.rect.body.width '/' 2}}, 0)">
-                {{#forLoop 0 item.mark 1}}
-                  <rect x="0" y="-{{math (math i '+' 1) '*' itemsSpec.rect.body.distanceY}}" width="{{itemsSpec.rect.body.width}}" height="{{itemsSpec.rect.body.height}}" rx="{{itemsSpec.rect.body.br}}"/>
-                {{/forLoop}}
-              </g>
-              <text x="{{math (math itemsSpec.rect.body.width '/' 2) '+' 16}}" y="-{{math item.mark '*' itemsSpec.rect.body.distanceY}}" font-size="16" font-weight="500" text-anchor="middle" dy="4">{{item.mark}}</text>
-              <text x="0" y="20" font-size="14" font-weight="400" text-anchor="middle" dy="5">{{item.label.fr}}</text>
-            </g>
-          </g>
-        {{/with}}
-      {{/each}}
-      <line x1="-{{math spec.page2.items.top.baseline.width '/' 2}}" y1="0" x2="{{math spec.page2.items.top.baseline.width '/' 2}}" y2="0" stroke="#A1A1AA" stroke-width="2"/>
+      {{> FACES93_2_1_partial}}
     </g>
 
     <g transform="translate(0, {{math spec.page2.items.top.topPos '+' spec.page2.items.bottom.offsetY}})">
-      {{#each items.bottom as | item index |}}
-        {{#with @root.spec.page2.items.bottom as | itemsSpec |}}
-          <g transform="translate(0, {{math index '*' (math itemsSpec.rect.body.height '+' 20)}})">
-            <text x="150" y="{{math itemsSpec.rect.body.height '/' 2}}" font-size="16" font-weight="400" text-anchor="start" fill="#52525B" dy="4">{{item.label.fr}}</text>
-            <g transform="translate(168, 0)">
-              <rect x="0" y="{{math (math itemsSpec.rect.body.height '-' itemsSpec.rect.base.height) '/' 2}}" width="{{itemsSpec.rect.base.width}}" height="{{itemsSpec.rect.base.height}}" rx="{{itemsSpec.rect.base.br}}" fill="#F4F4F5"/>
-              <text x="{{math itemsSpec.rect.base.width '+' 27}}" y="{{math itemsSpec.rect.body.height '/' 2}}" font-size="12" font-weight="400" text-anchor="middle" fill="#A1A1AA" dy="3">{{itemsSpec.maxValue}}</text>
-              <rect x="0" y="0" width="{{item.width}}" height="{{itemsSpec.rect.body.height}}" rx="{{itemsSpec.rect.body.br}}" fill="url(#bg)"/>
-              <text x="{{math item.width '-' 18}}" y="{{math itemsSpec.rect.body.height '/' 2}}" font-size="16" font-weight="600" text-anchor="middle" fill="white" dy="4">{{item.mark}}</text>
-            </g>
-          </g>
-        {{/with}}
-      {{/each}}
+      {{> FACES93_2_2_partial}}
     </g>
   </g>
 

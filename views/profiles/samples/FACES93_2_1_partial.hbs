@@ -1,0 +1,20 @@
+{{#each items.top as | item index |}}
+    {{#with ../spec.page2.items.top as | itemsSpec |}}
+        <g transform="translate({{lookup (array -320 -210 -100 100 210 320) index}}, 0)">
+        <g transform="translate(-{{math itemsSpec.rect.base.width '/' 2}}, 0)">
+            {{bar item.height.base itemsSpec.rect.base.width (object tl=0 tr=itemsSpec.rect.base.br br=itemsSpec.rect.base.br bl=0) (toRad -90) fill=itemsSpec.rect.base.color}}
+        </g>
+        <text x="0" y="-{{math item.height.base '+' 12}}" font-size="12" font-weight="400" text-anchor="middle" fill="#D4D4D8" dy="3">{{item.maxValue}}</text>
+        <g fill="{{item.fill}}">
+            <g transform="translate(-{{math itemsSpec.rect.body.width '/' 2}}, 0)">
+            {{#forLoop 0 item.mark 1}}
+                <rect x="0" y="-{{math (math i '+' 1) '*' itemsSpec.rect.body.distanceY}}" width="{{itemsSpec.rect.body.width}}" height="{{itemsSpec.rect.body.height}}" rx="{{itemsSpec.rect.body.br}}"/>
+            {{/forLoop}}
+            </g>
+            <text x="{{math (math itemsSpec.rect.body.width '/' 2) '+' 16}}" y="-{{math item.mark '*' itemsSpec.rect.body.distanceY}}" font-size="16" font-weight="500" text-anchor="middle" dy="4">{{item.mark}}</text>
+            <text x="0" y="20" font-size="14" font-weight="400" text-anchor="middle" dy="5">{{item.label.fr}}</text>
+        </g>
+        </g>
+    {{/with}}
+{{/each}}
+<line x1="-{{math spec.page2.items.top.baseline.width '/' 2}}" y1="0" x2="{{math spec.page2.items.top.baseline.width '/' 2}}" y2="0" stroke="#A1A1AA" stroke-width="2"/>

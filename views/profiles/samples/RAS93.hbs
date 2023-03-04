@@ -1,0 +1,26 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate({{math (math spec.item.circle.main.R '+' 10) '+' 8}}, {{math (math spec.item.circle.main.R '+' 10) '+' 12}})">
+      <text x="0" y="0" font-size="32" font-weight="500" fill="#DB2777" text-anchor="middle" dy="8">{{item.mark}}</text>
+      {{#with spec.item.circle as | circleSpec |}}
+        <circle cx="0" cy="0" r="{{circleSpec.center.radius}}" stroke="#A1A1AA" fill="none" stroke-dasharray="3"/>
+        {{gauge circleSpec.main.R circleSpec.main.r circleSpec.main.brs circleSpec.main.angles circleSpec.main.direction fill=circleSpec.main.base.fill stroke=circleSpec.main.base.stroke}}
+        {{gauge circleSpec.main.R circleSpec.main.r circleSpec.main.brs (object start=circleSpec.main.angles.start end=../item.angle) circleSpec.main.direction fill=circleSpec.main.body.fill stroke=circleSpec.main.body.stroke}}
+        {{setVar "p1" (polarToCartesian circleSpec.center.radius ../item.angle)}}
+        {{setVar "p2" (polarToCartesian circleSpec.main.R ../item.angle)}}
+        <line x1="{{p1.x}}" y1="{{p1.y}}" x2="{{p2.x}}" y2="{{p2.y}}" stroke="#71717A"/>
+      {{/with}}
+      <g font-size="16" font-weight="400" fill="#A1A1AA">
+        {{#each item.stops as | stop index |}}
+          {{#with @root.spec.item as | itemSpec |}}
+            {{setVar "p" (polarToCartesian (math itemSpec.circle.main.R '+' 10) stop.angle)}}
+            {{setVar "betMinus90And90" (boolean (boolean stop.angle '>' (toRad -90)) '&&' (boolean stop.angle '<' (toRad 90)))}}
+            <text x="{{p.x}}" y="{{p.y}}" text-anchor="{{ternary betMinus90And90 'end' 'start'}}" dy="0">{{stop.mark}}</text>
+          {{/with}}
+        {{/each}}
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

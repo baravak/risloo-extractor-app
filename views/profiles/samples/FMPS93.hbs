@@ -28,14 +28,14 @@
     {{/each}}
     <rect x="138" y="0" width="1" height="310" rx="1" fill="#FFFFFF" style="filter: drop-shadow(1px 0 2px rgba(0,0,0, .5));"/>
     <g transform="translate(679, 0)">
-      <text x="82" y="24" fill="#A1A1AA" font-size="14px" font-weight="400" text-anchor="start">145</text>
-      <line x1="43" x2="59" y1="20" y2="20" stroke="#E4E4E7" stroke-dasharray="4 4" />
+      <text x="82" y="24" fill="#71717A" font-size="14px" font-weight="400" text-anchor="start">145</text>
+      <line x1="43" x2="59" y1="20" y2="20" stroke="#A1A1AA" stroke-dasharray="4 4" />
       {{bar 40 290 (object tr=20 tl=20 br=0 bl=0) (toRad 0) transform="translate(0, 20)" fill="#F4F4F5"}}
       {{bar 40 (math 2 '*' raw.mark) (object tr=20 tl=20 br=0 bl=0) (toRad 0) transform=(concat "translate(0," (concat (math 20 '+' (math 290 '-' (math 2 '*' raw.mark))) ")")) fill="#52525B"}}
       <text x="20" y="{{math 50 '+' (math 290 '-' (math 2 '*' raw.mark))}}" fill="#FFFFFF" font-size="20px" font-weight="500" text-anchor="middle">{{raw.mark}}</text>
 
-      <text x="60" y="261" fill="#A1A1AA" font-size="14px" font-weight="400" text-anchor="end">29</text>
-      <line x1="43" x2="59" y1="257" y2="257" stroke="#E4E4E7" stroke-dasharray="4 4" />
+      <text x="60" y="261" fill="#71717A" font-size="14px" font-weight="400" text-anchor="end">29</text>
+      <line x1="43" x2="59" y1="257" y2="257" stroke="#A1A1AA" stroke-dasharray="4 4" />
 
       <rect x="-2" y="310" width="44" height="1" rx="1" fill="#FFFFFF" style="filter: drop-shadow(1px 0 2px rgba(0,0,0, .5));"/>
       <text transform="translate(-14, 247) rotate(270, 8, 8)" fill="#71717A" font-size="16px" font-weight="500" text-anchor="start">نمره کل</text>
@@ -49,9 +49,9 @@
           {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=item.zeta) direction clip-path="url(#items-circle-roll)" fill=item.fill fill-opacity=item.opacity}}
         {{/with}}
         <text x="0" y="0" text-anchor="middle" font-size="28" font-weight="600" fill="{{item.fill}}" dy="5">{{item.mark}}</text>
-        <text x="-8" y="-40" font-size="14" font-weight="500" fill="#71717A">0</text>
-        <text x="-42" y="-8" font-size="14" font-weight="500" fill="#71717A" text-anchor="middle">{{lookup @root.spec.gaugeItems.maxValues item.label.eng}}</text>
-        <g transform="translate(0, 80)">
+        <text x="-8" y="-42.5" font-size="14" font-weight="500" fill="#71717A">0</text>
+        <text x="-48" y="-8" font-size="14" font-weight="500" fill="#71717A" text-anchor="middle">{{lookup @root.spec.gaugeItems.maxValues item.label.eng}}</text>
+        <g transform="translate(0, 84)">
           <text x="0" y="0" font-size="14" font-weight="500" fill="{{item.fill}}" text-anchor="middle">{{item.label.fr}}</text>
           {{#each (wrapOnNewline item.label.desc) as | line index |}}
             <text x="0" y="{{math 15 '+' (math index '*' 15)}}" font-size="12" font-weight="400" fill="#A1A1AA" text-anchor="middle" dy="5">{{line}}</text>

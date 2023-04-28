@@ -33,7 +33,7 @@ class EPQ93 extends Profile {
         };
       },
       padding: {
-        x: 0,
+        x: 55.5,
         y: 40.5,
       },
     },
@@ -69,15 +69,40 @@ class EPQ93 extends Profile {
     labels: Object.values(this.labels),
   };
 
+  col9 = false;
+
   constructor(dataset, options, config = {}) {
     super();
+    let gender = "2";
+    for (let i = 0; i < dataset.prerequisites.length; i++) {
+      if (dataset.prerequisites[i].label == "gender") {
+        gender = dataset.prerequisites[i].user_answered;
+        break;
+      }
+    }
     if (this.constructor.name == "EPQ9A") {
       this.labels.L1.maxValue = 17;
       this.labels.L2.maxValue = 20;
       this.labels.L3.maxValue = 24;
       this.labels.L4.maxValue = 20;
       this.profileSpec.sample.name = "پرسشنامه شخصیت آیسنک کودکان";
+      if (gender == "2") {
+        this.col9 = true;
+        this.profileSpec.profile = {
+          get dimensions() {
+            return {
+              width: 792 + 2 * this.padding.x,
+              height: 673 + 2 * this.padding.y,
+            };
+          },
+          padding: {
+            x: 55.5,
+            y: 20.5,
+          },
+        };
+      }
     }
+
     this._init(dataset, options, config);
   }
 
@@ -419,7 +444,6 @@ class EPQ93 extends Profile {
     } else {
       selecedTable = this.constructor.name == "EPQ93" ? table.adult.male : table.children.male;
     }
-    selecedTable = table.children.female;
     let selecedTableRow = null;
     for (let i = 0; i < selecedTable.length; i++) {
       const ageID = selecedTable[i].age;
@@ -438,7 +462,8 @@ class EPQ93 extends Profile {
       n: this.dataset.score[1],
       l: this.dataset.score[0],
     };
-    return [{ items, selecedTable, selecedTableRow, score }];
+    const col9 = this.col9;
+    return [{ items, selecedTable, selecedTableRow, score, col9 }];
   }
 }
 

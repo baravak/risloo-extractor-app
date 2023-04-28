@@ -1,0 +1,874 @@
+{
+  "id": "$X1H6DV000.",
+  "scale": {
+    "id": "$EPQ-9A",
+    "title": "پرسشنامه شخصیت آیسنک"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "کودکان و نوجوانان",
+  "edition_version": null,
+  "client": {
+    "id": "GH9666000",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS9666000",
+    "manager": {
+      "id": "GH9666000",
+      "name": "درمانگر",
+      "user_id": "IR963000",
+      "avatar": null
+    },
+    "center": {
+      "id": "RS9666000",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز مشاوره"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "code": null,
+  "created_at": 1679147874,
+  "started_at": 1679148606,
+  "scored_at": 1679149930,
+  "closed_at": 1679149834,
+  "total_amount": 110000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 110000,
+  "description": "## دستور اجرای آزمون\n\nبا توجه به اینکه در سال‌های زیر هیچ پاسخ صحیح و غلط وجود ندارد و هیچ یک از سوالات پیچیده نیست، لطفاً پس از خواندن هر سوال نظر خود را (بله/خیر) انتخاب کنید و درباره معنای دقیق سوال ها زیاد فکر نکنید.",
+  "psychologist_description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "آیا شور و هیجان زیاد در محیط زندگی‌تان را دوست دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا فرم دمدمی مزاجی هستید؟( زود تصمیمتان را عوض می‌کنید؟)",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا از اذیت کردن کسانی که شما را دوست دارند لذت می‌برید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا هرگز طمع کرده اید، بیشتر از آنچه حق شماست از چیزی سهمی ببرید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا در گفتگو با مردم، معمولاً حاضر جواب هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا فرد زودرنجی هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا از شوخی‌های عملی، که بعضی وقت‌ها واقعا می‌توانند به مردم صدمه بزنند لذت می‌برید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا همیشه هر چه را به شما می‌گویند فورا انجام می‌دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا به جای در جمع بچه‌ها بودن ترجیح می‌دهید تنها باشید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا شب‌ها افکاری به ذهن شما می‌آید که نمی‌گذارد راحت بخوابید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا تاکنون مقررات مدرسه را زیر پا گذاشته‌اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوست دارید سایر بچه‌ها از شما بترسند؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا فرد نسبتا بانشاط و سرزنده هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا چیزهای زیادی شما را ناراحت می‌کند؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا از بریدن اندام حیوانات در بررسی‌های علمی لذت می‌برید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا هرگز چیزی (حتی یک دکمه یا سنجاق) را که مال دیگری بوده، برداشته اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوستان زیادی دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا هرگز بدون دلیل احساس بدبختی کرده اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا گاهی دوست دارید حیوانات را اذیت کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا تاکنون پیش آمده که کسی شما را صدا کند و شما خود را به نشنیدن بزنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوست دارید قلعه ای را که قدیمی است کاوش کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا اغلب احساس می‌کنید که زندگی خیلی کسل کننده است؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا بیشتر از بچه‌های دیگر جنگ و دعوا را می‌اندازید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا همیشه قبل از بازی کردن، تکالیف مدرسه را انجام می‌دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا کارهایی که به سرعت عمل نیاز دارد، دوست دارید انجام دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا نگران حوادث بد که ممکن است اتفاق بیافتد هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "وقتی می‌شنوید بچه ها حرف زشت می‌زنند، آیا سعی می‌کنید جلوی کار آنها را بگیرید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا می‌توانید برای دوستان خود یک مهمانی ترتیب دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا زمانی که مردم از شما یا کاری که انجام می‌دهید ایراد می‌گیرند، زود ناراحت می‌شوید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " اگر سگی را ببینید که زیر ماشین رفته است، خیلی ناراحت می‌شوید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا همیشه وقتی که بی ادبی می‌کنید، می‌گویید معذرت می‌خواهم؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا کسی هست که به خاطر کار بدی که در حق او کرده اید، سعی کند انتقام بگیرد؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا فکر می‌کنید اسکی روی آب جالب است؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا اغلب بدون دلیل احساس خستگی می‌کنید ؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا از اذیت کردن بچه های دیگر، کمی‌ لذت می‌برید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا همیشه، وقتی بزرگترها صحبت می‌کنند شما ساکت هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " وقتی با کسی دوست می‌شوید، آیا معمولاً قدم اول را شما بر می‌دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا نسبت به بعضی مسائل حساس هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا زیاد دعوا می‌کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا هرگز درباره کسی بدگویی کرده‌اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوست دارید لطیفه یا داستان خنده دار برای دوستان تعریف کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا در مدرسه بیشتر از سایر افراد دچار مشکل می‌شوید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا معمولاً کاغذها و آشغال هایی را که دیگران در کلاس ریخته‌اند، جمع می‌کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا سرگرمی‌های زیادی دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا احساسات شما زود جریحه‌دار می‌شود؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوست دارید سر به سر دیگران بگذارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا همیشه قبل از غذا دستتان را می‌شویید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا در مهمانی ها، یک‌جا نشستن و تماشا کردن را به بازی کردن با دیگران ترجیح می‌دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا اغلب احساس می‌کنید از زندگی سیر شده اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا گاهی از تماشای کتک خوردن یک بچه، توسط یک فرد زورگو لذت می‌برید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا همیشه، حتی زمانی که معلم خارج از کلاس است شما ساکت می‌نشینید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا انجام کارهایی که کمی‌ ترسناک است را دوست دارید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا گاهی چنان دچار بی‌قراری می‌شوید که نتوانید برای مدت زیادی روی صندلی بنشینید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا دوست دارید به تنهایی به کره ماه سفر کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " اگر در جمعی که در دعا یا سرودی را می‌خوانند باشید، آیا همیشه با آنها همراهی می‌کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوست دارید با بچه های دیگر بازی کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا والدین تان نسبت به شما خیلی سخت گیری می‌کنند؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوست دارید با چتر نجات از هواپیما بپرید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "اگر احساس کنید که کار احمقانه ای انجام داده اید، آیا برای مدت طولانی ناراحت می‌شوید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آیا همیشه هر غذایی را که برای شما تهیه می‌کنند می‌خورید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا می‌توانید در یک مجلس شاد شرکت کنید و از آن لذت ببرید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا گاهی احساس می‌کنید، زندگی ارزش زنده ماندن را ندارد؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا از گرفتار شدن حیوانی در تله، زیاد تاسف می‌خورید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا هرگز نسبت به والدین خود گستاخ بوده اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا اغلب به طور ناگهانی تصمیم می‌گیرید کارهایی را انجام دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " هنگامی که مشغول کاری هستید، آیا اغلب فکر شما دنبال چیزهای دیگری می‌رود؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا از پریدن یا شیرجه رفتن توی استخر یا دریا لذت می‌برید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا به دلیل نگرانی هایی که دارید، شب‌ها به سختی خوابتان می‌برد؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا تاکنون در کتاب درسی یا کتابی که از کتابخانه‌ امانت گرفته اید، چیزی نوشته یا آن را خط خطی کرده اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا دیگران فکر می‌کنند شما فرد شادی هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا اغلب احساس تنهایی می‌کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا همیشه، برای حفظ اموال دیگران، دقت خاصی نشان می‌دهید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا همیشه، تمام شیرینی هایی که دارید، بین دوسنتان تقسیم می‌کنید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا دوست دارید زیاد گردش بروید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا هرگز در بازی تقلب کرده اید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا واقعاً لذت بردن از یک مجلس شاد برایتان سخت است؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا گاهی بدون دلیل خاصی، شاد و زمانی ناراحت هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا هنگامی که سطل آشغال در دسترس نباشد، کاغذهای باطله را روی زمین می‌ریزید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": " آیا این جمله را قبول دارید که هرچه پیش آید خوش آید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": " آیا اغلب به دوستان مهربانی نیاز دارید تا خوش باشد؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "آیا دوست دارید موتوری را سریع برانید، یا پشت موتور سوار بنشینید؟",
+      "answer": {
+        "type": "optional",
+        "options": ["بلی", "خیر"]
+      },
+      "user_answered": "1"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "13"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 20,
+  "score": {
+    "psychoticism": 8,
+    "neuroticism": 5,
+    "extraversion": 21,
+    "lie": 2
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0",
+  "profiles": [
+    {
+      "id": "F96TGV9",
+      "file_name": "X1H6DV277.json",
+      "slug": "storage/profiles/X1H6DV277T6SKUz0SPwaniohB1kkB8MF3BQZeTNHS1woHB1AkjzD396s0CjSQHSIGkpY4z2A61kwRezLxfftYANdY7Fj7bXEKVYIaNytSOI78owKeoeVwFYXL5d81ZPyt/X1H6DV277.json",
+      "mode": "profile_json",
+      "url": "https://api.risloo.ir/storage/profiles/X1H6DV277T6SKUz0SPwaniohB1kkB8MF3BQZeTNHS1woHB1AkjzD396s0CjSQHSIGkpY4z2A61kwRezLxfftYANdY7Fj7bXEKVYIaNytSOI78owKeoeVwFYXL5d81ZPyt/X1H6DV277.json",
+      "type": "data",
+      "mime": "application/json",
+      "exec": "json"
+    },
+    {
+      "id": "F96TGVD",
+      "file_name": "X1H6DV277.xlsx",
+      "slug": "storage/profiles/X1H6DV277T6SKUz0SPwaniohB1kkB8MF3BQZeTNHS1woHB1AkjzD396s0CjSQHSIGkpY4z2A61kwRezLxfftYANdY7Fj7bXEKVYIaNytSOI78owKeoeVwFYXL5d81ZPyt/X1H6DV277.xlsx",
+      "mode": "profile_xlsx",
+      "url": "https://api.risloo.ir/storage/profiles/X1H6DV277T6SKUz0SPwaniohB1kkB8MF3BQZeTNHS1woHB1AkjzD396s0CjSQHSIGkpY4z2A61kwRezLxfftYANdY7Fj7bXEKVYIaNytSOI78owKeoeVwFYXL5d81ZPyt/X1H6DV277.xlsx",
+      "type": "document",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "exec": "xlsx"
+    }
+  ]
+}

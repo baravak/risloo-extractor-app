@@ -209,7 +209,7 @@ class Dataset {
       eng: engLabel,
       fr: reqPreq.fr || preq?.text || "-",
       value: this._extractValue(preq),
-      user_answered: preq.user_answered,
+      user_answered: preq?.user_answered,
     };
   }
 

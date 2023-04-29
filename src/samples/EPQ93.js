@@ -82,8 +82,8 @@ class EPQ93 extends Profile {
     }
     if (this.constructor.name == "EPQ9A") {
       this.labels.L1.maxValue = 17;
-      this.labels.L2.maxValue = 20;
-      this.labels.L3.maxValue = 24;
+      this.labels.L2.maxValue = 24;
+      this.labels.L3.maxValue = 20;
       this.labels.L4.maxValue = 20;
       this.profileSpec.sample.name = "پرسشنامه شخصیت آیسنک کودکان";
       if (gender == "2") {

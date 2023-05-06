@@ -236,7 +236,7 @@
                         }}
                     {{/forLoop}}
                 <text x="{{math 31 '+' (math @key '*' 40) }}" y="{{math 163 '-' (math mark '*' 2)}}" text-anchor="end" font-size="12px" font-weight="500" fill="{{label.bg}}">{{mark}}</text>
-                <text x="{{math 25 '+' (math @key '*' 40) }}" y="{{math 159 '-' (math label.max '*' 2)}}" text-anchor="start" font-size="8px" font-weight="400" fill="#71717A">{{mark}}</text>
+                <text x="{{math 25 '+' (math @key '*' 40) }}" y="{{math 159 '-' (math label.max '*' 2)}}" text-anchor="start" font-size="8px" font-weight="400" fill="#71717A">{{label.max}}</text>
                     {{#each (wrapOnNewline label.fr) as | line index |}}
                         <text x="{{math 25 '+' (math itemKey '*' 40) }}" y="{{math 175 '+' (math index '*' 10)}}" text-anchor="middle" font-size="8px" font-weight="400" fill="{{item.label.color}}">{{line}}</text>
                     {{/each}}

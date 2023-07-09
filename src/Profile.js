@@ -374,7 +374,6 @@ class Profile {
 
     if (this.variant === "with-sidebar") this._generateQRCode();
 
-    this.variantx = 10;
     this.contextArr = this._calcContext();
   }
 

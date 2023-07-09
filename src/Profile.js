@@ -4,6 +4,9 @@ const qrCodeGenerator = require("./qrcode/qrCodeGenerator");
 moment.locale("fa");
 moment.loadPersian({ dialect: "persian-modern" });
 
+const domainENV = process.env.NODE_REA_DOAMIN || "risloo.ir";
+const shortDomainENV = process.env.SHORT_DOMAIN || "r1l.ir";
+
 // Implement String.prototype.format
 String.prototype.format = function () {
   var args = arguments;
@@ -367,11 +370,11 @@ class Profile {
     this.spec = new Spec(config, this.profileSpec);
     const { canvas } = this.spec.parameters;
     this.canvas = new Canvas(canvas, variant);
-
     this.dataset = new Dataset(dataset, this.spec.parameters);
 
     if (this.variant === "with-sidebar") this._generateQRCode();
 
+    this.variantx = 10;
     this.contextArr = this._calcContext();
   }
 
@@ -379,11 +382,15 @@ class Profile {
     const { dataset, canvas } = this;
     const width = canvas.sidebar?.qrcode?.width || 120;
     const height = canvas.sidebar?.qrcode?.height || 120;
-    const data = `https://r1l.ir/${dataset.info.id}/?utm_source=risloo.ir&utm_medium=profile&utm_campaign=${dataset.info.id}`;
+    const data = `https://${shortDomainENV}/${dataset.info.id}/?utm_source=${domainENV}&utm_medium=profile&utm_campaign=${dataset.info.id}`;
     this.qrcode = { link: data, svg: qrCodeGenerator(data, { width, height }) };
   }
 
   getTemplateEngineParams() {
+    const iENV = {
+      domain: domainENV,
+      domainUC: domainENV.toUpperCase(),
+    };
     const {
       variant,
       measure,
@@ -403,6 +410,7 @@ class Profile {
       ...context,
       variant,
       measure,
+      iENV,
     }));
   }
 }

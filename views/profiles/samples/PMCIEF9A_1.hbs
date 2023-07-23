@@ -1,0 +1,80 @@
+{{#> layout}}
+
+
+<defs>
+    {{#with section2.circle.circle}}
+      <clipPath id="raw-circle-roll">
+        {{gauge R r brs (object start=angles.start end=angles.end) false}}
+      </clipPath>
+    {{/with}}
+  </defs>
+
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <rect x="0" y="0" stroke="red" fill="none" width="828" height="634" opacity="0.5" />
+    {{!-- RAW 1 --}}
+    <g>
+        {{!-- SECTION 5 --}}
+        <g>
+            {{bar 260 40 (object tr=0 tl=0 bl=12 br=12) (toRad 0) fill="#F8FAFC" transform="translate(0, 168)"}}
+            {{bar 260 208 (object tr=12 tl=12 bl=12 br=12) (toRad 0) stroke="#CBD5E1" fill="none"}}
+            <g transform="translate(215.5, 168)">
+                {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
+                <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">5  </text>
+                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">دیدگاه‌ها و علایق مشترک</text>
+            </g>
+        </g>
+
+        {{!-- SECTION 3 --}}
+        <g transform="translate(284, 0)">
+            {{bar 260 40 (object tr=0 tl=0 bl=12 br=12) (toRad 0) fill="#F8FAFC" transform="translate(0, 168)"}}
+            {{bar 260 208 (object tr=12 tl=12 bl=12 br=12) (toRad 0) stroke="#CBD5E1" fill="none"}}
+            <g transform="translate(212, 168)">
+                {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
+                <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">3 </text>
+                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">ملاک‌های انتخاب همسر</text>
+            </g>
+            <g transform="translate(26.5, 116)">
+                {{#each (array 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100)}}
+                    {{bar 6 (math 4 '+' (math @key '*' 4)) (object tl=2 tr=2 bl=2 br=2) (toRad 180)
+                    fill=(ternary (boolean @key '>=' @root.section3.total.mark) '#A1A1AA' '#65A30D')
+                    opacity=(math this '/' 100)
+                    transform=(concat "translate(" (concat (math @key '*' 9) ", 0)"))}}
+                {{/each}}
+                <text transform="translate({{section3.total.ml}}, {{math -14 '-' (math section3.total.mark '*' 4) }}) rotate(-30, 0, 0)"
+                    text-anchor="{{ternary (boolean section3.total.mark '>=' 5 ) 'start' 'end'}}" font-size="14"  font-weight="400" fill="#4B5563">%{{section3.percentage.mark}}</text>
+
+                <text x="{{section3.total.ml}}" y="10"  font-weight="500" dy="14" text-anchor="middle" font-size="22" fill="#4D7C0F">{{section3.total.mark}}</text>
+                <text x="193" y="0"  font-weight="400" text-anchor="end" font-size="14px" fill="#4B5563">{{section3.total.label.max}}</text>
+            </g>
+        </g>
+
+        {{!-- SECTION 2 --}}
+        <g transform="translate(568, 0)">
+            {{bar 260 40 (object tr=0 tl=0 bl=12 br=12) (toRad 0) fill="#F8FAFC" transform="translate(0, 168)"}}
+            {{bar 260 208 (object tr=12 tl=12 bl=12 br=12) (toRad 0) stroke="#CBD5E1" fill="none"}}
+            <g transform="translate(165.5, 168)">
+                {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
+                <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">2</text>
+                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">آشنایی</text>
+            </g>
+            <g transform="translate(130, 85)">
+                {{#with section2}}
+                    {{#with circle.circle}}
+                        {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=angles.end) direction clip-path="url(#raw-circle-roll)" fill="#F4F4F5" stroke="#E4E4E7"}}
+                        {{gauge R r (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=../zeta) direction clip-path="url(#raw-circle-roll)" fill=../circle.fill fill-opacity=../raw.opacity}}
+                    {{/with}}
+                    <text x="0" y="0" text-anchor="middle" font-size="28" font-weight="500" fill="{{circle.fill}}">{{mark}}</text>
+                    <text x="0" y="22" text-anchor="middle" font-size="14" font-weight="400" fill="{{circle.fill}}">%{{percentage.mark}}</text>
+                    {{setVar "rm" (math (math circle.circle.R '+' circle.circle.r) '/' 2)}}
+                    {{setVar "p" (polarToCartesian rm start.angle)}}
+                    <text x="{{math p.x '-' 8}}" y="{{p.y}}" font-size="14" font-weight="500" fill="#6B7280" text-anchor="middle" dy="4" transform="translate(-{{ternary @first ../circle.ticks.number.offset 0}}, -{{ternary @last ../circle.ticks.number.offset 0}})">{{start.number}}</text>
+
+                    {{setVar "rm" (math (math circle.circle.R '+' circle.circle.r) '/' 2)}}
+                    {{setVar "p" (polarToCartesian rm end.angle)}}
+                    <text x="{{p.x}}" y="{{math p.y '-' 8}}" font-size="14" font-weight="500" fill="#6B7280" text-anchor="middle" transform="translate(-{{ternary @first ../circle.ticks.number.offset 0}}, -{{ternary @last ../circle.ticks.number.offset 0}})">{{end.number}}</text>
+                {{/with}}
+            </g>
+        </g>
+    </g>
+</g>
+{{/ layout}}

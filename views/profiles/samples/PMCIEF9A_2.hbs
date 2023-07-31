@@ -1,4 +1,70 @@
 {{#> layout}}
+<defs>
+    <clipPath id="bar240x16">
+        {{bar 240 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0)}}
+    </clipPath>
+    <linearGradient id="line-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#88BDFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+</defs>
 <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    {{bar 828 40 (object tr=0 tl=0 bl=12 br=12) (toRad 0) fill="#F8FAFC" transform="translate(0, 594)"}}
+    {{bar 828 634 (object tr=12 tl=12 bl=12 br=12) (toRad 0) stroke="#CBD5E1" fill="none"}}
+    <g transform="translate(495, 594)">
+        {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
+        <text x="-12.5" y="20" dy="0.25em" text-anchor="middle" font-size="14" font-weight="400" fill="#475569">7</text>
+        <text x="-33" y="20" dy="0.25em" text-anchor="start" font-size="14" font-weight="400" fill="#52525B">تفاهم / توافق / اختلاف</text>
+    </g>
+    {{!-- Section 1 --}}
+    <g transform="translate(18.5, 12)">
+        <rect height="220" width="791" opacity=".1" />
+        <g transform="translate(16, 16)">
+            <rect height="188" width="356" opacity=".1" fill="red" />
+            <g>
+                <text x="115" y="3" dy="0.75em" text-anchor="start" font-size="14" font-weight="400" fill="#52525B">با هم مخالفیم</text>
+            </g>
+            <rect x="121" y="0" width="1" height="188" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 2px rgba(0,0,0, .5));"/>
+        </g>
+        <g transform="translate(436, 38)">
+            <rect height="144" width="339" opacity=".1" fill="blue" />
+        </g>
+    </g>
+    <g transform="translate(60.5, 296)">
+        <g transform="translate(16, 22)">
+            <g transform="translate(0, 8)">
+                {{#each s2.items as |item index|}}
+                <g transform="translate(0, {{math index '*' 30}})">
+                    <text x="173" y="0" font-size="14" font-weight="400" fill="#4B5563" dy="0.75em">{{item.label.fr}}</text>
+                    <g transform="translate(180, 0)">
+                        {{bar (math item.label.max '*' 10) 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) fill="#F3F4F6" opacity=".8"}}
+                        {{bar (math item.mark '*' 10) 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) fill="url(#line-bar)" clip-path="url(#bar240x16)" opacity=".8"}}
+                        <text x="{{math 8 '+' (math item.label.max '*' 10)}}" direction="ltr">
+                            <tspan fill="#2563EB" font-size="18" font-weight="500" dy=".75em" text-anchor="start">{{item.mark}}</tspan>
+                            <tspan fill="#4B5563" font-size="12" font-weight="400"> / {{item.label.max}}</tspan>
+                        </text>
+                        <g transform="translate({{math 57 '+' (math item.label.max '*' 10)}}, 0)">
+                            <rect x="0" y="0" rx="4" fill="#F5F3FF" width="35" height="16" />
+                            {{log item.label}}
+                            <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#8B5CF6">%{{item.percentage}}</text>
+                        </g>
+                    </g>
+                </g>
+                {{/each}}
+            </g>
+            <rect x="179" y="0" width="1" height="242" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 2px rgba(0,0,0, .5));"/>
+        </g>
+        <g transform="translate(610, 16)">
+            <text x="0" dy=".75em" text-anchor="end" font-weight="400" font-size="14" fill="#475569">164</text>
+            {{bar 20 246 (object tl=10 tr=10 bl=0 br=0) (toRad 0) fill="#F3F4F6" transform="translate(29, 6)"}}
+            {{bar 20 (math 1.5 '*' s2.raw) (object tl=0 tr=0 bl=10 br=10) (toRad 180) fill="#475569" transform="translate(49, 252)"}}
+            <g transform="translate(57, 252)">
+                <text x="0" y="-{{math 1.5 '*' s2.raw}}" text-anchor="end" font-weight="500" font-size="20" fill="#334155">{{s2.raw}}</text>
+                <text x="0" y="-{{math 1.5 '*' s2.raw}}" dy="1em" text-anchor="end" font-weight="400" font-size="12" fill="#475569">%{{s2.percentage}}</text>
+            </g>
+            <rect x="28" y="252" width="22" height="2" rx="1" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 3px rgba(0,0,0, .5));"/>
+            <text transform="rotate(-90, 0, 0) translate(-211, 6)" dy=".75em" text-anchor="start" font-weight="400" font-size="14" fill="#334155">نمره کل</text>
+        </g>
+    </g>
 </g>
 {{/ layout}}

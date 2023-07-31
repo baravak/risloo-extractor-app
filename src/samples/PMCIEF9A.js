@@ -39,58 +39,58 @@ class PMCIEF9A extends Profile {
     L21: { eng: "axis_6_worries_raw", fr: null, max: 0 },
     L22: { eng: "axis_6_worries_percentage", fr: null, max: 0 },
 
-    L23: { eng: "axis_7_section_1_options_option_1_raw", fr: null, max: 0 },
+    L23: { eng: "axis_7_section_1_options_option_1_raw", fr: "باهم مخالفیم", max: 27 },
     L24: { eng: "axis_7_section_1_options_option_1_percentage", fr: null, max: 0 },
 
-    L25: { eng: "axis_7_section_1_options_option_2_raw", fr: null, max: 0 },
+    L25: { eng: "axis_7_section_1_options_option_2_raw", fr: "به نتیجه نرسیده‌ایم", max: 27 },
     L26: { eng: "axis_7_section_1_options_option_2_percentage", fr: null, max: 0 },
 
-    L27: { eng: "axis_7_section_1_options_option_3_raw", fr: null, max: 0 },
+    L27: { eng: "axis_7_section_1_options_option_3_raw", fr: "من کوتاه آمده‌ام", max: 27 },
     L28: { eng: "axis_7_section_1_options_option_3_percentage", fr: null, max: 0 },
 
-    L29: { eng: "axis_7_section_1_options_option_4_raw", fr: null, max: 0 },
+    L29: { eng: "axis_7_section_1_options_option_4_raw", fr: "کنار آمده‌ایم", max: 27 },
     L30: { eng: "axis_7_section_1_options_option_4_percentage", fr: null, max: 0 },
 
-    L31: { eng: "axis_7_section_1_options_option_5_raw", fr: null, max: 0 },
+    L31: { eng: "axis_7_section_1_options_option_5_raw", fr: "با گفتگو توافق کردیم", max: 27 },
     L32: { eng: "axis_7_section_1_options_option_5_percentage", fr: null, max: 0 },
 
-    L33: { eng: "axis_7_section_1_options_option_6_raw", fr: null, max: 0 },
+    L33: { eng: "axis_7_section_1_options_option_6_raw", fr: "کاملا باهم موافقیم", max: 27 },
     L34: { eng: "axis_7_section_1_options_option_6_percentage", fr: null, max: 0 },
 
-    L35: { eng: "axis_7_section_1_againest_raw", fr: null, max: 0 },
+    L35: { eng: "axis_7_section_1_againest_raw", fr: "مخالف‌ها", max: 54 },
     L36: { eng: "axis_7_section_1_againest_percentage", fr: null, max: 0 },
 
-    L37: { eng: "axis_7_section_1_compromise_raw", fr: null, max: 0 },
+    L37: { eng: "axis_7_section_1_compromise_raw", fr: "تفاهم‌ها", max: 54 },
     L38: { eng: "axis_7_section_1_compromise_percentage", fr: null, max: 0 },
 
-    L39: { eng: "axis_7_section_1_agreement_raw", fr: null, max: 0 },
+    L39: { eng: "axis_7_section_1_agreement_raw", fr: "توافق‌ها", max: 54 },
     L40: { eng: "axis_7_section_1_agreement_percentage", fr: null, max: 0 },
 
     L41: { eng: "axis_7_section_2_raw", fr: null, max: 0 },
     L42: { eng: "axis_7_section_2_percentage", fr: null, max: 0 },
 
-    L43: { eng: "axis_7_section_2_religion_raw", fr: null, max: 0 },
+    L43: { eng: "axis_7_section_2_religion_raw", fr: "موضوع معنویت (مذهب)", max: 24 },
     L44: { eng: "axis_7_section_2_religion_percentage", fr: null, max: 0 },
 
-    L45: { eng: "axis_7_section_2_sex_raw", fr: null, max: 0 },
+    L45: { eng: "axis_7_section_2_sex_raw", fr: "موضوع ارتباط زناشویی (جنسی)", max: 20 },
     L46: { eng: "axis_7_section_2_sex_percentage", fr: null, max: 0 },
 
-    L47: { eng: "axis_7_section_2_role_raw", fr: null, max: 0 },
+    L47: { eng: "axis_7_section_2_role_raw", fr: "موضوع نقش", max: 20 },
     L48: { eng: "axis_7_section_2_role_percentage", fr: null, max: 0 },
 
-    L49: { eng: "axis_7_section_2_financial_raw", fr: null, max: 0 },
+    L49: { eng: "axis_7_section_2_financial_raw", fr: "موضوع موارد مالی مشکل‌آفرین", max: 20 },
     L50: { eng: "axis_7_section_2_financial_percentage", fr: null, max: 0 },
 
-    L51: { eng: "axis_7_section_2_flexibility_raw", fr: null, max: 0 },
+    L51: { eng: "axis_7_section_2_flexibility_raw", fr: "موضوع انعطاف‌پذیری", max: 20 },
     L52: { eng: "axis_7_section_2_flexibility_percentage", fr: null, max: 0 },
 
-    L53: { eng: "axis_7_section_2_proximity_raw", fr: null, max: 0 },
+    L53: { eng: "axis_7_section_2_proximity_raw", fr: "موضوع قرابت", max: 20 },
     L54: { eng: "axis_7_section_2_proximity_percentage", fr: null, max: 0 },
 
-    L55: { eng: "axis_7_section_2_sociability_raw", fr: null, max: 0 },
+    L55: { eng: "axis_7_section_2_sociability_raw", fr: "موضوع برقراری ارتباط (معاشرت)", max: 20 },
     L56: { eng: "axis_7_section_2_sociability_percentage", fr: null, max: 0 },
 
-    L57: { eng: "axis_7_section_2_conflict_resolution_raw", fr: null, max: 0 },
+    L57: { eng: "axis_7_section_2_conflict_resolution_raw", fr: "موضوع حل تعارض", max: 20 },
     L58: { eng: "axis_7_section_2_conflict_resolution_percentage", fr: null, max: 0 },
 
     L59: { eng: "axis_8_section_1_me_raw", fr: null, max: 0 },
@@ -184,17 +184,15 @@ class PMCIEF9A extends Profile {
     /* calculating its dimensions carefully is of great importance */
     profile: {
       get dimensions() {
-        return [
-          {
-            width: 828 + 2 * this.padding.x,
-            height: 634 + 2 * this.padding.y,
-          },
-        ];
+        return {
+          width: 828 + 2 * this.padding.x,
+          height: 634 + 2 * this.padding.y,
+        };
       },
       padding: {
         x: 37.5,
         y: 40,
-      },
+      }
     },
     /* "labels" part which has to be provided for each profile */
     labels: Object.values(this.labels),
@@ -213,12 +211,58 @@ class PMCIEF9A extends Profile {
       total: Object.assign({}, dataset.score[2], { ml: dataset.score[2].mark * 9 - 9 }),
       percentage: dataset.score[3],
     };
-    //  {
-    //   raw: dataset.score[0],
-    //   percentage: dataset.score[1],
-    //   circle_raw:
-    // };
-    return [{ section2, section3 }];
+    const section5 = section5circle(dataset);
+
+    const section4 = {
+      total : {
+        total : dataset.score[4],
+        percentage : dataset.score[5],
+      },
+      first: {
+        total : dataset.score[6],
+        percentage : dataset.score[7],
+      },
+      third: {
+        total : dataset.score[8],
+        percentage : dataset.score[9],
+        family: Object.assign({}, dataset.score[10], {percentage : Math.round((parseInt(dataset.score[10].mark) * 100) / 32)}),
+        educational: Object.assign({}, dataset.score[11], {percentage : Math.round((parseInt(dataset.score[11].mark) * 100) / 32)}),
+      },
+      fourth: {
+        total : dataset.score[12],
+        percentage : dataset.score[13],
+      }
+
+    };
+    const has_extend = !dataset.questions[102].user_answered ? true : false
+    const section6 = {
+      gauge : section6circle(dataset, has_extend),
+      favorites : {
+        total: dataset.score[18],
+        percentage: dataset.score[19],
+      },
+      worries : {
+        total: dataset.score[20],
+        percentage: dataset.score[21],
+        max : has_extend ? 136 : 132,
+        height : (has_extend ? 136 : 132) * 1.2,
+        has_extend : has_extend
+      }
+    }
+    const s72_items = []
+    for(let i = 0; i<16; i+=2){
+      const score = dataset.score[i+42];
+      score.percentage = (parseInt(dataset.score[i+43].mark));
+      s72_items.push(score)
+    }
+    const section7 = {
+      s2 : {
+        raw:dataset.score[40].mark,
+        percentage: parseInt(dataset.score[41].mark),
+        items: s72_items,
+      }
+    }
+    return [{ section2, section3, section4, section5, section6 }, section7];
   }
 }
 
@@ -281,6 +325,145 @@ function section2circle(dataset) {
       angle: (rawTicksNumbers[1] / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
     },
   };
+}
+
+function section6circle(dataset, has_extend) {
+  const raw = dataset.score[16];
+  const percentage = dataset.score[17];
+  const circle = {
+    maxValue: has_extend ? 168 : 164 /* Maximum value of raw mark provided by the dataset */,
+    fill: "#64748B" /* Color used in the raw element */,
+    circle: {
+      R: 40 /* Radius of the outer circle of the raw element */,
+      r: 24 /* Radius of the inner circle of the raw element */,
+      brs: {
+        tl: 2 /* Top left border radius */,
+        bl: 2 /* Bottom left border radius */,
+        tr: 2 /* Top right border radius */,
+        br: 2 /* Bottom right border radius */,
+      } /* Border radiuses at each end of the gauge of the raw element */,
+      angles: {
+        start: FS.toRadians(-90),
+        end: FS.toRadians(180),
+      } /* Angles of each end of the raw element */,
+      direction: false /* Clockwise direction for the raw gauge element */,
+      get totalAngle() {
+        return this.direction
+          ? 2 * Math.PI - (this.angles.end - this.angles.start)
+          : this.angles.end - this.angles.start;
+      },
+    },
+    ticks: {
+      num: 2 /* Number of ticks */,
+      number: {
+        offset: 164 /* Offset from the line */,
+      },
+    },
+  };
+
+  // Calculate Ticks Numbers Array for Raw
+  const rawTicksNumbers = FS.createArithmeticSequence(
+    circle.maxValue,
+    -circle.maxValue / (circle.ticks.num - 1),
+    circle.ticks.num
+  ).reverse();
+
+  // Gather Required Info for Raw
+  return {
+    circle: circle,
+    percentage: percentage,
+    label: raw.label,
+    mark: raw.mark,
+    zeta: (raw.mark / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    fill: circle.fill,
+    opacity: FS.roundTo2(0.5 * (1 + raw.mark / circle.maxValue)),
+    start: {
+      number: rawTicksNumbers[0],
+      angle: (rawTicksNumbers[0] / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    },
+    end: {
+      number: rawTicksNumbers[1],
+      angle: (rawTicksNumbers[1] / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    },
+  };
+}
+
+function section5circle(dataset){
+  const raw = dataset.score[14]
+  const percentage = dataset.score[15]
+  const circle = {
+    minValue: 0 /* Minimum value of the item mark */,
+    maxValue: 44 /* Maximum value of the item mark */,
+    stops: [44] /* Stops array of the item mark */,
+    circle: {
+      center: {
+        radius: 21.5 /* Radius of the central circle */,
+      },
+      main: {
+        R: 86 /* Radius of the outer circle of the item element */,
+        r: 68.8 /* Radius of the inner circle of the item element */,
+        brs: {
+          tl: 0 /* Top left border radius */,
+          bl: 0 /* Bottom left border radius */,
+          tr: 0 /* Top right border radius */,
+          br: 0 /* Bottom right border radius */,
+        } /* Border radiuses at each end of the gauge of the item element */,
+        angles: {
+          start: FS.toRadians(-180),
+          end: FS.toRadians(0),
+        } /* Angles of each end of the item element */,
+        direction: false /* Clockwise direction for the item gauge element */,
+        base: {
+          fill: "#F3F4F6" /* Fill of the base part of the item gauge */,
+          stroke: "#E5E7EB" /* Stroke of the base part of the item gauge */,
+        },
+        body: {
+          fill: "#DB2777" /* Fill of the body part of the item gauge */,
+          stroke: "#9D174D" /* Stroke of the base part of the item gauge */,
+        },
+      },
+    },
+  }
+  return {
+    raw : raw,
+    percentage : percentage,
+    circle: circle,
+    item : {
+      label: raw.label,
+      mark: raw.mark,
+      angle: _markToAngle(
+        raw.mark,
+        circle.minValue,
+        circle.maxValue,
+        circle.circle.main.angles,
+        circle.circle.main.direction
+      ),
+      stops: circle.stops.map((stop) => ({
+        mark: stop,
+        angle: _markToAngle(
+          stop,
+          circle.minValue,
+          circle.maxValue,
+          circle.circle.main.angles,
+          circle.circle.main.direction
+        ),
+      })),
+    }
+  }
+}
+
+function _markToAngle(mark, min, max, angles, direction) {
+  const totalAngle = _calcDiffAngle(angles.end, angles.start, direction);
+  const deltaTheta = ((mark - min) / (max - min)) * totalAngle;
+  return _calcDistAngle(deltaTheta, angles.start, direction);
+}
+
+function _calcDiffAngle(theta, theta0, direction) {
+  return direction ? 2 * Math.PI - (theta - theta0) : theta - theta0;
+}
+
+function _calcDistAngle(deltaTheta, theta0, direction) {
+  return direction ? 2 * Math.PI - deltaTheta + theta0 : deltaTheta + theta0;
 }
 
 module.exports = PMCIEF9A;

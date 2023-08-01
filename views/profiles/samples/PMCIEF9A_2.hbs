@@ -3,6 +3,9 @@
     <clipPath id="bar240x16">
         {{bar 240 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0)}}
     </clipPath>
+    <clipPath id="bar20x246">
+        {{bar 20 246 (object tl=0 tr=0 bl=10 br=10) (toRad 180) }}
+    </clipPath>
     <linearGradient id="line-bar" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#88BDFF;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
@@ -30,6 +33,10 @@
             <rect height="144" width="339" opacity=".1" fill="blue" />
         </g>
     </g>
+    <text x="749" y="252" dy="-.25em" text-anchor="end" font-size="14" font-weight="400" fill="#9CA3AF">بخش اول</text>
+    <line x1="12" y1="264" y2="264" x2="816" stroke="#CBD5E1" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <text x="20" y="276" dy=".75em" text-anchor="end" font-size="14" font-weight="400" fill="#9CA3AF">بخش دوم</text>
+    {{!-- Section 2 --}}
     <g transform="translate(60.5, 296)">
         <g transform="translate(16, 22)">
             <g transform="translate(0, 8)">
@@ -44,9 +51,8 @@
                             <tspan fill="#4B5563" font-size="12" font-weight="400"> / {{item.label.max}}</tspan>
                         </text>
                         <g transform="translate({{math 57 '+' (math item.label.max '*' 10)}}, 0)">
-                            <rect x="0" y="0" rx="4" fill="#F5F3FF" width="35" height="16" />
-                            {{log item.label}}
-                            <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#8B5CF6">%{{item.percentage}}</text>
+                            <rect x="0" y="0" rx="4" fill="#EFF6FF" width="35" height="16" />
+                            <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#2563EB">%{{item.percentage}}</text>
                         </g>
                     </g>
                 </g>
@@ -57,7 +63,7 @@
         <g transform="translate(610, 16)">
             <text x="0" dy=".75em" text-anchor="end" font-weight="400" font-size="14" fill="#475569">164</text>
             {{bar 20 246 (object tl=10 tr=10 bl=0 br=0) (toRad 0) fill="#F3F4F6" transform="translate(29, 6)"}}
-            {{bar 20 (math 1.5 '*' s2.raw) (object tl=0 tr=0 bl=10 br=10) (toRad 180) fill="#475569" transform="translate(49, 252)"}}
+            {{bar 20 (math 1.5 '*' s2.raw) (object tl=0 tr=0 bl=10 br=10) (toRad 180) fill="#475569" transform="translate(49, 252)" clip-path="url(#bar20x246)"}}
             <g transform="translate(57, 252)">
                 <text x="0" y="-{{math 1.5 '*' s2.raw}}" text-anchor="end" font-weight="500" font-size="20" fill="#334155">{{s2.raw}}</text>
                 <text x="0" y="-{{math 1.5 '*' s2.raw}}" dy="1em" text-anchor="end" font-weight="400" font-size="12" fill="#475569">%{{s2.percentage}}</text>

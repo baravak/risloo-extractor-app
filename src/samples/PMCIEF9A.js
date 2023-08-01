@@ -96,19 +96,19 @@ class PMCIEF9A extends Profile {
     L59: { eng: "axis_8_section_1_me_raw", fr: null, max: 0 },
     L60: { eng: "axis_8_section_1_me_percentage", fr: null, max: 0 },
 
-    L61: { eng: "axis_8_section_1_me_social_raw", fr: null, max: 0 },
+    L61: { eng: "axis_8_section_1_me_social_raw", fr: "اجتماعی بودن", max: 0 },
     L62: { eng: "axis_8_section_1_me_social_percentage", fr: null, max: 0 },
 
-    L63: { eng: "axis_8_section_1_me_administratorship_raw", fr: null, max: 0 },
+    L63: { eng: "axis_8_section_1_me_administratorship_raw", fr: "مدیریت", max: 0 },
     L64: { eng: "axis_8_section_1_me_administratorship_percentage", fr: null, max: 0 },
 
-    L65: { eng: "axis_8_section_1_me_moral_raw", fr: null, max: 0 },
+    L65: { eng: "axis_8_section_1_me_moral_raw", fr: "اخلاق", max: 0 },
     L66: { eng: "axis_8_section_1_me_moral_percentage", fr: null, max: 0 },
 
-    L67: { eng: "axis_8_section_1_me_rationality_raw", fr: null, max: 0 },
+    L67: { eng: "axis_8_section_1_me_rationality_raw", fr: "عقلانیت", max: 0 },
     L68: { eng: "axis_8_section_1_me_rationality_percentage", fr: null, max: 0 },
 
-    L69: { eng: "axis_8_section_1_me_anger_raw", fr: null, max: 0 },
+    L69: { eng: "axis_8_section_1_me_anger_raw", fr: "عصبانیت", max: 0 },
     L70: { eng: "axis_8_section_1_me_anger_percentage", fr: null, max: 0 },
 
     L71: { eng: "axis_8_section_1_partner_raw", fr: null, max: 0 },
@@ -135,19 +135,19 @@ class PMCIEF9A extends Profile {
     L85: { eng: "axis_8_section_2_me_raw", fr: null, max: 0 },
     L86: { eng: "axis_8_section_2_me_percentage", fr: null, max: 0 },
 
-    L87: { eng: "axis_8_section_2_me_c_raw", fr: null, max: 0 },
+    L87: { eng: "axis_8_section_2_me_c_raw", fr: "وظیفه‌شناسی (C)", max: 0 },
     L88: { eng: "axis_8_section_2_me_c_percentage", fr: null, max: 0 },
 
-    L89: { eng: "axis_8_section_2_me_a_raw", fr: null, max: 0 },
+    L89: { eng: "axis_8_section_2_me_a_raw", fr: "توافق‌پذیری (A)", max: 0 },
     L90: { eng: "axis_8_section_2_me_a_percentage", fr: null, max: 0 },
 
-    L91: { eng: "axis_8_section_2_me_o_raw", fr: null, max: 0 },
+    L91: { eng: "axis_8_section_2_me_o_raw", fr: "اشتیاق به تجربیات جدید (O)", max: 0 },
     L92: { eng: "axis_8_section_2_me_o_percentage", fr: null, max: 0 },
 
-    L93: { eng: "axis_8_section_2_me_e_raw", fr: null, max: 0 },
+    L93: { eng: "axis_8_section_2_me_e_raw", fr: "برون‌گرایی (E)", max: 0 },
     L94: { eng: "axis_8_section_2_me_e_percentage", fr: null, max: 0 },
 
-    L95: { eng: "axis_8_section_2_me_n_raw", fr: null, max: 0 },
+    L95: { eng: "axis_8_section_2_me_n_raw", fr: "نوروتیک بودن (N)", max: 0 },
     L96: { eng: "axis_8_section_2_me_n_percentage", fr: null, max: 0 },
 
     L97: { eng: "axis_8_section_2_partner_raw", fr: null, max: 0 },
@@ -262,7 +262,66 @@ class PMCIEF9A extends Profile {
         items: s72_items,
       }
     }
-    return [{ section2, section3, section4, section5, section6 }, section7];
+
+    const s81_items = []
+
+    for(let i = 0; i< 10; i+=2){
+      const score = {
+        title: dataset.score[i + 60].label.fr,
+        me : {
+          raw : dataset.score[i + 60].mark,
+          percentage : parseInt(dataset.score[i + 61].mark),
+        },
+        partner : {
+          raw : dataset.score[i + 72].mark,
+          percentage : parseInt(dataset.score[i + 73].mark),
+        }
+      }
+      s81_items.push(score)
+    }
+
+    const s82_items = []
+
+    for(let i = 0; i< 10; i+=2){
+      const score = {
+        title: dataset.score[i + 86].label.fr,
+        me : {
+          raw : dataset.score[i + 86].mark,
+          percentage : parseInt(dataset.score[i + 87].mark),
+        },
+        partner : {
+          raw : dataset.score[i + 98].mark,
+          percentage : parseInt(dataset.score[i + 99].mark),
+        }
+      }
+      s82_items.push(score)
+    }
+
+    const section8 = {
+      s1:{
+        items:s81_items,
+        me: {
+          raw: dataset.score[58].mark,
+          percentage: parseInt(dataset.score[59].mark),
+        },
+        partner: {
+          raw: dataset.score[70].mark,
+          percentage: parseInt(dataset.score[71].mark),
+        }
+      },
+      s2 : {
+        items:s82_items,
+        me: {
+          raw: dataset.score[84].mark,
+          percentage: parseInt(dataset.score[85].mark),
+        },
+        partner: {
+          raw: dataset.score[96].mark,
+          percentage: parseInt(dataset.score[97].mark),
+        }
+      }
+    }
+    return [{ section2, section3, section4, section5, section6 }, section7, section8];
   }
 }
 

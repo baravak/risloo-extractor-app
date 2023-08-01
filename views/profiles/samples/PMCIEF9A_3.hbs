@@ -1,5 +1,154 @@
 {{#> layout}}
-<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+<defs>
+    <clipPath id="barxs1me">
+        {{bar 144 16 (object tr=4 br=4 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <linearGradient id="bgxs1me" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#99F6E4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D9488;stop-opacity:1" />
+    </linearGradient>
+
+    <clipPath id="barxs1partner">
+        {{bar 144 16 (object tr=4 br=4 bl=0 tl=0) (toRad 180)}}
+    </clipPath>
+    <linearGradient id="bgxs1partner" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FBCFE8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DB2777;stop-opacity:1" />
+    </linearGradient>
+
+    <clipPath id="barxs1total">
+        {{bar 18 180 (object tr=0 tl=0 br=4 bl=4) (toRad 180)}}
+    </clipPath>
+
+    <clipPath id="barxs2me">
+        {{bar 160 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <linearGradient id="bgxs2me" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#BAE6FD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1" />
+    </linearGradient>
+
+    <clipPath id="barxs2partner">
+        {{bar 160 16 (object tr=8 br=8 bl=0 tl=0) (toRad 180)}}
+    </clipPath>
+    <linearGradient id="bgxs2partner" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C7D2FE;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4F46E5;stop-opacity:1" />
+    </linearGradient>
     
+</defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    {{bar 828 40 (object tr=0 tl=0 bl=12 br=12) (toRad 0) fill="#F8FAFC" transform="translate(0, 594)"}}
+    {{bar 828 634 (object tr=12 tl=12 bl=12 br=12) (toRad 0) stroke="#CBD5E1" fill="none"}}
+    <g transform="translate(525, 594)">
+        {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
+        <text x="-12.5" y="20" dy="0.25em" text-anchor="middle" font-size="14" font-weight="400" fill="#475569">8</text>
+        <text x="-33" y="20" dy="0.25em" text-anchor="start" font-size="14" font-weight="400" fill="#4B5563">هماهنگی‌های ویژگی‌های شخصیتی</text>
+    </g>
+    {{!-- Section 1 --}}
+    <g transform="translate(132, 45)">
+        
+        <g transform="translate(0, 36)">
+            {{#each s1.items as |item index|}}
+            <g transform="translate(0, {{math index '*' 32}})">
+                {{!-- Partner --}}
+                <g>
+                    {{bar 144 16 (object tr=4 br=4 bl=0 tl=0) (toRad 180) fill="#F3F4F6" opacity=".8" transform="translate(219, 16)"}}
+                    {{bar (math 8 '*' item.partner.raw) 16 (object tr=4 br=4 bl=0 tl=0) (toRad 180) fill="url(#bgxs1partner)" opacity=".8" clip-path="url(#barxs1partner)"  transform="translate(219, 16)"}}
+                    <text x="67" y="0" dy="0.85em" text-anchor="start" font-size="16" font-weight="500" fill="#DB2777">{{item.partner.raw}}</text>
+                    <g transform="translate(0, 0)">
+                        <rect x="0" y="0" rx="4" fill="#F9FAFB" width="35" height="16" />
+                        <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#DB2777">%{{item.partner.percentage}}</text>
+                    </g>
+                </g>
+                {{!-- Title --}}
+                <g transform="translate(220, 0)">
+                <text x="62" y="0" dy=".85em" text-anchor="middle" font-size="14" font-weight="400" fill="#4B5563">{{item.title}}</text>
+                </g>
+                {{!-- Me --}}
+                <g transform="translate(344, 0)">
+                    {{bar 144 16 (object tr=4 br=4 bl=0 tl=0) (toRad 0) fill="#F3F4F6" opacity=".8"}}
+                    {{bar (math 4 '*' item.me.raw) 16 (object tr=4 br=4 bl=0 tl=0) (toRad 0) fill="url(#bgxs1me)" opacity=".8" clip-path="url(#barxs1me)"}}
+                    <text x="152" y="0" dy="0.85em" text-anchor="end" font-size="16" font-weight="500" fill="#0D9488">{{item.me.raw}}</text>
+                    <g transform="translate(184, 0)">
+                        <rect x="0" y="0" rx="4" fill="#F9FAFB" width="35" height="16" />
+                        <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#0D9488">%{{item.me.percentage}}</text>
+                    </g>
+                </g>
+            </g>
+            {{/each}}
+        </g>
+        <text x="220" y="0" dy="1em" text-anchor="start" font-size="12" font-weight="400" fill="#DB2777">شباهت با همسر آینده‌ام</text>
+        <text x="343" y="0" dy="1em" text-anchor="end" font-size="12" font-weight="400" fill="#0D9488">من</text>
+        <text x="77" y="0" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#9CA3AF">18</text>
+        <line x1="77" x2="77" y1="19" y2="33" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 3"/>
+        <rect x="219" y="28" width="1" height="160" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(-1px 0px 2px rgba(0,0,0, .5));"/>
+        <text x="488" y="0" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#9CA3AF">36</text>
+        <line x1="488" x2="488" y1="19" y2="33" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 3"/>
+        <rect x="343" y="28" width="1" height="160" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(1px 0px 2px rgba(0,0,0, .5));"/>
+    </g>
+    <g transform="translate(728, 45)">
+        <text x="0" y="0" dy=".75em" text-anchor="end" font-size="12" font-weight="400" fill="#475569">180</text>
+        <text x="47" y="{{math 6 '+' (math 186 '-' s1.me.raw)}}" dy="-.25em" text-anchor="end" font-size="18" font-weight="500" fill="#334155">{{s1.me.raw}}</text>
+        <text x="47" y="{{math 6 '+' (math 186 '-' s1.me.raw)}}" dy=".75em" text-anchor="end" font-size="12" font-weight="400" fill="#475569">%{{s1.me.percentage}}</text>
+        {{bar 18 180 (object tr=0 tl=0 br=4 bl=4) (toRad 180) fill="#F3F4F6" transform="translate(40, 186)"}}
+        {{bar 18 s1.me.raw (object tr=0 tl=0 br=4 bl=4) (toRad 180) fill="#475569" transform="translate(40, 186)" clip-path="url(#barxs1total)"}}
+        <rect x="20" y="186" width="22" height="2" rx="1" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 3px rgba(0,0,0, .5));"/>
+        <text transform="rotate(-90, 0, 0) translate(-188, 3)" dy=".75em" text-anchor="end" font-weight="400" font-size="14" fill="#334155">نمره کل</text>
+    </g>
+    <g transform="translate(21, 45)">
+        <text x="64" y="0" dy=".75em" text-anchor="end" font-size="12" font-weight="400" fill="#57534E">90</text>
+        <text x="35" y="{{math 6 '+' (math 186 '-' (math s1.partner.raw '*' 2))}}" dy="-.25em" text-anchor="start" font-size="18" font-weight="500" fill="#44403C">{{s1.partner.raw}}</text>
+        <text x="35" y="{{math 6 '+' (math 186 '-' (math s1.partner.raw '*' 2))}}" dy=".75em" text-anchor="start" font-size="12" font-weight="400" fill="#57534E">%{{s1.partner.percentage}}</text>
+        {{bar 18 180 (object tr=0 tl=0 br=4 bl=4) (toRad 180) fill="#F5F5F4" transform="translate(60, 186)"}}
+        {{bar 18 (math s1.partner.raw '*' 2) (object tr=0 tl=0 br=4 bl=4) (toRad 180) fill="#57534E" transform="translate(60, 186)" clip-path="url(#barxs1total)"}}
+        <rect x="40" y="186" width="22" height="2" rx="1" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 3px rgba(0,0,0, .5));"/>
+        <text transform="rotate(-90, 0, 0) translate(-188, 64)" dy=".75em" text-anchor="end" font-weight="400" font-size="14" fill="#44403C">نمره کل</text>
+    </g>
+    <text x="749" y="285" dy="-.25em" text-anchor="end" font-size="14" font-weight="400" fill="#9CA3AF">بخش اول</text>
+    <line x1="12" y1="297" y2="297" x2="816" stroke="#CBD5E1" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <text x="20" y="309" dy=".75em" text-anchor="end" font-size="14" font-weight="400" fill="#9CA3AF">بخش دوم</text>
+    {{!-- Section 2 --}}
+    <g transform="translate(85, 361)">
+        {{!-- <rect width="658" height="188" opacity=".1" /> --}}
+        <g transform="translate(0, 36)">
+            {{#each s2.items as |item index|}}
+            <g transform="translate(0, {{math index '*' 32}})">
+                {{!-- Partner --}}
+                <g>
+                    {{bar 160 16 (object tr=8 br=8 bl=0 tl=0) (toRad 180) fill="#F3F4F6" opacity=".8" transform="translate(235, 16)"}}
+                    {{bar (math 8 '*' item.partner.raw) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 180) fill="url(#bgxs2partner)" opacity=".8" clip-path="url(#barxs2partner)"  transform="translate(235, 16)"}}
+                    <text x="67" y="0" dy="0.85em" text-anchor="start" font-size="16" font-weight="500" fill="#52525B">{{item.partner.raw}}</text>
+                    <g transform="translate(0, 0)">
+                        <rect x="0" y="0" rx="4" fill="#F9FAFB" width="35" height="16" />
+                        <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#52525B">%{{item.partner.percentage}}</text>
+                    </g>
+                </g>
+                {{!-- Title --}}
+                <g transform="translate(236, 0)">
+                <text x="93" y="0" dy=".85em" text-anchor="middle" font-size="14" font-weight="400" fill="#4B5563">{{item.title}}</text>
+                </g>
+                {{!-- Me --}}
+                <g transform="translate(422, 0)">
+                    {{bar 160 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#F3F4F6" opacity=".8"}}
+                    {{bar (math 8 '*' item.me.raw) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="url(#bgxs2me)" opacity=".8" clip-path="url(#barxs2me)"}}
+                    <text x="168" y="0" dy="0.85em" text-anchor="end" font-size="16" font-weight="500" fill="#0284C7">{{item.me.raw}}</text>
+                    <g transform="translate(200, 0)">
+                        <rect x="0" y="0" rx="4" fill="#F9FAFB" width="35" height="16" />
+                        <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#0284C7">%{{item.me.percentage}}</text>
+                    </g>
+                </g>
+            </g>
+            {{/each}}
+        </g>
+        <text x="236" y="0" dy="1em" text-anchor="start" font-size="12" font-weight="400" fill="#52525B">همسر آینده‌م</text>
+        <text x="421" y="0" dy="1em" text-anchor="end" font-size="12" font-weight="400" fill="#0284C7">من</text>
+        <text x="75" y="0" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#9CA3AF">20</text>
+        <line x1="75" x2="75" y1="19" y2="33" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 3"/>
+        <rect x="235" y="28" width="1" height="160" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(-1px 0px 2px rgba(0,0,0, .5));"/>
+        <text x="582" y="0" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#9CA3AF">20</text>
+        <line x1="582" x2="582" y1="19" y2="33" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 3"/>
+        <rect x="421" y="28" width="1" height="160" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(1px 0px 2px rgba(0,0,0, .5));"/>
+    </g>
 </g>
 {{/ layout}}

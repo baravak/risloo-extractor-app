@@ -118,20 +118,20 @@ class SCL9093 extends Profile {
     const items = [];
     for(let i = 0; i < 40; i+=4){
         const item = {
-            raw:dataset.score[i].mark,
+            raw:dataset.score[i].mark || 0,
             title: dataset.score[i].label.fr,
             en: dataset.score[i].label.en,
-            mean: toFixed(dataset.score[i+1].mark),
+            mean: toFixed(dataset.score[i+1].mark || 0),
         };
         item.params = setByPr(item, dataset.score[i+3].mark || 0)
         
         items.push(item);
     }
     const colors = colorLevel.map((c, i) => ({start: colorSubLevel[i], end: c}))
-    const total = dataset.score[40].mark;
-    const pst = dataset.score[41].mark;
-    const gsi = toFixed(dataset.score[42].mark);
-    const psdi = toFixed(dataset.score[43].mark);
+    const total = dataset.score[40].mark || 0;
+    const pst = dataset.score[41].mark || 0;
+    const gsi = toFixed(dataset.score[42].mark || 0);
+    const psdi = toFixed(dataset.score[43].mark || 0);
     return [{ colors, items, total, pst, gsi, psdi }];
   }
 }

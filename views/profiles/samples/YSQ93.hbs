@@ -1,0 +1,86 @@
+{{#> layout}}
+<defs>
+    <clipPath id="bar300x16">
+        {{bar 300 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <linearGradient id="normal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A5B4FC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="critical" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FDA4AF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E11D48;stop-opacity:1" />
+    </linearGradient>
+</defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(0,41)">
+        {{#each items as |item index|}}
+        <g transform="translate(0,{{math 32 '*' index}})">
+            {{!-- <rect height="16" width="148" transform="translate(88,0)" opacity=".1" />
+            <rect height="16" width="32" transform="translate(204,0)" opacity=".1" />
+            <rect height="16" width="5" transform="translate(191,0)" opacity=".1" />
+            <rect height="16" width="50" transform="translate(133,0)" opacity=".1" /> --}}
+            <text x="181" y="0" text-anchor="start" dy=".85em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary is_critical '#E11D48' '#4B5563'}}">{{item.label.fr}}</text> 
+            <text x="191" y="0" text-anchor="end" dy=".9em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary is_critical '#E11D48' '#4B5563'}}">-</text> 
+            <text x="220" y="0" text-anchor="middle" dy="1em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary is_critical '#E11D48' '#4B5563'}}">{{item.up}}</text>
+            {{bar 300 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=(ternary is_critical "#FFF1F2" "#EEF2FF") transform="translate(241,0)"}}
+            <g transform="translate(544, 0)">
+                <rect x="0" y="0" rx="4" fill="{{ternary is_critical '#FFF1F2' '#F9FAFB'}}" width="35" height="16" />
+                <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="{{ternary is_critical '#E11D48' '#4F46E5'}}">%{{item.percentage}}</text>
+            </g>
+            <g transform="translate(606, 0)">
+                {{#if item.a5}}
+                    <line x1="{{item.a5_line.[0]}}" x2="{{item.a5_line.[1]}}" y1="8" y2="8" stroke="#D1D5DB" /> 
+                    <g transform="translate(0, 0)">
+                        <rect x="0" y="0" rx="4" fill="#E11D48" width="35" height="16" />
+                        <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#FFFFFF">گ5</text>
+                    </g>
+                    {{#each item.a5 as |aItem aIndex|}}
+                    <g transform="translate({{aItem.start}}, 0)">
+                        <rect x="0" y="0" rx="4" fill="#FFF1F2" width="24" height="16" />
+                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#E11D48">{{aItem.item}}</text>
+                    </g>
+                    {{/each}}
+                {{/if}}
+
+                {{#if item.a6}}
+                    <line x1="{{item.a6_line.[0]}}" x2="{{item.a6_line.[1]}}" y1="8" y2="8" stroke="#D1D5DB" /> 
+                    <g transform="translate({{item.a6_start}}, 0)">
+                        <rect x="0" y="0" rx="4" fill="#E11D48" width="35" height="16" />
+                        <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#FFFFFF">گ6</text>
+                    </g>
+                    {{#each item.a6 as |aItem aIndex|}}
+                    <g transform="translate({{aItem.start}}, 0)">
+                        <rect x="0" y="0" rx="4" fill="#FFF1F2" width="24" height="16" />
+                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#E11D48">{{aItem.item}}</text>
+                    </g>
+                    {{/each}}
+                {{/if}}
+            </g>
+        </g>
+        {{/each}}
+        <text x="291" y="-42" text-anchor="middle" dy="1em" font-size="12" font-weight="400" fill="#9CA3AF">5</text>
+        <line x1="291" y1="-16" x2="291" y2="568" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+        <text x="341" y="-42" text-anchor="middle" dy="1em" font-size="12" font-weight="400" fill="#9CA3AF">10</text>
+        <line x1="341" y1="-16" x2="341" y2="568" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+        <text x="391" y="-42" text-anchor="middle" dy="1em" font-size="12" font-weight="500" fill="#6B7280">15</text>
+        <line x1="391" y1="-16" x2="391" y2="568" stroke="#6B7280"/>
+        <text x="441" y="-42" text-anchor="middle" dy="1em" font-size="12" font-weight="400" fill="#9CA3AF">20</text>
+        <line x1="441" y1="-16" x2="441" y2="568" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+        <text x="491" y="-42" text-anchor="middle" dy="1em" font-size="12" font-weight="400" fill="#9CA3AF">25</text>
+        <line x1="491" y1="-16" x2="491" y2="568" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+        <text x="541" y="-42" text-anchor="middle" dy="1em" font-size="12" font-weight="400" fill="#9CA3AF">30</text>
+        <line x1="541" y1="-16" x2="541" y2="568" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+        {{#each items as |item index|}}
+        <g transform="translate(0,{{math 32 '*' index}})">
+            {{bar (math item.mark '*' 10) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=fill transform="translate(241,0)"}}
+            <text x="{{math (math item.mark '*' 10) '+' 235}}" y="0" text-anchor="start" dy=".85em" font-size="16" font-weight="500" fill="#FFFFFF">{{item.mark}}</text>
+        </g>
+        {{/each}}
+    </g>
+    <rect x="240" y="25" width="1" height="584" rx="0.25" fill="#FFFFFF" stroke-linecap="round" style="filter: drop-shadow(1px 0px 3px rgba(0,0,0, 1));"/>
+  </g>
+
+{{/layout}}

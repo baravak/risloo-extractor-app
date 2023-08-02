@@ -105,8 +105,9 @@ class YSQ93 extends Profile {
             a6:a6,
             a6_start:a6_start,
             is_critical : is_critical,
-            fill:is_critical ? "url(#critical)" : "url(#normal)",
             warn: is_critical || s.mark >= 15 ? true : false,
+            mean:s.mark >= 15 ? true : false,
+            fill:is_critical ? "url(#critical)" : "url(#normal)",
             percentage: Math.round((s.mark * 100) / 30)
         })
     })

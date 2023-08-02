@@ -22,9 +22,9 @@
             <rect height="16" width="32" transform="translate(204,0)" opacity=".1" />
             <rect height="16" width="5" transform="translate(191,0)" opacity=".1" />
             <rect height="16" width="50" transform="translate(133,0)" opacity=".1" /> --}}
-            <text x="181" y="0" text-anchor="start" dy=".85em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary is_critical '#E11D48' '#4B5563'}}">{{item.label.fr}}</text> 
-            <text x="191" y="0" text-anchor="end" dy=".9em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary is_critical '#E11D48' '#4B5563'}}">-</text> 
-            <text x="220" y="0" text-anchor="middle" dy="1em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary is_critical '#E11D48' '#4B5563'}}">{{item.up}}</text>
+            <text x="181" y="0" text-anchor="start" dy=".85em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary item.warn (ternary item.is_critical '#E11D48' '#1F2937') '#4B5563'}}">{{item.label.fr}}</text> 
+            <text x="191" y="0" text-anchor="end" dy=".9em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary item.warn (ternary item.is_critical '#E11D48' '#1F2937') '#4B5563'}}">-</text> 
+            <text x="220" y="0" text-anchor="middle" dy="1em" font-size="13" font-weight="{{ternary item.warn '700' '400'}}" fill="{{ternary item.warn (ternary item.is_critical '#E11D48' '#1F2937') '#4B5563'}}">{{item.up}}</text>
             {{bar 300 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=(ternary is_critical "#FFF1F2" "#EEF2FF") transform="translate(241,0)"}}
             <g transform="translate(544, 0)">
                 <rect x="0" y="0" rx="4" fill="{{ternary is_critical '#FFF1F2' '#F9FAFB'}}" width="35" height="16" />
@@ -48,13 +48,13 @@
                 {{#if item.a6}}
                     <line x1="{{item.a6_line.[0]}}" x2="{{item.a6_line.[1]}}" y1="8" y2="8" stroke="#D1D5DB" /> 
                     <g transform="translate({{item.a6_start}}, 0)">
-                        <rect x="0" y="0" rx="4" fill="#E11D48" width="35" height="16" />
+                        <rect x="0" y="0" rx="4" fill="#BE123C" width="35" height="16" />
                         <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#FFFFFF">گ6</text>
                     </g>
                     {{#each item.a6 as |aItem aIndex|}}
                     <g transform="translate({{aItem.start}}, 0)">
-                        <rect x="0" y="0" rx="4" fill="#FFF1F2" width="24" height="16" />
-                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#E11D48">{{aItem.item}}</text>
+                        <rect x="0" y="0" rx="4" fill="#FFE4E6" width="24" height="16" />
+                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#BE123C">{{aItem.item}}</text>
                     </g>
                     {{/each}}
                 {{/if}}

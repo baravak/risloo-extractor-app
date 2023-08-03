@@ -16,7 +16,7 @@
         {{bar 64 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0)}}
     </clipPath>
     <clipPath id="bar80x16">
-        {{bar 64 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0)}}
+        {{bar 80 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0)}}
     </clipPath>
     <clipPath id="bar329x12">
         {{bar 329 12 (object tr=12 tl=0 br=0 bl=0) (toRad 0)}}
@@ -37,7 +37,7 @@
             <g transform="translate(215.5, 168)">
                 {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
                 <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">5  </text>
-                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">دیدگاه‌ها و علایق مشترک</text>
+                <text x="-33" y="20" dy=".30em" font-size="14" font-weight="400" fill="#52525B">دیدگاه‌ها و علایق مشترک</text>
             </g>
 
             <g transform="translate(115.5, 116.8)">
@@ -72,7 +72,7 @@
             <g transform="translate(212, 168)">
                 {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
                 <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">3 </text>
-                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">ملاک‌های انتخاب همسر</text>
+                <text x="-33" y="20" dy=".30em" font-size="14" font-weight="400" fill="#52525B">ملاک‌های انتخاب همسر</text>
             </g>
             <g transform="translate(26.5, 116)">
                 {{#each (array 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100)}}
@@ -96,7 +96,7 @@
             <g transform="translate(165.5, 168)">
                 {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
                 <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">2</text>
-                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">آشنایی</text>
+                <text x="-33" y="20" dy=".30em" font-size="14" font-weight="400" fill="#52525B">آشنایی</text>
             </g>
             <g transform="translate(130, 85)">
                 {{#with section2}}
@@ -127,7 +127,7 @@
             <g transform="translate(342.5, 362)">
                 {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
                 <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">4</text>
-                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">هماهنگی خانواده‌ها</text>
+                <text x="-33" y="20" dy=".30em" font-size="14" font-weight="400" fill="#52525B">هماهنگی خانواده‌ها</text>
             </g>
 
             {{!-- Seperator --}}
@@ -168,37 +168,37 @@
                 {{#with section4.third}}
                 <text x="0" y="29" dy="5" font-size="12" font-weight="400" fill="#4B5563" text-anchor="end">بخش سوم</text>
                 <g transform="translate(100, 0)">
-                    <g transform="translate(0, 3)">
-                        <text x="91" y="10" font-size="14" dy="0.25em" font-weight="400" fill="#4B5563" text-anchor="start">همسانی خانواده‌ها</text>
+                    <g transform="translate(0, 6)">
+                        <text x="91" y="10" font-size="14" dy="0.25em" font-weight="400" fill="#4B5563" text-anchor="start">همسانی خانواده</text>
                         <g transform="translate(98, 0)">
                             {{bar 64 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) clip-path="url(#bar64x16)" fill="#EDE9FE"}}
                             {{bar (math 2 '*' family.mark) 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) clip-path="url(#bar64x16)" fill="#8B5CF6"}}
                             <text x="70" y="10" dy="0.25em" text-anchor="start" direction="ltr">
-                                <tspan font-size="16" font-weight="500" fill="#7C3AED">{{family.mark}}</tspan>
+                                <tspan font-size="16" font-weight="400" fill="#7C3AED">{{family.mark}}</tspan>
                                 <tspan font-size="14" font-weight="400" dx="-3" fill="#4B5563">/ 32 </tspan>
                             </text>
                             <rect x="121" y="0" rx="4" fill="#F5F3FF" width="34" height="16" />
                             <text x="138" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#8B5CF6">%{{family.percentage}}</text>
                         </g>
                     </g>
-                    <g transform="translate(0, 42)">
-                        <text x="91" y="10" font-size="14" dy="0.25em" font-weight="400" fill="#4B5563" text-anchor="start">همسانی خانواده‌ها</text>
+                    <g transform="translate(0, 37)">
+                        <text x="91" y="10" font-size="14" dy="0.25em" font-weight="400" fill="#4B5563" text-anchor="start">همسانی تربیتی</text>
                         <g transform="translate(98, 0)">
                             {{bar 80 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) clip-path="url(#bar80x16)" fill="#EDE9FE"}}
                             {{bar (math 2 '*' educational.mark) 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) clip-path="url(#bar80x16)" fill="#8B5CF6"}}
                             <text x="88" y="10" dy="0.25em" text-anchor="start" direction="ltr">
-                                <tspan font-size="16" font-weight="500" fill="#7C3AED">{{educational.mark}}</tspan>
+                                <tspan font-size="16" font-weight="400" fill="#7C3AED">{{educational.mark}}</tspan>
                                 <tspan font-size="14" font-weight="400" dx="-3" fill="#4B5563">/ 40</tspan>
                             </text>
                             <rect x="140" y="0" rx="4" fill="#F5F3FF" width="34" height="16" />
                             <text x="157" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#8B5CF6">%{{educational.percentage}}</text>
                         </g>
                     </g>
-                    <rect x="97" y="0" width="1" height="60" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 2px rgba(0,0,0, .5));"/>
+                    <rect x="97" y="0" width="1" height="60" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 2px rgba(0,0,0, .8));"/>
                 </g>
                 <g transform="translate(409, 6)">
                     {{bar 48 48 (object tr=8 br=8 bl=8 tl=0) (toRad 0) fill="none" stroke="#EC4899" stroke-width="2"}}
-                    <text x="24" y="10" font-size="20" dy=".75em" font-weight="500" fill="#EC4899" text-anchor="middle">{{total.mark}}</text>
+                    <text x="24" y="10" font-size="20" dy=".65em" font-weight="500" fill="#EC4899" text-anchor="middle">{{total.mark}}</text>
 
                     <text x="24" y="29" font-size="12" dy=".75em" font-weight="400" fill="#6B7280" text-anchor="middle">%{{percentage.mark}}</text>
 
@@ -211,9 +211,9 @@
             {{!-- Total --}}
             <g transform="translate(39, 273)">
                 <text x="0" y="31.5" dy=".25em" font-size="14" font-weight="500" fill="#075985" text-anchor="end">نمره کل محور ۴</text>
-                <text x="448" y="31.5" dy=".25em" font-size="14" font-weight="400" fill="#374151" text-anchor="end">94</text>
+                <text x="448" y="31.5" dy=".4em" font-size="14" font-weight="400" fill="#374151" text-anchor="end">94</text>
                 <text x="{{math 103 '+' (math 3.5 '*' section4.total.total.mark)}}" y="50" dy=".75em" font-size="12" font-weight="400" fill="#4B5563" text-anchor="middle">%{{section4.total.total.mark}}</text>
-                <text x="{{math 103 '+' (math 3.5 '*' section4.total.total.mark)}}" y="0" dy=".75em" font-size="20" font-weight="500" fill="#075985" text-anchor="middle">{{section4.total.percentage.mark}}</text>
+                <text x="{{math 103 '+' (math 3.5 '*' section4.total.total.mark)}}" y="0" dy=".75em" font-size="20" font-weight="600" fill="#075985" text-anchor="middle">{{section4.total.percentage.mark}}</text>
                 {{bar 4 24 (object tr=2 br=2 bl=2 tl=2) (toRad 0) fill="#E5E7EB" transform="translate(99, 20)"}}
                 <rect x="103" y="34" width="329" height="4" fill="#F3F4F6" />
                 {{bar (math 3.5 '*' section4.total.total.mark) 12 (object tr=12 tl=0 br=0 bl=0) (toRad 0) fill="url(#line-bar)" clip-path="url(#bar329x12)" transform="translate(103, 26)"}}
@@ -227,7 +227,7 @@
             <g transform="translate(229.5, 362)">
                 {{bar 25 25 (object tr=8 br=8 bl=8 tl=8) (toRad 0) fill="none" stroke="#E2E8F0" transform="translate(-25, 7.5)"}}
                 <text x="-12.5" y="20" text-anchor="middle" dy="5" font-size="14" font-weight="500" fill="#475569">6</text>
-                <text x="-33" y="20" dy="5" font-size="14" font-weight="500" fill="#52525B">احساس علاقه‌مندی و نگرانی‌ها</text>
+                <text x="-33" y="20" dy=".30em" font-size="14" font-weight="400" fill="#52525B">احساس علاقه‌مندی و نگرانی‌ها</text>
             </g>
             {{!-- SubSection 1 --}}
             <g transform="translate(24.5, 26)">

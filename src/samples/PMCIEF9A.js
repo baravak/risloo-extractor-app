@@ -205,7 +205,7 @@ class PMCIEF9A extends Profile {
 
   _calcContext() {
     const { dataset } = this;
-
+    dataset.score.map((v, i) => {dataset.score[i].mark = Math.round(dataset.score[i].mark || 0) })
     const section2 = section2circle(dataset);
     const section3 = {
       total: Object.assign({}, dataset.score[2], { ml: dataset.score[2].mark * 9 - 9 }),

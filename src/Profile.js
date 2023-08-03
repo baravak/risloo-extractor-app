@@ -412,6 +412,15 @@ class Profile {
       iENV,
     }));
   }
+  toFixed(number){
+    if(Math.round(number) == number){
+        return number;
+    }
+    if(number.toFixed(1) == number){
+        return number;
+    }
+    return number.toFixed(2);
+}
 }
 
 module.exports = { Profile, Dataset, FS, Ticks, Mappings };

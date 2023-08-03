@@ -45,7 +45,7 @@
         </g>
         {{#each items as |item index|}}
         <g transform="translate(0, {{math 32 '*' index}})">
-            {{bar (math item.mean '*' 100) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.params.gr transform="translate(205, 0)" clipPath="url(#bar300x16)"}}
+            {{bar (math item.mean '*' 100) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.params.gr transform="translate(205, 0)" clip-path="url(#bar300x16)"}}
             <text x="{{math (math item.mean '*' 100) '+' (ternary (boolean item.params.level '>' 0) 199 211)}}" dy=".85em"  text-anchor="{{ternary (boolean item.params.level '>' 0) 'start' 'end'}}" font-weight="500" font-size="16" fill="{{ternary (boolean item.params.level '>' 0) '#FFFFFF' item.params.col}}">{{item.mean}}</text>
         </g>
         {{/each}}

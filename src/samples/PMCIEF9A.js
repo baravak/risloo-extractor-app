@@ -249,13 +249,37 @@ class PMCIEF9A extends Profile {
         has_extend : has_extend
       }
     }
+    const s71_items = []
+    for(let i = 0; i<12; i+=2){
+      const score = dataset.score[i+22];
+      score.percentage = (parseInt(dataset.score[i+23].mark) || 0);
+      score.mark = (parseInt(dataset.score[i+22].mark) || 0);
+      s71_items.push(score)
+    }
+
     const s72_items = []
     for(let i = 0; i<16; i+=2){
       const score = dataset.score[i+42];
-      score.percentage = (parseInt(dataset.score[i+43].mark));
+      score.percentage = (parseInt(dataset.score[i+43].mark) || 0);
+      score.mark = (parseInt(dataset.score[i+42].mark) || 0);
       s72_items.push(score)
     }
+    const s71_max = dataset.questions.slice(103 ,133).reduce((v, q) => q.user_answered ? v+1 : v, 0)
+    const gauge1 =section7circle1(dataset, s71_max)
+    const gauge2 = section7circle2(dataset,s71_max, gauge1.zeta)
     const section7 = {
+      s1 : {
+        max : s71_max,
+        fill: dataset.score[38].mark ? '#10B981' : (dataset.score[36].mark == 0 ? '#F43F5E' : '#6366F1'),
+        gauge1:gauge1,
+        gauge2:gauge2,
+        items: s71_items,
+        group: [
+          Object.assign({}, dataset.score[34], {mark: Math.round(dataset.score[34].mark || 0), percentage: Math.round(dataset.score[35].mark || 0)}),
+          Object.assign({}, dataset.score[36], {mark: Math.round(dataset.score[36].mark || 0), percentage: Math.round(dataset.score[37].mark || 0)}),
+          Object.assign({}, dataset.score[38], {mark: Math.round(dataset.score[38].mark || 0), percentage: Math.round(dataset.score[39].mark || 0)}),
+        ]
+      },
       s2 : {
         raw:dataset.score[40].mark,
         percentage: parseInt(dataset.score[41].mark),
@@ -365,7 +389,6 @@ function section2circle(dataset) {
     -circle.maxValue / (circle.ticks.num - 1),
     circle.ticks.num
   ).reverse();
-
   // Gather Required Info for Raw
   return {
     circle: circle,
@@ -509,6 +532,101 @@ function section5circle(dataset){
       })),
     }
   }
+}
+
+function section7circle1(dataset, max) {
+  const raw = dataset.score[34].mark || 0;
+  const circle = {
+    maxValue: max /* Maximum value of raw mark provided by the dataset */,
+    circle: {
+      angles: {
+        start: FS.toRadians(-90),
+        end: FS.toRadians(270),
+      } /* Angles of each end of the raw element */,
+      direction: false /* Clockwise direction for the raw gauge element */,
+      get totalAngle() {
+        return this.direction
+          ? 2 * Math.PI - (this.angles.end - this.angles.start)
+          : this.angles.end - this.angles.start;
+      },
+    },
+    ticks: {
+      num: 2 /* Number of ticks */,
+      number: {
+        offset: 27 /* Offset from the line */,
+      },
+    },
+  };
+
+  // Calculate Ticks Numbers Array for Raw
+  const rawTicksNumbers = FS.createArithmeticSequence(
+    circle.maxValue,
+    -circle.maxValue / (circle.ticks.num - 1),
+    circle.ticks.num
+  ).reverse();
+  // Gather Required Info for Raw
+  return {
+    raw: raw,
+    circle: circle,
+    zeta: (raw / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    fill: circle.fill,
+    opacity: FS.roundTo2(0.5 * (1 + raw / circle.maxValue)),
+    start: {
+      number: rawTicksNumbers[0],
+      angle: (rawTicksNumbers[0] / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    },
+    end: {
+      number: rawTicksNumbers[1],
+      angle: (rawTicksNumbers[1] / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    },
+  };
+}
+function section7circle2(dataset, max, start) {
+  const raw = dataset.score[36].mark || 0;
+  const circle = {
+    maxValue: max - (dataset.score[34].mark || 0) /* Maximum value of raw mark provided by the dataset */,
+    circle: {
+      angles: {
+        start: start || FS.toRadians(-90),
+        end: FS.toRadians(270),
+      } /* Angles of each end of the raw element */,
+      direction: false /* Clockwise direction for the raw gauge element */,
+      get totalAngle() {
+        return this.direction
+          ? 2 * Math.PI - (this.angles.end - this.angles.start)
+          : this.angles.end - this.angles.start;
+      },
+    },
+    ticks: {
+      num: 2 /* Number of ticks */,
+      number: {
+        offset: 27 /* Offset from the line */,
+      },
+    },
+  };
+
+  // Calculate Ticks Numbers Array for Raw
+  const rawTicksNumbers = FS.createArithmeticSequence(
+    circle.maxValue,
+    -circle.maxValue / (circle.ticks.num - 1),
+    circle.ticks.num
+  ).reverse();
+  // Gather Required Info for Raw
+  return {
+    raw: raw,
+    circle: circle,
+    zeta: (raw / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    fill: circle.fill,
+    opacity: FS.roundTo2(0.5 * (1 + raw / circle.maxValue)),
+    start: {
+      number: rawTicksNumbers[0],
+      angle: (rawTicksNumbers[0] / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    },
+    end: {
+      number: rawTicksNumbers[1],
+      angle: (rawTicksNumbers[1] / circle.maxValue) * circle.circle.totalAngle + circle.circle.angles.start,
+    },
+  };
 }
 
 function _markToAngle(mark, min, max, angles, direction) {

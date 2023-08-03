@@ -1,15 +1,18 @@
 {{#> layout}}
 <defs>
     <clipPath id="bar240x16">
-        {{bar 240 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0)}}
+        {{bar 150 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0)}}
     </clipPath>
     <clipPath id="bar20x246">
         {{bar 20 246 (object tl=0 tr=0 bl=10 br=10) (toRad 180) }}
     </clipPath>
     <linearGradient id="line-bar" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#88BDFF;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#C4B5FD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
     </linearGradient>
+    <clipPath id="bar150x16">
+        {{bar 150 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
 </defs>
 <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
     {{bar 828 40 (object tr=0 tl=0 bl=12 br=12) (toRad 0) fill="#F8FAFC" transform="translate(0, 594)"}}
@@ -20,18 +23,111 @@
         <text x="-33" y="20" dy="0.25em" text-anchor="start" font-size="14" font-weight="400" fill="#52525B">تفاهم / توافق / اختلاف</text>
     </g>
     {{!-- Section 1 --}}
-    <g transform="translate(18.5, 12)">
-        <rect height="220" width="791" opacity=".1" />
-        <g transform="translate(16, 16)">
-            <rect height="188" width="356" opacity=".1" fill="red" />
+    <g transform="translate(45.5, 12)">
+        <g transform="translate(16, 31)">
+            <circle cx="80" cy="80" r="80" fill="{{s1.fill}}" />
+            <circle cx="80" cy="80" r="32" fill="#ffffff" />
+            <text x="80" y="80" dy="0.25em" text-anchor="middle" font-size="18" font-weight="500" fill="#6B7280">{{s1.max}}</text>
+            {{#if s1.gauge1.raw}}
+                {{#with s1.gauge1.circle.circle}}
+                    {{gauge 80 32 (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=@root.s1.gauge1.zeta) direction fill="#F43F5E" transform="translate(80, 80)"}}
+                {{/with}}
+            {{/if}}
+            {{#if s1.gauge2.raw}}
+                {{#with s1.gauge2.circle.circle}}
+                    {{gauge 80 32 (object tl=0 tr=0 bl=0 br=0) (object start=angles.start end=@root.s1.gauge2.zeta) direction fill="#6366F1" transform="translate(80, 80)"}}
+                {{/with}}
+            {{/if}}
+
+        </g>
+        <g transform="translate(507, 24)">
+            {{#with s1.items.[0]}}
+                <g>
+                    {{bar (math mark '*' 5) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#F43F5E" clip-path="url(#bar150x16)"}}
+                    <text x="-6.5" y="0" dy=".85em" text-anchor="start" font-size="14" font-weight="400" fill="#4B5563">{{label.fr}}</text>
+                    <text x="{{math 4 '+' (math mark '*' 5)}}" y="0" dy=".85em" text-anchor="end" font-size="16" font-weight="500" fill="#F43F5E">{{mark}}</text>
+                    <rect x="{{math 29 '+' (math mark '*' 5)}}" rx="4" width="35" height="16" fill="#FFF1F2" />
+                    <text x="{{math 46.5 '+' (math mark '*' 5)}}" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#F43F5E">%{{percentage}}</text>
+                </g>
+            {{/with}}
+            {{#with s1.items.[1]}}
+                <g transform="translate(0, 25)">
+                    {{bar (math mark '*' 5) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#F43F5E" clip-path="url(#bar150x16)"}}
+                    <text x="-6.5" y="0" dy=".85em" text-anchor="start" font-size="14" font-weight="400" fill="#4B5563">{{label.fr}}</text>
+                    <text x="{{math 4 '+' (math mark '*' 5)}}" y="0" dy=".85em" text-anchor="end" font-size="16" font-weight="500" fill="#F43F5E">{{mark}}</text>
+                    <rect x="{{math 29 '+' (math mark '*' 5)}}" rx="4" width="35" height="16" fill="#FFF1F2" />
+                    <text x="{{math 46.5 '+' (math mark '*' 5)}}" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#F43F5E">%{{percentage}}</text>
+                </g>
+            {{/with}}
+
+            {{#with s1.items.[2]}}
+                <g transform="translate(0, 66)">
+                    {{bar (math mark '*' 5) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#6366F1" clip-path="url(#bar150x16)"}}
+                    <text x="-6.5" y="0" dy=".85em" text-anchor="start" font-size="14" font-weight="400" fill="#4B5563">{{label.fr}}</text>
+                    <text x="{{math 4 '+' (math mark '*' 5)}}" y="0" dy=".85em" text-anchor="end" font-size="16" font-weight="500" fill="#6366F1">{{mark}}</text>
+                    <rect x="{{math 29 '+' (math mark '*' 5)}}" rx="4" width="35" height="16" fill="#EEF2FF" />
+                    <text x="{{math 46.5 '+' (math mark '*' 5)}}" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#6366F1">%{{percentage}}</text>
+                </g>
+            {{/with}}
+            {{#with s1.items.[3]}}
+                <g transform="translate(0, 91)">
+                    {{bar (math mark '*' 5) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#6366F1" clip-path="url(#bar150x16)"}}
+                    <text x="-6.5" y="0" dy=".85em" text-anchor="start" font-size="14" font-weight="400" fill="#4B5563">{{label.fr}}</text>
+                    <text x="{{math 4 '+' (math mark '*' 5)}}" y="0" dy=".85em" text-anchor="end" font-size="16" font-weight="500" fill="#6366F1">{{mark}}</text>
+                    <rect x="{{math 29 '+' (math mark '*' 5)}}" rx="4" width="35" height="16" fill="#EEF2FF" />
+                    <text x="{{math 46.5 '+' (math mark '*' 5)}}" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#6366F1">%{{percentage}}</text>
+                </g>
+            {{/with}}
+
+            {{#with s1.items.[4]}}
+                <g transform="translate(0, 131)">
+                    {{bar (math mark '*' 5) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#10B981" clip-path="url(#bar150x16)"}}
+                    <text x="-6.5" y="0" dy=".85em" text-anchor="start" font-size="14" font-weight="400" fill="#4B5563">{{label.fr}}</text>
+                    <text x="{{math 4 '+' (math mark '*' 5)}}" y="0" dy=".85em" text-anchor="end" font-size="16" font-weight="500" fill="#10B981">{{mark}}</text>
+                    <rect x="{{math 29 '+' (math mark '*' 5)}}" rx="4" width="35" height="16" fill="#ECFDF5" />
+                    <text x="{{math 46.5 '+' (math mark '*' 5)}}" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#10B981">%{{percentage}}</text>
+                </g>
+            {{/with}}
+            {{#with s1.items.[5]}}
+                <g transform="translate(0, 157)">
+                    {{bar (math mark '*' 5) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#10B981" clip-path="url(#bar150x16)"}}
+                    <text x="-6.5" y="0" dy=".85em" text-anchor="start" font-size="14" font-weight="400" fill="#4B5563">{{label.fr}}</text>
+                    <text x="{{math 4 '+' (math mark '*' 5)}}" y="0" dy=".85em" text-anchor="end" font-size="16" font-weight="500" fill="#10B981">{{mark}}</text>
+                    <rect x="{{math 29 '+' (math mark '*' 5)}}" rx="4" width="35" height="16" fill="#ECFDF5" />
+                    <text x="{{math 46.5 '+' (math mark '*' 5)}}" dy="1em" text-anchor="middle" font-size="12" font-weight="400" fill="#10B981">%{{percentage}}</text>
+                </g>
+            {{/with}}
+        </g>
+        <g transform="translate(224, 23)">
             <g>
-                <text x="115" y="3" dy="0.75em" text-anchor="start" font-size="14" font-weight="400" fill="#52525B">با هم مخالفیم</text>
+                <rect y="12" rx="4" width="35" height="16" fill="#FFF1F2" />
+                <text x="17.5" y="20" dy=".3em" text-anchor="middle" font-size="12" font-weight="400" fill="#F43F5E">%{{s1.group.[0].percentage}}</text>
+                <text x="60" y="20" dy=".25em" text-anchor="start" font-size="18" font-weight="500" fill="#F43F5E">{{s1.group.[0].mark}}</text>
+                <text x="127" y="20" dy=".25em" text-anchor="start" font-size="14" font-weight="500" fill="#F43F5E">{{s1.group.[0].label.fr}}:</text>
+                <rect x="136" width="1" height="43" fill="#FB7185" />
+                <rect x="135" y="20" width="3" height="3" rx="1" fill="#F43F5E" />
             </g>
-            <rect x="121" y="0" width="1" height="188" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 2px rgba(0,0,0, .5));"/>
+
+            <g transform="translate(0, 66)">
+                <rect y="12" rx="4" width="35" height="16" fill="#EEF2FF" />
+                <text x="17.5" y="20" dy=".3em" text-anchor="middle" font-size="12" font-weight="400" fill="#6366F1">%{{s1.group.[1].percentage}}</text>
+                <text x="60" y="20" dy=".25em" text-anchor="start" font-size="18" font-weight="500" fill="#6366F1">{{s1.group.[1].mark}}</text>
+                <text x="127" y="20" dy=".25em" text-anchor="start" font-size="14" font-weight="500" fill="#6366F1">{{s1.group.[1].label.fr}}:</text>
+                <rect x="136" width="1" height="43" fill="#818CF8" />
+                <rect x="135" y="20" width="3" height="3" rx="1" fill="#6366F1" />
+            </g>
+
+            <g transform="translate(0, 132)">
+                <rect y="12" rx="4" width="35" height="16" fill="#ECFDF5" />
+                <text x="17.5" y="20" dy=".3em" text-anchor="middle" font-size="12" font-weight="400" fill="#10B981">%{{s1.group.[2].percentage}}</text>
+                <text x="60" y="20" dy=".25em" text-anchor="start" font-size="18" font-weight="500" fill="#10B981">{{s1.group.[2].mark}}</text>
+                <text x="127" y="20" dy=".25em" text-anchor="start" font-size="14" font-weight="500" fill="#10B981">{{s1.group.[2].label.fr}}:</text>
+                <rect x="136" width="1" height="43" fill="#34D399" />
+                <rect x="135" y="20" width="3" height="3" rx="1" fill="#10B981" />
+            </g>
+
         </g>
-        <g transform="translate(436, 38)">
-            <rect height="144" width="339" opacity=".1" fill="blue" />
-        </g>
+            <rect x="506" y="16" width="1" height="190" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 2px rgba(0,0,0, .5));"/>
     </g>
     <text x="749" y="252" dy="-.25em" text-anchor="end" font-size="14" font-weight="400" fill="#9CA3AF">بخش اول</text>
     <line x1="12" y1="264" y2="264" x2="816" stroke="#CBD5E1" stroke-linecap="round" stroke-dasharray="6 6"/>
@@ -47,12 +143,12 @@
                         {{bar (math item.label.max '*' 10) 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) fill="#F3F4F6" opacity=".8"}}
                         {{bar (math item.mark '*' 10) 16 (object tr=8 tl=0 br=8 bl=0) (toRad 0) fill="url(#line-bar)" clip-path="url(#bar240x16)" opacity=".8"}}
                         <text x="{{math 8 '+' (math item.label.max '*' 10)}}" direction="ltr">
-                            <tspan fill="#2563EB" font-size="18" font-weight="500" dy=".75em" text-anchor="start">{{item.mark}}</tspan>
+                            <tspan fill="#7C3AED" font-size="18" font-weight="500" dy=".75em" text-anchor="start">{{item.mark}}</tspan>
                             <tspan fill="#4B5563" font-size="12" font-weight="400"> / {{item.label.max}}</tspan>
                         </text>
                         <g transform="translate({{math 57 '+' (math item.label.max '*' 10)}}, 0)">
-                            <rect x="0" y="0" rx="4" fill="#EFF6FF" width="35" height="16" />
-                            <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#2563EB">%{{item.percentage}}</text>
+                            <rect x="0" y="0" rx="4" fill="#F5F3FF" width="35" height="16" />
+                            <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="12" fill="#7C3AED">%{{item.percentage}}</text>
                         </g>
                     </g>
                 </g>

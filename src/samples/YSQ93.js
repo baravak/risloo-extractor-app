@@ -96,7 +96,7 @@ class YSQ93 extends Profile {
             }
         }
         a6_line.push(start + 2)
-        const is_critical = a5.length || a6.length ? true : false
+        const is_critical = a5.length + a6.length >= 3 ? true : false
         return Object.assign({}, s, {
             up:s.label.eng.toUpperCase(),
             a5:a5,

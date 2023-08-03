@@ -34,13 +34,13 @@
                 {{#if item.a5}}
                     <line x1="{{item.a5_line.[0]}}" x2="{{item.a5_line.[1]}}" y1="8" y2="8" stroke="#D1D5DB" /> 
                     <g transform="translate(0, 0)">
-                        <rect x="0" y="0" rx="4" fill="#E11D48" width="35" height="16" />
+                        <rect x="0" y="0" rx="4" fill="{{ternary is_critical '#E11D48' '#4F46E5'}}" width="35" height="16" />
                         <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#FFFFFF">گ5</text>
                     </g>
                     {{#each item.a5 as |aItem aIndex|}}
                     <g transform="translate({{aItem.start}}, 0)">
-                        <rect x="0" y="0" rx="4" fill="#FFF1F2" width="24" height="16" />
-                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#E11D48">{{aItem.item}}</text>
+                        <rect x="0" y="0" rx="4" fill="{{ternary ../is_critical '#FFF1F2' '#EEF2FF'}}" width="24" height="16" />
+                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="{{ternary ../is_critical '#E11D48' '#4F46E5'}}">{{aItem.item}}</text>
                     </g>
                     {{/each}}
                 {{/if}}
@@ -48,13 +48,13 @@
                 {{#if item.a6}}
                     <line x1="{{item.a6_line.[0]}}" x2="{{item.a6_line.[1]}}" y1="8" y2="8" stroke="#D1D5DB" /> 
                     <g transform="translate({{item.a6_start}}, 0)">
-                        <rect x="0" y="0" rx="4" fill="#BE123C" width="35" height="16" />
+                        <rect x="0" y="0" rx="4" fill="{{ternary is_critical '#BE123C' '#4338CA'}}" width="35" height="16" />
                         <text x="17.5" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#FFFFFF">گ6</text>
                     </g>
                     {{#each item.a6 as |aItem aIndex|}}
                     <g transform="translate({{aItem.start}}, 0)">
-                        <rect x="0" y="0" rx="4" fill="#FFE4E6" width="24" height="16" />
-                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="#BE123C">{{aItem.item}}</text>
+                        <rect x="0" y="0" rx="4" fill="{{ternary ../is_critical '#FFE4E6' '#EEF2FF'}}" width="24" height="16" />
+                        <text x="12" y="9" dy="0.25em" text-anchor="middle" font-weight="400" font-size="13" fill="{{ternary ../is_critical '#BE123C' '#4338CA'}}">{{aItem.item}}</text>
                     </g>
                     {{/each}}
                 {{/if}}

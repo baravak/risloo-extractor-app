@@ -6,24 +6,28 @@ class YSQ93 extends Profile {
 
   // Labels of the sample
   labels = {
-    L1: { eng: "ed", fr: "محرومیت هیجانی" },
-    L2: { eng: "ab", fr: "رهاشدگی / بی‌ثباتی" },
-    L3: { eng: "ma", fr: "بی‌اعتمادی / بدرفتاری" },
-    L4: { eng: "si", fr: "انزوای اجتماعی / بی‌گانگی" },
-    L5: { eng: "ds", fr: "نقص / شرم" },
-    L6: { eng: "fa", fr: "شکست" },
-    L7: { eng: "ai", fr: "وابستگی / بی‌کفایتی" },
-    L8: { eng: "vu", fr: "آسیب‌پذیری نسبت به ضرر یا بیماری" },
-    L9: { eng: "eu", fr: "گرفتار / خویشتن تحول‌نیافته" },
-    L10: { eng: "sb", fr: "اطاعت" },
-    L11: { eng: "ss", fr: "ایثارگری" },
-    L12: { eng: "ei", fr: "بازداری هیجانی" },
-    L13: { eng: "us", fr: "معیارهای سخت‌گیرانه" },
-    L14: { eng: "et", fr: "استحقاق / بزرگ‌منشی" },
-    L15: { eng: "is", fr: "خویشتن‌داری / خودانضباطی ناکافی" },
-    L16: { eng: "as", fr: "پذیرش‌جویی / جلب توجه" },
-    L17: { eng: "np", fr: "منفی‌گرایی / بدبینی" },
-    L18: { eng: "pu", fr: "تنبیه" },
+    L1: { eng: "ab", fr: "رهاشدگی (بی‌ثباتی)" , append_rows:0},
+    L2: { eng: "ma", fr: "بی‌اعتمادی (سوءاستفاده)" , append_rows:0},
+    L3: { eng: "ed", fr: "محرومیت عاطفی" , append_rows:0},
+    L4: { eng: "ds", fr: "نقص (شرم)" , append_rows:0},
+    L5: { eng: "si", fr: "انزوای اجتماعی (احساس بیگانگی)", append_rows:0},
+
+    L6: { eng: "ai", fr: "وابستگی (بی‌کفایتی)" , append_rows:38 * 1},
+    L7: { eng: "vu", fr: "آسیب‌پذیری در برابر خطر" , append_rows:38 * 1},
+    L8: { eng: "eu", fr: "گرفتارشدگی (خودتحول‌نایافتگی)" , append_rows:38 * 1},
+    L9: { eng: "fa", fr: "شکست" , append_rows:38 * 1},
+
+    L10: { eng: "et", fr: "محق‌بودن (خودبزرگ‌بینی)" , append_rows:38 * 2},
+    L11: { eng: "is", fr: "خودمهارگری ناکافی" , append_rows:38 * 2},
+    
+    L12: { eng: "sb", fr: "انقیاد (اطاعت)" , append_rows:38 * 3},
+    L13: { eng: "ss", fr: "از خودگذشتگی" , append_rows:38 * 3},
+    L14: { eng: "as", fr: "تأییدخواهی یا تصدیق‌خواهی" , append_rows:38 * 3},
+    
+    L15: { eng: "np", fr: "منفی‌خوانی یا بدبینی" , append_rows:38 * 4},
+    L16: { eng: "ei", fr: "بیش‌مهارگری (بازداری هیجانی)" , append_rows:38 * 4},
+    L17: { eng: "us", fr: "استانداردهای سخت‌گیرانه" , append_rows:38 * 4},
+    L18: { eng: "pu", fr: "تنبیه‌گری" , append_rows:38 * 4},
   };
 
   profileSpec = {
@@ -42,13 +46,13 @@ class YSQ93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: 815 + 2 * this.padding.x,
-          height: 609 + 2 * this.padding.y,
+          width: 887 + 2 * this.padding.x,
+          height: 666 + 2 * this.padding.y,
         };
       },
       padding: {
-        x: 44,
-        y: 52.5,
+        x: 8,
+        y: 24,
       },
     },
 

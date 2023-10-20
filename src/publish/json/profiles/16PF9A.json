@@ -2607,16 +2607,7 @@
     "q3": 4,
     "raw_q3": 12,
     "q4": 5,
-    "raw_q4": 10,
-    "extraversion": "5.20",
-    "anxiety": "3.30",
-    "flexibility": "4.50",
-    "independence": "4.40",
-    "selfcontrol": "5.80",
-    "adjustment": "6.60",
-    "leadership": "6.10",
-    "creativity": "3.50",
-    "status": "valid"
+    "raw_q4": 10
   },
   "score_current_version": "1.0.0",
   "score_last_version": "1.0.0"

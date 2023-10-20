@@ -1,0 +1,57 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(121.5, 23.5)">
+        <g transform="translate(64.6, -23)">
+            {{#if (boolean status '!==' "invalid")}}
+                <rect x="0" y="0" width="46.8" height="16.2" rx="3.6" fill="#FEE2E2" />
+                <text x="23.4" y="8.1" fill="#B91C1C" font-size="12.6" font-weight="400" text-anchor="middle" dy="3">نامعتبر</text>
+            {{/if}}
+        </g>
+        <text x="8" y="-20" dy="1em" font-size="12" font-weight="400" fill="#155E75" text-anchor="middle">10</text>
+        <text x="168" y="-20" dy="1em" font-size="12" font-weight="400" fill="#155E75" text-anchor="middle">0</text>
+
+        <rect x="0" y="0" width="16" height="514" fill="#1D4ED8" fill-opacity="0.1" rx="3.6" />
+        <rect x="16" y="0" width="16" height="514" fill="#1D4ED8" fill-opacity="0.07" rx="3.6" />
+        <rect x="32" y="0" width="16" height="514" fill="#1D4ED8" fill-opacity="0.05" rx="3.6" />
+
+        <rect x="48" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.2" rx="3.6" />
+        <rect x="64" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.1" rx="3.6" />
+
+        <rect x="96" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.1" rx="3.6" />
+        <rect x="112" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.2" rx="3.6" />
+
+        <rect x="128" y="0" width="16" height="514" fill="#0E7490" fill-opacity="0.05" rx="3.6" />
+        <rect x="144" y="0" width="16" height="514" fill="#0E7490" fill-opacity="0.07" rx="3.6" />
+        <rect x="160" y="0" width="16" height="514" fill="#0E7490" fill-opacity="0.1" rx="3.6" />
+      {{!-- {{#each items as | item index |}}
+        {{#with @root.spec.items as | itemsSpec |}}
+          <g transform="translate(0, {{math index '*' itemsSpec.offsetY}})">
+            <g transform="translate(0, 7.2)">
+              <line x1="18" y1="0" x2="-147.6" y2="0" stroke="#E4E4E7" />
+              <g font-size="14.4" font-weight="400">
+                <text x="220" y="0" fill="#71717A" font-weight="500" text-anchor="middle" dy="3">{{item.label.fr}}</text>
+                <text x="32.4" y="0" fill="#1E40AF" text-anchor="end" dy="3">{{item.label.right}}</text>
+                <text x="-162.5" y="0" fill="#155E75" text-anchor="start" dy="3">{{item.label.left}}</text>
+              </g>
+            </g>
+            <g transform="translate(-{{item.offset}}, 0)">
+              <rect x="0" y="0" width="16.2" height="16.2" fill="{{item.fill}}" fill-opacity="{{item.opacity}}" rx="3.6" />
+              <text x="8.1" y="8.1" fill="#FFFFFF" font-size="12.6" font-weight="400" text-anchor="middle" dy="3.5">{{item.mark}}</text>
+            </g>
+          </g>
+        {{/with}}
+      {{/each}} --}}
+    </g>
+    <g transform="translate(0, 21.5)">
+        {{#each items as | item index |}}
+        <g transform="translate(0, {{math 33.3 '*' index}})">
+            <line x1="119.5" y1="10" x2="121.5" y2="10" stroke="#D1D5DB" stroke-width="2" />
+            <line x1="121.5" y1="10" x2="297.5" y2="10" stroke="#E5E7EB" stroke-width="2" />
+            <line x1="297.5" y1="10" x2="299.5" y2="10" stroke="#D1D5DB" stroke-width="2" />
+        </g>
+        {{/each}}
+    </g>
+  </g>
+
+{{/layout}}

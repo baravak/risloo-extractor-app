@@ -1,6 +1,6 @@
 const { Profile, FS } = require("../Profile");
 
-class _16PF93 extends Profile {
+class _16PF9A extends Profile {
   // Number of pages
   static pages = 1;
 
@@ -18,7 +18,7 @@ class _16PF93 extends Profile {
     L10: { eng: "m", fr: "M", right: "عمل‌گرا", left: "کولی‌باز" },
     L11: { eng: "n", fr: "N", right: "بی‌ظرافت", left: "ظرافت" },
     L12: { eng: "o", fr: "O", right: "اطمینان به خود", left: "مستعد احساس گناه" },
-    L13: { eng: "q1", fr: "Q1", right: "محافظه‌کار", left: "بنیادگرا" },
+    L13: { eng: "q1", fr: "Q1", right: "باز بودن نسبت به تغییر", left: "بنیادگرا" },
     L14: { eng: "q2", fr: "Q2", right: "متکی بر خود", left: "مسلط به دیگران" },
     L15: { eng: "q3", fr: "Q3", right: "اختلال‌مدار", left: "کمال‌گرا" },
     L16: { eng: "q4", fr: "Q4", right: "آرام", left: "اضطراب" },
@@ -49,13 +49,13 @@ class _16PF93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: 610 + 2 * this.padding.x,
-          height: 682 + 2 * this.padding.y,
+          width: 522 + 2 * this.padding.x,
+          height: 557 + 2 * this.padding.y,
         };
       },
       padding: {
-        x: 0,
-        y: 16.8,
+        x: 190.5,
+        y: 78.5,
       },
     },
     items: {
@@ -79,39 +79,6 @@ class _16PF93 extends Profile {
         offsetX: 16.2,
       },
     },
-    gaugeItems: {
-      maxValues: {
-        [this.labels.L17.eng]: 12.3,
-        [this.labels.L18.eng]: 8.9,
-        [this.labels.L19.eng]: { مرد: 7.2, زن: 8.6 },
-        [this.labels.L20.eng]: { مرد: 13.2, زن: 12.7 },
-        [this.labels.L21.eng]: 10.9,
-        [this.labels.L22.eng]: 14.3,
-        [this.labels.L23.eng]: 13.2,
-        [this.labels.L24.eng]: 16.8,
-      },
-      offsetX: 83.25,
-      circle: {
-        R: 29.7,
-        r: 20,
-        brs: {
-          tl: 0,
-          bl: 0,
-          tr: 0,
-          br: 0,
-        },
-        angles: {
-          start: FS.toRadians(-90),
-          end: FS.toRadians(269.9),
-        },
-        direction: false /* Clockwise direction for the items gauge element */,
-        get totalAngle() {
-          return this.direction
-            ? 2 * Math.PI - (this.angles.end - this.angles.start)
-            : this.angles.end - this.angles.start;
-        },
-      },
-    },
     /* "labels" part which has to be provided for each profile */
     labels: Object.values(this.labels),
   };
@@ -127,7 +94,7 @@ class _16PF93 extends Profile {
       dataset,
     } = this;
 
-    const { items: itemsSpec, gaugeItems: gaugeItemsSpec } = spec;
+    const { items: itemsSpec } = spec;
 
     const status = dataset.score.pop().mark;
 
@@ -140,19 +107,8 @@ class _16PF93 extends Profile {
       ...itemsSpec.fillAndOpacity[data.mark],
     }));
 
-    const gaugeItems = dataset.score.slice(16).map((data) => {
-      let maxValue = gaugeItemsSpec.maxValues[data.label.eng];
-      maxValue = typeof maxValue === "object" ? maxValue[genderValue] : maxValue;
-
-      return {
-        label: data.label,
-        mark: data.mark,
-        zeta: (data.mark / maxValue) * gaugeItemsSpec.circle.totalAngle + gaugeItemsSpec.circle.angles.start,
-      };
-    });
-
-    return [{ items, status, gaugeItems }];
+    return [{ items, status }];
   }
 }
 
-module.exports = _16PF93;
+module.exports = _16PF9A;

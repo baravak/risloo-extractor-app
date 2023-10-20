@@ -67,7 +67,10 @@ class JPFQ93 extends Profile {
     //   },
     // }));
     // markSum = 378
-    return [{ markSum: markSum  }];
+    this.dataset.score.forEach((f, i) => {
+      this.dataset.score[i].label.percentage = Math.round(((this.dataset.score[i].mark * 100) / this.dataset.score[i].label.width))
+    })
+    return [{ markSum  }];
   }
 }
 

@@ -1,0 +1,91 @@
+{{#> layout}}
+<defs>
+    {{#each top.items}}
+        <clipPath id="barTop-{{@index}}">
+            {{bar (math 2 '*' label.max) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) }}
+        </clipPath>
+    {{/each}}
+    <clipPath id="barTop-total">
+        {{bar 20 212.5 (object tr=0 br=10 bl=10 tl=0) (toRad 180) }}
+    </clipPath>
+    <linearGradient id="line-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#BAE6FD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    {{!-- <rect width="863" height="643" fill="blue" opacity=".1"/> --}}
+    <g transform="translate(26.55, 0)">
+        <g transform="translate(0, 8)">
+            {{#each top.items}}
+            <g transform="translate(0, {{math @index '*' 41}})">
+                <text text-anchor="start" x="185" font-weight="400" font-size="14" fill="#475569" dy=".78em">{{label.fa}}</text>
+                <g transform="translate(192, 0)">
+                    {{bar (math 2 '*' label.max) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="#F1F5F9" id=(concat 'x' @index)}}
+                    {{bar (math 2 '*' mark) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) fill="url(#line-bar)" clip-path=(concat "url(#barTop-" (concat @index ')'))}}
+                    <g transform="translate({{math 8 '+' (math 2 '*' label.max)}}, 0)">
+                        <text text-anchor="start" dy=".85em" direction="ltr">
+                            <tspan font-weight="500" font-size="16" fill="#0369A1">{{mark}}</tspan>
+                            <tspan font-weight="400" font-size="12" fill="#475569">/ {{label.max}}</tspan>
+                        </text>
+                        <g transform="translate(70, 0)">
+                            <rect width="35" height="16" fill="#F0F9FF" rx="4" />
+                            <text text-anchor="middle" x="17.5" font-weight="400" font-size="12" fill="#0369A1" dy="1em">%{{percentage}}</text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            {{/each}}
+        </g>
+        <rect x="191" y="0" width="1" height="153" rx="0.25" fill="#FFFFFF" style="filter: drop-shadow(2px 0px 2px rgba(0,0,0, .5));"/>
+        <g transform="translate(746, 0)">
+            <text text-anchor="start" x="-8" font-weight="400" font-size="14" fill="#334155" dy=".75em">425</text>
+            <text text-anchor="end" x="28" y="{{math 218 '-' (math top.total.mark '/' 2)}}" font-weight="500" font-size="20" fill="#334155">{{top.total.mark}}</text>
+            <text text-anchor="end" x="28" y="{{math 218 '-' (math top.total.mark '/' 2)}}" font-weight="400" font-size="12" fill="#334155" dy="1.25em">%{{top.total.percentage}}</text>
+            <text text-anchor="end" font-weight="400" font-size="14" fill="#334155" dy="1.25em" transform="rotate(-90) translate(-218, -28)">نمره کل</text>
+            {{bar 20 212.5 (object tr=0 br=10 bl=10 tl=0) (toRad 180) fill="#F1F5F9" transform="translate(20, 218)"}}
+            {{bar 20 (math top.total.mark '/' 2) (object tr=0 br=10 bl=10 tl=0) (toRad 180) fill="#64748B" transform="translate(20, 218)" clip-path="url(#barTop-total)"}}
+            <rect x="-1" y="218" width="22" height="1" rx="1" fill="#FFFFFF" style="filter: drop-shadow(1px 0 2px rgba(0,0,0, .5));"/>
+        </g>
+    </g>
+    <line x1="0" x2="863" y1="251.5" y2="251.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6" />
+    <g transform="translate(132.5, 284)">
+        {{#each items}}
+            <g transform="translate({{math 376 '-' (math 188 '*' col)}}, {{math 28 '*' row}})">
+                {{bar 32 24 (object tr=0 br=0 bl=2 tl=2) (toRad 0) fill=fill opacity='.5'}}
+                {{bar 146 24 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=fill opacity='.5' transform="translate(34, 0)"}}
+                <text text-anchor="middle" x="16" y="12" font-weight="400" font-size="13" fill="{{color}}" dy=".25em">{{ternary (boolean mark '===' undefined) '0' mark}}</text>
+                <text text-anchor="start" x="174" y="12" font-weight="400" font-size="13" fill="{{color}}" dy=".25em">{{label.fa}}</text>
+            </g>
+        {{/each}}
+        <line x1="143" x2="423" y1="331.5" y2="331.5" stroke="#E4E4E7"/>
+        <g transform="translate(126, 321)">
+            <circle r="10" fill="#FAFAFA" transform="translate(10, 10)"/>
+            <text text-anchor="middle" x="10" y="10" font-weight="400" font-size="12" fill="#52525B" dy=".35em">4</text>
+            <text text-anchor="middle" x="10" y="24" dy=".85em" font-weight="400" font-size="12" fill="#52525B">به وضوح وجود دارد</text>
+        </g>
+        <g transform="translate(199.5, 321)">
+            <text text-anchor="middle" x="10" y="-8" font-weight="400" font-size="12" fill="#52525B">معمولا وجود دارد</text>
+            <circle r="10" fill="#FAFAFA" transform="translate(10, 10)"/>
+            <text text-anchor="middle" x="10" y="10" font-weight="400" font-size="12" fill="#52525B" dy=".35em">3</text>
+        </g>
+        <g transform="translate(273, 321)">
+            <circle r="10" fill="#FAFAFA" transform="translate(10, 10)"/>
+            <text text-anchor="middle" x="10" y="10" font-weight="400" font-size="12" fill="#52525B" dy=".35em">2</text>
+            <text text-anchor="middle" x="10" y="24" dy=".85em" font-weight="400" font-size="12" fill="#52525B">نظری ندارم</text>
+        </g>
+        <g transform="translate(346.5, 321)">
+            <text text-anchor="middle" x="10" y="-8" font-weight="400" font-size="12" fill="#52525B">معمولا وجود ندارد</text>
+            <circle r="10" fill="#FAFAFA" transform="translate(10, 10)"/>
+            <text text-anchor="middle" x="10" y="10" font-weight="400" font-size="12" fill="#52525B" dy=".35em">1</text>
+        </g>
+        <g transform="translate(420, 321)">
+            <circle r="10" fill="#FAFAFA" transform="translate(10, 10)"/>
+            <text text-anchor="middle" x="10" y="10" font-weight="400" font-size="12" fill="#52525B" dy=".35em">0</text>
+            <text text-anchor="middle" x="10" y="24" dy=".85em" font-weight="400" font-size="12" fill="#52525B">اصلا وجود ندارد</text>
+        </g>
+        <text text-anchor="start" font-weight="400" font-size="14" fill="#334155" transform="rotate(-90) translate(-103, 584)">صفات همسر</text>
+    </g>
+</g>
+
+{{/layout}}

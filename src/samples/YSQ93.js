@@ -1,5 +1,4 @@
 const { Profile, FS, Mappings } = require("../Profile");
-
 class YSQ93 extends Profile {
   // Number of pages
   static pages = 1;
@@ -74,31 +73,31 @@ class YSQ93 extends Profile {
         const a6 = [];
         let start = 0;
         const a5_line = [32]
-        for(let j = 0; j < 5; j++){
-            const key = i + (j * 18);
-            if(dataset.questions[key].user_answered == 5){
-                if(!a5.length){
-                    start+= 37
-                }else{
-                    start+= 26
-                }
-                a5.push({item: key+1, start:start})
+        factors_key[s.label.eng].forEach((e, ei) => {
+          e = parseInt(e)
+          if(dataset.questions[e - 1].user_answered == 5){
+            if(!a5.length){
+                start+= 37
+            }else{
+                start+= 26
             }
-        }
+            a5.push({item: e, start:start})
+          }
+        });
         a5_line.push(start + 2)
         const a6_start = start ? start + 36 : 0;
         const a6_line = [a6_start + 32]
-        for(let j = 0; j < 5; j++){
-            const key = i + (j * 18);
-            if(dataset.questions[key].user_answered == 6){
-                if(!a6.length){
-                    start = a6_start + 37
-                }else{
-                    start+= 26
-                }
-                a6.push({item: key+1, start:start})
+        factors_key[s.label.eng].forEach((e, ei) => {
+          e = parseInt(e)
+          if(dataset.questions[e -1].user_answered == 6){
+            if(!a6.length){
+                start = a6_start + 37
+            }else{
+                start+= 26
             }
+            a6.push({item: e, start:start})
         }
+        })
         a6_line.push(start + 2)
         const is_critical = a5.length + a6.length >= 3 ? true : false
         return Object.assign({}, s, {
@@ -118,5 +117,39 @@ class YSQ93 extends Profile {
     return [{ items }];
   }
 }
+const f1= 'ed'
+const f2 = 'ab'
+const f3 = 'ma'
+const f4 = 'si'
+const f5 = 'ds'
+const f6 = 'fa'
+const f7 = 'ai'
+const f8 = 'vu'
+const f9 = 'eu'
+const f10 = 'sb'
+const f11 = 'ss'
+const f12 = 'ei'
+const f13 = 'us'
+const f14 = 'et'
+const f15 = 'is'
+const f16 = 'as'
+const f17 = 'np'
+const f18 = 'pu'
 
+const factors_item = {
+    1: f1,  2: f2,   3: f3,   4: f4,   5: f5,    6: f6,   7: f7,   8: f8,   9: f9,   10: f10, 11: f11, 12: f12, 13: f13, 14: f14, 15: f15, 16: f16, 17: f17, 18: f18,
+    19: f1, 20: f2, 21: f3, 22: f4, 23: f5, 24: f6, 25: f7, 26: f8, 27: f9, 28: f10, 29: f11, 30: f12, 31: f13, 32: f14, 33: f15, 34: f16, 35: f17, 36: f18,
+    37: f1, 38: f2, 39: f3, 40: f4, 41: f5, 42: f6, 43: f7, 44: f8, 45: f9, 46: f10, 47: f11, 48: f12, 49: f13, 50: f14, 51: f15, 52: f16, 53: f17, 54: f18,
+    55: f1, 56: f2, 57: f3, 58: f4, 59: f5, 60: f6, 61: f7, 62: f8, 63: f9, 64: f10, 65: f11, 66: f12, 67: f13, 68: f14, 69: f15, 70: f16, 71: f17, 72: f18,
+    73: f1, 74: f2, 75: f3, 76: f4, 77: f5, 78: f6, 79: f7, 80: f8, 81: f9, 82: f10, 83: f11, 84: f12, 85: f13, 86: f14, 87: f15, 88: f16, 89: f17, 90: f18
+}
+const factors_key = {}
+for(const fi in factors_item){
+  const fk = factors_item[fi]
+  if(factors_key[fk] === undefined){
+    factors_key[fk] = [fi]
+  }else{
+    factors_key[fk].push(fi)
+  }
+}
 module.exports = YSQ93;

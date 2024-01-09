@@ -66,7 +66,7 @@ class JPFQ93 extends Profile {
         score2.push(s2)
     })
     this.dataset.score.forEach((f, i) => {
-      this.dataset.score[i].label.percentage = Math.round(((this.dataset.score[i].mark * 100) / this.dataset.score[i].label.width))
+      this.dataset.score[i].label.percentage = Math.round((((this.dataset.score[i].mark ?? 0) * 100) / this.dataset.score[i].label.width))
     })
     let markSum1 = 0
     for(const cs in clinicalScores){

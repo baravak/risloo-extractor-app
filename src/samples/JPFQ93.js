@@ -58,7 +58,7 @@ class JPFQ93 extends Profile {
     const clinicalScores = clinicalScoring(dataset.questions)
     const score2 = []
     dataset.score.forEach(score => {
-        markSum += score.mark
+        markSum += (score.mark ?? 0)
         const s2= {label: {...score.label}}
         s2.mark = clinicalScores[score.label.eng].total
         s2.label.percentage = clinicalScores[score.label.eng].percentage

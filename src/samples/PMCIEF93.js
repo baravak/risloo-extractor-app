@@ -145,6 +145,7 @@ class PMCIEF93 extends Profile {
       {
         score: Object.fromEntries(dataset.score.slice(49, 58).map((s) =>[s.label.eng, s.mark])),
         fields: dataset.info.fields,
+        items: dataset.questions.slice(328, 454)
       },
       {},
       {

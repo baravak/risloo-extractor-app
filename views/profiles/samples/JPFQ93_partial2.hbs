@@ -1,16 +1,16 @@
-{{#each clinicalScores}}
+{{#each dataset.score}}
     <g transform="translate(0, {{math 5  '+' ( math 51 '*' @key )}})">
         <text y="0" x="169" text-anchor="start" font-size="24px" font-weight="400" dy="24px" fill="#3F3F46">{{label.fr}}</text>
         <g transform="translate(186, 0)">
-            {{bar (math label.width '*' 5.25) 30 (object tl=0 tr=15 bl=0 br=15) (toRad 0) fill=label.background opacity='.8'}}
-            {{bar (math mark '*' 5.25) 30 (object tl=0 tr=15 bl=0 br=15) (toRad 0) fill=label.fill opacity='.8'}}
-            <text y="17" x="{{math (math label.width '*' 5.25) '+' 8 }}" dy="6px" text-anchor="start" direction="ltr">
+            {{bar (math label.width '*' 3.5) 30 (object tl=0 tr=15 bl=0 br=15) (toRad 0) fill=label.background opacity='.8'}}
+            {{bar (math mark '*' 3.5) 30 (object tl=0 tr=15 bl=0 br=15) (toRad 0) fill=label.fill opacity='.8'}}
+            <text y="17" x="{{math (math label.width '*' 3.5) '+' 8 }}" dy="6px" text-anchor="start" direction="ltr">
                 <tspan fill="{{label.fill}}" font-size="27px" font-weight="500">
                     {{mark}}
                 </tspan>
                 <tspan font-size="20px" fill="#71717A" font-weight="400">/ {{label.width}}</tspan>
             </text>
-            <g transform="translate({{math 95 '+' (math label.width '*' 5.25)}}, 4)">
+            <g transform="translate({{math 95 '+' (math label.width '*' 3.5)}}, 4)">
                 <rect x="0" y="0" rx="4" fill="#F8FAFC" width="50" height="25" />
                 <text x="25" y="12.5" dy="0.25em" text-anchor="middle" font-weight="400" font-size="20px" fill="{{label.fill}}">%{{label.percentage}}</text>
             </g>
@@ -21,10 +21,10 @@
 <g transform="translate(612, 447)">
     <g transform="translate(53, -3)">
         {{bar 9 378 (object tl=0 tr=0 bl=4.5 br=4.5) (toRad 180) fill='#E4E4E7'}}
-        {{bar 9 (math markSum '*' 1.5) (object tl=0 tr=0 bl=4.5 br=4.5) (toRad 180) fill='#52525B'}}
+        {{bar 9 markSum (object tl=0 tr=0 bl=4.5 br=4.5) (toRad 180) fill='#52525B'}}
     </g>
-    <text x="49.5" y="-410.5" dominant-baseline="auto" text-anchor="middle" fill="#71717A" font-size="30px" font-weight="400">252</text>
-    <text x="66" y="{{math markSum '*' -1.5}}" dy="6" text-anchor="start" font-size="36px" fill="#3F3F46" font-weight="500" direction="ltr">{{markSum}}</text>
+    <text x="49.5" y="-410.5" dominant-baseline="auto" text-anchor="middle" fill="#71717A" font-size="30px" font-weight="400">378</text>
+    <text x="66" y="{{math markSum '*' -1}}" dy="6" text-anchor="start" font-size="36px" fill="#3F3F46" font-weight="500" direction="ltr">{{markSum}}</text>
     <text transform="rotate(-90, 0, 0)" x="0" y="0" text-anchor="end" dy="18" font-size="24px" font-weight="400" fill="#52525B">نمره کل</text>
 
     <rect x="41" y="-3" width="15" height="3" fill="#FFFFFF" style="filter: drop-shadow(0 -3px 5px rgba(0,0,0, .5));"/>

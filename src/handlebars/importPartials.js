@@ -8,6 +8,7 @@ const baseProfiles = [
   "MMFAD93",
   "PIES93",
   "JPFQ93_partial",
+  "JPFQ93_partial2",
   "FACES93_1_partial",
   "FACES93_2_1_partial",
   "FACES93_2_2_partial",

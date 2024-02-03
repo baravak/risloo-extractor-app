@@ -2,9 +2,11 @@ const moment = require("moment-jalaali");
 
 moment.locale("fa");
 moment.loadPersian({ dialect: "persian-modern" });
+const domainENVTitle = process.env.ENVTITLE || "ریسلو";
 
 class Gift {
   constructor(gift, avatar) {
+    this.ENVTitle = domainENVTitle;
     this.name = gift.code;
     this.title = gift.title || "-";
     this.code = gift.code.slice(10) || "-";

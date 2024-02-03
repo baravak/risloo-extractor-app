@@ -1,0 +1,45 @@
+{{#each factors}}
+    <g transform="translate(0,{{math 52 '*' @index}})">
+        <text font-size="13" font-weight="400" y="18" dy=".3em" fill="#4B5563" text-anchor="middle" x="243">{{en}}</text>
+        <text font-size="13" font-weight="400" y="18" dy=".3em" fill="#4B5563" text-anchor="start" x="219">-</text>
+        <text font-size="13" font-weight="400" y="18" dy=".3em" fill="#4B5563" text-anchor="start" x="204">{{title}}</text>
+        {{bar (math 4 '*' max) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) transform="translate(264,0)" fill="#EFF6FF" opacity=".8"}}
+        {{bar (math 4 '*' father.score) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) transform="translate(264,0)" fill="url(#fatherg)" clip-path=(concat 'url(#bar' (concat max 'x16-2)'))}}
+        {{bar (math 4 '*' max) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) transform="translate(264,20)" fill="#FDF4FF" opacity=".8"}}
+        {{bar (math 4 '*' mother.score) 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0) transform="translate(264,20)" fill="url(#motherg)" clip-path=(concat 'url(#bar' (concat max 'x16-8)'))}}
+        <g transform="translate({{math 272 '+' (math 4 '*' max)}}, 0)">
+            <text text-anchor="start" direction="ltr" y="14">
+                <tspan font-size="16" font-weight="500" fill="#2563EB">{{father.score}}</tspan>
+                <tspan font-size="13" font-weight="400" fill="#4B5563"> / {{max}}</tspan>
+            </text>
+            <rect x="55" width="35" height="16" rx="2" fill="#F9FAFB"/>
+            <text font-size="13" font-weight="400" fill="#2563EB" text-anchor="middle" x="72.5" y="8" dy=".35em">%{{father.percentage}}</text>
+        </g>
+        <g transform="translate(562, 0)">
+            {{#each father.critical.lines}}
+                <line x1="{{start}}" x2="{{end}}" y1="8" y2="8" stroke="#D1D5DB" stroke-width="1" />
+            {{/each}}
+            {{#each father.critical.result}}
+                <rect x="{{left}}" width="{{w}}" height="16" fill="{{bg}}" rx="2" />
+                <text font-size="13" font-weight="400" y="8" dy=".3em" fill="{{fill}}" text-anchor="middle" x="{{math left '+' (math w '/' 2)}}">{{text}}</text>
+            {{/each}}
+        </g>
+        <g transform="translate({{math 272 '+' (math 4 '*' max)}}, 20)">
+            <text text-anchor="start" direction="ltr" y="14">
+                <tspan font-size="16" font-weight="500" fill="#C026D3" >{{mother.score}}</tspan>
+                <tspan font-size="13" font-weight="400" fill="#4B5563" > / {{max}}</tspan>
+            </text>
+            <rect x="55" width="35" height="16" rx="2" fill="#F9FAFB"/>
+            <text font-size="13" font-weight="400" fill="#C026D3" text-anchor="middle" x="72.5" y="8" dy=".35em">%{{mother.percentage}}</text>
+        </g>
+        <g transform="translate(562, 20)">
+            {{#each mother.critical.lines}}
+                <line x1="{{start}}" x2="{{end}}" y1="8" y2="8" stroke="#D1D5DB" stroke-width="1" />
+            {{/each}}
+            {{#each mother.critical.result}}
+                <rect x="{{left}}" width="{{w}}" height="16" fill="{{bg}}" rx="2" />
+                <text font-size="13" font-weight="400" y="8" dy=".3em" fill="{{fill}}" text-anchor="middle" x="{{math left '+' (math w '/' 2)}}">{{text}}</text>
+            {{/each}}
+        </g>
+    </g>
+{{/each}}

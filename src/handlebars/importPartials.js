@@ -13,6 +13,7 @@ const baseProfiles = [
   "FACES93_2_1_partial",
   "FACES93_2_2_partial",
   "EPQ93",
+  'YPI93_factors'
 ];
 
 async function importPartials(hbs) {

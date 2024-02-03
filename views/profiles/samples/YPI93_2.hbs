@@ -1,0 +1,69 @@
+{{#> layout}}
+<defs>
+    <clipPath id="bar96x16-2">
+        {{bar 96 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <clipPath id="bar96x16-8">
+        {{bar 96 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+
+    <clipPath id="bar120x16-2">
+        {{bar 120 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <clipPath id="bar120x16-8">
+        {{bar 120 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+
+    <clipPath id="bar72x16-2">
+        {{bar 72 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <clipPath id="bar72x16-8">
+        {{bar 72 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+
+    <clipPath id="bar168x16-2">
+        {{bar 168 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <clipPath id="bar168x16-8">
+        {{bar 168 16 (object tr=8 br=8 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+    <linearGradient id="fatherg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A5B4FC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="motherg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F0ABFC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C026D3;stop-opacity:1" />
+    </linearGradient>
+</defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    {{#with g4}}
+        <g transform="translate(0, 113)">
+            <g transform="translate(48,8)">
+                {{> YPI93_factors}}
+            </g>
+            <rect x="311" y="0" width="1" height="156" rx="1" fill="#FFFFFF" style="filter: drop-shadow(2px 0 3px rgba(0,0,0, .5));"/>
+            <rect y="8" width="48" height="140" rx="4" fill="#F9FAFB" stroke="#F3F4F6"/>
+            <text font-size="13" font-weight="400" fill="#4B5563" text-anchor="middle" transform="rotate(-90) translate(-78,24)" dy=".3em">جهت‌گیری دگرسو</text>
+        </g>
+    {{/with}}
+    {{#with g5}}
+        <g transform="translate(0, 309)">
+            <g transform="translate(48,8)">
+                {{> YPI93_factors}}
+            </g>
+            <rect x="311" y="0" width="1" height="208" rx="1" fill="#FFFFFF" style="filter: drop-shadow(2px 0 3px rgba(0,0,0, .5));"/>
+            <rect y="8" width="48" height="192" rx="4" fill="#F9FAFB" stroke="#F3F4F6"/>
+            <text font-size="13" font-weight="400" fill="#4B5563" text-anchor="middle" transform="rotate(-90) translate(-104,24)" dy=".3em">گوش به زنگیِ افراطی و بازداری</text>
+        </g>
+    {{/with}}
+    <g transform="translate(354, 657)">
+        <rect width="196" height="37" rx="8" stroke="#F3F4F6" fill="#F9FAFB" />
+        <text font-size="12" font-weight="400" y="18" dy=".3em" fill="#4B5563" text-anchor="end" x="32">پدر</text>
+        {{bar 24 12 (object tr=2 br=2 bl=0 tl=0) (toRad 0) transform="translate(56,12)" fill="url(#fatherg)"}}
+
+        <text font-size="12" font-weight="400" y="18" dy=".3em" fill="#4B5563" text-anchor="end" x="112">مادر</text>
+        {{bar 24 12 (object tr=6 br=6 bl=0 tl=0) (toRad 0) transform="translate(140,12)" fill="url(#motherg)"}}
+    </g>
+</g>
+{{/layout}}

@@ -1,5 +1,5 @@
-const { Profile, FS, Mappings } = require("../Profile");
-class YPI extends Profile {
+const { Profile } = require("../Profile");
+class YPI93 extends Profile {
   // Number of pages
   static pages = 2;
 
@@ -289,7 +289,7 @@ function criticaler(data, mod, reverse){
     }
     return {result, lines}
 }
-module.exports = YPI;
+module.exports = YPI93;
 const f1= 'ed'
 const f2= 'ab'
 const f3= 'ma'

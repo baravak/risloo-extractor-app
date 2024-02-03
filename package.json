@@ -1,6 +1,6 @@
 {
   "name": "@baravak/risloo-profile-cli",
-  "version": "4.4.1",
+  "version": "4.4.2",
   "description": "**Risloo Profile CLI** is a library for creating profiles, reports and sheets for *psychological* samples.",
   "main": "bin/risloo.js",
   "publishConfig": {

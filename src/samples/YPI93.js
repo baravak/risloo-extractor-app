@@ -167,19 +167,20 @@ class YPI93 extends Profile {
     dataset.questions.forEach((e, i) => {
         const id = Math.round((i-1) /2) + 1
         const fs = Items[id]
+        const user_answered = parseInt(e.user_answered)
         if(fs === 'ed'){
-            if(parseInt(e.user_answered) === 1){
+            if(user_answered === 1){
                 items[fs][mod[i % 2]].critical[1].push(id)
             }
-            if(parseInt(e.user_answered) === 2){
+            if(user_answered === 2){
                 items[fs][mod[i % 2]].critical[0].push(id)
             }
         }else{
-            if(parseInt(e.user_answered) === 5){
-                items[fs][mod[i % 2]].critical[1].push(id)
-            }
-            if(parseInt(e.user_answered) === 6){
+            if(user_answered === 5){
                 items[fs][mod[i % 2]].critical[0].push(id)
+            }
+            if(user_answered === 6){
+                items[fs][mod[i % 2]].critical[1].push(id)
             }
         }
     })

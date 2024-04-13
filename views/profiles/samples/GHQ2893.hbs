@@ -1,0 +1,120 @@
+{{#> layout}}
+<defs>
+    <linearGradient id="gradiant-3-y" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E11D48;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FDA4AF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-2-y" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#EA580C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FDBA74;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-1-y" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#EAB308;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FEF08A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-0-y" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#65A30D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BEF264;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-bg-y" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="28.6%" style="stop-color:#F7FEE7;stop-opacity:0.5" />
+      <stop offset="52.4%" style="stop-color:#FEFCE8;stop-opacity:0.5" />
+      <stop offset="76.2%" style="stop-color:#FFF7ED;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#FFF1F2;stop-opacity:0.5" />
+    </linearGradient>
+
+    <linearGradient id="gradiant-3-x" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#E11D48;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FDA4AF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-2-x" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#EA580C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FDBA74;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-1-x" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#EAB308;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FEF08A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-0-x" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#65A30D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BEF264;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradiant-bg-x" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="26.19%" style="stop-color:#F7FEE7;stop-opacity:0.5" />
+      <stop offset="47.6%" style="stop-color:#FEFCE8;stop-opacity:0.5" />
+      <stop offset="71.4%" style="stop-color:#FFF7ED;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#FFF1F2;stop-opacity:0.5" />
+    </linearGradient>
+    <filter id="shadow" x="0.5" y="0.5" width="480" height="7" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="-1"/>
+        <feGaussianBlur stdDeviation="1.5"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="dropshadow"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="dropshadow" result="shape"/>
+    </filter>
+</defs>
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(1.5, 0.5)">
+        {{#each items as |item index|}}
+            <g transform="translate({{math 122 '+' (math 88 '*' index) }}, 5)">
+                {{bar 28 315 (object tr=4 br=0 bl=0 tl=4) (toRad 0) fill="url(#gradiant-bg-y)"}}
+            </g>
+        {{/each}}
+        <line x1="1" y1="1" x2="383" y2="1"  stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6" transform="translate(59, 4.5)"/>
+        <text y="4.5" x="43" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="start" dy=".35em">21</text>
+        <text font-size="13px" font-weight="400" fill="#E11D48" text-anchor="middle" dy=".7em" transform="rotate(-90) translate(-41.5, 60)">شدید</text>
+
+        <line x1="1" y1="1" x2="383" y2="1"  stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6" transform="translate(59, 78.5)"/>
+        <text y="78.5" x="43" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="start" dy=".35em">16</text>
+        <text font-size="13px" font-weight="400" fill="#EA580C" text-anchor="middle" dy=".7em" transform="rotate(-90) translate(-115.5, 60)">متوسط</text>
+
+        <line x1="1" y1="1" x2="383" y2="1"  stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6" transform="translate(59, 154.5)"/>
+        <text y="154.5" x="43" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="start" dy=".35em">11</text>
+        <text font-size="13px" font-weight="400" fill="#EAB308" text-anchor="middle" dy=".7em" transform="rotate(-90) translate(-191.5, 60)">خفیف</text>
+
+        <line x1="1" y1="1" x2="383" y2="1"  stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6" transform="translate(59, 228.5)"/>
+        <text y="228.5" x="43" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="start" dy=".35em">6</text>
+        <text font-size="13px" font-weight="400" fill="#65A30D" text-anchor="middle" dy=".7em" transform="rotate(-90) translate(-273, 60)">کمترین حد</text>
+
+        {{#each items as |item index|}}
+            <g transform="translate({{math 122 '+' (math 88 '*' index) }}, {{math 5 '+' (math 15 '*' (math 21 '-' mark)) }})">
+                {{bar 28 (math 15 '*' mark) (object tr=4 br=0 bl=0 tl=4) (toRad 0) fill=range}}
+                <text y="{{ternary (boolean mark '>' 1) 8 -20}}" x="14" font-size="16px" font-weight="500" fill="{{ternary (boolean mark '>' 1) '#ffffff' '#65a30d'}}" text-anchor="middle" dy=".75em">{{mark}}</text>
+            </g>
+            <text y="335" x="{{math 136 '+' (math 88 '*' index) }}" font-size="13px" font-weight="400" fill="#4B5563" text-anchor="middle" dy="1em">{{eng}}</text>
+            <text y="353" x="{{math 136 '+' (math 88 '*' index) }}" font-size="13px" font-weight="400" fill="#4B5563" text-anchor="middle" dy="1em">{{label.fr.[0]}}</text>
+            <text y="368" x="{{math 136 '+' (math 88 '*' index) }}" font-size="13px" font-weight="400" fill="#4B5563" text-anchor="middle" dy="1em">{{label.fr.[1]}}</text>
+        {{/each}}
+        <g opacity="0.5" filter="url(#shadow)" transform="translate(0, 316)">
+            <line x1="4" y1="5" x2="477" y2="5" stroke="white" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(0.5, 457.5)">
+            <g transform="translate(48, 0.5)">
+                {{bar 420 28 (object tr=4 br=4 bl=0 tl=0) (toRad 0) fill="url(#gradiant-bg-x)"}}
+                {{bar (math 5 '*' total.mark) 28 (object tr=4 br=4 bl=0 tl=0) (toRad 0) fill=total.range}}
+                <text x="{{ternary (boolean total.mark '>' 5) (math (math 5 '*' total.mark) '-' 8) (math (math 5 '*' total.mark) '+' 20)}}" y="14" font-size="16px" font-weight="600" fill="{{ternary (boolean total.mark '>' 5) '#ffffff' '#ea580c'}}" text-anchor="start" dy=".35em">{{total.mark}}</text>
+            </g>
+            <text y="14" x="0" font-size="13px" font-weight="500" fill="#4B5563" text-anchor="end" dy=".35em">نمره کل</text>
+            <line x1="158" y1="32.5" x2="158" y2="48.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 4"/>
+            <text y="52.5" x="158" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="middle" dy=".9em">22</text>
+            <text y="40.5" x="103" font-size="12px" font-weight="{{ternary (boolean total.ranger '==' 0) 600 400}}" fill="{{ternary (boolean total.ranger '==' 0) '#65A30D' '#9CA3AF'}}" text-anchor="middle" dy=".9em">کمترین حد</text>
+
+            <line x1="248" y1="32.5" x2="248" y2="48.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 4"/>
+            <text y="52.5" x="248" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="middle" dy=".9em">40</text>
+            <text y="40.5" x="203" font-size="12px" font-weight="{{ternary (boolean total.ranger '==' 1) 600 400}}" fill="{{ternary (boolean total.ranger '==' 1) '#EAB308' '#9CA3AF'}}" text-anchor="middle" dy=".9em">خفیف</text>
+
+            <line x1="348" y1="32.5" x2="348" y2="48.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 4"/>
+            <text y="52.5" x="348" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="middle" dy=".9em">60</text>
+            <text y="40.5" x="298" font-size="12px" font-weight="{{ternary (boolean total.ranger '==' 2) 600 400}}" fill="{{ternary (boolean total.ranger '==' 2) '#EA580C' '#9CA3AF'}}" text-anchor="middle" dy=".9em">متوسط</text>
+
+            <line x1="468" y1="32.5" x2="468" y2="48.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="3 4"/>
+            <text y="52.5" x="468" font-size="12px" font-weight="400" fill="#9CA3AF" text-anchor="middle" dy=".9em">84</text>
+            <text y="40.5" x="408" font-size="12px" font-weight="{{ternary (boolean total.ranger '==' 3) 600 400}}" fill="{{ternary (boolean total.ranger '==' 3) '#E11D48' '#9CA3AF'}}" text-anchor="middle" dy=".9em">شدید</text>
+        </g>
+    </g>
+  </g>
+
+{{/layout}}

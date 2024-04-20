@@ -1,0 +1,805 @@
+{
+    "id": "$X1HQXXXX",
+    "scale": {
+      "id": "$LEIPAD-93",
+      "title": "پرسشنامه کیفیت زندگی سالمندان لیپاد"
+    },
+    "chain": null,
+    "version": "1",
+    "edition": "",
+    "edition_version": null,
+    "client": {
+      "id": "GH96XXXX",
+      "name": "تست",
+      "user_id": "IR96XXXX"
+    },
+    "room": {
+      "id": "RS966XXXX",
+      "manager": {
+        "id": "GH96XXXX",
+        "name": "درمانگر",
+        "user_id": "IR9XXXX",
+        "avatar": null
+      },
+      "center": {
+        "id": "RS9XXXX",
+        "status": "active",
+        "type": "counseling_center",
+        "detail": {
+          "title": "مرکز"
+        }
+      },
+      "status": "active",
+      "type": "room"
+    },
+    "case": null,
+    "code": null,
+    "created_at": 1713601252,
+    "started_at": 1713602227,
+    "scored_at": 1713604341,
+    "closed_at": 1713602790,
+    "total_amount": null,
+    "prepayment": false,
+    "purchased": true,
+    "amount": null,
+    "billing": null,
+    "description": null,
+    "psychologist_description": null,
+    "items": [
+      {
+        "type": "text",
+        "text": "وضعیت کلی سلامتی خود را چگونه درجه‌بندی می‌کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار خوب",
+            "خوب",
+            "بد",
+            "بسیار بد"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "آیا قادر هستید بدون کمک، از پله‌ها بالا و پایین بروید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بدون سختی",
+            "با سختی",
+            "فقط با کمک",
+            "هیچ نمی‌توانم"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "آیا قادر هستید خودتان لباس بپوشید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بدون سختی",
+            "با سختی",
+            "فقط با کمک",
+            "هیچ نمی‌توانم"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "آیا قادر هستید خودتان غذا بخورید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بدون سختی",
+            "با سختی",
+            "فقط با کمک",
+            "هیچ نمی‌توانم"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "آقا قادر هستید خودتان حمام کنید یا دوش بگیرید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بدون سختی",
+            "با سختی",
+            "فقط با کمک",
+            "هیچ نمی‌توانم"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "آیا مشکلات خواب دارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ‌وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "آیا بدون انجام دادن فعالیت خسته می‌شوید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ‌وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "آیا در متمرکز نمودن حواس مشکل دارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ‌وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "آیا می‌توانید وظایف معمولی خودتان را در خانه، محل کار یا جاهای دیگر انجام دهید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بله، کاملاً می‌توانم",
+            "بیشتر کارها را می‌توانم",
+            "تنها بعضی کارها را می‌توانم",
+            "هیچ نمی‌توانم"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "آیا می‌‌توانید خودتان خرید نمایید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بدون سختی",
+            "با سختی",
+            "فقط با کمک",
+            "هیچ نمی‌توانم"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "آیا می‌توانید با وسایل نقلیه عمومی رفت و آمد کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بدون سختی",
+            "با سختی",
+            "فقط با کمک",
+            "هیچ نمی‌توانم"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "چقدر مشکلات جسمی شما (اگر وجود دارد) باعث جلوگیری از انجام کارهای دلخواهتان می‌شود؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "آیا اتفاق می‌افتد که گیج شوید یا نتوانید به روشنی فکر کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار به ندرت",
+            "به ندرت",
+            "اکثر اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "چقدر مشکلات تمرکز حواس شما (اگر وجود دارد) باعث جلوگیری ازانجام کارهای دلخواهتان می‌شود؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "حافظه شما چقدر خوب است؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار خوب",
+            "خوب",
+            "ضعیف",
+            "بد"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "چقدر مشکلات حافظه شما (اگر وجود دارد) باعث جلوگیری از انجام کارهای دلخواهتان می‌شود؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "با در نظر گرفتن همه موارد چقدر احساس اضطراب می‌کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "چقدر احساس اضطراب شما (اگر وجود دارد) باعث جلوگیری از انجام کارهای دلخواهتان می‌شود؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "با در نظر گرفتن همه موارد چقدر احساس افسردگی می‌کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "چقدر احساس افسردگی شما (اگر وجود دارد) باعث جلوگیری از انجام کارهای دلخواهتان می‌شود؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "چقدر از ارتباط و وابستگی‌های اجتماعی‌تان رضایت دارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار راضی",
+            "راضی",
+            "ناراضی",
+            "بسیار ناراضی"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "آیا از نظر عاطفی در روابط خود با افراد دیگر احساس رضایت می کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار زیاد",
+            "زیاد",
+            "کم",
+            "هیچ"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "آیا به هنگام نیاز، فردی که بتوانید با او درباره موضوعات مشخصی صحبت کنید وجود دارد؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "تقریباً همیشه",
+            "اکثر اوقات",
+            "به ندرت",
+            "هیچ وقت"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "آیا به مسائل جنسی علاقه دارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار زیاد",
+            "زیاد",
+            "کم",
+            "هیچ"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "روابط جنسی شما در چه حد است؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "تقریباًً همیشه",
+            "اکثر اوقات",
+            "به ندرت",
+            "هیچ وقت"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "چقدر از توانایی خود در انجام سرگرمی‌های مورد علاقه و فعالیت‌های تفریحی رضایت دارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار راضی",
+            "راضی",
+            "ناراضی",
+            "بسیار ناراضی"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "چقدر از وضعیت مالی خود راضی هستید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار راضی",
+            "راضی",
+            "ناراضی",
+            "بسیار ناراضی"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "آیا احساس می‌کنید که توانایی تأمین نیازهای ضروری و مورد نیاز زندگی را ندارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "به طور کلی چقدر از زندگی فعلی خود در مقایسه با گذشته رضایت دارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار راضی",
+            "راضی",
+            "ناراضی",
+            "بسیار ناراضی"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "با در نظر گرفتن همه موارد، پیش‌بینی می‌کنید اوضاع آینده چطور پیش برود؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار خوب",
+            "خوب",
+            "ضعیف",
+            "بد"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "چقدر انتظارات شما از آینده باعث جلوگیری از انجام کارهای دلخواهتان می‌شود؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "من به راحتی احساس ناراحتی یا عصبانیت می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "تقریبا همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "حالت‌های طغیانی دارم که نمی‌توانم آن‌ها را کنترل کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "تقریبا همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من با دیگران زیاد بحث و جدل می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "تقریبا همیشه"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "من عصبانی می‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "تقریبا همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با در نظر گرفتن همه موارد، آیا در برابر دیگران احساس حقارت می‌کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "چقدر به خاطر احساس حقارت از انجام کارها اجتناب می‌کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بسیار به ندرت",
+            "به ندرت",
+            "اکثر اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من نسبت به خودم نظر منفی دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ",
+            "کم",
+            "زیاد",
+            "بسیار زیاد"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "چقدر احساس می‌کنید که اغلب مردم قابل اعتماد نیستند؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هیچ وقت",
+            "به ندرت",
+            "اکثر اوقات",
+            "تقریبا همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "آیا به خدا اعتقاد دارید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بله",
+            "خیر"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "آیا به وسیله چنین اعتقادی (اعتقاد به خدا) آرامش و تکیه‌گاه پیدا می‌کنید؟",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "بله",
+            "خیر"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «من همیشه آماده هستم تا به دیگران کمک کنم.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «گاهی اوقات دوست دارم بی‌دلیل صحبت کنم.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «زمان‌هایی بوده است که من نسبت به خوش‌شانسی دیگران حسادت کرده‌ام.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «در چند سال گذشته من اغلب از مشکلاتی که در ارتباط با دیگران داشته‌ام ناراحت بوده‌ام.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «در چند سال گذشته، از ویژگی‌هایی که دارم بیزار هستم.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «در چند سال گذشته، رفتار (من چه در محل کار، چه در خانه و چه در جاهای دیگر) اغلب من را دچار مشکل می‌کند.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «در چند سال گذشته، به نظر می‌رسد دیگران غالباً نسبت به آن‌چه من می‌گویم یا انجام می‌دهم آزرده می‌شوند.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "با توجه به شرایط شما، عبارت زیر درست است یا نادرست؟ «به خاطر ویژگی‌هایی که دارم، در زندگی‌ام آن‌چنان که دوست دارم پیشرفت نکرده‌ام.»",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "نادرست",
+            "درست"
+          ]
+        },
+        "user_answered": "2"
+      }
+    ],
+    "prerequisites": [
+      {
+        "type": "text",
+        "label": "gender",
+        "text": "جنسیت",
+        "answer": {
+          "type": "select",
+          "options": [
+            "زن",
+            "مرد"
+          ]
+        },
+        "alias": "gender",
+        "force": true,
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "label": "age",
+        "text": "سن",
+        "answer": {
+          "type": "number"
+        },
+        "alias": "age",
+        "force": true,
+        "user_answered": "9"
+      },
+      {
+        "type": "text",
+        "label": "education",
+        "text": "تحصیلات",
+        "answer": {
+          "type": "select",
+          "options": [
+            "ابتدایی اول",
+            "ابتدایی دوم",
+            "متوسطه اول",
+            "متوسطه دوم",
+            "دیپلم",
+            "کارشناسی",
+            "کارشناسی ارشد",
+            "پزشکی عمومی",
+            "متخصص",
+            "دکتری تخصصی",
+            "حوزوی مقدمات",
+            "حوزوی سطح۱",
+            "حوزوی سطح۲",
+            "حوزوی سطح۳",
+            "حوزوی سطح۴"
+          ]
+        },
+        "alias": "education",
+        "force": true,
+        "user_answered": "11"
+      },
+      {
+        "type": "text",
+        "label": "marital_status",
+        "text": "وضعیت تأهل",
+        "answer": {
+          "type": "select",
+          "options": [
+            "مجرد",
+            "متأهل"
+          ]
+        },
+        "alias": "marital_status",
+        "force": true,
+        "user_answered": "2"
+      }
+    ],
+    "cornometer": 9,
+    "score": {
+      "physical_functioning": 6,
+      "self_care": 11,
+      "depression_anxiety": 11,
+      "cognitive_functioning": 11,
+      "social_functioning": 6,
+      "sexual_functioning": 3,
+      "life_satisfaction": 11,
+      "total_quality_of_life": 59,
+      "the_perceived_personality_disorder": 4,
+      "the_anger": 5,
+      "the_social_desirability": 2,
+      "self_esteem": 6,
+      "trust_in_god": 1
+    },
+    "score_current_version": "1.0.0",
+    "score_last_version": "1.0.0"
+  }

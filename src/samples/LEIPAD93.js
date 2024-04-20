@@ -14,10 +14,10 @@ class LEIPAD93 extends Profile {
     L6 : {eng: "sexual_functioning", fr: "مشکل عملکرد جنسی", max: 6},
     L7 : {eng: "life_satisfaction", fr: "مشکل رضایت از زندگی", max: 18},
     L8 : {eng: "total_quality_of_life", fr: "نمره کل مشکل کیفیت زندگی", max: 93},
-    L9 : {eng: "the_perceived_personality_disorder", fr: "اختلال شخصیت ادراک شده", max: 6},
-    L10 : {eng: "the_anger", fr: "مشکل خشم", max: 4},
+    L9 : {eng: "the_perceived_personality_disorder", fr: "اختلال شخصیت ادراک شده", max: 9},
+    L10 : {eng: "the_anger", fr: "مشکل خشم", max: 12},
     L11 : {eng: "the_social_desirability", fr: "مشکل مطلوبیت اجتماعی", max: 3},
-    L12 : {eng: "self_esteem", fr: "مشکل اعتماد به نفس", max: 3},
+    L12 : {eng: "self_esteem", fr: "مشکل اعتماد به نفس", max: 9},
     L13 : {eng: "trust_in_god", fr: "مشکل اعتماد به خدا", max: 2},
   };
 

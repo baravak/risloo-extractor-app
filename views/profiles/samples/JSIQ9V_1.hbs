@@ -1,0 +1,214 @@
+{{#> layout}}
+  <defs>
+    <filter id="baseLine" x="0" y="0" width="341" height="7" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="-1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_291_78418"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_291_78418" result="shape"/>
+    </filter>
+    <linearGradient id="softblue" gradientTransform="rotate(90)">
+      <stop offset="0%"  stop-color="#0284C7" stop-opacity="1" />
+      <stop offset="100%" stop-color="#BAE6FD" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="hardblue" gradientTransform="rotate(90)">
+      <stop offset="0%"  stop-color="#1D4ED8" stop-opacity="1" />
+      <stop offset="100%" stop-color="#93C5FD" stop-opacity="1" />
+    </linearGradient>
+    {{#with f4_1}}
+      <clipPath id="rchart">
+        {{gauge rawSpec.circle.R rawSpec.circle.r (object tl=6 tr=6 bl=6 br=6) (object start=rawSpec.circle.angles.start end=rawSpec.circle.angles.end) direction fill="#F1F5F9" stroke="#E4E4E7"}}
+      </clipPath>
+    {{/with}}
+  </defs>
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    {{!-- <rect x="0" y="0" width="851" height="676" fill="red" opacity=".1" /> --}}
+    <g transform="translate(399, 0)">
+      <text text-anchor="middle" x="226" font-weight="500" font-size="16" fill="#3F3F46" dy=".78em">صفات همسر</text>
+      <g transform="translate(0, 33)" >
+        <g>
+          <rect x="0" y="0" width="220" height="32" fill="#15803D" rx="4" />
+          <text text-anchor="middle" x="16" y="16" font-weight="600" font-size="14" fill="#FFFFFF" dy=".27em">{{positive.average}}</text>
+          <text text-anchor="start" x="214" y="16" font-weight="600" font-size="14" fill="#FFFFFF" dy=".27em">نگرش مثبت</text>
+        </g>
+        <g transform="translate(0, 37)">
+          {{#each positive.items}}
+            <g transform="translate(0, {{math @index '*' 29}})">
+              <rect x="0" y="0" width="220" height="24" fill="{{option.bg}}" opacity="{{option.opacity}}" rx="4" />
+              <text text-anchor="middle" x="16" y="12" font-weight="400" font-size="13" fill="{{option.color}}" dy=".27em">{{value}}</text>
+              <text text-anchor="start" x="214" y="12" font-weight="400" font-size="13" fill="{{option.color}}" dy=".27em">{{label}}</text>
+              {{#if (boolean ../positive.breakpoint '===' @index)}}
+                <line x1="0" y1="-2.5" x2="220" y2="-2.5" stroke="#16A34A" stroke-linecap="round" stroke-dasharray="4 4"/>
+              {{/if}}
+            </g>
+          {{/each}}
+        </g>
+        <line x1="33" x2="33" y1="0" y2="496" stroke-width="2" stroke="#FFFFFF" />
+      </g>
+      <g transform="translate(232, 33)">
+        <g>
+          <rect x="0" y="0" width="220" height="32" fill="#B91C1C" rx="4" />
+          <text text-anchor="middle" x="16" y="16" font-weight="600" font-size="14" fill="#FFFFFF" dy=".27em">{{negative.average}}</text>
+          <text text-anchor="start" x="214" y="16" font-weight="600" font-size="14" fill="#FFFFFF" dy=".27em">نگرش منفی</text>
+        </g>
+        <g transform="translate(0, 37)">
+          {{#each negative.items}}
+            <g transform="translate(0, {{math @index '*' 29}})">
+              <rect x="0" y="0" width="220" height="24" fill="{{option.bg}}" opacity="{{option.opacity}}" rx="4" />
+              <text text-anchor="middle" x="16" y="12" font-weight="400" font-size="13" fill="{{option.color}}" dy=".27em">{{value}}</text>
+              <text text-anchor="start" x="214" y="12" font-weight="400" font-size="13" fill="{{option.color}}" dy=".27em">{{label}}</text>
+              {{#if (boolean ../negative.breakpoint '===' @index)}}
+                <line x1="0" y1="-2.5" x2="220" y2="-2.5" stroke="#DC2626" stroke-linecap="round" stroke-dasharray="4 4"/>
+              {{/if}}
+            </g>
+          {{/each}}
+        </g>
+        <line x1="33" x2="33" y1="0" y2="496" stroke-width="2" stroke="#FFFFFF" />
+      </g>
+      <g transform="translate(38, 569)">
+        <line x1="53" y1="31" x2="333" y2="31" stroke="#E4E4E7"/>
+        <circle cx="46" cy="31" r="10" fill="#FAFAFA" />
+        <text text-anchor="middle" x="46" y="31" font-weight="400" font-size="12" fill="#52525B" dy=".27em">4</text>
+        <text text-anchor="middle" x="46" y="51" font-weight="400" font-size="12" fill="#52525B" dy=".27em">به وضوح وجود دارد</text>
+        <circle cx="119.5" cy="31" r="10" fill="#FAFAFA" />
+        <text text-anchor="middle" x="119.5" y="31" font-weight="400" font-size="12" fill="#52525B" dy=".27em">3</text>
+        <text text-anchor="middle" x="119.5" y="6" font-weight="400" font-size="12" fill="#52525B" dy=".27em">معمولا وجود دارد</text>
+        <circle cx="193" cy="31" r="10" fill="#FAFAFA" />
+        <text text-anchor="middle" x="193" y="31" font-weight="400" font-size="12" fill="#52525B" dy=".27em">2</text>
+        <text text-anchor="middle" x="193" y="51" font-weight="400" font-size="12" fill="#52525B" dy=".27em">نظری ندارم</text>
+        <circle cx="266.5" cy="31" r="10" fill="#FAFAFA" />
+        <text text-anchor="middle" x="266.5" y="31" font-weight="400" font-size="12" fill="#52525B" dy=".27em">1</text>
+        <text text-anchor="middle" x="266.5" y="6" font-weight="400" font-size="12" fill="#52525B" dy=".27em">معمولا وجود ندارد</text>
+        <circle cx="340" cy="31" r="10" fill="#FAFAFA" />
+        <text text-anchor="middle" x="340" y="31" font-weight="400" font-size="12" fill="#52525B" dy=".27em">0</text>
+        <text text-anchor="middle" x="340" y="51" font-weight="400" font-size="12" fill="#52525B" dy=".27em">اصلا وجود ندارد</text>
+
+        <text text-anchor="start" x="132" y="97" font-weight="400" font-size="12" fill="#B91C1C" dy=".27em">میانگین نگرش منفی</text>
+        <line x1="140" y1="97.5" x2="180" y2="97.5" stroke="#DC2626" stroke-linecap="round" stroke-dasharray="4 4"/>
+        <text text-anchor="start" x="339" y="97" font-weight="400" font-size="12" fill="#15803D" dy=".27em">میانگین نگرش مثبت</text>
+        <line x1="194" y1="97.5" x2="234" y2="97.5" stroke="#16A34A" stroke-linecap="round" stroke-dasharray="4 4"/>
+      </g>
+    </g>
+    <line x1="367" y1="3" x2="367" y2="676" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    <g>
+      {{#with items.family as | item |}}
+      <g transform="translate({{math 38.5 '+' (math 80.5 '*' 0)}}, 0)">
+        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.7)}}" dy=".27em" text-anchor="middle">
+          <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
+          <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
+        </text>
+        {{bar 32 (math item.label.max '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
+        <g transform="translate(0, 316)">
+          <text y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">
+            <tspan x="17.5">هشیاری نسبت به</tspan>
+            <tspan x="17.5" y=".4em">سیستم خانواده</tspan>
+          </text>
+          <g transform="translate(0, 16)">
+            <rect height="16" width="35" fill="#F0F9FF" rx="4" />
+            <text x="17.5" y="8" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#0369A1">%{{item.percentage}}</text>
+          </g>
+        </g>
+      </g>
+      {{/with}}
+
+      {{#with items.love as | item |}}
+      <g transform="translate({{math 38.5 '+' (math 80.5 '*' 1)}}, 0)">
+        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.7)}}" dy=".27em" text-anchor="middle">
+          <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
+          <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
+        </text>
+        {{bar 32 (math item.label.max '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
+        <g transform="translate(0, 316)">
+          <text x="17.5" y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">قدرت‌دهی</text>
+          <rect height="16" width="35" fill="#F0F9FF" rx="4" />
+          <text x="17.5" y="8" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#0369A1">%{{item.percentage}}</text>
+        </g>
+      </g>
+      {{/with}}
+
+      {{#with items.power as | item |}}
+      <g transform="translate({{math 38.5 '+' (math 80.5 '*' 2)}}, 0)">
+        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.7)}}" dy=".27em" text-anchor="middle">
+          <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
+          <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
+        </text>
+        {{bar 32 (math item.label.max '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
+        <g transform="translate(0, 316)">
+          <text x="17.5" y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">ادراک مهر</text>
+          <rect height="16" width="35" fill="#F0F9FF" rx="4" />
+          <text x="17.5" y="8" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#0369A1">%{{item.percentage}}</text>
+        </g>
+      </g>
+      {{/with}}
+
+      {{#with items.sexual as | item |}}
+      <g transform="translate({{math 38.5 '+' (math 80.5 '*' 3)}}, 0)">
+        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.7)}}" dy=".27em" text-anchor="middle">
+          <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
+          <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
+        </text>
+        {{bar 32 (math item.label.max '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 1.7 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#hardblue)" transform="translate(32, 285)"}}
+        <g transform="translate(0, 316)">
+          <text y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">
+            <tspan x="17.5">توجه ایمنی</tspan>
+            <tspan x="17.5" y=".4em">جنسی</tspan>
+          </text>
+          <g transform="translate(0, 16)">
+            <rect height="16" width="35" fill="#F0F9FF" rx="4" />
+            <text x="17.5" y="8" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#0369A1">%{{item.percentage}}</text>
+          </g>
+        </g>
+      </g>
+      {{/with}}
+      
+      <g transform="translate(0, 281)" filter="url(#baseLine)">
+        <rect x="3" y="4" width="335" height="1" rx="0.5" fill="white"/>
+      </g>
+
+      <g transform="translate(7.5, 420)">
+        <text y="-14" dy=".35em" text-anchor="end" font-size="13" font-weight="400" fill="#334155">نمره کل</text>
+        <text y="-14" x="320" dy=".35em" text-anchor="start" font-size="13" font-weight="400" fill="#334155">400</text>
+        {{bar 320 20 (object tl=0 tr=10 br=10 bl=0) (toRad 0) fill="#F1F5F9" }}
+        {{bar (math total.mark '*' 0.8) 20 (object tl=0 tr=10 br=10 bl=0) (toRad 0) fill="#64748B" }}
+        <text y="36" x="{{math total.mark '*' 0.8}}" dy=".35em" text-anchor="middle" font-size="20" font-weight="500" fill="#334155">{{total.mark}}</text>
+        <text y="50" x="{{math total.mark '*' 0.8}}" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#334155">%{{total.percentage}}</text>
+      </g>
+    </g>
+    <g transform="translate(270.5, 575)">
+      <text y="-60" text-anchor="end" font-size="12" font-weight="400" fill="#475569">0</text>
+      <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">30</text>
+      <text y="-.2em" text-anchor="middle">
+        <tspan x="0" font-size="20" font-weight="500" fill="#2563EB">{{f4_1.mark}}</tspan>
+        <tspan x="0" y=".9em" font-size="16" font-weight="400" fill="#64748B">%{{f4_1.percentage}}</tspan>
+      </text>
+      {{#with f4_1}}
+          {{gauge rawSpec.circle.R rawSpec.circle.r (object tl=6 tr=6 bl=6 br=6) (object start=rawSpec.circle.angles.start end=rawSpec.circle.angles.end) direction fill="#F1F5F9"}}
+          {{gauge rawSpec.circle.R rawSpec.circle.r (object tl=6 tr=0 bl=6 br=0) (object start=rawSpec.circle.angles.start end=zeta) direction clip-path="url(#rchart)" fill='#6183E4'}}
+      {{/with}}
+      <text y="75" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">توجه / ایمنی‌بخشی</text>
+    </g>
+    
+    <g transform="translate(92.5, 575)">
+      <text y="-60" text-anchor="end" font-size="12" font-weight="400" fill="#475569">0</text>
+      <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">70</text>
+      <text y="-.2em" text-anchor="middle">
+        <tspan x="0" font-size="20" font-weight="500" fill="#2563EB">{{f4_2.mark}}</tspan>
+        <tspan x="0" y=".9em" font-size="16" font-weight="400" fill="#64748B">%{{f4_2.percentage}}</tspan>
+      </text>
+      {{#with f4_2}}
+          {{gauge rawSpec.circle.R rawSpec.circle.r (object tl=6 tr=6 bl=6 br=6) (object start=rawSpec.circle.angles.start end=rawSpec.circle.angles.end) direction fill="#F1F5F9"}}
+          {{gauge rawSpec.circle.R rawSpec.circle.r (object tl=6 tr=0 bl=6 br=0) (object start=rawSpec.circle.angles.start end=zeta) direction clip-path="url(#rchart)" fill='#6183E4'}}
+      {{/with}}
+      <text y="75" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">توجه / ایمنی ادراک‌شده از همسر</text>
+    </g>
+  </g>
+
+{{/layout}}

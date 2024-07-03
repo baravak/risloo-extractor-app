@@ -118,10 +118,14 @@
         </g>
 
         <g>
-          <circle cx="{{math 470 '*' love}}" cy="{{math 470 '*' power}}" r="11" fill="none" stroke="#A16207" stroke-width="3" />
-          <circle cx="{{math 470 '*' love}}" cy="{{math 470 '*' power}}" r="3.5" fill="#A16207" />
-          <line x1="0" y1="{{math 470 '*' power}}" x2="{{math 470 '*' love}}" y2="{{math 470 '*' power}}" stroke="#A16207" stroke-linecap="round" stroke-dasharray="6 8"/>
-          <line x1="{{math 470 '*' love}}" y1="470" x2="{{math 470 '*' love}}" y2="{{math 470 '*' power}}" stroke="#A16207" stroke-linecap="round" stroke-dasharray="6 8"/>
+          <circle cx="{{math 470 '*' love.percentage}}" cy="{{math 470 '*' power.percentage}}" r="11" fill="none" stroke="#A16207" stroke-width="3" />
+          <circle cx="{{math 470 '*' love.percentage}}" cy="{{math 470 '*' power.percentage}}" r="3.5" fill="#A16207" />
+          <line x1="0" y1="{{math 470 '*' power.percentage}}" x2="{{math 470 '*' love.percentage}}" y2="{{math 470 '*' power.percentage}}" stroke="#A16207" stroke-linecap="round" stroke-dasharray="6 8"/>
+          <line x1="{{math 470 '*' love.percentage}}" y1="470" x2="{{math 470 '*' love.percentage}}" y2="{{math 470 '*' power.percentage}}" stroke="#A16207" stroke-linecap="round" stroke-dasharray="6 8"/>
+
+            <text x="{{math 470 '*' love.percentage}}" y="495" text-anchor="middle" font-size="20" font-weight="700" fill="#A16207">{{power.mark}}</text>
+            <text x="-10" y="{{math 470 '*' power.percentage}}" dy=".3em" text-anchor="start" font-size="20" font-weight="700" fill="#A16207">{{love.mark}}</text>
+
         </g>
     </g>
   </g>

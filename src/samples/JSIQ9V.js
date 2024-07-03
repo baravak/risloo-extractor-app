@@ -213,8 +213,14 @@ class JSIQ9V extends Profile {
   _calcContext() {
     const firstPageData = this.firstPage()
     return [firstPageData, {
-      love: 1 - firstPageData.items.love.percentagex,
-      power: 1 - firstPageData.items.power.percentagex,
+      love: {
+        percentage: 1 - firstPageData.items.love.percentagex,
+        mark: firstPageData.items.love.mark
+      },
+      power: {
+        percentage: 1 - firstPageData.items.power.percentagex,
+        mark: firstPageData.items.power.mark
+      },
       titleAppend: firstPageData.titleAppend
     }];
   }

@@ -151,7 +151,7 @@
       {{#with items.sexual as | item |}}
       <g transform="translate({{math 38.5 '+' (math 80.5 '*' 3)}}, 0)">
         <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.5)}}" dy=".27em" text-anchor="middle">
-          <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
+          <tspan fill="#1d4ed8" font-size="16" font-weight="500">{{item.mark}}</tspan>
           <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
         </text>
         {{bar 32 (math item.label.max '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
@@ -162,8 +162,8 @@
             <tspan x="17.5" y=".4em">جنسی</tspan>
           </text>
           <g transform="translate(0, 16)">
-            <rect height="16" width="35" fill="#F0F9FF" rx="4" />
-            <text x="17.5" y="8" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#0369A1">%{{item.percentage}}</text>
+            <rect height="16" width="35" fill="#EFF6FF" rx="4" />
+            <text x="17.5" y="8" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#1d4ed8">%{{item.percentage}}</text>
           </g>
         </g>
       </g>
@@ -179,7 +179,7 @@
         {{bar 320 20 (object tl=0 tr=10 br=10 bl=0) (toRad 0) fill="#F1F5F9" }}
         {{bar (math total.mark '*' 0.8) 20 (object tl=0 tr=10 br=10 bl=0) (toRad 0) fill="#64748B" }}
         <text y="36" x="{{math total.mark '*' 0.8}}" dy=".35em" text-anchor="middle" font-size="20" font-weight="500" fill="#334155">{{total.mark}}</text>
-        <text y="50" x="{{math total.mark '*' 0.8}}" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#334155">%{{total.percentage}}</text>
+        <text y="55" x="{{math total.mark '*' 0.8}}" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#334155">%{{total.percentage}}</text>
       </g>
     </g>
     <g transform="translate(270.5, 575)">
@@ -187,7 +187,7 @@
       <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">40</text>
       <text y="-.2em" text-anchor="middle">
         <tspan x="0" font-size="20" font-weight="500" fill="#2563EB">{{f4_1.mark}}</tspan>
-        <tspan x="0" y=".9em" font-size="16" font-weight="400" fill="#64748B">%{{f4_1.percentage}}</tspan>
+        <tspan x="0" y="1em" font-size="16" font-weight="400" fill="#64748B">%{{f4_1.percentage}}</tspan>
       </text>
       {{#with f4_1}}
           {{gauge rawSpec.circle.R rawSpec.circle.r (object tl=6 tr=6 bl=6 br=6) (object start=rawSpec.circle.angles.start end=rawSpec.circle.angles.end) direction fill="#F1F5F9"}}
@@ -201,7 +201,7 @@
       <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">40</text>
       <text y="-.2em" text-anchor="middle">
         <tspan x="0" font-size="20" font-weight="500" fill="#2563EB">{{f4_2.mark}}</tspan>
-        <tspan x="0" y=".9em" font-size="16" font-weight="400" fill="#64748B">%{{f4_2.percentage}}</tspan>
+        <tspan x="0" y="1em" font-size="16" font-weight="400" fill="#64748B">%{{f4_2.percentage}}</tspan>
       </text>
       {{#with f4_2}}
           {{gauge rawSpec.circle.R rawSpec.circle.r (object tl=6 tr=6 bl=6 br=6) (object start=rawSpec.circle.angles.start end=rawSpec.circle.angles.end) direction fill="#F1F5F9"}}

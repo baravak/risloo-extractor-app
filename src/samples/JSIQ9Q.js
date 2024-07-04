@@ -190,7 +190,6 @@ class JSIQ9Q extends Profile {
     })
     const items = dataset.score.slice(5, 14).filter((r, i) => i %2 !== 0).map((r, i) => {
       r.percentage = Math.round(dataset.score[7 + (i*2)].mark * 100)
-      r.percentagex = dataset.score[7 + (i*2)].mark
       return r
     })
     const total = dataset.score[4]
@@ -211,14 +210,31 @@ class JSIQ9Q extends Profile {
   }
   _calcContext() {
     const firstPageData = this.firstPage()
+    let color = ''
+    if(firstPageData.items.love.percentage === 50 || firstPageData.items.power.percentage === 50){
+      color = '#334155'
+    }else if(firstPageData.items.love.percentage < 50){
+      if(firstPageData.items.power.percentage < 50){
+        color="#b91c1c"
+      }else{
+        color="#c2410c"
+      }
+    }else{
+      if(firstPageData.items.power.percentage < 50){
+        color="#A16207"
+      }else{
+        color="#047857"
+      }
+    }
     return [firstPageData, {
       love: {
-        percentage: 1 - firstPageData.items.love.percentagex,
-        mark: firstPageData.items.love.mark
+        percentage: 1 - (firstPageData.items.love.percentage / 100),
+        mark: firstPageData.items.love.percentage,
+        color
       },
       power: {
-        percentage: 1 - firstPageData.items.power.percentagex,
-        mark: firstPageData.items.power.mark
+        percentage: firstPageData.items.power.percentage / 100,
+        mark: firstPageData.items.power.percentage
       },
       titleAppend: firstPageData.titleAppend
     }];

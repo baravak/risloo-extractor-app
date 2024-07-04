@@ -1,0 +1,129 @@
+{{#> layout}}
+  <defs>
+    <filter id="linebreak" x="0" y="0" width="7" height="630" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_407_82399"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_407_82399" result="shape"/>
+    </filter>
+    <linearGradient id="blueBar">
+      <stop stop-color="#93C5FD"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="grayBar">
+      <stop stop-color="#E2E8F0"/>
+      <stop offset="1" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <linearGradient id="coldGrayBar">
+      <stop stop-color="#CBD5E1"/>
+      <stop offset="1" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="hotGrayBar">
+      <stop stop-color="#D4D4D8"/>
+      <stop offset="1" stop-color="#A1A1AA"/>
+    </linearGradient>
+    <linearGradient id="yellowBar">
+      <stop stop-color="#FEF08A"/>
+      <stop offset="1" stop-color="#EAB308"/>
+    </linearGradient>
+    <linearGradient id="orangeBar">
+      <stop stop-color="#FDBA74"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+    <linearGradient id="redBar">
+      <stop stop-color="#FDA4AF"/>
+      <stop offset="1" stop-color="#E11D48"/>
+    </linearGradient>
+    <clipPath id="defaultBar">
+        {{bar 360 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+  </defs>
+  <g transform="translate(4, 20)"> 
+    <g transform="translate(110, -16)">
+      <g transform="translate(252, 59)">
+        {{#each grasman as | item index |}}
+          <g transform="translate(0, {{math 104 '*' index}})">
+            <g transform="translate(-252, -4)">
+              {{bar 36 72 (object tr=0 br=0 bl=2 tl=2) (toRad 0) fill=item.style.bg  transform="translate(0, 4)"}}
+              <rect x="36.5" y=".5" width="47" height="79" stroke="{{item.style.border}}" fill="{{item.style.bg}}" rx="4" />
+              <line x1="3" x2="33" y1="40" y2="40" stroke="{{item.style.border}}" />
+              <text x="18" y="22" text-anchor="middle" dy=".3em" font-size="13" font-weight="500" fill="{{item.style.color}}" class="eng-font">{{item.label}}</text>
+              <text x="18" y="58" text-anchor="middle" dy=".3em" font-size="13" font-weight="600" fill="{{item.style.color}}" class="eng-font">{{item.br}}</text>
+              <text text-anchor="middle" dy=".3em" font-size="13" font-weight="500" fill="{{item.style.color}}" transform="rotate(-90) translate(-40, 60)">{{item.fa}}</text>
+            </g>
+            {{#each item.subs as | sub isub |}}
+            <g transform="translate(0, {{math 28 '*' isub}})">
+              <text y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}" class="eng-font">{{sub.fa}}</text>
+              <text x="13" y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}" class="eng-font">-</text>
+              <text x="37" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}" class="eng-font">{{sub.label}}</text>
+              <rect x="370" width="36" height="16" rx="2" fill="{{sub.style.bg}}" />
+              <text x="388" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="400" fill="{{sub.style.color}}" class="eng-font">{{sub.raw}}</text>
+              {{bar 300 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=sub.style.bg transform="translate(57, 0)"}}
+            </g>
+            
+            {{/each}}
+          </g>
+        {{/each}}
+      </g>
+
+      
+      <g>
+        <text x="{{math 307 '+' (math 60 '*' 0)}}" y="23" text-anchor="middle" dy=".3em" font-size="12" font-weight="600" fill="#9CA3AF">BR</text>
+        <text x="{{math 307 '+' (math 60 '*' 1)}}" y="23" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">60</text>
+        <text x="{{math 307 '+' (math 60 '*' 2)}}" y="23" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">70</text>
+        <text x="{{math 307 '+' (math 60 '*' 2.5)}}" y="3" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">75</text>
+        <text x="{{math 307 '+' (math 60 '*' 3)}}" y="23" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">80</text>
+        <text x="{{math 307 '+' (math 60 '*' 4)}}" y="23" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">90</text>
+        <text x="{{math 307 '+' (math 60 '*' 5)}}" y="23" text-anchor="start" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">100</text>
+        <g transform="translate(622, 20)">
+          <path d="M3.5 1V8M3.5 8L6.5 5M3.5 8L0.5 5" stroke="#9CA3AF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="633" y="23" text-anchor="end" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">نمره خام</text>
+
+        <line x1="{{math 367 '+' (math 60 '*' 0)}}" x2="{{math 367 '+' (math 60 '*' 0)}}" y1="46" y2="667" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <line x1="{{math 367 '+' (math 60 '*' 1)}}" x2="{{math 367 '+' (math 60 '*' 1)}}" y1="46" y2="667" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <line x1="{{math 367 '+' (math 60 '*' 1.5)}}" x2="{{math 367 '+' (math 60 '*' 1.5)}}" y1="17" y2="667" stroke="#E5E7EB" stroke-linecap="round"/>
+        <line x1="{{math 367 '+' (math 60 '*' 2)}}" x2="{{math 367 '+' (math 60 '*' 2)}}" y1="46" y2="667" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <line x1="{{math 367 '+' (math 60 '*' 3)}}" x2="{{math 367 '+' (math 60 '*' 3)}}" y1="46" y2="667" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <line x1="{{math 367 '+' (math 60 '*' 4)}}" x2="{{math 367 '+' (math 60 '*' 4)}}" y1="46" y2="667" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+      </g>
+
+      <g transform="translate(252, 59)">
+        {{#each grasman as | item index |}}
+            {{#each item.subs as | sub isub |}}
+            <g transform="translate(0, {{math (math 104 '*' index) '+' (math 28 '*' isub)}})">
+              {{bar sub.pixel 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=sub.style.key transform="translate(57, 0)"}}
+            </g>
+            {{/each}}
+        {{/each}}
+      </g>
+      <g opacity="0.5" filter="url(#linebreak)"  transform="translate(307, 40)">
+        <line x1="2.5" y1="3.5" x2="2.5" y2="626.5" stroke="white" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <g transform="translate(0, 650)">
+      <g transform="translate(2, 2)">
+        <rect width="17" height="17" rx="4" stroke="#CBD5E1" fill="none" />
+        <text text-anchor="middle" x="9" y="9" dy=".3em" font-size="10" font-weight="400" fill="#94A3B8" >1</text>
+      </g>
+      <g transform="translate(22, 2)">
+        <rect width="17" height="17" rx="4" stroke="#CBD5E1" fill="none" />
+        <text text-anchor="middle" x="9" y="9" dy=".3em" font-size="10" font-weight="400" fill="#94A3B8" >2</text>
+      </g>
+      <g transform="translate(2, 22)">
+        <rect width="17" height="17" rx="4" stroke="#CBD5E1" fill="none" />
+        <text text-anchor="middle" x="9" y="9" dy=".3em" font-size="10" font-weight="400" fill="#94A3B8" >3</text>
+      </g>
+      <g transform="translate(20, 20)">
+        <rect width="20" height="20" rx="4" fill="#007BA4" />
+        <text text-anchor="middle" x="10" y="10" dy=".3em" font-size="12" font-weight="600" fill="#FFFFFF" >4</text>
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

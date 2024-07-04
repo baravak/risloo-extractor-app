@@ -1,0 +1,180 @@
+{{#> layout}}
+  <defs>
+    <filter id="linebreak" x="0" y="0" width="7" height="566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_364_82049"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_364_82049" result="shape"/>
+    </filter>
+    <linearGradient id="blueBar">
+      <stop stop-color="#93C5FD"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="grayBar">
+      <stop stop-color="#E2E8F0"/>
+      <stop offset="1" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <linearGradient id="yellowBar">
+      <stop stop-color="#FEF08A"/>
+      <stop offset="1" stop-color="#EAB308"/>
+    </linearGradient>
+    <linearGradient id="orangeBar">
+      <stop stop-color="#FDBA74"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+    <linearGradient id="redBar">
+      <stop stop-color="#FDA4AF"/>
+      <stop offset="1" stop-color="#E11D48"/>
+    </linearGradient>
+    <clipPath id="defaultBar">
+        {{bar 360 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+    </clipPath>
+  </defs>
+  <g transform="translate(4, 20)"> 
+    <g transform="translate(94, 0)">
+      <g transform="translate(274, 50)">
+        <g>
+          {{#each warnings as | item index |}}
+            <g transform="translate(0, {{math 32 '*' index}})">
+              {{bar 360 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.style.bg}}
+            </g>
+          {{/each}}
+        </g>
+        <g transform="translate(0, 304)">
+          {{#each clinical as | item index |}}
+          <g transform="translate(0, {{math 32 '*' index}})">
+            {{bar 360 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.style.bg}}
+          </g>
+          {{/each}}
+        </g>
+      </g>
+      <g>
+        <text x="{{math 273 '+' (math 90 '*' 0)}}" y="6" text-anchor="middle" dy=".3em" font-size="12" font-weight="600" fill="#9CA3AF">BR</text>
+        <text x="{{math 273 '+' (math 90 '*' 1)}}" y="6" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">60</text>
+        <text x="{{math 273 '+' (math 90 '*' 2)}}" y="6" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">75</text>
+        <text x="{{math 273 '+' (math 90 '*' 3)}}" y="6" text-anchor="middle" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">85</text>
+        <text x="{{math 273 '+' (math 90 '*' 4)}}" y="6" text-anchor="start" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">115</text>
+        <g transform="translate(644, 2.5)">
+          <path d="M3.5 1V8M3.5 8L6.5 5M3.5 8L0.5 5" stroke="#9CA3AF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="658" y="6" text-anchor="end" dy=".3em" font-size="12" font-weight="400" fill="#9CA3AF">نمره خام</text>
+
+        <line x1="{{math 363 '+' (math 90 '*' 0)}}" x2="{{math 363 '+' (math 90 '*' 0)}}" y1="26" y2="586" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <line x1="{{math 363 '+' (math 90 '*' 1)}}" x2="{{math 363 '+' (math 90 '*' 1)}}" y1="26" y2="586" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <line x1="{{math 363 '+' (math 90 '*' 2)}}" x2="{{math 363 '+' (math 90 '*' 2)}}" y1="26" y2="586" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <line x1="{{math 363 '+' (math 90 '*' 3)}}" x2="{{math 363 '+' (math 90 '*' 3)}}" y1="26" y2="586" stroke="#E5E7EB" stroke-dasharray="6 6" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(0, 50)">
+        <rect width="48" height="240" rx="4" fill="#F9FAFB" stroke="#F3F4F6" />
+        <text text-anchor="middle" dy=".3em" font-size="13" font-weight="400" fill="#4B5563" transform="rotate(-90) translate(-120, 24)">نگرانی‌های ابراز شده</text>
+
+        <rect y="304" width="48" height="208" rx="4" fill="#F9FAFB" stroke="#F3F4F6" />
+        <text text-anchor="middle" dy=".3em" font-size="13" font-weight="400" fill="#4B5563" transform="rotate(-90) translate(-408, 24)">نشانگان بالینی</text>
+
+        <g transform="translate(220, 0)">
+          <g>
+            {{#each warnings as | item index |}}
+            <g transform="translate(0, {{math 32 '*' index}})">
+              <text y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{item.style.weight}}" fill="{{item.style.color}}">{{item.fa}}</text>
+              <text x="8" y="8" text-anchor="end" dy=".3em" font-size="13" font-weight="{{item.style.weight}}" fill="{{item.style.color}}">-</text>
+              <text x="35" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="{{item.style.weight}}" fill="{{item.style.color}}" class="eng-font">{{item.label}}</text>
+              <g transform="translate(54, 0)">
+                {{bar item.pixel 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.style.key clip-path="url(#defaultBar)"}}
+                {{#if (boolean item.br '>=' 60)}}
+                  <text x="{{math item.pixel '-' 6}}" y="8" text-anchor="start" dy=".3em" font-size="15" font-weight="500" fill="#FFFFFF">{{item.br}}</text>
+                {{else}}
+                  <text x="{{math item.pixel '+' 6}}" y="8" text-anchor="end" dy=".3em" font-size="15" font-weight="500" fill="{{item.style.color}}">{{item.br}}</text>
+                {{/if}}
+                <rect x="371.5" width="36" height="16" fill="{{item.style.bg}}" />
+                <text x="389.5" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="400" fill="{{item.style.color}}">{{item.raw}}</text>
+              </g>
+            </g>
+            {{/each}}
+          </g>
+          <g transform="translate(0, 304)">
+            {{#each clinical as | item index |}}
+            <g transform="translate(0, {{math 32 '*' index}})">
+              <text y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{item.style.weight}}" fill="{{item.style.color}}">{{item.fa}}</text>
+              <text x="8" y="8" text-anchor="end" dy=".3em" font-size="13" font-weight="{{item.style.weight}}" fill="{{item.style.color}}">-</text>
+              <text x="35" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="{{item.style.weight}}" fill="{{item.style.color}}" class="eng-font">{{item.label}}</text>
+              <g transform="translate(54, 0)">
+                {{bar item.pixel 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.style.key clip-path="url(#defaultBar)"}}
+                {{#if (boolean item.br '>=' 60)}}
+                  <text x="{{math item.pixel '-' 6}}" y="8" text-anchor="start" dy=".3em" font-size="15" font-weight="500" fill="#FFFFFF">{{item.br}}</text>
+                {{else}}
+                  <text x="{{math item.pixel '+' 6}}" y="8" text-anchor="end" dy=".3em" font-size="15" font-weight="500" fill="{{item.style.color}}">{{item.br}}</text>
+                {{/if}}
+                <rect x="371.5" width="36" height="16" fill="{{item.style.bg}}" />
+                <text x="389.5" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="400" fill="{{item.style.color}}">{{item.raw}}</text>
+              </g>
+            </g>
+            {{/each}}
+          </g>
+        </g>
+      </g>
+
+      <g transform="translate(270, 26)" opacity="0.5" filter="url(#linebreak)">
+        <line x1="2.5" y1="3.5" x2="2.49998" y2="562.5" stroke="white" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <g transform="translate(0, 650)">
+      <g transform="translate(2, 2)">
+        <rect width="17" height="17" rx="4" stroke="#CBD5E1" fill="none" />
+        <text text-anchor="middle" x="9" y="9" dy=".3em" font-size="10" font-weight="400" fill="#94A3B8" >1</text>
+      </g>
+      <g transform="translate(20, 0)">
+        <rect width="20" height="20" rx="4" fill="#007BA4" />
+        <text text-anchor="middle" x="10" y="10" dy=".3em" font-size="12" font-weight="600" fill="#FFFFFF" >2</text>
+      </g>
+      <g transform="translate(2, 22)">
+        <rect width="17" height="17" rx="4" stroke="#CBD5E1" fill="none" />
+        <text text-anchor="middle" x="9" y="9" dy=".3em" font-size="10" font-weight="400" fill="#94A3B8" >3</text>
+      </g>
+      <g transform="translate(22, 22)">
+        <rect width="17" height="17" rx="4" stroke="#CBD5E1" fill="none" />
+        <text text-anchor="middle" x="9" y="9" dy=".3em" font-size="10" font-weight="400" fill="#94A3B8" >4</text>
+      </g>
+    </g>
+    <g transform="translate(94, 614)">
+      {{bar 139 31 (object tr=6 br=0 bl=0 tl=6) (toRad 0) fill=status.v.bg stroke=status.v.fill transform="translate(0.5, .5)"}}
+      {{bar 140 32 (object tr=0 br=6 bl=6 tl=0) (toRad 0) fill=status.v.fill transform="translate(0, 31.5)"}}
+      <text text-anchor="middle" x="70" y="16" dy=".3em" font-size="12" font-weight="400" fill="{{status.v.fill}}">نمره پایایی (مقیاس VV)</text>
+      <text text-anchor="middle" x="70" y="48" dy=".3em" font-size="13" font-weight="400" fill="#FFFFFF">
+        <tspan font-size="18" font-weight="500">
+          {{status.v.value}}
+        </tspan>
+        <tspan>
+          = {{status.v.text}}
+        </tspan>
+      </text>
+    </g>
+    {{#if (boolean (boolean status.x '!==' 0) '||' (boolean status.br '!==' 0))}}
+      <g transform="translate(250, 614)">
+        <rect width="478" height="60" fill="#FEF2F2" stroke="#B91C1C" stroke-dasharray="6 6" rx="6" />
+        <path transform="translate(434, 18)" d="M13.9999 9.4996V14.8329M13.9999 18.8329H14.0132M11.8172 2.2876L1.00923 20.3329C0.786427 20.7188 0.668523 21.1562 0.667247 21.6018C0.665971 22.0473 0.781368 22.4855 1.00196 22.8726C1.22255 23.2597 1.54065 23.5823 1.92462 23.8083C2.30859 24.0344 2.74504 24.1559 3.19057 24.1609H24.8092C25.2546 24.1558 25.6908 24.0342 26.0746 23.8083C26.4584 23.5823 26.7763 23.2598 26.9969 22.8729C27.2174 22.486 27.3329 22.0481 27.3318 21.6028C27.3307 21.1574 27.213 20.7201 26.9906 20.3343L16.1826 2.28627C15.9552 1.91094 15.6348 1.60059 15.2525 1.3852C14.8702 1.1698 14.4387 1.05664 13.9999 1.05664C13.5611 1.05664 13.1296 1.1698 12.7473 1.3852C12.365 1.60059 12.0446 1.91094 11.8172 2.28627V2.2876Z" stroke="#B91C1C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="415" x2="415" y1="16" y2="44" stroke="#E7E5E4" />
+        <text text-anchor="start" x="400" y="30" dy=".3em" font-size="12" font-weight="400" fill="#44403C">آزمون غیر قابل تفسیر است به دلیل:</text>
+        {{#if (boolean (boolean status.x '!==' 0) '&&' (boolean status.br '!==' 0))}}
+          <text text-anchor="start" dy=".3em" font-size="12" font-weight="400" fill="#44403C">
+            <tspan x="212" y="20">
+              - نمره خام مقیاس X
+            </tspan>
+            <tspan x="212" y="43">
+              - نمره‌های BR الگوهای شخصیت
+            </tspan>
+          </text>
+        {{else if (boolean status.x '!==' 0) }}
+          <text text-anchor="start" x="212" y="30" dy=".3em" font-size="12" font-weight="400" fill="#44403C">- نمره خام مقیاس X</text>
+        {{else}}
+          <text text-anchor="start" x="212" y="30" dy=".3em" font-size="12" font-weight="400" fill="#44403C">- نمره‌های BR الگوهای شخصیت</text>
+        {{/if}}
+      </g>
+    {{/if}}
+  </g>
+
+{{/layout}}

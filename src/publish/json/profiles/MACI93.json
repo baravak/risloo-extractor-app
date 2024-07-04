@@ -1,0 +1,2183 @@
+{
+    "id": "$X1HEQK7DH",
+    "scale": {
+      "id": "$MACI-93",
+      "title": "پرسشنامه بالینی نوجوانان میلون"
+    },
+    "chain": null,
+    "version": "2",
+    "edition": "",
+    "edition_version": null,
+    "client": {
+      "id": "GH96XXXX",
+      "name": "مراج",
+      "user_id": "IR96XXXX"
+    },
+    "room": {
+      "id": "RS9XXXX",
+      "manager": {
+        "id": "GH96XXXX",
+        "name": "درمانگر",
+        "user_id": "IR96XXXX"
+      },
+      "center": {
+        "id": "RS9XXXXX",
+        "acceptation": null,
+        "status": "active",
+        "type": "counseling_center",
+        "detail": {
+          "title": "مرکز"
+        }
+      },
+      "acceptation": null,
+      "status": "active",
+      "type": "room"
+    },
+    "case": null,
+    "code": null,
+    "created_at": 1719896521,
+    "started_at": 1719896531,
+    "scored_at": 1719897505,
+    "closed_at": 1719896547,
+    "total_amount": null,
+    "prepayment": false,
+    "purchased": true,
+    "amount": null,
+    "billing": null,
+    "description": "## دستور اجرای آزمون\n\nدر این چند صفحه، شما جمله‌هایی می‌خوانید که جوانان از آن‌ها استفاده می‌کنند تا درباره خودشان بگویند. شما نیز می‌توانید از آن‌ها استفاده کنید تا احساسات و دیدگاهتان را توصیف کنید. اگر صادقانه و جدی به این‌ها جواب بدهید به ما کمک می‌کنید تا شما را بهتر درک کنیم و شما را برای آینده‌تان کمک کنیم.\n\nچند تا از این جمله‌ها شاید عادی به نظر نرسد، نگران نشوید، زیرا این‌ها به جوانانی که مشکلات گوناگونی دارند کمک می‌کنند.\n\nوقتی شما با یک جمله موافق هستید یا فکر می‌کنید که شما را خوب توصیف می‌کند، جواب «درست» را علامت بزنید. لطفاً به همه جمله‌ها جواب بدهیم حتی اگر به انتخاب‌تان مطمئن نیستید. اگر درباره جمله‌ای هرچه سعی می‌کنید نمی‌دانید آن جمله درست است یا غلط، پس جواب «غلط» را علامت بزنید.\n\nزمان برای جواب دادن محدود نیست اما بهتر است تا جایی که می‌توانید سریع و راحت باشید.",
+    "psychologist_description": null,
+    "items": [
+      {
+        "type": "text",
+        "text": "ترجیح می‌‌دهم که پیرو دیگران باشم تا این‌که خودم دیگران را رهبری کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "من کاملاً می‌‌دانم چه کسی هستم و از زندگی چه می‌‌خواهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "نیازی ندارم تا مثل بقیه بچه‌‌ها،‌ دوستان نزدیک و صمیمی داشته باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از انجام کارهایی که دیگران از من انتظار دارند، بدم می‌‌آید.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خیلی تلاش می‌کنم تا دیگران را نرنجانم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "پدر و مادرم مرا بطور کامل درک می‌‌کنند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بعضی از اطرافیانم فکر می‌‌کنند من کمی خود خواه و مغرور هستم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "علاقه‌ای ندارم هیچ مواد یا داروی غیرمجازی مصرف کنم، هر چی که باشد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "همیشه سعی می‌کنم کاری را که صحیح است انجام بدهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "خودم را به همین صورتی که هستم دوست دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با این‌که فقط گه‌گاهی وعده‌های غذا خوردنم افزایش می‌یابد، اما از وزنی که دارم بیزارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "هیچ اتفاقی نمی‌تواند من را خوشحال یا ناراحت کند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "دوست شدن و برقراری رابطه با سایر نوجوانان، برایم مشکل است.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خجالت می‌کشم به دیگران بگویم که در کودکی چگونه مورد سوء استفاده قرار گرفته‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "هرگز کاری نکرده‌ام که موجب بازداشت من شود.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "فکر می‌کنم اگر مرده بودم دیگران راحت‌تر بودند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "گاهی اوقات وقتی از خانه دور می‌شوم احساس تنش و ترس می‌‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "معمولا بدون فکر، سریعاً شروع به انجام کار‌ها می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "آدمی غرغری هستم که مدام انتظار شکست و بدترین اتفاقات را می‌‌کشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "معمولا احساس می‌کنم تنها هستم و کسی مرا نمی‌خواهد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "تنبیه هرگز نمی‌تواند مانع کاری شود که می‌‌خواهم انجام دهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بعضی از اعضای خانواده من مشکل مشروب‌خواری دارند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "دوست دارم از دستورات پیروی کنم و آنچه از من انتظار می‌رود را انجام بدهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با دوستان جدیدی که آشنا می‌شوم به خوبی کنار می‌‌آیم",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "دیگران قدر کارهای من را نمی‌‌دانند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "ناراحتم که چرا سر و وضع و استعدادی که آرزویش را داشتم، ندارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "علاقه زیادی دارم که در خانه باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بچه‌های دیگر را می‌‌ترسانم تا کاری را که می‌‌خواهم برایم انجام دهند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با اینکه دیگران می‌‌گویند لاغر هستم، اما هنوز احساس می‌کنم که چاقم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "وقتی کمی مشروب می‌خورم، از خودم بیشتر مطمئن می‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بیشتر مردم از من قشنگ‌تر و جذاب‌تر هستند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "وقتی در یک جمعیتی قرار می‌گیرم، می‌ترسم که وحشت کنم و غش کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "وقتی زیاد غذا می‌خورم به خودم فشار می‌‌آورم تا استفراغ کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بیشتر وقت‌ها احساس می‌کنم سرگردانم و انگار چیزی را در زندگی گم کرده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خیلی از هم سن و سال‌هایم مرا دوست ندارند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "اگر به انتخاب خودم باشم ترجیح می‌دهم کارهایم را به تنهایی انجام دهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "درگیر شدن در مشکلات دیگران برای من وقت تلف کردن است.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "اغلب احساس می‌کنم دیگران نمی‌خواهند با من دوست باشند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "زیاد نگران نیستم که دوست‌هایم درباره من چه فکر می‌کنند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "همیشه به قدری مست می‌کنم که نمی‌دانم چه کار کردم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "برایم مهم نیست که به دیگران چیزهایی بگویم که دوست ندارند بشنوند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خودم را از آنچه دوست دارم باشم، خیلی پایین‌تر می‌بینم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "زندگی من هر روز بدتر و مشکلات من بیشتر می‌شود.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "به محض این‌که هوس کنم، کاری را بدون فکر انجام می‌دهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "من هرگز یک نوجوان خلافکار نامیده نشده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "خیلی وقت‌ها من بدترین دشمن خودم هستم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "چیز‌ها و کارهای خیلی کمی وجود دارد که بتواند مرا خوشحال کند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "با این‌که دیگران می‌گویند که من چاق نیستم اما می‌خواهم رژیم غذایی بگیرم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "افسوس خوردن برای کسانی که همیشه نگرانند، برایم دشوار است.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "این خیلی خوب است که برای انجام دادن هر کاری یک روش مشخص داشته باشیم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "به اندازه هم‌سن و سال‌هایم به مسائل جنسی علاقه ندارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "استفاده کردن از دیگران برای رسیدن به آن‌چه می‌خواهم اشتباه نیست.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "تقریباً هرجایی باشم، به غیر از منزل خودمان.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "گاهی آن‌قدر پریشانم که می‌خواهم به خودم آسیب برسانم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "فکر نمی‌کنم در دوران کودکی‌ام مورد تجاوز جنسی قرار گرفته باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "دوست دارم ظاهرساز و نمایشی باشم و خودم را به همه نشان بدهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "در مقایسه با دوستانم تحمل بهتری نسبت به آب‌جو و مشروب دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "والدین و معلمان به بچه‌هایی که قوانین را رعایت نمی‌کنند زیاد سخت می‌گیرند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "لاس زدن را خیلی دوست دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "از دیدن کسانی که اذیت می‌شوند ناراحت نمی‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "احساساتی نسبت به دیگران ندارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "از فکر کردن به مسائل جنسی لذت می‌برم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "خیلی نگران این هستم که به حال خود ر‌ها شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خیلی وقت‌ها احساس ناراحتی و یا دوست داشتنی نبودن می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "حدس می‌زنم که لاغر باشم، اما احساس می‌کنم ران‌ها و کفل‌هایم خیلی بزرگند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "من لایق آن هستم که دیگران مرا تحقیر و کوچک کنند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "دیگران به من فشار می‌‌آورند تا بیش از توانم کار کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "به نظر خودم بدن روی فرم و مناسبی دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "احساس می‌کنم از خیلی چیز‌ها در اجتماع حذف شده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "به راحتی دوست پیدا می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "من کمی ترسو و مضطربم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "متنفرم از این‌که به سوء استفاده شدنم در کودکی، فکر کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "هیچ تفاوتی با بعضی از دوستانم که گاهی دست به دزدی می‌زنند ندارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "ترجیح می‌‌دهم اول عمل کنم و بعد در مورد آن فکر کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "اوقاتی بوده است که چندین بار در هفته حشیش (گل) مصرف کرده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "قوانین زیادی وجود دارند که مانع دستیابی من به آنچه می‌خواهم انجام دهم هستند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "وقتی همه چیز کسل‌کنده می‌شود، دوست دارم کارهای هیجان‌آور انجام دهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "گاهی وقت‌ها می‌‌خواهم کارهای ظالمانه‌ای انجام دهم که دیگران را ناراحت می‌کند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "زمان زیادی را صرف نگرانی درباره آینده‌ام می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "اغلب احساس می‌کنم که لیاقت چیزهای خوب زندگی‌ام را ندارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "وقتی کسی را می‌‌بینم که تنهاست، غمگین می‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "جلوی دیگران غذا کم می‌خورم، اما تنها که هستم پرخوری می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خانواده‌ام همیشه در حال جنگ و دروغ گفتن هستند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "گاهی اوقات از آنچه که هستم خیلی غمگین می‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بودن با دیگران برایم لذت بخش نیست.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "استعدادهایی دارم که دوستانم آرزوی آن‌ها را می‌کنند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "در کنار دیگران خیلی راحت نیستم، مگر اینکه مطمئن شوم آن‌ها واقعاً مرا دوست دارند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "شاید کشتن و از بین بردن خودم آسان‌ترین راه‌حل برای مشکلاتم باشد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "گاهی از این‌که دیگران به من خوبی می‌کنند احساس ناراحتی و آشفتگی می‌‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "وقتی احساس افسردگی می‌کنم مصرف مواد یا مشروب واقعاً به من کمک می‌کند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "فکر نمی‌‌کنم که در آینده اتفاق خوب و لذت بخشی برای من رخ دهد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "در پیدا کردن عذر و بهانه برای خلاصی یافتن از مخمصه و درگیری استعداد خوبی دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خیلی خوب است که بچه‌‌ها یاد بگیرند از بزرگتر‌ها حرف شنوی داشته باشند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "سکس لذت بخش است.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "زنده یا مرده بودنم برای کسی اهمیت ندارد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "باید به بزرگ‌تر‌ها احترام بگذاریم و فکر نکنیم مسائل را از آن‌ها بهتر می‌فهمیم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "بعضی وقت‌ها از این‌که به دیگران آسیب بدنی برسانم لذت می‌برم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "اغلب پس از اتفاقات خوبی که برایم رخ می‌دهد احساس نکبت و بدبختی می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "فکر نمی‌کنم از نظر دیگران آدم قشنگ و جذابی باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از نظر اجتماعی آدم تنهایی هستم و این برایم مهم نیست.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "غالباً هرکاری که می‌خواهم انجام دهم به راحتی انجام می‌شود.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "بارها بوده که احساس کردم از آنچه واقعاً هستم کوچکترم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "دوست دارم مرکز توجه باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "اگر بخواهم کاری را انجام دهم، بدون این‌که به عواقب آن فکر کنم آن را انجام می‌دهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "هر چقدر که لاغر باشم، باز هم از این‌که غذا بخورم و چاق شوم می‌ترسم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از ترس این‌که مبادا دیگران مسخره‌ام کنند، دلم نمی‌‌خواهد خیلی با آنان صمیمی باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "روز به روز بیشتر به این فکر می‌‌کنم که به زندگی خود پایان دهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "گاهی مسخره‌بازی در می‌آورم تا دیگران احساس بهتری داشته باشند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "وقتی به این فکر می‌کنم که در این دنیا تنهای تنها هستم احساس وحشت می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "چیزهای خوب، پایدار نیستند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "من تا به حال چند مورد درگیری با قانون داشته‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "دلم می‌خواست بیشتر قسمت‌های بدنم را با یک نفر دیگر عوض می‌کردم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بار‌ها بوده که آرزو کردم‌ام کاش کوچک‌تر از سن الان بودم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "ده سال است که هیچ ماشینی ندیده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "ظاهراً سایر هم‌سن و سال‌هایم بهتر از من می‌دانند که چه کسی هستند و از زندگی چه می‌خواهند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "اکثر اوقات افکار جنسی من را گیج و سرگردان می‌کند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "هر کاری را که بخواهم انجام می‌دهم بدون این‌که نگران تأثیر آن بر دیگران باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "خیلی از چیز‌ها که امروز خوب به نظر می‌‌رسند فردا بد خواهند شد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "فکر می‌‌کنم که خیلی از هم‌سالانم علاقه‌ای ندارند که من با آن‌ها باشیم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "وقت‌هایی بوده است که من بدون استفاده از حشیش (گل) نتوانسته‌ام روز را به پایان برسانم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "زندگی‌ام را از آنچه که بوده، خراب‌تر کرده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "ترجیح می‌دهم به من گفته شود چه کاری انجام دهم تا این که خودم در مورد آن تصمیم بگیرم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "در گذشته سعی کرده‌ام تا به زندگی خود پایان بدهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "هر هفته چندین بار پرخوری می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "اخیراً هر چیز کوچکی افسرده‌ام می‌‌کند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "سال گذشته ۳۰ بار از بالای اقیانوس اطلس عبور کرده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بعضی وقت‌ها آرزو می‌کنم‌ ای کاش فرد دیگری بودم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "از نظر من زور گفتن به دیگران برای نشان دادن قدرت اشکالی ندارد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از اعمال وحشتناکی که وقتی بچه بودم بزرگ‌تر‌ها با من کردند شرمنده می‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "سعی می‌کنم تا حد ممکن هر کاری را بی نقص و کامل انجام دهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از فرم و شکل بدنم راضی هستم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "وقتی که در مورد کارهایی که باید انجام دهم فکر می‌کنم غالباً دچار وحشت می‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "اخیراً و تقریباً همیشه عصبی بوده‌ام و زود از جا می‌پرم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "عادت دارم که مواد روان‌گردان را خودم تجربه کنم تا اثرات‌شان را بشناسم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "به قدری روی دیگران تاثیر می‌گذارم که هر چه می‌خواهم به من می‌دهند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "خیلی از همسالانم فرصت‌هایی پیدا می‌کنند که من به دست نمی‌‌آورم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "وقتی کودک بودم و چیزی نمی‌فهمیدم بقیه با من کارهای جنسی انجام می‌دادند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "اغلب آن‌قدر به غذا خوردن ادامه می‌دهم که احساس می‌کنم مریض هستم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "بعضی‌ها را در جمع مسخره می‌کنم، فقط به این خاطر که آن‌ها را سر جایشان بنشانم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "دوست ندارم آدمی که شده‌ام باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "به نظر می‌رسد به چیزهای خوبی که سر راهم قرار می‌گیرد گند می‌زنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "با این که دلم می‌خواهد دوستانی پیدا کنم، تقریباً دوستی ندارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از این‌که سکس جزئی از زندگی من شده، خوشحالم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "حاضرم از گرسنگی بمیرم اما از این‌که هستم لاغرتر بشوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "نسبت به سن خودم خیلی پخته هستم و می‌دانم که از زندگی چه می‌خواهم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از جهات مختلف نسبت به اکثر مردم برتر و بهتر هستم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "فکر می‌کنم که آینده من نا امید کننده است.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "پدر و مادر من خیلی تلاش کردند تا من را سر به راه بارآورند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "وقتی که نمی‌توانم به شیوه خودم کار کنم عصبانی می‌شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "اغلب از انجام بعضی از فعالیت‌های غیرقانونی لذت می‌برم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "فکر می‌کنم که بیش از اندازه به دیگران وابسته هستم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "من و دوستانم زمانی خیلی حال می‌کنیم که با هم بتوانیم مشروب بخوریم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "خیلی وقت‌ها احساس تنهایی و پوچی می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "احساس می‌کنم در زندگی بی هدف هستم و نمی‌دانم که دارم به کجا می‌روم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "دروغ گفتن یک امر کاملاً عادی است.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "درباره این‌که کجا و چگونه خودکشی کنم فکر کرده‌ام.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "از شروع کردن دعوا‌ها لذت می‌برم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "گاهی اوقات در خانواده کسی نگران و دلسوز من نیست.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "این خیلی خوب است که برای دوری از اشتباه، هر کاری را با یک روش منظم انجام بدهیم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "شاید سزاوار همه مشکلاتی باشم که به سرم می‌آید.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "درست",
+            "غلط"
+          ]
+        },
+        "user_answered": "1"
+      }
+    ],
+    "prerequisites": [
+      {
+        "type": "text",
+        "label": "gender",
+        "text": "جنسیت",
+        "answer": {
+          "type": "select",
+          "options": [
+            "زن",
+            "مرد"
+          ]
+        },
+        "alias": "gender",
+        "force": true,
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "label": "age",
+        "text": "سن",
+        "answer": {
+          "type": "number"
+        },
+        "alias": "age",
+        "force": true,
+        "user_answered": "16"
+      },
+      {
+        "type": "text",
+        "label": "education",
+        "text": "تحصیلات",
+        "answer": {
+          "type": "select",
+          "options": [
+            "ابتدایی اول",
+            "ابتدایی دوم",
+            "متوسطه اول",
+            "متوسطه دوم",
+            "دیپلم",
+            "کارشناسی",
+            "کارشناسی ارشد",
+            "پزشکی عمومی",
+            "متخصص",
+            "دکتری تخصصی",
+            "حوزوی مقدمات",
+            "حوزوی سطح۱",
+            "حوزوی سطح۲",
+            "حوزوی سطح۳",
+            "حوزوی سطح۴"
+          ]
+        },
+        "alias": "education",
+        "force": true,
+        "user_answered": "13"
+      },
+      {
+        "type": "text",
+        "label": "marital_status",
+        "text": "وضعیت تأهل",
+        "answer": {
+          "type": "select",
+          "options": [
+            "مجرد",
+            "متأهل"
+          ]
+        },
+        "alias": "marital_status",
+        "force": true,
+        "user_answered": "2"
+      }
+    ],
+    "cornometer": 0,
+    "score": {
+      "raw_1": 34,
+      "raw_2a": 29,
+      "raw_2b": 23,
+      "raw_3": 47,
+      "raw_4": 31,
+      "raw_5": 29,
+      "raw_6a": 33,
+      "raw_6b": 18,
+      "raw_7": 24,
+      "raw_8a": 32,
+      "raw_8b": 37,
+      "raw_9": 18,
+      "raw_a": 22,
+      "raw_b": 34,
+      "raw_c": 13,
+      "raw_d": 21,
+      "raw_e": 20,
+      "raw_f": 30,
+      "raw_g": 17,
+      "raw_h": 16,
+      "raw_aa": 22,
+      "raw_bb": 30,
+      "raw_cc": 23,
+      "raw_dd": 22,
+      "raw_ee": 26,
+      "raw_ff": 28,
+      "raw_gg": 17,
+      "raw_y": 7,
+      "raw_z": 8,
+      "raw_x": 185,
+      "raw_1_1": 3,
+      "raw_1_2": 4,
+      "raw_1_3": 5,
+      "raw_2a_1": 4,
+      "raw_2a_2": 7,
+      "raw_2a_3": 4,
+      "raw_2b_1": 3,
+      "raw_2b_2": 7,
+      "raw_2b_3": 3,
+      "raw_3_1": 5,
+      "raw_3_2": 6,
+      "raw_3_3": 3,
+      "raw_4_1": 4,
+      "raw_4_2": 6,
+      "raw_4_3": 2,
+      "raw_5_1": 7,
+      "raw_5_2": 4,
+      "raw_5_3": 2,
+      "raw_6a_1": 5,
+      "raw_6a_2": 3,
+      "raw_6a_3": 2,
+      "raw_6b_1": 2,
+      "raw_6b_2": 5,
+      "raw_6b_3": 2,
+      "raw_7_1": 3,
+      "raw_7_2": 6,
+      "raw_7_3": 4,
+      "raw_8a_1": 6,
+      "raw_8a_2": 2,
+      "raw_8a_3": 6,
+      "raw_8b_1": 4,
+      "raw_8b_2": 6,
+      "raw_8b_3": 1,
+      "raw_9_1": 6,
+      "raw_9_2": 5,
+      "raw_9_3": 4,
+      "v": 0,
+      "br_1": 74,
+      "br_2a": 65,
+      "br_2b": 71,
+      "br_3": 57,
+      "br_4": 48,
+      "br_5": 46,
+      "br_6a": 56,
+      "br_6b": 59,
+      "br_7": 27,
+      "br_8a": 74,
+      "br_8b": 76,
+      "br_9": 58,
+      "br_a": 50,
+      "br_b": 55,
+      "br_c": 32,
+      "br_d": 31,
+      "br_e": 76,
+      "br_f": 59,
+      "br_g": 53,
+      "br_h": 47,
+      "br_aa": 40,
+      "br_bb": 63,
+      "br_cc": 47,
+      "br_dd": 59,
+      "br_ee": 42,
+      "br_ff": 81,
+      "br_gg": 38,
+      "br_y": 25,
+      "br_z": 61,
+      "br_x": 0,
+      "br_1_1": 41,
+      "br_1_2": 78,
+      "br_1_3": 77,
+      "br_2a_1": 37,
+      "br_2a_2": 75,
+      "br_2a_3": 39,
+      "br_2b_1": 25,
+      "br_2b_2": 94,
+      "br_2b_3": 28,
+      "br_3_1": 76,
+      "br_3_2": 11,
+      "br_3_3": 7,
+      "br_4_1": 11,
+      "br_4_2": 29,
+      "br_4_3": 5,
+      "br_5_1": 47,
+      "br_5_2": 21,
+      "br_5_3": 15,
+      "br_6a_1": 46,
+      "br_6a_2": 24,
+      "br_6a_3": 12,
+      "br_6b_1": 59,
+      "br_6b_2": 55,
+      "br_6b_3": 43,
+      "br_7_1": 11,
+      "br_7_2": 20,
+      "br_7_3": 18,
+      "br_8a_1": 82,
+      "br_8a_2": 7,
+      "br_8a_3": 73,
+      "br_8b_1": 27,
+      "br_8b_2": 70,
+      "br_8b_3": 0,
+      "br_9_1": 75,
+      "br_9_2": 30,
+      "br_9_3": 54,
+      "xstatus": 0,
+      "brstatus": 2,
+      "status": 2      
+    },
+    "score_current_version": "1.0.0",
+    "score_last_version": "1.0.0"
+  }

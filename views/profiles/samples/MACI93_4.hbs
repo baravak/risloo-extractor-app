@@ -39,7 +39,7 @@
       <stop offset="1" stop-color="#E11D48"/>
     </linearGradient>
     <clipPath id="defaultBar">
-        {{bar 360 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
+        {{bar 300 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0)}}
     </clipPath>
   </defs>
   <g transform="translate(4, 20)"> 
@@ -97,6 +97,11 @@
             {{#each item.subs as | sub isub |}}
             <g transform="translate(0, {{math (math 104 '*' index) '+' (math 28 '*' isub)}})">
               {{bar sub.pixel 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=sub.style.key transform="translate(57, 0)"}}
+              {{#if (boolean sub.br '>=' 75)}}
+                <text x="{{math 51 '+' sub.pixel}}" y="8" text-anchor="start" dy=".3em" font-size="15" font-weight="500" fill="#FFFFFF">{{sub.br}}</text>
+              {{else}}
+                <text x="{{math 63 '+' sub.pixel}}" y="8" text-anchor="end" dy=".3em" font-size="15" font-weight="500" fill="{{sub.style.color}}">{{sub.br}}</text>
+              {{/if}}
             </g>
             {{/each}}
         {{/each}}

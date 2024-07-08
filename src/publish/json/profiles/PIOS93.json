@@ -1,0 +1,416 @@
+{
+    "id": "$X1HEQLUM6",
+    "scale": {
+      "id": "$PIOS-93",
+      "title": "پرسشنامه وسواس مذهبی اخلاقی پن"
+    },
+    "chain": null,
+    "version": "1",
+    "edition": "",
+    "edition_version": null,
+    "client": {
+      "id": "GH96XXXX",
+      "name": "مراجع"
+    },
+    "room": {
+      "id": "RS96XXXX",
+      "manager": {
+        "id": "GH96XXXXX",
+        "name": "درمانگر"
+      },
+      "center": {
+        "id": "RS96XXXX",
+        "acceptation": null,
+        "status": "active",
+        "type": "counseling_center",
+        "detail": {
+          "title": "مرکز درمانی"
+        }
+      },
+      "acceptation": null,
+      "status": "active",
+      "type": "room"
+    },
+    "case": null,
+    "code": null,
+    "created_at": 1719988509,
+    "started_at": 1719988515,
+    "scored_at": 1719989085,
+    "closed_at": 1719988515,
+    "total_amount": null,
+    "prepayment": false,
+    "purchased": true,
+    "amount": null,
+    "billing": null,
+    "description": "## دستور اجرای آزمون\n\nعبارات زیر درباره حالاتی است که برخی اوقات به افراد دست می‌دهد. لطفاً مشخص کنید که هر چند وقت یک‌بار این حالات را تجربه می‌کنید.",
+    "psychologist_description": null,
+    "items": [
+      {
+        "type": "text",
+        "text": "من نگرانم که افکار نادرست  به ذهنم خطور کند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "من می ترسم که فرد خبیثی باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "من می ترسم که رفتاری غیر اخلاقی از من سربزند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من شدیدا نیاز دارم که بارها و بارها به خاطر گناهانم استغفار بطلبم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من درباره بهشت یا جهنم رفتن نگرانم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من نگرانم که اگر در همه مواقع مطابق اصول اخلاقی رفتار نکنم، تنبیه شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "احساس گناه مانع می شود که من از چیزهایی که دوست دارم لذت ببرم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "افکار غیراخلاقی به ذهنم خطور می کنند و من نمی توانم از آنها خلاص شوم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "من می‌ترسم که رفتارم مورد پذیرش خداوند قرار نگیرد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من می‌ترسم که بدون آنکه متوجه بوده باشم رفتار ناشایستی از من سر زده باشد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من باید به سختی تلاش کنم تا از برخی افکار غیراخلاقی دوری گزینم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من بسیار نگرانم که کارهایی که انجام داده‌ام نادرست بوده باشند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "من می ترسم که از دستورات خداوند سرپیچی کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "من از داشتن افکار جنسی هراس دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "من می‌ترسم که هیچگاه رابطه خوبی با خداوند نداشته باشم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "1"
+      },
+      {
+        "type": "text",
+        "text": "من به خاطر افکار غیراخلاقی که داشته‌ام احساس گناه می‌کنم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "text": "من نگرانم که خداوند از دست من ناراحت باشد.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "3"
+      },
+      {
+        "type": "text",
+        "text": "من از داشتن افکار غیراخلاقی هراس دارم.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "4"
+      },
+      {
+        "type": "text",
+        "text": "من می‌ترسم که افکارم مورد پذیرش خداوند قرار نگیرند.",
+        "answer": {
+          "type": "optional",
+          "options": [
+            "هرگز",
+            "تقریباً هیچ‌گاه",
+            "گاهی اوقات",
+            "اغلب اوقات",
+            "همیشه"
+          ]
+        },
+        "user_answered": "3"
+      }
+    ],
+    "prerequisites": [
+      {
+        "type": "text",
+        "label": "gender",
+        "text": "جنسیت",
+        "answer": {
+          "type": "select",
+          "options": [
+            "زن",
+            "مرد"
+          ]
+        },
+        "alias": "gender",
+        "force": true,
+        "user_answered": "2"
+      },
+      {
+        "type": "text",
+        "label": "age",
+        "text": "سن",
+        "answer": {
+          "type": "number"
+        },
+        "alias": "age",
+        "force": true,
+        "user_answered": "8"
+      },
+      {
+        "type": "text",
+        "label": "education",
+        "text": "تحصیلات",
+        "answer": {
+          "type": "select",
+          "options": [
+            "ابتدایی اول",
+            "ابتدایی دوم",
+            "متوسطه اول",
+            "متوسطه دوم",
+            "دیپلم",
+            "کارشناسی",
+            "کارشناسی ارشد",
+            "پزشکی عمومی",
+            "متخصص",
+            "دکتری تخصصی",
+            "حوزوی مقدمات",
+            "حوزوی سطح۱",
+            "حوزوی سطح۲",
+            "حوزوی سطح۳",
+            "حوزوی سطح۴"
+          ]
+        },
+        "alias": "education",
+        "force": true,
+        "user_answered": "10"
+      },
+      {
+        "type": "text",
+        "label": "marital_status",
+        "text": "وضعیت تأهل",
+        "answer": {
+          "type": "select",
+          "options": [
+            "مجرد",
+            "متأهل"
+          ]
+        },
+        "alias": "marital_status",
+        "force": true,
+        "user_answered": "2"
+      }
+    ],
+    "cornometer": 0,
+    "score": {
+      "total": 32,
+      "total_percentage": 0.421,
+      "fear_of_sin": 16,
+      "fear_of_sin_percentage": 0.364,
+      "fear_of_god": 16,
+      "fear_of_god_percentage": 0.5
+    },
+    "score_current_version": "1.0.0",
+    "score_last_version": "1.0.0"
+  }

@@ -52,16 +52,16 @@
               <rect x="36.5" y=".5" width="47" height="79" stroke="{{item.style.border}}" fill="{{item.style.bg}}" rx="4" />
               <line x1="3" x2="33" y1="40" y2="40" stroke="{{item.style.border}}" />
               <text x="18" y="22" text-anchor="middle" dy=".3em" font-size="13" font-weight="500" fill="{{item.style.color}}" class="eng-font">{{item.label}}</text>
-              <text x="18" y="58" text-anchor="middle" dy=".3em" font-size="13" font-weight="600" fill="{{item.style.color}}" class="eng-font">{{item.br}}</text>
+              <text x="18" y="58" text-anchor="middle" dy=".3em" font-size="13" font-weight="600" fill="{{item.style.color}}">{{item.br}}</text>
               <text text-anchor="middle" dy=".3em" font-size="13" font-weight="500" fill="{{item.style.color}}" transform="rotate(-90) translate(-40, 60)">{{item.fa}}</text>
             </g>
             {{#each item.subs as | sub isub |}}
             <g transform="translate(0, {{math 28 '*' isub}})">
-              <text y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}" class="eng-font">{{sub.fa}}</text>
-              <text x="13" y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}" class="eng-font">-</text>
+              <text y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}">{{sub.fa}}</text>
+              <text x="13" y="8" text-anchor="start" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}">-</text>
               <text x="37" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="{{sub.style.weight}}" fill="{{sub.style.color}}" class="eng-font">{{sub.label}}</text>
               <rect x="370" width="36" height="16" rx="2" fill="{{sub.style.bg}}" />
-              <text x="388" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="400" fill="{{sub.style.color}}" class="eng-font">{{sub.raw}}</text>
+              <text x="388" y="8" text-anchor="middle" dy=".3em" font-size="13" font-weight="400" fill="{{sub.style.color}}">{{sub.raw}}</text>
               {{bar 300 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=sub.style.bg transform="translate(57, 0)"}}
             </g>
             

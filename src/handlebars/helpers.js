@@ -27,6 +27,7 @@ const prepend = require("./helpers/prepend");
 const polarToCartesian = require("./helpers/polarToCartesian");
 const abs = require("./helpers/abs");
 const getArrOfProp = require("./helpers/getArrOfProp");
+const indexOf = require("./helpers/indexOf");
 const displacePoint = require("./helpers/displacePoint");
 const normalizeAngle = require("./helpers/normalizeAngle");
 const withGroup = require("./helpers/withGroup");
@@ -71,6 +72,7 @@ const helpers = {
   polarToCartesian,
   abs,
   getArrOfProp,
+  indexOf,
   displacePoint,
   normalizeAngle,
   withGroup,

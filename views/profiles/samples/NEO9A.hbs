@@ -1,0 +1,31 @@
+{{#> layout}}
+    <defs>
+        {{#each factors as | item index |}}
+        <linearGradient id="bar-{{item.label.eng}}" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:{{item.label.startColor}};stop-opacity:1" />
+            <stop offset="100%" style="stop-color:{{item.label.endColor}};stop-opacity:1" />
+        </linearGradient>
+        {{/each}}
+    </defs>
+    <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+        {{#each factors as | item index |}}
+            <g transform="translate(0, {{math index '*' 133}})">
+                <rect width="866" height="117" rx="12" fill="none" stroke="#E5E7EB" />
+                <text y="69" x="108" dy=".95em" font-size="13" font-weight="500" fill="#4B5563">{{item.label.fr}}</text>
+                <text y="69" x="118" dy=".95em" text-anchor="end" font-size="13" font-weight="500" fill="#4B5563">-</text>
+                <text y="69" x="139" dy=".95em" text-anchor="middle" font-size="13" font-weight="500" fill="#4B5563">{{item.label.eng}}</text>
+                {{bar 672 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.label.bgColor transform="translate(155,69)"}}
+                {{#each ../steps as | step stepIndex |}}
+                    {{log (math 14 '*' (indexOf item.label.steps stepIndex))}}
+                    <line x1="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" y1="40.5" x2="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" y2="92.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+                    <text y="44" x="{{math 155 '+' (indexOf item.label.stepTitle stepIndex)}}" dy=".95em" text-anchor="middle" font-size="12" font-weight="{{ternary (boolean item.raw '===' stepIndex) 500 400}}" fill="{{ternary (boolean item.raw '===' stepIndex) item.label.textColor "#9CA3AF"}}">{{step}}</text>
+                    <text y="25" x="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" dy=".95em" text-anchor="middle" font-size="12" font-weight="400" fill="#9CA3AF">{{indexOf item.label.steps stepIndex}}</text>
+                {{/each}}
+                {{bar (math item.mark '*' 14) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.label.fill transform="translate(155,69)"}}
+                <text y="71" x="{{ternary (boolean item.mark '<=' 5) (math 161 '+' (math 14 '*' item.mark)) (math 149 '+' (math 14 '*' item.mark))}}" dy=".75em" text-anchor="{{ternary (boolean item.mark '<=' 5) 'end' 'start'}}" font-size="16" font-weight="500" fill="{{ternary (boolean item.mark '<=' 5) item.label.textColor '#FFFFFF'}}">{{item.mark}}</text>
+
+            </g>
+        {{/each}}
+
+    </g>
+{{/layout}}

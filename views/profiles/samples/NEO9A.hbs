@@ -16,7 +16,6 @@
                 <text y="69" x="139" dy=".95em" text-anchor="middle" font-size="13" font-weight="500" fill="#4B5563">{{item.label.eng}}</text>
                 {{bar 672 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.label.bgColor transform="translate(155,69)"}}
                 {{#each ../steps as | step stepIndex |}}
-                    {{log (math 14 '*' (indexOf item.label.steps stepIndex))}}
                     <line x1="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" y1="40.5" x2="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" y2="92.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
                     <text y="44" x="{{math 155 '+' (indexOf item.label.stepTitle stepIndex)}}" dy=".95em" text-anchor="middle" font-size="12" font-weight="{{ternary (boolean item.raw '===' stepIndex) 500 400}}" fill="{{ternary (boolean item.raw '===' stepIndex) item.label.textColor "#9CA3AF"}}">{{step}}</text>
                     <text y="25" x="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" dy=".95em" text-anchor="middle" font-size="12" font-weight="400" fill="#9CA3AF">{{indexOf item.label.steps stepIndex}}</text>

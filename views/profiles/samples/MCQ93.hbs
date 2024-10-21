@@ -1,0 +1,80 @@
+{{#> layout}}
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#F1F5F9CC;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#ECFEFFCC;stop-opacity:0.8" />
+        </linearGradient>
+        <linearGradient id="barBG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#E2E8F0;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#0E7490;stop-opacity:0.8" />
+        </linearGradient>
+        <clipPath id="bar">
+             {{bar 400 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill="white"}}
+        </clipPath>
+        <filter id="barBorder" x="0" y="0" width="7" height="310" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="1"/>
+            <feGaussianBlur stdDeviation="1.5"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="dshadow"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="dshadow" result="shape"/>
+        </filter>
+        <filter id="totalBarBorder" x="0.5" y="0.5" width="34" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="2"/>
+            <feGaussianBlur stdDeviation="3"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_819_87196"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_819_87196" result="shape"/>
+        </filter>
+    </defs>
+    <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+        <rect y="20" x="184" width="400" height="304" fill="url(#bg)" />
+        <g>
+            <text x="182" font-weight="400" font-size="12" dy="0.95em" text-anchor="middle" fill="#94A3B8">0</text>
+            <text x="384" font-weight="400" font-size="12" dy="0.95em" text-anchor="middle" fill="#94A3B8">50 ٪</text>
+            <text x="584" font-weight="400" font-size="12" dy="0.95em" text-anchor="middle" fill="#94A3B8">100 ٪</text>
+            <g transform="translate(184, 44)">
+                {{#each factors as | item index |}}
+                <g transform="translate(0, {{math index '*' 40}})">
+                    {{bar 400 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill="rgba(0, 0, 0, 0.04)"}}
+                </g>
+                {{/each}}
+            </g>
+            {{#forLoop 0 10 1}}
+                <line x1="{{math 223 '+' (math i '*' 40)}}" y1="20" x2="{{math 223 '+' (math i '*' 40)}}" y2="323" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            {{/forLoop}}
+        </g>
+        <g transform="translate(175, 44)">
+            {{#each factors as | item index |}}
+            <g transform="translate(0, {{math index '*' 40}})">
+                <text font-weight="400" font-size="13" dy="0.95em" text-anchor="start" fill="#475569">{{item.label.fr}}</text>
+                {{bar (math 4 '*' item.percentage) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill="url(#barBG)" transform="translate(9, 0)" clip-path="url(#bar)"}}
+                <text x="{{ternary (boolean item.percentage '<=' 10) (math (math 4 '*' item.percentage) '+' 15) (math (math 4 '*' item.percentage) '+' 5)}}" font-weight="500" font-size="13" dy="0.95em" text-anchor="{{ternary (boolean item.percentage '<=' 10) 'end' 'start'}}" fill="{{ternary (boolean item.percentage '<=' 10) '#0E7490' '#FFFFFF '}}">{{item.percentage}} ٪</text>
+                <text x="416.5" dy="0.85em" text-anchor="start" direction="ltr">
+                    <tspan font-weight="700" font-size="18" fill="#0E7490">{{item.mark}}</tspan>
+                    <tspan font-weight="400" font-size="13" fill="#64748B"> / {{item.label.max}}</tspan>
+                </text>
+            </g>
+            {{/each}}
+        </g>
+        <g opacity="0.5" filter="url(#barBorder)"  transform="translate(181, 18.5)">
+            <line x1="2.5" y1="3.5" x2="2.5" y2="306.5" stroke="white" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(737, 34.5)">
+            <text x="-6" font-weight="400" font-size="12" dy="0.45em" text-anchor="start" fill="#475569">210</text>
+            <text x="24" y="{{math 252 '-' (math total.mark '*' 1.2)}}" font-weight="600" font-size="18" dy="0" text-anchor="end" fill="#334155">{{total.mark}}</text>
+            <text x="24" y="{{math 252 '-' (math total.mark '*' 1.2)}}" font-weight="400" font-size="12" dy="1.2em" text-anchor="end" fill="#64748B">٪{{total.percentage}}</text>
+            <text x="-253" y="-9" font-weight="400" font-size="12" dy="0" text-anchor="end" fill="#475569" transform="rotate(-90)">نمره کل</text>
+            {{bar 18 252 (object tr=2 br=0 bl=0 tl=2) (toRad 0) fill="#F1F5F9"}}
+            {{bar 18 (math total.mark '*' 1.2) (object tr=0 br=2 bl=2 tl=0) (toRad 0) fill="#475569" transform="rotate(180, 9, 126)"}}
+            <g opacity="0.5" filter="url(#totalBarBorder)" transform="translate(-6, 245)">
+                <path d="M5.5 7.5H25.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </g>
+        </g>
+    </g>
+{{/layout}}

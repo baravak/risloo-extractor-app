@@ -94,15 +94,15 @@
     </g>
     <line x1="367" y1="3" x2="367" y2="676" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
 
-    <g>
+    <g transform="translate(0, 20)">
       {{#with items.family as | item |}}
       <g transform="translate({{math 38.5 '+' (math 80.5 '*' 0)}}, 0)">
-        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.5)}}" dy=".27em" text-anchor="middle">
+        <text direction="ltr" x="16" y="{{math 270 '-' (math item.label.max '*' 2)}}" dy=".27em" text-anchor="middle">
           <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
           <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
         </text>
-        {{bar 32 (math item.label.max '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
-        {{bar 32 (math item.mark '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
+        {{bar 32 (math item.label.max '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
         <g transform="translate(0, 316)">
           <text y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">
             <tspan x="17.5">هشیاری نسبت به</tspan>
@@ -118,12 +118,12 @@
 
       {{#with items.love as | item |}}
       <g transform="translate({{math 38.5 '+' (math 80.5 '*' 1)}}, 0)">
-        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.5)}}" dy=".27em" text-anchor="middle">
+        <text direction="ltr" x="16" y="{{math 270 '-' (math item.label.max '*' 2)}}" dy=".27em" text-anchor="middle">
           <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
           <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
         </text>
-        {{bar 32 (math item.label.max '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
-        {{bar 32 (math item.mark '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
+        {{bar 32 (math item.label.max '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
         <g transform="translate(0, 316)">
           <text x="17.5" y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">مهردهی</text>
           <rect height="16" width="35" fill="#F0F9FF" rx="4" />
@@ -134,12 +134,12 @@
 
       {{#with items.power as | item |}}
       <g transform="translate({{math 38.5 '+' (math 80.5 '*' 2)}}, 0)">
-        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.5)}}" dy=".27em" text-anchor="middle">
+        <text direction="ltr" x="16" y="{{math 270 '-' (math item.label.max '*' 2)}}" dy=".27em" text-anchor="middle">
           <tspan fill="#0369A1" font-size="16" font-weight="500">{{item.mark}}</tspan>
           <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
         </text>
-        {{bar 32 (math item.label.max '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
-        {{bar 32 (math item.mark '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
+        {{bar 32 (math item.label.max '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#softblue)" transform="translate(32, 285)"}}
         <g transform="translate(0, 316)">
           <text x="17.5" y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">ادراک قدرت</text>
           <rect height="16" width="35" fill="#F0F9FF" rx="4" />
@@ -150,12 +150,12 @@
 
       {{#with items.sexual as | item |}}
       <g transform="translate({{math 38.5 '+' (math 80.5 '*' 3)}}, 0)">
-        <text direction="ltr" x="16" y="{{math 273.5 '-' (math item.label.max '*' 1.5)}}" dy=".27em" text-anchor="middle">
+        <text direction="ltr" x="16" y="{{math 270 '-' (math item.label.max '*' 2)}}" dy=".27em" text-anchor="middle">
           <tspan fill="#1d4ed8" font-size="16" font-weight="500">{{item.mark}}</tspan>
           <tspan fill="#475569" font-size="12" font-weight="400">/ {{item.label.max}}</tspan>
         </text>
-        {{bar 32 (math item.label.max '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
-        {{bar 32 (math item.mark '*' 1.5 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#hardblue)" transform="translate(32, 285)"}}
+        {{bar 32 (math item.label.max '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="#F1F5F9" transform="translate(32, 285)"}}
+        {{bar 32 (math item.mark '*' 2 ) (object tl=0 tr=0 br=8 bl=8) (toRad 180) fill="url(#hardblue)" transform="translate(32, 285)"}}
         <g transform="translate(0, 316)">
           <text y="-12" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">
             <tspan x="17.5">توجه ایمنی</tspan>
@@ -175,16 +175,16 @@
 
       <g transform="translate(7.5, 420)">
         <text y="-14" dy=".35em" text-anchor="end" font-size="13" font-weight="400" fill="#334155">نمره کل</text>
-        <text y="-14" x="320" dy=".35em" text-anchor="start" font-size="13" font-weight="400" fill="#334155">400</text>
+        <text y="-14" x="320" dy=".35em" text-anchor="start" font-size="13" font-weight="400" fill="#334155">{{total.label.max}}</text>
         {{bar 320 20 (object tl=0 tr=10 br=10 bl=0) (toRad 0) fill="#F1F5F9" }}
         {{bar (math total.mark '*' 0.8) 20 (object tl=0 tr=10 br=10 bl=0) (toRad 0) fill="#64748B" }}
         <text y="36" x="{{math total.mark '*' 0.8}}" dy=".35em" text-anchor="middle" font-size="20" font-weight="500" fill="#334155">{{total.mark}}</text>
         <text y="55" x="{{math total.mark '*' 0.8}}" dy=".35em" text-anchor="middle" font-size="12" font-weight="400" fill="#334155">%{{total.percentage}}</text>
       </g>
     </g>
-    <g transform="translate(270.5, 575)">
+    <g transform="translate(270.5, 595)">
       <text y="-60" text-anchor="end" font-size="12" font-weight="400" fill="#475569">0</text>
-      <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">40</text>
+      <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">{{f4_1.rawSpec.maxValue}}</text>
       <text y="-.2em" text-anchor="middle">
         <tspan x="0" font-size="20" font-weight="500" fill="#2563EB">{{f4_1.mark}}</tspan>
         <tspan x="0" y="1em" font-size="16" font-weight="400" fill="#64748B">%{{f4_1.percentage}}</tspan>
@@ -195,10 +195,9 @@
       {{/with}}
       <text y="75" text-anchor="middle" font-size="13" font-weight="400" fill="#475569">توجه / ایمنی‌بخشی</text>
     </g>
-    
     <g transform="translate(92.5, 575)">
       <text y="-60" text-anchor="end" font-size="12" font-weight="400" fill="#475569">0</text>
-      <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">40</text>
+      <text x="-45" y="-8" text-anchor="middle" font-size="12" font-weight="400" fill="#475569">{{f4_2.rawSpec.maxValue}}</text>
       <text y="-.2em" text-anchor="middle">
         <tspan x="0" font-size="20" font-weight="500" fill="#2563EB">{{f4_2.mark}}</tspan>
         <tspan x="0" y="1em" font-size="16" font-weight="400" fill="#64748B">%{{f4_2.percentage}}</tspan>

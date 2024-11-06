@@ -14,20 +14,20 @@ class JSIQ9Q extends Profile {
     L2: { eng: "section_1_negative_total",  },
     L3: { eng: "section_1_negative_average",  },
 
-    L4 : {eng: "section_2_total", fr: "", max:400},
+    L4 : {eng: "section_2_total", fr: "", max:320},
     L5 : {eng: "section_2_percentage", fr: "", max:0},
-    L6 : {eng: "section_2_family_system_consciousness_total", fr: "", max:25},
+    L6 : {eng: "section_2_family_system_consciousness_total", fr: "", max:20},
     L7 : {eng: "section_2_family_system_consciousness_percentage", fr: "", max:0},
-    L8 : {eng: "section_2_love_giving_total", fr: "", max:120},
+    L8 : {eng: "section_2_love_giving_total", fr: "", max:96},
     L9 : {eng: "section_2_love_giving_percentage", fr: "", max:0},
-    L10 : {eng: "section_2_power_perception_total", fr: "", max:175},
+    L10 : {eng: "section_2_power_perception_total", fr: "", max:140},
     L12 : {eng: "section_2_power_perception_percentage", fr: "", max:0},
-    L13 : {eng: "section_2_sexual_safety_awareness_total", fr: "", max:80},
+    L13 : {eng: "section_2_sexual_safety_awareness_total", fr: "", max:64},
     L14 : {eng: "section_2_sexual_safety_awareness_percentage", fr: "", max:0},
 
-    L15 : {eng: "section_2_male_safety_awareness_total", fr: "", max:40},
+    L15 : {eng: "section_2_male_safety_awareness_total", fr: "", max:32},
     L16 : {eng: "section_2_male_safety_awareness_percentage", fr: "", max:0},
-    L17 : {eng: "section_2_perceived_safety_from_spouse_total", fr: "", max:40},
+    L17 : {eng: "section_2_perceived_safety_from_spouse_total", fr: "", max:32},
     L18 : {eng: "section_2_perceived_safety_from_spouse_percentage", fr: "", max:0},
 
   };
@@ -71,7 +71,7 @@ class JSIQ9Q extends Profile {
       dataset,
     } = this;
     const rawSpec = {
-      maxValue: 40,
+      maxValue: 32,
       circle: {
         R: 55,
         r: 55 * .65,

@@ -2,7 +2,7 @@ const { Profile, Mappings } = require("../Profile");
 
 class RIASEC93 extends Profile {
   // Number of pages
-  static pages = 1;
+  static pages = 2;
 
   // Labels of the sample
   labels = {
@@ -29,15 +29,27 @@ class RIASEC93 extends Profile {
     /* calculating its dimensions carefully is of great importance */
     profile: {
       get dimensions() {
-        return {
-          width: 602 + 2 * this.padding.x,
-          height: 595 + 2 * this.padding.y,
-        };
+        return [
+          {
+          width: 602 + 2 * this.padding[0].x,
+          height: 595 + 2 * this.padding[0].y,
+        },
+        {
+          width: 592 + 2 * this.padding[1].x,
+          height: 523 + 2 * this.padding[1].y,
+        },
+        ];
       },
-      padding: {
-        x: 0,
-        y: 51,
-      },
+      padding: [
+        {
+          x: 0,
+          y: 51,
+        },
+        {
+          x: 147,
+          y: 96,
+        },
+      ],
     },
     /* "items" is the general term used for independent data elements to be drawn in the profile */
     items: {
@@ -136,9 +148,54 @@ class RIASEC93 extends Profile {
         marks: dataset.questions.slice(222, 222 + 6).map((q) => +q.user_answered),
       },
     ];
+    const itemObject = {}
+    let last = undefined
+    const list = items.map(item => item.mark).sort((a, b) => b - a).filter((mark, i) => {
+      if(i <= 2){
+        last = mark
+        return true
+      }
+      if(mark === last){
+        return true
+      }else{
+        return false
+      }
+    })
+    items.forEach(item => itemObject[item.label.eng] = item)
+    const itemRadians = [
+      itemObject.artistic,
+      itemObject.social,
+      itemObject.enterprising,
+      itemObject.conventional,
+      itemObject.realistic,
+      itemObject.investigative
+    ].map((item, i) =>{
+      const mark = (item.mark ?? 0) * 207 / 50
+      item.rad = pointsToCoordinates(mark, i * 60)
+      item.bold = list.includes(item.mark)
+      item.percentage = Math.round((item.mark ?? 0) * 100) / 50
+      return item
+    })
 
-    return [{ items, questionItems }];
+    return [{ items, questionItems, titleAppend: ' - ۱' }, {itemRadians, titleAppend: ' - ۲'}];
   }
+}
+
+function pointsToCoordinates(mark, angle) {
+  angle = angle * Math.PI / 180
+  const start = [
+    296 + 31 * Math.cos(angle),
+    261.5 + 31 * Math.sin(angle)
+  ]
+  const end = [
+    start[0] + mark * Math.cos(angle),
+    start[1] + mark * Math.sin(angle)
+  ]
+  const value = [
+    end[0] + 12 * Math.cos(angle),
+    end[1] + 12 * Math.sin(angle)
+  ]
+  return {start, end, value}
 }
 
 module.exports = RIASEC93;

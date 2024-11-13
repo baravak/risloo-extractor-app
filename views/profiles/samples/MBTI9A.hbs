@@ -1,0 +1,43 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(224, 0)">
+        <rect x="0" y="0" width="142" height="60" rx="8" fill="#F0FDFA" />
+        <text x="71" y="16" dy=".7em" font-size="40" font-weight="800" fill="#0D9488" text-anchor="middle">{{report.mark}}</text>
+        <text x="71" y="72" dy="1em" font-size="16" font-weight="400" fill="#64748B" text-anchor="middle">{{report.label.fr}}</text>
+    </g>
+    <g transform="translate(0, 135)">
+    <rect x="0" y="0" width="590" height="486" rx="20" fill="none" stroke="#E2E8F0" stroke-width="1" />
+        <g transform="translate(0, 48)">
+            {{#each items as |item index|}}
+            <g transform="translate(132, {{math index '*' 114}})">
+                <g>
+                    <rect x="0" y="0" width="36" height="36" rx="4" fill="{{ternary item.[0].bold '#0D9488' '#F5F3FF'}}" />
+                    <text x="18" y="18" dy=".35em" font-size="24" font-weight="700" fill="{{ternary item.[0].bold '#FFFFFF' '#7C3AED'}}" text-anchor="middle">{{item.[0].eng}}</text>
+                    <text x="18" y="44" dy=".8em" font-size="13" font-weight="400" fill="{{ternary item.[0].bold '#0D9488' '#7C3AED'}}" text-anchor="middle">{{ternary (boolean item.[0].mark '===' 0) '' item.[0].mark}}</text>
+                    <text x="-12" y="0" dy=".8em" font-size="16" font-weight="600" fill="#475569" text-anchor="start">{{item.[0].percentage}} ٪</text>
+                    <text x="-12" y="18" dy=".8em" font-size="16" font-weight="400" fill="#475569" text-anchor="start">{{item.[0].label.fr}}</text>
+                </g>
+                <g transform="translate(37, 0)">
+                    {{#forLoop 1 16 1}}
+                        {{#if item.[0].bold}}
+                            <rect x="{{math i '*' 15}}" y="0" width="12" height="36" rx="4" fill="{{ternary (boolean item.[0].blockItem '>' i) '#0D9488' '#7C3AED'}}" />
+                        {{else}}
+                            <rect x="{{math i '*' 15}}" y="0" width="12" height="36" rx="4" fill="{{ternary (boolean (math 15 '-' item.[0].blockItem) '<' i) '#0D9488' '#7C3AED'}}" />
+                        {{/if}}
+                    {{/forLoop}}
+                </g>
+                <g transform="translate(290, 0)">
+                    <rect x="0" y="0" width="36" height="36" rx="4" fill="{{ternary item.[1].bold '#0D9488' '#F5F3FF'}}" />
+                    <text x="18" y="18" dy=".35em" font-size="24" font-weight="700" fill="{{ternary item.[1].bold '#FFFFFF' '#7C3AED'}}" text-anchor="middle">{{item.[1].eng}}</text>
+                    <text x="18" y="44" dy=".8em" font-size="13" font-weight="400" fill="{{ternary item.[1].bold '#0D9488' '#7C3AED'}}" text-anchor="middle">{{ternary (boolean item.[1].mark '===' 0) '' item.[1].mark}}</text>
+                    <text x="48" y="0" dy=".8em" font-size="16" font-weight="600" fill="#475569" text-anchor="end">{{item.[1].percentage}} ٪</text>
+                    <text x="48" y="18" dy=".8em" font-size="16" font-weight="400" fill="#475569" text-anchor="end">{{item.[1].label.fr}}</text>
+                </g>
+            </g>
+            {{/each}}
+        </g>
+    </g>
+  </g>
+
+{{/layout}}

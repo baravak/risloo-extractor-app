@@ -21,7 +21,7 @@
                 <g transform="translate(37, 0)">
                     {{#forLoop 1 16 1}}
                         {{#if item.[0].bold}}
-                            <rect x="{{math i '*' 15}}" y="0" width="12" height="36" rx="4" fill="{{ternary (boolean item.[0].blockItem '>' i) '#0D9488' '#7C3AED'}}" />
+                            <rect x="{{math i '*' 15}}" y="0" width="12" height="36" rx="4" fill="{{ternary (boolean item.[0].blockItem '>=' i) '#0D9488' '#7C3AED'}}" />
                         {{else}}
                             <rect x="{{math i '*' 15}}" y="0" width="12" height="36" rx="4" fill="{{ternary (boolean (math 15 '-' item.[0].blockItem) '<' i) '#0D9488' '#7C3AED'}}" />
                         {{/if}}

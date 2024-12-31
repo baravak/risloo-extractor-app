@@ -1,0 +1,25 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    <g transform="translate(67, 13)">
+        <polygon points="{{largePolygon}}" fill="none" stroke="#94A3B8" stroke-width="1.2" />
+        {{#each lines}}
+            <line x1="240" y1="240" x2="{{x}}" y2="{{y}}" stroke-dasharray="8 8" stroke="#E2E8F0" stroke-width="1.2" />
+        {{/each}}
+        <polygon points="{{centerPolygon}}" fill="white" stroke="#CBD5E1" stroke-width="1.2" />
+        <polygon points="{{points}}" fill="rgba(79, 70, 229, 0.15)" stroke="#4F46E5" stroke-width="1.2" />
+        <text x="240" y="240" text-anchor="middle" dy=".3em" font-size="14" font-weight="500" fill="#CBD5E1">0</text>
+
+        {{#each items}}
+            <circle cx="{{x}}" cy="{{y}}" r="14" fill="white" stroke="#4F46E5" stroke-width="2" />
+            <text x="{{x}}" y="{{y}}" text-anchor="middle" dy=".3em" font-size="14" font-weight="600" fill="#4F46E5">{{mark}}</text>
+            <g transform="translate({{xl}}, {{yl}})">
+                <text x="0" text-anchor="middle" font-size="14" font-weight="500" fill="#334155">{{title}}</text>
+                <text x="0" y="1.9em" text-anchor="middle" font-size="12" font-weight="500" fill="#64748B">{{plabel}} ٪</text>
+            </g>
+        {{/each}}
+    </g>
+  </g>
+
+{{/layout}}

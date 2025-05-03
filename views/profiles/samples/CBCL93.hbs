@@ -1,0 +1,220 @@
+{{#> layout}}
+<defs>
+    {{#each statusColor as |bar index|}}
+        <linearGradient id="gradient-{{index}}" gradientTransform="rotate(90)">
+            <stop offset="0%"  stop-color="{{bar.[0]}}" />
+            <stop offset="100%" stop-color="{{bar.[1]}}" />
+        </linearGradient>
+    {{/each}}
+    <clipPath id="bar24x165">
+        {{bar 24 165 (object tl=4 tr=4 bl=0 br=0) (toRad 0) }}
+    </clipPath>
+    <clipPath id="bar24x162">
+        {{bar 24 162 (object tl=4 tr=4 bl=0 br=0) (toRad 0) }}
+    </clipPath>
+    <filter id="lineShadow1" x="0" y="0" width="345" height="7" filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="lineShadow1-bf" />
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha" />
+        <feOffset dy="-1" />
+        <feGaussianBlur stdDeviation="1.5" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
+        <feBlend mode="normal" in2="lineShadow1-bf" result="lineShadow1-ed" />
+        <feBlend mode="normal" in="SourceGraphic" in2="lineShadow1-ed" result="shape" />
+    </filter>
+    <filter id="lineShadow2" x="0" y="0" width="195" height="7" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="lineShadow1-bf" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+            <feOffset dy="-1" />
+            <feGaussianBlur stdDeviation="1.5" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
+            <feBlend mode="normal" in2="lineShadow1-bf" result="lineShadow1-ed" />
+            <feBlend mode="normal" in="SourceGraphic" in2="lineShadow1-ed" result="shape" />
+        </filter>
+    <filter id="lineShadow3" x="0" y="0" width="499" height="7" filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="lineShadow1-bf" />
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha" />
+        <feOffset dy="-1" />
+        <feGaussianBlur stdDeviation="1.5" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
+        <feBlend mode="normal" in2="lineShadow1-bf" result="lineShadow1-ed" />
+        <feBlend mode="normal" in="SourceGraphic" in2="lineShadow1-ed" result="shape" />
+    </filter>
+</defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <rect width="863" x="0" y="360" height="1" rx="0.5" fill="#E2E8F0"/>
+    <g transform="translate(24, 0)">
+        <text font-size="14" font-weight="600" fill="#334155" transform="translate(12, 32.5), rotate(-90, 0, 0)">
+            مقیاس‌های مبتنی بر تجربه
+        </text>
+        <g transform="translate(80, 0)">
+            <rect height="42" width="339" x="60" y="46" fill="#FEF2F2" opacity=".25" />
+            <text x="52" y="1" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">رتبه درصدی</text>
+            <path d="m 60.5 7 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="m 60.5 27 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="52" y="21" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">نمره خام</text>
+            <text x="52" y="46.5" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">90</text>
+            <text x="68" y="61" dy=".77em" font-size="12" font-weight="400" fill="#B91C1C" text-anchor="end">بالینی</text>
+            <rect height="25" width="339" x="60" y="88" fill="#FEFCE8" opacity=".25" />
+            <text x="52" y="83.5" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">69</text>
+            <text x="68" y="94" dy=".77em" font-size="12" font-weight="400" fill="#CA8A04" text-anchor="end">مرزی</text>
+            <rect height="99" width="339" x="60" y="113" fill="#ECFDF5" opacity=".25" />
+            <text x="52" y="108" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">64</text>
+            <text x="68" y="140" dy=".77em" font-size="12" font-weight="400" fill="#15803D" text-anchor="end">بهنجار</text>
+            <text x="52" y="176" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">30</text>
+            <text x="52" y="206" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">0</text>
+            <g transform="translate(121, 46)">
+                {{#each group1 as |item index|}}
+                    <g transform="translate({{math 34 '*' index}}, 0)">
+                        {{bar 24 165 (object tl=4 tr=4 bl=0 br=0) (toRad 0) fill='#F1F5F9' clip-path=item.clipPath}}
+                    </g>
+                {{/each}}
+            </g>
+            <line x1="59.5" y1="45.5" x2="398.5" y2="45.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="59.5" y1="88.5" x2="398.5" y2="88.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="59.5" y1="113.5" x2="398.5" y2="113.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="59.5" y1="181.5" x2="398.5" y2="181.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <g transform="translate(121, 0)">
+                <g transform="translate(0, 46)">
+                    {{#each group1 as |item index|}}
+                        <g transform="translate({{math 34 '*' index}}, 0)">
+                            <rect x="0" y="-45.5" width="24" height="14" fill="#ffffff" stroke="#94A3B8" stroke-width="1" rx="4"/>
+                            <text x="12" y="-38.5" dy=".33em" font-size="10" font-weight="400" fill="#64748B" text-anchor="middle" direction="ltr">{{item.pr}}</text>
+                            
+                            <rect x="0" y="-26" width="24" height="14" fill="{{item.rawColor}}" rx="4"/>
+                            <text x="12" y="-19" dy=".33em" font-size="12" font-weight="400" fill="#ffffff" text-anchor="middle">{{item.value}}</text>
+                            
+                            {{bar 24 item.height (object tl=4 tr=4 bl=0 br=0) (toRad 0) transform=item.transform fill=item.fill clip-path=item.clipPath}}
+                            <text x="12" y="{{math (math 165 '-' item.height) '+' 6}}" dy=".77em" font-size="12" font-weight="400" fill="#ffffff" text-anchor="middle">{{item.t}}</text>
+                            <text x="-174" y="6" dy=".77em" font-size="12" font-weight="400" fill="#475569" text-anchor="start" transform="rotate(-90, 0, 0)">{{item.label}}</text>
+                        </g>
+                    {{/each}}
+                </g>
+            </g>
+            <g opacity="0.5" filter="url(#lineShadow1)" transform="translate(56.5, 207.5)">
+                <line x1="3.5" y1="4.5" x2="341.5" y2="4.5" stroke="white" stroke-linecap="round" />
+            </g>
+        </g>
+        <g transform="translate(527, 0)">
+            <g transform="translate(0, 3)">
+                <rect height="54" width="189" x="60" y="46" fill="#FEF2F2" opacity=".25" />
+                <text x="52" y="1" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">رتبه درصدی</text>
+                <path d="m 60.5 7 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="m 60.5 27 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="52" y="21" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">نمره خام</text>
+                <text x="52" y="46.5" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">90</text>
+                <text x="68" y="66" dy=".77em" font-size="12" font-weight="400" fill="#B91C1C" text-anchor="end">بالینی</text>
+
+                {{!-- <rect height="20" width="189" x="60" y="100" fill="#FEFCE8" opacity=".25" /> --}}
+                <text x="52" y="95.5" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">63</text>
+                <text x="68" y="103" dy=".77em" font-size="12" font-weight="400" fill="#CA8A04" text-anchor="end">مرزی</text>
+
+                <rect height="88" width="189" x="60" y="120" fill="#ECFDF540" opacity=".25" />
+                <text x="52" y="115" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">59</text>
+                <text x="68" y="142" dy=".77em" font-size="12" font-weight="400" fill="#15803D" text-anchor="end">بهنجار</text>
+                <text x="52" y="176" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">30</text>
+                <text x="52" y="203" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">0</text>
+                <g transform="translate(121, 46)">
+                        {{#each group2 as |item index|}}
+                            <g transform="translate({{math 40 '*' index}}, 0)">
+                                {{bar 24 162 (object tl=4 tr=4 bl=0 br=0) (toRad 0) fill='#F1F5F9' clip-path=item.clipPath}}
+                            </g>
+                        {{/each}}
+                    </g>
+                <line x1="59.5" y1="45.5" x2="250" y2="45.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+                <line x1="59.5" y1="100.5" x2="250" y2="100.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+                <line x1="59.5" y1="120.5" x2="250" y2="120.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+                <line x1="59.5" y1="178.5" x2="250" y2="178.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+                <g transform="translate(121, 46)">
+                    {{#each group2 as |item index|}}
+                        <g transform="translate({{math 40 '*' index}}, 0)">
+                            <rect x="0" y="-45.5" width="24" height="14" fill="#ffffff" stroke="#94A3B8" stroke-width="1" rx="4"/>
+                            <text x="12" y="-38.5" dy=".33em" font-size="10" font-weight="400" fill="#64748B" text-anchor="middle" direction="ltr">{{item.pr}}</text>
+                            
+                            <rect x="0" y="-26" width="24" height="14" fill="{{item.rawColor}}" rx="4"/>
+                            <text x="12" y="-19" dy=".33em" font-size="12" font-weight="400" fill="#ffffff" text-anchor="middle">{{item.value}}</text>
+                            {{bar 24 item.height (object tl=4 tr=4 bl=0 br=0) (toRad 0) transform=item.transform fill=item.fill clip-path=item.clipPath}}
+                            <text x="12" y="{{math (math 162 '-' item.height) '+' 6}}" dy=".77em" font-size="12" font-weight="400" fill="#ffffff" text-anchor="middle">{{item.t}}</text>
+                            {{#if (boolean index '===' 2)}}
+                                <text x="-174" y="6" dy=".77em" font-size="12" font-weight="400" fill="#475569" text-anchor="start" transform="rotate(-90, 0, 0)">مشکلات کلی</text>
+                                <text x="-180" y="22" dy=".77em" font-size="12" font-weight="400" fill="#475569" text-anchor="start" transform="rotate(-90, 0, 0)">(نمره کل)</text>
+                            {{else}}
+                                <text x="-174" y="6" dy=".77em" font-size="12" font-weight="400" fill="#475569" text-anchor="start" transform="rotate(-90, 0, 0)">{{item.label}}</text>
+                            {{/if}}
+                        </g>
+                    {{/each}}
+                </g>
+                <g opacity="0.5" filter="url(#lineShadow2)" transform="translate(56.5, 204.5)">
+                    <line x1="3.5" y1="4.5" x2="191.5" y2="4.5" stroke="white" stroke-linecap="round" />
+                </g>
+            </g>
+        </g>
+    </g>
+    <g transform="translate(24, 401)">
+        <text font-size="14" font-weight="600" fill="#334155" transform="translate(12, 33.5), rotate(-90, 0, 0)">
+            مقیاس‌های مبتنی بر DSM
+        </text>
+        <g transform="translate(168, 0)">
+            <rect height="42" width="493" x="60" y="46" fill="#FEF2F2" opacity=".25" />
+            <text x="52" y="1" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">رتبه درصدی</text>
+            <path d="m 60.5 7 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="m 60.5 27 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="52" y="21" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">نمره خام</text>
+            <text x="52" y="46.5" dy=".6em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">90</text>
+            <text x="68" y="61" dy=".77em" font-size="12" font-weight="400" fill="#B91C1C" text-anchor="end">بالینی</text>
+            <rect height="25" width="493" x="60" y="88" fill="#FEFCE8" opacity=".25" />
+            <text x="52" y="83.5" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">69</text>
+            <text x="68" y="94" dy=".9em" font-size="12" font-weight="400" fill="#CA8A04" text-anchor="end">مرزی</text>
+            <rect height="99" width="493" x="60" y="113" fill="#ECFDF5" opacity=".25" />
+            <text x="52" y="108" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">64</text>
+            <text x="68" y="140" dy=".77em" font-size="12" font-weight="400" fill="#15803D" text-anchor="end">بهنجار</text>
+            <text x="52" y="176" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">30</text>
+            <text x="52" y="206" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">0</text>
+            <g transform="translate(145, 46)">
+                {{#each group3 as |item index|}}
+                    <g transform="translate({{math 72 '*' index}}, 0)">
+                        {{bar 24 165 (object tl=4 tr=4 bl=0 br=0) (toRad 0) fill='#F1F5F9' clip-path=item.clipPath}}
+                    </g>
+                {{/each}}
+            </g>
+            <line x1="59.5" y1="45.5" x2="553" y2="45.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="59.5" y1="88.5" x2="553" y2="88.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="59.5" y1="113.5" x2="553" y2="113.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="59.5" y1="181.5" x2="553" y2="181.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <g transform="translate(121, 0)">
+                <g transform="translate(24, 46)">
+                    {{#each group3 as |item index|}}
+                        <g transform="translate({{math 72 '*' index}}, 0)">
+                            <rect x="0" y="-45.5" width="24" height="14" fill="#ffffff" stroke="#94A3B8" stroke-width="1" rx="4"/>
+                            <text x="12" y="-38.5" dy=".33em" font-size="10" font-weight="400" fill="#64748B" text-anchor="middle" direction="ltr">{{item.pr}}</text>
+                            
+                            <rect x="0" y="-26" width="24" height="14" fill="{{item.rawColor}}" rx="4"/>
+                            <text x="12" y="-19" dy=".33em" font-size="12" font-weight="400" fill="#ffffff" text-anchor="middle">{{item.value}}</text>
+                            
+                            {{bar 24 item.height (object tl=4 tr=4 bl=0 br=0) (toRad 0) transform=item.transform fill=item.fill clip-path=item.clipPath}}
+                            <text x="12" y="{{math (math 165 '-' item.height) '+' 6}}" dy=".77em" font-size="12" font-weight="400" fill="#ffffff" text-anchor="middle">{{item.t}}</text>
+                            {{#each item.label as |label index|}}
+                                <text x="12" y="{{math 174 '+' (math 15 '*' index)}}" dy=".9em" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">
+                                    {{label}}
+                                </text>
+                            {{/each}}
+                        </g>
+                    {{/each}}
+                </g>
+            </g>
+            <g opacity="0.5" filter="url(#lineShadow3)" transform="translate(56.5, 207.5)">
+                <line x1="3.5" y1="4.5" x2="495.5" y2="4.5" stroke="white" stroke-linecap="round" />
+            </g>
+        </g>
+    </g>
+</g>
+
+{{/layout}}

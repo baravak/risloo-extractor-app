@@ -1,0 +1,1427 @@
+{
+  "id": "$X16TCCCC",
+  "scale": {
+    "id": "$CBCL-93",
+    "title": "سیاهه رفتاری کودکان مدرسه‌ای آخنباخ (CBCL) فرم والدین - مقیاس‌های سندرمی"
+  },
+  "status": "closed",
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966GGGG",
+    "name": "مراجع",
+    "user_id": "IR96CCCC"
+  },
+  "room": {
+    "id": "RS96CCC",
+    "manager": {
+      "id": "GH966CCCC",
+      "name": "درمانگر",
+      "user_id": "IR9CCCC"
+    },
+    "center": {
+      "id": "RS96CCC",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "code": null,
+  "created_at": 1745785423,
+  "started_at": 1746013074,
+  "scored_at": null,
+  "closed_at": 1746013100,
+  "total_amount": null,
+  "prepayment": false,
+  "purchased": true,
+  "amount": null,
+  "billing": null,
+  "description": "## دستور اجرای آزمون\n\nدر زیر فهرستی از عبارات وجود دارد که کودکان و نوجوانان را توصیف می‌کند. با توجه به وضعیت فرزندتان در حال حاضر یا در ۶ ماه گذشته سؤال‌ها را با گزینه «درست نیست»، «گاهی درست است» یا «غالباً درست است» پاسخ دهید.\n\nبعضی سؤالات نیاز به توضیح دارد. اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید.",
+  "psychologist_description": "Fg",
+  "items": [
+    {
+      "type": "text",
+      "text": "خیلی کوچک‌تر از سن خود عمل می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بدون اجازه والدین خود مشروبت الکلی می‌خورد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "زیاد جر و بحث می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "کارهایی را که شروع می‌کند تمام نمی‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به ندرت از چیزی لذت می‌برد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بیرون از توالت مدفوع می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "لاف می‌زند؛ پز می‌دهد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نمی‌تواند برای مدت طولانی تمرکز یا توجه کند.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "نمی‌‌تواند ذهن خود را از افکار خاصی رها کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نمی‌تواند آرام بنشیند، بی‌قرار و بیش‌فعال است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به بزرگسالان می‌چسبد، یا به آن‌ها بسیار وابسته است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از تنهایی شکوه و شکایت می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "به نظر می‌آید که گیج یا سردرگم است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "زیاد گریه می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نسبت به حیوانات بی‌رحم است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "با دیگران با بی‌رحمی، قلدری و ناجوانمردانه رفتار می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خیال‌بافی می‌کند یا در افکارش غرق می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "عمداً به خودش آسیب می‌رساند یا دست به خودکشی می‌زند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خواستار توجه زیاد است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "وسائل خودش را خراب می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "وسائل متعلق به افراد یا دیگران را خراب می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در خانه نافرمانی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در مدرسه نافرمانی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "علی‌رغم وجود غذا به اندازه کافی، خوب غذا نمی‌خورد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "با بچه‌های دیگر کنار نمی‌آید.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به نظر می‌‌رسد پس از بدرفتاری، احساس گناه نمی‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خیلی زود حسادت می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در خانه، مدرسه یا هر جای دیگری مقررات را زیر پا می‌گذارد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از حیوانات،  موقعیت‌ها یا مکان‌های به‌خصوصی می‌ترسد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "از رفتن به مدرسه می‌ترسد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از این‌که ممکن است فکر یا کار بدی بکند می‌ترسد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کند باید بی‌نقص و کامل باشد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌‌کند کسی او را دوست ندارد یا از این موضوع شکایت می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کند دیگران دنبالش هستند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس بی‌ارزشی یا حقارت می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "زیاد صدمه می‌بیند و در معرض سوانح قرار می‌گیرد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "زیاد جنگ و دعوا می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "دیگران خیلی سر‌ به سرش می‌گذارند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "با افرادی که توی دردسر می‌گردند، می‌گردد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "صداها و اصواتی می‌شنود که وجود ندارند.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "تکانشی یا بدون فکر عمل می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ترجیح می‌دهد تنها باشد تا با دیگران.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دروغ می‌گوید، یا تقلب می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ناخن‌هایش را می‌جود.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "عصبی، بسیار حساس و دچار تنش است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "حرکات عصبی و انقباض عضلات دارد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "کابوس می‌بیند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بچه‌های دیگر از او خوششان نمی‌آید.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دچار یبوست است، شکمش کار نمی‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خیلی ترسو و مضطرب است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس گیجی و منگی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خود را خیلی گناهکار احساس می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "پرخوری می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بی‌دلیل احساس خستگی شدید می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "اضافه وزن دارد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "الف) دردها (به غیر از سردرد و دل‌درد)",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ب) سردردها",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ج) تهوع، دل‌ به هم خوردن",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "د) مشکلات بینایی (به غیر از مشکلاتی که با عینک اصلاح می‌شوند)",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "ه) کهیر یا سایر ناراحتی‌های پوستی",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "و) دل‌درد",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ز) استفراغ، بالا آوردن",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ح) اگر مشکل جسمی دیگری بدون دلیل مشخص پزشکی وجود دارد را در قسمت توضیحات وارد کنید و یکی از دو گزینه زیر را انتخاب نمایید",
+      "answer": {
+        "type": "optional",
+        "options": ["گاهی درست است", "غالبا درست است"],
+        "description": {
+          "text": "توضیحات"
+        },
+        "nullable": {
+          "text": "مشکل دیگری وجود ندارد"
+        }
+      },
+      "user_answered": null,
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "به دیگران حمله می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بینی، پوست یا سایر قسمت‌های بدنش را می‌گیرد و فشار می‌دهد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "در ملأ عام با اعضای تناسلی‌اش بازی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "با اعضای تناسلی‌اش زیاد بازی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تکالیف درسی‌اش را خوب انجام نمی‌دهد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در هماهنگی و تعادل ضعف دارد یا دست و پا چلفتی است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ترجیح می‌‌دهد با بچه‌های بزرگ‌تر از خودش باشد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ترجیح می‌دهد با بچه‌های کوچک‌تر از خودش باشد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از صحبت‌کردن امتناع می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اعمال خاصی را بارها و بارها تکرار می‌کند، وسواس عملی.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "از خانه فرار می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "زیاد جیغ و داد می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تودار است و زیاد مسائل را بروز نمی‌دهد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "چیزهایی را می‌بیند که وجود ندارند.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "کم‌رو است یا زیاد دست‌پاچه می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آتش روشن می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مشکلات جنسی دارد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "رفتار نمایشی دارد یا لودگی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خیلی خجالتی یا ترسو است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از اکثر بچه‌ها کمتر می‌خوابد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در طول روز یا شب از بچه‌های دیگر بیشتر می‌خوابد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "بی‌توجه است یا حواسش به آسانی پرت می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مشکل گفتاری دارد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "مات و مبهوت به جایی خیره می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "از خانه دزدی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بیرون از خانه دزدی می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خیلی از چیزهایی که به دردش نمی‌خورد را جمع می‌کند.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "رفتار عجیب و غریب دارد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "افکار عجیب و غریب دارد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "لجباز، عبوس یا تحریک‌پذیر است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در خلق یا احساساتش ناگهان تغییر می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "زیاد اخم می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بدگمان است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دشنام می‌دهد یا کلمات رکیک به کار می‌برد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در مورد کشتن خودش صحبت می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در خواب راه می‌رود و یا حرف می‌زند.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "زیاد حرف می‌زند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "زیاد سر به سر دیگران می‌گذارد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "قشقرق راه می‌اندازد یا تندخو است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "درباره مسائل جنسی زیاد فکر می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دیگران را تهدید می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "انگشت شست خود را می‌مکد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "سیگار یا قلیان می‌کشد، تنباکو می‌جود، انفیه استنشاق می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در خواب رفتن مشکل دارد.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "از مدرسه فرار می‌کند یا در می‌رود.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دچار کم‌فعالیتی، کندی حرکت یا کمبود انرژی است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ناراحت، غمگین یا افسرده است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "فوق‌العاده پر سر و صدا است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "از داروها و مواد مخدر (به غیر از مشروبات الکلی و یا تنباکو) برای مقاصد غیرپزشکی استفاده می‌کند.",
+      "answer": {
+        "type": "optional",
+        "description": {
+          "text": "اگر گزینه «گاهی درست است» یا «اغلب درست است» را انتخاب کرده‌اید، قسمت توضیحات را تکمیل کنید."
+        },
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1",
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "اموال عمومی را تخریب می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در طول روز خودش را خیس می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "رخت‌خوابش را خیس می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نق‌نق می‌کند یا غر می‌زند.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آرزو می‌کند که از جنس مخالف باشد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گوشه‌گیر است، با دیگران رابطه نزدیکی ندارد.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نگران است.",
+      "answer": {
+        "type": "optional",
+        "options": ["درست نیست", "گاهی درست است", "غالبا درست است"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اگر فرزند شما مشکلات دیگری دارد که به آن‌ها اشاره نشده (مشکل اول).",
+      "answer": {
+        "type": "optional",
+        "options": ["گاهی درست است", "غالبا درست است"],
+        "description": {
+          "text": "مشکل را در این‌جا به صورت مختصر بیان کنید"
+        },
+        "nullable": {
+          "text": "مشکل دیگری ندارد"
+        }
+      },
+      "user_answered": null,
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "اگر فرزند شما مشکلات دیگری دارد که به آن‌ها اشاره نشده (مشکل دوم).",
+      "answer": {
+        "type": "optional",
+        "options": ["گاهی درست است", "غالبا درست است"],
+        "description": {
+          "text": "مشکل را در این‌جا به صورت مختصر بیان کنید"
+        },
+        "nullable": {
+          "text": "مشکل دیگری ندارد"
+        }
+      },
+      "user_answered": null,
+      "user_description": null
+    },
+    {
+      "type": "text",
+      "text": "اگر فرزند شما مشکلات دیگری دارد که به آن‌ها اشاره نشده (مشکل سوم).",
+      "answer": {
+        "type": "optional",
+        "options": ["گاهی درست است", "غالبا درست است"],
+        "description": {
+          "text": "مشکل را در این‌جا به صورت مختصر بیان کنید"
+        },
+        "nullable": {
+          "text": "مشکل دیگری ندارد"
+        }
+      },
+      "user_answered": null,
+      "user_description": null
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت (کودک)",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن (کودک)",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "10"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات (کودک)",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت (تکمیل‌کننده)",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "relationship",
+      "text": "نسبت با کودک",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "relationship",
+      "force": true,
+      "user_answered": "پدر"
+    },
+    {
+      "type": "text",
+      "label": "child_name",
+      "text": "نام کودک",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "child_name",
+      "force": true,
+      "user_answered": "کودک"
+    },
+    {
+      "type": "text",
+      "label": "filler_name",
+      "text": "نام تکمیل کننده",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "filler_name",
+      "force": true,
+      "user_answered": "والد"
+    }
+  ],
+  "entities": [
+    {
+      "offset": 55,
+      "description": "ممکن است بدون دلیل پزشکی مشخص، مشکلات جسمی‌ای داشته باشد؛ در ادامه لیستی از این مشکلات آمده که گزینه مناسب را انتخاب کنید"
+    },
+    {
+      "offset": 63,
+      "description": "سوالات مربوط به مشکلات پزشکی به پایان رسید، مابقی سوالات را به همان منوال قبل ادامه دهید"
+    },
+    {
+      "offset": 119,
+      "description": "اگر فرزند شما مشکلات دیگری دارد که به آن‌ها اشاره نشده، می‌توانید سه مورد مهم‌تر را به صورت مختصر و جداگانه در سه سوال آینده پاسخ دهید. اگر مشکل دیگری نبود، سوالات را خالی رها کنید. اگر مشکلی را نوشتید، حتما بین دو گزینه «گاهی درست است» یا «غالبا درست است» یکی را انتخاب کنید."
+    }
+  ],
+  "cornometer": 10,
+  "score": {
+    "other_problems": 3,
+    "anxious_depressed_pr": "81",
+    "anxious_depressed_t": 59,
+    "anxious_depressed_value": 5,
+    "anxious_depressed_status": "normal",
+    "depressed_pr": "46",
+    "depressed_t": 49,
+    "depressed_value": 1,
+    "depressed_status": "normal",
+    "somatic_complaints_pr": "69",
+    "somatic_complaints_t": 55,
+    "somatic_complaints_value": 1,
+    "somatic_complaints_status": "normal",
+    "social_problems_pr": "58",
+    "social_problems_t": 52,
+    "social_problems_value": 3,
+    "social_problems_status": "normal",
+    "thought_problems_pr": "25",
+    "thought_problems_t": 43,
+    "thought_problems_value": 0,
+    "thought_problems_status": "normal",
+    "attention_problems_pr": "46",
+    "attention_problems_t": 49,
+    "attention_problems_value": 2,
+    "attention_problems_status": "normal",
+    "rule_breaking_behaviour_pr": "16",
+    "rule_breaking_behaviour_t": 40,
+    "rule_breaking_behaviour_value": 0,
+    "rule_breaking_behaviour_status": "normal",
+    "aggressive_behaviour_pr": "92",
+    "aggressive_behaviour_t": 64,
+    "aggressive_behaviour_value": 11,
+    "aggressive_behaviour_status": "borderline",
+    "internalizing_pr": "72",
+    "internalizing_t": 56,
+    "internalizing_value": 7,
+    "internalizing_status": "normal",
+    "externalizing_pr": "84",
+    "externalizing_t": 60,
+    "externalizing_value": 11,
+    "externalizing_status": "borderline",
+    "total_pr": "75",
+    "total_t": 57,
+    "total_value": 26,
+    "total_status": "normal",
+    "affective_problems_pr": "16",
+    "affective_problems_t": 40,
+    "affective_problems_value": 0,
+    "affective_problems_status": "normal",
+    "anxiety_problems_pr": "84",
+    "anxiety_problems_t": 60,
+    "anxiety_problems_value": 3,
+    "anxiety_problems_status": "normal",
+    "somatic_problems_pr": "38",
+    "somatic_problems_t": 47,
+    "somatic_problems_value": 0,
+    "somatic_problems_status": "normal",
+    "adhd_pr": "66",
+    "adhd_t": 54,
+    "adhd_value": 4,
+    "adhd_status": "normal",
+    "oppositional_defiant_problems_pr": "92",
+    "oppositional_defiant_problems_t": 64,
+    "oppositional_defiant_problems_value": 4,
+    "oppositional_defiant_problems_status": "borderline",
+    "conduct_problems_pr": "72",
+    "conduct_problems_t": 56,
+    "conduct_problems_value": 2,
+    "conduct_problems_status": "normal"
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0",
+  "profiles": []
+}

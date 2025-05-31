@@ -37,6 +37,7 @@ const first = require("./helpers/first");
 const last = require("./helpers/last");
 const ceil = require("./helpers/ceil");
 const floor = require("./helpers/floor");
+const round = require("./helpers/round");
 
 const polygon = require("./helpers/profiles/polygon");
 const gauge = require("./helpers/profiles/gauge");
@@ -82,6 +83,7 @@ const helpers = {
   last,
   ceil,
   floor,
+  round,
   polygon,
   gauge,
   bar,

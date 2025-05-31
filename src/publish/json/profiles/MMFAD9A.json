@@ -91,13 +91,12 @@
     }
   ],
   "score": {
-    "raw": 159,
-    "problem_solving": 6,
-    "roles": 36,
-    "affective_responsiveness": 27,
-    "communication": 14,
-    "affective_involvement": 8,
-    "behaviour_control": 18,
-    "overall_performance": 50
+    "overall_performance": 24,
+    "problem_solving": 12,
+    "communication": 19,
+    "roles": 22,
+    "affective_involvement": 14,
+    "behaviour_control": 16,
+    "affective_responsiveness": 9
   }
 }

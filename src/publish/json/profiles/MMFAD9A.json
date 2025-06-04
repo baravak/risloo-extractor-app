@@ -91,12 +91,26 @@
     }
   ],
   "score": {
-    "overall_performance": 24,
-    "problem_solving": 12,
-    "communication": 19,
-    "roles": 22,
-    "affective_involvement": 14,
-    "behaviour_control": 16,
-    "affective_responsiveness": 9
+    "overall_performance_raw": 24,
+    "overall_performance_avg": 2,
+    "overall_performance_report": "unhealthy",
+    "problem_solving_raw": 12,
+    "problem_solving_avg": 2,
+    "problem_solving_report": "healthy",
+    "communication_raw": 19,
+    "communication_avg": 2.1,
+    "communication_report": "healthy",
+    "roles_raw": 22,
+    "roles_avg": 2,
+    "roles_report": "healthy",
+    "affective_involvement_raw": 14,
+    "affective_involvement_avg": 2,
+    "affective_involvement_report": "healthy",
+    "behaviour_control_raw": 16,
+    "behaviour_control_avg": 1.7,
+    "behaviour_control_report": "healthy",
+    "affective_responsiveness_raw": 9,
+    "affective_responsiveness_avg": 1.5,
+    "affective_responsiveness_report": "healthy"
   }
 }

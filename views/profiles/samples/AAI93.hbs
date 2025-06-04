@@ -1,0 +1,25 @@
+{{#> layout}}
+<defs>
+    {{#each scores as |score|}}
+        <linearGradient id="{{details.label.eng}}_gradient" x1="140" y1="0" x2="0" y2="140" gradientUnits="userSpaceOnUse">
+        <stop stop-color="{{details.label.secondary}}" />
+        <stop offset="0.5" stop-color="{{details.label.primary}}" />
+        <stop offset="1" stop-color="{{details.label.primary}}" />
+        </linearGradient>
+    {{/each}}
+</defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    {{#each scores as |score|}}
+        <g transform="translate({{math 70 '+' (math 228.5 '*' @index)}}, 70)">
+            {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.angles.start end=circle.angles.end) direction fill='#F1F5F9'}}
+            {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.angles.start end=zeta) direction  fill=fill}}
+            <text y="-10" text-anchor="middle" dy=".3em" font-size="28" font-weight="500" fill="{{details.label.primary}}">٪{{percentage}}</text>
+            <text y="20" text-anchor="middle" dy=".3em" font-size="18" font-weight="500" fill="{{details.label.primary}}">{{details.mark}}</text>
+            <text y="-68" x="-12" text-anchor="middle" dy=".75em" font-size="14" font-weight="500" fill="#64748B">0</text>
+            <text y="-14" x="-60" text-anchor="middle" dy=".3em" font-size="14" font-weight="500" fill="#64748B">25</text>
+            <text y="86" x="0" text-anchor="middle" dy="1em" font-size="16" font-weight="500" fill="{{details.label.primary}}">{{details.label.fa}}</text>
+        </g>
+    {{/each}}
+</g>
+
+{{/layout}}

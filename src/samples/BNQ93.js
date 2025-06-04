@@ -9,11 +9,16 @@ class BNQ93 extends Profile {
 
   // Labels of the sample
   labels = {
-    L1: {eng: 'survival', fa: 'نیاز به بقاء'},
-    L2: {eng: 'love_belonging', fa: 'نیاز به عشق و تعلق'},
-    L3: {eng: 'power', fa: 'نیاز به قدرت'},
-    L4: {eng: 'freedom', fa: 'نیاز به آزادی'},
-    L5: {eng: 'fun', fa: 'نیاز به تفریح'},
+    L1_1: {eng: 'survival_raw', fa: 'نیاز به بقاء'},
+    L1_2: {eng: 'survival_percentage'},
+    L2_1: {eng: 'love_belonging_raw', fa: 'نیاز به عشق و تعلق'},
+    L2_2: {eng: 'love_belonging_percentage'},
+    L3_1: {eng: 'power_raw', fa: 'نیاز به قدرت'},
+    L3_2: {eng: 'power_percentage'},
+    L4_1: {eng: 'freedom_raw', fa: 'نیاز به آزادی'},
+    L4_2: {eng: 'freedom_percentage'},
+    L5_1: {eng: 'fun_raw', fa: 'نیاز به تفریح'},
+    L5_2: {eng: 'fun_percentage'},
   };
 
   profileSpec = {
@@ -62,13 +67,15 @@ class BNQ93 extends Profile {
         {r: 112.5, points: polygonXY(0, 0, Array(5).fill(112.5), startAngle)},
         {r: 67.5, points: polygonXY(0, 0, Array(5).fill(67.5), startAngle)},
     ]
-    const points = dataset.score.map(score => (157.5 * score.mark) / 35)
+    const points = []
+    const scores = {}
+    dataset.score.forEach((score, index) => {
+        if(index % 2 !== 0) return
+        points.push(157.5 * score.mark / 35)
+        scores[score.label.eng.replace('_raw', '')] = {mark: score.mark, label: score.label.fa, percentage: Math.round(dataset.score[index + 1].mark * 100)}
+    })
     const polygonDots = polygonXY(0,0, points, startAngle)
     const polygonArea = polygonDots.map(points => `${round(points[0], 6)},${round(points[1], 6)}`).join(' ')
-    const scores = {}
-    dataset.score.forEach(score => {
-        scores[score.label.eng] = {mark: score.mark, label: score.label.fa}
-    })
     return [{ rs, polygonDots, polygonArea, scores }];
   }
 }

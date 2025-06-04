@@ -418,11 +418,16 @@
   ],
   "cornometer": 0,
   "score": {
-    "survival": 22,
-    "love_belonging": 13,
-    "power": 23,
-    "freedom": 22,
-    "fun": 20
+    "survival_raw": 22,
+    "survival_percentage": 0.63,
+    "love_belonging_raw": 13,
+    "love_belonging_percentage": 0.37,
+    "power_raw": 23,
+    "power_percentage": 0.66,
+    "freedom_raw": 22,
+    "freedom_percentage": 0.63,
+    "fun_raw": 20,
+    "fun_percentage": 0.57
   },
   "score_current_version": "1.0.0",
   "score_last_version": "1.0.0"

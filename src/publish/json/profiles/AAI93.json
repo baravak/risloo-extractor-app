@@ -1,0 +1,254 @@
+{
+  "id": "$X1HEDT78U",
+  "scale": {
+    "id": "$AAI-93",
+    "title": "پرسشنامه سبک‌های دلبستگی بزرگسالان هازن و شیور"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH96XXYY",
+    "name": "مراجع",
+    "user_id": "IR96XXYY"
+  },
+  "room": {
+    "id": "RS96XXYY",
+    "manager": {
+      "id": "GH96XXYY",
+      "name": "درمانگر",
+      "user_id": "IR96XXYY"
+    },
+    "center": {
+      "id": "RS96XXYY",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1748455601,
+  "started_at": 1748455611,
+  "scored_at": 1748455641,
+  "closed_at": 1748455611,
+  "total_amount": null,
+  "prepayment": false,
+  "purchased": true,
+  "amount": null,
+  "billing": null,
+  "description": "پاسخگوی گرامی، این پرسشنامه نوع رابطه و دلبستگی‌های شما را به دیگران (افراد نزدیک مثل مادر، پدر، همسر و دوستان) توصیف می‌کند. هر عبارت را با دقت بخوانید و با در نظر گرفتن وضعیت کلی و عمومی روابط و دلبستگی‌هایتان، پاسخی را که بیش از همه با وضعیت شما مطابقت می‌کند، علامت بزنید.\n\nدر این مقیاس هیچ‌یک از پاسخ‌ها صحیح یا غلط نیستند. ممکن است بعضی از عبارت‌ها کاملاً با ویژگی‌های شما مطابقت نکند اما سعی کنید در این موارد هم گزینه‌ای را که به طور نسبی با خصوصیات شما مطابقت می‌کند علامت بزنید.\n\nاز همکاری شما صمیمانه سپاسگزاریم.",
+  "psychologist_description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "نزدیک شدن به دیگران و برقراری روابط صمیمی با آن‌ها برایم آسان است.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "نزدیک شدن به دیگران تا حدودی برایم مشکل و ناراحت کننده است.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "وقتی با کسی دوست می‌شوم، می‌خواهم خودم را کاملاً به او بسپارم و با او یکی شوم.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تصور می‌کنم به هنگام نیاز، دیگران به من کمک خواهند کرد.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تصور می‌کنم به هنگام نیاز، کسی به من کمک نخواهد کرد.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "نمی‌توانم با اطمینان روی کمک دیگران حساب کنم.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "اتکای به دیگران برایم آسان است.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "اتکای به دیگران برایم دشوار است.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "غالباً نگرانم که نکند دیگران واقعاً مرا دوست نداشته باشند.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "اگر دیگران مرا ترک کنند و تنها بمانم ناراحت نمی‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دوست ندارم دیگران زیاد به من نزدیک و با من صمیمی شوند.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "دوست دارم دیگران خیلی به من نزدیک شوند، اما آن‌ها اجتناب می‌کنند. ",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "اعتماد به دیگران برایم آسان است.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "اعتماد به دیگران برایم دشوار است.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "غالباً نگرانم که نکند دیگران به همان اندازه که من برایشان ارزش قائل هستم برایم ارزش قائل نباشند.",
+      "answer": {
+        "type": "optional",
+        "options": ["خیلی زیاد", "زیاد", "متوسط", "کم", "خیلی کم"]
+      },
+      "user_answered": "5"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": { "type": "select", "options": ["زن", "مرد"] },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": { "type": "number" },
+      "alias": "age",
+      "force": true,
+      "user_answered": "28"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": { "type": "select", "options": ["مجرد", "متأهل"] },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    }
+  ],
+  "cornometer": 0,
+  "score": {
+    "secure_raw": 16,
+    "secure_percentage": 0.64,
+    "avoidant_raw": 13,
+    "avoidant_percentage": 0.52,
+    "ambivalence_raw": 13,
+    "ambivalence_percentage": 0.52
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

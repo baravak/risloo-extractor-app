@@ -7,31 +7,31 @@ class MMAFD9A extends Profile {
 
   // Labels of the sample
   labels = {
-    L1: { eng: "problem_solving_raw", fr: "حل مسأله", CoP: 2.2},
+    L1: { eng: "problem_solving_raw", fr: "حل مسأله", CoP: 2.2, max: 24},
     L1_2 : {eng: "problem_solving_avg"},
     L1_3 : {eng: "problem_solving_report"},
 
-    L2: { eng: "roles_raw", fr: "نقش‌ها", CoP: 2.3},
+    L2: { eng: "roles_raw", fr: "نقش‌ها", CoP: 2.3, max: 44},
     L2_2 : {eng: "roles_avg"},
     L2_3 : {eng: "roles_report"},
 
-    L3: { eng: "affective_responsiveness_raw", fr: "پاسخ‌دهی عاطفی", CoP: 2.2},
+    L3: { eng: "affective_responsiveness_raw", fr: "پاسخ‌دهی عاطفی", CoP: 2.2, max: 24},
     L3_2 : {eng: "affective_responsiveness_avg"},
     L3_3 : {eng: "affective_responsiveness_report"},
 
-    L4: { eng: "communication_raw", fr: "ارتباط", CoP: 2.2},
+    L4: { eng: "communication_raw", fr: "ارتباط", CoP: 2.2, max: 36},
     L4_2 : {eng: "communication_avg"},
     L4_3 : {eng: "communication_report"},
 
-    L5: { eng: "affective_involvement_raw", fr: "مشارکت عاطفی", CoP: 2.1},
+    L5: { eng: "affective_involvement_raw", fr: "مشارکت عاطفی", CoP: 2.1, max: 28},
     L5_2 : {eng: "affective_involvement_avg"},
     L5_3 : {eng: "affective_involvement_report"},
 
-    L6: { eng: "behaviour_control_raw", fr: "کنترل رفتار", CoP: 1.9},
+    L6: { eng: "behaviour_control_raw", fr: "کنترل رفتار", CoP: 1.9, max: 36},
     L6_2 : {eng: "behaviour_control_avg"},
     L6_3 : {eng: "behaviour_control_report"},
 
-    L7: { eng: "overall_performance_raw", fr: "کارکرد عمومی", CoP: 2},
+    L7: { eng: "overall_performance_raw", fr: "کارکرد عمومی", CoP: 2, max: 48},
     L7_2 : {eng: "overall_performance_avg"},
     L7_3 : {eng: "overall_performance_report"},
   };

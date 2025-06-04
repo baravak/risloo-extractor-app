@@ -9,74 +9,29 @@
   "edition": "",
   "edition_version": null,
   "client": {
-    "id": "GH96664GE",
-    "name": "مرضیه کلهری"
+    "id": "GH96XXXXX",
+    "name": "مراجع"
   },
   "room": {
-    "id": "RS96662E5",
+    "id": "RS96XXXXX",
     "manager": {
-      "id": "GH96664AN",
-      "name": "دکتر همتی",
-      "user_id": "IR963XPP",
+      "id": "GH96XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR96XXXXX",
       "avatar": null
     },
     "center": {
-      "id": "RS96662EV",
+      "id": "RS96XXXXX",
       "acceptation": null,
       "status": "active",
       "type": "counseling_center",
       "detail": {
-        "title": "مرکز مشاوره و خدمات روان‌شناسی روشنان",
-        "avatar": [
-          {
-            "id": "F96DUMD",
-            "file_name": "P9666FW9_large.png",
-            "slug": "storage/public/Files_1000/P9666FW9_large.png",
-            "mode": "large",
-            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_large.png",
-            "type": "image",
-            "mime": "image/png",
-            "exec": "png"
-          },
-          {
-            "id": "F96DUM3",
-            "file_name": "P9666FW9_medium.png",
-            "slug": "storage/public/Files_1000/P9666FW9_medium.png",
-            "mode": "medium",
-            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_medium.png",
-            "type": "image",
-            "mime": "image/png",
-            "exec": "png"
-          },
-          {
-            "id": "F96DUM9",
-            "file_name": "P9666FW9_original.png",
-            "slug": "storage/public/Files_1000/P9666FW9_original.png",
-            "mode": "original",
-            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_original.png",
-            "type": "image",
-            "mime": "image/png",
-            "exec": "png"
-          },
-          {
-            "id": "F96DUMT",
-            "file_name": "P9666FW9_small.png",
-            "slug": "storage/public/Files_1000/P9666FW9_small.png",
-            "mode": "small",
-            "url": "https://api.risloo.ir/storage/public/Files_1000/P9666FW9_small.png",
-            "type": "image",
-            "mime": "image/png",
-            "exec": "png"
-          }
-        ]
+        "title": "مرکز"
       }
     },
     "acceptation": null,
     "status": "active",
     "type": "room"
-  },
-  "case": {
-    "id": "CS9666N3T"
   },
   "code": null,
   "created_at": 1673193951,
@@ -86,33 +41,6 @@
   "total_amount": 110000,
   "prepayment": true,
   "purchased": true,
-  "amount": 110000,
-  "billing": {
-    "id": "BL969FG8",
-    "creditor": {
-      "id": "TE96TWH9",
-      "symbol": "rs96662ev",
-      "title": "کیف پول مرکز RS96662EV",
-      "creditable": true,
-      "chargeable": true,
-      "my_treasury": false
-    },
-    "debtor": {
-      "id": "TE96TQ66",
-      "symbol": "wallet",
-      "title": "کیف پول",
-      "creditable": true,
-      "chargeable": true,
-      "my_treasury": false
-    },
-    "amount": 110000,
-    "type": "final",
-    "action": "samples",
-    "action_serial": "$X1HHV2QBJ",
-    "title": "انجام نمونه",
-    "created_at": 1673194149,
-    "updated_at": 1673194149
-  },
   "description": "## دستور اجرای آزمون\n\nلطفا عبارت‌های زیر را با دقت بخوانید و پاسخ خود را از بین گزینه‌های مطرح مشخص کنید.",
   "psychologist_description": null,
   "items": [
@@ -1563,27 +1491,5 @@
     "stress_management": 25
   },
   "score_current_version": "1.0.0",
-  "score_last_version": "1.0.0",
-  "profiles": [
-    {
-      "id": "F96DSSS",
-      "file_name": "X1HHV2QBJ.json",
-      "slug": "storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.json",
-      "mode": "profile_json",
-      "url": "https://api.risloo.ir/storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.json",
-      "type": "data",
-      "mime": "application/json",
-      "exec": "json"
-    },
-    {
-      "id": "F96DSSX",
-      "file_name": "X1HHV2QBJ.xlsx",
-      "slug": "storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.xlsx",
-      "mode": "profile_xlsx",
-      "url": "https://api.risloo.ir/storage/profiles/X1HHV2QBJVdVgNUkTdcjvwiQKDxBJB1p5xejSHYKDXdN4CqYxuzH7S0JL5znS2Qe55UG5bT4cvcvKCLI1d2ABUl9P8eGHyvz3eTRrid4LcCrgQzgVQBdOnuXtyJfDVSBu/X1HHV2QBJ.xlsx",
-      "type": "document",
-      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "exec": "xlsx"
-    }
-  ]
+  "score_last_version": "1.0.0"
 }

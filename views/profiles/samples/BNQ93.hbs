@@ -1,0 +1,53 @@
+{{#> layout}}
+
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(236.5, 211.5)">
+        {{#each rs as | item index |}}
+            {{#if (boolean index '===' 0)}}
+                <g>
+                    {{#each item.points as | point index |}}
+                        <line x1="0" y1="0" x2="{{point.[0]}}" y2="{{point.[1]}}" stroke="#E2E8F0" stroke-width="1" />
+                    {{/each}}
+                </g>
+            {{/if}}
+            <g>
+                <circle cx="0" cy="0" r="{{item.r}}" stroke="#E2E8F0" stroke-width="1" fill="none" />
+                {{#each item.points as | point index |}}
+                    <circle cx="{{point.[0]}}" cy="{{point.[1]}}" r="2.5" fill="#E2E8F0" />
+                {{/each}}
+            </g>
+        {{/each}}
+        <circle cx="0" cy="0" r="22.5" stroke="#E2E8F0" stroke-width="1" fill="none" />
+        <circle cx="0" cy="0" r="2.5" fill="#E2E8F0" />
+        <g>
+            {{#each polygonDots as | point index |}}
+                <circle cx="{{point.[0]}}" cy="{{point.[1]}}" r="3.5" fill="#4F46E5" />
+            {{/each}}
+        </g>
+        <polygon points="{{polygonArea}}" fill="#4F46E533" stroke="#4F46E5" stroke-width="3" />
+        <text x="0" y="169" dy=".35em" text-anchor="middle" font-size="10" font-weight="400" fill="#94A3B8">35</text>
+        <g transform="translate(-30, -210.5)">
+            <text x="30" y="0" dy=".7em" text-anchor="middle" font-size="16" font-weight="700" fill="#4F46E5">{{scores.survival.mark}}</text>
+            <text x="30" y="17" dy="1em" text-anchor="middle" font-size="14" font-weight="500" fill="#475569">{{scores.survival.label}}</text>
+        </g>
+        <g transform="translate(165.5, -107.5)">
+            <text x="0" y="0" dy=".7em" text-anchor="end" font-size="16" font-weight="700" fill="#4F46E5">{{scores.love_belonging.mark}}</text>
+            <text x="0" y="17" dy="1em" text-anchor="end" font-size="14" font-weight="500" fill="#475569">نیاز به عشق</text>
+            <text x="0" y="17" dy="2.5em" text-anchor="end" font-size="14" font-weight="500" fill="#475569">و تعلق</text>
+        </g>
+        <g transform="translate(96.5, 141.5)">
+            <text x="0" y="0" dy=".7em" text-anchor="end" font-size="14" font-weight="500" fill="#475569">نیاز به قدرت</text>
+            <text x="0" y="17" dy="1em" text-anchor="end" font-size="16" font-weight="700" fill="#4F46E5">{{scores.power.mark}}</text>
+        </g>
+        <g transform="translate(-101.5, 141.5)">
+            <text x="0" y="0" dy=".7em" text-anchor="start" font-size="14" font-weight="500" fill="#475569">نیاز به آزادی</text>
+            <text x="0" y="17" dy="1em" text-anchor="start" font-size="16" font-weight="700" fill="#4F46E5">{{scores.freedom.mark}}</text>
+        </g>
+        <g transform="translate(-165.5, -87.5)">
+            <text x="0" y="0" dy=".7em" text-anchor="start" font-size="16" font-weight="700" fill="#4F46E5">{{scores.fun.mark}}</text>
+            <text x="0" y="17" dy="1em" text-anchor="start" font-size="14" font-weight="500" fill="#475569">نیاز به تفریح</text>
+        </g>
+    </g>
+</g>
+
+{{/layout}}

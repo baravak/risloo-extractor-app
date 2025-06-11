@@ -1,7 +1,4 @@
-const { Profile, FS } = require("../Profile");
-const polygonXY = require("../helpers/polygonXY");
-const polygonDefaultStart = require("../helpers/polygonDefaultStart");
-const round = require("../handlebars/helpers/round");
+const { Profile } = require("../Profile");
 const gauge = require("../helpers/gauge");
 
 class AAI93 extends Profile {

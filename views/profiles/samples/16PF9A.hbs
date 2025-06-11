@@ -62,7 +62,7 @@
         {{/forLoop}}
         {{#each factors as |factor|}}
           <rect x="{{math 162 '-' (math factor.mark '*' 16)}}" y="{{math 8 '+' (math @index '*' 36)}}" width="16" height="16" rx="4" fill="{{factor.lable.style.[0]}}" opacity="{{factor.lable.style.[1]}}"/>
-          <text x="{{math 170 '-' (math factor.mark '*' 16)}}" y="{{math 16 '+' (math @index '*' 36)}}" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle" dy=".25em">{{factor.mark}}</text>
+          <text x="{{math 170 '-' (math factor.mark '*' 16)}}" y="{{math 16 '+' (math @index '*' 36)}}" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle" dy=".3em">{{factor.mark}}</text>
         {{/each}}
       </g>
       <rect width="826" height="1" rx="0.5" y="617" fill="#F3F4F6"/>

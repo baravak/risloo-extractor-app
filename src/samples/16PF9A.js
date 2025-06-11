@@ -1,5 +1,4 @@
-const { invalid } = require("moment");
-const { Profile, FS } = require("../Profile");
+const { Profile } = require("../Profile");
 const rowStyle = [
   ['#1D4ED8', 1],
   ['#1D4ED8', 0.9],
@@ -11,7 +10,6 @@ const rowStyle = [
   ['#94A3B8', 0.8],
 
   ['#0E7490', 0.7],
-  ['#0E7490', 0.8],
   ['#0E7490', 0.8],
   ['#0E7490', 0.9],
   ['#0E7490', 1],

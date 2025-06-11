@@ -1,57 +1,91 @@
 {{#> layout}}
+<defs>
+  <linearGradient id="top-gradient" x1="0" y1="16" x2="120" y2="16" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#F3F4F6"/>
+    <stop offset="1" stop-color="#F9FAFB" stop-opacity="0.5"/>
+  </linearGradient>
+  <linearGradient id="down-gradient" x1="40" y1="16" x2="0" y2="16" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#F3F4F6"/>
+    <stop offset="1" stop-color="#F9FAFB" stop-opacity="0.5"/>
+  </linearGradient>
 
+  {{#each alertStyle as |style key|}}
+    <linearGradient id="{{key}}_header" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop stop-color="{{style.headerGradients.[1]}}"/>
+      <stop offset="1" stop-color="{{style.headerGradients.[0]}}"/>
+    </linearGradient>
+    <linearGradient id="{{key}}_footer" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop stop-color="{{style.footerGradient}}"/>
+      <stop offset="1" stop-color="{{style.primary}}"/>
+    </linearGradient>
+  {{/each}}
+</defs>
   <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
-    <g transform="translate(121.5, 23.5)">
-        <g transform="translate(64.6, -23)">
-            {{#if (boolean status '!==' "invalid")}}
-                <rect x="0" y="0" width="46.8" height="16.2" rx="3.6" fill="#FEE2E2" />
-                <text x="23.4" y="8.1" fill="#B91C1C" font-size="12.6" font-weight="400" text-anchor="middle" dy="3">نامعتبر</text>
-            {{/if}}
-        </g>
-        <text x="8" y="-20" dy="1em" font-size="12" font-weight="400" fill="#155E75" text-anchor="middle">10</text>
-        <text x="168" y="-20" dy="1em" font-size="12" font-weight="400" fill="#155E75" text-anchor="middle">0</text>
+    <g transform="translate(0, 25)">
+      {{#each factors as |factor|}}
+      <g transform="translate(0, {{math @index '*' 36}})">
+        {{bar 32 32 (object tl=4 bl=4 tr=0 br=0) (toRad 0) fill="#E5E7EB99" transform="translate(62, 0)"}}
+        <rect x="94" width="120" height="32" fill="url(#top-gradient)" stroke="none"/>
+        <rect x="214" width="572" height="32" fill="#F9FAFB80" stroke="none"/>
+        {{bar 40 32 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill="url(#down-gradient)" transform="translate(786, 0)"}}
+        <text x="46" y="16" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start" dy=".25em">
+          <tspan font-size="14" font-weight="500">{{factor.mark}}</tspan>
+          <tspan>از {{factor.lable.max}}</tspan>
+        </text>
+        <text x="78" y="16" font-size="14" font-weight="500" fill="#6B7280" text-anchor="middle" dy=".25em">{{factor.lable.eng}}</text>
+        <text x="102" y="16" font-size="14" font-weight="400" fill="#6B7280" text-anchor="end" dy=".25em">{{factor.lable.title}}</text>
+        <text x="431" y="16" font-size="14" font-weight="400" fill="#155E75" text-anchor="start" dy=".25em">{{factor.lable.top}}</text>
+        <text x="627" y="16" font-size="14" font-weight="400" fill="#1E40AF" text-anchor="end" dy=".25em">{{factor.lable.down}}</text>
+      </g>
+      {{/each}}
+      </g>
+      <text x="449" y="8" font-size="12" font-weight="400" fill="#155E75" text-anchor="middle" dy=".25em">10</text>
+      <text x="609" y="8" font-size="12" font-weight="400" fill="#1E40AF" text-anchor="middle" dy=".25em">0</text>
+      <rect x="441" y="21" opacity="0.1" width="16" height="580" rx="4" fill="#0E7490"/>
+      <rect x="457" y="21" opacity="0.07" width="16" height="580" rx="4" fill="#0E7490"/>
+      <rect x="473" y="21" opacity="0.05" width="16" height="580" rx="4" fill="#0E7490"/>
 
-        <rect x="0" y="0" width="16" height="514" fill="#1D4ED8" fill-opacity="0.1" rx="3.6" />
-        <rect x="16" y="0" width="16" height="514" fill="#1D4ED8" fill-opacity="0.07" rx="3.6" />
-        <rect x="32" y="0" width="16" height="514" fill="#1D4ED8" fill-opacity="0.05" rx="3.6" />
+      <rect x="489" y="21" opacity="0.2" width="16" height="580" rx="4" fill="#E5E7EB"/>
+      <rect x="505" y="21" opacity="0.1" width="16" height="580" rx="4" fill="#E5E7EB"/>
+      
+      <rect x="537" y="21" opacity="0.2" width="16" height="580" rx="4" fill="#E5E7EB"/>
+      <rect x="553" y="21" opacity="0.1" width="16" height="580" rx="4" fill="#E5E7EB"/>
 
-        <rect x="48" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.2" rx="3.6" />
-        <rect x="64" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.1" rx="3.6" />
-
-        <rect x="96" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.1" rx="3.6" />
-        <rect x="112" y="0" width="16" height="514" fill="#E5E7EB" fill-opacity="0.2" rx="3.6" />
-
-        <rect x="128" y="0" width="16" height="514" fill="#0E7490" fill-opacity="0.05" rx="3.6" />
-        <rect x="144" y="0" width="16" height="514" fill="#0E7490" fill-opacity="0.07" rx="3.6" />
-        <rect x="160" y="0" width="16" height="514" fill="#0E7490" fill-opacity="0.1" rx="3.6" />
-      {{!-- {{#each items as | item index |}}
-        {{#with @root.spec.items as | itemsSpec |}}
-          <g transform="translate(0, {{math index '*' itemsSpec.offsetY}})">
-            <g transform="translate(0, 7.2)">
-              <line x1="18" y1="0" x2="-147.6" y2="0" stroke="#E4E4E7" />
-              <g font-size="14.4" font-weight="400">
-                <text x="220" y="0" fill="#71717A" font-weight="500" text-anchor="middle" dy="3">{{item.label.fr}}</text>
-                <text x="32.4" y="0" fill="#1E40AF" text-anchor="end" dy="3">{{item.label.right}}</text>
-                <text x="-162.5" y="0" fill="#155E75" text-anchor="start" dy="3">{{item.label.left}}</text>
-              </g>
-            </g>
-            <g transform="translate(-{{item.offset}}, 0)">
-              <rect x="0" y="0" width="16.2" height="16.2" fill="{{item.fill}}" fill-opacity="{{item.opacity}}" rx="3.6" />
-              <text x="8.1" y="8.1" fill="#FFFFFF" font-size="12.6" font-weight="400" text-anchor="middle" dy="3.5">{{item.mark}}</text>
-            </g>
-          </g>
-        {{/with}}
-      {{/each}} --}}
-    </g>
-    <g transform="translate(0, 21.5)">
-        {{#each items as | item index |}}
-        <g transform="translate(0, {{math 33.3 '*' index}})">
-            <line x1="119.5" y1="10" x2="121.5" y2="10" stroke="#D1D5DB" stroke-width="2" />
-            <line x1="121.5" y1="10" x2="297.5" y2="10" stroke="#E5E7EB" stroke-width="2" />
-            <line x1="297.5" y1="10" x2="299.5" y2="10" stroke="#D1D5DB" stroke-width="2" />
-        </g>
+      <rect x="569" y="21" opacity="0.05" width="16" height="580" rx="4" fill="#1D4ED8"/>
+      <rect x="585" y="21" opacity="0.07" width="16" height="580" rx="4" fill="#1D4ED8"/>
+      <rect x="601" y="21" opacity="0.1" width="16" height="580" rx="4" fill="#1D4ED8"/>
+      <g transform="translate(439, 25)" fill="#E5E7EB">
+        {{#forLoop 0 16 1}}
+          <rect width="180" height="2" y="{{math 15 '+' (math i '*' 36)}}"/>
+          <rect width="2" height="2" y="{{math 15 '+' (math i '*' 36)}}" fill="#D1D5DB"/>
+          <rect x="178" width="2" height="2" y="{{math 15 '+' (math i '*' 36)}}" fill="#D1D5DB"/>
+        {{/forLoop}}
+        {{#each factors as |factor|}}
+          <rect x="{{math 162 '-' (math factor.mark '*' 16)}}" y="{{math 8 '+' (math @index '*' 36)}}" width="16" height="16" rx="4" fill="{{factor.lable.style.[0]}}" opacity="{{factor.lable.style.[1]}}"/>
+          <text x="{{math 170 '-' (math factor.mark '*' 16)}}" y="{{math 16 '+' (math @index '*' 36)}}" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle" dy=".25em">{{factor.mark}}</text>
         {{/each}}
-    </g>
-  </g>
+      </g>
+      <rect width="826" height="1" rx="0.5" y="617" fill="#F3F4F6"/>
+      <g transform="translate(274, 634)">
+        {{bar 247 31 (object tl=6 bl=0 tr=6 br=0) (toRad 0) fill=final.style.headerUrl transform="translate(0.5, 0.5)" stroke=final.style.footerGradient}}
+        {{bar 248 28 (object tl=0 bl=6 tr=0 br=6) (toRad 0) fill=final.style.footerUrl transform="translate(0, 32)"}}
+        <text x="235" y="16" font-size="12" font-weight="400" fill="{{final.style.primary}}" text-anchor="start" dy=".25em">پاسخ سوال ۱۸۷ (بررسی اعتبار)</text>
+        <g transform="translate(72, 12.5)">
+          <path d="M0.916504 4H9.08317M0.916504 4L4.4165 7.5M0.916504 4L4.4165 0.5" stroke="{{final.style.primary}}" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="37" y="16" font-size="14" font-weight="600" fill="{{final.style.primary}}" text-anchor="middle" dy=".25em">{{final.text}}</text>
+        <text x="124" y="46" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle" dy=".25em">{{final.textType}}</text>
+      </g>
 
+      <g transform="translate(534, 634)">
+        {{bar 175 31 (object tl=6 bl=0 tr=6 br=0) (toRad 0) fill=bCount.style.headerUrl transform="translate(0.5, 0.5)" stroke=bCount.style.footerGradient}}
+        {{bar 176 28 (object tl=0 bl=6 tr=0 br=6) (toRad 0) fill=bCount.style.footerUrl transform="translate(0, 32)"}}
+        <text x="163" y="16" font-size="12" font-weight="400" fill="{{bCount.style.primary}}" text-anchor="start" dy=".25em">تعداد گزینه «ب»</text>
+        <g transform="translate(56.5, 12.5)">
+          <path d="M0.916504 4H9.08317M0.916504 4L4.4165 7.5M0.916504 4L4.4165 0.5" stroke="{{bCount.style.primary}}" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="37" y="16" font-size="14" font-weight="600" fill="{{bCount.style.primary}}" text-anchor="middle" dy=".25em">{{bCount.mark}}</text>
+        <text x="88" y="46" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle" dy=".25em">{{bCount.text}}</text>
+      </g>
+  </g>
 {{/layout}}

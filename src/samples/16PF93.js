@@ -169,7 +169,7 @@ class _16PF93 extends Profile {
       item.label.max = 10
       item.circle = gauge(item, -90, 270)
       const row = Math.floor(i / 2)
-      const col = i % 2
+      const col = i % 2 === 0 ? 1 : 0
       item.position = [col, row]
       return item
     })

@@ -164,8 +164,8 @@ class _16PF93 extends Profile {
     }
     bCount.style = alertStyle[bCount.type]
     const secondary = dataset.score.slice(34, 44).map((item, i) => {
-      item.value = item.mark.toString().replace('.', ',')
-      item.mark = Math.min(Math.max(item.mark, 0), 10)
+      item.value = parseFloat(item.mark).toString().replace('.', ',')
+      item.mark = parseFloat(Math.min(Math.max(item.mark, 0), 10))
       item.label.max = 10
       item.circle = gauge(item, -90, 270)
       const row = Math.floor(i / 2)

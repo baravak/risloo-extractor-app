@@ -1,7 +1,7 @@
 const { Profile, Mappings } = require("../Profile");
 const GMIT93 = require("./GMIT93");
 const RIASEC93 = require("./RIASEC93");
-const _16PF = require("./16PF93");
+const _16PF = require("./16PFOld93");
 
 class CAATS93 extends Profile {
   // Number of pages

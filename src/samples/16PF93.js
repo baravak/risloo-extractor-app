@@ -137,7 +137,7 @@ class _16PF93 extends Profile {
           ...item.label,
           eng: fi.toUpperCase(),
           raw: dataset.score[i + 1].mark ?? 0,
-          style: rowStyle[item.mark ?? 0]
+          style: rowStyle[Math.max((item.mark ?? 1) - 1, 0)]
         }
       })
     }

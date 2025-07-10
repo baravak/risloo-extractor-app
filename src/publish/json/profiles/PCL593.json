@@ -1,0 +1,316 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$PCL5-93",
+    "title": "چک لیست نشانه‌های استرس پس از سانحه (PCL-5)"
+  },
+  "chain": null,
+  "version": "2",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "# دستورالعمل:\n\nدر ادامه فهرستی از مشکلاتی آمده است که برخی افراد در واکنش به یک تجربه بسیار استرس‌زا ممکن است داشته باشند.\n\nبا در نظر داشتن بدترین رویدادی که تجربه کرده‌اید، هر مورد را با دقت بخوانید و عددی را انتخاب کنید که نشان دهد **در ماه گذشته تا چه اندازه آن مشکل شما را آزار داده است**.",
+  "psychologist_description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "خاطرات مکرر، آزاردهنده و ناخواسته‌ی تجربه استرس‌‌زا",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "رؤیاهای مکرر و آشفته‌کننده‌ی تجربه استرس‌زا",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "ناگهان طوری احساس و رفتار کردن، انگار که تجربه استرس‌آور دوباره اتفاق می‏افتد (انگار واقعاً به آن زمان برگشته‌اید و دوباره آن را تجربه می‌کنید)",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "احساس آشفتگی شدید وقتی چیزی شما را یاد آن تجربه استرس‌آور می‌اندازد",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "داشتن واکنش‌های فیزیکی شدید وقتی چیزی شما را یاد تجربه استرس‌زا می‏اندازد (برای مثال، تپش قلب، دشواری در نفس کشیدن، عرق کردن)",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "اجتناب از خاطرات، افکار، یا احساسات مرتبط با تجربه استرس‌زا",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "اجتناب از یادآورهای بیرونی تجربه استرس‌زا (برای مثال، مردم، مکان‌ها، گفتگوها، فعالیت‌ها، اشیاء، یا موقعیت‌ها)",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "مشکل در یادآوری بخش‌های مهم تجربه استرس‌زا",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "باورهای منفی عمیق نسبت به خود، افراد، یا دنیا (برای مثال، داشتن افکاری از قبیل این که: من بد هستم، یک جای کارم ایراد اساسی دارد، هیچ کس قابل اعتماد نیست، دنیا کاملاً خطرناک است)",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "سرزنش شدید خود و افراد دیگر به خاطر تجربه استرس‌زا و اتفاق‌های بعد از آن",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "احساسات منفی شدید مانند ترس، خشم، احساس گناه، یا شرم",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "از دست دادن علاقه نسبت به فعالیت‌هایی که قبلاً از آن‌ها لذت می‌برده‌اید",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس فاصله گرفتن یا بریدن از دیگران",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "مشکل در تجربه احساسات مثبت (برای مثال، ناتوانی در داشتن احساسات عاشقانه نسبت به افراد نزدیک، یا احساس بی‌حسی عاطفی)",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس تحریک‌پذیری، خشم، یا خشونت",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خطر کردن شدید در انجام کارهای آسیب‌زننده",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "احساس «هشیاری مفرط»، مراقبت یا آماده باش",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "احساس تلاطم، یا به آسانی وحشت‌زده شدن",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "مشکل در تمرکز",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مشکل در به خواب رفتن یا تداوم خواب",
+      "answer": {
+        "type": "optional",
+        "options": ["اصلاً", "کمی", "تا حدی (متوسط)", "زیاد", "بسیار زیاد"]
+      },
+      "user_answered": "3"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": ["زن", "مرد"]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "44"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "12"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": ["مجرد", "متأهل"]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 2,
+  "score": {
+    "intrusion_raw": 10,
+    "intrusion_percentage": 0.5,
+    "intrusion_dsm_mode": "positive",
+    "avoidance_raw": 2,
+    "avoidance_percentage": 0.25,
+    "avoidance_dsm_mode": "positive",
+    "negative_mood_raw": 6,
+    "negative_mood_percentage": 0.38,
+    "negative_mood_dsm_mode": "positive",
+    "arousal_reactivity_raw": 8,
+    "arousal_reactivity_percentage": 0.5,
+    "arousal_reactivity_dsm_mode": "positive",
+    "emotional_numbing_raw": 2,
+    "emotional_numbing_percentage": 0.1,
+    "total_raw": 28,
+    "total_percentage": 0.35,
+    "status": "moderate"
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

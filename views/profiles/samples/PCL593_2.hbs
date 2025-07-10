@@ -1,0 +1,95 @@
+{{#> layout}}
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(105, 0)">
+        {{#each factors as | factor index |}}
+            <g transform="translate(0, {{math factor.itemOption.top '+' (math index '*' 8)}})">
+                <rect width="606" height="{{factor.itemOption.height}}" stroke="{{ternary (boolean factor.label.dsm_mode '===' 'positive') '#BE123C' '#E2E8F0'}}" rx="8" fill="none" />
+                <rect x="506" y="8" width="92" height="{{math factor.itemOption.height '-' 16}}" fill="{{ternary (boolean factor.label.dsm_mode '===' 'positive') '#FFF1F2' '#F1F5F9'}}" rx="4" />
+                {{#if (boolean factor.label.dsm_mode '===' 'positive')}}
+                <rect width="8" height="8" fill="#BE123C" transform="translate(602, {{math (math factor.itemOption.height '/' 2) '-' 4}}) rotate(45, 4, 4)" />
+                <text x="685" y="{{math factor.itemOption.height '/' 2}}" font-size="13" font-weight="400" fill="#1E293B" dy="-0.35em" text-anchor="middle">
+                    به دلیل مثبت بودن حداقل
+                </text>
+                <text x="685" y="{{math factor.itemOption.height '/' 2}}" font-size="13" font-weight="400" fill="#1E293B" dy="1em" text-anchor="middle"><tspan fill="#BE123C">{{ternary (boolean index '<' 2) 'یک' 'دو'}} نشانه</tspan>
+                <tspan>احراز شده است.</tspan></text>
+                {{/if}}
+                <g transform="translate(8,8)">
+                    {{#each factor.items as | item im |}}
+                        <g transform="translate(0,{{math 29 '*' im}})">
+                            <rect width="460" height="26" fill="#F8FAFC" rx="4"/>
+                            <text x="452" y="13" dy="0.25em" font-weight="400" font-size="12" fill="#475569" text-anchor="start">{{item.text}}</text>
+                            <text x="477" y="13" dy="0.3em" font-weight="400" font-size="11" fill="#64748B" text-anchor="middle">{{math im '+' factor.itemOption.startItem}}</text>
+                            <rect x="4" y="4" width="18" height="18" fill="{{ternary (boolean item.user_answered '>' 2) '#BE123C' '#94A3B8'}}" rx="5"/>
+                            <text x="13" y="13" dy="0.3em" font-weight="500" font-size="13" fill="#FFFFFF" text-anchor="middle">{{math item.user_answered '-' 1}}</text>
+                        </g>
+                    {{/each}}
+                </g>
+            </g>
+        {{/each}}
+        <g transform="translate(552, 79)">
+            <text dy="-1.25em" font-weight="600" font-size="14" fill="#475569" text-anchor="middle">معیار B</text>
+            <text dy="0.25em" font-weight="400" font-size="13" fill="#475569" text-anchor="middle">تجربه‌های</text>
+            <text dy="1.75em" font-weight="400" font-size="13" fill="#475569" text-anchor="middle">مزاحم</text>
+        </g>
+        <g transform="translate(552, 201.5)">
+            <text dy="-0.35em" font-weight="600" font-size="14" fill="#475569" text-anchor="middle">معیار C</text>
+            <text dy="1em" font-weight="400" font-size="13" fill="#475569" text-anchor="middle">اجتناب</text>
+        </g>
+        <g transform="translate(552, 353)">
+            <text dy="-1.25em" font-weight="600" font-size="14" fill="#475569" text-anchor="middle">معیار D</text>
+            <text dy="0.25em" font-weight="400" font-size="13" fill="#475569" text-anchor="middle">تغییرات منفی</text>
+            <text dy="1.75em" font-weight="400" font-size="13" fill="#475569" text-anchor="middle">خلقی</text>
+        </g>
+        <g transform="translate(552, 562.5)">
+            <text dy="-1.25em" font-weight="600" font-size="14" fill="#475569" text-anchor="middle">معیار E</text>
+            <text dy="0.25em" font-weight="400" font-size="13" fill="#475569" text-anchor="middle">برانگیختگی</text>
+            <text dy="1.75em" font-weight="400" font-size="13" fill="#475569" text-anchor="middle">و بی‌قراری</text>
+        </g>
+    </g>
+    <g transform="translate(110, 683)">
+        <g transform="translate(71, 0)">
+            <rect x="-18" width="18" height="18" fill="#BE123C" rx="5" />
+            <text x="-9" y="9" dy="0.3em" font-weight="500" font-size="13" fill="#FFFFFF" text-anchor="middle">4</text>
+            <text x="-25" y="9" dy="0.25em" font-weight="400" font-size="12" fill="#64748B" text-anchor="start">خیلی زیاد</text>
+        </g>
+        <g transform="translate(133, 0)">
+            <rect x="-18" width="18" height="18" fill="#BE123C" rx="5" />
+            <text x="-9" y="9" dy="0.3em" font-weight="500" font-size="13" fill="#FFFFFF" text-anchor="middle">3</text>
+            <text x="-25" y="9" dy="0.25em" font-weight="400" font-size="12" fill="#64748B" text-anchor="start">زیاد</text>
+        </g>
+        <g transform="translate(211, 0)">
+            <rect x="-18" width="18" height="18" fill="#BE123C" rx="5" />
+            <text x="-9" y="9" dy="0.3em" font-weight="500" font-size="13" fill="#FFFFFF" text-anchor="middle">2</text>
+            <text x="-25" y="9" dy="0.25em" font-weight="400" font-size="12" fill="#64748B" text-anchor="start">تا حدی</text>
+        </g>
+        <g transform="translate(532, 0)">
+            <rect x="-18" width="18" height="18" fill="#94A3B8" rx="5" />
+            <text x="-9" y="9" dy="0.3em" font-weight="500" font-size="13" fill="#FFFFFF" text-anchor="middle">1</text>
+            <text x="-25" y="9" dy="0.25em" font-weight="400" font-size="12" fill="#64748B" text-anchor="start">کمی</text>
+        </g>
+        <g transform="translate(596, 0)">
+            <rect x="-18" width="18" height="18" fill="#94A3B8" rx="5" />
+            <text x="-9" y="9" dy="0.3em" font-weight="500" font-size="13" fill="#FFFFFF" text-anchor="middle">0</text>
+            <text x="-25" y="9" dy="0.25em" font-weight="400" font-size="12" fill="#64748B" text-anchor="start">اصلا</text>
+        </g>
+        <g transform="translate(298, -5)">
+            <text dy="0.8em" font-size="12" fill="#64748B" text-anchor="middle"><tspan font-weight="400">پـاسـخ</tspan>
+            <tspan font-weight="600" >مثـبـت</tspan></text>
+            <text dy="2em" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">به وجود نشانه</text>
+            <g transform="translate(-59, 9.5)">
+                <path d="M11.25 5L0.749999 5M0.749999 5L5.25 0.5M0.749999 5L5.25 9.5" stroke="#94A3B8" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </g>
+
+        <g transform="translate(400, -5)">
+            <text dy="0.8em" font-size="12" fill="#64748B" text-anchor="middle"><tspan font-weight="400">پـاسـخ</tspan>
+            <tspan font-weight="600" >منـفی</tspan></text>
+            <text dy="2em" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">به وجود نشانه</text>
+            <line x1="-51" y1="0.5" x2="-51" y2="27.5" stroke="#CBD5E1" stroke-linecap="round" stroke-dasharray="4 4"/>
+            <g transform="translate(47, 9.5)">
+                <path d="M0.75 5L11.25 5M11.25 5L6.75 0.5M11.25 5L6.75 9.5" stroke="#94A3B8" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </g>
+    </g>
+  </g>
+{{/layout}}

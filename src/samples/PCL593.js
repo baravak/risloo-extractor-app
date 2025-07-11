@@ -8,7 +8,7 @@ const segments = [
 ];
 const alerts = {
   minimal: {
-    colors: ["#475569", "#CBD5E1", "#475569", "#475569", "#F8FAFC"],
+    colors: ["#475569", "#CBD5E1", "#475569", "#F1F5F9", "#F8FAFC"],
     title: "علائم ناچیز",
     description: "نیازی به مداخله نیست. توصیه به آموزش‌های عمومی تاب‌آوری.",
   },
@@ -137,7 +137,6 @@ class PCL593 extends Profile {
         percentage: Math.round((dataset.score[15].mark ?? 0) * 100),
       },
     };
-
     const status = {
       mark: dataset.score[16].mark,
       style: alerts[dataset.score[16].mark],

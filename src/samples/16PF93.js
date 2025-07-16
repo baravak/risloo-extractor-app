@@ -79,7 +79,7 @@ class _16PF93 extends Profile {
     L18: { eng: "status"},
     L19: { eng: "extraversion", fr: "برون‌گرایی" },
     L20: { eng: "anxiety", fr: "اضطراب" },
-    L21: { eng: "flexibility", fr: "یک‌دندگی" },
+    L21: { eng: "inflexibility", fr: "یک‌دندگی" },
     L22: { eng: "independence", fr: "استقلال" },
     L23: { eng: "selfcontrol", fr: "کنترل بالا" },
     L24: { eng: "adjustment", fr: "سازگاری" },

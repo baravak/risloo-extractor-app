@@ -1,0 +1,149 @@
+{{#> layout}}
+<defs>
+    {{#with forgivness}}
+        <linearGradient id="{{details.label.eng}}bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="1" stop-color="{{details.label.secondary}}"/>
+            <stop stop-color="{{details.label.color}}"/>
+        </linearGradient>
+        <clipPath id="{{details.label.eng}}cr">
+            {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.angles.start end=circle.angles.end) direction}}
+        </clipPath>
+    {{/with}}
+    {{#with gratitude}}
+        <linearGradient id="{{details.label.eng}}bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="1" stop-color="{{details.label.secondary}}"/>
+            <stop stop-color="{{details.label.color}}"/>
+        </linearGradient>
+        <clipPath id="{{details.label.eng}}cr">
+            {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.angles.start end=circle.angles.end) direction}}
+        </clipPath>
+    {{/with}}
+    <clipPath id="tptalcr">
+        <rect width="280" height="28" rx="6" />
+    </clipPath>
+    <linearGradient id="totalbg">
+        <stop stop-color="#94A3B8"/>
+        <stop offset="1" stop-color="#334155"/>
+    </linearGradient>
+</defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    {{#with gratitude}}
+        <g>
+            <g>
+                <g>
+                    {{#if (boolean details.report '===' 'low')}}
+                        <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
+                    {{else}}
+                        <rect width="205" height="88" rx="8" fill="#F8FAFC" />
+                    {{/if}}
+                    <text fill="{{ternary (boolean details.report '===' 'low') '#7E22CE' '#64748B'}}" font-size="14">
+                        <tspan x="16" y="22" text-anchor="end" font-weight="500" dy="0.3em">۳۰ الی ۶۰</tspan>
+                        <tspan x="16" y="50" text-anchor="end" font-weight="400" dy="0.3em">فرد آمادگی آشکارسازی را دارد.</tspan>
+                    </text>
+                </g>
+                <g transform="translate(0, 96)">
+                    {{#if (boolean details.report '===' 'moderate')}}
+                        <rect x="0.5" y="0.5" width="204" height="69" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
+                    {{else}}
+                        <rect width="205" height="68" rx="8" fill="#F8FAFC" />
+                    {{/if}}
+                    <text fill="{{ternary (boolean details.report '===' 'moderate') '#7E22CE' '#64748B'}}" font-size="14">
+                        <tspan x="16" y="22" text-anchor="end" font-weight="500" dy="0.3em">۱۰ الی ۲۹</tspan>
+                        <tspan x="16" y="50" text-anchor="end" font-weight="400" dy="0.3em">-</tspan>
+                    </text>
+                </g>
+                <g transform="translate(0, 174)">
+                    {{#if (boolean details.report '===' 'high')}}
+                        <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
+                    {{else}}
+                        <rect width="205" height="88" rx="8" fill="#F8FAFC" />
+                    {{/if}}
+                    <text fill="{{ternary (boolean details.report '===' 'high') '#7E22CE' '#64748B'}}" font-size="14">
+                        <tspan x="16" y="22" text-anchor="end" font-weight="500" dy="0.3em">۰ الی ۹</tspan>
+                        <tspan x="16" y="50" text-anchor="end" font-weight="400" dy="0.3em">باید از مهارت‌های پایه برای</tspan>
+                        <tspan x="16" y="50" text-anchor="end" font-weight="400" dy="1.8em">آمادگی فرد استفاده کرد.</tspan>
+                    </text>
+                </g>
+            </g>
+            <g transform="translate(253, 0)">
+                <text x="125" y="250" text-anchor="start" dy="0.25em" font-size="18" font-weight="500" fill="{{details.label.color}}">{{details.label.title}}</text>
+                <g transform="translate(71, 83)">
+                    <text x="27" dy="2.35em" text-anchor="middle" font-size="18" font-weight="500" fill="{{details.label.color}}">٪{{details.percentage}}</text>
+                    <text x="27" dy="0.6em" text-anchor="middle" font-size="28" font-weight="600" fill="{{details.label.color}}">{{details.mark}}</text>
+                </g>
+                <text x="76" text-anchor="end" dy="1em" font-size="14" font-weight="500" fill="#64748B">{{details.label.max}}</text>
+                <text y="86" x="0" text-anchor="middle" dy="1em" font-size="16" font-weight="500" fill="{{details.label.color}}">{{details.label.fa}}</text>
+                <g transform="translate(125, 100)">
+                    {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.angles.start end=circle.angles.end) direction fill='#F1F5F9'}}
+                    {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.angles.start end=zeta) direction fill="url(#gratitudebg)" clip-path="url(#gratitudecr)"}}
+                </g>
+            </g>
+        </g>
+    {{/with}}
+    <text x="418.5" y="208" text-anchor="middle" dy="0.3em" font-size="14" font-weight="500" fill="#64748B">0</text>
+    {{#with forgivness}}
+        <g transform="translate(458, 0)">
+            <g transform="translate(173, 0)">
+                <g>
+                    {{#if (boolean details.report '===' 'low')}}
+                        <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
+                    {{else}}
+                        <rect width="205" height="88" rx="8" fill="#F8FAFC" />
+                    {{/if}}
+                    <text fill="{{ternary (boolean details.report '===' 'low') '#7E22CE' '#64748B'}}" font-size="14">
+                        <tspan x="189" y="22" text-anchor="start" font-weight="500" dy="0.3em">۲۷ الی ۵۲</tspan>
+                        <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="0.3em">فرد آمادگی دارد تا تمرین‌های</tspan>
+                        <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="1.8em">رهاسازی را شروع کند.</tspan>
+                    </text>
+                </g>
+                <g transform="translate(0, 96)">
+                    {{#if (boolean details.report '===' 'moderate')}}
+                        <rect x="0.5" y="0.5" width="204" height="69" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
+                    {{else}}
+                        <rect width="205" height="68" rx="8" fill="#F8FAFC" />
+                    {{/if}}
+                    <text fill="{{ternary (boolean details.report '===' 'moderate') '#7E22CE' '#64748B'}}" font-size="14">
+                        <tspan x="189" y="22" text-anchor="start" font-weight="500" dy="0.3em">۱۰ الی ۲۶</tspan>
+                        <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="0.3em">-</tspan>
+                    </text>
+                </g>
+                <g transform="translate(0, 174)">
+                    {{#if (boolean details.report '===' 'high')}}
+                        <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
+                    {{else}}
+                        <rect width="205" height="88" rx="8" fill="#F8FAFC" />
+                    {{/if}}
+                    <text fill="{{ternary (boolean details.report '===' 'high') '#7E22CE' '#64748B'}}" font-size="14">
+                        <tspan x="189" y="22" text-anchor="start" font-weight="500" dy="0.3em">۰ الی ۹</tspan>
+                        <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="0.3em">فرد آمادگی رهاسازی را ندارد و</tspan>
+                        <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="1.8em">باید درمان مقدماتی ادامه یابد.</tspan>
+                    </text>
+                </g>
+            </g>
+            <g transform="translate(0, 0)">
+                <text x="0" y="250" text-anchor="end" dy="0.25em" font-size="18" font-weight="500" fill="{{details.label.color}}">{{details.label.title}}</text>
+                <g transform="translate(0, 83)">
+                    <text x="27" dy="2.35em" text-anchor="middle" font-size="18" font-weight="500" fill="{{details.label.color}}">٪{{details.percentage}}</text>
+                    <text x="27" dy="0.6em" text-anchor="middle" font-size="28" font-weight="600" fill="{{details.label.color}}">{{details.mark}}</text>
+                </g>
+                <text x="32" text-anchor="end" dy="1em" font-size="14" font-weight="500" fill="#64748B">{{details.label.max}}</text>
+                <text y="86" x="0" text-anchor="middle" dy="1em" font-size="16" font-weight="500" fill="{{details.label.color}}">{{details.label.fa}}</text>
+                <g transform="translate(0, 100)">
+                    {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.angles.start end=circle.angles.end) direction fill='#F1F5F9' transform="scale(-1, 1)"}}
+                    {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.angles.start end=zeta) direction fill="url(#forgivnessbg)" clip-path="url(#forgivnesscr)" transform="scale(-1, 1)"}}
+                </g>
+            </g>
+        </g>
+    {{/with}}
+    <g transform="translate(278, 371)">
+        <rect width="280" height="28" fill="#F1F5F9" rx="6" />
+        {{bar (math total.p '*' 280) 28 (object tl=6 bl=6 tr=0 br=0) (toRad 0) clip-path="url(#tptalcr)" fill="url(#totalbg)"}}
+        <text x="0" y="41" text-anchor="end" dy="0.3em" font-size="12" font-weight="400" fill="#64748B">0</text>
+        <text x="280" y="41" text-anchor="start" dy="0.3em" font-size="12" font-weight="400" fill="#64748B">112</text>
+        <text x="140" y="49" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#334155">نمره کل</text>
+        <text x="140" y="-19" text-anchor="middle" dy="0.3em" font-size="20" font-weight="600" fill="#334155">{{total.mark}}</text>
+        <text x="140" y="-36" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#334155">٪{{total.percentage}}</text>
+    </g>
+</g>
+
+{{/layout}}

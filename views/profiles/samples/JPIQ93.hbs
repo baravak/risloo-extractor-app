@@ -1,0 +1,28 @@
+{{#> layout}}
+<defs>
+    <linearGradient id="bg">
+        <stop stop-color="#FB7185"/>
+        <stop offset="1" stop-color="#BE123C"/>
+    </linearGradient>
+    {{#with raw}}
+    <clipPath id="bgr">
+        {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.angles.start end=circle.angles.end) direction}}
+    </clipPath>
+    {{/with}}
+</defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <text x="125" text-anchor="middle" dy="1em" font-size="18" font-weight="500" fill="#E11D48">نفوذپذیری</text>
+    {{#with raw}}
+        <g transform="translate(125, 167)">
+            {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.angles.start end=circle.angles.end) direction fill='#F1F5F9'}}
+            {{gauge 125 (math 125 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.angles.start end=zeta) direction fill="url(#bg)" clip-path="url(#bgr)"}}
+            <text text-anchor="middle" font-size="18" font-weight="500" fill="#E11D48">٪{{percentage}}</text>
+            <text y="20" text-anchor="middle" dy="-44" font-size="28" font-weight="600" fill="#E11D48">{{details.mark}}</text>
+            <text y="10" x="-106.25" text-anchor="middle" dy=".6em" font-size="14" font-weight="500" fill="#64748B">0</text>
+            <text y="10" x="106.25" text-anchor="middle" dy=".6em" font-size="14" font-weight="500" fill="#64748B">56</text>
+            <text y="86" x="0" text-anchor="middle" dy="1em" font-size="16" font-weight="500" fill="#E11D48">{{details.label.fa}}</text>
+        </g>
+    {{/with}}
+</g>
+
+{{/layout}}

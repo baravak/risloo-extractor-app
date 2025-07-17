@@ -7,7 +7,7 @@ class JGFQ93 extends Profile {
 
   // Labels of the sample
   labels = {
-    L1_1: { eng: "forgivness_raw", max:52, title: 'رهاسازی', color: '#4338CA', secondary: '#818CF8'},
+    L1_1: { eng: "forgivness_raw", max:52, title: 'رهـــاسازی', color: '#4338CA', secondary: '#818CF8'},
     L1_2: { eng: "forgivness_percentage"},
     L1_3: { eng: "forgivness_report"},
 

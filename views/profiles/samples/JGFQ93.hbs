@@ -31,12 +31,12 @@
         <g>
             <g>
                 <g>
-                    {{#if (boolean details.report '===' 'low')}}
+                    {{#if (boolean details.report '===' 'high')}}
                         <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
                     {{else}}
                         <rect width="205" height="88" rx="8" fill="#F8FAFC" />
                     {{/if}}
-                    <text fill="{{ternary (boolean details.report '===' 'low') details.label.color '#64748B'}}" font-size="14">
+                    <text fill="{{ternary (boolean details.report '===' 'high') details.label.color '#64748B'}}" font-size="14">
                         <tspan x="16" y="22" text-anchor="end" font-weight="500" dy="0.3em">۳۰ الی ۶۰</tspan>
                         <tspan x="16" y="50" text-anchor="end" font-weight="400" dy="0.3em">فرد آمادگی آشکارسازی را دارد.</tspan>
                     </text>
@@ -53,12 +53,12 @@
                     </text>
                 </g>
                 <g transform="translate(0, 174)">
-                    {{#if (boolean details.report '===' 'high')}}
+                    {{#if (boolean details.report '===' 'low')}}
                         <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#F3E8FF" fill="#FAF5FF" />
                     {{else}}
                         <rect width="205" height="88" rx="8" fill="#F8FAFC" />
                     {{/if}}
-                    <text fill="{{ternary (boolean details.report '===' 'high') details.label.color '#64748B'}}" font-size="14">
+                    <text fill="{{ternary (boolean details.report '===' 'low') details.label.color '#64748B'}}" font-size="14">
                         <tspan x="16" y="22" text-anchor="end" font-weight="500" dy="0.3em">۰ الی ۹</tspan>
                         <tspan x="16" y="50" text-anchor="end" font-weight="400" dy="0.3em">باید از مهارت‌های پایه برای</tspan>
                         <tspan x="16" y="50" text-anchor="end" font-weight="400" dy="1.6em">آمادگی فرد استفاده کرد.</tspan>
@@ -85,12 +85,12 @@
         <g transform="translate(458, 0)">
             <g transform="translate(173, 0)">
                 <g>
-                    {{#if (boolean details.report '===' 'low')}}
+                    {{#if (boolean details.report '===' 'high')}}
                         <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#E0E7FF" fill="#EEF2FF" />
                     {{else}}
                         <rect width="205" height="88" rx="8" fill="#F8FAFC" />
                     {{/if}}
-                    <text fill="{{ternary (boolean details.report '===' 'low') details.label.color '#64748B'}}" font-size="14">
+                    <text fill="{{ternary (boolean details.report '===' 'high') details.label.color '#64748B'}}" font-size="14">
                         <tspan x="189" y="22" text-anchor="start" font-weight="500" dy="0.3em">۲۷ الی ۵۲</tspan>
                         <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="0.3em">فرد آمادگی دارد تا تمرین‌های</tspan>
                         <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="1.6em">رهاسازی را شروع کند.</tspan>
@@ -108,12 +108,12 @@
                     </text>
                 </g>
                 <g transform="translate(0, 174)">
-                    {{#if (boolean details.report '===' 'high')}}
+                    {{#if (boolean details.report '===' 'low')}}
                         <rect x="0.5" y="0.5" width="204" height="87" stroke-width="1" rx="8" stroke="#E0E7FF" fill="#EEF2FF" />
                     {{else}}
                         <rect width="205" height="88" rx="8" fill="#F8FAFC" />
                     {{/if}}
-                    <text fill="{{ternary (boolean details.report '===' 'high') details.label.color '#64748B'}}" font-size="14">
+                    <text fill="{{ternary (boolean details.report '===' 'low') details.label.color '#64748B'}}" font-size="14">
                         <tspan x="189" y="22" text-anchor="start" font-weight="500" dy="0.3em">۰ الی ۹</tspan>
                         <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="0.3em">فرد آمادگی رهاسازی را ندارد و</tspan>
                         <tspan x="189" y="50" text-anchor="start" font-weight="400" dy="1.6em">باید درمان مقدماتی ادامه یابد.</tspan>

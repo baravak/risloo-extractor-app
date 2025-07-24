@@ -1,0 +1,101 @@
+{{#> layout}}
+<defs>
+    <linearGradient id="bg" x1="2.4" y1="112" x2="400" y2="112" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FDF2F8" stop-opacity="0.25"/>
+        <stop offset="1" stop-color="#FCE7F3" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="totalbg" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop stop-color="#334155"/>
+        <stop offset="1" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="bgrow">
+        <stop stop-color="#FBCFE8"/>
+        <stop offset="1" stop-color="#BE185D"/>
+    </linearGradient>
+    <clipPath id="totalRow">
+        {{bar 400 16 (object tr=2 br=2 tl=0 bl=0) (toRad 0) fill='black'}}
+    </clipPath>
+    <filter id="vsp" x="-1.52588e-05" y="0" width="7.00002" height="230" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dx="1"/>
+        <feGaussianBlur stdDeviation="1.5"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3465_114726"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3465_114726" result="shape"/>
+    </filter>
+    <filter id="totalvsp" x="0" y="0.5" width="34" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dx="2"/>
+        <feGaussianBlur stdDeviation="3"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3465_114738"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3465_114738" result="shape"/>
+    </filter>
+</defs>
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(98, 21)">
+        <rect width="400" height="224" fill="url(#bg)"/>
+        <g transform="translate(0, 24)">
+            {{#each factors as |factor index|}}
+                <g transform="translate(0, {{math 40 '*' index}})">
+                    {{bar 400 16 (object tr=2 br=2 tl=0 bl=0) (toRad 0) fill='black' opacity="0.04"}}
+                </g>
+            {{/each}}
+        </g>
+        <g transform="translate(38, 0)">
+            <line x1="0.5" y1="0.5" x2="0.50001" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="40.5" y1="0.5" x2="40.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="80.5" y1="0.5" x2="80.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="120.5" y1="0.5" x2="120.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="160.5" y1="0.5" x2="160.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="200.5" y1="0.5" x2="200.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="240.5" y1="0.5" x2="240.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="280.5" y1="0.5" x2="280.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="320.5" y1="0.5" x2="320.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <line x1="361.5" y1="0.5" x2="361.5" y2="223.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+        </g>
+        <text y="-12" text-anchor="middle" font-weight="400" font-size="12" fill="#94A3B8">0</text>
+        <text x="200" y="-12" text-anchor="middle" font-weight="400" font-size="12" fill="#94A3B8">50 ٪</text>
+        <text x="400" y="-12" text-anchor="middle" font-weight="400" font-size="12" fill="#94A3B8">100 ٪</text>
+        <g transform="translate(0, 24)">
+            {{#each factors as |factor index|}}
+                <g transform="translate(0, {{math 40 '*' index}})">
+                    <text x="-9" y="8" text-anchor="start" dy="0.25em" font-weight="400" font-size="12" fill="#475569">{{factor.label.title}}</text>
+                    {{bar (math 400 '*' factor.p) 16 (object tr=2 br=2 tl=0 bl=0) (toRad 0) fill='url(#bgrow)' clip-path="url(#totalRow)"}}
+                    {{#if (boolean factor.percentage '<=' 10) }}
+                        <text x="{{math (math 400 '*' factor.p) '+' 6}}" y="8" text-anchor="end" dy="0.3em" font-weight="500" font-size="13" fill="#BE185D">{{factor.percentage}} ٪</text>
+                    {{else}}
+                        <text x="{{math (math 400 '*' factor.p) '-' 4}}" y="8" text-anchor="start" dy="0.3em" font-weight="500" font-size="13" fill="#FFFFFF">{{factor.percentage}} ٪</text>
+                    {{/if}}
+                    <text x="408" y="8" text-anchor="start" dy="0.3em" direction="ltr">
+                        <tspan font-weight="700" font-size="18" fill="#BE185D">{{factor.mark}}</tspan>
+                        <tspan font-weight="300" font-size="12" fill="#64748B">/</tspan>
+                        <tspan font-weight="400" font-size="13" fill="#64748B">{{factor.label.max}}</tspan>
+                    </text>
+                </g>
+            {{/each}}
+        </g>
+        <g opacity="0.5" filter="url(#vsp)" transform="translate(-3, -3)">
+            <line x1="2.5" y1="3.5" x2="2.5" y2="226.5" stroke="white" stroke-linecap="round"/>
+        </g>
+    </g>
+    <g transform="translate(655, 26)">
+        {{bar 18 217 (object tr=2 tl=2 br=0 bl=0) (toRad 0) fill="#F1F5F9"}}
+        {{bar 18 (math 217 '*' total.p) (object tr=2 tl=2 br=0 bl=0) (toRad 0) fill="url(#totalbg)" transform=total.transform}}
+        <g transform="translate(-6, 210.5)" opacity="0.5" filter="url(#totalvsp)">
+            <path d="M5 7.5H25" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <text x="-5.5" y="0" text-anchor="start" dy="0.3em" font-weight="400" font-size="12" fill="#475569">{{total.label.max}}</text>
+        <g transform="translate(24.5, {{math 217 '-' (math 217 '*' total.p)}})">
+            <text text-anchor="end" dy="-0.1em" font-weight="600" font-size="18" fill="#475569">{{total.mark}}</text>
+            <text text-anchor="end" dy="1em" font-weight="400" font-size="12" fill="#64748B">{{total.percentage}} ٪</text>
+        </g>
+        <text font-weight="400" font-size="12" fill="#475569" transform="rotate(-90,0, 0) translate(-183,-10)">نمره کل</text>
+    </g>
+</g>
+
+{{/layout}}

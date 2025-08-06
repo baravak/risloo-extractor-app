@@ -64,8 +64,8 @@ class Raven93 extends Profile {
     const report = dataset.score[3]
     const iq = dataset.score[1].mark?.toString().replace(/[<>]/, '')
     const iqText = dataset.score[1].mark ?? 0
-    const raw = dataset.score[2].mark ?? 0
-    const percentile = dataset.score[3].mark ?? 0
+    const raw = dataset.score[0].mark ?? 0
+    const percentile = dataset.score[2].mark ?? 0
     levels[report.mark].selected = true
     const selected = levels[report.mark]
     const questions = []

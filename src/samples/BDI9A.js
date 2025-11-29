@@ -94,7 +94,6 @@ class BDI9A extends Profile {
     if(questions[6].option > 0){
       alerts.push(questions[6])
     }
-    console.log(total)
     return [{total, report, gReport, alerts,sorted}];
   }
 }

@@ -75,7 +75,7 @@ class BDI9A extends Profile {
 
     const report = dataset.score[3].mark
     const gReport = dataset.score[2].mark
-    dataset.score[0].mark = dataset.score[0] ?? 0
+    dataset.score[0].mark = dataset.score[0].mark ?? 0
     dataset.score[1].mark = dataset.score[1].mark ?? 0
     dataset.score[1].mark = isNaN(dataset.score[1].mark) ? 0 : dataset.score[1].mark
     const total = {
@@ -94,6 +94,7 @@ class BDI9A extends Profile {
     if(questions[6].option > 0){
       alerts.push(questions[6])
     }
+    console.log(total)
     return [{total, report, gReport, alerts,sorted}];
   }
 }

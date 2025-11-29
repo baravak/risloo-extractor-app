@@ -75,7 +75,8 @@ class BDI9A extends Profile {
 
     const report = dataset.score[3].mark
     const gReport = dataset.score[2].mark
-
+    dataset.score[0].mark = dataset.score[0] ?? 0
+    dataset.score[1].mark = dataset.score[1].mark ?? 0
     dataset.score[1].mark = isNaN(dataset.score[1].mark) ? 0 : dataset.score[1].mark
     const total = {
         ...dataset.score[0],

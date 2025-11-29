@@ -91,21 +91,27 @@ class BDI93 extends Profile {
     const sorted = [...questions].sort((a, b) => b.option - a.option)
     for(let i = 0; i < 6; i+=2){
         factors.push({
-            ...dataset.score[i],
-            percentage: dataset.score[i+1].mark,
-            percentageText: Math.round(dataset.score[i+1].mark * 100),
+            ...{
+              ...dataset.score[i],
+              mark: dataset.score[i].mark ?? 0
+            },
+            percentage: dataset.score[i+1].mark ?? 0,
+            percentageText: Math.round((dataset.score[i+1].mark ?? 0) * 100),
             bg:`url(#bg${dataset.score[i].label.eng})`
         })
     }
 
     const report = dataset.score[8].mark
     const total = {
-        ...dataset.score[6],
-        percentage: dataset.score[7].mark,
-        percentageText: Math.round(dataset.score[7].mark * 100),
-        w: calculateWidth(dataset.score[6].mark),
+        ...{
+          ...dataset.score[6],
+          mark: dataset.score[6].mark ?? 0
+        },
+        percentage: dataset.score[7].mark ?? 0,
+        percentageText: Math.round((dataset.score[7].mark ?? 0) * 100),
+        w: calculateWidth(dataset.score[6].mark ?? 0),
         colors: totalColors[report],
-        alert: dataset.score[9].mark
+        alert: dataset.score[9].mark ?? 0
     }
     const alerts = []
     if(questions[1].option > 0){

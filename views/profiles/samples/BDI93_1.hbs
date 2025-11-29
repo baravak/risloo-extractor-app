@@ -23,6 +23,12 @@
         <stop offset="1" stop-color="{{colors.[1]}}"/>
       </linearGradient>
     {{/with}}
+    <clipPath id="raw-rect">
+        {{bar 28 300 (object tr=4 tl=4 br=0 bl=0) (toRad 0)}}
+    </clipPath>
+    <clipPath id="total-rect">
+        {{bar 449 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0)}}
+    </clipPath>
 </defs>
 
 <g transform="translate({{spec.profile.padding.[0].x}}, {{spec.profile.padding.[0].y}})">
@@ -55,7 +61,7 @@
     <g transform="translate(141,0)">
       {{#each factors as | factor index |}}
         <g transform="translate({{math 128 '*' index}},{{math 300 '-' (math 300 '*' percentage)}})">
-          {{bar 28 (math 300 '*' percentage) (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill=bg transform="translate(0,24)"}}
+          {{bar 28 (math 300 '*' percentage) (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill=bg transform="translate(0,24)" clip-path="url(#raw-rect)"}}
           <text font-size="16" font-weight="600" fill="{{ternary (boolean percentage '>' 0.24) '#FFFFFF' '#4F46E5'}}" transform="{{ternary (boolean percentage '>' 0.24) 'translate(19,34) rotate(-90 0 0)' 'translate(19,16) rotate(-90 0 0)'}}" text-anchor="{{ternary (boolean percentage '>' 0.24) 'start' 'end'}}">{{percentageText}} ٪</text>
         </g>
       {{/each}}
@@ -68,7 +74,7 @@
         <text y="0" x="-8" dy=".85em" text-anchor="start" font-size="13" font-weight="500" fill="#64748B">نمره کل</text>
         <text y="0" x="-8" dy="2.1em" text-anchor="start" font-size="13" font-weight="600" fill="#475569">{{total.percentageText}} ٪</text>
         {{bar 449 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill="#F8FAFC"}}
-        {{bar total.w 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill="url(#bgtotal)"}}
+        {{bar total.w 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill="url(#bgtotal)" clip-path="url(#total-rect)"}}
         <text y="14" x="{{ternary (boolean total.mark '>' 5) (math total.w '-' 8) (math total.w '+' 8)}}" dy=".3em" text-anchor="{{ternary (boolean total.mark '>' 5) 'start' 'end'}}" font-size="16" font-weight="600" fill="{{ternary (boolean total.mark '>' 5) '#FFFFFF' total.colors.[1]}}">{{total.mark}}</text>
       </g>
       <g transform="translate(48,0)">

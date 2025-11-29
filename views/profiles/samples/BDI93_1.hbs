@@ -1,0 +1,114 @@
+{{#> layout}}
+<defs>
+  <filter id="sp" x="0" y="0" width="532" height="7.00006" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+  <feOffset dy="-1"/>
+  <feGaussianBlur stdDeviation="1.5"/>
+  <feComposite in2="hardAlpha" operator="out"/>
+  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4671_119062"/>
+  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4671_119062" result="shape"/>
+  </filter>
+
+    {{#each factors as | factor index |}}
+      <linearGradient id="bg{{label.eng}}" x1="14" y1="{{math 300 '*' percentage}}" x2="14" y2="9" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#A5B4FC"/>
+        <stop offset="1" stop-color="#4F46E5"/>
+      </linearGradient>
+    {{/each}}
+    {{#with total}}
+      <linearGradient id="bgtotal" x1="-4.8" y1="14" x2="{{math 300 '*' percentage}}" y2="14" gradientUnits="userSpaceOnUse">
+        <stop stop-color="{{colors.[0]}}"/>
+        <stop offset="1" stop-color="{{colors.[1]}}"/>
+      </linearGradient>
+    {{/with}}
+</defs>
+
+<g transform="translate({{spec.profile.padding.[0].x}}, {{spec.profile.padding.[0].y}})">
+  <g transform="translate(29,0)">
+    <g transform="translate(141,0)">
+      {{#each factors as | factor index |}}
+        <g transform="translate({{math 128 '*' index}},0)">
+          <text x="14" y="0" dy="1.25em" text-anchor="middle" direction="ltr" font-size="12" font-weight="300" fill="#64748B">
+            <tspan font-size="16" font-weight="700" fill="#4F46E5">{{mark}}</tspan>
+            <tspan>/</tspan>
+            <tspan font-size="13" font-weight="400">{{label.max}}</tspan>
+          </text>
+          {{bar 28 300 (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill="#F8FAFC" transform="translate(0,24)"}}
+          <text x="14" y="337" dy=".85em" font-size="13" font-weight="400" text-anchor="middle" fill="#334155">{{label.short}}</text>
+          <text x="14" y="354" dy=".85em" font-size="13" font-weight="400" text-anchor="middle" fill="#334155">{{label.fr}}</text>
+          <text x="14" y="354" dy="2.15em" font-size="13" font-weight="400" text-anchor="middle" fill="#94A3B8">نشانه‌های</text>
+        </g>
+      {{/each}}
+    </g>
+    <g>
+      <path d="M 16.5 8.5 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="-29" y="8" dy=".25em" font-size="12" font-weight="400" text-anchor="end" fill="#94A3B8">نمره خام</text>
+      <text x="24" y="28.5" dy=".25em" font-size="12" font-weight="400" text-anchor="start" fill="#94A3B8">100 ٪</text>
+      <line x1="39.5" y1="24.5" x2="524.5" y2="24.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="39.5" y1="99.5" x2="524.5" y2="99.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="39.5" y1="174.5" x2="524.5" y2="174.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <text x="24" y="175" dy=".25em" font-size="12" font-weight="400" text-anchor="start" fill="#94A3B8">50 ٪</text>
+      <line x1="39.5" y1="249.5" x2="524.5" y2="249.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    </g>
+    <g transform="translate(141,0)">
+      {{#each factors as | factor index |}}
+        <g transform="translate({{math 128 '*' index}},{{math 300 '-' (math 300 '*' percentage)}})">
+          {{bar 28 (math 300 '*' percentage) (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill=bg transform="translate(0,24)"}}
+          <text font-size="16" font-weight="600" fill="{{ternary (boolean percentage '>' 0.24) '#FFFFFF' '#4F46E5'}}" transform="{{ternary (boolean percentage '>' 0.24) 'translate(19,34) rotate(-90 0 0)' 'translate(19,16) rotate(-90 0 0)'}}" text-anchor="{{ternary (boolean percentage '>' 0.24) 'start' 'end'}}">{{percentageText}} ٪</text>
+        </g>
+      {{/each}}
+    </g>
+    <g opacity="0.5" filter="url(#sp)" transform="translate(-3,321)">
+      <line x1="3.5" y1="4.5" x2="528.5" y2="4.5" stroke="white" stroke-linecap="round" />
+    </g>
+    <g transform="translate(10,434)">
+      <g transform="translate(48,44)">
+        <text y="0" x="-8" dy=".85em" text-anchor="start" font-size="13" font-weight="500" fill="#64748B">نمره کل</text>
+        <text y="0" x="-8" dy="2.1em" text-anchor="start" font-size="13" font-weight="600" fill="#475569">{{total.percentageText}} ٪</text>
+        {{bar 449 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill="#F8FAFC"}}
+        {{bar total.w 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill="url(#bgtotal)"}}
+        <text y="14" x="{{ternary (boolean total.mark '>' 5) (math total.w '-' 8) (math total.w '+' 8)}}" dy=".3em" text-anchor="{{ternary (boolean total.mark '>' 5) 'start' 'end'}}" font-size="16" font-weight="600" fill="{{ternary (boolean total.mark '>' 5) '#FFFFFF' total.colors.[1]}}">{{total.mark}}</text>
+      </g>
+      <g transform="translate(48,0)">
+        <g transform="translate(130,16)">
+          <text y="-16" x="0" dy=".85em" text-anchor="middle" font-size="12" font-weight="400" fill="#94A3B8">13</text>
+          <text y="3" x="-65" dy=".85em" text-anchor="middle" font-size="13" font-weight="{{ternary (boolean report '===' 'minimal') 600 400}}" fill="{{ternary (boolean report '===' 'minimal') total.colors.[1] '#64748B'}}">هیچ یا کمترین حد</text>
+          <line x1="-0.5" y1="2" x2="-0.5" y2="23" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="4 4"/>
+        </g>
+        <g transform="translate(202,16)">
+          <text y="-16" x="0" dy=".85em" text-anchor="middle" font-size="12" font-weight="400" fill="#94A3B8">19</text>
+          <text y="3" x="-37.5" dy=".85em" text-anchor="middle" font-size="13" font-weight="{{ternary (boolean report '===' 'mild') 600 400}}" fill="{{ternary (boolean report '===' 'mild') total.colors.[1] '#64748B'}}">خفیف</text>
+          <line x1="-0.5" y1="2" x2="-0.5" y2="23" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="4 4"/>
+        </g>
+        <g transform="translate(274,16)">
+          <text y="-16" x="0" dy=".85em" text-anchor="middle" font-size="12" font-weight="400" fill="#94A3B8">28</text>
+          <text y="3" x="-37.5" dy=".85em" text-anchor="middle" font-size="13" font-weight="{{ternary (boolean report '===' 'moderate') 600 400}}" fill="{{ternary (boolean report '===' 'moderate') total.colors.[1] '#64748B'}}">متوسط</text>
+          <line x1="-0.5" y1="2" x2="-0.5" y2="23" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="4 4"/>
+        </g>
+        <g transform="translate(449,16)">
+          <text y="-16" x="0" dy=".85em" text-anchor="middle" font-size="12" font-weight="400" fill="#94A3B8">63</text>
+          <text y="3" x="-87.5" dy=".85em" text-anchor="middle" font-size="13" font-weight="{{ternary (boolean report '===' 'severe') 600 400}}" fill="{{ternary (boolean report '===' 'severe') total.colors.[1] '#64748B'}}">شدید</text>
+          <line x1="-0.5" y1="-0.5" x2="-0.5" y2="23" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="4 4"/>
+        </g>
+      </g>
+      {{# if total.alert}}
+        <g transform="translate(48,76)">
+          <rect width="449" height="32" stroke="#FFE4E6" fill="#FFF1F2" rx="4" />
+            <text x="211.5" y="16" font-size="12" font-weight="700" fill="#E11D48" text-anchor="middle" dy=".25em">خطر بالقوه خودکشی</text>
+            <g transform="translate(267.61, 8.04)">
+              <path d="M 8.889 5.629 v 3.5556 m 0 2.6667 h 0.0089 m -1.464 -11.0303 l -7.2053 12.0303 c -0.1485 0.2572 -0.2271 0.5488 -0.228 0.8459 c -0.0009 0.297 0.0761 0.5891 0.2231 0.8472 c 0.1471 0.258 0.3591 0.4731 0.6151 0.6238 c 0.256 0.1507 0.5469 0.2317 0.844 0.2351 h 14.4125 c 0.2968 -0.0035 0.5877 -0.0845 0.8435 -0.2352 c 0.2559 -0.1506 0.4679 -0.3656 0.6149 -0.6235 c 0.147 -0.258 0.224 -0.5499 0.2233 -0.8468 c -0.0008 -0.2969 -0.0792 -0.5884 -0.2275 -0.8456 l -7.2053 -12.0321 c -0.1516 -0.2502 -0.3652 -0.4571 -0.6201 -0.6007 c -0.2549 -0.1436 -0.5425 -0.219 -0.8351 -0.219 c -0.2926 0 -0.5802 0.0754 -0.8351 0.219 c -0.2549 0.1436 -0.4685 0.3505 -0.6201 0.6007 v 0.0009 z" fill="none" stroke="#E11D48" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+              <g transform="translate(224.5, 49)">
+                {{#each alerts}}
+                  <text y="{{math @index '*' 1.75}}em" font-size="11" font-weight="400" fill="#57534E" text-anchor="middle" dy=".25em">پاسخ سوال {{i}} ({{label}}) = گزینه {{user_answered}}: {{text}}</text>
+                {{/each}}
+              </g>
+        </g>
+      {{/if}}
+    </g>
+  </g>
+</g>
+
+{{/layout}}

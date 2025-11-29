@@ -1,0 +1,137 @@
+{{#> layout}}
+<defs>
+    <clipPath id="raw-rect">
+        {{bar 600 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill='black'}}
+    </clipPath>
+    <linearGradient id="titlebg" x1="420" y1="0" x2="420" y2="32" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#64748B"/>
+        <stop offset="1" stop-color="#94A3B8"/>
+    </linearGradient>
+    {{#with total}}
+      <linearGradient id="bgtotal" x1="-4.8" y1="14" x2="{{math 300 '*' percentage}}" y2="14" gradientUnits="userSpaceOnUse">
+        <stop stop-color="{{colors.[0]}}"/>
+        <stop offset="1" stop-color="{{colors.[1]}}"/>
+      </linearGradient>
+    {{/with}}
+</defs>
+
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(213, 0)">
+        <text x="0" y="23" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">0</text>
+        <text x="40" y="43.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean report '===' 'almost_none') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'almost_none') total.colors.[1] '#64748B'}}">تقریباً هیچ</text>
+        <line x1="0.5" y1="33" x2="0.5" y2="57" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+
+        <text x="80" y="23" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">1</text>
+        <text x="120" y="43.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean report '===' 'minimal') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'minimal') total.colors.[1] '#64748B'}}">ناچیز</text>
+        <line x1="79.5" y1="33" x2="79.5" y2="57" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+
+        <text x="160" y="23" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">3</text>
+        <text x="200" y="43.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean report '===' 'mild') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'mild') total.colors.[1] '#64748B'}}">خفیف</text>
+        <line x1="159.5" y1="33" x2="159.5" y2="57" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+        
+        <text x="240" y="23" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">7</text>
+        <text x="291" y="27.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean report '===' 'moderate_i') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'moderate_i') total.colors.[1] '#64748B'}}">متوسط</text>
+        <text x="291" y="27.5" dy="2em" font-size="10" font-weight="{{ternary (boolean report '===' 'moderate_i') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'moderate_i') total.colors.[1] '#64748B'}}">(بیشتر از خفیف)</text>
+        <line x1="239.5" y1="33" x2="239.5" y2="57" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+        
+        <text x="342" y="23" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">10</text>
+        <text x="396" y="27.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean report '===' 'moderate_ii') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'moderate_ii') total.colors.[1] '#64748B'}}">متوسط</text>
+        <text x="396" y="27.5" dy="2em" font-size="10" font-weight="{{ternary (boolean report '===' 'moderate_ii') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'moderate_ii') total.colors.[1] '#64748B'}}">(کمتر از وخیم)</text>
+        <line x1="341.5" y1="33" x2="341.5" y2="57" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+        <text x="450" y="23" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">14</text>
+        <text x="525" y="43.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean report '===' 'severe') 600 400}}" text-anchor="middle" fill="{{ternary (boolean report '===' 'severe') total.colors.[1] '#64748B'}}">وخیم</text>
+        <line x1="449.5" y1="33" x2="449.5" y2="57" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+        
+        <text x="600" y="23" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">39</text>
+        <line x1="599.5" y1="33" x2="599.5" y2="57" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/> 
+
+
+
+        <text x="0" y="127" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">0</text>
+        <text x="89.5" y="104.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean gReport '===' 'minimal') 600 400}}" text-anchor="middle" fill="{{ternary (boolean gReport '===' 'minimal') total.gColors.[1] '#64748B'}}">هیچ یا کمترین حد</text>
+        <line x1="0.5" y1="93" x2="0.5" y2="117" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+
+        <text x="179" y="127" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">4</text>
+        <text x="209" y="104.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean gReport '===' 'mild') 600 400}}" text-anchor="middle" fill="{{ternary (boolean gReport '===' 'mild') total.gColors.[1] '#64748B'}}">خفیف</text>
+        <line x1="178.5" y1="93" x2="178.5" y2="117" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+        
+        <text x="239" y="127" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">7</text>
+        <text x="347" y="104.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean gReport '===' 'moderate') 600 400}}" text-anchor="middle" fill="{{ternary (boolean gReport '===' 'moderate') total.gColors.[1] '#64748B'}}">متوسط</text>
+        <line x1="238.5" y1="93" x2="238.5" y2="117" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/>
+        
+        <text x="455" y="127" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">15</text>
+        <text x="527.5" y="104.5" dy=".3em" font-size="13" font-weight="{{ternary (boolean gReport '===' 'severe') 600 400}}" text-anchor="middle" fill="{{ternary (boolean gReport '===' 'severe') total.gColors.[1] '#64748B'}}">شدید</text>
+        <line x1="454.5" y1="93" x2="454.5" y2="117" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/> 
+        
+        <text x="600" y="127" dy=".3em" font-size="12" font-weight="400" text-anchor="middle" fill="#94A3B8">39</text>
+        <line x1="599.5" y1="93" x2="599.5" y2="117" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="2 4 4 4 4 4"/> 
+
+        
+
+        {{bar 600 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill="#F8FAFC"  transform="translate(0, 61)"}}
+        {{bar total.w 28 (object tr=4 br=4 tl=0 bl=0) (toRad 0) fill="url(#bgtotal)"  transform="translate(0, 61)" clip-path="url(#raw-rect)"}}
+        <text x="-28" y="36" font-size="12" font-weight="400" text-anchor="start" fill="#94A3B8" dy=".8em">هنجار منصور و دادستان</text>
+        <text x="{{ternary (boolean total.mark '===' 0) 8 (math total.w '-' 8)}}" y="75" font-size="16" font-weight="600" text-anchor="{{ternary (boolean total.mark '===' 0) 'end' 'start'}}" fill="{{ternary (boolean total.mark '===' 0) '#475569' '#FFFFFF'}}" dy=".3em">{{total.mark}}</text>
+        <path d="M -23.5 42 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="-28" y="101" font-size="12" font-weight="400" text-anchor="start" fill="#94A3B8" dy=".8em">هنجار بک</text>
+        <path d="M -23.5 107 l 7 0 m 0 0 l -3 -3 m 3 3 l -3 3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="-16" y="61" font-size="13" font-weight="500" text-anchor="start" fill="#64748B" dy=".8em">نمره کل</text>
+        <text x="-16" y="78" font-size="13" font-weight="600" text-anchor="start" fill="#475569" dy=".8em">{{total.percentageText}}{{ternary (boolean total.percentage '===' 0) '' ' ٪'}}</text>
+    </g>
+    <g transform="translate(27, 181)"> 
+         <g>
+            <rect width="840" height="32" rx="4" fill="url(#titlebg)" />
+            
+            <text x="24" y="16" dy=".3em" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">نمره</text>
+            <rect x="48" y="10" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+            
+            <text x="300.5" y="16" dy=".3em" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">متن پاسخ</text>
+            <rect x="553" y="10" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+            
+            <text x="590.5" y="16" dy=".3em" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">گزینهٔ پاسخ</text>
+            <rect x="628" y="10" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+            
+            <text x="708.5" y="16" dy=".3em" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">نشانه</text>
+            <rect x="789" y="10" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+            
+            <text x="814" y="16" dy=".3em" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">سوال</text>
+         </g>
+         <g transform="translate(0, 33)">
+            {{#each sorted}}
+                <g transform="translate(0, {{math @index '*' 31}})">
+                    {{# if alert}}
+                    <g transform="translate(846.11, 7.04)">
+                        <path d="M 8.889 5.629 v 3.5556 m 0 2.6667 h 0.0089 m -1.464 -11.0303 l -7.2053 12.0303 c -0.1485 0.2572 -0.2271 0.5488 -0.228 0.8459 c -0.0009 0.297 0.0761 0.5891 0.2231 0.8472 c 0.1471 0.258 0.3591 0.4731 0.6151 0.6238 c 0.256 0.1507 0.5469 0.2317 0.844 0.2351 h 14.4125 c 0.2968 -0.0035 0.5877 -0.0845 0.8435 -0.2352 c 0.2559 -0.1506 0.4679 -0.3656 0.6149 -0.6235 c 0.147 -0.258 0.224 -0.5499 0.2233 -0.8468 c -0.0008 -0.2969 -0.0792 -0.5884 -0.2275 -0.8456 l -7.2053 -12.0321 c -0.1516 -0.2502 -0.3652 -0.4571 -0.6201 -0.6007 c -0.2549 -0.1436 -0.5425 -0.219 -0.8351 -0.219 c -0.2926 0 -0.5802 0.0754 -0.8351 0.219 c -0.2549 0.1436 -0.4685 0.3505 -0.6201 0.6007 v 0.0009 z" fill="none" stroke="#E11D48" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    {{/if}}
+                    <rect width="840" height="30" rx="4" fill="{{color}}" />
+                    
+                    <text x="24" y="15" dy=".3em" font-weight="500" font-size="12" fill="#475569" text-anchor="middle">{{option}}</text>
+                    <rect x="48" y="9" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+                    
+                    <text x="300.5" y="15" dy=".3em" font-weight="500" font-size="12" fill="#475569" text-anchor="middle">{{text}}</text>
+                    <rect x="553" y="9" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+                    
+                    <text x="590.5" y="15" dy=".3em" font-weight="500" font-size="12" fill="#475569" text-anchor="middle">{{user_answered}}</text>
+                    <rect x="628" y="9" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+                    
+                    <text x="708.5" y="15" dy=".3em" font-weight="500" font-size="12" fill="#475569" text-anchor="middle">{{label}}</text>
+                    <rect x="789" y="9" width="1" height="12" rx="0.5" fill="#E2E8F0"/>
+                    
+                    <text x="814" y="15" dy=".3em" font-weight="500" font-size="12" fill="#475569" text-anchor="middle">{{i}}</text>
+                </g>
+            {{/each}}
+         </g>
+    </g>
+    {{# if total.alert}}
+    <g transform="translate(356.5, 632)">
+        <rect width="180" height="32" fill="none" stroke="#E2E8F0" rx="16" />
+        <text x="32" y="16" font-size="11" font-weight="400" text-anchor="end" fill="#57534E" dy=".3em">خطر بالقوه خودکشی</text>
+        <g transform="translate(128, 8)">
+            <path d="M 8.889 5.629 v 3.5556 m 0 2.6667 h 0.0089 m -1.464 -11.0303 l -7.2053 12.0303 c -0.1485 0.2572 -0.2271 0.5488 -0.228 0.8459 c -0.0009 0.297 0.0761 0.5891 0.2231 0.8472 c 0.1471 0.258 0.3591 0.4731 0.6151 0.6238 c 0.256 0.1507 0.5469 0.2317 0.844 0.2351 h 14.4125 c 0.2968 -0.0035 0.5877 -0.0845 0.8435 -0.2352 c 0.2559 -0.1506 0.4679 -0.3656 0.6149 -0.6235 c 0.147 -0.258 0.224 -0.5499 0.2233 -0.8468 c -0.0008 -0.2969 -0.0792 -0.5884 -0.2275 -0.8456 l -7.2053 -12.0321 c -0.1516 -0.2502 -0.3652 -0.4571 -0.6201 -0.6007 c -0.2549 -0.1436 -0.5425 -0.219 -0.8351 -0.219 c -0.2926 0 -0.5802 0.0754 -0.8351 0.219 c -0.2549 0.1436 -0.4685 0.3505 -0.6201 0.6007 v 0.0009 z" fill="none" stroke="#E11D48" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
+    {{/if}}
+</g>
+
+{{/layout}}

@@ -1,0 +1,133 @@
+{{#> layout}}
+<defs>
+  <filter id="li" x="0" y="0" width="7" height="506" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="1"/>
+<feGaussianBlur stdDeviation="1.5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4717_118624"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4717_118624" result="shape"/>
+  </filter>
+  {{#each colors as | color key |  }}
+    <linearGradient id="{{key}}L" y1="10" y2="10">
+      <stop stop-color="{{color.[2]}}"/>
+      <stop offset="1" stop-color="{{color.[3]}}" opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="{{key}}R" y1="10" y2="10">
+      <stop stop-color="{{color.[3]}}" opacity="0.5" />
+      <stop offset="1" stop-color="{{color.[2]}}"/>
+    </linearGradient>
+    <linearGradient id="{{key}}I" x1="32.5" y1="9" x2="0.5" y2="9" gradientUnits="userSpaceOnUse">
+      <stop stop-color="{{color.[3]}}" stop-opacity="0.5"/>
+      <stop offset="0.5" stop-color="{{color.[2]}}"/>
+      <stop offset="1" stop-color="{{color.[3]}}" stop-opacity="0.5"/>
+    </linearGradient>
+{{/each}}
+</defs>
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(0, 64)">
+      <text x="48.5" y="1" text-anchor="middle" dy=".85em" font-size="12" font-weight="400" fill="#94A3B8">
+        <tspan>
+          انحراف
+        </tspan>
+        <tspan x="48.5" dy="1em">
+          معیار
+        </tspan>
+      </text>
+      <text x="104" y="7" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">میانگین</text>
+      <text x="866" y="7" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">نمره خام</text>
+      <path d="M 838 3.5 v 7 m 0 0 l 3 -3 m -3 3 l -3 -3" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect y="121" width="899" height="100" fill="#F8FAFC" rx="12" />
+      <rect y="321" width="899" height="100" fill="#F8FAFC" rx="12" />
+      <text x="322" y="7" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">1</text>
+      <line x1="321.5" y1="20.5" x2="321.5" y2="520" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+      <text x="422" y="7" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">2</text>
+      <line x1="421.5" y1="20.5" x2="421.5" y2="520" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+      <text x="522" y="7" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">3</text>
+      <line x1="521.5" y1="20.5" x2="521.5" y2="520" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      
+      <text x="622" y="7" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">4</text>
+      <line x1="621.5" y1="20.5" x2="621.5" y2="520" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      
+      <text x="722" y="7" text-anchor="middle" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">5</text>
+      <line x1="721.5" y1="20.5" x2="721.5" y2="520" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      
+      <text x="822" y="7" text-anchor="start" dy="0.3em" font-size="12" font-weight="400" fill="#94A3B8">6</text>
+      <line x1="821.5" y1="20.5" x2="821.5" y2="520" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <g transform="translate(0, 21)">
+        {{#each items as | item index |}}
+        <g transform="translate(0, {{math index '*' 100}})">
+          <g transform="translate(24, 16)">
+            {{#each label.norms as | norm ni |}}
+            <g transform="translate(0, {{math 24 '*' ni}})">
+              <rect width="48" height="20" fill="url(#{{norm.key}}R)"  rx="4" />
+              <text x="24" y="10" text-anchor="middle" dy="0.3em" font-size="13" font-weight="400" fill="{{norm.colors.[1]}}">{{norm.sdText}}</text>
+
+              <rect x="56" width="48" height="20" fill="url(#{{norm.key}}L)" rx="4" />
+              <text x="80" y="10" text-anchor="middle" dy="0.3em" font-size="13" font-weight="400" fill="{{norm.colors.[1]}}">{{norm.meanText}}</text>
+            </g>
+            {{/each}}
+          </g>
+          <g transform="translate(312, 36)">
+            <rect width="510" height="28" fill="#E2E8F0" opacity=".75" />
+            {{bar (math 10 '+' (math (math item.mean '-1') '*' 100)) 28 (object tr=2 br=2 tl=0 bl=0) (toRad 0) fill="#475569"}}
+            <text x="{{math 10 '+' (math (math item.mean '-1') '*' 100)}}" y="-13" text-anchor="middle" dy="0.3em" font-size="16" font-weight="600" fill="{{norm.colors.[1]}}">{{meanText}}</text>
+            <text x="-9" y="14" text-anchor="start" dy="0.3em" font-size="13" font-weight="400" fill="#475569">{{label.short}}</text>
+            <text x="-35" y="14" text-anchor="start" dy="0.3em" font-size="13" font-weight="400" fill="#475569">-</text>
+            <text x="-46" y="14" text-anchor="start" dy="0.3em" font-size="13" font-weight="400" fill="#475569">{{label.fa}}</text>
+            <text x="522" y="14" text-anchor="start" dy="0.3em" font-size="12" font-weight="300" fill="#64748B" direction="ltr">
+              <tspan font-size="18" font-weight="600" fill="#1E293B">{{mark}}</tspan>
+              <tspan>/</tspan>
+              <tspan font-size="13" font-weight="400">{{label.max}}</tspan>
+            </text>
+            <g transform="translate(0, 3)">
+              {{#each label.norms as | norm ni |}}
+                <g transform="translate({{norm.pixels.start}}, {{math 8 '*' ni}})">
+                  <rect width="2" height="6" fill="{{norm.colors.[0]}}" />
+                  <rect y="2" width="{{norm.pixels.width}}" height="2" fill="{{norm.colors.[0]}}" />
+                  <circle cx="{{math (math norm.pixels.width '/' 2) '-' 3}}" cy="3" r="3" fill="{{norm.colors.[0]}}" />
+                  <rect x="{{math norm.pixels.width '-' 2}}" width="2" height="6" fill="{{norm.colors.[0]}}" />
+                </g>
+              {{/each}}
+            </g>
+          </g>
+        </g>
+        {{/each}}
+      </g>
+      <g transform="translate(309, 17.5)" opacity="0.5" filter="url(#li)">
+        <line x1="2.5" y1="3.5" x2="2.5" y2="502.5" stroke="white" stroke-linecap="round"/>
+      </g>
+    </g>
+    <g transform="translate(164, 650)">
+      <rect width="571" height="32" fill="none" stroke="#E2E8F0" rx="16" />
+      <g transform="translate(167, 7)">
+        <rect width="32" height="18" fill="url(#personalityI)" />
+        <rect y="6" width="2" height="6" fill="{{colors.personality.[0]}}" />
+        <rect x="0" y="8" width="32" height="2" fill="{{colors.personality.[0]}}" />
+        <circle r="3" cx="16" cy="9" fill="{{colors.personality.[0]}}" />
+        <rect x="30" y="6" width="2" height="6" fill="{{colors.personality.[0]}}" />
+        <text x="-6" y="9" text-anchor="start" dy="0.3em" font-size="11" font-weight="400" fill="#57534E">هنجار گروه اختلالات شخصیت</text>
+      </g>
+      <g transform="translate(359, 7)">
+        <rect width="32" height="18" fill="url(#clinicalI)" />
+        <rect y="6" width="2" height="6" fill="{{colors.clinical.[0]}}" />
+        <rect x="0" y="8" width="32" height="2" fill="{{colors.clinical.[0]}}" />
+        <circle r="3" cx="16" cy="9" fill="{{colors.clinical.[0]}}" />
+        <rect x="30" y="6" width="2" height="6" fill="{{colors.clinical.[0]}}" />
+        <text x="-6" y="9" text-anchor="start" dy="0.3em" font-size="11" font-weight="400" fill="#57534E">هنجار گروه اختلالات بالینی</text>
+      </g>
+      <g transform="translate(507, 7)">
+        <rect width="32" height="18" fill="url(#baselineI)" />
+        <rect y="6" width="2" height="6" fill="{{colors.baseline.[0]}}" />
+        <rect x="0" y="8" width="32" height="2" fill="{{colors.baseline.[0]}}" />
+        <circle r="3" cx="16" cy="9" fill="{{colors.baseline.[0]}}" />
+        <rect x="30" y="6" width="2" height="6" fill="{{colors.baseline.[0]}}" />
+        <text x="-6" y="9" text-anchor="start" dy="0.3em" font-size="11" font-weight="400" fill="#57534E">هنجار گروه سالم</text>
+      </g>
+    </g>
+  </g>
+{{/layout}}

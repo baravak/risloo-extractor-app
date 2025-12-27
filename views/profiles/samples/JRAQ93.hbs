@@ -21,11 +21,9 @@
         <stop offset="0" stop-color="{{color.[0]}}"/>
         <stop offset="1" stop-color="{{color.[1]}}" />
       </linearGradient>
-      <linearGradient id="c-{{index}}" x1="70" y1="0.5" x2="-59" y2="195" gradientUnits="userSpaceOnUse">
-        <stop stop-color="{{color.[1]}}"/>
-        <stop offset="0.25" stop-color="{{color.[0]}}"/>
+      <linearGradient id="c-{{index}}" x1="140" y1="0" x2="0" y2="140" gradientUnits="userSpaceOnUse">
+        <stop stop-color="{{color.[2]}}"/>
         <stop offset="0.5" stop-color="{{color.[0]}}"/>
-        <stop offset="0.75" stop-color="{{color.[0]}}"/>
         <stop offset="1" stop-color="{{color.[0]}}"/>
       </linearGradient>
     {{/each}}
@@ -62,7 +60,7 @@
           <g transform="translate(77, 27)">
             {{#each items as |factor fi|}}
               <g transform="translate({{math 76 '*' fi}}, {{math 300 '-' (math factor.percentage '*' 300)}})">
-                {{bar 28 (math factor.percentage '*' 300) (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill=../colors.[2] clip-path="url(#bg-h)"}}
+                {{bar 28 (math factor.percentage '*' 300) (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill=../colors.[3] clip-path="url(#bg-h)"}}
                 <text y="14" x="{{ternary (boolean factor.percentageText '<=' 24) '8' '-8'}}" font-size="16" font-weight="600" text-anchor="{{ternary (boolean factor.percentageText '<=' 24) 'end' 'start'}}" dy=".3em" fill="{{ternary (boolean factor.percentageText '<=' 24) ../colors.[0] '#FFFFFF'}}" transform="translate(0,0) rotate(-90 0 0)" >{{percentageText}} ٪</text>
               </g>
             {{/each}}
@@ -74,7 +72,7 @@
         <g transform="translate(125.5, 444)">
           <g transform="translate(70, 70)">
             {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.circle.angles.start end=circle.circle.angles.end) direction fill='#F1F5F9'}}
-            {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.circle.angles.start end=circle.zeta) direction fill=colors.[3] clip-path='url(#gu)'}}
+            {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.circle.angles.start end=circle.zeta) direction fill=colors.[4] clip-path='url(#gu)'}}
             <text x="0" y="-21" font-size="24" font-weight="600" text-anchor="middle" dy=".85em" fill="{{colors.[0]}}">{{total.percentageText}} ٪</text>
             <text x="0" y="11" font-size="15" font-weight="500" text-anchor="middle" dy=".85em" fill="#64748B">{{total.mark}} از {{total.label.max}}</text>
             <text x="-11" y="-59.5" font-size="14" font-weight="500" text-anchor="middle" dy=".3em" fill="#64748B">0</text>
@@ -116,7 +114,7 @@
           <g transform="translate(73, 27)">
             {{#each items as |factor fi|}}
               <g transform="translate({{math 76 '*' fi}}, {{math 300 '-' (math factor.percentage '*' 300)}})">
-                {{bar 28 (math factor.percentage '*' 300) (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill=../colors.[2] clip-path="url(#bg-h)"}}
+                {{bar 28 (math factor.percentage '*' 300) (object tr=4 tl=4 br=0 bl=0) (toRad 0) fill=../colors.[3] clip-path="url(#bg-h)"}}
                 <text y="14" x="{{ternary (boolean factor.percentageText '<=' 24) '8' '-8'}}" font-size="16" font-weight="600" text-anchor="{{ternary (boolean factor.percentageText '<=' 24) 'end' 'start'}}" dy=".3em" fill="{{ternary (boolean factor.percentageText '<=' 24) ../colors.[0] '#FFFFFF'}}" transform="translate(0,0) rotate(-90 0 0)" >{{percentageText}} ٪</text>
               </g>
             {{/each}}
@@ -128,7 +126,7 @@
         <g transform="translate(125.5, 444)">
           <g transform="translate(70, 70)">
             {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=6 bl=6 br=6) (object start=circle.circle.angles.start end=circle.circle.angles.end) direction fill='#F1F5F9'}}
-            {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.circle.angles.start end=circle.zeta) direction fill=colors.[3] clip-path='url(#gu)'}}
+            {{gauge 70 (math 70 '*' 0.7) (object tl=6 tr=0 bl=6 br=0) (object start=circle.circle.angles.start end=circle.zeta) direction fill=colors.[4] clip-path='url(#gu)'}}
             <text x="0" y="-21" font-size="24" font-weight="600" text-anchor="middle" dy=".85em" fill="{{colors.[0]}}">{{total.percentageText}} ٪</text>
             <text x="0" y="11" font-size="15" font-weight="500" text-anchor="middle" dy=".85em" fill="#64748B">{{total.mark}} از {{total.label.max}}</text>
             <text x="-11" y="-59.5" font-size="14" font-weight="500" text-anchor="middle" dy=".3em" fill="#64748B">0</text>

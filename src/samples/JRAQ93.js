@@ -1,8 +1,8 @@
 const gauge = require("../helpers/gauge");
 const { Profile } = require("../Profile");
 const colors = [
-  ["#4F46E5", "#A5B4FC"],
-  ["#7C3AED", "#C4B5FD"],
+  ["#4F46E5", "#A5B4FC", '#818CF8'],
+  ["#7C3AED", "#C4B5FD", '#A78BFA'],
 ]
 class JRAQ93 extends Profile {
   // Number of pages

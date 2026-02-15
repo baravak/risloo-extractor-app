@@ -38,6 +38,7 @@ const last = require("./helpers/last");
 const ceil = require("./helpers/ceil");
 const floor = require("./helpers/floor");
 const round = require("./helpers/round");
+const even = require("./helpers/even");
 
 const polygon = require("./helpers/profiles/polygon");
 const gauge = require("./helpers/profiles/gauge");
@@ -87,6 +88,7 @@ const helpers = {
   polygon,
   gauge,
   bar,
+  even
 };
 
 module.exports = helpers;

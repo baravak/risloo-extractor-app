@@ -1,0 +1,103 @@
+{{#> layout}}
+
+<defs>
+  <linearGradient id="bgbar1">
+    <stop stop-color="{{colors.bars.[0].[0]}}"/>
+    <stop offset="1" stop-color="{{colors.bars.[0].[1]}}"/>
+  </linearGradient>
+  <linearGradient id="bgbar2">
+    <stop stop-color="{{colors.bars.[1].[0]}}"/>
+    <stop offset="1" stop-color="{{colors.bars.[1].[1]}}"/>
+  </linearGradient>
+  <clipPath id="cobar">
+      {{bar 250 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0)}}
+  </clipPath>
+
+  <filter id="split" x="0" y="0" width="7" height="{{ternary (boolean groups.length '==' 3) 462 614}}" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5334_139730"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5334_139730" result="shape"/>
+  </filter>
+</defs>
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(0, 4)">
+      <g transform="translate(0, 48)">
+        {{#each groups as |item index|}}
+          {{setVar "color" (ternary (even index) ../colors.bars.[0] ../colors.bars.[1])}}
+          <g transform="translate(0, {{math index '*' 152}})">
+            <rect width="800" height="136" rx="8" fill="{{ternary (even index) '#F8FAFC' 'white'}}" />
+            {{bar 180 136 (object tl=8 bl=8 tr=0 br=0) (toRad 0) fill=(ternary (even index) '#F1F5F9' 'white') }}
+            {{#if (boolean level '===' undefined)}}
+                <text x="90" y="57" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">{{key}}</text>
+                <text x="90" y="77" font-size="15" font-weight="500" dy=".3em" fill="#334155" text-anchor="middle">{{label.fa}}</text>
+            {{else}}
+                <text x="90" y="23.5" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">{{key}}</text>
+                <text x="90" y="44.5" font-size="15" font-weight="500" dy=".3em" fill="#334155" text-anchor="middle">{{label.fa}}</text>
+                <rect x="50" y="65.5" width="80" height="1" rx="0.5" fill="#E2E8F0"/>
+                <rect x="100.5" y="78.5" width="40" height="20" rx="4" fill="{{color.[2]}}" />
+                <text x="120.5" y="88.5" font-size="14" font-weight="600" dy=".3em" fill="#FFFFFF" text-anchor="middle">{{percentageText}} ٪</text>
+                <text x="90" y="111.5" font-size="12" font-weight="400" dy=".3em" fill="{{color.[2]}}" text-anchor="middle">{{levelText}}</text>
+                <text x="92.5" y="88.5" font-size="15" font-weight="500" dy=".3em" fill="#334155" text-anchor="start">
+                  <tspan>
+                    {{mark}}
+                  </tspan>
+                  <tspan fill="#64748B" font-size="14" font-weight="500">از 144</tspan>
+                </text>
+            {{/if}}
+            <g transform="translate(389, {{ternary (boolean item.length '===' 4) 12 28}})">
+            {{#each subs as |sub i|}}
+              <g transform="translate(0, {{math i '*' 32}})">
+                {{bar 250 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='#E2E8F080' clip-path="url(#cobar)"}}
+              </g>
+            {{/each}}
+            </g>
+          </g>
+        {{/each}}
+      </g>
+      <line x1="451.25" y1="40.5" x2="451.25" y2="{{ternary (boolean groups.length '==' 3) '495.5' '647.5'}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <line x1="513.25" y1="40.5" x2="513.25" y2="{{ternary (boolean groups.length '==' 3) '495.5' '647.5'}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <line x1="576.25" y1="40.5" x2="576.25" y2="{{ternary (boolean groups.length '==' 3) '495.5' '647.5'}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <line x1="638.25" y1="40.5" x2="638.25" y2="{{ternary (boolean groups.length '==' 3) '495.5' '647.5'}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <rect x="709" width="1" height="{{ternary (boolean groups.length '==' 3) 496 648}}" fill="#F1F5F9"/>
+      <text x="387.5" y="24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">0</text>
+      <text x="514.5" y="24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">50 ٪</text>
+      <text x="637" y="24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">100 ٪</text>
+      <text x="754" y="27" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">رده‌بندی</text>
+      <text x="677" y="13" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">نمره خام</text>
+      <text x="677" y="27" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">از 36</text>
+      
+      <g transform="translate(0, 48)">
+        {{#each groups as |item index|}}
+          {{setVar "color" (ternary (even index) ../colors.bars.[0] ../colors.bars.[1])}}
+          <g transform="translate(0, {{math index '*' 152}})">
+            <g transform="translate(389, {{ternary (boolean item.length '===' 4) 12 28}})">
+            {{#each subs as |sub i|}}
+              <g transform="translate(0, {{math i '*' 32}})">
+                {{bar (math percentage '*' 250) 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=../bg}}
+                <text x="-9" y="9" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{sub.label.fa}}</text>
+                <rect x="270" y="-.5" width="36" height="17" rx="4" fill="none" stroke="{{../color.[3]}}" />
+                <text x="288" y="9" font-size="13" font-weight="500" dy=".3em" fill="{{../color.[2]}}" text-anchor="middle">{{sub.mark}}</text>
+                <text x="366" y="9" font-size="12" font-weight="400" dy=".3em" fill="#64748B" text-anchor="middle">{{sub.levelText}}</text>
+                {{#if (boolean percentage '>' 0.24)}}
+                  <text x="{{math (math percentage '*' 250) '-' 4}}" y="9" font-size="13" font-weight="500" dy=".3em" fill="#FFFFFF" text-anchor="start">{{sub.percentageText}} ٪</text>
+                {{else}}
+                  <text x="{{math (math percentage '*' 250) '+' 6}}" y="9" font-size="13" font-weight="500" dy=".3em" fill="{{../color.[1]}}" text-anchor="end">{{sub.percentageText}} ٪</text>
+                {{/if}}
+              </g>
+            {{/each}}
+            </g>
+          </g>
+        {{/each}}
+      </g>
+      <g opacity="0.5" filter="url(#split)" transform="translate(386, 37.5)">
+        <line x1="2.5" y1="3.5" x2="2.5" y2="{{ternary (boolean groups.length '==' 3) 458.5 610.5}}" stroke="white" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>
+
+{{/layout}}

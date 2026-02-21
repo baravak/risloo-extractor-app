@@ -10,16 +10,16 @@ class JRAQ93 extends Profile {
 
   // Labels of the sample
   labels = {
-    L1: { eng: "research_total_raw", fr: "نمره کل پژوهشی", max: 260 },
+    L1: { eng: "research_total_raw", fr: "نمره کل پژوهشی", max: 180 },
     L1_P: { eng: "research_total_percentage"},
     
-    L2: { eng: "research_adherence_raw", fr: "پایبندی", max: 88 },
+    L2: { eng: "research_adherence_raw", fr: "پایبندی", max: 66 },
     L2_P: { eng: "research_adherence_percentage"},
 
-    L3: { eng: "research_ambivalence_raw", fr: "دوسوگرایی", max: 84 },
+    L3: { eng: "research_ambivalence_raw", fr: "دوسوگرایی", max: 63 },
     L3_P: { eng: "research_ambivalence_percentage"},
 
-    L4: { eng: "research_disobedience_raw", fr: "ناپایبندی", max: 68 },
+    L4: { eng: "research_disobedience_raw", fr: "ناپایبندی", max: 51 },
     L4_P: { eng: "research_disobedience_percentage"},
 
     L5: { eng: "clinical_total_raw", fr: "نمره کل بالینی", max: 60 },
@@ -28,8 +28,8 @@ class JRAQ93 extends Profile {
     L6: { eng: "clinical_adherence_raw", fr: "پایبندی", max: 22 },
     L6_P: { eng: "clinical_adherence_percentage"},
 
-    L7: { eng: "clinical_ambivalence__raw", fr: "دوسوگرایی", max: 21 },
-    L7_P: { eng: "clinical_ambivalence__percentage"},
+    L7: { eng: "clinical_ambivalence_raw", fr: "دوسوگرایی", max: 21 },
+    L7_P: { eng: "clinical_ambivalence_percentage"},
 
     L8: { eng: "clinical_disobedience_raw", fr: "ناپایبندی", max: 17 },
     L8_P: { eng: "clinical_disobedience_percentage"},

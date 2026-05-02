@@ -55,28 +55,18 @@
         <g>
           {{#each groups as |item index|}}
             <g transform="translate(0, {{math index '*' 40}})">
-                {{# if (boolean key '!==' 'MO')}}
-                  <g transform='translate(158, 12)'>
-                      {{bar (math 480 '*' percentage) 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='url(#bgbarg)' clip-path='url(#cbgbarg)'}}
-                      <text x="{{math (math 480 '*' percentage) '+' (ternary (boolean percentage '<=' 0.24) 4 -6)}}" y="8" font-size="13" font-weight="500" dy=".3em" fill="{{ternary (boolean percentage '<=' 0.24) ../colors.bars.[0].[1] 'white'}}" text-anchor="{{ternary (boolean percentage '<=' 0.24) 'end' 'start'}}">
-                        {{percentageText}} ٪
-                      </text>
-                  </g>
-                  <rect x="659" y="11" width="36" height="18" rx="4" fill="{{../colors.bars.[0].[2]}}" />
-                  <text x="677" y="20" font-size="13" font-weight="500" dy=".3em" fill="white" text-anchor="middle">{{item.mark}}</text>
-                  <text x="755" y="20" font-size="12" font-weight="400" dy=".3em" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>
-                  <text x="149" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.key}}</text>
-                  <text x="121" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">-</text>
-                  <text x="110" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.label.fa}}</text>
-                {{else}}
-                  <rect x="659" y="11" width="36" height="18" rx="4" fill="#CBD5E1" />
-                  <text x="677" y="20" font-size="13" font-weight="500" dy=".3em" fill="white" text-anchor="middle">-</text>
-                  <text x="755" y="20" font-size="13" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">-</text>
-                  <text x="149" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">{{item.key}}</text>
-                  <text x="121" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">-</text>
-                  <text x="110" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">{{item.label.fa}}</text>
-                {{/if}}
-                
+              <g transform='translate(158, 12)'>
+                {{bar (math 480 '*' percentage) 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='url(#bgbarg)' clip-path='url(#cbgbarg)'}}
+                <text x="{{math (math 480 '*' percentage) '+' (ternary (boolean percentage '<=' 0.24) 4 -6)}}" y="8" font-size="13" font-weight="500" dy=".3em" fill="{{ternary (boolean percentage '<=' 0.24) ../colors.bars.[0].[1] 'white'}}" text-anchor="{{ternary (boolean percentage '<=' 0.24) 'end' 'start'}}">
+                  {{percentageText}} ٪
+                </text>
+              </g>
+              <rect x="659" y="11" width="36" height="18" rx="4" fill="{{../colors.bars.[0].[2]}}" />
+              <text x="677" y="20" font-size="13" font-weight="500" dy=".3em" fill="white" text-anchor="middle">{{item.mark}}</text>
+              <text x="755" y="20" font-size="12" font-weight="400" dy=".3em" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>
+              <text x="149" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.key}}</text>
+              <text x="121" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">-</text>
+              <text x="110" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.label.fa}}</text>
             </g>
           {{/each}}
         </g>

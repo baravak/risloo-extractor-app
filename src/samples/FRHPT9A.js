@@ -74,7 +74,7 @@ class FRHPT9A extends Profile {
     L57_1: { eng: "indicators_midpoint_responses_value", fa: "احتیاط در پاسخ"},
     L57_2: { eng: "indicators_midpoint_responses_level" },
 
-    L60_1: { eng: "indicators_validity_median_value", fa: "بیش از ۳۰ پاسخ میانه", length: 116},
+    L60_1: { eng: "indicators_validity_median_value", fa: "بیش از ۲۰ پاسخ میانه", length: 116},
     L60_2: { eng: "indicators_validity_median_error" },
   };
 
@@ -156,14 +156,6 @@ class FRHPT9A extends Profile {
     ];
   }
 }
-function rowMap(r, i){
-  return {
-    ...r,
-    color: i % 2 === 0 ? colors.bars[0] : colors.bars[1],
-    bg: `url(#${i % 2 === 0 ? 'bgbar1' : 'bgbar2'})`
-  }
-}
-
 class FG {
   factors = {};
   _result = {};

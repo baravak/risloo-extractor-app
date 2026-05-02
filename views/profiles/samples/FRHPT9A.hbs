@@ -1,0 +1,117 @@
+{{#> layout}}
+
+<defs>
+  <linearGradient id="bgbarg">
+    <stop stop-color="{{colors.bars.[0].[0]}}"/>
+    <stop offset="1" stop-color="{{colors.bars.[0].[1]}}"/>
+  </linearGradient>
+  <clipPath id="cbgbarg">
+      {{bar 480 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0)}}
+  </clipPath>
+  <linearGradient id="bgind" x1="97" y1="0" x2="97" y2="83" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#F8FAFC"/>
+    <stop offset="1" stop-color="#F5F3FF"/>
+  </linearGradient>
+  <linearGradient id="error" x1="15" y1="15" x2="0" y2="15" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F2"/>
+    <stop offset="1" stop-color="#FECDD3"/>
+  </linearGradient>
+  <filter id="split" x="0" y="0" width="7" height="342" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5334_134825"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5334_134825" result="shape"/>
+  </filter>
+</defs>
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g>
+      <g transform="translate(0, 48)">
+        <g>
+          {{#each groups as |item index|}}
+            <g transform="translate(0, {{math index '*' 40}})">
+              <rect width="800" height="40" fill="{{ternary (even index) '#F8FAFC' 'none'}}" rx="8" />
+              {{bar 480 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='#E2E8F080' transform='translate(158, 12)'}}
+            </g>
+          {{/each}}
+        </g>
+      <g>
+      <text x="156.5" y="-24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">0</text>
+      <text x="397.5" y="-24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">50 ٪</text>
+      <text x="632" y="-24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">100 ٪</text>
+      <text x="754" y="-19" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">رده‌بندی</text>
+      <text x="677" y="-33" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">نمره خام</text>
+      <text x="677" y="-19" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">از 60</text>
+      <line x1="277.5" y1="-8.5" x2="277.5" y2="326.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <line x1="397.5" y1="-8.5" x2="397.5" y2="326.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <line x1="517.5" y1="-8.5" x2="517.5" y2="326.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <line x1="637.5" y1="-8.5" x2="637.5" y2="326.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
+      <rect x="709" y="-48" width="1" height="376" fill="#F1F5F9"/>
+
+      </g>
+        <g>
+          {{#each groups as |item index|}}
+            <g transform="translate(0, {{math index '*' 40}})">
+                {{# if (boolean key '!==' 'MO')}}
+                  <g transform='translate(158, 12)'>
+                      {{bar (math 480 '*' percentage) 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='url(#bgbarg)' clip-path='url(#cbgbarg)'}}
+                      <text x="{{math (math 480 '*' percentage) '+' (ternary (boolean percentage '<=' 0.24) 4 -6)}}" y="8" font-size="13" font-weight="500" dy=".3em" fill="{{ternary (boolean percentage '<=' 0.24) ../colors.bars.[0].[1] 'white'}}" text-anchor="{{ternary (boolean percentage '<=' 0.24) 'end' 'start'}}">
+                        {{percentageText}} ٪
+                      </text>
+                  </g>
+                  <rect x="659" y="11" width="36" height="18" rx="4" fill="{{../colors.bars.[0].[2]}}" />
+                  <text x="677" y="20" font-size="13" font-weight="500" dy=".3em" fill="white" text-anchor="middle">{{item.mark}}</text>
+                  <text x="755" y="20" font-size="12" font-weight="400" dy=".3em" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>
+                  <text x="149" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.key}}</text>
+                  <text x="121" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">-</text>
+                  <text x="110" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.label.fa}}</text>
+                {{else}}
+                  <rect x="659" y="11" width="36" height="18" rx="4" fill="#CBD5E1" />
+                  <text x="677" y="20" font-size="13" font-weight="500" dy=".3em" fill="white" text-anchor="middle">-</text>
+                  <text x="755" y="20" font-size="13" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">-</text>
+                  <text x="149" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">{{item.key}}</text>
+                  <text x="121" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">-</text>
+                  <text x="110" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">{{item.label.fa}}</text>
+                {{/if}}
+                
+            </g>
+          {{/each}}
+        </g>
+        <g opacity="0.5" filter="url(#split)" transform="translate(154.5, -10.5)">
+          <line x1="2.5" y1="3.5" x2="2.5" y2="338.5" stroke="white" stroke-linecap="round"/>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(0, 392)">
+      {{#each indicators as |item index|}}
+        <g transform="translate({{math index '*' 202}}, 0)">
+          <rect width="194" height="83" fill="url(#bgind)" stroke="#EDE9FE" rx="8" />
+          <text x="142" y="29.5" font-size="16" font-weight="600" dy=".3em" fill="#5B21B6" text-anchor="middle">{{item.mark}}</text>
+          <text x="72" y="29.5" font-size="14" font-weight="500" dy=".3em" fill="#334155" text-anchor="middle">{{item.levelText}}</text>
+          <path d="M 8.78 3.78 h -8.75 m 0 0 l 3.75 3.75 m -3.75 -3.75 l 3.75 -3.75" stroke="#94A3B8" stroke-linecap="round" stroke-linejoin="round" transform="translate(112.62, 25.75)"/>
+          <text x="97" y="55" font-size="13" font-weight="400" dy=".3em" fill="#64748B" text-anchor="middle">{{item.label.fa}}</text>
+        </g>
+      {{/each}}
+    </g>
+    {{#if validityErrors}}
+    <g transform="translate(0, 483)">
+      <rect width="800" height="46" fill="#FFF1F2" stroke="#FECDD3" rx="8" />
+      <path d="M 8.9 5.63 v 3.5556 m 0 2.6667 h 0.0089 m -1.464 -11.0303 l -7.2053 12.0303 c -0.1485 0.2572 -0.2271 0.5488 -0.228 0.8459 c -0.0009 0.297 0.0761 0.5891 0.2231 0.8472 c 0.1471 0.258 0.3591 0.4731 0.6151 0.6238 c 0.256 0.1507 0.5469 0.2317 0.844 0.2351 h 14.4125 c 0.2968 -0.0035 0.5877 -0.0845 0.8435 -0.2352 c 0.2559 -0.1506 0.4679 -0.3656 0.6149 -0.6235 c 0.147 -0.258 0.224 -0.5499 0.2233 -0.8468 c -0.0008 -0.2969 -0.0792 -0.5884 -0.2275 -0.8456 l -7.2053 -12.0321 c -0.1516 -0.2502 -0.3652 -0.4571 -0.6201 -0.6007 c -0.2549 -0.1436 -0.5425 -0.219 -0.8351 -0.219 c -0.2926 0 -0.5802 0.0754 -0.8351 0.219 c -0.2549 0.1436 -0.4685 0.3505 -0.6201 0.6007 v 0.0009 z" transform="translate(729.61, 15.04)" fill="none" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="690" y="23" font-size="14" font-weight="500" dy=".3em" fill="#BE123C" text-anchor="middle">فاقد اعتبار</text>
+      <path d="M 0 0 l 15 -15 l 0 30 l -15 -15 z" fill="url(#error)" transform="translate(580, 23)"/>
+      <g transform="translate(0, 23)">
+        {{#each validityErrors as |error index|}}
+          <text x="{{math 532 '-' (math start '+' (math length '/' 2))}}" y="0" font-size="13" font-weight="400" dy=".3em" fill="#57534E" text-anchor="middle">{{error.error}}</text>
+          {{#if (boolean error.last '===' false)}}
+            <circle cx="{{math 532 '-' (math start '+' (math length '+' 26))}}" cy="2" r="2" fill="#A1A1AA"/>
+          {{/if}}
+        {{/each}}
+      </g>
+    </g>
+    {{/if}}
+  </g>
+
+{{/layout}}

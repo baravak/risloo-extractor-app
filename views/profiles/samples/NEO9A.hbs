@@ -1,30 +1,91 @@
 {{#> layout}}
-    <defs>
-        {{#each factors as | item index |}}
-        <linearGradient id="bar-{{item.label.eng}}" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:{{item.label.startColor}};stop-opacity:1" />
-            <stop offset="100%" style="stop-color:{{item.label.endColor}};stop-opacity:1" />
-        </linearGradient>
-        {{/each}}
-    </defs>
-    <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
-        {{#each factors as | item index |}}
-            <g transform="translate(0, {{math index '*' 133}})">
-                <rect width="866" height="117" rx="12" fill="none" stroke="#E5E7EB" />
-                <text y="69" x="108" dy=".95em" font-size="13" font-weight="500" fill="#4B5563">{{item.label.fr}}</text>
-                <text y="69" x="118" dy=".95em" text-anchor="end" font-size="13" font-weight="500" fill="#4B5563">-</text>
-                <text y="69" x="139" dy=".95em" text-anchor="middle" font-size="13" font-weight="500" fill="#4B5563">{{item.label.eng}}</text>
-                {{bar 672 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.label.bgColor transform="translate(155,69)"}}
-                {{#each ../steps as | step stepIndex |}}
-                    <line x1="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" y1="40.5" x2="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" y2="92.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
-                    <text y="44" x="{{math 155 '+' (indexOf item.label.stepTitle stepIndex)}}" dy=".95em" text-anchor="middle" font-size="12" font-weight="{{ternary (boolean item.raw '===' stepIndex) 500 400}}" fill="{{ternary (boolean item.raw '===' stepIndex) item.label.textColor "#9CA3AF"}}">{{step}}</text>
-                    <text y="25" x="{{math 155 '+' (math 14 '*' (indexOf item.label.steps stepIndex))}}" dy=".95em" text-anchor="middle" font-size="12" font-weight="400" fill="#9CA3AF">{{indexOf item.label.steps stepIndex}}</text>
-                {{/each}}
-                {{bar (math item.mark '*' 14) 16 (object tr=2 br=2 bl=0 tl=0) (toRad 0) fill=item.label.fill transform="translate(155,69)"}}
-                <text y="71" x="{{ternary (boolean item.mark '<=' 5) (math 161 '+' (math 14 '*' item.mark)) (math 149 '+' (math 14 '*' item.mark))}}" dy=".75em" text-anchor="{{ternary (boolean item.mark '<=' 5) 'end' 'start'}}" font-size="16" font-weight="500" fill="{{ternary (boolean item.mark '<=' 5) item.label.textColor '#FFFFFF'}}">{{item.mark}}</text>
 
-            </g>
-        {{/each}}
+<defs>
+  <linearGradient id="neobar" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#BFDBFE"/>
+    <stop offset="1" stop-color="#1D4ED8"/>
+  </linearGradient>
+  <clipPath id="neobarclip">{{bar 500 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0)}}</clipPath>
+  <linearGradient id="redtab" x1="0" y1="23" x2="190" y2="23" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F2"/><stop offset="1" stop-color="#FFE4E6"/>
+  </linearGradient>
+  <linearGradient id="redarrow" x1="595" y1="651" x2="580" y2="651" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F2"/><stop offset="1" stop-color="#FECDD3"/>
+  </linearGradient>
+  <clipPath id="redbox"><rect y="628" width="800" height="46" rx="8"/></clipPath>
+  <filter id="neosplit" x="108" y="26" width="7" height="294" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
 
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+  {{! ===== فریم Chart (آفست ۳۲،۱۲۸ داخل محتوای ۸۰۰×۶۷۴) ===== }}
+  <g transform="translate(32, 128)">
+
+    {{! محور: خط‌چین ۲۵/۵۰/۷۵/۱۰۰٪ + برچسب ۰/۵۰/۱۰۰ }}
+    <line x1="235.5" y1="29.5" x2="235.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="360.5" y1="29.5" x2="360.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="485.5" y1="29.5" x2="485.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="610.5" y1="29.5" x2="610.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    <text x="110.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">0</text>
+    <text x="360.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">50 ٪</text>
+    <text x="610.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">100 ٪</text>
+
+    <text x="644" y="9" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">نمره خام</text>
+    <text x="644" y="21" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">از 48</text>
+
+    {{#each items as |item index|}}
+      <g transform="translate(0, {{math index '*' 56}})">
+        {{! تراک + میله + درصد }}
+        <g transform="translate(111, 49)">
+          {{bar 500 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill='#E2E8F0' fill-opacity='0.5'}}
+          {{bar item.barW 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill='url(#neobar)' clip-path='url(#neobarclip)'}}
+          <text x="{{math item.barW '+' (ternary (boolean item.percentage '<=' 24) 6 -6)}}" y="12" dy=".3em" font-size="14" font-weight="500" fill="{{ternary (boolean item.percentage '<=' 24) '#1D4ED8' 'white'}}" text-anchor="{{ternary (boolean item.percentage '<=' 24) 'end' 'start'}}">{{item.percentage}} ٪</text>
+        </g>
+
+        {{! جعبهٔ نمرهٔ خام }}
+        <rect x="627.5" y="49.5" width="35" height="23" rx="3.5" stroke="#2563EB" fill="none"/>
+        <text x="645" y="61" dy=".3em" font-size="14" font-weight="500" fill="#2563EB" text-anchor="middle">{{item.mark}}</text>
+
+        {{! نام / خط‌تیره / حرف }}
+        <text x="75" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="start">{{item.fa}}</text>
+        <text x="83.5" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">-</text>
+        <text x="97" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">{{item.letter}}</text>
+
+        {{! توصیف سطح }}
+        <text x="707" y="61" dy=".3em" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>
+      </g>
+    {{/each}}
+
+    {{! خط پایهٔ سفید با سایه — جلوی میله‌ها }}
+    <g opacity="0.5" filter="url(#neosplit)">
+      <line x1="110.5" y1="29.5" x2="110.5" y2="316.5" stroke="white" stroke-linecap="round"/>
     </g>
+  </g>
+
+  {{! ===== کادر قرمز: آزمون نامعتبر است (فقط سؤالات اعتبار) ===== }}
+  {{#if showRed}}
+    <g clip-path="url(#redbox)">
+      <rect y="628" width="800" height="46" rx="8" fill="white"/>
+      <rect y="628" width="800" height="46" rx="8" fill="#FFF1F2"/>
+      <rect width="190" height="46" transform="translate(610, 628)" fill="url(#redtab)"/>
+      <path d="M580 651L595 636L595 666L580 651Z" fill="url(#redarrow)"/>
+    </g>
+    <rect x="0.5" y="628.5" width="799" height="45" rx="7.5" stroke="#FECDD3" fill="none"/>
+    <text x="691" y="651" dy=".3em" font-size="14" font-weight="500" fill="#BE123C" text-anchor="middle">آزمون نامعتبر است</text>
+    <path d="M758.5 647L764.5 655M764.5 647L758.5 655M761.5 660C763.887 660 766.176 659.052 767.864 657.364C769.552 655.676 770.5 653.387 770.5 651C770.5 648.613 769.552 646.324 767.864 644.636C766.176 642.948 763.887 642 761.5 642C759.113 642 756.824 642.948 755.136 644.636C753.448 646.324 752.5 648.613 752.5 651C752.5 653.387 753.448 655.676 755.136 657.364C756.824 659.052 759.113 660 761.5 660Z" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="487.5" y="651" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">پاسخ سؤالات اعتبار</text>
+  {{/if}}
+
+</g>
+
 {{/layout}}

@@ -35,7 +35,7 @@
 
       {{#if b.isBlue}}
         <rect y="43" width="811" height="188" rx="8" fill="#F8FAFC"/>
-        <rect width="180" height="188" transform="translate(0, 43)" fill="#F1F5F9"/>
+        {{bar 180 188 (object tr=0 br=0 tl=8 bl=8) (toRad 0) fill="#F1F5F9" transform="translate(0, 43)"}}
       {{/if}}
 
       {{! پنل چپ }}

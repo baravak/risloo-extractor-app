@@ -1,0 +1,93 @@
+{{#> layout}}
+<defs>
+    <linearGradient id="l3" x1="130" y1="0" x2="13.9423" y2="86.67" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#9333EA"/>
+        <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+    <linearGradient id="l2" x1="160" y1="0" x2="1.785" y2="106.559" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#7C3AED"/>
+        <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="l1" x1="200" y1="-7.62939e-06" x2="27.289" y2="134.93" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#4F46E5"/>
+        <stop offset="1" stop-color="#818CF8"/>
+    </linearGradient>
+</defs>
+<g transform="translate({{spec.profile.padding.[2].x}}, {{spec.profile.padding.[2].y}})">
+    <g transform="translate(24, 0)">
+        <g transform="translate(0, 16)">
+            <rect width="130" height="68" rx="8" fill="url(#l3)"/>
+            <text x="65" y="34" dy=".3em" text-anchor="middle" font-weight="600" font-size="24" fill="white">
+                {{reportMap.[0]}}
+            </text>
+        </g>
+        <g transform="translate(145, 8)">
+            <rect width="160" height="84" rx="8" fill="url(#l2)"/>
+            <text x="80" y="42" dy=".3em" text-anchor="middle" font-weight="600" font-size="28" fill="white">
+                {{reportMap.[1]}}
+            </text>
+        </g>
+        <g transform="translate(320, 0)">
+            <rect width="200" height="100" rx="8" fill="url(#l1)"/>
+            <text x="100" y="50" dy=".3em" text-anchor="middle" font-weight="600" font-size="40" fill="white">
+                {{reportMap.[2]}}
+            </text>
+        </g>
+    </g>
+    <g transform="translate(0, 140)">
+        <g>
+            <rect x="24" width="80" height="264" rx="12" fill="#F8FAFC"/>
+            <rect x="40" y="16" width="48" height="48" rx="8" fill="#E2E8F0"/>
+            <rect x="112" width="80" height="264" rx="12" fill="#F8FAFC"/>
+            <rect x="128" y="16" width="48" height="48" rx="8" fill="#E2E8F0"/>
+            <rect x="200" width="80" height="264" rx="12" fill="#F8FAFC"/>
+            <rect x="216" y="16" width="48" height="48" rx="8" fill="#E2E8F0"/>
+            <rect x="288" width="80" height="264" rx="12" fill="#F8FAFC"/>
+            <rect x="304" y="16" width="48" height="48" rx="8" fill="#E2E8F0"/>
+            <rect x="376" width="80" height="264" rx="12" fill="#F8FAFC"/>
+            <rect x="392" y="16" width="48" height="48" rx="8" fill="#E2E8F0"/>
+            <rect x="464" width="80" height="264" rx="12" fill="#F8FAFC"/>
+            <rect x="480" y="16" width="48" height="48" rx="8" fill="#E2E8F0"/>
+            <line x1="0" y1="119.5" x2="686" y2="119.5" stroke="#CBD5E1" />
+            <line x1="0" y1="167.5" x2="686" y2="167.5" stroke="#CBD5E1" />
+            <line x1="0" y1="215.5" x2="686" y2="215.5" stroke="#CBD5E1" />
+            <g transform="translate(678, 72)">
+                <text y="24" dy=".3em" text-anchor="start" font-weight="500" font-size="16" fill="#475569">
+                    نمره رغبت (خام)
+                </text>
+                <text y="72" dy=".3em" text-anchor="start" font-weight="500" font-size="16" fill="#475569">
+                    رتبه
+                </text>
+                <text y="120" dy=".3em" text-anchor="start" font-weight="500" font-size="16" fill="#475569">
+                    هم‌خوانی
+                </text>
+                <text y="168" dy=".3em" text-anchor="start" font-weight="500" font-size="16" fill="#475569">
+                    میزان‌شده
+                </text>
+            </g>
+        </g>
+        <g transform="translate(24, 0)">
+            {{#each items as | item index |}}
+                <g transform="translate({{math 88 '*' index}}, 0)">
+                    <text x="40" y="40" dy=".3em" text-anchor="middle" font-weight="500" font-size="16" fill="#475569">
+                        {{item.label.short}}
+                    </text>
+                    <text x="40" y="96" dy=".3em" text-anchor="middle" font-weight="500" font-size="16" fill="#475569">
+                        {{item.mark}}
+                    </text>
+                    <text x="40" y="144" dy=".3em" text-anchor="middle" font-weight="500" font-size="16" fill="#475569">
+                        {{item.rank}}
+                    </text>
+                    <text x="40" y="192" dy=".3em" text-anchor="middle" font-weight="500" font-size="16" fill="#475569">
+                        {{item.congruence}}
+                    </text>
+                    <text x="40" y="240" dy=".3em" text-anchor="middle" font-weight="500" font-size="16" fill="#475569">
+                        {{item.calibrated}}
+                    </text>
+                </g>
+            {{/each}}
+        </g>
+    </g>
+</g>
+
+{{/layout}}

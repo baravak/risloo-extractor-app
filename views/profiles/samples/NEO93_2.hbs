@@ -1,0 +1,86 @@
+{{#> layout}}
+
+<defs>
+  <linearGradient id="fbarBlue" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#BFDBFE"/><stop offset="1" stop-color="#1D4ED8"/>
+  </linearGradient>
+  <linearGradient id="fbarIndigo" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#C7D2FE"/><stop offset="1" stop-color="#4338CA"/>
+  </linearGradient>
+  <clipPath id="fbarclip">{{bar 300 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0)}}</clipPath>
+  <filter id="fsplit" x="352" y="20" width="7" height="642" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
+
+<g transform="translate({{spec.profile.padding.[1].x}}, {{spec.profile.padding.[1].y}})">
+
+  {{! ===== محور (برچسب‌ها + سرستون) ===== }}
+  <text x="354.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">0</text>
+  <text x="504.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">50 ٪</text>
+  <text x="654.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">100 ٪</text>
+  <text x="689" y="9" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">نمره خام</text>
+  <text x="689" y="23" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">از 32</text>
+
+  {{! ===== مرحله ۱: پس‌زمینه‌ها، پنل‌ها، تراک‌ها، نام‌ها، جعبه‌های خام، قرص‌های سطح ===== }}
+  {{#each blocks as |b bi|}}
+    <g transform="translate(0, {{math bi '*' 204}})">
+
+      {{#if b.isBlue}}
+        <rect y="43" width="811" height="188" rx="8" fill="#F8FAFC"/>
+        <rect width="180" height="188" transform="translate(0, 43)" fill="#F1F5F9"/>
+      {{/if}}
+
+      {{! پنل چپ }}
+      <text x="90" y="91" dy=".3em" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">{{b.letter}}</text>
+      <text x="90" y="111" dy=".3em" font-size="15" font-weight="500" fill="#334155" text-anchor="middle">{{b.fa}}</text>
+      <rect x="50" y="131.5" width="80" height="1" rx="0.5" fill="#E2E8F0"/>
+      <rect x="68" y="144.5" width="44" height="20" rx="4" fill="{{ternary b.isBlue '#2563EB' '#4F46E5'}}"/>
+      <text x="90" y="155" dy=".3em" font-size="14" font-weight="600" fill="white" text-anchor="middle">{{b.percentage}} ٪</text>
+      <text x="90" y="181" dy=".3em" text-anchor="middle"><tspan font-size="15" font-weight="500" fill="#334155">{{b.mark}}</tspan><tspan font-size="13" font-weight="500" fill="#64748B"> از 192</tspan></text>
+
+      {{#each b.facets as |f fi|}}
+        <g transform="translate(0, {{math fi '*' 28}})">
+          {{bar 300 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='#E2E8F0' fill-opacity='0.5' transform='translate(355, 59)'}}
+          <text x="348" y="67" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="start">{{f.fa}}</text>
+          <rect x="671.5" y="59.5" width="35" height="15" rx="3.5" stroke="{{ternary b.isBlue '#60A5FA' '#818CF8'}}" fill="none"/>
+          <text x="689" y="67" dy=".3em" font-size="13" font-weight="500" fill="{{ternary b.isBlue '#2563EB' '#4F46E5'}}" text-anchor="middle">{{f.mark}}</text>
+          <text x="756" y="67" dy=".3em" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">{{f.levelText}}</text>
+        </g>
+      {{/each}}
+    </g>
+  {{/each}}
+
+  {{! ===== خطوط شبکهٔ خط‌چین — روی تراک‌ها، زیر میله‌ها ===== }}
+  <line x1="429.5" y1="23.5" x2="429.5" y2="{{gridBottom}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="504.5" y1="23.5" x2="504.5" y2="{{gridBottom}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="579.5" y1="23.5" x2="579.5" y2="{{gridBottom}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="654.5" y1="23.5" x2="654.5" y2="{{gridBottom}}" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+  {{! ===== مرحله ۲: میله‌های پرشده + متن درصد (روی خطوط شبکه) ===== }}
+  {{#each blocks as |b bi|}}
+    <g transform="translate(0, {{math bi '*' 204}})">
+      {{#each b.facets as |f fi|}}
+        <g transform="translate(355, {{math (math fi '*' 28) '+' 59}})">
+          {{bar f.barW 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=(ternary b.isBlue 'url(#fbarBlue)' 'url(#fbarIndigo)') clip-path='url(#fbarclip)'}}
+          <text x="{{math f.barW '+' (ternary (boolean f.percentage '<=' 24) 6 -4)}}" y="8" dy=".3em" font-size="13" font-weight="500" fill="{{ternary (boolean f.percentage '<=' 24) (ternary b.isBlue '#1D4ED8' '#4338CA') 'white'}}" text-anchor="{{ternary (boolean f.percentage '<=' 24) 'end' 'start'}}">{{f.percentage}} ٪</text>
+        </g>
+      {{/each}}
+    </g>
+  {{/each}}
+
+  {{! خط پایهٔ سفید با سایه — جلوی همه }}
+  <g opacity="0.5" filter="url(#fsplit)">
+    <line x1="354.5" y1="23.5" x2="354.5" y2="{{gridBottom}}" stroke="white" stroke-linecap="round"/>
+  </g>
+
+</g>
+
+{{/layout}}

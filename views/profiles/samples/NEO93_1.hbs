@@ -1,0 +1,118 @@
+{{#> layout}}
+
+<defs>
+  <linearGradient id="neobar" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#BFDBFE"/>
+    <stop offset="1" stop-color="#1D4ED8"/>
+  </linearGradient>
+  <clipPath id="neobarclip">{{bar 500 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0)}}</clipPath>
+  <linearGradient id="redtab" x1="0" y1="23" x2="190" y2="23" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F2"/><stop offset="1" stop-color="#FFE4E6"/>
+  </linearGradient>
+  <linearGradient id="redarrow" x1="595" y1="651" x2="580" y2="651" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F2"/><stop offset="1" stop-color="#FECDD3"/>
+  </linearGradient>
+  <linearGradient id="yellowtab" x1="0" y1="23" x2="190" y2="23" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FEFCE8"/><stop offset="1" stop-color="#FEF9C3"/>
+  </linearGradient>
+  <linearGradient id="yellowarrow" x1="595" y1="597" x2="580" y2="597" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FEFCE8"/><stop offset="1" stop-color="#FEF08A"/>
+  </linearGradient>
+  <clipPath id="redbox"><rect y="628" width="800" height="46" rx="8"/></clipPath>
+  <clipPath id="yellowbox"><rect y="574" width="800" height="46" rx="8"/></clipPath>
+  <filter id="neosplit" x="108" y="26" width="7" height="294" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
+
+<g transform="translate({{spec.profile.padding.[0].x}}, {{spec.profile.padding.[0].y}})">
+
+  {{! ===== فریم Chart (آفست ۳۲،۱۲۸ داخل محتوای ۸۰۰×۶۷۴) ===== }}
+  <g transform="translate(32, 128)">
+
+    {{! محور: خط‌چین ۲۵/۵۰/۷۵/۱۰۰٪ + برچسب ۰/۵۰/۱۰۰ }}
+    <line x1="235.5" y1="29.5" x2="235.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="360.5" y1="29.5" x2="360.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="485.5" y1="29.5" x2="485.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="610.5" y1="29.5" x2="610.5" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    <text x="110.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">0</text>
+    <text x="360.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">50 ٪</text>
+    <text x="610.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">100 ٪</text>
+
+    <text x="644" y="9" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">نمره خام</text>
+    <text x="644" y="21" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">از 192</text>
+
+    {{#each items as |item index|}}
+      <g transform="translate(0, {{math index '*' 56}})">
+        {{! تراک + میله + درصد }}
+        <g transform="translate(111, 49)">
+          {{bar 500 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill='#E2E8F0' fill-opacity='0.5'}}
+          {{bar item.barW 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill='url(#neobar)' clip-path='url(#neobarclip)'}}
+          <text x="{{math item.barW '+' (ternary (boolean item.percentage '<=' 24) 6 -6)}}" y="12" dy=".3em" font-size="14" font-weight="500" fill="{{ternary (boolean item.percentage '<=' 24) '#1D4ED8' 'white'}}" text-anchor="{{ternary (boolean item.percentage '<=' 24) 'end' 'start'}}">{{item.percentage}} ٪</text>
+        </g>
+
+        {{! جعبهٔ نمرهٔ خام }}
+        <rect x="627.5" y="49.5" width="35" height="23" rx="3.5" stroke="#2563EB" fill="none"/>
+        <text x="645" y="61" dy=".3em" font-size="14" font-weight="500" fill="#2563EB" text-anchor="middle">{{item.mark}}</text>
+
+        {{! نام / خط‌تیره / حرف }}
+        <text x="75" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="start">{{item.fa}}</text>
+        <text x="83.5" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">-</text>
+        <text x="97" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">{{item.letter}}</text>
+
+        {{! توصیف سطح }}
+        <text x="707" y="61" dy=".3em" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>
+      </g>
+    {{/each}}
+
+    {{! خط پایهٔ سفید با سایه — جلوی میله‌ها }}
+    <g opacity="0.5" filter="url(#neosplit)">
+      <line x1="110.5" y1="29.5" x2="110.5" y2="316.5" stroke="white" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  {{! ===== کادر زرد: با احتیاط تفسیر شود (مختصات محتوا) ===== }}
+  {{#if showYellow}}
+    <g clip-path="url(#yellowbox)">
+      <rect y="574" width="800" height="46" rx="8" fill="white"/>
+      <rect y="574" width="800" height="46" rx="8" fill="#FEFCE8"/>
+      <rect width="190" height="46" transform="translate(610, 574)" fill="url(#yellowtab)"/>
+      <path d="M580 597L595 582L595 612L580 597Z" fill="url(#yellowarrow)"/>
+    </g>
+    <rect x="0.5" y="574.5" width="799" height="45" rx="7.5" stroke="#FEF08A" fill="none"/>
+    <text x="691" y="597" dy=".3em" font-size="14" font-weight="500" fill="#CA8A04" text-anchor="middle">با احتیاط تفسیر شود</text>
+    <path d="M767 594.667V598.222M767 600.889H767.009M765.545 589.859L758.34 601.889C758.191 602.146 758.113 602.438 758.112 602.735C758.111 603.032 758.188 603.324 758.335 603.582C758.482 603.84 758.694 604.055 758.95 604.206C759.206 604.357 759.497 604.438 759.794 604.441H774.206C774.503 604.438 774.794 604.356 775.05 604.206C775.306 604.055 775.518 603.84 775.665 603.582C775.812 603.324 775.889 603.032 775.888 602.735C775.887 602.439 775.809 602.147 775.661 601.89L768.455 589.858C768.304 589.608 768.09 589.401 767.835 589.257C767.58 589.114 767.293 589.038 767 589.038C766.708 589.038 766.42 589.114 766.165 589.257C765.91 589.401 765.697 589.608 765.545 589.858V589.859Z" stroke="#CA8A04" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    {{#each yellowErrors as |e|}}
+      <text x="{{math 540 '-' (math e.start '+' (math e.length '/' 2))}}" y="597" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">{{e.text}}</text>
+      {{#unless e.last}}<circle cx="{{math 540 '-' (math e.start '+' (math e.length '+' 26))}}" cy="597" r="2" fill="#A1A1AA"/>{{/unless}}
+    {{/each}}
+  {{/if}}
+
+  {{! ===== کادر قرمز: آزمون نامعتبر است (مختصات محتوا) ===== }}
+  {{#if showRed}}
+    <g clip-path="url(#redbox)">
+      <rect y="628" width="800" height="46" rx="8" fill="white"/>
+      <rect y="628" width="800" height="46" rx="8" fill="#FFF1F2"/>
+      <rect width="190" height="46" transform="translate(610, 628)" fill="url(#redtab)"/>
+      <path d="M580 651L595 636L595 666L580 651Z" fill="url(#redarrow)"/>
+    </g>
+    <rect x="0.5" y="628.5" width="799" height="45" rx="7.5" stroke="#FECDD3" fill="none"/>
+    <text x="691" y="651" dy=".3em" font-size="14" font-weight="500" fill="#BE123C" text-anchor="middle">آزمون نامعتبر است</text>
+    <path d="M758.5 647L764.5 655M764.5 647L758.5 655M761.5 660C763.887 660 766.176 659.052 767.864 657.364C769.552 655.676 770.5 653.387 770.5 651C770.5 648.613 769.552 646.324 767.864 644.636C766.176 642.948 763.887 642 761.5 642C759.113 642 756.824 642.948 755.136 644.636C753.448 646.324 752.5 648.613 752.5 651C752.5 653.387 753.448 655.676 755.136 657.364C756.824 659.052 759.113 660 761.5 660Z" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    {{#each redErrors as |e|}}
+      <text x="{{math 540 '-' (math e.start '+' (math e.length '/' 2))}}" y="651" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">{{e.text}}</text>
+      {{#unless e.last}}<circle cx="{{math 540 '-' (math e.start '+' (math e.length '+' 26))}}" cy="651" r="2" fill="#A1A1AA"/>{{/unless}}
+    {{/each}}
+  {{/if}}
+
+</g>
+
+{{/layout}}

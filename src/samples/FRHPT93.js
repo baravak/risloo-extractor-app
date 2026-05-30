@@ -19,7 +19,7 @@ const colors = {
 
 class FRHPT93 extends Profile {
   // Number of pages
-  static pages = 4;
+  static pages = 5;
 
   // Labels of the sample
   labels = {
@@ -276,15 +276,39 @@ class FRHPT93 extends Profile {
     /* calculating its dimensions carefully is of great importance */
     profile: {
       get dimensions() {
-        return {
-          width: 800 + 2 * this.padding.x,
-          height: 657 + 2 * this.padding.y,
-        };
+        return [
+          {
+            width: 895 + 2 * this.padding.x,
+            height: 578 + 2 * this.padding.y,
+          },
+          {
+            width: 800 + 2 * this.padding.x,
+            height: 657 + 2 * this.padding.y,
+          },
+          {
+            width: 800 + 2 * this.padding.x,
+            height: 657 + 2 * this.padding.y,
+          },
+          {
+            width: 800 + 2 * this.padding.x,
+            height: 657 + 2 * this.padding.y,
+          },
+          {
+            width: 800 + 2 * this.padding.x,
+            height: 657 + 2 * this.padding.y,
+          }
+        ];
       },
-      padding: {
-        x: 52,
-        y: 29,
-      },
+      padding: [
+        {
+          x: 4,
+          y: 68,
+        },
+        {
+          x: 52,
+          y: 29,
+        }
+      ],
     },
     labels: Object.values(this.labels),
   };
@@ -324,21 +348,25 @@ class FRHPT93 extends Profile {
       })
     }
     let start = 0
+    let startx = 0
     validities = validities.map((v,i) => {
       const result ={
         ...v,
         start,
+        startx,
         last: validities.length - 1 === i
       }
       start += v.length + 54
+      startx += v.length + 70
       return result
     })
     const groupList = Object.values(groups).map(r => ({...r, length: r.subs.length}))
     return [
-      { page: 1, titleAppend:' - 1', groups: groupList, colors, indicators: indicators, validityErrors: validities  }, 
-      { page: 2, titleAppend:' - 2', groups: groupList.slice(0, 4).map(rowMap), colors  },
-      { page: 3, titleAppend:' - 3', groups: groupList.slice(4, 8).map(rowMap), colors  },
-      { page: 4, titleAppend:' - 4', groups: groupList.slice(8, 12).map(rowMap), colors  },
+      { page: 1, titleAppend:' - جدول رده‌بندی', validityErrors: validities, groups: groupList, indicators  },
+      { page: 2, titleAppend:' - 1', groups: groupList, colors, indicators, validityErrors: validities  }, 
+      { page: 3, titleAppend:' - 2', groups: groupList.slice(0, 4).map(rowMap), colors  },
+      { page: 4, titleAppend:' - 3', groups: groupList.slice(4, 8).map(rowMap), colors  },
+      { page: 5, titleAppend:' - 4', groups: groupList.slice(8, 12).map(rowMap), colors  },
     ];
   }
 }

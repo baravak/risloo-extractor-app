@@ -1,112 +1,593 @@
 {{#> layout}}
 
 <defs>
-  <linearGradient id="bgbarg">
-    <stop stop-color="{{colors.bars.[0].[0]}}"/>
-    <stop offset="1" stop-color="{{colors.bars.[0].[1]}}"/>
+  <linearGradient id="paint0_linear_6071_199193" x1="33.625" y1="0" x2="33.625" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F8FAFC"/>
+  <stop offset="1" stop-color="#E0E7FF"/>
   </linearGradient>
-  <clipPath id="cbgbarg">
-      {{bar 480 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0)}}
-  </clipPath>
-  <linearGradient id="bgind" x1="97" y1="0" x2="97" y2="83" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#F8FAFC"/>
-    <stop offset="1" stop-color="#F5F3FF"/>
+  <linearGradient id="paint1_linear_6071_199193" x1="108.875" y1="0" x2="108.875" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F1F5F9"/>
+  <stop offset="1" stop-color="#DDD6FE"/>
   </linearGradient>
+  <linearGradient id="paint2_linear_6071_199193" x1="184.125" y1="0" x2="184.125" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F8FAFC"/>
+  <stop offset="1" stop-color="#E0E7FF"/>
+  </linearGradient>
+  <linearGradient id="paint3_linear_6071_199193" x1="259.375" y1="0" x2="259.375" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F1F5F9"/>
+  <stop offset="1" stop-color="#DDD6FE"/>
+  </linearGradient>
+  <linearGradient id="paint4_linear_6071_199193" x1="334.625" y1="0" x2="334.625" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F8FAFC"/>
+  <stop offset="1" stop-color="#E0E7FF"/>
+  </linearGradient>
+  <linearGradient id="paint5_linear_6071_199193" x1="409.875" y1="0" x2="409.875" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F1F5F9"/>
+  <stop offset="1" stop-color="#DDD6FE"/>
+  </linearGradient>
+  <linearGradient id="paint6_linear_6071_199193" x1="485.125" y1="0" x2="485.125" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F8FAFC"/>
+  <stop offset="1" stop-color="#E0E7FF"/>
+  </linearGradient>
+  <linearGradient id="paint7_linear_6071_199193" x1="560.375" y1="0" x2="560.375" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F1F5F9"/>
+  <stop offset="1" stop-color="#DDD6FE"/>
+  </linearGradient>
+  <linearGradient id="paint8_linear_6071_199193" x1="635.625" y1="0" x2="635.625" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F8FAFC"/>
+  <stop offset="1" stop-color="#E0E7FF"/>
+  </linearGradient>
+  <linearGradient id="paint9_linear_6071_199193" x1="710.875" y1="0" x2="710.875" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F1F5F9"/>
+  <stop offset="1" stop-color="#DDD6FE"/>
+  </linearGradient>
+  <linearGradient id="paint10_linear_6071_199193" x1="786.125" y1="0" x2="786.125" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F8FAFC"/>
+  <stop offset="1" stop-color="#E0E7FF"/>
+  </linearGradient>
+  <linearGradient id="paint11_linear_6071_199193" x1="861.375" y1="0" x2="861.375" y2="100" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#F1F5F9"/>
+  <stop offset="1" stop-color="#DDD6FE"/>
+  </linearGradient>
+
   <linearGradient id="error" x1="15" y1="15" x2="0" y2="15" gradientUnits="userSpaceOnUse">
     <stop stop-color="#FFF1F2"/>
     <stop offset="1" stop-color="#FECDD3"/>
   </linearGradient>
-  <filter id="split" x="0" y="0" width="7" height="462" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-    <feOffset dx="1"/>
-    <feGaussianBlur stdDeviation="1.5"/>
-    <feComposite in2="hardAlpha" operator="out"/>
-    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
-    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5334_134825"/>
-    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5334_134825" result="shape"/>
-  </filter>
 </defs>
-  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  <g transform="translate({{spec.profile.padding.[0].x}}, {{spec.profile.padding.[0].y}})">
     <g>
-      <g transform="translate(0, 48)">
-        <g>
-          {{#each groups as |item index|}}
-            <g transform="translate(0, {{math index '*' 40}})">
-              <rect width="800" height="40" fill="{{ternary (even index) '#F8FAFC' 'none'}}" rx="8" />
-              {{bar 480 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='#E2E8F080' transform='translate(158, 12)'}}
-            </g>
-          {{/each}}
+      <g transform="translate(0.5, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint0_linear_6071_199193)" stroke="#A5B4FC"/>
+          <text x="32.45" y="49.5" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#3730A3">اعتبار</text>
         </g>
-      <g>
-      <text x="156.5" y="-24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">0</text>
-      <text x="397.5" y="-24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">50 ٪</text>
-      <text x="632" y="-24" font-size="12" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="middle">100 ٪</text>
-      <text x="754" y="-19" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">رده‌بندی</text>
-      <text x="677" y="-33" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">نمره خام</text>
-      <text x="677" y="-19" font-size="12" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">از 144</text>
-      <line x1="277.5" y1="-8.5" x2="277.5" y2="446.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
-      <line x1="397.5" y1="-8.5" x2="397.5" y2="446.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
-      <line x1="517.5" y1="-8.5" x2="517.5" y2="446.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
-      <line x1="637.5" y1="-8.5" x2="637.5" y2="446.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="5.5 5.5"/>
-      <rect x="709" y="-48" width="1" height="496" fill="#F1F5F9"/>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">دقت در</tspan>
+            <tspan x="32.45" dy="1.15em">پاسخ‌دهی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{indicators.[3].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">مطلوب‌نمایی</tspan>
+            <tspan x="32.45" dy="1.15em">گویه‌ای</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{indicators.[2].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">مطلوب‌نمایی</tspan>
+            <tspan x="32.45" dy="1.15em">مؤلفه‌ای</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{indicators.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">احتیاط</tspan>
+            <tspan x="32.45" dy="1.15em">در پاسخ</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{indicators.[0].levelText}}</text>
+        </g>
+      </g>
+      {{#with groups.[10]}}
+      <g transform="translate(75.75, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint1_linear_6071_199193)" stroke="#C4B5FD"/>
+          <text y="49.5" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#5B21B6">
+            <tspan x="32.45" dy="-.335em">ابعاد</tspan>
+            <tspan x="32.45" dy="1.15em">انگیزه</tspan>
+          </text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">انگیزه</tspan>
+            <tspan x="32.45" dy="1.15em">خودشکوفایی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">نیاز به محبت</tspan>
+            <tspan x="32.45" dy="1.15em">و احترام</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">نیاز به رفاه</tspan>
+            <tspan x="32.45" dy="1.15em">و رشد</tspan>
+            <tspan x="32.45" dy="1.15em">اقتصادی</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">نیاز به قدرت</tspan>
+            <tspan x="32.45" dy="1.15em">و برتری</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
 
-      </g>
-        <g>
-          {{#each groups as |item index|}}
-            <g transform="translate(0, {{math index '*' 40}})">
-                {{# if (boolean key '!==' 'MO')}}
-                  <g transform='translate(158, 12)'>
-                      {{bar (math 480 '*' percentage) 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='url(#bgbarg)' clip-path='url(#cbgbarg)'}}
-                      <text x="{{math (math 480 '*' percentage) '+' (ternary (boolean percentage '<=' 0.24) 4 -6)}}" y="8" font-size="13" font-weight="500" dy=".3em" fill="{{ternary (boolean percentage '<=' 0.24) ../colors.bars.[0].[1] 'white'}}" text-anchor="{{ternary (boolean percentage '<=' 0.24) 'end' 'start'}}">
-                        {{percentageText}} ٪
-                      </text>
-                  </g>
-                  <rect x="659" y="11" width="36" height="18" rx="4" fill="{{../colors.bars.[0].[2]}}" />
-                  <text x="677" y="20" font-size="13" font-weight="500" dy=".3em" fill="white" text-anchor="middle">{{item.mark}}</text>
-                  <text x="755" y="20" font-size="12" font-weight="400" dy=".3em" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>
-                  <text x="149" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.key}}</text>
-                  <text x="121" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">-</text>
-                  <text x="110" y="20" font-size="13" font-weight="400" dy=".3em" fill="#475569" text-anchor="start">{{item.label.fa}}</text>
-                {{else}}
-                  <rect x="659" y="11" width="36" height="18" rx="4" fill="#CBD5E1" />
-                  <text x="677" y="20" font-size="13" font-weight="500" dy=".3em" fill="white" text-anchor="middle">-</text>
-                  <text x="755" y="20" font-size="13" font-weight="500" dy=".3em" fill="#64748B" text-anchor="middle">-</text>
-                  <text x="149" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">{{item.key}}</text>
-                  <text x="121" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">-</text>
-                  <text x="110" y="20" font-size="13" font-weight="400" dy=".3em" fill="#94A3B8" text-anchor="start">{{item.label.fa}}</text>
-                {{/if}}
-                
-            </g>
-          {{/each}}
-        </g>
-        <g opacity="0.5" filter="url(#split)" transform="translate(154.5, -10.5)">
-          <line x1="2.5" y1="3.5" x2="2.5" y2="458.5" stroke="white" stroke-linecap="round"/>
         </g>
       </g>
-    </g>
-    <g transform="translate(0, 520)">
-      {{#each indicators as |item index|}}
-        <g transform="translate({{math index '*' 202}}, 0)">
-          <rect width="194" height="83" fill="url(#bgind)" stroke="#EDE9FE" rx="8" />
-          <text x="142" y="29.5" font-size="16" font-weight="600" dy=".3em" fill="#5B21B6" text-anchor="middle">{{item.mark}}</text>
-          <text x="72" y="29.5" font-size="14" font-weight="500" dy=".3em" fill="#334155" text-anchor="middle">{{item.levelText}}</text>
-          <path d="M 8.78 3.78 h -8.75 m 0 0 l 3.75 3.75 m -3.75 -3.75 l 3.75 -3.75" stroke="#94A3B8" stroke-linecap="round" stroke-linejoin="round" transform="translate(112.62, 25.75)"/>
-          <text x="97" y="55" font-size="13" font-weight="400" dy=".3em" fill="#64748B" text-anchor="middle">{{item.label.fa}}</text>
+      {{/with}}
+      {{#with groups.[9]}}
+      <g transform="translate(151, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint2_linear_6071_199193)" stroke="#A5B4FC"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#3730A3">
+            <tspan x="32.45" dy="-.335em">توانایی</tspan>
+            <tspan x="32.45" dy="1.15em">شناختی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
         </g>
-      {{/each}}
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">هوش</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">قدرت تجزیه</tspan>
+            <tspan x="32.45" dy="1.15em">و تحلیل</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">تلاش و</tspan>
+            <tspan x="32.45" dy="1.15em">پشتکار علمی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">افکار عجیب</tspan>
+            <tspan x="32.45" dy="1.15em">و غریب</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[8]}}
+      <g transform="translate(226.25, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint3_linear_6071_199193)" stroke="#C4B5FD"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#5B21B6">
+            <tspan x="32.45" dy="-.335em">معنویت و</tspan>
+            <tspan x="32.45" dy="1.15em">دینداری</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">دلبستگی به</tspan>
+            <tspan x="32.45" dy="1.15em">خدا</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">نگرش‌های</tspan>
+            <tspan x="32.45" dy="1.15em">مثبت</tspan>
+            <tspan x="32.45" dy="1.15em">معنوی</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">عملکرد</tspan>
+            <tspan x="32.45" dy="1.15em">مذهبی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[7]}}
+      <g transform="translate(301.5, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint4_linear_6071_199193)" stroke="#A5B4FC"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#3730A3">
+            <tspan x="32.45" dy="-.335em">انعطاف</tspan>
+            <tspan x="32.45" dy="1.15em">پذیری</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">کنار آمدن با</tspan>
+            <tspan x="32.45" dy="1.15em">سختی‌ها</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">سازگاری با</tspan>
+            <tspan x="32.45" dy="1.15em">اطرافیان</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">انعطاف در</tspan>
+            <tspan x="32.45" dy="1.15em">روش‌ها</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">نعطاف در</tspan>
+            <tspan x="32.45" dy="1.15em">دیگاه</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[6]}}
+      <g transform="translate(376.75, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint5_linear_6071_199193)" stroke="#C4B5FD"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#5B21B6">
+            <tspan x="32.45" dy="-.335em">وظیفه</tspan>
+            <tspan x="32.45" dy="1.15em">شناسی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">وظیفه</tspan>
+            <tspan x="32.45" dy="1.15em">شناسی در</tspan>
+            <tspan x="32.45" dy="1.15em">اهداف</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">مسئولیت</tspan>
+            <tspan x="32.45" dy="1.15em">پذیری و</tspan>
+            <tspan x="32.45" dy="1.15em">قانون‌مداری</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">توجه به</tspan>
+            <tspan x="32.45" dy="1.15em">نظم و</tspan>
+            <tspan x="32.45" dy="1.15em">جزئیات</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">تلاش و</tspan>
+            <tspan x="32.45" dy="1.15em">پشتکار</tspan>
+            <tspan x="32.45" dy="1.15em">اجرایی</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[5]}}
+      <g transform="translate(452, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint6_linear_6071_199193)" stroke="#A5B4FC"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#3730A3">عاطفه</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">تجربه شدید</tspan>
+            <tspan x="32.45" dy="1.15em">احساسات</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">عاطفه</tspan>
+            <tspan x="32.45" dy="1.15em">درون‌سو</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">عاطفه</tspan>
+            <tspan x="32.45" dy="1.15em">برون‌سو</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">زیبا دوستی</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[4]}}
+      <g transform="translate(527.25, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint7_linear_6071_199193)" stroke="#C4B5FD"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#5B21B6">
+            <tspan x="32.45" dy="-.335em">گشودگی</tspan>
+            <tspan x="32.45" dy="1.15em">به تجربه</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">ریسک</tspan>
+            <tspan x="32.45" dy="1.15em">پذیری</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">هیجان</tspan>
+            <tspan x="32.45" dy="1.15em">خواهی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">تخیل</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">خلاقیت</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[3]}}
+      <g transform="translate(602.5, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint8_linear_6071_199193)" stroke="#A5B4FC"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#3730A3">
+            <tspan x="32.45" dy="-.335em">خشم</tspan>
+            <tspan x="32.45" dy="1.15em">و پرخاشگری</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">حساس و</tspan>
+            <tspan x="32.45" dy="1.15em">زودرنج</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">کینه و</tspan>
+            <tspan x="32.45" dy="1.15em">خصومت</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">پرخاشگری</tspan>
+            <tspan x="32.45" dy="1.15em">(کلامی و</tspan>
+            <tspan x="32.45" dy="1.15em">فیزیکی)</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">آشفتگی</tspan>
+            <tspan x="32.45" dy="1.15em">خانواده</tspan>
+            <tspan x="32.45" dy="1.15em">مبدأ</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[2]}}
+      <g transform="translate(677.75, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint9_linear_6071_199193)" stroke="#C4B5FD"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#5B21B6">
+            <tspan x="32.45" dy="-.335em">رگه</tspan>
+            <tspan x="32.45" dy="1.15em">افسردگی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">حزن و</tspan>
+            <tspan x="32.45" dy="1.15em">اندوه درونی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">افکار گذشته</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">بی‌انگیزگی</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">احساس</tspan>
+            <tspan x="32.45" dy="1.15em">بی‌ارزشی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[1]}}
+      <g transform="translate(753, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint10_linear_6071_199193)" stroke="#A5B4FC"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#3730A3">
+            <tspan x="32.45" dy="-.335em">رگه</tspan>
+            <tspan x="32.45" dy="1.15em">اضطراب</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">ترس و</tspan>
+            <tspan x="32.45" dy="1.15em">نگرانی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">اضطراب در</tspan>
+            <tspan x="32.45" dy="1.15em">روابط</tspan>
+            <tspan x="32.45" dy="1.15em">اجتماعی</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">شک و تردید</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="#F8FAFC" stroke="#C7D2FE"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">تکانشگری و</tspan>
+            <tspan x="32.45" dy="1.15em">شتابزدگی</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+        </g>
+      </g>
+      {{/with}}
+      {{#with groups.[0]}}
+      <g transform="translate(828.25, 0)">
+        <g transform="translate(0, 0.5)">
+          <rect width="66.25" height="99" rx="7.5" fill="url(#paint11_linear_6071_199193)" stroke="#C4B5FD"/>
+          <text x="32.45" y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#5B21B6">برون‌گرایی</text>
+          <text x="32.45" y="60" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{levelText}}</text>
+        </g>
+        <g transform="translate(0, 104.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">علاقه به</tspan>
+            <tspan x="32.45" dy="1.15em">ارتباط با</tspan>
+            <tspan x="32.45" dy="1.15em">دیگران</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[0].levelText}}</text>
+        </g>
+        <g transform="translate(0, 208.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">توانایی</tspan>
+            <tspan x="32.45" dy="1.15em">ارتباط با</tspan>
+            <tspan x="32.45" dy="1.15em">دیگران</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[1].levelText}}</text>
+        </g>
+        <g transform="translate(0, 312.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="32" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">نشاط و</tspan>
+            <tspan x="32.45" dy="1.15em">سرزندگی</tspan>
+            <tspan x="32.45" dy="1.15em">اجتماعی</tspan>
+          </text>
+          <text x="32.45" y="74" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[2].levelText}}</text>
+
+        </g>
+        <g transform="translate(0, 416.5)">
+          <rect width="66.25" height="99" rx="7.5" stroke="#C4B5FD" fill="none"/>
+          <text y="39" dy=".3em" text-anchor="middle" font-weight="400" font-size="12" fill="#64748B">
+            <tspan x="32.45" dy="-.335em">جسارت</tspan>
+            <tspan x="32.45" dy="1.15em">و قاطعیت</tspan>
+          </text>
+          <text x="32.45" y="67" dy=".3em" text-anchor="middle" font-weight="500" font-size="12" fill="#334155">{{subs.[3].levelText}}</text>
+        </g>
+      </g>
+      {{/with}}
     </g>
     {{#if (boolean validityErrors.length '!==' 0)}}
-    <g transform="translate(0, 611)">
-      <rect width="800" height="46" fill="#FFF1F2" stroke="#FECDD3" rx="8" />
+    <g transform="translate(0, 532)">
+      <rect width="895" height="46" fill="#FFF1F2" stroke="#FECDD3" rx="8" />
+      <g transform="translate(95, 0)">
       <path d="M 8.9 5.63 v 3.5556 m 0 2.6667 h 0.0089 m -1.464 -11.0303 l -7.2053 12.0303 c -0.1485 0.2572 -0.2271 0.5488 -0.228 0.8459 c -0.0009 0.297 0.0761 0.5891 0.2231 0.8472 c 0.1471 0.258 0.3591 0.4731 0.6151 0.6238 c 0.256 0.1507 0.5469 0.2317 0.844 0.2351 h 14.4125 c 0.2968 -0.0035 0.5877 -0.0845 0.8435 -0.2352 c 0.2559 -0.1506 0.4679 -0.3656 0.6149 -0.6235 c 0.147 -0.258 0.224 -0.5499 0.2233 -0.8468 c -0.0008 -0.2969 -0.0792 -0.5884 -0.2275 -0.8456 l -7.2053 -12.0321 c -0.1516 -0.2502 -0.3652 -0.4571 -0.6201 -0.6007 c -0.2549 -0.1436 -0.5425 -0.219 -0.8351 -0.219 c -0.2926 0 -0.5802 0.0754 -0.8351 0.219 c -0.2549 0.1436 -0.4685 0.3505 -0.6201 0.6007 v 0.0009 z" transform="translate(729.61, 15.04)" fill="none" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <text x="690" y="23" font-size="14" font-weight="500" dy=".3em" fill="#BE123C" text-anchor="middle">فاقد اعتبار</text>
       <path d="M 0 0 l 15 -15 l 0 30 l -15 -15 z" fill="url(#error)" transform="translate(580, 23)"/>
-      <g transform="translate(0, 23)">
+      </g>
+      <g transform="translate(95, 23)">
         {{#each validityErrors as |error index|}}
-          <text x="{{math 532 '-' (math start '+' (math length '/' 2))}}" y="0" font-size="13" font-weight="400" dy=".3em" fill="#57534E" text-anchor="middle">{{error.error}}</text>
+          <text x="{{math 532 '-' (math startx '+' (math length '/' 2))}}" y="0" font-size="13" font-weight="400" dy=".3em" fill="#57534E" text-anchor="middle">{{error.error}}</text>
           {{#if (boolean error.last '===' false)}}
-            <circle cx="{{math 532 '-' (math start '+' (math length '+' 26))}}" cy="2" r="2" fill="#A1A1AA"/>
+            <circle cx="{{math 532 '-' (math startx '+' (math length '+' 35))}}" cy="2" r="2" fill="#A1A1AA"/>
           {{/if}}
         {{/each}}
       </g>

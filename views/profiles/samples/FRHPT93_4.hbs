@@ -24,7 +24,7 @@
     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5334_139730" result="shape"/>
   </filter>
 </defs>
-  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  <g transform="translate({{spec.profile.padding.[1].x}}, {{spec.profile.padding.[1].y}})">
     <g transform="translate(0, 4)">
       <g transform="translate(0, 48)">
         {{#each groups as |item index|}}
@@ -46,7 +46,7 @@
                   <tspan>
                     {{mark}}
                   </tspan>
-                  <tspan fill="#64748B" font-size="14" font-weight="500">از 144</tspan>
+                  <tspan fill="#64748B" font-size="13" font-weight="500">از 144</tspan>
                 </text>
             {{/if}}
             <g transform="translate(389, {{ternary (boolean item.length '===' 4) 12 28}})">

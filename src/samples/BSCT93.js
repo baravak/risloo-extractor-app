@@ -56,6 +56,11 @@ class BSCT93 extends Profile {
 
     const total = packItem(dataset.score[0], dataset.score[1]);
     total.transform = `translate(30, ${4 + 230 - total.p * 230})`;
+    // گرادیان لنگرخورده روی کلِ مسیر: روشن (#94A3B8) پایینِ مسیر (abs y=235.5)،
+    // تیره (#334155) بالای مسیر (abs y=12.4). در مختصاتِ محلیِ میله بیان می‌شود
+    // چون <path> همان total.transform را حمل می‌کند (مطابق paint6 در SVG طراحی).
+    total.gradY1 = 230 * total.p + 0.5; // پایینِ مسیر → abs y 235.5
+    total.gradY2 = 230 * total.p - 222.6; // بالای مسیر → abs y 12.4
 
     const factors = [
       packItem(dataset.score[2], dataset.score[3]),

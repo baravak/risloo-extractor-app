@@ -4,7 +4,7 @@
         <stop stop-color="#FFFBEB" stop-opacity="0.25"/>
         <stop offset="1" stop-color="#FEF3C7" stop-opacity="0.5"/>
     </linearGradient>
-    <linearGradient id="totalbg" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="totalbg" x1="9" y1="{{total.gradY1}}" x2="9" y2="{{total.gradY2}}" gradientUnits="userSpaceOnUse">
         <stop stop-color="#94A3B8"/>
         <stop offset="1" stop-color="#334155"/>
     </linearGradient>
@@ -84,15 +84,15 @@
         </g>
     </g>
     <g transform="translate(637, 1)">
-        <text x="24" y="9" text-anchor="end" font-weight="400" font-size="12" fill="#475569">٪ ۱۰۰</text>
+        <text x="23" y="9" text-anchor="start" font-weight="400" font-size="12" fill="#475569">٪ ۱۰۰</text>
         {{bar 18 230 (object tr=2 tl=2 br=0 bl=0) (toRad 0) fill="#F1F5F9" transform="translate(30, 4)"}}
         {{bar 18 (math 230 '*' total.p) (object tr=2 tl=2 br=0 bl=0) (toRad 0) fill="url(#totalbg)" transform=total.transform}}
         <g transform="translate(29, 235.5)" opacity="0.5" filter="url(#totalvsp)">
             <line x1="0" y1="0" x2="20" y2="0" stroke="white" stroke-width="2" stroke-linecap="round"/>
         </g>
-        <text x="56" y="{{math 234 '-' (math 230 '*' total.p)}}" font-weight="600" font-size="18" dy="0" fill="#334155">{{total.percentage}} ٪</text>
-        <text x="56" y="{{math 234 '-' (math 230 '*' total.p)}}" font-weight="400" font-size="12" dy="1.5em" fill="#64748B">{{total.mark}} از {{total.label.max}}</text>
-        <text font-weight="400" font-size="12" fill="#475569" transform="rotate(-90,0,0) translate(-218,9)">نمره کل</text>
+        <text x="56" y="{{math 234 '-' (math 230 '*' total.p)}}" font-weight="600" font-size="18" dy="0" fill="#334155" text-anchor="end">{{total.percentage}} ٪</text>
+        <text x="56" y="{{math 234 '-' (math 230 '*' total.p)}}" font-weight="400" font-size="12" dy="14" fill="#64748B" text-anchor="end">{{total.mark}} از {{total.label.max}}</text>
+        <text font-weight="400" font-size="12" fill="#475569" transform="rotate(-90,0,0) translate(-202,22)">نمره کل</text>
     </g>
 </g>
 

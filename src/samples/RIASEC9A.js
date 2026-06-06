@@ -143,7 +143,7 @@ class RIASEC9A extends Profile {
     const map = new Map(Items.map(i => [i.label.enShort, i.label.short]))
     const reportMap = dataset.score[30].mark.split('-').map(r => {
       return r.split(',').map(key => map.get(key)).join(' - ')
-    })
+    }).reverse()
     // Gathering required info for page 1 items
     const items = Items.map((data) => ({
       label: data.label,
@@ -226,7 +226,6 @@ class RIASEC9A extends Profile {
       item.percentageText = Math.floor(item.percentage * 100);
       return item;
     });
-
     return [
       {
         items: [...items].sort((item1, item2) => item2.mark - item1.mark),

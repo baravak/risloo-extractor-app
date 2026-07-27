@@ -1,0 +1,38 @@
+{{#> layout}}
+
+  <defs>
+    {{! Fill gradient (coords local to the gauge centre): light indigo at the
+        left base → deep indigo toward the top-right, matching the Figma export. }}
+    <linearGradient id="gaugeGrad" x1="-125" y1="0" x2="84.83" y2="-91.81" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#4338CA"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g transform="translate(125, 167)">
+
+      {{! ===================== Semicircle gauge ===================== }}
+      {{! Track: full 0–100 % ring (left base → over the top → right base) }}
+      {{gauge 125 87.5 (object tl=6 tr=6 bl=6 br=6) (object start=(toRad 180) end=(toRad 0)) false fill="#F1F5F9"}}
+
+      {{! Fill: 0 % at the left base, sweeping clockwise to the score.
+          Left base rounded (tl/bl); the leading edge is a flat radial line (tr/br=0). }}
+      {{#if total.raw}}{{gauge 125 87.5 (object tl=6 tr=0 bl=6 br=0) (object start=(toRad 180) end=total.zeta) false fill="url(#gaugeGrad)"}}{{/if}}
+
+      {{! ===================== Labels ===================== }}
+      {{! Gauge title }}
+      <text x="0" y="-147" text-anchor="middle" font-size="18" font-weight="500" fill="#4338CA">خودشناسی انسجامی</text>
+
+      {{! Centre: big percentage (indigo) + raw fraction (gray) }}
+      <text x="0" y="-27" text-anchor="middle" font-size="28" font-weight="600" fill="#4F46E5" direction="ltr">٪ {{total.pct}}</text>
+      <text x="0" y="-1" text-anchor="middle" font-size="18" font-weight="500" fill="#64748B">{{total.raw}} از {{total.max}}</text>
+
+      {{! Base end labels: 0 % (left base) and 100 % (right base) }}
+      <text x="-107" y="18" text-anchor="middle" font-size="14" font-weight="500" fill="#64748B">0</text>
+      <text x="106" y="18" text-anchor="middle" font-size="14" font-weight="500" fill="#64748B" direction="ltr">٪ 100</text>
+
+    </g>
+  </g>
+
+{{/layout}}

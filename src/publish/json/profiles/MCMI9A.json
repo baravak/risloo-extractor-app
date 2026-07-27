@@ -1,0 +1,1540 @@
+{
+  "id": "$X163XXXX",
+  "scale": { "id": "$MCMI-9A", "title": "آزمون شخصیت میلون IV" },
+
+  "version": "5",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH96XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR96XXX",
+      "avatar": null
+    },
+    "center": {
+      "id": "RS96XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز درمانی"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1728128259,
+  "started_at": 1728128300,
+  "scored_at": 1728367688,
+  "closed_at": 1728128587,
+  "total_amount": 0,
+  "prepayment": false,
+  "purchased": true,
+  "amount": null,
+  "billing": null,
+  "description": "این پرسش‌نامه، شامل عباراتی است که حالات و عادات رفتاری را توصیف می‌کند. هر عبارت را با دقت بخوانید و یکی از گزینه‌ها را برای پاسخ انتخاب کنید. اگر عبارت درباره شما صادق است گزینه صحیح و اگر توصیف‌کننده شما نیست گزینه غلط را انتخاب کنید.\n\nخواهشمندیم به کلیه عبارت‌ها پاسخ دهید.\n\nپاسخی را انتخاب کنید که به شما نزدیک‌تر است. و اگر نمی‌توانید تشخیص دهید که کدام به شما نزدیک‌تر است گزینه غلط را انتخاب کنید.\n\nنتایج این پرسش‌نامه برای کمک به شما مورد استفاده قرار خواهد گرفت.\n\nاگر برخی عبارت‌ها غیرمعمول به نظر می‌رسد نگران آن نباشید، آن‌ها برای توصیف برخی احساسات و نگرش‌ها در افرادی هستند که مشکلات زیادی دارند.\n\nمحدودیت زمانی برای کامل کردن این پرسشنامه وجود ندارد، اما بهتر است در کوتاه‌ترین زمانی که احساس راحتی می‌کنید به آن پاسخ دهید.",
+  "items": [
+    {
+      "text": "اخیراً حتی در صبح‌ها احساس می‌کنم فاقد انرژی هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "همیشه باید مطمئن شوم که کارهایم به خوبی برنامه‌ریزی و سازماندهی شده است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "آن‌قدر از چیزهای مختلفی لذت می‌برم که نمی‌توانم تصمیم بگیرم کدام را اول انجام دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "نگرانم افرادی که به آن‌ها وابسته هستم مرا ترک کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "با این‌که از برقراری روابط دوستانه می‌ترسم، آرزو می‌کنم که دوستان بیشتری داشته باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "همان احساسات کمی که به نظر می‌رسد دارم را نیز به ندرت نشان می‌دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "هنگام پیاده‌روی برای حفظ تعادلم دچار مشکل می‌شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "همواره در جست‌وجوی فرصت‌هایی هستم که برایم هیجان‌انگیز و جدید هستند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "گاهی اوقات می‌توانم در روابطم با اعضای خانواده‌ام بسیار خشن و تند باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "دوست دارم همواره مورد توجه باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "زمانی که نوجوان بودم، به دلیل رفتار بدم در مدرسه دچار مشکلات زیادی شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "واقعاً از نزدیک شدن به دیگران می‌ترسم، چون ممکن است با مسخره یا شرمسار شدنم پایان‌ یابد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "وقتی از کنار دیگران رد می‌شوم احساس می ‌کنم آن‌ها دارند درباره من صحبت می‌کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "سال‌هاست که احساس می‌کنم یک فرد شکست‌خورده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اگر قرار باشد خودم انتخاب کنم، ترجیح می‌دهم کارها را به تنهایی انجام دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اخیراً احساس می‌کنم شبیه چیزی در حال شکستن هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "آن‌‌چه که امروز به خوبی پیش می‌رود دوامی نخواهد داشت.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "وقتی اوضاع زندگی‌ام به سمت بد شدن می‌رود، گاهی اوقات احساس دیوانگی یا واهی بودن می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "هر آن‌چه که بخواهم را انجام می‌دهم بدون این‌که نگران تأثیرش بر دیگران باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "با انرژی و استقامت زیادی به استقبال کارهای روزمره‌ام می‌روم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من هرگز توهینی را که دیگری به من کرده یا شرمی را که در من ایجاد کرده است، نمی‌بخشم یا فراموش نمی‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "بیشتر اوقات احساس غم و افسردگی شدیدی دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "وقتی کارها به نتایج غلطی می‌رسد، همیشه خودم را سرزنش می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "از مدت‌ها پیش به این نتیجه رسیده‌ام که بهترین کار این است که با دیگران کمتر در ارتباط باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "مشکلات ناشی از مصرف الکل من، مسائلی برای خودم و خانواده‌ام ایجاد کرده است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "از نظر اجتماعی فردی کمرو و خجالتی هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "زمان‌های زیادی پیش می‌آید که بدون هیچ دلیلی بسیار شاد و هیجان‌زده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "طی هفته‌های گذشته بدون هیچ دلیلی احساس فرسودگی کرده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "وقت من بسیار ارزشمندتر از وقت دیگران است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "معمولاً به دنبال یافتن دوستان جدید یا ملاقات با افراد جدید هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "در طی چند هفته گذشته خیلی پرشور و هیجان‌زده شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من بخت و اقبالی را که دیگران در زندگی‌شان داشته‌اند، نداشته‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "افکار و ایده‌ها در ذهن من مدام تکرار می‌شوند و رهایم نمی‌کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "یکی دو سال است که به آدمی کاملاً ناراحت و ناامید از زندگی تبدیل شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "سعی می‌کنم هر کاری را تا حد امکان کامل انجام دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اعتیاد به مصرف مواد باعث شده که در گذشته کارم را از دست بدهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "به نظر می‌رسد خلق‌وخویم از روزی به روز دیگر بسیار تغییر می‌کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "برای رسیدن به خواسته‌هایم از جذابیتم استفاده می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب فکر می‌کنم شایسته چیزهای خوبی که برایم پیش آمده است، نبوده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من در گذشته به عمد به خودم آسیب زده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "به نظر می‌آید که نمی‌توانم بخوابم و وقتی از خواب بیدار می‌شوم، به همان اندازه خسته‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب به دیگران اجازه می‌دهم برای من تصمیمات مهمی بگیرند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "چیز زیادی نیست که بتواند مرا خوشحال یا ناراحت کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "افکار عجیب و غریبی دارم که آرزو می‌کنم بتوانم از شر آن‌ها خلاص شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "برایم بسیار سخت و طاقت‌فرساست که بر میل شدیدم برای نوشیدن الکل غلبه کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "بسیار راحت‌تر از دیگران برای خودم دوست پیدا می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "از برخی سوءاستفاده‌هایی که در کودکی باعث رنج من شده است، شرمگین هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "مقررات برای من اهمیت بالایی دارد، چون آن‌ها راهنمای مناسبی برای پیروی هستند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "در سال گذشته عکس من بر صفحه اول چندین مجله چاپ شده است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "از اینکه دیگران کارها را به کندی انجام دهند، عصبی و به‌هم‌ریخته می‌شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "زندگی‌ام را با نگرانی درباره این چیز و آن چیز می‌گذرانم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "زمانی که یک نفر مهربانی خاصی با من دارد، با تعجب دنبال دلیل واقعی آن می‌گردم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "کارهای روزانه‌ام الهام‌بخش و هیجان‌انگیز هستند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "ایده‌های زیادی در ذهنم دارم که جلوتر از زمان است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "از زمانی که دچار ضربه‌های جدی شده‌ام، نمی‌توانم برای مدت طولانی بر هیچ چیز متمرکز شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "مردم قبلاً به من گفته‌اند که به بسیاری از چیزها بیش از اندازه علاقه‌مند یا از آن‌ها هیجان‌زده شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اشتهایم را به طور کامل از دست داده‌ام و بیشتر شب‌ها مشکل خواب دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "از کودکی ارتباط من با دنیای واقعی قطع شده است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "نمی‌توانم بسیاری از خوشی‌ها را تجربه کنم، چون احساس می‌کنم شایسته آن نیستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "ترجیح می‌دهم به من بگویند بهتر است چه کاری انجام دهم تا اینکه خودم تصمیم بگیرم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "مصرف مواد اعتیادآور منجر به مشاجره‌های خانوادگی برایم شده است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "خاطره یک تجربه بسیار ناراحت‌کننده در گذشته‌ام افکار مرا به هم ریخته است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "از نظر بیشتر افراد، به عنوان فردی منظم و دقیق شناخته شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "به نظر می‌رسد علاقه‌ام را به بسیاری از امور لذت‌بخش، مانند رابطه جنسی، از دست داده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "چندباری مشکلات قانونی پیدا کرده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "برای اینکه برخی افراد در مسیر صحیح باقی بمانند، لازم بوده با آن‌ها خشن برخورد کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اعتمادبه‌نفس بالایی دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم تلاش دارند مرا متقاعد کنند که من دیوانه هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "دو یا چند بار در هفته ولع خوردن داشته‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "بارها حس کرده‌ام چیزی درون من وجود ندارد و من پوک و تهی هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "همیشه به سختی توانسته‌ام از غم و اندوه رهایی یابم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "زمانی که تنها و از خانه دور هستم، اغلب احساس تنش و وحشت می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "مردم به من می‌گویند که من آدمی درست و اخلاقی هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من در کنترل خشمم با دشواری روبه‌رو هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من فردی بسیار خوشبین هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "سال‌ها گذشته، اما هنوز کابوس‌هایی می‌بینم که مربوط به رویدادی است که زندگی مرا واقعاً تهدید می‌کرد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "به نظر می‌آید که برای انجام کارها به راهنمایی‌های زیادی نیاز دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اخیراً به طور جدی به این فکر افتاده‌ام که خودم را خلاص کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم آب‌زیرکاه تلاش دارند از طریق چیزهایی که من انجام داده‌ام یا فکرش متعلق به من بوده، اعتبار کسب کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اخیراً به کلی خرد شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "شاید مصرف مواد اعتیادآور «غیرقانونی» غیرعاقلانه باشد، اما در گذشته من به این نتیجه رسیدم که به آن نیاز دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "بسیار به‌هم‌ریخته هستم؛ افکار و احساس‌هایم هر لحظه تغییر می‌کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "زمانی که به مشکل برمی‌خورم، می‌توانم خیلی خوب عذر و بهانه بیاورم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "در مهمانی‌ها هرگز گوشه‌گیر نیستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "فرصت‌های خوبی را که برایم پیش می‌آیند، به‌راحتی از دست می‌دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "برخی مواقع بعد از غذا خوردن، خود را مجبور به بالا آوردن آن می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من فرد خاصی هستم، بنابراین نگران نیستم دیگران در مورد من چه فکری می‌کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "خانواده‌ام را از نزدیک زیر نظر می‌گیرم تا بدانم چه کسی می‌تواند و چه کسی نمی‌تواند قابل اعتماد باشد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "افکار مشخصی به طور دائم و مکرر به ذهنم می‌آیند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "چیزهای کمی در زندگی هستند که به من احساس رضایت‌خاطر بدهند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "به دلیل خاطرات دردناکی از گذشته که دائم به ذهن من می‌آیند، آشفته هستم و در به خواب رفتن مشکل دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب آن‌قدر در افکارم غرق هستم که فراموش می‌کنم در اطرافم چه می‌گذرد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من هرگز قادر نبوده‌ام این احساس را که کم‌ارزش‌تر از دیگران هستم، تغییر دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "مشکل مصرف الکل دارم تا جایی که در متوقف کردن مصرف آن موفق نبوده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "یک نفر سعی کرده ذهن و افکار مرا کنترل کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "بیشتر افراد موفق یا خوش‌شانس بوده‌اند یا فریبکار.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من اغلب افراد را با آزردن آن‌ها عصبانی می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "در طی ۱۰ سال گذشته هیچ ماشینی ندیده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "در دورهمی‌ها احساس تنش و نگرانی می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "گاهی شرایطی را ایجاد می‌کنم که در آن احساس طردشدگی یا آسیب کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "عمیقاً احساس افسردگی می‌کنم، بدون آنکه بدانم دلیل آن چیست.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم به من می‌گویند که من بسیار لاغر هستم، اما من احساس می‌کنم ران‌ها و باسنم بسیار بزرگ است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "از شروع کردن مشاجره یا دعوا لذت می‌برم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من از زندگی خصوصی‌ام شدیداً مراقبت می‌کنم، بنابراین هیچ‌کس نمی‌تواند از من سوءاستفاده کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "مصرف مواد در گذشته باعث شده که با مشکلات زیادی مواجه شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب به خاطر مسائلی سرزنش می‌شوم که مسئولیتی در آن‌ها ندارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "با آغاز هر روز، من نیز به طرز وحشتناکی احساس افسردگی دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی مردم از من عصبانی می‌شوند، چون که می‌گویند من بیش از حد یا خیلی سریع با آن‌ها صحبت می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من هرگز نمی‌توانم زندگی‌ام را به تنهایی اداره کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "مغز من از زمانی که در سال‌های اخیر آسیب دیده، به درستی کار نمی‌کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "بیشتر وقت‌ها احساس تنهایی و پوچی می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "مردم پشت سرم مرا مسخره می‌کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اخیراً به میزان زیادی عرق می‌کنم و احساس تنش شدیدی دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "در هفته‌های اخیر بیش از پیش غمگین شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من از دست افرادی که باعث ناراحتی من می‌شوند، با عصبانیت از کوره در می‌روم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "زمان‌هایی بوده که من نتوانسته‌ام روزم را بدون برخی مواد خیابانی بگذرانم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من از بگو‌بخند با جنس مخالف لذت می‌برم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "این روزها برای انجام کارهای روزانه‌ام تمرکز ندارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "فکر نمی‌کنم احساساتم به اندازه دیگر مردم قوی باشد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "بیشتر اوقات احساس ضعف و خستگی می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "فکرهای عجیب و غریبی به ذهنم می‌رسند و به هیچ طریق رهایم نمی‌کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "دیگران فرصت‌هایی داشته‌اند که من نداشته‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی برای کاهش اضطرابم و گاهی برای جلوگیری از رخ دادن رویدادهای بد، رفتارهای معینی را بارها تکرار می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من داروهایی را استفاده کرده‌ام که برای من تجویز نشده‌اند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "به دلیل مرور چیزهای وحشتناکی که در گذشته برای من رخ داده است، زندگی‌ام هنوز غمگین است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب چیزهای خوبی را که برایم رخ می‌دهد، خراب می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "صداهایی ناخوشایند سعی می‌کنند بر ذهن من غلبه کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "زمانی که کنترلم را از دست می‌دهم، شدیداً احساس گناه می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اشتیاقم به کار هرگز واقعاً کاهش نیافته است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من تبدیل به فردی الکلی شده‌ام که چندان متفاوت از والدینم نیستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اخیراً به دلایلی نه‌چندان معقول، مجبور بوده‌ام بارها به برخی چیزها فکر کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من مردم را تشویق می‌کنم که مرا برای چیزهایی که می‌گویم یا انجام می‌دهم، تحسین کنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "وقتی قرار است کاری را به تنهایی انجام دهم، از انجام آن دست می‌کشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "قبلاً سعی کرده‌ام خود را بکشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من فردی ترسو و خجالتی هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "افرادی که به نظر می‌رسد دوست من هستند، قصد دارند به من آسیب بزنند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب اجازه می‌دهم خشمم آشکار شود و سپس شدیداً درباره آن احساس گناه می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب اوقات چیزهایی می‌شنوم که باعث آزار من می‌شوند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "غیر از خانواده‌ام، روابط نزدیک بسیار کمی دارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "بی‌نظمی بسیار مرا ناراحت می‌کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب از افرادی که باعث آزار من می‌شوند، شدیداً انتقاد می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من استعدادهایی دارم که دیگران آرزو می‌کنند داشته باشند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "رویدادهای وحشتناکی مربوط به گذشته مرتب افکار و خواب مرا آشفته می‌سازد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "می‌دانم بیش از آنچه که باید برای خرید مواد غیرقانونی پول خرج کرده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب قبل از اینکه متوجه شوم، با عصبانیت شروع به فریاد کشیدن بر سر دوستان و خانواده‌ام می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اینکه به لحاظ بدنی خیلی سریع خسته می‌شوم، باعث ناراحتی من می‌شود.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "هیچ اشکالی ندارد قانون را دور بزنید، به شرط آنکه مطمئن باشید گیر نمی‌افتید.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من معتقدم علیه من توطئه‌چینی می‌شود.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "تنها هستم و این برایم مهم نیست.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "وقتی به ضربه‌های دردناکی فکر می‌کنم که چند سال پیش تجربه کرده‌ام، هنوز احساس ترس می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "از چندی پیش تاکنون از اینکه نمی‌توانم کارها را به درستی انجام دهم، شدیداً احساس گناه می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "تنبیه هرگز نمی‌تواند مرا از انجام کاری که می‌خواهم انجام دهم، منصرف کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "به‌ندرت آنچه را که مردم به من می‌گویند باور می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "فردی بسیار خونگرم و اجتماعی هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "تقریباً هر کاری که انجام می‌دهم، به آن علاقه‌مند می‌شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من درباره اینکه چه کسی هستم، سردرگم هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "از فکر کردن به برخی سوءاستفاده‌هایی که در کودکی از من شده است، متنفرم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من هرگز قانون را نمی‌شکنم، حتی اگر راه آن را بدانم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "برخی از اعضای خانواده‌ام می‌گویند من فرد خودخواهی هستم و فقط به خودم فکر می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "در سال گذشته ۳۰ بار بر فراز اقیانوس اطلس پرواز کرده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "زمانی که خلق پایینی دارم، نوشیدن الکل به من کمک می‌کند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من ترجیح می‌دهم پیرو فردی دیگر باشم تا اینکه خودم رهبر باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب ایده‌ها آنقدر سریع از ذهنم می‌گذرند که نمی‌توانم درباره آن‌ها صحبت کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "از اینکه ممکن است به خودم آسیب جدی برسانم، احساس ناراحتی می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "برخی مردم می‌گویند که من فرد عجیب و غریبی هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "گاهی اوقات آرامش را در بدبختی‌هایم می‌یابم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب متوجه می‌شوم که مورد بی‌انصافی قرار گرفته‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "نسبت به افرادی که با من مخالفت می‌کنند، خیلی سریع با عصبانیت واکنش نشان می‌دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب اوقات بدون آنکه بدانم چرا، احساس گناه می‌کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "احساس غم و اندوه دارم و نمی‌توانم از آن رها شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من می‌دانم چگونه دیگران را اغوا کنم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "همیشه باید مراقب مردمی باشم که تلاش می‌کنند مرا فریب دهند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "همواره تمایل دارم چیزی را انجام دهم که دیگران می‌خواهند انجام دهند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "من به طرزی جسورانه و قوی با همه چالش‌های زندگی‌ام روبه‌رو می‌شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "هرگز احساس نمی‌کنم حرف ارزشمندی برای ارائه و مشارکت در گفتگوها داشته باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اگر داروهای پزشکی‌ام حالم را بهتر نکند، یا دفعات مصرف را افزایش می‌دهم یا میزان دارو را.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "بسیار پیش آمده که آنقدر شاد بوده‌ام و انرژی مصرف کرده‌ام که خلقم افت کرده است.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب اوقات از آنچه که هستم بسیار ناراضی‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "تمایلی به تغییر روال معمول زندگی‌ام ندارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "برخلاف سایر مردم، من نیازی به داشتن روابط دوستانه نزدیک ندارم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "گاهی اوقات با زدن آسیب جسمی به خودم احساس آرامش کرده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "افراد زیادی سال‌ها در زندگی شخصی من کنکاش کرده‌اند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "اگر بخواهم، به خوبی می‌توانم دیگران را فریب دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "حتی در لحظات خوب، همیشه نگران بوده‌ام که همه چیز به جایی بد برسد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "در انگیزه‌بخشی و انرژی دادن به دیگران توانمند هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "برای اینکه لاغرتر از آنچه که هستم بشوم، به خودم گرسنگی می‌دهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من اغلب تحریک‌پذیر و کم‌طاقت هستم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "همیشه تلاش می‌کنم کارم را قبل از رسیدن به اوقات فراغت به پایان برسانم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم برای اینکه مرا بفهمند، باید خودشان استثنایی باشند.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "احساسات مردم را آن‌طور که دیگران می‌فهمند، متوجه نمی‌شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "قوانین زیادی مانع از انجام کارهایی شده‌اند که خواسته‌ام انجام بدهم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی اوقات احساس می‌کنم شایسته آن هستم که ناشاد باشم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "در زندگی بسیار دل‌شکسته و ناراحت شده‌ام.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "2"
+    },
+    {
+      "text": "من تمایل دارم با عقاید دیگران همراه شوم.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    },
+    {
+      "text": "از بسیاری از موقعیت‌های اجتماعی اجتناب می‌کنم، چون فکر می‌کنم مردم مرا طرد خواهند کرد.",
+      "type": "text",
+      "answer": { "type": "optional", "options": ["صحیح", "غلط"] },
+      "user_answered": "1"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": { "type": "select", "options": ["زن", "مرد"] },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": { "type": "number" },
+      "alias": "age",
+      "force": true,
+      "user_answered": "20"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "14"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": { "type": "select", "options": ["مجرد", "متأهل"] },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 0,
+  "score": {
+    "1_raw": 15,
+    "1_br": 73,
+    "1_level": "style",
+    "2a_raw": 13,
+    "2a_br": 73,
+    "2a_level": "style",
+    "2b_raw": 10,
+    "2b_br": 64,
+    "2b_level": "style",
+    "3_raw": 9,
+    "3_br": 69,
+    "3_level": "style",
+    "4a_raw": 9,
+    "4a_br": 46,
+    "4a_level": "uninterpretable",
+    "4b_raw": 16,
+    "4b_br": 66,
+    "4b_level": "style",
+    "5_raw": 16,
+    "5_br": 82,
+    "5_level": "type",
+    "6a_raw": 9,
+    "6a_br": 70,
+    "6a_level": "style",
+    "6b_raw": 13,
+    "6b_br": 72,
+    "6b_level": "style",
+    "7_raw": 19,
+    "7_br": 69,
+    "7_level": "style",
+    "8a_raw": 17,
+    "8a_br": 77,
+    "8a_level": "type",
+    "8b_raw": 12,
+    "8b_br": 70,
+    "8b_level": "style",
+    "s_raw": 14,
+    "s_br": 69,
+    "s_level": "style",
+    "c_raw": 17,
+    "c_br": 77,
+    "c_level": "type",
+    "p_raw": 18,
+    "p_br": 82,
+    "p_level": "type",
+    "a_raw": 3,
+    "a_br": 43,
+    "a_level": "normal",
+    "h_raw": 10,
+    "h_br": 73,
+    "h_level": "normal",
+    "n_raw": 13,
+    "n_br": 83,
+    "n_level": "present",
+    "d_raw": 18,
+    "d_br": 73,
+    "d_level": "normal",
+    "b_raw": 10,
+    "b_br": 100,
+    "b_level": "prominent",
+    "t_raw": 8,
+    "t_br": 75,
+    "t_level": "present",
+    "r_raw": 5,
+    "r_br": 62,
+    "r_level": "normal",
+    "ss_raw": 11,
+    "ss_br": 63,
+    "ss_level": "normal",
+    "cc_raw": 16,
+    "cc_br": 86,
+    "cc_level": "prominent",
+    "pp_raw": 8,
+    "pp_br": 72,
+    "pp_level": "normal",
+    "1_1_raw": 6,
+    "1_1_br": 75,
+    "1_1_level": "interpretable",
+    "1_2_raw": 5,
+    "1_2_br": 68,
+    "1_2_level": "uninterpretable",
+    "1_3_raw": 5,
+    "1_3_br": 72,
+    "1_3_level": "uninterpretable",
+    "2a_1_raw": 4,
+    "2a_1_br": 68,
+    "2a_1_level": "uninterpretable",
+    "2a_2_raw": 4,
+    "2a_2_br": 70,
+    "2a_2_level": "uninterpretable",
+    "2a_3_raw": 6,
+    "2a_3_br": 80,
+    "2a_3_level": "interpretable",
+    "2b_1_raw": 3,
+    "2b_1_br": 60,
+    "2b_1_level": "uninterpretable",
+    "2b_2_raw": 5,
+    "2b_2_br": 78,
+    "2b_2_level": "interpretable",
+    "2b_3_raw": 6,
+    "2b_3_br": 78,
+    "2b_3_level": "interpretable",
+    "3_1_raw": 3,
+    "3_1_br": 60,
+    "3_1_level": "uninterpretable",
+    "3_2_raw": 3,
+    "3_2_br": 70,
+    "3_2_level": "uninterpretable",
+    "3_3_raw": 3,
+    "3_3_br": 65,
+    "3_3_level": "uninterpretable",
+    "4a_1_raw": 4,
+    "4a_1_br": 75,
+    "4a_1_level": "interpretable",
+    "4a_2_raw": 4,
+    "4a_2_br": 48,
+    "4a_2_level": "uninterpretable",
+    "4a_3_raw": 6,
+    "4a_3_br": 62,
+    "4a_3_level": "uninterpretable",
+    "4b_1_raw": 4,
+    "4b_1_br": 65,
+    "4b_1_level": "uninterpretable",
+    "4b_2_raw": 6,
+    "4b_2_br": 70,
+    "4b_2_level": "uninterpretable",
+    "4b_3_raw": 5,
+    "4b_3_br": 65,
+    "4b_3_level": "uninterpretable",
+    "5_1_raw": 5,
+    "5_1_br": 75,
+    "5_1_level": "interpretable",
+    "5_2_raw": 7,
+    "5_2_br": 70,
+    "5_2_level": "uninterpretable",
+    "5_3_raw": 6,
+    "5_3_br": 90,
+    "5_3_level": "interpretable",
+    "6a_1_raw": 5,
+    "6a_1_br": 75,
+    "6a_1_level": "interpretable",
+    "6a_2_raw": 3,
+    "6a_2_br": 65,
+    "6a_2_level": "uninterpretable",
+    "6a_3_raw": 5,
+    "6a_3_br": 75,
+    "6a_3_level": "interpretable",
+    "6b_1_raw": 6,
+    "6b_1_br": 75,
+    "6b_1_level": "interpretable",
+    "6b_2_raw": 3,
+    "6b_2_br": 68,
+    "6b_2_level": "uninterpretable",
+    "6b_3_raw": 5,
+    "6b_3_br": 75,
+    "6b_3_level": "interpretable",
+    "7_1_raw": 5,
+    "7_1_br": 65,
+    "7_1_level": "uninterpretable",
+    "7_2_raw": 6,
+    "7_2_br": 63,
+    "7_2_level": "uninterpretable",
+    "7_3_raw": 6,
+    "7_3_br": 60,
+    "7_3_level": "uninterpretable",
+    "8a_1_raw": 6,
+    "8a_1_br": 80,
+    "8a_1_level": "interpretable",
+    "8a_2_raw": 7,
+    "8a_2_br": 75,
+    "8a_2_level": "interpretable",
+    "8a_3_raw": 7,
+    "8a_3_br": 80,
+    "8a_3_level": "interpretable",
+    "8b_1_raw": 8,
+    "8b_1_br": 75,
+    "8b_1_level": "interpretable",
+    "8b_2_raw": 3,
+    "8b_2_br": 64,
+    "8b_2_level": "uninterpretable",
+    "8b_3_raw": 4,
+    "8b_3_br": 60,
+    "8b_3_level": "uninterpretable",
+    "s_1_raw": 2,
+    "s_1_br": 60,
+    "s_1_level": "uninterpretable",
+    "s_2_raw": 6,
+    "s_2_br": 71,
+    "s_2_level": "uninterpretable",
+    "s_3_raw": 5,
+    "s_3_br": 72,
+    "s_3_level": "uninterpretable",
+    "c_1_raw": 6,
+    "c_1_br": 75,
+    "c_1_level": "interpretable",
+    "c_2_raw": 5,
+    "c_2_br": 69,
+    "c_2_level": "uninterpretable",
+    "c_3_raw": 8,
+    "c_3_br": 82,
+    "c_3_level": "interpretable",
+    "p_1_raw": 8,
+    "p_1_br": 85,
+    "p_1_level": "interpretable",
+    "p_2_raw": 5,
+    "p_2_br": 80,
+    "p_2_level": "interpretable",
+    "p_3_raw": 4,
+    "p_3_br": 75,
+    "p_3_level": "interpretable",
+    "x_raw": 72,
+    "x_br": 87,
+    "x_report": "symptom_exaggeration",
+    "x_level": "high",
+    "y_raw": 15,
+    "y_br": 69,
+    "y_report": "normal",
+    "y_level": "average",
+    "z_raw": 19,
+    "z_br": 79,
+    "z_report": "problem_exaggeration",
+    "z_level": "high",
+    "v_raw": 3,
+    "v_report": "invalid",
+    "w_raw": 11,
+    "w_report": "questionable",
+    "high_point": "5 P 8A C",
+    "validity_alert": "invalid",
+    "validity_reason": "v",
+    "correction_alert": "x_acc",
+    "correction_x_1": -3,
+    "correction_x_2": -2,
+    "correction_acc_value": 11,
+    "correction_acc_1": -3,
+    "correction_acc_2": -2,
+    "noteworthy_ad_raw": 2,
+    "noteworthy_ad_percentage": 0.3333,
+    "noteworthy_as_raw": 4,
+    "noteworthy_as_percentage": 0.5714,
+    "noteworthy_ca_raw": 1,
+    "noteworthy_ca_percentage": 0.5,
+    "noteworthy_ea_raw": 1,
+    "noteworthy_ea_percentage": 0.25,
+    "noteworthy_em_raw": 6,
+    "noteworthy_em_percentage": 0.75,
+    "noteworthy_ex_raw": 3,
+    "noteworthy_ex_percentage": 0.5,
+    "noteworthy_hp_raw": 3,
+    "noteworthy_hp_percentage": 0.5,
+    "noteworthy_ia_raw": 2,
+    "noteworthy_ia_percentage": 0.5,
+    "noteworthy_pd_raw": 1,
+    "noteworthy_pd_percentage": 0.5,
+    "noteworthy_sp_raw": 9,
+    "noteworthy_sp_percentage": 0.75,
+    "noteworthy_sb_raw": 2,
+    "noteworthy_sb_percentage": 1,
+    "noteworthy_tb_raw": 1,
+    "noteworthy_tb_percentage": 0.5,
+    "noteworthy_vp_raw": 7,
+    "noteworthy_vp_percentage": 0.7778
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

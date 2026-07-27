@@ -1,0 +1,102 @@
+{{#> layout}}
+
+  <defs>
+    {{! Per-bar gradient: light pink at the bottom → magenta at the tip }}
+    <linearGradient id="barGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop stop-color="#F9A8D4"/>
+      <stop offset="1" stop-color="#BE185D"/>
+    </linearGradient>
+
+    {{! Ring-gauge gradient (coords are local to the gauge centre) }}
+    <linearGradient id="gaugeGrad" x1="70" y1="-69.23" x2="-58.83" y2="125.6" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#94A3B8"/>
+      <stop offset="0.5" stop-color="#475569"/>
+      <stop offset="1" stop-color="#475569"/>
+    </linearGradient>
+
+    <clipPath id="gauge-roll">
+      {{gauge 70 49 (object tl=6 tr=6 bl=6 br=6) (object start=(toRad -90) end=(toRad 180)) false}}
+    </clipPath>
+
+    {{! Drop shadow for the white baseline (offset up, soft blur) }}
+    <filter id="baseShadow" x="26" y="323" width="386" height="7" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="-1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{! ===================== Vertical bar chart ===================== }}
+
+    {{! Background tracks }}
+    {{#each factors as |factor|}}
+      <g transform="translate({{factor.trackLeft}}, 27)">
+        {{bar 28 300 (object tl=4 tr=4 bl=0 br=0) (toRad 0) fill="#F8FAFC"}}
+      </g>
+    {{/each}}
+
+    {{! Gridlines (25/50/75/100 %) + labelled axis at 100 % and 50 % }}
+    <line x1="69.5" y1="27.5" x2="408.5" y2="27.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="69.5" y1="102.5" x2="408.5" y2="102.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="69.5" y1="177.5" x2="408.5" y2="177.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="69.5" y1="252.5" x2="408.5" y2="252.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <text x="53" y="27.5" text-anchor="end" dy=".35em" font-size="12" fill="#94A3B8" direction="ltr">٪ 100</text>
+    <text x="53" y="177.5" text-anchor="end" dy=".35em" font-size="12" fill="#94A3B8" direction="ltr">٪ 50</text>
+
+    {{! Value bars + inside/outside percentage label }}
+    {{#each factors as |factor|}}
+      {{#if factor.barH}}
+      <g transform="translate({{factor.trackLeft}}, {{factor.topY}})">
+        {{bar 28 factor.barH (object tl=4 tr=4 bl=0 br=0) (toRad 0) fill="url(#barGrad)"}}
+      </g>
+      {{/if}}
+      {{#if (boolean factor.pct '>=' 25)}}
+        <text transform="rotate(-90 {{factor.cx}} {{math factor.topY '+' 22}})" x="{{factor.cx}}" y="{{math factor.topY '+' 22}}" text-anchor="middle" dy=".32em" font-size="16" font-weight="600" fill="white">{{factor.pct}} ٪</text>
+      {{else}}
+        <text transform="rotate(-90 {{factor.cx}} {{math factor.topY '-' 15}})" x="{{math factor.cx '+' 8}}" y="{{math factor.topY '-' 15}}" text-anchor="middle" dy=".32em" font-size="16" font-weight="600" fill="#BE185D">{{factor.pct}} ٪</text>
+      {{/if}}
+    {{/each}}
+
+    {{! Domain names under each bar }}
+    {{#each factors as |factor|}}
+      {{#each factor.lines as |line lineIndex|}}
+        <text x="{{factor.cx}}" y="{{math 352 '+' (math 18 '*' lineIndex)}}" text-anchor="middle" font-size="14" fill="#334155">{{line}}</text>
+      {{/each}}
+    {{/each}}
+
+    {{! White shadowed baseline (0 %), drawn on top of the bars }}
+    <g opacity="0.5" filter="url(#baseShadow)">
+      <line x1="29.5" y1="327.5" x2="408.5" y2="327.5" stroke="white" stroke-linecap="round"/>
+    </g>
+
+    {{! ===== "raw score" header row: legend + per-bar raw/max fractions ===== }}
+    <text x="38" y="9" text-anchor="start" dy=".3em" font-size="12" fill="#94A3B8">نمره خام</text>
+    <path d="M45.5 8L52.5 8M49.5 11L52.5 8L49.5 5" stroke="#94A3B8" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    {{#each factors as |factor|}}
+      <text x="{{factor.cx}}" y="9" text-anchor="middle" dy=".3em" direction="ltr"><tspan font-weight="700" font-size="16" fill="#BE185D">{{factor.mark}}</tspan><tspan font-weight="300" font-size="12" fill="#64748B"> / </tspan><tspan font-weight="400" font-size="13" fill="#64748B">{{factor.max}}</tspan></text>
+    {{/each}}
+
+    {{! ===================== Total score ring gauge ===================== }}
+    <g transform="translate(220.5, 498)">
+      {{gauge 70 49 (object tl=6 tr=6 bl=6 br=6) (object start=(toRad -90) end=(toRad 180)) false clip-path="url(#gauge-roll)" fill="#F1F5F9"}}
+      {{#if total.mark}}{{gauge 70 49 (object tl=6 tr=6 bl=6 br=6) (object start=(toRad -90) end=total.zeta) false clip-path="url(#gauge-roll)" fill="url(#gaugeGrad)"}}{{/if}}
+
+      <text x="0" y="-2" text-anchor="middle" font-size="24" font-weight="600" fill="#334155" direction="ltr">٪ {{total.pct}}</text>
+      <text x="0" y="26" text-anchor="middle" font-size="15" font-weight="500" fill="#64748B">{{total.mark}} از {{total.max}}</text>
+
+      <text x="-52" y="-6" text-anchor="middle" font-size="14" fill="#64748B" direction="ltr">٪ 100</text>
+      <text x="-11" y="-56" text-anchor="middle" font-size="14" fill="#64748B">0</text>
+
+      <text x="0" y="104" text-anchor="middle" font-size="16" font-weight="500" fill="#475569">نمره کل</text>
+    </g>
+
+  </g>
+
+{{/layout}}

@@ -1,24 +1,19 @@
 const { Profile } = require("../Profile");
 
-/* حداکثر نمرهٔ خام هر مولفهٔ اصلی: ۴۸ گویه × ۴ = ۱۹۲ */
 const DOMAIN_MAX = 192;
+const FACET_MAX = 32;
+const INSIDE_THRESHOLD = 24;
 
-/* نگاشت سطح (۱..۵) به متن توصیفی */
 const LEVELS = ["", "خیلی پایین", "پایین", "متوسط", "بالا", "خیلی بالا"];
 
-/* حداکثر نمرهٔ خام هر خرده‌مقیاس: ۸ گویه × ۴ = ۳۲ */
-const FACET_MAX = 32;
-
-/* ۵ مولفهٔ اصلی + نام/حرف (صفحات ۲/۳: فهرست مقیاس‌ها با خرده‌مقیاس‌هاشان) */
 const DOMAINS = [
-  { d: "n", fa: "روان‌آزرده‌گرایی", letter: "N" },
-  { d: "e", fa: "برون‌گرایی", letter: "E" },
-  { d: "o", fa: "گشودگی", letter: "O" },
-  { d: "a", fa: "موافق بودن", letter: "A" },
-  { d: "c", fa: "با وجدان بودن", letter: "C" },
+  { key: "n", fa: "روان‌آزرده‌گرایی", letter: "N" },
+  { key: "e", fa: "برون‌گرایی", letter: "E" },
+  { key: "o", fa: "گشودگی", letter: "O" },
+  { key: "a", fa: "موافق بودن", letter: "A" },
+  { key: "c", fa: "با وجدان بودن", letter: "C" },
 ];
 
-/* نام ۶ خرده‌مقیاس هر مولفه (به ترتیب n1..n6 و ...) */
 const FACET_NAMES = {
   n: ["اضطراب", "خصومت", "افسردگی", "کم‌رویی", "تکانش‌گری", "آسیب‌پذیری"],
   e: ["گرم", "معاشرتی", "ابراز وجود", "فعال", "هیجان‌خواهی", "هیجان‌ مثبت"],
@@ -27,74 +22,103 @@ const FACET_NAMES = {
   c: ["شایستگی", "نظم و ترتیب", "وظیفه‌شناسی", "تلاش برای موفقیت", "خویشتن‌داری", "محتاط"],
 };
 
-/* لیبل‌های خرده‌مقیاس‌ها: n1_raw/n1 ... c6_raw/c6 */
-const FACET_LABELS = {};
-for (const { d } of DOMAINS) {
-  for (let i = 1; i <= 6; i++) {
-    FACET_LABELS[`${d}${i}_raw`] = { eng: `${d}${i}_raw` };
-    FACET_LABELS[`${d}${i}`] = { eng: `${d}${i}` };
+const COLOR_THEMES = {
+  female: {
+    light: "#E9D5FF",
+    dark: "#7E22CE",
+    accent: "#9333EA",
+    stroke: "#C084FC",
+  },
+  male: {
+    light: "#BFDBFE",
+    dark: "#1D4ED8",
+    accent: "#2563EB",
+    stroke: "#60A5FA",
+  },
+};
+
+const FACTOR_LABELS = {};
+for (const { key } of DOMAINS) {
+  for (const suffix of ["raw", "score", "level"]) {
+    FACTOR_LABELS[`${key}_${suffix}`] = { eng: `${key}_${suffix}` };
+  }
+
+  for (let index = 1; index <= 6; index += 1) {
+    for (const suffix of ["raw", "score", "level"]) {
+      FACTOR_LABELS[`${key}${index}_${suffix}`] = {
+        eng: `${key}${index}_${suffix}`,
+      };
+    }
   }
 }
 
+function clamp(value, min, max) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return min;
+  return Math.min(max, Math.max(min, number));
+}
+
+function layoutIndicators(indicators) {
+  let start = 0;
+
+  return indicators.map((indicator, index) => {
+    const positioned = {
+      ...indicator,
+      start,
+      last: index === indicators.length - 1,
+    };
+    start += indicator.length + 54;
+    return positioned;
+  });
+}
+
 class NEO93 extends Profile {
-  // Number of pages
   static pages = 3;
 
-  // Labels of the sample — هر کلید با label.eng به score[eng] نگاشت می‌شود
+  static partials = {
+    NEO_main: "NEO_main.hbs",
+    NEO_long_facets: "NEO_long_facets.hbs",
+  };
+
   labels = {
-    // ---- ۵ مولفهٔ اصلی (صفحه ۱) ----
-    N_raw: { eng: "n_raw", fa: "روان‌آزرده‌گرایی", letter: "N", max: DOMAIN_MAX },
-    N_lvl: { eng: "n" },
-    E_raw: { eng: "e_raw", fa: "برون‌گرایی", letter: "E", max: DOMAIN_MAX },
-    E_lvl: { eng: "e" },
-    O_raw: { eng: "o_raw", fa: "گشودگی", letter: "O", max: DOMAIN_MAX },
-    O_lvl: { eng: "o" },
-    A_raw: { eng: "a_raw", fa: "موافق بودن", letter: "A", max: DOMAIN_MAX },
-    A_lvl: { eng: "a" },
-    C_raw: { eng: "c_raw", fa: "با وجدان بودن", letter: "C", max: DOMAIN_MAX },
-    C_lvl: { eng: "c" },
-
-    // ---- اعتبار (کادرهای پایین صفحه ۱) ----
-    VQ1: { eng: "vq_1" },
-    VQ2: { eng: "vq_2" },
-    VQ3: { eng: "vq_3" },
-    CO1: { eng: "count_option_1" },
-    CO2: { eng: "count_option_2" },
-    CO3: { eng: "count_option_3" },
-    CO4: { eng: "count_option_4" },
-    CO5: { eng: "count_option_5" },
-    VO1: { eng: "voption_1" },
-    VO2: { eng: "voption_2" },
-    VO3: { eng: "voption_3" },
-    VO4: { eng: "voption_4" },
-    VO5: { eng: "voption_5" },
-
-    // ---- ۳۰ خرده‌مقیاس (صفحات ۲/۳) ----
-    ...FACET_LABELS,
+    ...FACTOR_LABELS,
+    validity: { eng: "validity" },
+    options_3_count: { eng: "options_3_count" },
+    acquiescence: { eng: "acquiescence" },
+    nay_saying: { eng: "nay_saying" },
+    random_responding: { eng: "random_responding" },
   };
 
   profileSpec = {
     sample: {
-      name: "پرسشنامه نئوی ۲۴۰ سؤالی",
+      name: "پرسشنامه شخصیت نئو فرم بلند (گروسی)",
       multiProfile: false,
       questions: false,
       defaultFields: true,
-      fields: ["marital_status"],
+      fields: [],
     },
-    /* لایهٔ Chart هر صفحه: ۱) ۸۰۰×۶۷۴ (نمودار در فریم آفست ۳۲،۱۲۸ + کادرهای اعتبار)، ۲) ۸۱۱×۶۶۲ (۳ بلوک)، ۳) ۸۱۱×۴۵۵ (۲ بلوک) — همه → Main ۹۴۳×۷۵۴ */
     profile: {
       get dimensions() {
-        const [p1, p2, p3] = this.padding;
+        const [page1, page2, page3] = this.padding;
         return [
-          { width: 800 + 2 * p1.x, height: 674 + 2 * p1.y },
-          { width: 811 + 2 * p2.x, height: 662 + 2 * p2.y },
-          { width: 811 + 2 * p3.x, height: 455 + 2 * p3.y },
+          {
+            width: 800 + 2 * page1.x,
+            height: 674 + 2 * page1.y,
+          },
+          {
+            width: 811 + 2 * page2.x,
+            height: 662 + 2 * page2.y,
+          },
+          {
+            width: 811 + 2 * page3.x,
+            height: 458 + 2 * page3.y,
+          },
         ];
       },
       padding: [
         { x: 71.5, y: 40 },
         { x: 66, y: 46 },
-        { x: 66, y: 149.5 },
+        { x: 66, y: 148 },
       ],
     },
     labels: Object.values(this.labels),
@@ -107,96 +131,145 @@ class NEO93 extends Profile {
 
   _calcContext() {
     const { dataset } = this;
-    /* _extractData از score[eng] || ... استفاده می‌کند، پس مقدار ۰ به undefined می‌افتد → همه‌جا ?? 0 */
-    const get = (eng) => dataset.score.find((s) => s.label.eng === eng);
-    const num = (eng) => get(eng)?.mark ?? 0;
+    const scoreByKey = new Map(dataset.score.map((item) => [item.label.eng, item]));
 
-    const items = ["n", "e", "o", "a", "c"].map((d) => {
-      const { fa, letter, max } = get(`${d}_raw`).label;
-      const raw = num(`${d}_raw`);
-      const level = num(d);
-      const p = raw / max;
-      const barW = 500 * p; /* محور استاندارد ۰..۱۰۰٪ روی ۵۰۰px */
+    // Dataset._extractData drops a numeric zero, so every read deliberately
+    // restores it with ?? 0 before converting it to a drawing value.
+    const mark = (eng) => scoreByKey.get(eng)?.mark ?? 0;
+    const number = (eng) => {
+      const value = Number(mark(eng));
+      return Number.isFinite(value) ? value : 0;
+    };
+    const ratio = (eng) => clamp(number(eng), 0, 1);
+
+    const genderField = (dataset.info.fields ?? []).find((field) => field?.eng === "gender");
+    const isFemale = Number(genderField?.user_answered) === 1;
+    const gender = isFemale ? "female" : "male";
+    const colors = COLOR_THEMES[gender];
+    const sharedContext = {
+      gender,
+      isFemale,
+      theme: gender,
+      colors,
+    };
+
+    const items = DOMAINS.map(({ key, fa, letter }) => {
+      const raw = number(`${key}_raw`);
+      const score = ratio(`${key}_score`);
+      const level = number(`${key}_level`);
+      const percentage = Math.round(score * 100);
+
       return {
+        key,
         fa,
         letter,
+        raw,
         mark: raw,
-        p,
-        barW,
-        percentage: Math.round(p * 100),
+        max: DOMAIN_MAX,
+        score,
+        p: score,
+        percentage,
+        barW: (500 * percentage) / 100,
+        inside: percentage >= INSIDE_THRESHOLD,
+        level,
         levelText: LEVELS[level] ?? "-",
       };
     });
 
-    /* ---- اعتبار (طبق مستندات سینا) ----
-       انکودینگ: voption_i = ۱ معتبر / ۰ دنبالهٔ تصادفی؛ vq_i = مقدار خام پاسخ سؤال اعتبار */
-    const c45 = num("count_option_4") + num("count_option_5");
-    const invalidVq =
-      num("vq_1") >= 4 /* س۲۴۱ مخالفم(۴)/کاملاًمخالفم(۵) - گزینه‌ها معکوس */ ||
-      num("vq_2") === 2 /* س۲۴۲ خیر */ ||
-      num("vq_3") === 2; /* س۲۴۳ خیر */
-    const invalidMid = num("count_option_3") >= 41; /* «نظری ندارم» */
-    const cautionPos = c45 > 150; /* تمایل به پاسخ مثبت */
-    const cautionNeg = c45 < 50; /* تمایل به پاسخ منفی */
-    const cautionRand = [1, 2, 3, 4, 5].some((i) => num(`voption_${i}`) === 0); /* پاسخ تصادفی */
-
     const redErrors = [];
-    if (invalidVq) redErrors.push({ text: "پاسخ سؤالات اعتبار", length: 105 });
-    if (invalidMid) redErrors.push({ text: "تعداد پاسخ‌های «نظری ندارم»", length: 170 });
+    if (number("validity") === 0) {
+      redErrors.push({ text: "پاسخ سؤالات اعتبار", length: 108 });
+    }
+    if (number("options_3_count") >= 41) {
+      redErrors.push({ text: "تعداد پاسخ‌های «نظری ندارم»", length: 170 });
+    }
 
     const yellowErrors = [];
-    if (cautionPos) yellowErrors.push({ text: "احتمال تمایل به پاسخ مثبت", length: 155 });
-    if (cautionNeg) yellowErrors.push({ text: "احتمال تمایل به پاسخ منفی", length: 155 });
-    if (cautionRand) yellowErrors.push({ text: "احتمال پاسخ تصادفی", length: 105 });
+    if (number("acquiescence") === 1) {
+      yellowErrors.push({ text: "احتمال تمایل به پاسخ مثبت", length: 155 });
+    }
+    if (number("nay_saying") === 1) {
+      yellowErrors.push({ text: "احتمال تمایل به پاسخ منفی", length: 143 });
+    }
+    if (number("random_responding") === 1) {
+      yellowErrors.push({ text: "احتمال پاسخ تصادفی", length: 105 });
+    }
 
-    /* چیدمان افقی شاخص‌ها راست‌به‌چپ + پرچم last برای نقطهٔ جداکننده (الگوی FRHPT93) */
-    const layout = (arr) => {
-      let start = 0;
-      return arr.map((v, i) => {
-        const r = { ...v, start, last: i === arr.length - 1 };
-        start += v.length + 54;
-        return r;
-      });
-    };
+    const blocks = DOMAINS.map(({ key, fa, letter }, domainIndex) => {
+      const raw = number(`${key}_raw`);
+      const score = ratio(`${key}_score`);
+      const level = number(`${key}_level`);
+      const percentage = Math.round(score * 100);
 
-    /* ---- بلوک‌های مقیاس + خرده‌مقیاس (صفحات ۲/۳) ----
-       رنگ/پس‌زمینه بر اساس ایندکس سراسری حوزه: زوج = آبی + پس‌زمینهٔ خاکستری، فرد = نیلی + سفید */
-    const blocks = DOMAINS.map((dom, gi) => {
-      const facets = FACET_NAMES[dom.d].map((fa, fi) => {
-        const fraw = num(`${dom.d}${fi + 1}_raw`);
-        const fp = fraw / FACET_MAX;
+      const facets = FACET_NAMES[key].map((facetName, facetIndex) => {
+        const factorKey = `${key}${facetIndex + 1}`;
+        const facetRaw = number(`${factorKey}_raw`);
+        const facetScore = ratio(`${factorKey}_score`);
+        const facetLevel = number(`${factorKey}_level`);
+        const facetPercentage = Math.round(facetScore * 100);
+
         return {
-          fa,
-          mark: fraw,
-          p: fp,
-          barW: fp * 300, // میلهٔ خرده‌مقیاس ۰..۱۰۰٪ روی ۳۰۰px
-          percentage: Math.round(fp * 100),
-          levelText: LEVELS[num(`${dom.d}${fi + 1}`)] ?? "-",
+          key: factorKey,
+          fa: facetName,
+          raw: facetRaw,
+          mark: facetRaw,
+          max: FACET_MAX,
+          score: facetScore,
+          p: facetScore,
+          percentage: facetPercentage,
+          barW: (300 * facetPercentage) / 100,
+          inside: facetPercentage >= INSIDE_THRESHOLD,
+          level: facetLevel,
+          levelText: LEVELS[facetLevel] ?? "-",
         };
       });
-      const raw = num(`${dom.d}_raw`);
+
       return {
-        letter: dom.letter,
-        fa: dom.fa,
+        key,
+        fa,
+        letter,
+        raw,
         mark: raw,
-        percentage: Math.round((raw / 192) * 100),
-        isBlue: gi % 2 === 0,
+        max: DOMAIN_MAX,
+        score,
+        p: score,
+        percentage,
+        barW: (500 * percentage) / 100,
+        inside: percentage >= INSIDE_THRESHOLD,
+        level,
+        levelText: LEVELS[level] ?? "-",
+        isPrimary: domainIndex % 2 === 0,
+        isBlue: domainIndex % 2 === 0,
+        facetOffsetY: 0,
         facets,
       };
     });
 
     return [
       {
+        ...sharedContext,
         page: 1,
         titleAppend: "",
         items,
-        redErrors: layout(redErrors),
-        yellowErrors: layout(yellowErrors),
+        redErrors: layoutIndicators(redErrors),
+        yellowErrors: layoutIndicators(yellowErrors),
         showRed: redErrors.length > 0,
         showYellow: yellowErrors.length > 0,
       },
-      { page: 2, titleAppend: " - ۲", blocks: blocks.slice(0, 3), gridBottom: 658.5 },
-      { page: 3, titleAppend: " - ۳", blocks: blocks.slice(3, 5), gridBottom: 454.5 },
+      {
+        ...sharedContext,
+        page: 2,
+        titleAppend: " - 2",
+        blocks: blocks.slice(0, 3),
+        gridBottom: 658.5,
+      },
+      {
+        ...sharedContext,
+        page: 3,
+        titleAppend: " - 3",
+        blocks: blocks.slice(3, 5),
+        gridBottom: 454.5,
+      },
     ];
   }
 }

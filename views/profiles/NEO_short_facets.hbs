@@ -1,0 +1,82 @@
+<defs>
+  <linearGradient id="neoShortPrimary" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="{{colors.light}}"/>
+    <stop offset="1" stop-color="{{colors.dark}}"/>
+  </linearGradient>
+  <linearGradient id="neoShortSecondary" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#C7D2FE"/>
+    <stop offset="1" stop-color="#4338CA"/>
+  </linearGradient>
+  <clipPath id="neoShortBarClip">
+    {{bar 300 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0)}}
+  </clipPath>
+  <filter id="neoShortSplit" x="364" y="18" width="7" height="644" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
+
+<g transform="translate({{padding.x}}, {{padding.y}})">
+  <text x="366.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">0</text>
+  <text x="516.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">50 ٪</text>
+  <text x="666.5" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">100 ٪</text>
+  <path d="M683 2.5V9.5M680 6.5L683 9.5L686 6.5" stroke="#64748B" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="692" y="7" dy=".3em" font-size="12" font-weight="400" fill="#64748B" text-anchor="end">نمره خام</text>
+
+  {{#each blocks as |block blockIndex|}}
+    <g transform="translate(0, {{math blockIndex '*' 126}})">
+      {{#if block.isBlue}}
+        <rect y="33" width="760" height="110" rx="8" fill="#F8FAFC"/>
+        <rect width="180" height="110" transform="translate(0 33)" fill="#F1F5F9"/>
+      {{/if}}
+
+      <text x="90" y="53" dy=".3em" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">{{block.letter}}</text>
+      <text x="90" y="73" dy=".3em" font-size="15" font-weight="500" fill="#334155" text-anchor="middle">{{block.fa}}</text>
+      <rect x="50" y="95.5" width="80" height="1" rx="0.5" fill="#E2E8F0"/>
+      <rect x="42" y="108.5" width="44" height="20" rx="4" fill="{{ternary block.isBlue ../colors.accent '#4F46E5'}}"/>
+      <text x="64" y="119" dy=".3em" font-size="14" font-weight="600" fill="white" text-anchor="middle">{{block.percentage}} ٪</text>
+      <text x="99" y="119" dy=".3em" text-anchor="end"><tspan font-size="15" font-weight="500" fill="#334155">{{block.mark}}</tspan><tspan font-size="13" font-weight="500" fill="#64748B"> از 48</tspan></text>
+
+    </g>
+  {{/each}}
+
+  <line x1="441.5" y1="21.5" x2="441.5" y2="658.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="516.5" y1="21.5" x2="516.5" y2="658.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="591.5" y1="21.5" x2="591.5" y2="658.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="666.5" y1="21.5" x2="666.5" y2="658.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+  {{#each blocks as |block blockIndex|}}
+    <g transform="translate(0, {{math blockIndex '*' 126}})">
+      {{#each block.facets as |facet facetIndex|}}
+        <g transform="translate(0, {{math facetIndex '*' 28}})">
+          <g transform="translate(367, {{ternary (boolean block.facets.length '===' 2) 66 52}})">
+            {{bar 300 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill='#E2E8F0' fill-opacity='0.5'}}
+          </g>
+          <text x="360" y="{{ternary (boolean block.facets.length '===' 2) 74 60}}" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="start">{{facet.fa}}</text>
+          <text x="679" y="{{ternary (boolean block.facets.length '===' 2) 74 60}}" dy=".3em" text-anchor="start" direction="ltr"><tspan font-size="13" font-weight="500" fill="{{ternary block.isBlue ../../colors.accent '#4F46E5'}}">{{facet.mark}}</tspan><tspan dx="2" font-size="12" font-weight="300" fill="#64748B">/</tspan><tspan dx="2" font-size="12" font-weight="400" fill="#64748B">{{facet.max}}</tspan></text>
+        </g>
+      {{/each}}
+    </g>
+  {{/each}}
+
+  {{#each blocks as |block blockIndex|}}
+    <g transform="translate(0, {{math blockIndex '*' 126}})">
+      {{#each block.facets as |facet facetIndex|}}
+        <g transform="translate(367, {{math (math facetIndex '*' 28) '+' (ternary (boolean block.facets.length '===' 2) 66 52)}})">
+          {{bar facet.barW 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=(ternary block.isBlue 'url(#neoShortPrimary)' 'url(#neoShortSecondary)') clip-path='url(#neoShortBarClip)'}}
+          <text x="{{math facet.barW '+' (ternary (boolean facet.percentage '<' 24) 6 -4)}}" y="8" dy=".3em" font-size="13" font-weight="500" fill="{{ternary (boolean facet.percentage '<' 24) (ternary block.isBlue ../../colors.dark '#1D4ED8') 'white'}}" text-anchor="{{ternary (boolean facet.percentage '<' 24) 'end' 'start'}}">{{facet.percentage}} ٪</text>
+        </g>
+      {{/each}}
+    </g>
+  {{/each}}
+
+  <g opacity="0.5" filter="url(#neoShortSplit)">
+    <line x1="366.5" y1="21.5" x2="366.5" y2="658.5" stroke="white" stroke-linecap="round"/>
+  </g>
+</g>

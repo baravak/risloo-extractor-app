@@ -1,0 +1,150 @@
+<defs>
+  <linearGradient id="neoMainGradient" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="{{colors.light}}"/>
+    <stop offset="1" stop-color="{{colors.dark}}"/>
+  </linearGradient>
+  <clipPath id="neoMainBarClip">
+    {{bar 500 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0)}}
+  </clipPath>
+  <linearGradient id="neoRedTab" x1="0" y1="23" x2="190" y2="23" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F2"/>
+    <stop offset="1" stop-color="#FFE4E6"/>
+  </linearGradient>
+  <linearGradient id="neoRedArrow" x1="595" y1="651" x2="580" y2="651" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFF1F2"/>
+    <stop offset="1" stop-color="#FECDD3"/>
+  </linearGradient>
+  <linearGradient id="neoYellowTab" x1="0" y1="23" x2="190" y2="23" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FEFCE8"/>
+    <stop offset="1" stop-color="#FEF9C3"/>
+  </linearGradient>
+  <linearGradient id="neoYellowArrow" x1="595" y1="597" x2="580" y2="597" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FEFCE8"/>
+    <stop offset="1" stop-color="#FEF08A"/>
+  </linearGradient>
+  <clipPath id="neoRedBoxClip"><rect y="628" width="800" height="46" rx="8"/></clipPath>
+  <clipPath id="neoYellowBoxClip"><rect y="574" width="800" height="46" rx="8"/></clipPath>
+  <filter id="neoMainSplit" x="{{math barX '-' 3}}" y="26" width="7" height="294" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
+
+<g transform="translate({{padding.x}}, {{padding.y}})">
+  <g transform="translate({{frameX}}, 128)">
+    {{#if tAxis}}
+      <line x1="{{math barX '+' 19.5}}" y1="29.5" x2="{{math barX '+' 19.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 139.5}}" y1="29.5" x2="{{math barX '+' 139.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 219.5}}" y1="29.5" x2="{{math barX '+' 219.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 299.5}}" y1="29.5" x2="{{math barX '+' 299.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 379.5}}" y1="29.5" x2="{{math barX '+' 379.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 499.5}}" y1="29.5" x2="{{math barX '+' 499.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+      <text x="{{math barX '+' 19.5}}" y="9" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">20</text>
+      <text x="{{math barX '+' 139.5}}" y="9" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">35</text>
+      <text x="{{math barX '+' 219.5}}" y="9" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">45</text>
+      <text x="{{math barX '+' 299.5}}" y="9" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">55</text>
+      <text x="{{math barX '+' 379.5}}" y="9" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">65</text>
+      <text x="{{math barX '+' 499.5}}" y="9" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">80</text>
+
+      <text x="{{math barX '+' 79.5}}" y="23" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">بسیار پایین</text>
+      <text x="{{math barX '+' 179.5}}" y="23" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">پایین</text>
+      <text x="{{math barX '+' 259.5}}" y="23" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">طبیعی</text>
+      <text x="{{math barX '+' 339.5}}" y="23" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">بالا</text>
+      <text x="{{math barX '+' 439.5}}" y="23" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">بسیار بالا</text>
+    {{else}}
+      <line x1="{{math barX '+' 124.5}}" y1="29.5" x2="{{math barX '+' 124.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 249.5}}" y1="29.5" x2="{{math barX '+' 249.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 374.5}}" y1="29.5" x2="{{math barX '+' 374.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+      <line x1="{{math barX '+' 499.5}}" y1="29.5" x2="{{math barX '+' 499.5}}" y2="316.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+      <text x="{{math barX '-' 0.5}}" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">0</text>
+      <text x="{{math barX '+' 249.5}}" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle">50 ٪</text>
+      <text x="{{math barX '+' 499.5}}" y="14" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">100 ٪</text>
+    {{/if}}
+
+    <text x="{{rawCenter}}" y="9" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">نمره خام</text>
+    <text x="{{rawCenter}}" y="23" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">از {{rawMax}}</text>
+
+    {{#each items as |item index|}}
+      <g transform="translate(0, {{math index '*' 56}})">
+        <g transform="translate({{../barX}}, 49)">
+          {{bar 500 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill='#E2E8F0' fill-opacity='0.5'}}
+          {{bar item.barW 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill='url(#neoMainGradient)' clip-path='url(#neoMainBarClip)'}}
+          {{#if ../tAxis}}
+            <text x="{{math item.barW '+' (ternary item.inside -6 6)}}" y="12" dy=".3em" font-size="14" font-weight="500" fill="{{ternary item.inside 'white' ../colors.dark}}" text-anchor="{{ternary item.inside 'start' 'end'}}">{{item.score}}</text>
+          {{else}}
+            <text x="{{math item.barW '+' (ternary (boolean item.percentage '<' 24) 6 -6)}}" y="12" dy=".3em" font-size="14" font-weight="500" fill="{{ternary (boolean item.percentage '<' 24) ../colors.dark 'white'}}" text-anchor="{{ternary (boolean item.percentage '<' 24) 'end' 'start'}}">{{item.percentage}} ٪</text>
+          {{/if}}
+        </g>
+
+        <rect x="{{../rawX}}" y="49.5" width="35" height="23" rx="3.5" stroke="{{../colors.accent}}" fill="none"/>
+        <text x="{{../rawCenter}}" y="61" dy=".3em" font-size="14" font-weight="500" fill="{{../colors.accent}}" text-anchor="middle">{{item.mark}}</text>
+
+        <text x="75" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="start">{{item.fa}}</text>
+        <text x="83.5" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">-</text>
+        <text x="97" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">{{item.letter}}</text>
+
+        {{#if ../showLevels}}
+          <text x="{{../levelX}}" y="61" dy=".3em" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>
+        {{/if}}
+      </g>
+    {{/each}}
+
+    <g opacity="0.5" filter="url(#neoMainSplit)">
+      <line x1="{{math barX '-' 0.5}}" y1="29.5" x2="{{math barX '-' 0.5}}" y2="316.5" stroke="white" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  {{#if showRed}}
+    <g transform="translate({{alertX}}, 0)">
+      {{#if compactAlert}}
+        <rect x="0.5" y="628.5" width="799" height="45" rx="7.5" fill="#FFF1F2"/>
+        <rect x="0.5" y="628.5" width="799" height="45" rx="7.5" stroke="#FECDD3" fill="none"/>
+        {{#each redErrors as |error|}}
+          <text x="{{math 540 '-' (math error.start '+' (math error.length '/' 2))}}" y="651" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">{{error.text}}</text>
+        {{/each}}
+        <path d="M580 651L595 636L595 666L580 651Z" fill="url(#neoRedArrow)"/>
+        <rect width="190" height="46" transform="translate(610 628)" fill="url(#neoRedTab)"/>
+        <text x="691" y="651" dy=".3em" font-size="14" font-weight="500" fill="#BE123C" text-anchor="middle">آزمون نامعتبر است</text>
+        <path d="M758.5 647L764.5 655M764.5 647L758.5 655M761.5 660C763.887 660 766.176 659.052 767.864 657.364C769.552 655.676 770.5 653.387 770.5 651C770.5 648.613 769.552 646.324 767.864 644.636C766.176 642.948 763.887 642 761.5 642C759.113 642 756.824 642.948 755.136 644.636C753.448 646.324 752.5 648.613 752.5 651C752.5 653.387 753.448 655.676 755.136 657.364C756.824 659.052 759.113 660 761.5 660Z" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      {{else}}
+        <g clip-path="url(#neoRedBoxClip)">
+          <rect y="628" width="800" height="46" rx="8" fill="#FFF1F2"/>
+          {{#each redErrors as |error|}}
+            <text x="{{math 540 '-' (math error.start '+' (math error.length '/' 2))}}" y="650" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">{{error.text}}</text>
+            {{#unless error.last}}<circle cx="{{math 540 '-' (math error.start '+' (math error.length '+' 26))}}" cy="650" r="2" fill="#A1A1AA"/>{{/unless}}
+          {{/each}}
+          <path d="M580 651L595 636L595 666L580 651Z" fill="url(#neoRedArrow)"/>
+          <rect width="190" height="46" transform="translate(610 628)" fill="url(#neoRedTab)"/>
+          <text x="691" y="651" dy=".3em" font-size="14" font-weight="500" fill="#BE123C" text-anchor="middle">آزمون نامعتبر است</text>
+          <path d="M758.5 647L764.5 655M764.5 647L758.5 655M761.5 660C763.887 660 766.176 659.052 767.864 657.364C769.552 655.676 770.5 653.387 770.5 651C770.5 648.613 769.552 646.324 767.864 644.636C766.176 642.948 763.887 642 761.5 642C759.113 642 756.824 642.948 755.136 644.636C753.448 646.324 752.5 648.613 752.5 651C752.5 653.387 753.448 655.676 755.136 657.364C756.824 659.052 759.113 660 761.5 660Z" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <rect x="0.5" y="628.5" width="799" height="45" rx="7.5" stroke="#FECDD3" fill="none"/>
+      {{/if}}
+    </g>
+  {{/if}}
+
+  {{#if showYellow}}
+    <g transform="translate({{alertX}}, 0)">
+      <g clip-path="url(#neoYellowBoxClip)">
+        <rect y="574" width="800" height="46" rx="8" fill="#FEFCE8"/>
+        {{#each yellowErrors as |error|}}
+          <text x="{{math 540 '-' (math error.start '+' (math error.length '/' 2))}}" y="596" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">{{error.text}}</text>
+          {{#unless error.last}}<circle cx="{{math 540 '-' (math error.start '+' (math error.length '+' 26))}}" cy="596" r="2" fill="#A1A1AA"/>{{/unless}}
+        {{/each}}
+        <path d="M580 597L595 582L595 612L580 597Z" fill="url(#neoYellowArrow)"/>
+        <rect width="190" height="46" transform="translate(610 574)" fill="url(#neoYellowTab)"/>
+        <text x="691" y="597" dy=".3em" font-size="14" font-weight="500" fill="#CA8A04" text-anchor="middle">با احتیاط تفسیر شود</text>
+        <path d="M767 594.666V598.221M767 600.888H767.009M765.545 589.858L758.34 601.888C758.191 602.145 758.113 602.437 758.112 602.734C758.111 603.031 758.188 603.323 758.335 603.581C758.482 603.839 758.694 604.054 758.95 604.205C759.206 604.356 759.497 604.437 759.794 604.44H774.206C774.503 604.437 774.794 604.355 775.05 604.205C775.306 604.054 775.518 603.839 775.665 603.581C775.812 603.323 775.889 603.031 775.888 602.735C775.887 602.438 775.809 602.146 775.661 601.889L768.455 589.857C768.304 589.607 768.09 589.4 767.835 589.256C767.58 589.113 767.293 589.037 767 589.037C766.708 589.037 766.42 589.113 766.165 589.256C765.91 589.4 765.697 589.607 765.545 589.857V589.858Z" stroke="#CA8A04" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+      <rect x="0.5" y="574.5" width="799" height="45" rx="7.5" stroke="#FEF08A" fill="none"/>
+    </g>
+  {{/if}}
+</g>

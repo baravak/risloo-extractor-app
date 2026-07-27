@@ -2,14 +2,20 @@ const Handlebars = require("handlebars");
 const helpers = require("./helpers");
 const importPartials = require("./importPartials");
 
-// Add Custom Helpers to Handlebars
-for (let helper in helpers) Handlebars.registerHelper(helper, helpers[helper]);
+const sharedPartials = {
+  fonts: "fonts.css",
+  layout: "layout.hbs",
+  sidebar: "sidebar.hbs",
+};
 
-module.exports = new Promise(function (resolve, reject) {
-  // Add Partials to Handlebars
-  importPartials(Handlebars)
-    .then(() => resolve(Handlebars))
-    .catch((err) => {
-      reject(err);
-    });
-});
+async function createHandlebars(partials = {}) {
+  const hbs = Handlebars.create();
+
+  for (const [name, helper] of Object.entries(helpers)) {
+    hbs.registerHelper(name, helper);
+  }
+
+  return importPartials(hbs, { ...partials, ...sharedPartials });
+}
+
+module.exports = createHandlebars;

@@ -1,11 +1,17 @@
 const { Profile, FS } = require("../Profile");
 const JPFQ93 = require("./JPFQ93");
 const FACES93 = require("./FACES93");
-const Handlebars = require("handlebars");
 
 class PMCIEF93 extends Profile {
   // Number of pages
   static pages = 1;
+
+  static partials = {
+    JPFQ93_partial: "samples/JPFQ93_partial.hbs",
+    FACES93_1_partial: "samples/FACES93_1_partial.hbs",
+    FACES93_2_1_partial: "samples/FACES93_2_1_partial.hbs",
+    FACES93_2_2_partial: "samples/FACES93_2_2_partial.hbs",
+  };
 
   // Labels of the sample
   labels = {

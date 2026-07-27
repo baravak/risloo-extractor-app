@@ -4,6 +4,12 @@ class FACES93 extends Profile {
   // Number of pages
   static pages = 2;
 
+  static partials = {
+    FACES93_1_partial: "samples/FACES93_1_partial.hbs",
+    FACES93_2_1_partial: "samples/FACES93_2_1_partial.hbs",
+    FACES93_2_2_partial: "samples/FACES93_2_2_partial.hbs",
+  };
+
   // Labels of the sample
   labels = {
     L1: {

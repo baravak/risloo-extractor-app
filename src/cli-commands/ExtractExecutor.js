@@ -7,7 +7,8 @@ const { FileNotFoundError } = require("./utilities/CustomErrors");
 
 class ExtractExecutor extends Executor {
   samplesJSDir = path.join(__dirname, "..", "samples");
-  profilesTemplatesDir = path.join(__dirname, "..", "..", "views", "profiles", "samples");
+  profilesDir = path.join(__dirname, "..", "..", "views", "profiles");
+  profilesTemplatesDir = path.join(this.profilesDir, "samples");
 
   constructor(options) {
     super(options);
@@ -37,6 +38,18 @@ class ExtractExecutor extends Executor {
       if (err instanceof FileNotFoundError) response.setStatus(EXTRACT_STATUS["INVALID_SAMPLE_NAME"], err);
       else response.setStatus(EXTRACT_STATUS["GENERAL_ERROR"], err);
     });
+  }
+
+  _addProfileHandlebarsPromise() {
+    const { promises, response } = this;
+    const partials = promises["js"].then((Profile) => Profile.partials || {});
+    const handlebarsPromise = this._addHandlebarsPromise(partials);
+
+    promises["handlebars"] = handlebarsPromise.catch((err) =>
+      response.setStatus(EXTRACT_STATUS["TEMPLATE_NOT_FOUND"], err)
+    );
+
+    return promises["handlebars"];
   }
 
   _addProfilesTemplatePromises() {
@@ -77,6 +90,7 @@ class ExtractExecutor extends Executor {
         name: options.name,
       };
 
+      this._addProfileHandlebarsPromise();
       this._addProfilesTemplatePromises();
     }
 
@@ -124,7 +138,7 @@ class ExtractExecutor extends Executor {
   }
 
   _watch() {
-    const { command, dirs, input, response, benchmarker, promises } = this;
+    const { dirs, input, promises } = this;
 
     const opts = {
       awaitWriteFinish: {
@@ -137,36 +151,56 @@ class ExtractExecutor extends Executor {
       dirs.templates.map((templateFileDir, index) => {
         chokidar.watch(templateFileDir, opts).on("change", () => {
           promises["templates"][index] = checkAndLoad(templateFileDir);
-          benchmarker?.restart(command);
-          this._createProfile("with-sidebar", ["svg"]).then(() => {
-            benchmarker?.end();
-            response.setTime(benchmarker?.totalTime);
-            response.showOutput();
-          });
+          this._renderWatchedProfile();
         });
       });
     });
 
+    this._resetPartialWatcher(opts).catch(() => {});
+
     chokidar.watch(dirs.sampleJS, opts).on("change", () => {
       promises["js"] = checkAndImport(dirs.sampleJS);
-      benchmarker?.restart(command);
-      this._createProfile("with-sidebar", ["svg"]).then(() => {
-        benchmarker?.end();
-        response.setTime(benchmarker?.totalTime);
-        response.showOutput();
-      });
+      this._addProfileHandlebarsPromise();
+      this._resetPartialWatcher(opts).catch(() => {});
+      this._renderWatchedProfile();
     });
     
     if(input.type === 'local') chokidar.watch(input.data, opts).on('change', () => {
       promises["input"] = checkAndLoad(input.data).then((json) => Promise.resolve(JSON.parse(json)));
-      benchmarker?.restart(command);
-      this._createProfile("with-sidebar", ["svg"]).then(() => {
-        benchmarker?.end();
-        response.setTime(benchmarker?.totalTime);
-        response.showOutput();
-      });
-
+      this._renderWatchedProfile();
     })
+  }
+
+  async _resetPartialWatcher(opts) {
+    const { dirs, profilesDir, promises } = this;
+    const Profile = await promises["js"];
+    const partialDirs = Object.values(Profile.partials || {}).map((partialFile) =>
+      path.join(profilesDir, partialFile)
+    );
+
+    dirs["partials"] = partialDirs;
+
+    if (this.partialWatcher) await this.partialWatcher.close();
+    if (!partialDirs.length) {
+      this.partialWatcher = null;
+      return;
+    }
+
+    this.partialWatcher = chokidar.watch(partialDirs, opts).on("change", () => {
+      this._addProfileHandlebarsPromise();
+      this._renderWatchedProfile();
+    });
+  }
+
+  _renderWatchedProfile() {
+    const { command, response, benchmarker } = this;
+
+    benchmarker?.restart(command);
+    return this._createProfile("with-sidebar", ["svg"]).then(() => {
+      benchmarker?.end();
+      response.setTime(benchmarker?.totalTime);
+      response.showOutput();
+    });
   }
 
   _createProfileOutputName(variant) {

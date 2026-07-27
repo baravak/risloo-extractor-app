@@ -3,6 +3,10 @@ class YPI93 extends Profile {
   // Number of pages
   static pages = 2;
 
+  static partials = {
+    YPI93_factors: "samples/YPI93_factors.hbs",
+  };
+
   // Labels of the sample
     labels = {
     L1_fs: { eng: "ab_father_score", group: 1},

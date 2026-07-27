@@ -1,5 +1,5 @@
 const { checkAndLoad, loadStdin, ensureDirExistence, createSVG, createPNG } = require("./utilities/BaseOps");
-const Handlebars = require("../handlebars/init");
+const createHandlebars = require("../handlebars/init");
 const path = require("path");
 const Benchmarker = require("./utilities/Benchmarker");
 const Response = require("./utilities/Response");
@@ -74,8 +74,14 @@ class Executor {
     }
   }
 
+  _addHandlebarsPromise(partials = {}) {
+    this.promises["handlebars"] = Promise.resolve(partials).then(createHandlebars);
+    return this.promises["handlebars"];
+  }
+
   async _renderTemplate(ctx, templateBuffer) {
-    const template = (await Handlebars).compile(templateBuffer.toString(), "utf-8");
+    const hbs = await this.promises.handlebars;
+    const template = hbs.compile(templateBuffer.toString(), "utf-8");
     return template(ctx);
   }
 

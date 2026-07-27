@@ -11,6 +11,7 @@ class GiftExecutor extends Executor {
   constructor(options) {
     super(options);
 
+    this._addHandlebarsPromise();
     this._addTemplatePromise();
     this._addAvatarPromise();
 

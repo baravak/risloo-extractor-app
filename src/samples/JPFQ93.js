@@ -4,6 +4,11 @@ class JPFQ93 extends Profile {
   // Number of pages
   static pages = 2;
 
+  static partials = {
+    JPFQ93_partial: "samples/JPFQ93_partial.hbs",
+    JPFQ93_partial2: "samples/JPFQ93_partial2.hbs",
+  };
+
   // Labels of the sample
   labels = {
     L1: { eng: "identity", fr: "هویت", fill:"#8B5CF6 ", background:"#EDE9FE", fontColor:"#7C3AED", width: 69},

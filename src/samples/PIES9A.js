@@ -24,6 +24,10 @@ const customConfig = {
 // This profile is partially identical to PIES93
 
 class PIES9A extends PIES93 {
+  static partials = {
+    PIES93: "samples/PIES93.hbs",
+  };
+
   constructor(dataset, options, config = customConfig) {
     super(dataset, options, config);
   }

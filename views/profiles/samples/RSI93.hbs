@@ -87,7 +87,7 @@
           <text x="{{math (math 200 '*' item.p) '-' 8}}" y="12" dy=".32em" text-anchor="end" font-size="14" font-weight="500" fill="#FFFFFF" direction="ltr">٪ {{item.percentage}}</text>
         {{/if}}
         {{! raw / max fraction (green raw + gray total) }}
-        <text x="208" y="12" dy=".32em" text-anchor="start" direction="ltr"><tspan font-weight="700" font-size="18" fill="#047857">{{item.mark}}</tspan><tspan font-weight="300" font-size="12" fill="#64748B">/</tspan><tspan font-weight="400" font-size="13" fill="#64748B">{{item.max}}</tspan></text>
+        <text x="208" y="12" dy=".32em" text-anchor="start" direction="ltr"><tspan font-weight="700" font-size="18" fill="#047857">{{item.mark}}</tspan><tspan font-weight="300" font-size="12" fill="#64748B"> / </tspan><tspan font-weight="400" font-size="13" fill="#64748B">{{item.max}}</tspan></text>
       </g>
     {{/each}}
 

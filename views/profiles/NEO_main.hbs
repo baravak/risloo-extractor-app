@@ -87,9 +87,9 @@
         <rect x="{{../rawX}}" y="49.5" width="35" height="23" rx="3.5" stroke="{{../colors.accent}}" fill="none"/>
         <text x="{{../rawCenter}}" y="61" dy=".3em" font-size="14" font-weight="500" fill="{{../colors.accent}}" text-anchor="middle">{{item.mark}}</text>
 
-        <text x="75" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="start">{{item.fa}}</text>
-        <text x="83.5" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">-</text>
-        <text x="97" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">{{item.letter}}</text>
+        <text x="{{math ../barX '-' 36}}" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="start">{{item.fa}}</text>
+        <text x="{{math ../barX '-' 27.5}}" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">-</text>
+        <text x="{{math ../barX '-' 14}}" y="61" dy=".3em" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">{{item.letter}}</text>
 
         {{#if ../showLevels}}
           <text x="{{../levelX}}" y="61" dy=".3em" font-size="12" font-weight="400" fill="#64748B" text-anchor="middle">{{item.levelText}}</text>

@@ -5,9 +5,9 @@ const MAIN_BAR_WIDTH = 500;
 const DETAIL_BAR_WIDTH = 300;
 const INSIDE_THRESHOLD = 25;
 const COLORS = {
-  light: "#BFDBFE",
-  dark: "#1D4ED8",
-  accent: "#2563EB",
+  light: "#BAE6FD",
+  dark: "#0369A1",
+  accent: "#0284C7",
   stroke: "#60A5FA",
 };
 const percentageFromRatio = (ratio) => Math.round(Number(ratio) * 100);

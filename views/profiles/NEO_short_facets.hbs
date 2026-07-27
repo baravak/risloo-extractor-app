@@ -70,7 +70,7 @@
       {{#each block.facets as |facet facetIndex|}}
         <g transform="translate(367, {{math (math facetIndex '*' 28) '+' (ternary (boolean block.facets.length '===' 2) 66 52)}})">
           {{bar facet.barW 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=(ternary block.isBlue 'url(#neoShortPrimary)' 'url(#neoShortSecondary)') clip-path='url(#neoShortBarClip)'}}
-          <text x="{{math facet.barW '+' (ternary facet.inside -4 6)}}" y="8" dy=".3em" font-size="13" font-weight="500" fill="{{ternary facet.inside 'white' (ternary block.isBlue ../../colors.dark '#1D4ED8')}}" text-anchor="{{ternary facet.inside 'start' 'end'}}">{{facet.percentage}} ٪</text>
+          <text x="{{math facet.barW '+' (ternary facet.inside -4 6)}}" y="8" dy=".3em" font-size="13" font-weight="500" fill="{{ternary facet.inside 'white' ../../colors.dark}}" text-anchor="{{ternary facet.inside 'start' 'end'}}">{{facet.percentage}} ٪</text>
         </g>
       {{/each}}
     </g>

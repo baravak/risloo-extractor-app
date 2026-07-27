@@ -1,6 +1,6 @@
 ---
 name: create-profile
-description: Build a new psychological profile (نیم‌رخ) or a new page/chart of one — or edit an existing profile's chart — from a Figma design into a JS controller (src/samples/<NAME>.js) + Handlebars SVG template (views/profiles/samples/<NAME>*.hbs). Use when the user wants to create/extend/edit a profile, references Figma SVG/HTML exports (x/<NAME>.svg, x/<NAME>.html) for a <NAME>, or asks to wire a `score` dataset into a chart. Read AGENTS.md alongside this skill — it holds the conventions, helper reference, and the Gotchas this skill points to.
+description: Build a new psychological profile (نیم‌رخ) or a new page/chart of one — or edit an existing profile's chart — from a Figma design into a sample JS controller and Handlebars SVG template. Use when the user wants to create, extend, or edit a profile; provides Figma SVG/HTML exports for a sample; or asks to wire a `score` dataset into a chart. Read AGENTS.md alongside this skill for project conventions, helper references, and reusable SVG guidance.
 ---
 
 # create-profile (pointer)

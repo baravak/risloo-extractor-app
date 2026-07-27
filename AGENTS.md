@@ -32,7 +32,7 @@ risloo-extractor-app/
 │   │   └── utilities/           # BaseOps, Benchmarker, Response, Errors, Status codes
 │   ├── Profile.js               # Base Profile class (math utilities)
 │   ├── Gift.js                  # Gift card class
-│   ├── samples/                 # JS controller files — one per profile (e.g. BSCT93.js)
+│   ├── samples/                 # JS controller files — one per profile
 │   ├── handlebars/
 │   │   ├── init.js              # Handlebars initialization
 │   │   ├── helpers.js           # Entry point for all helpers
@@ -42,7 +42,7 @@ risloo-extractor-app/
 │   ├── helpers/                 # Math helpers (angleABS, polarXY, gauge, polygonXY)
 │   ├── qrcode/                  # QR code generation & rendering
 │   └── publish/
-│       ├── json/profiles/       # Template JSON per sample (e.g. BSCT93.json)
+│       ├── json/profiles/       # Template JSON per sample
 │       ├── json/gift/           # Gift template data
 │       ├── test.js              # Auto-test all samples
 │       └── bot.js               # Post-publish automation
@@ -79,7 +79,7 @@ npm test   # → node ./src/publish/test.js
 Each profile is designed in Figma. Per task, one or both of the following may be provided:
 
 - **Figma design file** — connect via Figma MCP to read layer dimensions and structure. The relevant layer is named **Chart**.
-- **Figma handoff file** — contains additional implementation notes and specs. May state that this profile is similar to an existing one (e.g. "similar to BSCT93 with these changes"). In that case: find the referenced profile's JS + HBS files, use them as the base, and apply only the described differences.
+- **Figma handoff file** — contains additional implementation notes and specs. It may state that this profile is similar to an existing one. In that case, inspect the referenced profile's JS + HBS files, identify the genuinely shared behavior, and apply only the described differences.
 
 > **Important:** The Figma MCP reads text layers only — it does NOT read Figma comments. Designers often leave critical specs (thresholds, coefficients, pixel values) as Figma comments. Always ask the user to share designer comments before finalizing the plan.
 
@@ -162,7 +162,7 @@ get labels() {
 }
 ```
 
-**Where the `score` values come from.** The JSON `score` object fed to a profile is produced by a separate **scoring engine** whose language **varies per test — it may be PHP, Python, or Node.js** — and which usually lives in a sibling repo (e.g. for NEO: `../risloo-docker/services/risloo/app/ScoreNEO93.php` plus a shared `ScoreNEO` trait). **Always ask the user for the actual scoring-source file** rather than assuming the language/path. When a score key's meaning is ambiguous — especially validity flags (is `1` valid or invalid?) — read that source to confirm the encoding instead of guessing; the scoring source also defines the level thresholds (norms) and per-item (reverse) scoring. Each `score` key is matched to a label via `label.eng`.
+**Where the `score` values come from.** The JSON `score` object fed to a profile is produced by a separate **scoring engine** whose language **varies per test — it may be PHP, Python, or Node.js** — and which usually lives in a sibling repo or service. **Always ask the user for the actual scoring-source file** rather than assuming the language/path. When a score key's meaning is ambiguous — especially validity flags (is `1` valid or invalid?) — read that source to confirm the encoding instead of guessing; the scoring source also defines the level thresholds (norms) and per-item (reverse) scoring. Each `score` key is matched to a label via `label.eng`.
 
 **The `?? 0` rule.** `Dataset._extractData` (in `src/Profile.js`) maps `mark: score[label.eng] || …`, so a score of `0` (or any falsy value) falls through to `undefined`. Always read marks with `?? 0` in `_calcContext` to avoid `NaN` widths/positions.
 
@@ -187,18 +187,72 @@ Common helpers used in profile templates (defined under `src/handlebars/helpers/
 
 Hard-won knowledge that applies to **every** profile:
 
-- **Alignment is the whole job — measure, never estimate.** These are pixel-precise **infographics** built from SVG, so every element must line up with the design **both horizontally and vertically**. Pull exact coordinates from the SVG (element `x`/`y`; for text-as-paths, the glyph bounding box / the `M…` start) instead of eyeballing. **Horizontal:** decide per label whether it is left-, center-, or right-aligned and set `text-anchor` to match (RTL flips `start`/`end`) — e.g. the right-most axis label's *right edge* sits on the gridline (right-aligned), not centered over it; domain names are right-aligned to a fixed edge with the dash/letter at fixed x's after them. **Vertical:** center row text on the row mid-line with `y=<center> dy=".3em"`, and keep every column of a row on the same baseline. If the chart lives inside an offset frame (NEO93 page 1 = `translate(32, 128)` inside the 800×674 content), transcribe that `translate` exactly, and remember a `filterUnits="userSpaceOnUse"` region is in that same (post-translate) local space. Re-render and eyeball after **every** change.
-- **RTL is the base — account for it in EVERY alignment.** The root SVG sets `direction="rtl"` (`views/profiles/layout.hbs`), which flips both horizontal text flow **and** the advance direction of rotated labels. This is the single most common alignment mistake — get it wrong and a label slides *under* a bar or lands a whole run-length away. Two cases:
-    - **Horizontal `text-anchor`.** Under RTL, `text-anchor="start"` puts the **right** edge at `x` (text grows **left**); `text-anchor="end"` puts the **left** edge at `x` (text grows **right**). So: right-align Persian labels with `start`; a label that must sit to the **right** of an element and grow away from it uses `end`. Inside-bar `%` label → `start`; outside (narrow-bar) label → `end` (mirror `FRHPT93_2.hbs`). BSCT93 vertical total bar: the `%`/ratio labels sit to the **right** of the bar → `end`; the `٪۱۰۰` axis label sits to the **left** → `start` (using `end` there grows it rightward *under* the bar, which is drawn after and paints over it). If a run of Latin/numbers mis-orders, add `direction="ltr"` on that `<text>`.
-    - **Rotated (`rotate(-90)`) vertical labels advance DOWN, not up.** Because the base is RTL, a `<text transform="rotate(-90,0,0) translate(tx,ty)">` grows **downward** on screen (its reading run goes top→bottom). So the baseline x = `<group-x> + ty` (glyph bodies extend **left** of it) and the text's **TOP** edge = `<group-y> − tx`, running down for its length. BSCT93 «نمره کل» under group `translate(637,1)` → `ty=22` (baseline x≈659), `tx=-202` (top y≈203, bottom ≈238). Assuming it grows *up* drops it ~a run-length too low.
+### Alignment and text measurement
+
+- **Alignment is the whole job — measure, never estimate.** These are pixel-precise **infographics** built from SVG, so every element must line up with the design both horizontally and vertically. Pull exact coordinates from the SVG instead of eyeballing them. Decide per label whether it is left-, center-, or right-aligned, and center row text on the row mid-line with a shared baseline. If the chart lives inside an offset frame, transcribe that `translate` exactly.
+- Identify what a design spacing measurement refers to before implementing it: component bounds, text layout box, glyph bounds, baseline, or visible painted pixels. These are not interchangeable.
+- Measure the two relevant edges from the authoritative SVG. Do not compensate for a spacing error by moving unrelated elements.
+- When several labels share a relationship with a chart origin, derive all their positions from that origin so alternate dimensions remain aligned automatically.
+
+### RTL alignment
+
+- The root SVG sets `direction="rtl"` in `views/profiles/layout.hbs`, which affects horizontal text flow and the advance direction of rotated labels.
+- Under RTL, `text-anchor="start"` puts the right edge at `x` and grows text leftward; `text-anchor="end"` puts the left edge at `x` and grows text rightward. Right-align Persian labels with `start`. Use `start` for an inside-bar percentage label and `end` for an outside label that must grow away from the bar. Add `direction="ltr"` when a run of Latin characters or numbers is otherwise reordered.
+- A `<text transform="rotate(-90,0,0) translate(tx,ty)">` advances downward on screen under the inherited RTL direction. Its baseline x is `<group-x> + ty`, and its top edge is `<group-y> − tx`. Measure the intended top and baseline from the SVG rather than assuming the text advances upward.
+
+### Source fidelity and rendering rules
+
 - **`?? 0` on every mark.** See _Data / Labels Convention_ — `_extractData` turns a `0` mark into `undefined`; always guard with `?? 0`.
-- **Figma SVG = outlined paths, not text.** A Figma SVG export renders every text run as an outlined `<path>`, never `<text>`. Do **not** transcribe glyph paths. Reconstruct text with real `<text>` elements at the SVG's x/y, and take the actual content/colors from the **HTML** export. Transcribe verbatim only: `rect`, `line`, `linearGradient`, `filter`, and icon `<path>`s.
-- **The SVG is the source of truth; the HTML export is only a helper.** Trust the **SVG** for everything authoritative: which elements exist, exact coordinates, and styling — e.g. a divider that looks like a plain solid line in the HTML is actually `stroke-dasharray` *dashed* in the SVG. Use the **HTML** only because (a) SVG text is outlined paths so you can't read it there — the HTML tells you the text content and **where each label goes (and where it doesn't)**, and (b) it's easier to read colors/gradients/structure. If the HTML shows an element the SVG lacks, it's a *disabled Figma layer* (the HTML export still draws disabled layers, with color) — **drop it**. (NEO93 level chips were exactly this: present in HTML, absent in SVG → removed; the level *text* stays, the chip box doesn't.)
+- **Figma SVG = outlined paths, not text.** Do not transcribe glyph paths. Reconstruct text with real `<text>` elements at the SVG's coordinates, and take the actual content and readable style information from the HTML export.
+- **The SVG is the source of truth; the HTML export is only a helper.** Trust the SVG for element presence, coordinates, and styling. Use the HTML to recover text content and clarify structure. If the HTML shows an element that the SVG lacks, treat it as a disabled design layer and omit it unless the user explicitly says otherwise.
 - **Persian digits come from the font.** Emit Western digits in templates (`{{item.mark}}`, `از 192`, `50 ٪`); the `DanaFaNum` font shapes them to Persian. Never hand-convert.
-- **Draw order = z-order.** Later elements paint on top. Transcribe in the same order as the Figma SVG (e.g. a shadowed baseline drawn **after** the bars sits in front of them).
-- **Custom / zoomed axis.** Gridlines are not always 0–100%. If their positions look "irregular", check for a zoomed range (e.g. NEO93 = 20–80%). Derive the linear map `x = a·pct + b` from two known `(label, x)` pairs and draw the bars on **that** scale, so a bar's end lands exactly on its labeled gridline.
-- **Validity / alert-box pattern.** Lay indicators right-to-left: text at `x = ANCHOR − (start + length/2)`, separator dot at `ANCHOR − (start + length + 26)` guarded by `{{#unless last}}`; hide the whole box unless ≥1 indicator is active. Drive it from JS with per-item `{ start, length, last }` (see `FRHPT93.js` / `NEO93.js`).
-- **Close with a PNG visual match — your eye finds *where*, the SVG gives *what*.** The final gate before delivery: render the `raw` PNG and, by actually **viewing both images** (Read the two PNGs), compare it against the designer's reference PNG. Match variants — the reference must be a **Chart-layer** export (same as the CLI `raw`), never the full sidebar page. Render with the **same data the reference used** (transcribe the demo values from the HTML into the JSON), or bars land at different positions and every difference is a false alarm. Your vision reliably catches **structural** errors — wrong gradient/color, a label flipped to the wrong side (RTL), a bar whose end misses its gridline, reordered rows, a dropped or extra element — but it is **not a pixel ruler**: never trust it for 1–3px nudges. So when your eye flags a spot, go back to the **SVG**, read the exact coordinate, and fix from that number (eye = *where*, SVG = *what*). Iterate render → view → fix until the two PNGs match; that match is the close of the job. (This complements — never replaces — HTML-vs-output text checking, since outlined/rendered text is too noisy for a visual diff to judge.)
+- **Draw order = z-order.** Later elements paint on top. Preserve the Figma SVG's element order.
+- **Custom / zoomed axis.** Gridlines are not always 0–100%. If their positions look irregular, derive the linear map `x = a·value + b` from at least two known `(value, x)` pairs and draw the bars on that same scale.
+- **Close with a PNG visual match — your eye finds where, the SVG gives what.** Compare the rendered raw PNG with the designer's Chart-layer PNG using identical data. Use the images to locate structural, color, placement, and RTL discrepancies; then use exact SVG measurements to correct them. Iterate render → view → measure → fix until aligned.
+
+### Shared templates and partials
+
+- Treat every partial as a parameterized visual component. Do not bake a specific profile's coordinates, palette, labels, thresholds, or variant rules into a shared partial.
+- Express geometry relative to meaningful anchors such as `barX`, `barWidth`, row center, label edge, or component bounds. Avoid unrelated absolute coordinates when the component is shared.
+- Pass visual differences through semantic properties such as `primary`, `accent`, `track`, `border`, `shadow`, and `labelOutside`; do not infer colors from profile names, row indexes, or variant labels.
+- Before changing a shared partial, find every controller and template that consumes it. After the change, render all affected consumers, including at least one unchanged consumer as a regression check.
+- A shared partial must have an explicit input contract: required values, defaults, coordinate system, conditional sections, and ownership of `<defs>` IDs.
+
+### Conditional components
+
+- For every conditional component, determine from the design whether hiding it preserves its reserved space, collapses its space, or causes another component to occupy its position.
+- Do not assume independent conditions are mutually exclusive.
+- For components containing a variable number of items, compute item positions and separators from the active items instead of maintaining fixed markup for anticipated combinations.
+- Build validation cases from the component's actual independent conditions and supported item cardinalities. Do not prescribe one fixed state matrix for every profile.
+
+### SVG effects, clipping, borders, and shadows
+
+- Treat `<defs>` as measurable design geometry, not approximate decoration. Reproduce and verify `filterUnits`; filter bounds (`x`, `y`, `width`, `height`); `dx` and `dy`; blur radius; flood color and opacity; primitive order and `in`/`result` wiring; clip/mask geometry; transform coordinate space; and final paint order.
+- Verify both the direction and extent of every shadow against the reference PNG.
+- When a rounded component contains fills or effects, use clipping where required and draw its final border after the clipped content. Confirm that radius, border thickness, corners, and shadow are visually independent.
+- Use unique IDs for gradients, clips, masks, and filters when a partial can appear more than once in one document.
+
+### Boundary-driven rendering tests
+
+- Extract every rendering boundary from the design notes, scoring source, and controller logic.
+- For each numeric boundary, render values immediately below, at, and immediately above it, using the nearest valid values for that domain.
+- Also cover the domain minimum, maximum, zero when valid, missing input, and out-of-range input if clamping is expected.
+- Test the visual behavior, not only the computed value: bar width, clipping, label placement, anchor, contrast, and overflow.
+- Test fixtures must be derived from the current profile's rules; fixed example values must not become global conventions.
+
+### Pages, variants, and title metadata
+
+- Treat pages and presentation variants as independent output dimensions. Enumerate the supported combinations before implementation.
+- Each page context must provide the title suffix required to distinguish that output. Build `titleAppend` from semantic page and variant metadata rather than from template filenames.
+- Validate `titleAppend` in the full SVG/PNG, because it belongs to the injected page header and is not visible in the raw chart.
+- A variant must not change scoring or geometry unless the specification explicitly says so.
+
+### Concurrent-work hygiene
+
+- Assume files may change while the task is in progress. Re-read shared files immediately before editing them.
+- Inspect the diff before and after each shared-file modification.
+- Stage explicit intended paths unless the user has expressly requested publishing all workspace changes.
+- Do not overwrite or normalize concurrent changes merely to make the current diff cleaner.
 
 ---
 
@@ -224,7 +278,7 @@ Hard-won knowledge that applies to **every** profile:
 - `raw` — total/aggregate element
 - `ticks` — graduation marks on profiles
 - `s` suffix — denotes arrays (not `Arr`)
-- Sample names: uppercase acronym + year (e.g. `BSCT93`, `BEQI93`, `16PF93`)
+- Sample names: uppercase acronym + version/year suffix (for example, `<ACRONYM><SUFFIX>`)
 - Dataset score structure: `dataset.score = [{ label: { eng, ... }, mark }]`
 
 ---

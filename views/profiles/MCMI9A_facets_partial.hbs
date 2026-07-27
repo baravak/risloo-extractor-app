@@ -1,0 +1,96 @@
+<defs>
+  <linearGradient id="mcmGray" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#CBD5E1"/>
+    <stop offset="1" stop-color="#94A3B8"/>
+  </linearGradient>
+  <linearGradient id="mcmZinc" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#D4D4D8"/>
+    <stop offset="1" stop-color="#A1A1AA"/>
+  </linearGradient>
+  <linearGradient id="mcmYellow" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#FEF08A"/>
+    <stop offset="1" stop-color="#EAB308"/>
+  </linearGradient>
+  <linearGradient id="mcmOrange" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#FDBA74"/>
+    <stop offset="1" stop-color="#EA580C"/>
+  </linearGradient>
+  <linearGradient id="mcmRose" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#FDA4AF"/>
+    <stop offset="1" stop-color="#E11D48"/>
+  </linearGradient>
+  <filter id="mcmFacetBaseline" x="24" y="358" width="838" height="7" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
+
+<g transform="translate({{padding.x}}, {{padding.y}})">
+  {{#each groups as |group|}}
+    {{#each group.facets as |item|}}
+      <g transform="translate({{item.x}}, 61)">
+        {{bar 16 300 (object tl=2 bl=0 tr=2 br=0) (toRad 0) fill=item.theme.track}}
+      </g>
+    {{/each}}
+  {{/each}}
+
+  <line x1="26.5" y1="61.5" x2="857.5" y2="61.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="26.5" y1="136.5" x2="857.5" y2="136.5" stroke="#D1D5DB" stroke-linecap="round"/>
+  <line x1="26.5" y1="211.5" x2="857.5" y2="211.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="26.5" y1="286.5" x2="857.5" y2="286.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+  <text x="10" y="70.5" transform="rotate(-90 10 70.5)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">100</text>
+  <text x="10" y="136.5" transform="rotate(-90 10 136.5)" direction="ltr" font-size="12" font-weight="500" fill="#6B7280" text-anchor="middle">75</text>
+  <text x="10" y="211.5" transform="rotate(-90 10 211.5)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">50</text>
+  <text x="10" y="286.5" transform="rotate(-90 10 286.5)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">25</text>
+  <text x="10" y="361.5" transform="rotate(-90 10 361.5)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">BR</text>
+  <text x="10" y="0" transform="rotate(-90 10 0)" font-size="12" fill="#9CA3AF" text-anchor="start">نمره خام</text>
+  <path d="M3 48H10M7 51L10 48L7 45" fill="none" stroke="#9CA3AF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+
+  {{#each groups as |group|}}
+    {{#each group.facets as |item|}}
+      {{#if item.barHeight}}
+        <g transform="translate({{item.x}}, {{item.barTop}})" fill="url(#{{item.theme.gradient}})">
+          {{bar 16 item.barHeight (object tl=2 bl=0 tr=2 br=0) (toRad 0)}}
+        </g>
+      {{/if}}
+      <text x="{{item.center}}" y="{{item.scoreY}}" transform="rotate(-90 {{item.center}} {{item.scoreY}})" direction="ltr" font-size="15" font-weight="{{ternary item.inside '600' '400'}}" fill="{{ternary item.inside 'white' item.theme.dark}}" text-anchor="{{item.scoreAnchor}}" dy=".35em">{{item.br}}</text>
+      <rect x="{{item.x}}" y="16" width="16" height="36" rx="2" fill="{{item.theme.track}}"/>
+      <text x="{{item.center}}" y="34" transform="rotate(-90 {{item.center}} 34)" direction="ltr" font-size="13" fill="{{item.theme.dark}}" text-anchor="middle" dy=".35em">{{item.raw}}</text>
+      {{!--
+        The code is centered in an invisible 32 × 16 box at y=366..398.
+        Gaps: chart baseline → code box = 4, code box → dash = 8,
+        dash → Persian title = 8.
+      --}}
+      <text class="eng-font" x="{{item.center}}" y="382" transform="rotate(-90 {{item.center}} 382)" direction="ltr" font-size="13" font-weight="{{ternary item.inside '600' '400'}}" fill="{{item.theme.text}}" text-anchor="middle" dy=".35em">{{item.code}}</text>
+      <text x="{{item.center}}" y="408.5" transform="rotate(-90 {{item.center}} 408.5)" font-size="13" font-weight="{{ternary item.inside '600' '300'}}" fill="{{item.theme.text}}" text-anchor="middle" dy=".35em">-</text>
+      <text x="{{item.center}}" y="419.6" transform="rotate(-90 {{item.center}} 419.6)" font-size="13" font-weight="{{ternary item.inside '600' '400'}}" fill="{{item.theme.text}}" text-anchor="start" dy=".35em">{{item.fa}}</text>
+    {{/each}}
+
+    <rect x="{{group.cardX}}" y="615.5" width="79" height="47" rx="4" fill="{{group.theme.card}}" stroke="{{group.theme.stroke}}"/>
+    {{#if (boolean group.key "===" "6b")}}
+      <g transform="rotate(180 {{math group.cardX '+' 39.5}} 639)">
+        <text x="{{math group.cardX '+' 39.5}}" y="631" dy=".3em" font-size="13" font-weight="500" fill="{{group.theme.dark}}" text-anchor="middle">دیگرآزار</text>
+        <text x="{{math group.cardX '+' 39.5}}" y="647" dy=".3em" font-size="13" font-weight="500" fill="{{group.theme.dark}}" text-anchor="middle">(سادیستیک)</text>
+      </g>
+    {{else}}
+      <text x="{{math group.cardX '+' 39.5}}" y="639" transform="rotate(180 {{math group.cardX '+' 39.5}} 639)" dy=".3em" font-size="13" font-weight="500" fill="{{group.theme.dark}}" text-anchor="middle">{{group.fa}}</text>
+    {{/if}}
+    <g transform="translate({{math group.cardX '+' 3.5}}, 663)">
+      {{bar 72 36 (object tl=0 tr=0 bl=2 br=2) (toRad 0) fill=group.theme.card}}
+    </g>
+    <line x1="{{math group.cardX '+' 39.5}}" y1="666" x2="{{math group.cardX '+' 39.5}}" y2="696" stroke="{{group.theme.divider}}"/>
+    <text class="eng-font" x="{{math group.cardX '+' 19.5}}" y="681" transform="rotate(-90 {{math group.cardX '+' 19.5}} 681)" direction="ltr" font-size="13" font-weight="500" fill="{{group.theme.cardText}}" text-anchor="middle" dy=".35em">{{group.code}}</text>
+    <text x="{{math group.cardX '+' 59.5}}" y="681" transform="rotate(-90 {{math group.cardX '+' 59.5}} 681)" direction="ltr" font-size="13" font-weight="500" fill="{{group.theme.cardText}}" text-anchor="middle" dy=".35em">{{group.br}}</text>
+  {{/each}}
+
+  <g opacity="0.5" filter="url(#mcmFacetBaseline)">
+    <line x1="26.5" y1="361.5" x2="857.5" y2="361.5" stroke="white" stroke-linecap="round"/>
+  </g>
+</g>

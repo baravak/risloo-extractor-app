@@ -1,0 +1,66 @@
+<defs>
+  <linearGradient id="mcmNoteworthy" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#BAE6FD"/>
+    <stop offset="1" stop-color="#0369A1"/>
+  </linearGradient>
+  <clipPath id="mcmNoteworthyClip">
+    {{bar 400 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0)}}
+  </clipPath>
+  <filter id="mcmNoteworthySplit" x="270" y="19" width="7" height="542" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
+
+<g transform="translate({{spec.profile.padding.[3].x}}, {{spec.profile.padding.[3].y}})">
+  {{#each items as |item index|}}
+    {{#if (even index)}}
+      <rect y="{{item.rowY}}" width="737" height="40" rx="8" fill="#F8FAFC"/>
+    {{/if}}
+  {{/each}}
+
+  <line x1="473" y1="22.5" x2="473" y2="557.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <line x1="673" y1="22.5" x2="673" y2="557.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+  <text x="274" y="10" font-size="12" fill="#94A3B8" text-anchor="start">0</text>
+  <text x="473" y="10" direction="ltr" font-size="12" fill="#94A3B8" text-anchor="middle">٪ 50</text>
+  <text x="673" y="10" direction="ltr" font-size="12" fill="#94A3B8" text-anchor="end">٪ 100</text>
+  <path d="M688.5 3V10M685.5 7L688.5 10L691.5 7" fill="none" stroke="#9CA3AF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="736" y="10" font-size="12" fill="#9CA3AF" text-anchor="start">نمره خام</text>
+
+  {{#each items as |item|}}
+    <g>
+      <g transform="translate(273, {{item.barY}})">
+        {{bar 400 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="#E2E8F0" fill-opacity="0.5"}}
+      </g>
+      <g transform="translate(273, {{item.barY}})" clip-path="url(#mcmNoteworthyClip)">
+        {{#if item.barWidth}}
+          {{bar item.barWidth 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="url(#mcmNoteworthy)"}}
+        {{/if}}
+      </g>
+      <text x="{{item.scoreX}}" y="{{item.centerY}}" dy=".3em" direction="ltr" font-size="13" font-weight="500" fill="{{ternary item.inside 'white' '#0369A1'}}" text-anchor="{{ternary item.inside 'end' 'start'}}">٪ {{item.percentage}}</text>
+
+      <rect x="685.5" y="{{math item.barY '-' 0.5}}" width="35" height="17" rx="3.5" fill="none" stroke="#0284C7"/>
+      <text x="703" y="{{item.centerY}}" dy=".3em" direction="ltr" font-size="13" font-weight="500" fill="#0284C7" text-anchor="middle">{{item.raw}}</text>
+
+      {{!--
+        The code is right-aligned in an invisible 22 × 16 box at x=238.5..260.5.
+        Gaps: chart line → code box = 12, code box → dash = 6,
+        dash → Persian title = 6.
+      --}}
+      <text class="eng-font" x="260.5" y="{{item.centerY}}" dy=".3em" direction="ltr" font-size="13" fill="#475569" text-anchor="end">{{item.code}}</text>
+      <text x="230.9" y="{{item.centerY}}" dy=".3em" font-size="13" fill="#475569" text-anchor="middle">-</text>
+      <text x="221.35" y="{{item.centerY}}" dy=".3em" font-size="13" fill="#475569" text-anchor="start">{{item.fa}}</text>
+    </g>
+  {{/each}}
+
+  <g opacity="0.5" filter="url(#mcmNoteworthySplit)">
+    <line x1="272.5" y1="22.5" x2="272.5" y2="557.5" stroke="white" stroke-linecap="round"/>
+  </g>
+</g>

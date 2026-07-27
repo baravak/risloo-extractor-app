@@ -2,7 +2,7 @@ const { Profile } = require("../Profile");
 
 const DOMAIN_MAX = 192;
 const FACET_MAX = 32;
-const INSIDE_THRESHOLD = 24;
+const INSIDE_THRESHOLD = 25;
 
 const LEVELS = ["", "بسیار پایین", "پایین", "طبیعی", "بالا", "بسیار بالا"];
 
@@ -145,6 +145,8 @@ class NEO9Q extends Profile {
     const isFemale = Number(genderField?.user_answered) === 1;
     const gender = isFemale ? "female" : "male";
     const colors = COLOR_THEMES[gender];
+    const versionTitle = isFemale ? "نسخه بانوان" : "نسخه آقایان";
+    const titleAppend = (page) => ` - ${versionTitle} - صفحه ${page}`;
     const sharedContext = {
       gender,
       isFemale,
@@ -251,7 +253,7 @@ class NEO9Q extends Profile {
       {
         ...sharedContext,
         page: 1,
-        titleAppend: "",
+        titleAppend: titleAppend(1),
         items,
         redErrors: layoutIndicators(redErrors),
         yellowErrors: layoutIndicators(yellowErrors),
@@ -261,14 +263,14 @@ class NEO9Q extends Profile {
       {
         ...sharedContext,
         page: 2,
-        titleAppend: " - 2",
+        titleAppend: titleAppend(2),
         blocks: blocks.slice(0, 3),
         gridBottom: 664.5,
       },
       {
         ...sharedContext,
         page: 3,
-        titleAppend: " - 3",
+        titleAppend: titleAppend(3),
         blocks: blocks.slice(3, 5),
         gridBottom: 460.5,
       },

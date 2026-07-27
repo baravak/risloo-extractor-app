@@ -3720,7 +3720,7 @@
     {
       "type": "text",
       "label": "marital_status",
-      "text": "جنسیت",
+      "text": "وضعیت تأهل",
       "answer": { "type": "select", "options": ["مجرد", "متأهل"] },
       "alias": "marital_status",
       "force": true,

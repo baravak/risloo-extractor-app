@@ -2,6 +2,7 @@ const { Profile } = require("../Profile");
 
 const DOMAIN_MAX = 48;
 const BAR_WIDTH = 500;
+const INSIDE_THRESHOLD = 25;
 const LEVELS = {
   1: "خیلی پایین",
   2: "پایین",
@@ -96,6 +97,7 @@ class NEO9A extends Profile {
         p,
         barW: (BAR_WIDTH * percentage) / 100,
         percentage,
+        inside: percentage >= INSIDE_THRESHOLD,
         levelText: LEVELS[level] ?? "-",
       };
     });
@@ -108,7 +110,7 @@ class NEO9A extends Profile {
     return [
       {
         page: 1,
-        titleAppend: "",
+        titleAppend: " - صفحه 1",
         theme: "sky",
         colors: COLORS,
         items,

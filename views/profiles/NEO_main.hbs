@@ -80,7 +80,7 @@
           {{#if ../tAxis}}
             <text x="{{math item.barW '+' (ternary item.inside -6 6)}}" y="12" dy=".3em" font-size="14" font-weight="500" fill="{{ternary item.inside 'white' ../colors.dark}}" text-anchor="{{ternary item.inside 'start' 'end'}}">{{item.score}}</text>
           {{else}}
-            <text x="{{math item.barW '+' (ternary (boolean item.percentage '<' 24) 6 -6)}}" y="12" dy=".3em" font-size="14" font-weight="500" fill="{{ternary (boolean item.percentage '<' 24) ../colors.dark 'white'}}" text-anchor="{{ternary (boolean item.percentage '<' 24) 'end' 'start'}}">{{item.percentage}} ٪</text>
+            <text x="{{math item.barW '+' (ternary item.inside -6 6)}}" y="12" dy=".3em" font-size="14" font-weight="500" fill="{{ternary item.inside 'white' ../colors.dark}}" text-anchor="{{ternary item.inside 'start' 'end'}}">{{item.percentage}} ٪</text>
           {{/if}}
         </g>
 
@@ -105,15 +105,17 @@
   {{#if showRed}}
     <g transform="translate({{alertX}}, 0)">
       {{#if compactAlert}}
-        <rect x="0.5" y="628.5" width="799" height="45" rx="7.5" fill="#FFF1F2"/>
+        <g clip-path="url(#neoRedBoxClip)">
+          <rect y="628" width="800" height="46" rx="8" fill="#FFF1F2"/>
+          {{#each redErrors as |error|}}
+            <text x="{{math 540 '-' (math error.start '+' (math error.length '/' 2))}}" y="651" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">{{error.text}}</text>
+          {{/each}}
+          <path d="M580 651L595 636L595 666L580 651Z" fill="url(#neoRedArrow)"/>
+          <rect width="190" height="46" transform="translate(610 628)" fill="url(#neoRedTab)"/>
+          <text x="691" y="651" dy=".3em" font-size="14" font-weight="500" fill="#BE123C" text-anchor="middle">آزمون نامعتبر است</text>
+          <path d="M758.5 647L764.5 655M764.5 647L758.5 655M761.5 660C763.887 660 766.176 659.052 767.864 657.364C769.552 655.676 770.5 653.387 770.5 651C770.5 648.613 769.552 646.324 767.864 644.636C766.176 642.948 763.887 642 761.5 642C759.113 642 756.824 642.948 755.136 644.636C753.448 646.324 752.5 648.613 752.5 651C752.5 653.387 753.448 655.676 755.136 657.364C756.824 659.052 759.113 660 761.5 660Z" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
         <rect x="0.5" y="628.5" width="799" height="45" rx="7.5" stroke="#FECDD3" fill="none"/>
-        {{#each redErrors as |error|}}
-          <text x="{{math 540 '-' (math error.start '+' (math error.length '/' 2))}}" y="651" dy=".3em" font-size="13" font-weight="400" fill="#57534E" text-anchor="middle">{{error.text}}</text>
-        {{/each}}
-        <path d="M580 651L595 636L595 666L580 651Z" fill="url(#neoRedArrow)"/>
-        <rect width="190" height="46" transform="translate(610 628)" fill="url(#neoRedTab)"/>
-        <text x="691" y="651" dy=".3em" font-size="14" font-weight="500" fill="#BE123C" text-anchor="middle">آزمون نامعتبر است</text>
-        <path d="M758.5 647L764.5 655M764.5 647L758.5 655M761.5 660C763.887 660 766.176 659.052 767.864 657.364C769.552 655.676 770.5 653.387 770.5 651C770.5 648.613 769.552 646.324 767.864 644.636C766.176 642.948 763.887 642 761.5 642C759.113 642 756.824 642.948 755.136 644.636C753.448 646.324 752.5 648.613 752.5 651C752.5 653.387 753.448 655.676 755.136 657.364C756.824 659.052 759.113 660 761.5 660Z" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       {{else}}
         <g clip-path="url(#neoRedBoxClip)">
           <rect y="628" width="800" height="46" rx="8" fill="#FFF1F2"/>

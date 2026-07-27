@@ -111,7 +111,7 @@
             {{#if ../../tAxis}}
               <text x="{{math facet.barW '+' (ternary facet.inside -4 6)}}" y="8" dy=".3em" font-size="13" font-weight="500" fill="{{ternary facet.inside 'white' (ternary block.isBlue ../../colors.dark '#4338CA')}}" text-anchor="{{ternary facet.inside 'start' 'end'}}">{{facet.score}}</text>
             {{else}}
-              <text x="{{math facet.barW '+' (ternary (boolean facet.percentage '<' 24) 6 -4)}}" y="8" dy=".3em" font-size="13" font-weight="500" fill="{{ternary (boolean facet.percentage '<' 24) (ternary block.isBlue ../../colors.dark '#4338CA') 'white'}}" text-anchor="{{ternary (boolean facet.percentage '<' 24) 'end' 'start'}}">{{facet.percentage}} ٪</text>
+              <text x="{{math facet.barW '+' (ternary facet.inside -4 6)}}" y="8" dy=".3em" font-size="13" font-weight="500" fill="{{ternary facet.inside 'white' (ternary block.isBlue ../../colors.dark '#4338CA')}}" text-anchor="{{ternary facet.inside 'start' 'end'}}">{{facet.percentage}} ٪</text>
             {{/if}}
           </g>
         {{/each}}

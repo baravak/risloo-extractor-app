@@ -3,6 +3,7 @@ const { Profile } = require("../Profile");
 const DOMAIN_MAX = 48;
 const MAIN_BAR_WIDTH = 500;
 const DETAIL_BAR_WIDTH = 300;
+const INSIDE_THRESHOLD = 25;
 const COLORS = {
   light: "#BFDBFE",
   dark: "#1D4ED8",
@@ -164,6 +165,7 @@ class NEO9V extends Profile {
           p: facetP,
           barW: (DETAIL_BAR_WIDTH * facetPercentage) / 100,
           percentage: facetPercentage,
+          inside: facetPercentage >= INSIDE_THRESHOLD,
         };
       });
 
@@ -176,6 +178,7 @@ class NEO9V extends Profile {
         p,
         barW: (MAIN_BAR_WIDTH * percentage) / 100,
         percentage,
+        inside: percentage >= INSIDE_THRESHOLD,
         isBlue: index % 2 === 0,
         facets,
       };
@@ -193,7 +196,7 @@ class NEO9V extends Profile {
     return [
       {
         page: 1,
-        titleAppend: "",
+        titleAppend: " - صفحه 1",
         theme: "blue",
         colors: COLORS,
         items: blocks.map(({ facets, isBlue, ...item }) => item),
@@ -202,7 +205,7 @@ class NEO9V extends Profile {
       },
       {
         page: 2,
-        titleAppend: " - 2",
+        titleAppend: " - صفحه 2",
         theme: "blue",
         colors: COLORS,
         blocks,

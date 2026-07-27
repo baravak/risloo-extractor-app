@@ -74,7 +74,7 @@ npm test   # → node ./src/publish/test.js
 
 ## Profile Development Workflow (Figma → Code)
 
-### Design Source
+### Design Sources and Authority
 
 Each profile is designed in Figma. Per task, one or both of the following may be provided:
 
@@ -82,6 +82,16 @@ Each profile is designed in Figma. Per task, one or both of the following may be
 - **Figma handoff file** — contains additional implementation notes and specs. It may state that this profile is similar to an existing one. In that case, inspect the referenced profile's JS + HBS files, identify the genuinely shared behavior, and apply only the described differences.
 
 > **Important:** The Figma MCP reads text layers only — it does NOT read Figma comments. Designers often leave critical specs (thresholds, coefficients, pixel values) as Figma comments. Always ask the user to share designer comments before finalizing the plan.
+
+Assign authority by source role instead of selecting one artifact and ignoring the others:
+
+- **PNG** — final visual acceptance target, including visible orientation, wrapping, cropping, alignment, and composition.
+- **SVG** — exact vector geometry, coordinates, colors, gradients, filters, clipping, strokes, radii, and icon paths.
+- **HTML** — optional text-content and semantic-order aid only when the user authorizes its use.
+- **Designer notes** — conditional behavior, thresholds, spacing rules, exceptions, and presentation states.
+- **Scoring source** — score keys, valid raw values, report states, thresholds, sorting, and correction logic.
+
+Respect task-specific source restrictions. If two authorized sources disagree, stop and surface the conflict instead of silently choosing one.
 
 ### What the HBS Draws
 
@@ -97,17 +107,46 @@ Since this is SVG, coordinate origin matters for correctness across **all** inpu
 - Vertical total bar fills bottom → up via the transform trick: `translate(0, barHeight - barHeight * p)`
 - All positions must remain stable for edge-case inputs: 0% score, 100% score, missing data
 
-### Inside/Outside Bar Text
+### Global Page Orientation
 
-When rendering percentage text on a bar, check if the bar is wide enough to contain the text. The threshold is specified by the designer per profile (in Figma comments):
+Global rotation is a coordinate-system decision. When most elements on a page share one rotation, author the page in an upright logical coordinate system and rotate one outer group into the final Chart space.
 
-```hbs
-{{#if (boolean factor.percentage '<=' THRESHOLD)}}
-  <text x="{{math (math BAR_WIDTH '*' factor.p) '+' 6}}" ...>{{factor.percentage}} ٪</text>
-{{else}}
-  <text x="{{math (math BAR_WIDTH '*' factor.p) '-' 4}}" ...>{{factor.percentage}} ٪</text>
-{{/if}}
+For a final `W × H` chart rendered by rotating an upright `H × W` design clockwise:
+
+```svg
+<g transform="translate(W 0) rotate(90)">
+  <!-- author regular geometry here -->
+</g>
 ```
+
+The coordinate mapping is:
+
+```text
+finalX = W - logicalY
+finalY = logicalX
+```
+
+and its inverse is:
+
+```text
+logicalX = finalY
+logicalY = W - finalX
+```
+
+Use this conversion systematically when measurements come from an already rotated SVG. Do not mentally swap `x` and `y` for individual nodes. Keep ordinary text, bars, cards, icons, multiline labels, and alignment components unrotated inside the logical space; apply local rotation only to genuine exceptions. Never use scaling to make a rotated design fit.
+
+### Bar Geometry and Inside/Outside Text
+
+Use `{{bar ...}}` when only the terminal corners are rounded. Do not replace a partially rounded bar with `<rect rx="...">`, which rounds all four corners.
+
+Treat the bar end as the center of a two-sided safe zone:
+
+- **Inside label** — anchor at `barEnd - gap` and let the text grow opposite the fill direction.
+- **Outside label** — anchor at `barEnd + gap` and let the text grow in the fill direction.
+
+Choose `text-anchor` from the actual writing direction and coordinate system. Do not preserve an anchor after changing `direction` or moving a label between rotated and unrotated spaces.
+
+Inside/outside thresholds are presentation rules and may differ between chart groups. Never reuse one global threshold unless the design explicitly defines one. Verify zero-width, narrow, threshold, maximum, and clamped bars.
 
 ### File Structure per Profile
 
@@ -128,12 +167,9 @@ Multi-page mechanics:
 
 ### Dimensions & Padding Convention
 
-The chart drawing must fit within the **Main** layer in Figma.
+The HBS owns exactly the raw Chart coordinate space. Its origin is the Chart layer's `(0, 0)`, and all authored content must remain within the declared Chart width and height unless the design explicitly clips or overflows it.
 
-- Read the **Main** layer dimensions from Figma
-- `profile.padding` = 20 units per side
-- The `x` and `y` values (drawing area) = Main dimensions minus one padding unit each:
-  - e.g. Main = 104×255 → `{ x: 84, y: 235 }`
+There is no universal profile padding. Measure padding independently for every page.
 
 The `dimensions` property in the JS controller adds padding back on both sides of the **Chart** layer dimensions:
 
@@ -145,6 +181,20 @@ get dimensions() {
   };
 },
 ```
+
+Padding is layout metadata. Do not apply the same padding again inside the HBS when the layout already owns it.
+
+Never introduce a conventional `translate(20,20)`, arbitrary centering transform, or scale. Add an inner translation only when that offset visibly belongs to the Chart layer and is measured from an authorized source.
+
+Fix geometry at the layer that owns the error:
+
+1. Chart dimensions
+2. Global orientation transform
+3. Major group anchor
+4. Repeated component geometry
+5. Individual text placement
+
+Do not alter a lower layer to compensate for an error in a higher layer.
 
 ### Data / Labels Convention
 
@@ -194,21 +244,66 @@ Hard-won knowledge that applies to **every** profile:
 - Measure the two relevant edges from the authoritative SVG. Do not compensate for a spacing error by moving unrelated elements.
 - When several labels share a relationship with a chart origin, derive all their positions from that origin so alternate dimensions remain aligned automatically.
 
+Before placing individual `<text>` nodes, identify alignment families: axis values, raw scores, codes, dashes, Persian titles, card values, section headings, and bar labels often share a row, column, baseline, or guide. For each family record:
+
+| Field | Meaning |
+|---|---|
+| `axis` | Whether the guide lies on `x` or `y` |
+| `coordinate` | Exact guide coordinate |
+| `alignedPart` | Start edge, end edge, center, or baseline |
+| `layoutBox` | Invisible text-box dimensions |
+| `anchor` | `text-anchor` |
+| `direction` | Actual writing direction |
+| `baseline` | Shared baseline or vertical center |
+
+Members of one family do not necessarily use `text-anchor="middle"`. Determine what the design aligns:
+
+- If axis numbers end on a gridline, align the text end rather than its center.
+- If codes occupy equal invisible boxes, align the boxes first and align text within each box.
+- If titles begin after a dash, derive their start edge from the shared dash guide.
+- For values of different lengths, align the specified edge or layout box rather than visible glyph centers.
+- For texts in one row, share a baseline or vertical center instead of merely assigning similar `y` values.
+
+Identify these families in the upright logical space for globally rotated pages. A logical column may appear as a final horizontal row after rotation. Verify each family with its shortest, longest, and an intermediate member.
+
+When a design specifies an invisible code box, treat it as real geometry. Record its origin and dimensions, text alignment, chart-to-box gap, box-to-dash gap, dash-to-title gap, and shared row baseline. Measure gaps from component bounds, not visible glyph edges. Center a multiline label as one block, not as independently positioned lines. Extract a partial when this full contract repeats.
+
 ### RTL alignment
 
 - The root SVG sets `direction="rtl"` in `views/profiles/layout.hbs`, which affects horizontal text flow and the advance direction of rotated labels.
-- Under RTL, `text-anchor="start"` puts the right edge at `x` and grows text leftward; `text-anchor="end"` puts the left edge at `x` and grows text rightward. Right-align Persian labels with `start`. Use `start` for an inside-bar percentage label and `end` for an outside label that must grow away from the bar. Add `direction="ltr"` when a run of Latin characters or numbers is otherwise reordered.
+- Under RTL, `text-anchor="start"` puts the right edge at `x` and grows text leftward; `text-anchor="end"` puts the left edge at `x` and grows text rightward. Derive `direction` and `text-anchor` together from the intended aligned edge and growth direction; do not reuse an anchor after changing direction.
 - A `<text transform="rotate(-90,0,0) translate(tx,ty)">` advances downward on screen under the inherited RTL direction. Its baseline x is `<group-x> + ty`, and its top edge is `<group-y> − tx`. Measure the intended top and baseline from the SVG rather than assuming the text advances upward.
+
+### Font and bidirectional numeric tokens
+
+- Apply the English font class only to semantic Latin identifiers such as codes and abbreviations, including digits embedded in those identifiers.
+- Do not apply the English font class to raw scores, BR values, percentages, axis values, or report numbers unless the design explicitly requests it. Those values should normally remain in the profile's Persian numeric font.
+- Treat mixed-direction tokens such as numbers with percent signs as one visual component. Set `direction`, `unicode-bidi`, anchors, and spacing explicitly; do not rely on source-string order under inherited RTL.
+- After adding whitespace to a mixed-direction token, re-render it. Bidi reordering can change both visual order and anchor behavior.
 
 ### Source fidelity and rendering rules
 
 - **`?? 0` on every mark.** See _Data / Labels Convention_ — `_extractData` turns a `0` mark into `undefined`; always guard with `?? 0`.
-- **Figma SVG = outlined paths, not text.** Do not transcribe glyph paths. Reconstruct text with real `<text>` elements at the SVG's coordinates, and take the actual content and readable style information from the HTML export.
-- **The SVG is the source of truth; the HTML export is only a helper.** Trust the SVG for element presence, coordinates, and styling. Use the HTML to recover text content and clarify structure. If the HTML shows an element that the SVG lacks, treat it as a disabled design layer and omit it unless the user explicitly says otherwise.
+- **Figma SVG = outlined paths, not text.** Do not transcribe glyph paths. Reconstruct text with real `<text>` elements and obtain content from an authorized semantic source such as designer notes, JSON/scoring labels, or HTML when its use is allowed.
+- **Authority is field-specific.** Use the source-role contract above instead of treating one artifact as authoritative for every concern. Inspect every authorized source and surface conflicts.
 - **Persian digits come from the font.** Emit Western digits in templates (`{{item.mark}}`, `از 192`, `50 ٪`); the `DanaFaNum` font shapes them to Persian. Never hand-convert.
 - **Draw order = z-order.** Later elements paint on top. Preserve the Figma SVG's element order.
-- **Custom / zoomed axis.** Gridlines are not always 0–100%. If their positions look irregular, derive the linear map `x = a·value + b` from at least two known `(value, x)` pairs and draw the bars on that same scale.
-- **Close with a PNG visual match — your eye finds where, the SVG gives what.** Compare the rendered raw PNG with the designer's Chart-layer PNG using identical data. Use the images to locate structural, color, placement, and RTL discrepancies; then use exact SVG measurements to correct them. Iterate render → view → measure → fix until aligned.
+
+### Piecewise score axes
+
+Never assume that one coefficient covers a score axis's full domain. Represent the axis as ordered breakpoints or segments. For a segment from score `a` at position `p0` to score `b` at position `p1`:
+
+```js
+position = p0 + ((score - a) * (p1 - p0)) / (b - a);
+```
+
+Select the segment containing the score and clamp only at the domain boundaries. A score exactly equal to a breakpoint must land exactly on that breakpoint's gridline. Verify every breakpoint and the nearest valid value on both sides.
+
+### Exact palettes and source icons
+
+- Create semantic palette tokens from exact SVG color values. Every related part of a stateful component—bar, track, label, card body, footer, divider, border, and icon—must derive from the selected theme unless an exception is documented.
+- Do not substitute a visually similar hex value.
+- Use the exact SVG path for design-specific arrows, alerts, and symbols. Do not replace them with Unicode characters, generic icon libraries, or hand-drawn approximations.
 
 ### Shared templates and partials
 
@@ -223,7 +318,7 @@ Hard-won knowledge that applies to **every** profile:
 - For every conditional component, determine from the design whether hiding it preserves its reserved space, collapses its space, or causes another component to occupy its position.
 - Do not assume independent conditions are mutually exclusive.
 - For components containing a variable number of items, compute item positions and separators from the active items instead of maintaining fixed markup for anticipated combinations.
-- Build validation cases from the component's actual independent conditions and supported item cardinalities. Do not prescribe one fixed state matrix for every profile.
+- Build validation cases from the component's actual independent conditions and supported item cardinalities. Create a coverage matrix rather than an automatic Cartesian product: one fixture may cover several independent states, and a full product is needed only when states interact visually or geometrically. Name each fixture by the states it exercises.
 
 ### SVG effects, clipping, borders, and shadows
 
@@ -236,9 +331,34 @@ Hard-won knowledge that applies to **every** profile:
 
 - Extract every rendering boundary from the design notes, scoring source, and controller logic.
 - For each numeric boundary, render values immediately below, at, and immediately above it, using the nearest valid values for that domain.
+- For every piecewise axis, test each breakpoint and the nearest valid value on both sides.
 - Also cover the domain minimum, maximum, zero when valid, missing input, and out-of-range input if clamping is expected.
 - Test the visual behavior, not only the computed value: bar width, clipping, label placement, anchor, contrast, and overflow.
-- Test fixtures must be derived from the current profile's rules; fixed example values must not become global conventions.
+- Test fixtures must be derived from the current profile's rules and use scoring-valid raw values. Fixed example values must not become global conventions. Label intentionally presentation-only, scoring-inconsistent fixtures explicitly.
+
+### Visual verification before claiming a fix
+
+Do not report a visual issue as fixed based only on code inspection or a successful render command.
+
+For every affected page:
+
+1. Render the raw PNG.
+2. Open and inspect the actual PNG.
+3. Compare it with the reference at the same orientation.
+4. Use the PNG to locate the mismatch.
+5. Return to the SVG or geometry ledger for the exact correction.
+6. Re-render and inspect again.
+
+Validate major geometry before typography:
+
+1. Chart width and height
+2. Origin and global transform
+3. Major group extents
+4. Bar and grid dimensions
+5. Repeated alignment contracts
+6. Text baselines and glyph-level adjustments
+
+If several local coordinate patches accumulate, stop. Re-establish the coordinate model from the sources instead of continuing to nudge individual elements.
 
 ### Pages, variants, and title metadata
 

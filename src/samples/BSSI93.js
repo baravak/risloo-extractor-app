@@ -58,14 +58,44 @@ class BSSI93 extends Profile {
     const end = FS.toRadians(180); //   100% at left (9 o'clock)
     total.zeta = total.p * (end - start) + start; // clockwise 270° sweep
 
-    // --- Factors (vertical bars, left → right) ---
-    // Domain names are drawn under each bar; 2-line ones split as in the design.
-    const lines = [["تمایل به مرگ"], ["آمادگی برای", "خودکشی"], ["تمایل به", "خودکشی واقعی"]];
-    const factors = [packItem(s[2], s[3]), packItem(s[4], s[5]), packItem(s[6], s[7])].map((f, i) => ({
-      ...f,
-      cx: 120 + i * 100, // bar centres: 120, 220, 320
-      trackLeft: 106 + i * 100, // track/bar left edges: 106, 206, 306
-      lines: lines[i],
+    // --- Factors (visual order, left → right) ---
+    // The scientific score keys stay unchanged. The design places the intent
+    // score in the middle slot and the preparation score in the right slot.
+    const factorSpecs = [
+      {
+        raw: s[2],
+        percentage: s[3],
+        cx: 120,
+        trackLeft: 106,
+        scoreX: 120.5,
+        lines: [{ text: "تمایل به مرگ", x: 120, y: 351.5 }],
+      },
+      {
+        raw: s[6],
+        percentage: s[7],
+        cx: 220,
+        trackLeft: 206,
+        scoreX: 221.5,
+        lines: [
+          { text: "آمادگی برای", x: 219.5, y: 351.5 },
+          { text: "خودکشی", x: 219, y: 368 },
+        ],
+      },
+      {
+        raw: s[4],
+        percentage: s[5],
+        cx: 320,
+        trackLeft: 306,
+        scoreX: 322,
+        lines: [
+          { text: "تمایل به", x: 322, y: 352.5 },
+          { text: "خودکشی واقعی", x: 322, y: 368 },
+        ],
+      },
+    ];
+    const factors = factorSpecs.map(({ raw, percentage, ...geometry }) => ({
+      ...packItem(raw, percentage),
+      ...geometry,
     }));
 
     return [{ total, factors }];

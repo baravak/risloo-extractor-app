@@ -66,9 +66,13 @@ class NEO9A extends Profile {
           height: 674 + 2 * this.padding.y,
         };
       },
+      // Padding is the Chart's inset inside the 943 × 754 design page *minus*
+      // the 20 px the layout already owns on every side, so the page resolves
+      // to 903 × 714 — the exact with-sidebar drawing area — and renders at
+      // scale 1 instead of being shrunk to fit.
       padding: {
-        x: 71.5,
-        y: 40,
+        x: 51.5,
+        y: 20,
       },
     },
     labels: Object.values(this.labels),

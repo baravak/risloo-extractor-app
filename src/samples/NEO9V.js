@@ -132,9 +132,13 @@ class NEO9V extends Profile {
           },
         ];
       },
+      // Padding is the Chart's inset inside the 943 × 754 design page *minus*
+      // the 20 px the layout already owns on every side. Both pages therefore
+      // resolve to 903 × 714 — the exact with-sidebar drawing area — and
+      // render at scale 1 instead of being shrunk to fit.
       padding: [
-        { x: 71, y: 40 },
-        { x: 91.5, y: 46 },
+        { x: 51, y: 20 },
+        { x: 71.5, y: 26 },
       ],
     },
     labels: Object.values(this.labels),

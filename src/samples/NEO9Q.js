@@ -168,14 +168,14 @@ class NEO9Q extends Profile {
           },
         ];
       },
+      // Padding is the Chart's inset inside the 943 × 754 design page *minus*
+      // the 20 px the layout already owns on every side. Every page therefore
+      // resolves to 903 × 714 — the exact with-sidebar drawing area — and
+      // renders at scale 1 instead of being shrunk to fit.
       padding: [
-        { x: 71.5, y: 40 },
-        { x: 66, y: 43 },
-        { x: 66, y: 145 },
-        // The Chart sits 32.5 / 25 inside the 943 × 754 design page, but the
-        // layout already owns 20 px of that on every side, so the profile keeps
-        // the remainder. 878 + 25 = 903 and 704 + 10 = 714 — the exact
-        // with-sidebar drawing area, so the page renders at scale 1.
+        { x: 51.5, y: 20 },
+        { x: 46, y: 23 },
+        { x: 46, y: 125 },
         { x: 12.5, y: 5 },
       ],
     },

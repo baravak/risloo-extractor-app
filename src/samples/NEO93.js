@@ -163,14 +163,14 @@ class NEO93 extends Profile {
           },
         ];
       },
+      // Padding is the Chart's inset inside the 943 × 754 design page *minus*
+      // the 20 px the layout already owns on every side. Every page therefore
+      // resolves to 903 × 714 — the exact with-sidebar drawing area — and
+      // renders at scale 1 instead of being shrunk to fit.
       padding: [
-        { x: 71.5, y: 40 },
-        { x: 66, y: 46 },
-        { x: 66, y: 148 },
-        // The Chart sits 29 / 52.5 inside the 943 × 754 design page, but the
-        // layout already owns 20 px of that on every side, so the profile keeps
-        // the remainder. 885 + 18 = 903 and 649 + 65 = 714 — the exact
-        // with-sidebar drawing area, so the page renders at scale 1.
+        { x: 51.5, y: 20 },
+        { x: 46, y: 26 },
+        { x: 46, y: 128 },
         { x: 9, y: 32.5 },
       ],
     },

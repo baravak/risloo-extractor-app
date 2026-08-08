@@ -52,10 +52,53 @@ for (const { key } of DOMAINS) {
   }
 }
 
+// Page 4 (profile sheet). The Chart layer is 885 × 649; every number below is
+// measured from it, so the shared NEO_sheet partial stays free of profile logic.
+const SHEET_GROUP_X = [54, 175, 317, 459, 601, 743];
+const SHEET_COL_STEP = 21;
+const SHEET_COL_HALF = 6.5;
+
+// 0 % sits on the bottom gridline, 100 % on the top one, 500 px apart.
+const SHEET_ZERO_Y = 632;
+const SHEET_PX_PER_PERCENT = 5;
+
+const SHEET_DOMAIN_STROKE = "#4338CA";
+const SHEET_FACET_STROKE = "#334155";
+
 function clamp(value, min, max) {
   const number = Number(value);
   if (!Number.isFinite(number)) return min;
   return Math.min(max, Math.max(min, number));
+}
+
+function sheetColumns() {
+  const columns = DOMAINS.map(({ fa, letter }, index) => ({
+    cx: SHEET_GROUP_X[0] + SHEET_COL_HALF + index * SHEET_COL_STEP,
+    code: letter,
+    fa,
+    domain: true,
+  }));
+
+  DOMAINS.forEach(({ key, letter }, groupIndex) => {
+    FACET_NAMES[key].forEach((fa, index) => {
+      columns.push({
+        cx: SHEET_GROUP_X[groupIndex + 1] + SHEET_COL_HALF + index * SHEET_COL_STEP,
+        code: `${letter}${index + 1}`,
+        fa,
+        domain: false,
+      });
+    });
+  });
+
+  return columns;
+}
+
+// One dash per axis unit; every `accentEvery`-th one is the dark, readable tick.
+function sheetDashes(top, pitch, count, accentEvery) {
+  return Array.from({ length: count }, (unused, index) => ({
+    y: top + index * pitch,
+    dark: index % accentEvery === 0,
+  }));
 }
 
 function layoutIndicators(indicators) {
@@ -73,11 +116,12 @@ function layoutIndicators(indicators) {
 }
 
 class NEO93 extends Profile {
-  static pages = 3;
+  static pages = 4;
 
   static partials = {
     NEO_main: "NEO_main.hbs",
     NEO_long_facets: "NEO_long_facets.hbs",
+    NEO_sheet: "NEO_sheet.hbs",
   };
 
   labels = {
@@ -99,7 +143,7 @@ class NEO93 extends Profile {
     },
     profile: {
       get dimensions() {
-        const [page1, page2, page3] = this.padding;
+        const [page1, page2, page3, page4] = this.padding;
         return [
           {
             width: 800 + 2 * page1.x,
@@ -113,12 +157,21 @@ class NEO93 extends Profile {
             width: 811 + 2 * page3.x,
             height: 458 + 2 * page3.y,
           },
+          {
+            width: 885 + 2 * page4.x,
+            height: 649 + 2 * page4.y,
+          },
         ];
       },
       padding: [
         { x: 71.5, y: 40 },
         { x: 66, y: 46 },
         { x: 66, y: 148 },
+        // The Chart sits 29 / 52.5 inside the 943 × 754 design page, but the
+        // layout already owns 20 px of that on every side, so the profile keeps
+        // the remainder. 885 + 18 = 903 and 649 + 65 = 714 — the exact
+        // with-sidebar drawing area, so the page renders at scale 1.
+        { x: 9, y: 32.5 },
       ],
     },
     labels: Object.values(this.labels),
@@ -247,6 +300,21 @@ class NEO93 extends Profile {
       };
     });
 
+    const sheetCols = sheetColumns();
+    const sheetY = (percentage) => SHEET_ZERO_Y - SHEET_PX_PER_PERCENT * clamp(percentage, 0, 100);
+    const polyline = (cols, values) => values.map((value, index) => `${cols[index].cx},${sheetY(value)}`).join(" ");
+
+    const series = [
+      { stroke: SHEET_DOMAIN_STROKE, points: polyline(sheetCols.slice(0, 5), items.map((item) => item.percentage)) },
+      ...blocks.map((block, groupIndex) => ({
+        stroke: SHEET_FACET_STROKE,
+        points: polyline(
+          sheetCols.slice(5 + groupIndex * 6, 11 + groupIndex * 6),
+          block.facets.map((facet) => facet.percentage)
+        ),
+      })),
+    ];
+
     return [
       {
         ...sharedContext,
@@ -271,6 +339,56 @@ class NEO93 extends Profile {
         titleAppend: titleAppend(3),
         blocks: blocks.slice(3, 5),
         gridBottom: 454.5,
+      },
+      {
+        ...sharedContext,
+        page: 4,
+        titleAppend: ' - کلاسیک',
+        columns: sheetCols,
+        series,
+        sheet: {
+          grid: {
+            x: 31,
+            w: 854,
+            ys: [
+              { y: 131, faint: false },
+              { y: 231, faint: true },
+              { y: 331, faint: true },
+              { y: 431, faint: true },
+              { y: 531, faint: true },
+              { y: 631, faint: false },
+            ],
+          },
+          plot: { top: 132, bottom: 632 },
+          dot: { pitch: 5, accentPitch: 20, light: "#F1F5F9", accent: "#94A3B8" },
+          tick: { top: 121, h: 10 },
+          rail: {
+            dashLeftX: 36,
+            dashRightX: 873,
+            w: 6,
+            ruleLeftX: 45.5,
+            ruleRightX: 868.5,
+            ruleW: 1,
+            ruleTop: 131,
+            ruleH: 502,
+            dark: "#64748B",
+            light: "white",
+          },
+          dashes: sheetDashes(132, 5, 101, 4),
+          numberX: 24,
+          numbers: [
+            { y: 132, text: "100 ٪" },
+            { y: 232, text: "80 ٪" },
+            { y: 332, text: "60 ٪" },
+            { y: 432, text: "40 ٪" },
+            { y: 532, text: "20 ٪" },
+            { y: 632, text: "0" },
+          ],
+          levelX: 0,
+          levels: [],
+          titleBottomY: 115,
+          codeY: 648,
+        },
       },
     ];
   }

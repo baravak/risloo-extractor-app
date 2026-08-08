@@ -24,6 +24,42 @@ Ask for the relevant inputs:
 
 Then **ask for the designer's Figma comments** — thresholds, coefficients, conditional behavior, spacing rules, and other implementation notes. The Figma MCP / SVG / HTML do **not** contain comments, and these specs usually live only there. Don't start coding until you have them.
 
+### Figma MCP budget discipline — fetch the whole artifact, not pieces
+
+Figma MCP read calls are **rate limited per plan and seat**, and the cheap tiers are brutal (a View/Collab seat, or any seat on a Starter plan, gets **6 calls per month**; a Dev/Full seat on Professional gets 200/day, 10/min). Running out mid-task strands the work. So treat every read call as expensive and design for **maximum data per request**.
+
+Rules:
+
+1. **Download the complete artifact set up front — source, SVG, and PNG — then work locally.** Do not drip-feed one layer per call. Prefer `download_assets` on the **Chart** node: one call returns the whole-node export plus the vector SVGs of its subtree. Add `get_metadata` on the same node for the layer tree with exact `x/y/width/height`. Those two calls plus one `get_screenshot` give you geometry, vectors, and the visual reference for a whole page.
+2. **Asset URLs cost nothing.** `get_design_context` on a vector-heavy layer returns an `<img src="…svg">` asset URL instead of code, and `get_screenshot` returns a PNG URL. Downloading those with `curl` does **not** consume quota. Always pull the file and read it locally rather than making another MCP call.
+3. **Never call `get_design_context` on a repeated component instance more than once.** A dotted-column or dash-ruler instance can expand to hundreds of nodes, burning a call and flooding context. Sample **one** atom for its style, then derive the repetition from `get_metadata` sizes and the pitch arithmetic.
+4. **Answer remaining questions from the downloaded PNG/SVG, not from Figma.** Exact colors, tick pitch, mirroring, and alignment are all measurable locally (e.g. sample pixels with Python/PIL, grep the SVG for `stroke=`/`fill=`). Go back to MCP only for text content and semantics that the outlined SVG genuinely cannot carry.
+5. **Batch the calls you do need in one message** so they run in parallel and stay inside the per-minute cap; keep a batch at or below the seat's per-minute limit.
+6. **Check the budget before a big pull.** `whoami` is exempt from rate limits and reports every plan and seat — use it when a call fails or before planning a large fetch. On a limit error, stop and tell the user which seat/plan is capping, rather than retrying.
+7. **If the quota is exhausted, ask the user to export the files** (Chart SVG + PNG) instead of waiting — that path costs zero calls and the SVG is authoritative for color and geometry anyway.
+
+#### Access tiers and which tools are metered
+
+| Seat | Starter | Professional | Organization | Enterprise |
+|---|---|---|---|---|
+| View, Collab | 6 / month | 6 / month | 6 / month | 6 / month |
+| Dev, Full | 6 / month | 200 / day, 10 / min | 200 / day, 15 / min | 600 / day, 20 / min |
+
+- **Metered:** every tool that *reads* from Figma — `get_design_context`, `get_metadata`, `get_screenshot`, `get_variable_defs`, `download_assets`, and the rest.
+- **Exempt:** `whoami`, `generate_figma_design`, `add_code_connect_map`, and other write-to-Figma tools. Reading MCP **resources** (`skill://…`, `file://figma/docs/…`) is also not metered.
+- Quota follows the **plan that owns the file**, not the user's best seat. A user with a Full seat on their own Starter team and a View seat on the team that owns the design still gets 6/month for that design. `whoami` returns every plan with its `tier` and `seat`, plus the plan key — the plan key also appears in the rate-limit error URL, which identifies exactly which plan is capping.
+- The fix is usually a **seat** upgrade (View → Dev/Full) on the owning team, not a plan upgrade. Report that distinction to the user instead of suggesting they buy a bigger plan.
+
+### Recommended one-shot fetch sequence for a new page
+
+For each Chart node, in a single batched message:
+
+1. `get_metadata` — the layer tree with exact `x/y/width/height` for every node. This is the geometry ledger's backbone.
+2. `download_assets` with `defaultFormat: "svg"` — returns a URL for the whole-node vector export plus the subtree's SVG assets.
+3. `get_screenshot` at a `maxDimension` at least equal to the Chart's natural width — the visual acceptance reference.
+
+Then `curl` all returned URLs (free) and do the rest locally: read the export SVG for exact colors, strokes, radii, gradients and paint order; read the metadata for layout boxes and text-node dimensions; compare renders against the PNG. Only text **content** needs a further call, and `get_metadata` already carries it in the layer `name` for text nodes.
+
 Do not select one design artifact and ignore the others. Establish an authority table for the current task:
 
 - **PNG** — final visual acceptance target, including visible orientation, wrapping, cropping, alignment, and composition.

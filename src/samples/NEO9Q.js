@@ -52,10 +52,58 @@ for (const { key } of DOMAINS) {
   }
 }
 
+// Page 4 (profile sheet). The Chart layer is 878 × 704; every number below is
+// measured from it, so the shared NEO_sheet partial stays free of profile logic.
+const SHEET_GROUP_X = [47, 168, 310, 452, 594, 736];
+const SHEET_COL_STEP = 21;
+const SHEET_COL_HALF = 6.5;
+
+// The T axis runs 20…80 at a flat 9 px per point: T 20 on the bottom gridline,
+// T 80 on the top one. `_lookup` floors at 20 and the norm tables top out at 80,
+// but the clamp also keeps a missing key (which `?? 0` turns into 0) on the sheet.
+const SHEET_MIN_T = 20;
+const SHEET_MAX_T = 80;
+const SHEET_MIN_T_Y = 687;
+const SHEET_PX_PER_T = 9;
+
+const SHEET_DOMAIN_STROKE = "#4338CA";
+const SHEET_FACET_STROKE = "#334155";
+
 function clamp(value, min, max) {
   const number = Number(value);
   if (!Number.isFinite(number)) return min;
   return Math.min(max, Math.max(min, number));
+}
+
+function sheetColumns() {
+  const columns = DOMAINS.map(({ fa, letter }, index) => ({
+    cx: SHEET_GROUP_X[0] + SHEET_COL_HALF + index * SHEET_COL_STEP,
+    code: letter,
+    fa,
+    domain: true,
+  }));
+
+  DOMAINS.forEach(({ key, letter }, groupIndex) => {
+    FACET_NAMES[key].forEach((fa, index) => {
+      columns.push({
+        cx: SHEET_GROUP_X[groupIndex + 1] + SHEET_COL_HALF + index * SHEET_COL_STEP,
+        code: `${letter}${index + 1}`,
+        fa,
+        domain: false,
+      });
+    });
+  });
+
+  return columns;
+}
+
+// One dash per T point; every `accentEvery`-th one is dark — on this form that
+// marks the even T values, which are the only ones the norm tables can produce.
+function sheetDashes(top, pitch, count, accentEvery) {
+  return Array.from({ length: count }, (unused, index) => ({
+    y: top + index * pitch,
+    dark: index % accentEvery === 0,
+  }));
 }
 
 function layoutIndicators(indicators) {
@@ -73,11 +121,12 @@ function layoutIndicators(indicators) {
 }
 
 class NEO9Q extends Profile {
-  static pages = 3;
+  static pages = 4;
 
   static partials = {
     NEO_main: "NEO_main.hbs",
     NEO_long_facets: "NEO_long_facets.hbs",
+    NEO_sheet: "NEO_sheet.hbs",
   };
 
   labels = {
@@ -99,7 +148,7 @@ class NEO9Q extends Profile {
     },
     profile: {
       get dimensions() {
-        const [page1, page2, page3] = this.padding;
+        const [page1, page2, page3, page4] = this.padding;
         return [
           {
             width: 800 + 2 * page1.x,
@@ -113,12 +162,21 @@ class NEO9Q extends Profile {
             width: 811 + 2 * page3.x,
             height: 464 + 2 * page3.y,
           },
+          {
+            width: 878 + 2 * page4.x,
+            height: 704 + 2 * page4.y,
+          },
         ];
       },
       padding: [
         { x: 71.5, y: 40 },
         { x: 66, y: 43 },
         { x: 66, y: 145 },
+        // The Chart sits 32.5 / 25 inside the 943 × 754 design page, but the
+        // layout already owns 20 px of that on every side, so the profile keeps
+        // the remainder. 878 + 25 = 903 and 704 + 10 = 714 — the exact
+        // with-sidebar drawing area, so the page renders at scale 1.
+        { x: 12.5, y: 5 },
       ],
     },
     labels: Object.values(this.labels),
@@ -249,6 +307,21 @@ class NEO9Q extends Profile {
       };
     });
 
+    const sheetCols = sheetColumns();
+    const sheetY = (t) => SHEET_MIN_T_Y - SHEET_PX_PER_T * (clamp(t, SHEET_MIN_T, SHEET_MAX_T) - SHEET_MIN_T);
+    const polyline = (cols, values) => values.map((value, index) => `${cols[index].cx},${sheetY(value)}`).join(" ");
+
+    const series = [
+      { stroke: SHEET_DOMAIN_STROKE, points: polyline(sheetCols.slice(0, 5), items.map((item) => item.tScore)) },
+      ...blocks.map((block, groupIndex) => ({
+        stroke: SHEET_FACET_STROKE,
+        points: polyline(
+          sheetCols.slice(5 + groupIndex * 6, 11 + groupIndex * 6),
+          block.facets.map((facet) => facet.tScore)
+        ),
+      })),
+    ];
+
     return [
       {
         ...sharedContext,
@@ -273,6 +346,63 @@ class NEO9Q extends Profile {
         titleAppend: titleAppend(3),
         blocks: blocks.slice(3, 5),
         gridBottom: 460.5,
+      },
+      {
+        ...sharedContext,
+        page: 4,
+        titleAppend: ' - کلاسیک',
+        columns: sheetCols,
+        series,
+        sheet: {
+          grid: {
+            x: 24,
+            w: 854,
+            ys: [
+              { y: 146, faint: false },
+              { y: 281, faint: true },
+              { y: 371, faint: true },
+              { y: 461, faint: true },
+              { y: 551, faint: true },
+              { y: 686, faint: false },
+            ],
+          },
+          plot: { top: 147, bottom: 687 },
+          dot: { pitch: 9, accentPitch: 18, light: "#F1F5F9", accent: "#94A3B8" },
+          tick: { top: 136, h: 10 },
+          rail: {
+            dashLeftX: 29,
+            dashRightX: 866,
+            w: 6,
+            ruleLeftX: 38,
+            ruleRightX: 861,
+            ruleW: 2,
+            ruleTop: 146,
+            ruleH: 542,
+            dark: "#64748B",
+            light: "#CBD5E1",
+          },
+          dashes: sheetDashes(147, 9, 61, 2),
+          numberX: 17,
+          numbers: [
+            { y: 147, text: "80" },
+            { y: 282, text: "65" },
+            { y: 372, text: "55" },
+            { y: 462, text: "45" },
+            { y: 552, text: "35" },
+            { y: 687, text: "20" },
+          ],
+          levelX: 9.9,
+          // Each band label sits midway between the two gridlines that bound it.
+          levels: [
+            { y: 214.5, text: LEVELS[5] },
+            { y: 327, text: LEVELS[4] },
+            { y: 417, text: LEVELS[3] },
+            { y: 507, text: LEVELS[2] },
+            { y: 619.5, text: LEVELS[1] },
+          ],
+          titleBottomY: 130,
+          codeY: 703,
+        },
       },
     ];
   }

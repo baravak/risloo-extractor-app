@@ -1,0 +1,70 @@
+{{!--
+  NEO profile sheet (نیم‌رخ): 35 dotted columns — the 5 domains, then 6 groups of
+  6 facets — over a horizontal gridline scale, with rotated titles above, latin
+  codes below, and one polyline per group.
+
+  Every coordinate arrives from the controller; nothing is derived here, so the
+  percentage sheet and the T-score sheet share this file without a variant flag.
+
+    padding             {x, y}                     page padding owned by the layout
+    sheet.grid          {x, w, ys: [{y, faint}]}   gridline rects, y = rect top edge
+    sheet.plot          {top, bottom}              dot-column endpoints (gridline centres)
+    sheet.dot           {pitch, accentPitch, light, accent}
+    sheet.tick          {top, h}                   column ticks above the top gridline
+    sheet.rail          {dashLeftX, dashRightX, w, ruleLeftX, ruleRightX, ruleW,
+                         ruleTop, ruleH, dark, light, dashes: [{y, dark}]}
+    sheet.numberX       right edge the axis numbers align to
+    sheet.numbers       [{y, text}]                axis numbers, y = gridline centre
+    sheet.levelX        centre guide of the rotated level words
+    sheet.levels        [{y, text}]                rotated level words, may be empty
+    sheet.titleBottomY  guide the rotated titles grow upward from
+    sheet.codeY         baseline of the latin codes
+    columns             [{cx, code, fa, domain}]   35 entries, design draw order
+    series              [{points, stroke}]         one polyline per group
+
+  Paint order mirrors the design export: codes, titles, dots, rails, numbers,
+  ticks, gridlines, result lines.
+--}}
+<g transform="translate({{padding.x}}, {{padding.y}})">
+  {{#each columns as |col|}}
+    <text class="eng-font" x="{{col.cx}}" y="{{../sheet.codeY}}" direction="ltr" font-size="10" font-weight="400" fill="#94A3B8" text-anchor="middle">{{col.code}}</text>
+  {{/each}}
+
+  {{#each columns as |col|}}
+    <text x="{{col.cx}}" y="{{../sheet.titleBottomY}}" transform="rotate(-90 {{col.cx}} {{../sheet.titleBottomY}})" direction="ltr" font-size="12" font-weight="{{ternary col.domain 600 400}}" fill="{{ternary col.domain '#4338CA' '#334155'}}" text-anchor="start" dy=".35em"><tspan class="eng-font">{{col.code}}</tspan> - {{col.fa}}</text>
+  {{/each}}
+
+  {{#each columns as |col|}}
+    <line x1="{{col.cx}}" y1="{{../sheet.plot.top}}" x2="{{col.cx}}" y2="{{../sheet.plot.bottom}}" stroke="{{../sheet.dot.light}}" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 {{../sheet.dot.pitch}}"/>
+    <line x1="{{col.cx}}" y1="{{../sheet.plot.top}}" x2="{{col.cx}}" y2="{{../sheet.plot.bottom}}" stroke="{{../sheet.dot.accent}}" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 {{../sheet.dot.accentPitch}}"/>
+  {{/each}}
+
+  {{#each sheet.dashes as |dash|}}
+    <line x1="{{math ../sheet.rail.dashLeftX '+' 1}}" y1="{{dash.y}}" x2="{{math ../sheet.rail.dashLeftX '+' (math ../sheet.rail.w '-' 1)}}" y2="{{dash.y}}" stroke="{{ternary dash.dark ../sheet.rail.dark ../sheet.rail.light}}" stroke-width="2" stroke-linecap="round"/>
+    <line x1="{{math ../sheet.rail.dashRightX '+' 1}}" y1="{{dash.y}}" x2="{{math ../sheet.rail.dashRightX '+' (math ../sheet.rail.w '-' 1)}}" y2="{{dash.y}}" stroke="{{ternary dash.dark ../sheet.rail.dark ../sheet.rail.light}}" stroke-width="2" stroke-linecap="round"/>
+  {{/each}}
+  <rect x="{{sheet.rail.ruleLeftX}}" y="{{sheet.rail.ruleTop}}" width="{{sheet.rail.ruleW}}" height="{{sheet.rail.ruleH}}" fill="{{sheet.rail.dark}}"/>
+  <rect x="{{sheet.rail.ruleRightX}}" y="{{sheet.rail.ruleTop}}" width="{{sheet.rail.ruleW}}" height="{{sheet.rail.ruleH}}" fill="{{sheet.rail.dark}}"/>
+
+  {{#each sheet.numbers as |number|}}
+    <text x="{{../sheet.numberX}}" y="{{number.y}}" dy=".3em" font-size="12" font-weight="400" fill="#64748B" text-anchor="start">{{number.text}}</text>
+  {{/each}}
+
+  {{#each sheet.levels as |level|}}
+    <text x="{{../sheet.levelX}}" y="{{level.y}}" transform="rotate(-90 {{../sheet.levelX}} {{level.y}})" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle" dy=".35em">{{level.text}}</text>
+  {{/each}}
+
+  {{#each columns as |col|}}
+    <g transform="translate({{math col.cx '-' 1}}, {{../sheet.tick.top}})">
+      {{bar 2 ../sheet.tick.h (object tl=1 tr=1 bl=0 br=0) (toRad 0) fill=(ternary col.domain '#4338CA' '#64748B')}}
+    </g>
+  {{/each}}
+
+  {{#each sheet.grid.ys as |line|}}
+    <rect x="{{../sheet.grid.x}}" y="{{line.y}}" width="{{../sheet.grid.w}}" height="2" rx="1" fill="#94A3B8"{{#if line.faint}} fill-opacity="0.25"{{/if}}/>
+  {{/each}}
+
+  {{#each series as |line|}}
+    <polyline points="{{line.points}}" fill="none" stroke="{{line.stroke}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  {{/each}}
+</g>

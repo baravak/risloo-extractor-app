@@ -31,14 +31,25 @@ jobs:
           registry-url: https://registry.npmjs.org
           cache: npm
 
-      # Trusted publishing needs npm 11.5.1+, and the npm bundled with Node can
-      # lag behind that.
+      # Trusted publishing needs npm 11.5.1+. The npm bundled with Node usually
+      # already satisfies that, so only reach for the network when it does not
+      # — an unconditional global install is a needless failure point.
       - name: Ensure npm supports trusted publishing
         run: |
-          npm install -g npm@latest
+          need=11.5.1
+          have="$(npm --version)"
+          if [ "$(printf '%s\n%s\n' "$need" "$have" | sort -V | head -n1)" = "$need" ]; then
+            echo "npm $have satisfies >= $need"
+          else
+            echo "npm $have is older than $need, upgrading"
+            for attempt in 1 2 3; do
+              npm install -g npm@latest && break
+              echo "attempt $attempt failed, retrying"; sleep 10
+            done
+          fi
           npm --version
 
-      - run: npm ci
+      - run: npm ci --fetch-retries=5
 
       # sharp carries a native binary. Fail here with a clear message rather
       # than part-way through the release.

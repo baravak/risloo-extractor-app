@@ -151,20 +151,20 @@ class NEO9Q extends Profile {
         const [page1, page2, page3, page4] = this.padding;
         return [
           {
-            width: 800 + 2 * page1.x,
-            height: 674 + 2 * page1.y,
+            width: 878 + 2 * page1.x,
+            height: 704 + 2 * page1.y,
           },
           {
-            width: 811 + 2 * page2.x,
-            height: 668 + 2 * page2.y,
+            width: 800 + 2 * page2.x,
+            height: 674 + 2 * page2.y,
           },
           {
             width: 811 + 2 * page3.x,
-            height: 464 + 2 * page3.y,
+            height: 668 + 2 * page3.y,
           },
           {
-            width: 878 + 2 * page4.x,
-            height: 704 + 2 * page4.y,
+            width: 811 + 2 * page4.x,
+            height: 464 + 2 * page4.y,
           },
         ];
       },
@@ -173,10 +173,10 @@ class NEO9Q extends Profile {
       // resolves to 903 × 714 — the exact with-sidebar drawing area — and
       // renders at scale 1 instead of being shrunk to fit.
       padding: [
+        { x: 12.5, y: 5 },
         { x: 51.5, y: 20 },
         { x: 46, y: 23 },
         { x: 46, y: 125 },
-        { x: 12.5, y: 5 },
       ],
     },
     labels: Object.values(this.labels),
@@ -322,35 +322,12 @@ class NEO9Q extends Profile {
       })),
     ];
 
+    // The profile sheet opens the report; the bar pages follow it.
     return [
       {
         ...sharedContext,
         page: 1,
-        titleAppend: titleAppend(1),
-        items,
-        redErrors: layoutIndicators(redErrors),
-        yellowErrors: layoutIndicators(yellowErrors),
-        showRed: redErrors.length > 0,
-        showYellow: yellowErrors.length > 0,
-      },
-      {
-        ...sharedContext,
-        page: 2,
-        titleAppend: titleAppend(2),
-        blocks: blocks.slice(0, 3),
-        gridBottom: 664.5,
-      },
-      {
-        ...sharedContext,
-        page: 3,
-        titleAppend: titleAppend(3),
-        blocks: blocks.slice(3, 5),
-        gridBottom: 460.5,
-      },
-      {
-        ...sharedContext,
-        page: 4,
-        titleAppend: ' - کلاسیک',
+        titleAppend: " - کلاسیک",
         columns: sheetCols,
         series,
         sheet: {
@@ -403,6 +380,30 @@ class NEO9Q extends Profile {
           titleBottomY: 130,
           codeY: 703,
         },
+      },
+      {
+        ...sharedContext,
+        page: 2,
+        titleAppend: titleAppend(2),
+        items,
+        redErrors: layoutIndicators(redErrors),
+        yellowErrors: layoutIndicators(yellowErrors),
+        showRed: redErrors.length > 0,
+        showYellow: yellowErrors.length > 0,
+      },
+      {
+        ...sharedContext,
+        page: 3,
+        titleAppend: titleAppend(3),
+        blocks: blocks.slice(0, 3),
+        gridBottom: 664.5,
+      },
+      {
+        ...sharedContext,
+        page: 4,
+        titleAppend: titleAppend(4),
+        blocks: blocks.slice(3, 5),
+        gridBottom: 460.5,
       },
     ];
   }

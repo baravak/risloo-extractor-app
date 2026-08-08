@@ -44,8 +44,7 @@ risloo-extractor-app/
 │   └── publish/
 │       ├── json/profiles/       # Template JSON per sample
 │       ├── json/gift/           # Gift template data
-│       ├── test.js              # Auto-test all samples
-│       └── bot.js               # Post-publish automation
+│       └── test.js              # Auto-test all samples
 ├── views/
 │   ├── profiles/samples/        # Handlebars SVG templates (.hbs)
 │   └── gift.hbs
@@ -409,5 +408,4 @@ If several local coordinate patches accumulate, stop. Re-establish the coordinat
 npm version <patch|minor|major>
 npm publish
 # prepublishOnly: npm test
-# postpublish: npm run bot
 ```

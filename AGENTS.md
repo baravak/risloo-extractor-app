@@ -386,7 +386,7 @@ If several local coordinate patches accumulate, stop. Re-establish the coordinat
 | Dates | Moment.js + moment-jalaali (Persian calendar) |
 | QR codes | qrcode |
 | File watching | Chokidar |
-| Package manager | Yarn |
+| Package manager | npm (`package-lock.json` is the lockfile) |
 | Design source | Figma (via MCP) |
 
 ---
@@ -404,8 +404,17 @@ If several local coordinate patches accumulate, stop. Re-establish the coordinat
 
 ## Publishing
 
+Releases go through GitHub Actions via npm **trusted publishing** (OIDC) — there
+is no npm token anywhere, local or in secrets. Tag the release and push it; the
+`.github/workflows/publish.yml` job publishes it.
+
 ```bash
-npm version <patch|minor|major>
-npm publish
-# prepublishOnly: npm test
+npm version <patch|minor|major>   # bumps package.json and creates the vX.Y.Z tag
+git push --follow-tags            # pushing the tag triggers the release
+# prepublishOnly: npm test — runs inside the job before the registry is touched
 ```
+
+The job refuses to publish if the tag and `package.json` version disagree.
+Publishing from a laptop with `npm publish` is not expected to work: npm
+removed non-expiring tokens, and the package is configured to trust this
+workflow instead.

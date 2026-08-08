@@ -1,14 +1,23 @@
-name: push-package
+name: CI
+
 on:
-  push
+  push:
+  pull_request:
+
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16.x"
-      - run: |
-          yarn
-          yarn test
+          node-version: 24
+          cache: npm
+
+      # `npm ci` installs exactly what package-lock.json pins; the previous
+      # `yarn` step ignored that lockfile.
+      - run: npm ci
+
+      # Renders every sample in both variants.
+      - run: npm test

@@ -1,0 +1,59 @@
+name: Publish to npm
+
+# Releases are driven by a tag:
+#
+#   npm version <patch|minor|major>
+#   git push --follow-tags
+#
+# No npm token is involved. The job authenticates to the registry with a
+# short-lived OIDC credential issued to this workflow (trusted publishing),
+# which is what `id-token: write` below grants. The registry must be told to
+# trust this repository + workflow filename in the package's settings.
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      # Trusted publishing needs npm 11.5.1+, and the npm bundled with Node can
+      # lag behind that.
+      - name: Ensure npm supports trusted publishing
+        run: |
+          npm install -g npm@latest
+          npm --version
+
+      - run: npm ci
+
+      # sharp carries a native binary. Fail here with a clear message rather
+      # than part-way through the release.
+      - name: Smoke-check the native image pipeline
+        run: node -e "require('sharp'); console.log('sharp loaded')"
+
+      # A tag that disagrees with package.json would publish the wrong version.
+      - name: Check the tag matches package.json
+        if: github.event_name == 'push'
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./package.json').version")"
+          echo "tag=$tag  package.json=$pkg"
+          test "$tag" = "$pkg"
+
+      # Runs prepublishOnly (npm test) first. Provenance is attached
+      # automatically because this is a public repository.
+      - run: npm publish

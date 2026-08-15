@@ -1,0 +1,100 @@
+{{#each items as |item index|}}
+  <g transform="translate(0, {{math ../rowsY '+' (math index '*' ../rowPitch)}})">
+    <g transform="translate({{../leftTrackX}}, 0)">
+      {{bar 250 24 (object tl=4 bl=4 tr=0 br=0) (toRad 0) fill=../leftTrackFill}}
+    </g>
+    <g transform="translate({{../rightTrackX}}, 0)">
+      {{bar 250 24 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill=../rightTrackFill}}
+    </g>
+
+    {{#if ../showDescriptions}}
+      <g transform="translate({{../leftTrackX}}, 28)">
+        {{bar 250 68 (object tl=4 bl=4 tr=0 br=0) (toRad 0) fill=../leftTrackFill}}
+      </g>
+      <g transform="translate({{../rightTrackX}}, 28)">
+        {{bar 250 68 (object tl=0 bl=0 tr=4 br=4) (toRad 0) fill=../rightTrackFill}}
+      </g>
+
+      <text x="{{../leftDescriptionX}}" y="48" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">
+        {{#each item.descriptionLeftLines as |line lineIndex|}}
+          <tspan x="{{../../leftDescriptionX}}" y="{{math 48 '+' (math lineIndex '*' 17)}}">{{line}}</tspan>
+        {{/each}}
+      </text>
+      <text x="{{../rightDescriptionX}}" y="48" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">
+        {{#each item.descriptionRightLines as |line lineIndex|}}
+          <tspan x="{{../../rightDescriptionX}}" y="{{math 48 '+' (math lineIndex '*' 17)}}">{{line}}</tspan>
+        {{/each}}
+      </text>
+    {{/if}}
+
+    {{#if item.isNegative}}
+      <g transform="translate({{math ../leftZeroX '-' item.barW}}, 0)">
+        {{bar item.barW 24 (object tl=item.barRadius bl=item.barRadius tr=0 br=0) (toRad 0) fill=../leftActiveFill}}
+        <text
+          x="{{ternary item.inside 7 -7}}"
+          y="12"
+          dy=".34em"
+          font-size="{{ternary item.inside 16 14}}"
+          font-weight="{{ternary item.inside 600 500}}"
+          fill="{{ternary item.inside 'white' ../leftActiveColor}}"
+          text-anchor="{{ternary item.inside 'start' 'end'}}"
+          direction="ltr"
+          unicode-bidi="bidi-override"
+        >{{item.scoreText}}</text>
+      </g>
+    {{/if}}
+
+    {{#if item.isPositive}}
+      <g transform="translate({{../rightZeroX}}, 0)">
+        {{bar item.barW 24 (object tl=0 bl=0 tr=item.barRadius br=item.barRadius) (toRad 0) fill=../rightActiveFill}}
+        <text
+          x="{{math item.barW '+' (ternary item.inside -7 7)}}"
+          y="12"
+          dy=".34em"
+          font-size="{{ternary item.inside 16 14}}"
+          font-weight="{{ternary item.inside 600 500}}"
+          fill="{{ternary item.inside 'white' ../rightActiveColor}}"
+          text-anchor="{{ternary item.inside 'end' 'start'}}"
+          direction="ltr"
+          unicode-bidi="bidi-override"
+        >{{item.scoreText}}</text>
+      </g>
+    {{/if}}
+
+    <rect x="{{../titleX}}" y="0" width="{{../titleWidth}}" height="24" fill="#E2E8F0" fill-opacity="0.25"/>
+    <text
+      x="{{math ../titleX '+' (math ../titleWidth '/' 2)}}"
+      y="12"
+      dy=".32em"
+      font-size="{{../titleFontSize}}"
+      font-weight="{{../titleFontWeight}}"
+      fill="#475569"
+      text-anchor="middle"
+    >{{item.title}}</text>
+
+    <text
+      x="{{../leftRawX}}"
+      y="12"
+      dy=".3em"
+      font-size="12"
+      font-weight="400"
+      fill="#64748B"
+      text-anchor="end"
+      direction="ltr"
+      unicode-bidi="bidi-override"
+      xml:space="preserve"
+    ><tspan>{{item.rawDisplay.negative.boundText}}</tspan>{{#if item.rawDisplay.negative.showSlash}}<tspan> / </tspan><tspan font-size="14" font-weight="500">{{item.rawDisplay.negative.resultText}}</tspan>{{/if}}</text>
+    <text
+      x="{{../rightRawX}}"
+      y="12"
+      dy=".3em"
+      font-size="12"
+      font-weight="400"
+      fill="#64748B"
+      text-anchor="start"
+      direction="ltr"
+      unicode-bidi="bidi-override"
+      xml:space="preserve"
+    >{{#if item.rawDisplay.positive.showSlash}}<tspan font-size="14" font-weight="500">{{item.rawDisplay.positive.resultText}}</tspan><tspan> / </tspan>{{/if}}<tspan>{{item.rawDisplay.positive.boundText}}</tspan></text>
+  </g>
+{{/each}}

@@ -1,0 +1,64 @@
+{{#> layout}}
+  <defs>
+    <linearGradient id="sii93-p2-left-track" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#FFF1F2"/>
+      <stop offset="1" stop-color="#E2E8F0" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="sii93-p2-right-track" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#E2E8F0" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#F0FDF4"/>
+    </linearGradient>
+    <linearGradient id="sii93-p2-left-active" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#BE123C"/>
+      <stop offset="1" stop-color="#FECDD3"/>
+    </linearGradient>
+    <linearGradient id="sii93-p2-right-active" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#BBF7D0"/>
+      <stop offset="1" stop-color="#15803D"/>
+    </linearGradient>
+    <filter id="sii93-p2-left-split" x="379" y="17" width="7" height="650" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="-1"/><feGaussianBlur stdDeviation="1.5"/><feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+    <filter id="sii93-p2-right-split" x="572" y="17" width="7" height="650" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1"/><feGaussianBlur stdDeviation="1.5"/><feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.[1].x}}, {{spec.profile.padding.[1].y}})">
+    <g stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6">
+      <line x1="133.5" y1="20.5" x2="133.5" y2="663.5"/>
+      <line x1="258.5" y1="20.5" x2="258.5" y2="663.5"/>
+      <line x1="699.5" y1="20.5" x2="699.5" y2="663.5"/>
+      <line x1="824.5" y1="20.5" x2="824.5" y2="663.5"/>
+    </g>
+
+    {{#with (lookup groups 0)}}
+      {{> SII93_bipolar_rows items=items rowsY=40 rowPitch=36 leftTrackX=133 leftZeroX=383 titleX=384 titleWidth=190 rightTrackX=575 rightZeroX=575 leftRawX=125 rightRawX=833 titleFontSize=13 titleFontWeight=400 leftTrackFill="url(#sii93-p2-left-track)" rightTrackFill="url(#sii93-p2-right-track)" leftActiveFill="url(#sii93-p2-left-active)" rightActiveFill="url(#sii93-p2-right-active)" leftActiveColor="#BE123C" rightActiveColor="#15803D"}}
+      {{> SII93_summary_card summary=summary cardY=40.5 cardHeight=203 axisY=124 pillY=159}}
+    {{/with}}
+    {{#with (lookup groups 1)}}
+      {{> SII93_bipolar_rows items=items rowsY=312 rowPitch=36 leftTrackX=133 leftZeroX=383 titleX=384 titleWidth=190 rightTrackX=575 rightZeroX=575 leftRawX=125 rightRawX=833 titleFontSize=13 titleFontWeight=400 leftTrackFill="url(#sii93-p2-left-track)" rightTrackFill="url(#sii93-p2-right-track)" leftActiveFill="url(#sii93-p2-left-active)" rightActiveFill="url(#sii93-p2-right-active)" leftActiveColor="#BE123C" rightActiveColor="#15803D"}}
+      {{> SII93_summary_card summary=summary cardY=312.5 cardHeight=131 axisY=360 pillY=401.5}}
+    {{/with}}
+    {{#with (lookup groups 2)}}
+      {{> SII93_bipolar_rows items=items rowsY=512 rowPitch=36 leftTrackX=133 leftZeroX=383 titleX=384 titleWidth=190 rightTrackX=575 rightZeroX=575 leftRawX=125 rightRawX=833 titleFontSize=13 titleFontWeight=400 leftTrackFill="url(#sii93-p2-left-track)" rightTrackFill="url(#sii93-p2-right-track)" leftActiveFill="url(#sii93-p2-left-active)" rightActiveFill="url(#sii93-p2-right-active)" leftActiveColor="#BE123C" rightActiveColor="#15803D"}}
+      {{> SII93_summary_card summary=summary cardY=512.5 cardHeight=131 axisY=560 pillY=598.5}}
+    {{/with}}
+
+    <g opacity="0.5" filter="url(#sii93-p2-left-split)"><line x1="383.5" y1="20.5" x2="383.5" y2="663.5" stroke="white" stroke-linecap="round"/></g>
+    <g opacity="0.5" filter="url(#sii93-p2-right-split)"><line x1="574.5" y1="20.5" x2="574.5" y2="663.5" stroke="white" stroke-linecap="round"/></g>
+
+    <g font-size="12" font-weight="400" fill="#94A3B8" text-anchor="middle" direction="ltr" unicode-bidi="bidi-override">
+      <text x="133.5" y="8">- 2</text><text x="258.5" y="8">- 1</text><text x="383.5" y="8">0</text>
+      <text x="574.5" y="8">0</text><text x="699.5" y="8">1</text><text x="824.5" y="8">2</text>
+    </g>
+  </g>
+{{/layout}}

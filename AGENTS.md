@@ -183,6 +183,27 @@ get dimensions() {
 
 Padding is layout metadata. Do not apply the same padding again inside the HBS when the layout already owns it.
 
+#### Subtract the 20 px the layout already owns — every page must resolve to 903 × 714
+
+The designs are drawn on a **943 × 754** page, but `layout.hbs` insets the profile `<svg>` by `canvas.profile.padding` (**20 px**) on every side, so the real with-sidebar drawing area is **903 × 714**. Padding is therefore the Chart's inset inside the design page **minus that 20 px**:
+
+```js
+padding: {
+  x: (943 - CHART_WIDTH)  / 2 - 20,
+  y: (754 - CHART_HEIGHT) / 2 - 20,
+},
+```
+
+so `dimensions` comes out at exactly `903 × 714`. Use the Chart's *measured* inset instead of `/2` whenever the Chart is not centred on the design page — the `− 20` still applies.
+
+This is not cosmetic. The inner `<svg>` uses the default `preserveAspectRatio="xMidYMid meet"`, so a `943 × 754` viewBox is **shrunk to fit at 0.9469** — the whole page, text and geometry included — while `903 × 714` renders at **scale 1**. Check it after every render:
+
+```bash
+grep -A4 '<svg x=' temp/<NAME>.svg   # width/height must equal the viewBox in the with-sidebar variant
+```
+
+The raw variant is a different box and legitimately renders at ~1.056; only the with-sidebar variant is the scale-1 target.
+
 Never introduce a conventional `translate(20,20)`, arbitrary centering transform, or scale. Add an inner translation only when that offset visibly belongs to the Chart layer and is measured from an authorized source.
 
 Fix geometry at the layer that owns the error:

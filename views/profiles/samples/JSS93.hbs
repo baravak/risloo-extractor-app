@@ -1,0 +1,131 @@
+{{#> layout}}
+
+  <defs>
+    {{! Teal wash behind the plot area (Figma "Bar Back Total") }}
+    <linearGradient id="jssWash" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#F0FDFA"/>
+      <stop offset="1" stop-color="#CCFBF1"/>
+    </linearGradient>
+
+    {{! Factor bar: Figma anchors the gradient to each bar's own width, so bounding-box
+        units reproduce all nine bars from one definition. }}
+    <linearGradient id="jssBar" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#99F6E4"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+
+    {{! Total bar: Figma runs the gradient 194 % of the fill height up from the foot of
+        the bar, i.e. from bounding-box y = 1 to y = 1 − 1.94, so the visible tip keeps
+        the same tone at every score. }}
+    <linearGradient id="jssTotal" x1="0" y1="1" x2="0" y2="-0.94">
+      <stop stop-color="#94A3B8"/>
+      <stop offset="1" stop-color="#334155"/>
+    </linearGradient>
+
+    {{! Shadow of the white 0 % baseline (offset right, soft blur) }}
+    <filter id="jssBaseShadow" x="171" y="27" width="7" height="390" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+
+    {{! Same treatment under the foot of the total bar }}
+    <filter id="jssTotalBaseShadow" x="711" y="390" width="34" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="2"/>
+      <feGaussianBlur stdDeviation="3"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{! ===================== Plot area wash ===================== }}
+    <rect x="175" y="30" width="399" height="384" fill="url(#jssWash)" fill-opacity="0.25"/>
+
+    {{! ===================== Raw-score boxes ===================== }}
+    {{#each items as |item|}}
+      <rect x="587.5" y="{{math item.top '+' 0.5}}" width="31" height="15" rx="3.5" fill="none" stroke="#059669"/>
+      <text x="603" y="{{item.baseline}}" text-anchor="middle" font-size="13" font-weight="500" fill="#047857">{{item.mark}}</text>
+    {{/each}}
+
+    {{! ===================== Gridlines (10 % … 100 %) ===================== }}
+    <line x1="213.5" y1="30.5" x2="213.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="253.5" y1="30.5" x2="253.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="293.5" y1="30.5" x2="293.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="333.5" y1="30.5" x2="333.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="373.5" y1="30.5" x2="373.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="413.5" y1="30.5" x2="413.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="453.5" y1="30.5" x2="453.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="493.5" y1="30.5" x2="493.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="533.5" y1="30.5" x2="533.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="573.5" y1="30.5" x2="573.5" y2="413.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    {{! ===================== Bar tracks ===================== }}
+    {{#each items as |item|}}
+      <g transform="translate(174, {{item.top}})">
+        {{bar 400 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="black" fill-opacity="0.04"}}
+      </g>
+    {{/each}}
+
+    {{! ===================== Bars + percentage inside the tip ===================== }}
+    {{#each items as |item|}}
+      <g transform="translate(174, {{item.top}})">
+        {{#if item.width}}{{bar item.width 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="url(#jssBar)"}}{{/if}}
+      </g>
+      <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="white">٪ {{item.pct}}</text>
+    {{/each}}
+
+    {{! ===================== Factor names ===================== }}
+    {{#each items as |item|}}
+      <text x="165" y="{{item.baseline}}" text-anchor="start" font-size="13" fill="#475569">{{item.title}}</text>
+    {{/each}}
+
+    {{! ===================== White shadowed 0 % baseline ===================== }}
+    <g opacity="0.5" filter="url(#jssBaseShadow)">
+      <line x1="173.5" y1="30.5" x2="173.5" y2="413.5" stroke="white" stroke-linecap="round"/>
+    </g>
+
+    {{! ===================== Axis labels ===================== }}
+    <text x="173.5" y="18.06" text-anchor="middle" font-size="12" fill="#94A3B8">0</text>
+    <text x="373.5" y="18.06" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">٪ 50</text>
+    <text x="563" y="18.06" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">٪ 100</text>
+    <text x="603" y="10.06" text-anchor="middle" font-size="12" fill="#94A3B8">نمره خام</text>
+    <text x="603" y="24.06" text-anchor="middle" font-size="12" fill="#94A3B8">از 20</text>
+
+    {{! ===================== Total score column ===================== }}
+    <g transform="translate(717, 46)">
+      {{bar 18 350 (object tl=2 tr=2 bl=0 br=0) (toRad 0) fill="#F1F5F9"}}
+    </g>
+    {{#if total.height}}
+      <g transform="translate(717, {{total.tip}})">
+        {{bar 18 total.height (object tl=2 tr=2 bl=0 br=0) (toRad 0) fill="url(#jssTotal)"}}
+      </g>
+    {{/if}}
+
+    {{! Readout travelling with the tip of the bar }}
+    <text x="743" y="{{total.pctBaseline}}" text-anchor="start" direction="ltr" font-size="18" font-weight="600" fill="#334155">٪ {{total.pct}}</text>
+    <text x="743" y="{{total.fractionBaseline}}" text-anchor="end" font-size="12" fill="#64748B">{{total.mark}} از {{total.max}}</text>
+
+    {{! Column title, reading bottom-up along the bar }}
+    <text x="0" y="0" transform="translate(707.02, 296.2) rotate(-90)" text-anchor="start" font-size="12" fill="#475569">نمره کل رضایت شغلی</text>
+
+    {{! Foot of the total bar }}
+    <g opacity="0.5" filter="url(#jssTotalBaseShadow)">
+      <path d="M716 397H736" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <text x="711" y="49.06" text-anchor="end" direction="ltr" font-size="12" fill="#475569">٪ 100</text>
+
+  </g>
+
+{{/layout}}

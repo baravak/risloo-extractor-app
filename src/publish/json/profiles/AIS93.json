@@ -1,0 +1,223 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$AIS-93",
+    "title": "مقیاس بی‌خوابی آتن"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": null,
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "این مقیاس مشکل خواب شما را بررسی می‌کند. لطفاً هر عبارت را بخوانید و عدد مناسب را انتخاب کنید.\n\nتوجه: شما این علامت را باید حداقل سه شب در هر هفته و به مدت یک ماه داشته باشید.",
+  "items": [
+    {
+      "type": "text",
+      "text": "شروع خواب من (زمانی که شما بعد از خاموش‌کردن چراغ‌ها طول می‌کشد تا بخوابید)",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "مشکلی ندارد",
+          "کمی با تأخیر همراه است",
+          "تأخیر قابل توجهی وجود دارد",
+          "خیلی تأخیر وجود دارد / اصلاً نتوانستم بخوابم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بیداری شبانه",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "مشکلی وجود ندارد",
+          "مشکل خفیفی وجود دارد",
+          "مشکل قابل توجهی وجود دارد",
+          "مشکل جدی وجود دارد / اصلاً نتوانستم بخوابم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "زودتر از آن چیزی که دوست دارم بیدار می‌شوم",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "زودتر نیست",
+          "کمی زودتر است",
+          "به طور قابل توجهی زودتر است",
+          "خیلی زودتر است / اصلاً نتوانستم بخوابم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "مقدار کلی خواب (کل خواب من)",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کافی است",
+          "کمی ناکافی است",
+          "به طور قابل توجهی ناکافی است",
+          "خیلی ناکافی است / اصلاً نتوانستم بخوابم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "کیفیت کلی خواب من (مهم نیست که چند ساعت خوابیده‌اید)",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "رضایت‌بخش است",
+          "کمی نارضایت‌بخش است",
+          "به طور قابل توجهی نارضایت‌بخش است",
+          "خیلی نارضایت‌بخش است / اصلاً نتوانستم بخوابم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "احساس بهزیستی در طول روز",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "عادی است",
+          "کمی کاهش یافته است",
+          "به طور قابل توجهی کاهش یافته است",
+          "خیلی کاهش یافته است"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "عملکرد (جسمی و ذهنی) در طول روز",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "عادی است",
+          "کمی کاهش یافته است",
+          "به طور قابل توجهی کاهش یافته است",
+          "خیلی کاهش یافته است"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "خواب‌آلودگی در طول روز",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "وجود ندارد",
+          "خفیف است",
+          "قابل توجه است",
+          "شدید است"
+        ]
+      },
+      "user_answered": "1"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "35"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "cornometer": 743,
+  "score": {
+    "status": "valid",
+    "total": 11
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

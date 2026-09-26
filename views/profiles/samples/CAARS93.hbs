@@ -1,0 +1,67 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+  {{#if valid}}
+
+    {{! ===================== Three raw scores, three separate lines ===================== }}
+    {{! Each line is its own axis (0 to that scale's maximum); one neutral hue, no zone, no threshold. }}
+    <text x="843" y="24" text-anchor="start" font-size="16" font-weight="600" fill="#1E293B">نمره‌ها</text>
+
+    {{#each scales as |item|}}
+      <text x="843" y="{{math item.y '+' 5}}" text-anchor="start" font-size="14" font-weight="600" fill="#334155">{{item.title}}</text>
+      <text x="{{item.valueX}}" y="{{math item.y '+' 5}}" text-anchor="end" font-size="13" fill="#334155"><tspan font-weight="700">{{item.mark}}</tspan> از {{item.max}}</text>
+
+      <line x1="{{item.left}}" y1="{{item.y}}" x2="{{item.right}}" y2="{{item.y}}" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+      <line x1="{{item.left}}" y1="{{math item.y '-' 7}}" x2="{{item.left}}" y2="{{math item.y '+' 7}}" stroke="#94A3B8" stroke-width="1.5"/>
+      <line x1="{{item.right}}" y1="{{math item.y '-' 7}}" x2="{{item.right}}" y2="{{math item.y '+' 7}}" stroke="#94A3B8" stroke-width="1.5"/>
+      <text x="{{item.left}}" y="{{math item.y '+' 24}}" text-anchor="middle" font-size="11" fill="#94A3B8">0</text>
+      <text x="{{item.right}}" y="{{math item.y '+' 24}}" text-anchor="middle" font-size="11" fill="#94A3B8">{{item.max}}</text>
+
+      <circle cx="{{item.x}}" cy="{{item.y}}" r="7" fill="#475569" stroke="white" stroke-width="2"/>
+      <text x="{{item.x}}" y="{{math item.y '-' 14}}" text-anchor="middle" font-size="13" font-weight="700" fill="#1E293B">{{item.mark}}</text>
+    {{/each}}
+
+    {{! ===================== Interpretation, uncertainty, reference cut-off ===================== }}
+    {{! Fixed text from the science package; the profile is read by the authorised specialist. }}
+    <rect x="0.5" y="272.5" width="862" height="401" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+
+    <text x="843" y="302" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">تفسیر</text>
+    <text x="843" y="330" text-anchor="start" font-size="13.5" fill="#334155">نمرهٔ بالاتر در هر مقیاس یعنی پاسخ‌دهنده نشانه‌های بیشتری از همان مقیاس گزارش کرده است.</text>
+    <text x="843" y="354" text-anchor="start" font-size="13.5" fill="#334155">این نمره تشخیص نیست.</text>
+
+    <text x="843" y="390" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">عدم قطعیت و محدودیت</text>
+    <circle cx="840" cy="413.5" r="2" fill="#334155"/>
+    <text x="831" y="418" text-anchor="start" font-size="13.5" fill="#334155">این ابزار غربال است، نه تشخیص.</text>
+    <circle cx="840" cy="437.5" r="2" fill="#334155"/>
+    <text x="831" y="442" text-anchor="start" font-size="13.5" fill="#334155">برای این نسخه هنجار ایرانی و برش قابل محاسبه وجود ندارد.</text>
+    <circle cx="840" cy="461.5" r="2" fill="#334155"/>
+    <text x="831" y="466" text-anchor="start" font-size="13.5" fill="#334155">نمرهٔ بالا ممکن است از افسردگی یا اضطراب هم بیاید.</text>
+    <circle cx="840" cy="485.5" r="2" fill="#334155"/>
+    <text x="831" y="490" text-anchor="start" font-size="13.5" fill="#334155">آزمون تصمیم‌یار است، نه تصمیم‌گیر قطعی.</text>
+
+    <text x="843" y="526" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">نقطهٔ برش مرجع</text>
+    {{! "T ≥ 65" is its own left-to-right text: inside a right-to-left run it reorders to "65 ≥ T". }}
+    <text x="843" y="552" direction="ltr" text-anchor="end" font-size="13" font-weight="600" fill="#334155">T ≥ 65</text>
+    <text x="790" y="552" text-anchor="start" font-size="13" fill="#334155">— حساسیت 59٪، ویژگی 92٪</text>
+    <text x="843" y="576" direction="ltr" text-anchor="end" font-size="13" font-weight="600" fill="#334155">T ≥ 55</text>
+    <text x="790" y="576" text-anchor="start" font-size="13" fill="#334155">— حساسیت 89٪، ویژگی 68٪</text>
+    <text x="843" y="602" text-anchor="start" font-size="13" fill="#334155">منبع: مطالعهٔ روایی ملاکیِ یک ترجمهٔ فارسیِ دیگر از همین فرم، 1393.</text>
+    <text x="843" y="626" text-anchor="start" font-size="13" fill="#334155">جامعه: 100 والدِ کودکانِ مبتلا به ADHD؛ ملاک بیرونی: مصاحبهٔ روان‌پزشکی بر پایهٔ ملاک‌های یوتا.</text>
+    <text x="843" y="654" text-anchor="start" font-size="13" font-weight="600" fill="#334155">این دو عدد روی مقیاس T تعریف شده‌اند و با نمره‌های خامِ این نسخه قابل مقایسه نیستند.</text>
+
+  {{else}}
+
+    {{! ===================== No result (all-or-nothing) ===================== }}
+    <rect x="181.5" y="237.5" width="500" height="199" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <circle cx="431.5" cy="288" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
+    <line x1="431.5" y1="279" x2="431.5" y2="291" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="431.5" cy="297.5" r="1.6" fill="#64748B"/>
+    <text x="431.5" y="344" text-anchor="middle" font-size="17" font-weight="600" fill="#1E293B">نمره تولید نشد</text>
+    <text x="431.5" y="376" text-anchor="middle" font-size="13" fill="#64748B">پاسخ ناقص یا نامعتبر است؛ هیچ نمره‌ای، حتی نمرهٔ جزئی، گزارش نمی‌شود.</text>
+
+  {{/if}}
+
+  </g>
+
+{{/layout}}

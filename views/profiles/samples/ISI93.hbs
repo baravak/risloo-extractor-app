@@ -1,0 +1,101 @@
+{{#> layout}}
+
+  <defs>
+    {{! Severity track, fully rounded; the four band segments are clipped to it. }}
+    <clipPath id="isiBandTrack">
+      <rect x="20" y="112" width="630" height="22" rx="6"/>
+    </clipPath>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+  {{#if valid}}
+
+    {{! ===================== Total and severity class ===================== }}
+    <text x="843" y="24" text-anchor="start" font-size="16" font-weight="600" fill="#1E293B">نمرهٔ کل و طبقهٔ شدت</text>
+    <text x="843" y="46" text-anchor="start" font-size="12" fill="#64748B">نمرهٔ کل از 0 تا 28؛ نمرهٔ بالاتر یعنی شدت بیشتر. طبقه توصیف شدت است، نه تشخیص.</text>
+
+    {{! Four bands on the total's points scale; the respondent's band at full colour }}
+    <g clip-path="url(#isiBandTrack)">
+      {{#each bands as |band|}}
+        <rect x="{{band.left}}" y="112" width="{{band.width}}" height="22" fill="{{band.fill}}" fill-opacity="{{ternary band.active 1 0.4}}"/>
+      {{/each}}
+    </g>
+    {{#each bands as |band|}}
+      {{#unless @first}}
+        <line x1="{{band.left}}" y1="112" x2="{{band.left}}" y2="134" stroke="white" stroke-width="2"/>
+      {{/unless}}
+    {{/each}}
+
+    {{! Band ranges and names, centred under each band }}
+    {{#each bands as |band|}}
+      <text x="{{band.center}}" y="156" text-anchor="middle" font-size="11" fill="#94A3B8">{{band.range}}</text>
+      {{#each band.lines as |line|}}
+        <text x="{{band.center}}" y="{{line.y}}" text-anchor="middle" font-size="12" font-weight="{{ternary band.active 700 400}}" fill="{{ternary band.active '#1E293B' '#94A3B8'}}">{{line.text}}</text>
+      {{/each}}
+    {{/each}}
+
+    {{! Score marker: value, pointer and a line through the track }}
+    <text x="{{total.x}}" y="90" text-anchor="middle" font-size="13" font-weight="700" fill="#1E293B">{{total.mark}}</text>
+    <path d="M {{math total.x '-' 5}} 97 L {{math total.x '+' 5}} 97 L {{total.x}} 104 Z" fill="#1E293B"/>
+    <line x1="{{total.x}}" y1="104" x2="{{total.x}}" y2="140" stroke="#1E293B" stroke-width="2" stroke-linecap="round"/>
+
+    {{! Total card (right of the chart) }}
+    <rect x="693.5" y="70.5" width="169" height="150" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="778" y="104" text-anchor="middle" font-size="14" font-weight="600" fill="#475569">نمرهٔ کل</text>
+    <text x="778" y="164" text-anchor="middle" font-size="48" font-weight="700" fill="#1E293B">{{total.mark}}</text>
+    <text x="778" y="192" text-anchor="middle" font-size="13" fill="#64748B">از {{total.max}}</text>
+
+    {{! ===================== Components: one neutral hue, no class ===================== }}
+    <text x="843" y="252" text-anchor="start" font-size="16" font-weight="600" fill="#1E293B">مولفه‌ها</text>
+    <text x="843" y="274" text-anchor="start" font-size="12" fill="#64748B">هر مولفه با بازهٔ خودش؛ نمرهٔ بالاتر یعنی شدت بیشتر. بازه‌ها برابر نیستند و نمرهٔ دو مولفه با هم مقایسه نمی‌شود.</text>
+
+    {{#each components as |item|}}
+      <g transform="translate(20, {{item.top}})">
+        {{bar item.track 18 (object tl=0 bl=0 tr=3 br=3) (toRad 0) fill="black" fill-opacity="0.05"}}
+      </g>
+      {{#if item.width}}
+        <g transform="translate(20, {{item.top}})">
+          {{bar item.width 18 (object tl=0 bl=0 tr=3 br=3) (toRad 0) fill="#64748B"}}
+        </g>
+      {{/if}}
+      <text x="{{item.valueX}}" y="{{item.baseline}}" text-anchor="end" font-size="13" fill="#334155"><tspan font-weight="700">{{item.mark}}</tspan> از {{item.max}}</text>
+      <text x="843" y="{{item.baseline}}" text-anchor="start" font-size="14" fill="#334155">{{item.title}}</text>
+    {{/each}}
+    <line x1="19.5" y1="282" x2="19.5" y2="362" stroke="#CBD5E1" stroke-linecap="round"/>
+
+    {{! ===================== Interpretation panel ===================== }}
+    {{! Fixed text from the science package; the class never appears without its four caveats. }}
+    <rect x="0.5" y="384.5" width="862" height="289" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="843" y="416" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">تفسیر نتیجه</text>
+
+    <text x="843" y="446" text-anchor="start" font-size="13.5" fill="#334155"><tspan font-weight="600">طبقهٔ شدت</tspan>: نمرهٔ کل {{total.mark}} از {{total.max}} — <tspan font-weight="600">{{severity.title}}</tspan>.</text>
+
+    <text x="843" y="476" text-anchor="start" font-size="13.5" font-weight="600" fill="#334155">قیدهای این طبقه‌بندی</text>
+    <circle cx="840" cy="495.5" r="2" fill="#334155"/>
+    <text x="831" y="500" text-anchor="start" font-size="13.5" fill="#334155">در جامعهٔ ایرانی اعتبارسنجی نشده است.</text>
+    <circle cx="840" cy="519.5" r="2" fill="#334155"/>
+    <text x="831" y="524" text-anchor="start" font-size="13.5" fill="#334155">حساسیت و ویژگی برای آن گزارش نشده است.</text>
+    <circle cx="840" cy="543.5" r="2" fill="#334155"/>
+    <text x="831" y="548" text-anchor="start" font-size="13.5" fill="#334155">نمرهٔ پایین، بی‌خوابی را رد نمی‌کند.</text>
+    <circle cx="840" cy="567.5" r="2" fill="#334155"/>
+    <text x="831" y="572" text-anchor="start" font-size="13.5" fill="#334155">زیر دورهٔ یادآوریِ متفاوتی (یک ماه) به دست آمده، در حالی که این نسخه دوهفته‌ای است.</text>
+
+    <text x="843" y="610" text-anchor="start" font-size="13.5" fill="#334155"><tspan font-weight="600">حدود تفسیر</tspan>: نمره و طبقه توصیف شدت‌اند، نه تشخیص. ابزار تصمیم‌یار است و جای ارزیابی بالینی را نمی‌گیرد.</text>
+    <text x="843" y="640" text-anchor="start" font-size="13.5" fill="#334155"><tspan font-weight="600">قید اجرا</tspan>: شواهد این نسخه از اجرای کاغذی آمده و هم‌ارزی اجرای کاغذی و برخط بررسی نشده است.</text>
+
+  {{else}}
+
+    {{! ===================== No result (all-or-nothing) ===================== }}
+    <rect x="181.5" y="237.5" width="500" height="199" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <circle cx="431.5" cy="288" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
+    <line x1="431.5" y1="279" x2="431.5" y2="291" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="431.5" cy="297.5" r="1.6" fill="#64748B"/>
+    <text x="431.5" y="344" text-anchor="middle" font-size="17" font-weight="600" fill="#1E293B">نمره تولید نشد</text>
+    <text x="431.5" y="376" text-anchor="middle" font-size="13" fill="#64748B">پاسخ ناقص یا نامعتبر است؛ هیچ نمره‌ای، حتی نمرهٔ جزئی، گزارش نمی‌شود.</text>
+
+  {{/if}}
+
+  </g>
+
+{{/layout}}

@@ -1,0 +1,219 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$ISI-93",
+    "title": "شاخص شدت بی‌خوابی مورین"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "صادقی‌نیت",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "برای هر پرسش، لطفاً گزینه‌ای را که پاسخ شما را بهتر از همه توصیف می‌کند **انتخاب کنید**.\n\nلطفاً **شدت فعلی** (یعنی **دو هفتهٔ اخیر**) مشکل یا مشکلات بی‌خوابی خود را درجه‌بندی کنید.\n\nلطفا فقط یک گزینه را انتخاب نمایید",
+  "items": [
+    {
+      "type": "text",
+      "text": "به سختی به خواب رفتن",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بدون مشکل",
+          "کم",
+          "متوسط",
+          "شدید",
+          "بسیار شدید"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "به سختی در خواب باقی ماندن",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بدون مشکل",
+          "کم",
+          "متوسط",
+          "شدید",
+          "بسیار شدید"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "مشکل زود بیدار شدن بیش از حد (صبح خیلی زود بیدارشدن)",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بدون مشکل",
+          "کم",
+          "متوسط",
+          "شدید",
+          "بسیار شدید"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "از وضعیت اخیر خواب خود تا چه حد راضی یا ناراضی هستید ؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "خیلی راضی",
+          "راضی",
+          "متوسط",
+          "ناراضی",
+          "خیلی ناراضی"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "فکر می کنید مشکل خواب در ایجاد اختلال در کیفیت زندگی شما تا چه حد برای دیگران قابل توجه است؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلا",
+          "کمی",
+          "متوسط",
+          "زیاد",
+          "خیلی زیاد"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "تا چه حد نسبت به مشکل اخیر خواب خود نگران یا مشوش هستید؟",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلا",
+          "کمی",
+          "متوسط",
+          "زیاد",
+          "خیلی زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "به نظر شما مشکل خواب تا چه اندازه با عملکرد روزانه شما تداخل دارد؟ (مثل خستگی روزانه، توانایی عملکرد حین کار/ وظایف روزانه، تمرکز، حافظه، خلق و غیره)",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلا",
+          "کمی",
+          "متوسط",
+          "زیاد",
+          "خیلی زیاد"
+        ]
+      },
+      "user_answered": "3"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "35"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    }
+  ],
+  "cornometer": 743,
+  "score": {
+    "status": "valid",
+    "nocturnal": 8,
+    "daytime": 6,
+    "total": 14,
+    "severity": "subthreshold"
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

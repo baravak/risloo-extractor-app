@@ -57,7 +57,7 @@
           "بسیار شدید"
         ]
       },
-      "user_answered": "3"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -87,7 +87,7 @@
           "بسیار شدید"
         ]
       },
-      "user_answered": "2"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -117,7 +117,7 @@
           "خیلی زیاد"
         ]
       },
-      "user_answered": "2"
+      "user_answered": "3"
     },
     {
       "type": "text",
@@ -209,10 +209,10 @@
   "cornometer": 743,
   "score": {
     "status": "valid",
-    "nocturnal": 8,
-    "daytime": 6,
-    "total": 14,
-    "severity": "subthreshold"
+    "nocturnal": 11,
+    "daytime": 7,
+    "total": 18,
+    "severity": "moderate"
   },
   "score_current_version": "1.0.0",
   "score_last_version": "1.0.0"

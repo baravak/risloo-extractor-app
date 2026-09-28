@@ -1,0 +1,643 @@
+{
+  "id": "$X1BATXXX",
+  "scale": {
+    "id": "$BAT-93",
+    "title": "ابزار ارزیابی فرسودگی شغلی"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "عبارات زیر به موقعیت کاری شما و نحوه تجربه شما در این موقعیت مربوط می‌شود. لطفاً بیان کنید که هر گزاره هر چند وقت یکبار در مورد شما صدق می‌کند.",
+  "items": [
+    {
+      "type": "text",
+      "text": "هنگام کار، احساس می‌کنم از لحاظ ذهنی به شدت خسته‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "هنگامی که به کار مشغولم برای انجام هر فعالیتی باید انرژی زیادی صرف کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "پس از یک روز کاری، بازیابی انرژی برایم دشوار است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "هنگام کار، از لحاظ جسمی احساس خستگی زیادی می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "وقتی صبح از خواب بیدار می‌شوم، انرژی کافی برای شروع یک روز تازه کاری را ندارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دلم می‌خواهد سر کار فعال باشم اما به نوعی از عهده آن برنمی‌آیم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "وقتی همه نیرویم را سر کار صرف می‌کنم، به سرعت خسته می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در پایان یک روز کاری، از لحاظ ذهنی به شدت احساس خستگی و احساس بی‌حالی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "باید خیلی تلاش کنم تا شوق کار کردن را در خود برانگیزم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "هنگام انجام کار، خیلی به کارم فکر نمی‌کنم و بیشتر به صورت ماشینی و خودکار کار می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "احساس بیزاری شدیدی نسبت به کارم دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "نسبت به انجام کارم بی‌تفاوت هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "نسبت به اینکه دیگران در مورد کار من چه دیدگاهی دارند، احساس بدبینی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "هنگام کار، برای حفظ تمرکز مشکل دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "هنگام کار، انگار ذهنم قفل می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنگام کار، حواسم پرت می‌شود و فراموشکار می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "وقتی در حال کار هستم، نمی‌توانم دقت و تمرکز داشته باشم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در کارم اشتباه می‌کنم چون ذهنم درگیر چیزهای دیگر است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "سر کار، احساس می‌کنم قادر به کنترل هیجان‌هایم نیستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "هنگام کار واکنش‌های هیجانی‌ام آنچنان شدید است که انگار خودم نیستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "در جریان کار، وقتی کارها آنطور که دلم می‌خواهد پیش نمی‌رود، ناراحت یا غمگین می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "سر کار ناراحت یا غمگین می‌شوم بدون اینکه بدانم چرا.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "هنگام کار بدون اینکه بخواهم، بیش از حد نسبت به موضوعی واکنش نشان می‌دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به خواب رفتن یا ادامه خواب، برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "همیشه به نوعی نگرانی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "احساس تنش و استرس دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "احساس اضطراب می‌کنم و/یا دچار ترس شدید می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "سر و صدا و شلوغی باعث آزارم می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "تپش قلب یا درد قفسه سینه دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "ناراحتی معده و مشکلات گوارشی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "سردرد دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دردهای عضلانی دارم مخصوصاً در نواحی پشت، گردن و شانه.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "اغلب از نظر جسمی حالم خوب نیست.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به‌ندرت",
+          "گاهی اوقات",
+          "اغلب",
+          "همیشه"
+        ]
+      },
+      "user_answered": "1"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "34"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مجرد",
+          "متأهل"
+        ]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    }
+  ],
+  "cornometer": 312,
+  "score": {
+    "total_core_raw": 48,
+    "total_core_score": 2.09,
+    "total_core_level": 1,
+    "ex_raw": 12,
+    "ex_score": 1.5,
+    "ex_level": 1,
+    "md_raw": 21,
+    "md_score": 4.2,
+    "md_level": 3,
+    "ci_raw": 9,
+    "ci_score": 1.8,
+    "ci_level": 1,
+    "ei_raw": 6,
+    "ei_score": 1.2,
+    "ei_level": 1,
+    "secondary_raw": 31,
+    "secondary_score": 3.1,
+    "secondary_level": 2,
+    "pd_raw": 23,
+    "pd_score": 4.6,
+    "pd_level": 0,
+    "psc_raw": 8,
+    "psc_score": 1.6,
+    "psc_level": 0
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

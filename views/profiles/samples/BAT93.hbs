@@ -1,0 +1,96 @@
+{{#> layout}}
+
+  <defs>
+    {{! One gradient per cut-off state. Figma anchors each bar's gradient to that bar's
+        own span (x1 = 134 → x2 = 134 + width), and every bar starts at 134, so
+        bounding-box units reproduce all of them from three definitions. }}
+    {{#each themes}}
+      <linearGradient id="bat-{{@key}}" x1="0" y1="0" x2="1" y2="0">
+        <stop stop-color="{{light}}"/>
+        <stop offset="1" stop-color="{{dark}}"/>
+      </linearGradient>
+    {{/each}}
+
+    {{! Shadow of the white 0-point baseline (offset right, soft blur) }}
+    <filter id="batBaseShadow" x="131" y="18" width="7.00003" height="422" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{! ===================== Row backgrounds =====================
+        Designer note: only the two group-total rows carry one; the other rows just
+        occupy the same amount of space. }}
+    <rect x="0" y="37" width="830" height="40" rx="8" fill="#F8FAFC"/>
+    <rect x="0" y="301" width="830" height="40" rx="8" fill="#F8FAFC"/>
+
+    {{! ===================== Gridlines (score 1 … 5) ===================== }}
+    <line x1="233.5" y1="21.5" x2="233.5" y2="436.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="333.5" y1="21.5" x2="333.5" y2="436.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="433.5" y1="21.5" x2="433.5" y2="436.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="533.5" y1="21.5" x2="533.5" y2="436.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="633.5" y1="21.5" x2="633.5" y2="436.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    {{! ===================== Bar tracks ===================== }}
+    {{#each items as |item|}}
+      <g transform="translate(134, {{item.top}})">
+        {{bar 500 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="#E2E8F0" fill-opacity="0.5"}}
+      </g>
+    {{/each}}
+
+    {{! ===================== Raw score "sum / max" =====================
+        One LTR run bottom-aligned on the row: bold themed sum, light slash, regular
+        maximum, 2 px apart, each on its own baseline. }}
+    {{#each items as |item|}}
+      <text x="644" y="{{item.rawBaseline}}" text-anchor="start" direction="ltr" fill="#64748B"><tspan font-size="16" font-weight="700" fill="{{item.valueFill}}">{{item.mark}}</tspan><tspan dx="2" dy="{{item.slashShift}}" font-size="12" font-weight="300">/</tspan><tspan dx="2" dy="{{item.maxShift}}" font-size="13" font-weight="400">{{item.max}}</tspan></text>
+    {{/each}}
+
+    {{! ===================== Column separator ===================== }}
+    <rect x="705" y="0" width="1" height="437" fill="#F1F5F9"/>
+
+    {{! ===================== Cut-off class ===================== }}
+    {{#each items as |item|}}
+      <text x="766" y="{{item.levelBaseline}}" text-anchor="middle" font-size="12" fill="{{item.levelFill}}">{{item.levelLabel}}</text>
+    {{/each}}
+
+    {{! ===================== Bars + the mean inside the tip ===================== }}
+    {{#each items as |item|}}
+      <g transform="translate(134, {{item.top}})">
+        {{#if item.width}}{{bar item.width 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=item.gradientFill}}{{/if}}
+      </g>
+      <text x="{{item.scoreX}}" y="{{item.scoreBaseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="white">{{item.score}}</text>
+    {{/each}}
+
+    {{! ===================== Factor titles, right-aligned on the 126 px guide ===================== }}
+    {{#each items as |item|}}
+      <text x="126" y="{{item.titleBaseline}}" text-anchor="start" font-size="13" font-weight="{{item.weight}}" fill="{{item.titleFill}}">{{item.title}}</text>
+    {{/each}}
+
+    {{! ===================== White shadowed 0-point baseline, in front of the bars ===================== }}
+    <g opacity="0.5" filter="url(#batBaseShadow)">
+      <line x1="133.5" y1="21.5" x2="133.5" y2="436.5" stroke="white" stroke-linecap="round"/>
+    </g>
+
+    {{! ===================== Column headers ===================== }}
+    <text x="669" y="10.22" text-anchor="middle" font-size="12" font-weight="500" fill="#64748B">نمره خام</text>
+    <text x="766" y="10.22" text-anchor="middle" font-size="12" font-weight="500" fill="#64748B">طبقه</text>
+
+    {{! ===================== Axis ===================== }}
+    <text x="133.5" y="9.2" text-anchor="middle" font-size="12" fill="#94A3B8">0</text>
+    <text x="233.5" y="9.2" text-anchor="middle" font-size="12" fill="#94A3B8">1</text>
+    <text x="333.5" y="9.2" text-anchor="middle" font-size="12" fill="#94A3B8">2</text>
+    <text x="433.5" y="9.2" text-anchor="middle" font-size="12" fill="#94A3B8">3</text>
+    <text x="533.5" y="9.2" text-anchor="middle" font-size="12" fill="#94A3B8">4</text>
+    <text x="633.5" y="9.2" text-anchor="middle" font-size="12" fill="#94A3B8">5</text>
+
+  </g>
+
+{{/layout}}

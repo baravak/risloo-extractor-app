@@ -350,6 +350,7 @@
   "cornometer": 743,
   "score": {
     "status": "valid",
+    "invalid_reasons": null,
     "subjective_quality": 2,
     "latency": 2,
     "duration": 2,
@@ -360,6 +361,6 @@
     "total": 11,
     "screening": "positive"
   },
-  "score_current_version": "1.0.0",
-  "score_last_version": "1.0.0"
+  "score_current_version": "1.1.0",
+  "score_last_version": "1.1.0"
 }

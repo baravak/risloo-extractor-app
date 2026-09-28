@@ -52,8 +52,6 @@
 
   <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
 
-  {{#if valid}}
-
     {{! ===================== Gridlines (1, 2, 3) ===================== }}
     {{#each ticks as |tick|}}
       {{#if tick.v}}
@@ -68,7 +66,7 @@
       </g>
     {{/each}}
 
-    {{! ===================== Bars + score inside the tip (nothing for 0) ===================== }}
+    {{! ===================== Bars + scores; zero and unavailable marks at the origin ===================== }}
     {{#each items as |item|}}
       {{#if item.width}}
         <g transform="translate(174, {{item.barTop}})">
@@ -77,6 +75,9 @@
         {{! 15 px number centred on the row mid-line (top + 8) }}
         <text x="{{item.labelX}}" y="{{math item.baseline '+' 0.59}}" text-anchor="end" direction="ltr" font-size="15" font-weight="600" fill="white">{{item.mark}}</text>
       {{/if}}
+      {{#unless item.width}}
+        <text x="187" y="{{item.baseline}}" text-anchor="start" direction="ltr" font-size="15" fill="#64748B">{{item.mark}}</text>
+      {{/unless}}
     {{/each}}
 
     {{! ===================== Component names ===================== }}
@@ -130,17 +131,17 @@
 
     <text x="711" y="49.06" text-anchor="end" direction="ltr" font-size="12" fill="#475569">{{total.max}}</text>
 
-  {{else}}
-
-    {{! ===================== No result (all-or-nothing) ===================== }}
-    <rect x="144.5" y="67.5" width="500" height="199" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
-    <circle cx="394.5" cy="118" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
-    <line x1="394.5" y1="109" x2="394.5" y2="121" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="394.5" cy="127.5" r="1.6" fill="#64748B"/>
-    <text x="394.5" y="174" text-anchor="middle" font-size="17" font-weight="600" fill="#1E293B">نتیجه تولید نشد؛ پاسخ ناقص یا نامعتبر است</text>
-    <text x="394.5" y="206" text-anchor="middle" font-size="13" fill="#64748B">برای این پاسخ‌نامه هیچ نمره‌ای، حتی نمره جزئی، گزارش نمی‌شود.</text>
-
-  {{/if}}
+    {{#if invalid}}
+      {{! Existing alert glyph, now red and placed below the retained chart. }}
+      <g transform="translate(768, {{math warningTop '-' 5}})" fill="#DC2626">
+        <circle cx="0" cy="0" r="10" fill="none" stroke="#DC2626" stroke-width="1.8"/>
+        <line x1="0" y1="-5" x2="0" y2="1" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="0" cy="5" r="1.3"/>
+      </g>
+      {{#each warnings as |warning|}}
+        <text x="748" y="{{warning.y}}" text-anchor="start" font-size="13" font-weight="500" fill="#DC2626">{{warning.text}}</text>
+      {{/each}}
+    {{/if}}
 
   </g>
 

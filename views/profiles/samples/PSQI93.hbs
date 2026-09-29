@@ -50,7 +50,9 @@
     </filter>
   </defs>
 
-  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  {{! offsetX centres the content (title edge → total score) horizontally;
+      offsetY centres the chart vertically when no invalidity bar is drawn }}
+  <g transform="translate({{math spec.profile.padding.x '+' offsetX}}, {{math spec.profile.padding.y '+' offsetY}})">
 
     {{! ===================== Gridlines (1, 2, 3) ===================== }}
     {{#each ticks as |tick|}}
@@ -132,14 +134,29 @@
     <text x="711" y="49.06" text-anchor="end" direction="ltr" font-size="12" fill="#475569">{{total.max}}</text>
 
     {{#if invalid}}
-      {{! Existing alert glyph, now red and placed below the retained chart. }}
-      <g transform="translate(768, {{math warningTop '-' 5}})" fill="#DC2626">
-        <circle cx="0" cy="0" r="10" fill="none" stroke="#DC2626" stroke-width="1.8"/>
-        <line x1="0" y1="-5" x2="0" y2="1" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="0" cy="5" r="1.3"/>
+      {{! ===================== Invalidity bar (Figma 6071:199259, reduced) =====================
+          Alert icon and reasons only: no title, title block or chevron. 46 px tall, 22 px
+          more per extra row of reasons. Spans the content: left edge on the longest
+          component title (x=71), right edge on the widest total score «21» (x=760).
+          From the right: 24 px padding, 21 px icon, 12 px gap, then the reasons laid out
+          by the controller with 4 px dots between. }}
+      <rect x="71.5" y="{{math invalidBar.top '+' 0.5}}" width="688" height="{{math invalidBar.height '-' 1}}" rx="7.5" fill="#FFF1F2" stroke="#FECDD3"/>
+
+      {{! Alert icon, centred on the bar }}
+      <g transform="translate(0, {{invalidBar.shift}})">
+      <g transform="translate(715, 372)">
+        <path d="M10.5001 6.6664V10.222M10.5001 12.8886H10.509M9.04498 1.8584L1.83965 13.8886C1.69111 14.1459 1.61251 14.4375 1.61166 14.7345C1.61081 15.0316 1.68774 15.3236 1.8348 15.5817C1.98186 15.8398 2.19393 16.0549 2.44991 16.2056C2.70589 16.3562 2.99686 16.4373 3.29387 16.4406H17.7063C18.0032 16.4372 18.294 16.3561 18.5499 16.2055C18.8057 16.0549 19.0177 15.8399 19.1647 15.5819C19.3118 15.324 19.3888 15.0321 19.388 14.7352C19.3873 14.4383 19.3089 14.1467 19.1605 13.8895L11.9552 1.85751C11.8036 1.60729 11.5901 1.40039 11.3352 1.2568C11.0803 1.1132 10.7927 1.03776 10.5001 1.03776C10.2075 1.03776 9.91992 1.1132 9.66503 1.2568C9.41014 1.40039 9.19658 1.60729 9.04498 1.85751V1.8584Z" fill="none" stroke="#BE123C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </g>
-      {{#each warnings as |warning|}}
-        <text x="748" y="{{warning.y}}" text-anchor="start" font-size="13" font-weight="500" fill="#DC2626">{{warning.text}}</text>
+      </g>
+
+      {{! Reasons: right edge on item.x, first reason rightmost; 4 px dot after each non-final item in a row }}
+      {{#each invalidBar.rows as |row|}}
+        {{#each row.items as |item|}}
+          <text x="{{item.x}}" y="{{row.baseline}}" text-anchor="start" font-size="13" fill="#57534E">{{item.text}}</text>
+          {{#if item.dot}}
+            <circle cx="{{item.dot}}" cy="{{row.dotY}}" r="2" fill="#A1A1AA"/>
+          {{/if}}
+        {{/each}}
       {{/each}}
     {{/if}}
 

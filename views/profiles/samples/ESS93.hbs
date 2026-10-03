@@ -1,0 +1,80 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+  {{#if valid}}
+
+    {{! ===================== The total, on its own 0–24 line ===================== }}
+    {{! One neutral hue that never changes with the score; identical ticks for every integer; }}
+    {{! no zone, no cut-off, no emphasised value. }}
+    <text x="843" y="24" text-anchor="start" font-size="16" font-weight="600" fill="#1E293B">نمرهٔ کل در دامنهٔ 0 تا {{total.max}}</text>
+
+    {{#each total.ticks}}
+      <line x1="{{this}}" y1="{{math ../total.y '+' 9}}" x2="{{this}}" y2="{{math ../total.y '+' 14}}" stroke="#CBD5E1" stroke-width="1"/>
+    {{/each}}
+    <line x1="{{total.left}}" y1="{{total.y}}" x2="{{total.right}}" y2="{{total.y}}" stroke="#E2E8F0" stroke-width="6" stroke-linecap="round"/>
+    {{#if total.mark}}
+      <line x1="{{total.left}}" y1="{{total.y}}" x2="{{total.x}}" y2="{{total.y}}" stroke="#64748B" stroke-width="6" stroke-linecap="round"/>
+    {{/if}}
+    <text x="{{total.left}}" y="{{math total.y '+' 32}}" text-anchor="middle" font-size="12" fill="#64748B">0</text>
+    <text x="{{total.right}}" y="{{math total.y '+' 32}}" text-anchor="middle" font-size="12" fill="#64748B">{{total.max}}</text>
+
+    <circle cx="{{total.x}}" cy="{{total.y}}" r="8" fill="#475569" stroke="white" stroke-width="2.5"/>
+    <text x="{{total.x}}" y="{{math total.y '-' 16}}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E293B">{{total.mark}}</text>
+
+    <text x="640" y="172" text-anchor="start" font-size="12" fill="#64748B">این نسخه طبقه، برش یا هنجار ندارد؛ نمره فقط روی دامنهٔ خود ابزار نشان داده می‌شود.</text>
+
+    {{! Total card (right of the line) }}
+    <rect x="693.5" y="52.5" width="169" height="120" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="778" y="82" text-anchor="middle" font-size="14" font-weight="600" fill="#475569">نمرهٔ کل</text>
+    <text x="778" y="134" text-anchor="middle" font-size="44" font-weight="700" fill="#1E293B">{{total.mark}}</text>
+    <text x="778" y="158" text-anchor="middle" font-size="13" fill="#64748B">از {{total.max}}</text>
+
+    {{! ===================== Reading, what the score is not, population limits ===================== }}
+    {{! Written for the authorised specialist, third person; the respondent never reads this profile. }}
+    <rect x="0.5" y="204.5" width="862" height="406" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+
+    <text x="843" y="236" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">دامنهٔ تفسیر</text>
+    <circle cx="840" cy="259.5" r="2" fill="#334155"/>
+    <text x="831" y="264" text-anchor="start" font-size="13.5" fill="#334155">نمرهٔ بالاتر یعنی پاسخ‌دهنده احتمال بیشتری برای چرت‌زدن یا خواب‌رفتن در موقعیت‌های روزمره گزارش کرده است.</text>
+    <circle cx="840" cy="283.5" r="2" fill="#334155"/>
+    <text x="831" y="288" text-anchor="start" font-size="13.5" fill="#334155">این نمره گزارش خود فرد از گرایشش به چرت‌زدن است و تفسیرش به خواب‌آلودگی ذهنی محدود می‌ماند؛</text>
+    <text x="831" y="310" text-anchor="start" font-size="13.5" fill="#334155">تشخیص اختلال نیست و تغییر واقعی فردی را هم نشان نمی‌دهد.</text>
+    <circle cx="840" cy="329.5" r="2" fill="#334155"/>
+    <text x="831" y="334" text-anchor="start" font-size="13.5" fill="#334155">این نتیجه به تصمیم متخصص کمک می‌کند و جای داوری بالینی او را نمی‌گیرد.</text>
+
+    <text x="843" y="372" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">آنچه این نمره نیست</text>
+    <circle cx="840" cy="395.5" r="2" fill="#334155"/>
+    <text x="831" y="400" text-anchor="start" font-size="13.5" fill="#334155">تشخیص نارکولپسی یا آپنهٔ انسدادی خواب نیست و احتمال هیچ اختلال خواب مشخصی را نشان نمی‌دهد.</text>
+    <circle cx="840" cy="419.5" r="2" fill="#334155"/>
+    <text x="831" y="424" text-anchor="start" font-size="13.5" fill="#334155">شدت آپنهٔ انسدادی خواب را تعیین نمی‌کند.</text>
+    <circle cx="840" cy="443.5" r="2" fill="#334155"/>
+    <text x="831" y="448" text-anchor="start" font-size="13.5" fill="#334155">جایگزین سنجهٔ عینی خواب، مانند آزمون تأخیر چندگانهٔ خواب، نیست.</text>
+    <circle cx="840" cy="467.5" r="2" fill="#334155"/>
+    <text x="831" y="472" text-anchor="start" font-size="13.5" fill="#334155">مبنای غربال نیست و هیچ تصمیم دروازه‌ای، مانند پذیرش، رد یا ارجاع، بر آن بنا نمی‌شود.</text>
+    <circle cx="840" cy="491.5" r="2" fill="#334155"/>
+    <text x="831" y="496" text-anchor="start" font-size="13.5" fill="#334155">تفاوت نمرهٔ دو اجرای یک فرد را نمی‌توان بهبود یا بدترشدن واقعی او خواند.</text>
+
+    <text x="843" y="534" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">جامعه و شیوهٔ اجرا</text>
+    <circle cx="840" cy="557.5" r="2" fill="#334155"/>
+    <text x="831" y="562" text-anchor="start" font-size="13.5" fill="#334155">شواهد این نسخه از بزرگسالانِ ارجاع‌شده به کلینیک خواب آمده است؛ جمعیت عمومی و نوجوانان را پوشش نمی‌دهد.</text>
+    <circle cx="840" cy="581.5" r="2" fill="#334155"/>
+    <text x="831" y="586" text-anchor="start" font-size="13.5" fill="#334155">هم‌ارزی اجرای برخط با شیوهٔ اجرای مطالعهٔ ایرانی بررسی نشده است.</text>
+
+  {{else}}
+
+    {{! ===================== No score (all-or-nothing) ===================== }}
+    {{! No number, no line, no bar: anything but an explicit "valid" lands here. }}
+    <rect x="181.5" y="237.5" width="500" height="199" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <circle cx="431.5" cy="288" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
+    <line x1="431.5" y1="279" x2="431.5" y2="291" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="431.5" cy="297.5" r="1.6" fill="#64748B"/>
+    <text x="431.5" y="344" text-anchor="middle" font-size="17" font-weight="600" fill="#1E293B">نمره تولید نشد</text>
+    <text x="431.5" y="376" text-anchor="middle" font-size="13" fill="#64748B">نمرهٔ کل فقط از هشت پاسخِ کامل و معتبر ساخته می‌شود.</text>
+    <text x="431.5" y="400" text-anchor="middle" font-size="13" fill="#64748B">این حالت با نمرهٔ صفر یکی نیست و نمرهٔ جزئی هم گزارش نمی‌شود.</text>
+
+  {{/if}}
+
+  </g>
+
+{{/layout}}

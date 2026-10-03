@@ -1,0 +1,238 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$ESS-93",
+    "title": "مقیاس خواب‌آلودگی اپوورث"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": null,
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "اگر در موقعیت‌هایی که در زیر توصیف شده است قرار بگیرید چقدر احتمال دارد که به خواب بروید یا چرت زنید؟ (نه اینکه فقط احساس خستگی کنید).\n\nاین پرسشنامه مربوط به روش معمول زندگی شما در زمان اخیر است.\n\nحتی اگر بعضی از این موارد را اخیراً انجام نداده‌اید، سعی کنید با توجه به کارهای مشابه مشخص کنید که چنین حالاتی چه اثری روی شما خواهد گذاشت.",
+  "items": [
+    {
+      "type": "text",
+      "text": "نشستن و مطالعه کردن",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "تماشای تلویزیون",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نشستن غیرفعال در یک مکان عمومی (به عنوان مثال تئاتر یا جلسهٔ سخنرانی)",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "نشستن در یک اتومبیل به عنوان مسافر برای یک ساعت بدون وقفه",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "دراز کشیدن برای استراحت در بعدازظهر در صورت مهیا بودن شرایط",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "نشستن و با کسی صحبت کردن",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "آرام نشستن بعد از ناهار",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بودن در یک وسیلهٔ نقلیه در حالی که برای دقایقی در ترافیک متوقف است",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز چرت نمی‌زنم",
+          "به احتمال کم چرت می‌زنم",
+          "به احتمال متوسط چرت می‌زنم",
+          "به احتمال زیاد چرت می‌زنم"
+        ]
+      },
+      "user_answered": "3"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "34"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مجرد",
+          "متأهل"
+        ]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    }
+  ],
+  "cornometer": 743,
+  "score": {
+    "status": "valid",
+    "total": 14
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

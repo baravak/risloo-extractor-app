@@ -1,0 +1,66 @@
+{{~#*inline "line"}}
+  <text x="843" y="{{math y '+' 5}}" text-anchor="start" font-size="14" font-weight="600" fill="#334155">{{title}}</text>
+  <text x="{{math right '+' 40}}" y="{{math y '+' 5}}" text-anchor="middle" font-size="14" font-weight="700" fill="#1E293B">{{mark}}</text>
+
+  <line x1="{{left}}" y1="{{y}}" x2="{{right}}" y2="{{y}}" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+  <line x1="{{left}}" y1="{{math y '-' 7}}" x2="{{left}}" y2="{{math y '+' 7}}" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="{{right}}" y1="{{math y '-' 7}}" x2="{{right}}" y2="{{math y '+' 7}}" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="{{left}}" y="{{math y '+' 22}}" text-anchor="middle" font-size="11" fill="#94A3B8">{{min}}</text>
+  <text x="{{right}}" y="{{math y '+' 22}}" text-anchor="middle" font-size="11" fill="#94A3B8">{{max}}</text>
+
+  <circle cx="{{x}}" cy="{{y}}" r="7" fill="#475569" stroke="white" stroke-width="2"/>
+{{/inline~}}
+{{~#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+  {{#if valid}}
+
+    {{! ===================== Six domains, then the total, each on its own 1–5 line ===================== }}
+    {{! Fixed order, one neutral hue, no zone, no threshold; nothing marks or ranks the highest score. }}
+    <text x="843" y="24" text-anchor="start" font-size="16" font-weight="600" fill="#1E293B">نمره‌ها</text>
+    <text x="843" y="50" text-anchor="start" font-size="12.5" fill="#64748B">میانگین گویه‌ها؛ دامنهٔ هر نمره 1٬00 تا 5٬00</text>
+
+    {{#each domains}}
+      {{> line}}
+    {{/each}}
+
+    <line x1="20" y1="{{dividerY}}" x2="843" y2="{{dividerY}}" stroke="#E2E8F0" stroke-width="1"/>
+
+    {{#with total}}
+      {{> line}}
+    {{/with}}
+
+    {{! ===================== Interpretation and uncertainty ===================== }}
+    {{! Fixed text from the science package, verbatim; the profile is read by the authorised specialist. }}
+    <rect x="0.5" y="424.5" width="862" height="249" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+
+    <text x="843" y="454" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">تفسیر</text>
+    <text x="843" y="482" text-anchor="start" font-size="13.5" fill="#334155">نمرهٔ بالاتر در هر حوزه یعنی در یک ماه اخیر کشمکش بیشتری در آن حوزه گزارش شده است.</text>
+    <text x="843" y="506" text-anchor="start" font-size="13.5" fill="#334155">این نمره دربارهٔ میزان یا درستی ایمان فرد چیزی نمی‌گوید.</text>
+
+    <text x="843" y="542" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">عدم قطعیت و محدودیت</text>
+    <circle cx="840" cy="565.5" r="2" fill="#334155"/>
+    <text x="831" y="570" text-anchor="start" font-size="13.5" fill="#334155">برای این نسخه هنجار ایرانی و نقطهٔ برش وجود ندارد.</text>
+    <circle cx="840" cy="589.5" r="2" fill="#334155"/>
+    <text x="831" y="594" text-anchor="start" font-size="13.5" fill="#334155">شش نمره کنار هم خوانده شوند و نمرهٔ کل جای آن‌ها را نمی‌گیرد.</text>
+    <circle cx="840" cy="613.5" r="2" fill="#334155"/>
+    <text x="831" y="618" text-anchor="start" font-size="13.5" fill="#334155">نمرهٔ بالای اهریمنی و اخلاقی با دینداری هم همراه است.</text>
+    <circle cx="840" cy="637.5" r="2" fill="#334155"/>
+    <text x="831" y="642" text-anchor="start" font-size="13.5" fill="#334155">آزمون تصمیم‌یار است، نه تصمیم‌گیر قطعی.</text>
+
+  {{else}}
+
+    {{! ===================== No score (all-or-nothing) ===================== }}
+    {{! Only the approved sentence: no number, no line, no partial score. }}
+    <rect x="181.5" y="237.5" width="500" height="171" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <circle cx="431.5" cy="288" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
+    <line x1="431.5" y1="279" x2="431.5" y2="291" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="431.5" cy="297.5" r="1.6" fill="#64748B"/>
+    <text x="431.5" y="354" text-anchor="middle" font-size="16" font-weight="600" fill="#1E293B">نمره تولید نشد: پاسخ‌نامه کامل یا معتبر نبود.</text>
+
+  {{/if}}
+
+  </g>
+
+{{/layout}}

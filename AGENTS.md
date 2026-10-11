@@ -11,6 +11,12 @@
 
 ## Project Overview
 
+### Visual design reference
+
+Before creating a profile or redesigning its appearance, read [docs/design/README.md](docs/design/README.md), then the relevant family guide and cited examples. This is the maintained visual reference; keep detailed visual rules there rather than duplicating them in agent entrypoints. The inventory records the designer's instruction that lower frames **within each Figma section** are newer. Profile-specific measurements are examples, not universal constants. A visual redesign must preserve scoring, interpretation thresholds, data structure, and essential semantic content unless the user separately requests those changes. Apply the current designer defaults in VIS-25–30 for optional explanations, redundant headings, chart language, aggregate labels, decimal formatting, and labels on short bars; an older implementation is not authority to retain optional content or obsolete presentation choices.
+
+For a documentation-only visual audit, inspect the authorized images and layer properties without changing runtime code. Ask for designer comments once; an explicit answer that none exist resolves that input. Request scoring sources only if the task needs to establish score semantics or conditional logic; do not infer them from a static design.
+
 **@baravak/risloo-profile-cli** is a Node.js CLI tool that converts psychological test result JSON data into SVG and PNG profile/report images. It supports 81+ psychological questionnaires with Persian/Farsi labeling.
 
 Published as npm package: `@baravak/risloo-profile-cli` (v4.46.2, MIT)
@@ -77,7 +83,7 @@ npm test   # → node ./src/publish/test.js
 
 Each profile is designed in Figma. Per task, one or both of the following may be provided:
 
-- **Figma design file** — connect via Figma MCP to read layer dimensions and structure. The relevant layer is named **Chart**.
+- **Figma design file** — connect via Figma MCP to read layer dimensions and structure. Identify the full chart-content envelope as described below; its wrapper is often named **Chart** or **All**.
 - **Figma handoff file** — contains additional implementation notes and specs. It may state that this profile is similar to an existing one. In that case, inspect the referenced profile's JS + HBS files, identify the genuinely shared behavior, and apply only the described differences.
 
 > **Important:** The Figma MCP reads text layers only — it does NOT read Figma comments. Designers often leave critical specs (thresholds, coefficients, pixel values) as Figma comments. Always ask the user to share designer comments before finalizing the plan.
@@ -94,7 +100,9 @@ Respect task-specific source restrictions. If two authorized sources disagree, s
 
 ### What the HBS Draws
 
-The HBS file draws **only the Chart layer** — i.e. the **raw** chart. The engine produces the final page by automatically injecting the header (test name, dates, client info), the sidebar (logo, room info, prerequisites) and the footer/closing info via the `{{#> layout}}` wrapper. Never include any of these in the HBS. (The CLI emits both a `raw` variant — chart only, e.g. `<NAME>.raw.svg/png` — and the full with-sidebar variant `<NAME>.svg/png`.)
+The HBS file draws **only the authorized chart-content envelope** — i.e. the **raw** chart. The Figma wrapper is often named **Chart**, but may be named **All** or contain multiple sibling groups. Confirm the complete envelope against the reference image and exact source geometry; a nested node named Chart may represent only part of the content. Do not drop its chart-content siblings or include page layout merely because of layer names. The engine produces the final page by automatically injecting the header (test name, dates, client info), the sidebar (logo, room info, prerequisites) and the footer/closing info via the `{{#> layout}}` wrapper. Never include any of these in the HBS. (The CLI emits both a `raw` variant — chart only, e.g. `<NAME>.raw.svg/png` — and the full with-sidebar variant `<NAME>.svg/png`; raw still has an output canvas and is not necessarily a tight crop of the Figma Chart.)
+
+Below, **Chart** is shorthand for that verified content envelope, with its exact authorized bounds and coordinate system, regardless of the source wrapper's name.
 
 ### SVG Coordinate System
 
@@ -166,7 +174,7 @@ Multi-page mechanics:
 
 ### Dimensions & Padding Convention
 
-The HBS owns exactly the raw Chart coordinate space. Its origin is the Chart layer's `(0, 0)`, and all authored content must remain within the declared Chart width and height unless the design explicitly clips or overflows it.
+The HBS owns exactly the raw Chart coordinate space. Its origin is the verified chart-content envelope's `(0, 0)`, and all authored content must remain within the declared Chart width and height unless the design explicitly clips or overflows it.
 
 There is no universal profile padding. Measure padding independently for every page.
 

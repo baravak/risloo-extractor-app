@@ -7,9 +7,15 @@ description: Build a new psychological profile (نیم‌رخ) or a new page/cha
 
 This project renders psychological-test results into SVG/PNG profiles. A profile = a JS controller (`src/samples/<NAME>.js`) + one or more Handlebars templates (`views/profiles/samples/<NAME>.hbs`, or `<NAME>_1.hbs`, `<NAME>_2.hbs`, … for multi-page). Follow this runbook. **Read `AGENTS.md` first** — this skill references its _Handlebars Helper Reference_, _Gotchas & Reusable Patterns_, and conventions instead of repeating them.
 
+Before selecting a visual pattern, read [the visual design guide](../../../docs/design/README.md), then its relevant family reference and examples. Prefer the newer lower frames within the same Figma section, as documented in the source inventory. Keep example measurements scoped to their component. A visual-only redesign preserves scoring, interpretation logic, data structure, and essential semantic content. Apply the designer's current defaults in VIS-25–30; existing optional explanations, redundant headings, padded decimal zeroes, and artificial minimum bar lengths are not requirements to preserve.
+
+For a documentation-only design audit, use the guide's evidence and scope rules; implementation steps below are not a requirement to modify profiles or collect unused scoring inputs. An explicit user statement that no designer comments exist resolves that input. Do not invent formulas or unseen conditional behavior from screenshots.
+
 ## Core principle — you produce the RAW chart only
 
-You draw only the Figma **Chart** layer (the raw chart). The engine injects the header, sidebar and footer via the `{{#> layout}}` wrapper. **Never put header/sidebar/footer in the HBS.** The CLI emits a `raw` variant (chart only) and a full with-sidebar variant. (AGENTS.md › _What the HBS Draws_.)
+You draw only the authorized **chart-content envelope** (the raw chart). Confirm its bounds against the PNG and source geometry: its wrapper may be named Chart or All, and a nested Chart may exclude other chart-content groups. The engine injects the header, sidebar and footer via the `{{#> layout}}` wrapper. **Never put header/sidebar/footer in the HBS.** The CLI emits a `raw` variant (chart only, with its own canvas) and a full with-sidebar variant. (AGENTS.md › _What the HBS Draws_.)
+
+In the implementation steps below, **Chart** means this verified content envelope and its exact authorized bounds, not a mandatory Figma layer name.
 
 ## 1. Gather inputs and assign authority
 
@@ -20,7 +26,7 @@ Ask for the relevant inputs:
 3. **Profile SVG** — `x/<NAME>.svg`.
 4. **Profile HTML**, when available and authorized — `x/<NAME>.html`.
 5. **Profile JSON** — `src/publish/json/profiles/<NAME>.json` (input dataset; its `score` object drives everything).
-6. **Reference PNG** — the designer's rendered export of the **Chart** layer (same variant as the CLI `raw` output, *not* the full sidebar page).
+6. **Reference PNG** — the designer's rendered export of the complete authorized chart-content envelope, excluding the sidebar page layout. It must cover the same content as the CLI `raw` output; match canvas, orientation, and scale before comparison because CLI raw is not necessarily a tight crop.
 
 Then **ask for the designer's Figma comments** — thresholds, coefficients, conditional behavior, spacing rules, and other implementation notes. The Figma MCP / SVG / HTML do **not** contain comments, and these specs usually live only there. Don't start coding until you have them.
 
@@ -30,7 +36,7 @@ Figma MCP read calls are **rate limited per plan and seat**, and the cheap tiers
 
 Rules:
 
-1. **Download the complete artifact set up front — source, SVG, and PNG — then work locally.** Do not drip-feed one layer per call. Prefer `download_assets` on the **Chart** node: one call returns the whole-node export plus the vector SVGs of its subtree. Add `get_metadata` on the same node for the layer tree with exact `x/y/width/height`. Those two calls plus one `get_screenshot` give you geometry, vectors, and the visual reference for a whole page.
+1. **Download the complete artifact set up front — source, SVG, and PNG — then work locally.** Do not drip-feed one layer per call. Prefer `download_assets` on the selected source node covering the complete chart-content envelope: one call returns the whole-node export plus the vector SVGs of its subtree. Add `get_metadata` on the same node for the layer tree with exact `x/y/width/height`. Those two calls plus one `get_screenshot` give you geometry, vectors, and the visual reference for a whole page. Do not select a partial nested Chart solely by its name.
 2. **Asset URLs cost nothing.** `get_design_context` on a vector-heavy layer returns an `<img src="…svg">` asset URL instead of code, and `get_screenshot` returns a PNG URL. Downloading those with `curl` does **not** consume quota. Always pull the file and read it locally rather than making another MCP call.
 3. **Never call `get_design_context` on a repeated component instance more than once.** A dotted-column or dash-ruler instance can expand to hundreds of nodes, burning a call and flooding context. Sample **one** atom for its style, then derive the repetition from `get_metadata` sizes and the pitch arithmetic.
 4. **Answer remaining questions from the downloaded PNG/SVG, not from Figma.** Exact colors, tick pitch, mirroring, and alignment are all measurable locally (e.g. sample pixels with Python/PIL, grep the SVG for `stroke=`/`fill=`). Go back to MCP only for text content and semantics that the outlined SVG genuinely cannot carry.
@@ -52,7 +58,7 @@ Rules:
 
 ### Recommended one-shot fetch sequence for a new page
 
-For each Chart node, in a single batched message:
+For each selected complete chart-content source node, in a single batched message:
 
 1. `get_metadata` — the layer tree with exact `x/y/width/height` for every node. This is the geometry ledger's backbone.
 2. `download_assets` with `defaultFormat: "svg"` — returns a URL for the whole-node vector export plus the subtree's SVG assets.
@@ -119,7 +125,7 @@ Do not begin detailed drawing while any value in this contract is inferred or pr
 
 ## 4. Derive geometry from the SVG
 
-- The Figma **Chart** layer = the SVG `viewBox` (e.g. `0 0 800 674`) and defines the HBS coordinate space.
+- The verified **chart-content envelope** and its exported SVG `viewBox` (e.g. `0 0 800 674`) define the HBS coordinate space. Preserve the measured source bounds; a nested node's name alone does not define that envelope.
 - Measure padding independently for each page. `dimensions = Chart + 2·padding`, but padding is layout metadata; do not apply it again inside the HBS when the layout already owns it.
 - Never introduce a conventional `translate(20,20)`, arbitrary centering transform, or scale. Add an inner transform only when it visibly belongs to the Chart layer and is measured from an authorized source.
 - If most elements share one rotation, author the page in an upright logical coordinate system and rotate one outer `<g>` into the final Chart coordinate system. Keep ordinary text, bars, cards, icons, multiline labels, and alignment components unrotated inside that logical space. Use local rotation only for genuine exceptions.
@@ -211,7 +217,7 @@ Verification has three separate gates:
 2. **Structural SVG validation**
    - Confirm coordinates, transforms, clipping, filter bounds, radii, strokes, and paint order match the authoritative SVG.
 3. **Visual validation**
-   - Compare raw output with the raw design reference using identical data.
+   - Compare raw output with the same chart content in the design reference using identical data and matched canvas, orientation, and scale; do not alter production geometry just to normalize comparison images.
    - Inspect every page and variant.
    - Use the PNG to locate discrepancies, then use SVG measurements to determine the correction.
 
@@ -235,5 +241,5 @@ Passing one gate does not replace the others. Do not claim a visual issue is fix
 - [ ] Numeric rendering boundaries tested below, at, and above the boundary with valid domain values.
 - [ ] Every page, presentation variant, and affected shared-partial consumer rendered.
 - [ ] `titleAppend` verified in full output whenever page or variant metadata requires it.
-- [ ] No header/sidebar/footer in the HBS — only the Chart layer.
+- [ ] No header/sidebar/footer in the HBS — only the complete authorized chart-content envelope.
 - [ ] Closed with semantic, structural SVG, and visual checks against the reference using identical data.

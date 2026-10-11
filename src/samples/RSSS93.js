@@ -2,37 +2,32 @@ const { Profile } = require("../Profile");
 
 // ---------------------------------------------------------------------------
 // RSSS93 — مقیاس کشمکش‌های مذهبی و معنوی (فرم فارسی ۲۶ گویه‌ای، RSSS-FA26-J1).
-// No Figma source: the chart is designed from the approved individual-result
-// specification of the science package, whose rules this layout enforces
-// rather than decorates:
-//   - six domain means — الهی, اهریمنی, بین‌فردی, اخلاقی, معنای غایی,
-//     شک و تردید — each on its own separate 1–5 line, then, after a clear
-//     gap, the total on a seventh separate line; always all seven, always in
-//     that fixed order, never one shared axis, never a sorted, combined or
-//     comparative chart;
-//   - every value on two decimals, as scoring/RSSS93.py already rounds it
-//     (half up), so the printed number and the marker can never disagree;
-//   - classification is off: one neutral hue, no zone, no threshold, no
-//     label, no warning, no "dominant domain", nothing that singles out or
-//     ranks the highest score; no raw sum, percent, percentile or norm;
-//   - the only interpretation is the two approved sentences, verbatim, and the
-//     four approved uncertainty lines; the profile is read by the authorised
-//     specialist only, so all of its text is third person;
-//   - all-or-nothing: unless the formula returns status "valid", only the
-//     approved no-score sentence is drawn — never a partial or zero score.
-// Chart 863 × 674, centred on the 943 × 754 design page.
+// Designer revision 2026-10-11 (docs/design VIS-25…30): use the newer BAT bar
+// language, omit optional explanations and redundant headings, centre the chart,
+// label the aggregate «نمره کل», and trim insignificant decimal zeroes.
+// The six domain means and total keep their input keys, order, valid range 1–5
+// and all-or-nothing validity. A zero-origin display axis makes bar length
+// proportional to the mean; zero is an axis origin, not a newly valid score.
+// Display values below 1 at their exact 0–5 axis position with an outside label;
+// this presentation rule also makes synthetic boundary previews truthful.
+// Indigo domains and the JSS neutral total palette are decorative, never a
+// clinical class or score threshold; the JSS zero baseline casts rightward.
+// No raw sum, percentage, percentile, norm or new scoring calculation is added.
 // ---------------------------------------------------------------------------
-const CHART = { width: 863, height: 674 };
-
-// Each score owns its line: 1 at x=LINE.left, 5 at x=LINE.right. The six
-// domains are LINE.pitch apart; the total sits LINE.totalGap below the last.
-const LINE = { left: 20, right: 600, top: 88, pitch: 48, totalGap: 64 };
-const MIN = 1;
+const CHART = { width: 650, height: 334 };
+// BAT: 500×16px bars, 40px row pitch, 2px terminal corners, 8px title gap.
+const BAR = { x: 134, width: 500, height: 16, top: 42, pitch: 40, totalGap: 64 };
+// Bounds measured from the rendered 13px Dana titles and 12px axis labels.
+// Centre the visible chart, including the longest title, rather than the tracks alone.
+const CONTENT = { left: 62.703125, right: 638.015625, top: -1.78, bottom: 334 };
+const OFFSET_X = (CHART.width - (CONTENT.right - CONTENT.left)) / 2 - CONTENT.left;
+const OFFSET_Y = (CHART.height - (CONTENT.bottom - CONTENT.top)) / 2 - CONTENT.top;
 const MAX = 5;
+const INSIDE_LABEL_MIN = 1;
 
-// Two decimals; «٬» (U+066C) is the decimal separator that reads well in Dana,
-// as in BAT93.
-const decimal = (n) => n.toFixed(2).replace(".", "٬");
+// Preserve the existing two-decimal precision; only remove display padding.
+// «٬» (U+066C) keeps the existing Dana decimal-separator convention.
+const decimal = (n) => n.toFixed(2).replace(/\.?0+$/, "").replace(".", "٬");
 
 class RSSS93 extends Profile {
   static pages = 1;
@@ -44,7 +39,7 @@ class RSSS93 extends Profile {
     L4: { eng: "moral", title: "اخلاقی" },
     L5: { eng: "ultimate_meaning", title: "معنای غایی" },
     L6: { eng: "doubt", title: "شک و تردید" },
-    L7: { eng: "total", title: "کل مقیاس" },
+    L7: { eng: "total", title: "نمره کل" },
     L8: { eng: "status" }, // valid | incomplete | invalid
   };
 
@@ -59,15 +54,15 @@ class RSSS93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: CHART.width + 2 * this.padding.x, // 863 → 903
-          height: CHART.height + 2 * this.padding.y, // 674 → 714
+          width: CHART.width + 2 * this.padding.x, // 650 → 903
+          height: CHART.height + 2 * this.padding.y, // 334 → 714
         };
       },
       // Chart inset inside the 943 × 754 design page minus the 20 px the layout
       // owns on every side, so the with-sidebar page renders at scale 1.
       padding: {
-        x: (943 - CHART.width) / 2 - 20, // 20
-        y: (754 - CHART.height) / 2 - 20, // 20
+        x: (943 - CHART.width) / 2 - 20,
+        y: (754 - CHART.height) / 2 - 20,
       },
     },
     labels: Object.values(this.labels),
@@ -86,27 +81,36 @@ class RSSS93 extends Profile {
     if (s[7].mark !== "valid") return [{ valid: false }];
 
     // Fixed order from `labels`; never sorted by score.
-    const lines = s.slice(0, 7).map((data, i) => {
+    const items = s.slice(0, 7).map((data, i) => {
       const mark = Number(data.mark ?? 0);
-      const clamped = Math.min(Math.max(mark, MIN), MAX);
+      const clamped = Math.min(Math.max(mark, 0), MAX);
+      const width = BAR.width * clamped / MAX;
+      const labelOutside = mark < INSIDE_LABEL_MIN;
+      const top = BAR.top + i * BAR.pitch + (i === 6 ? BAR.totalGap - BAR.pitch : 0);
       return {
         title: data.label.title,
+        isTotal: data.label.eng === "total",
         mark: decimal(mark),
-        min: MIN,
-        max: MAX,
-        left: LINE.left,
-        right: LINE.right,
-        y: LINE.top + i * LINE.pitch + (i === 6 ? LINE.totalGap - LINE.pitch : 0),
-        x: LINE.left + ((LINE.right - LINE.left) * (clamped - MIN)) / (MAX - MIN),
+        width,
+        radius: Math.min(2, width),
+        labelOutside,
+        top,
+        titleBaseline: top + 11.505,
+        scoreBaseline: top + 12.55,
+        scoreX: BAR.x + width + (labelOutside ? 6 : -4),
       };
     });
 
     return [
       {
         valid: true,
-        domains: lines.slice(0, 6),
-        total: lines[6],
-        dividerY: (lines[5].y + lines[6].y) / 2,
+        items,
+        offsetX: OFFSET_X,
+        offsetY: OFFSET_Y,
+        ticks: Array.from({ length: MAX + 1 }, (_, value) => ({
+          value,
+          x: BAR.x + BAR.width * value / MAX,
+        })),
       },
     ];
   }

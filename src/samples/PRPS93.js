@@ -13,17 +13,23 @@ const { Profile } = require("../Profile");
 //     threshold, no label, no warning, no "dominant style", nothing that
 //     singles out or ranks the highest score; no total, percentile, standard
 //     score, item mean or percent of maximum;
-//   - the only interpretation is the two approved sentences, verbatim, and the
-//     four approved uncertainty lines; the profile is read by the authorised
-//     specialist only, so all of its text is third person;
+//   - no explanatory prose: researcher instruction, 2026-10-12, reflected in
+//     the result specification; scientific limits remain in the documentation;
 //   - all-or-nothing: unless scoring/PRPS93.py returns status "valid", only
 //     the approved no-score sentence is drawn — never a partial or zero score.
-// Chart 863 × 674, centred on the 943 × 754 design page.
+// Visual redesign: docs/design/README.md VIS-02, 05–10, 12, 25–26.
+// The scientific contract requires separate position lines, not filled bars.
+// VIS-25: explanation text requires an explicit designer/researcher request.
+// One upright 800 × 224 content envelope, centred on the 943 × 754 page.
+// No chart-owned offset/rotation/scale; only the declared profile inset.
+// Each ruler owns its endpoints; there is no shared grid or connecting path.
+// Slate palette from tables-mixed-xy.md XY-02; no score-dependent colors.
 // ---------------------------------------------------------------------------
-const CHART = { width: 863, height: 674 };
+const CHART = { width: 800, height: 224 };
 
 // Each style owns its line: 12 at x=LINE.left, 60 at x=LINE.right.
-const LINE = { left: 20, right: 600, top: 100, pitch: 64 };
+// Keep equal visual margins after removing the former full-width divider.
+const LINE = { left: 12.5, right: 642.5, top: 36, pitch: 80 };
 
 class PRPS93 extends Profile {
   static pages = 1;
@@ -46,15 +52,15 @@ class PRPS93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: CHART.width + 2 * this.padding.x, // 863 → 903
-          height: CHART.height + 2 * this.padding.y, // 674 → 714
+          width: CHART.width + 2 * this.padding.x, // 800 → 903
+          height: CHART.height + 2 * this.padding.y, // 224 → 714
         };
       },
       // Chart inset inside the 943 × 754 design page minus the 20 px the layout
       // owns on every side, so the with-sidebar page renders at scale 1.
       padding: {
-        x: (943 - CHART.width) / 2 - 20, // 20
-        y: (754 - CHART.height) / 2 - 20, // 20
+        x: (943 - CHART.width) / 2 - 20,
+        y: (754 - CHART.height) / 2 - 20,
       },
     },
     labels: Object.values(this.labels),

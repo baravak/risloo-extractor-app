@@ -19,10 +19,12 @@ In the implementation steps below, **Chart** means this verified content envelop
 
 ## 1. Gather inputs and assign authority
 
-Ask for the relevant inputs:
+**First, find the approved profile brief** — `docs/profiles/<ABBR>_profile_brief_<lang>.md`, whose header names this profile and whose line 3 is exactly `**وضعیت: تأیید شده**`. For a new profile without one, or when only a `_previous` brief exists, stop and tell the user; continue only on the designer's or researcher's explicit instruction to build without it. If a `_previous` brief also exists, delete it in the same change that brings the profile in line with the approved brief. Rules: AGENTS.md › _Profile brief — required before building_.
+
+Then ask for the relevant inputs:
 
 1. **Scoring source** — the engine that computes the `score` object. Its **language varies (PHP, Python, or Node.js)** and it usually lives in a sibling repo or service. Don't assume the language/path — ask. It tells you how each `score` key is computed and what flags mean.
-2. **Scoring documentation** — the validity rules, thresholds, and level/norm descriptions (a file or pasted text).
+2. **Scoring documentation** — validity rules and thresholds not already in the brief (a file or pasted text). Where it and the brief disagree about what is shown, stop and surface the conflict.
 3. **Profile SVG** — `x/<NAME>.svg`.
 4. **Profile HTML**, when available and authorized — `x/<NAME>.html`.
 5. **Profile JSON** — `src/publish/json/profiles/<NAME>.json` (input dataset; its `score` object drives everything).

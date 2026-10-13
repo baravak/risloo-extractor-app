@@ -13,7 +13,7 @@
 
 ### Visual design reference
 
-Before creating a profile or redesigning its appearance, read [docs/design/README.md](docs/design/README.md), then the relevant family guide and cited examples. This is the maintained visual reference; keep detailed visual rules there rather than duplicating them in agent entrypoints. The inventory records the designer's instruction that lower frames **within each Figma section** are newer. Profile-specific measurements are examples, not universal constants. A visual redesign must preserve scoring, interpretation thresholds, data structure, and essential semantic content unless the user separately requests those changes. Apply the current defaults in VIS-25–30 for explanations only on explicit designer/researcher request, redundant headings, chart language, aggregate labels, decimal formatting, and labels on short bars; an older implementation or scientific package alone is not authority to retain explanatory text or obsolete presentation choices.
+Before creating a profile or redesigning its appearance, read [docs/design/README.md](docs/design/README.md), then the relevant family guide and cited examples. This is the maintained visual reference; keep detailed visual rules there rather than duplicating them in agent entrypoints. The inventory records the designer's instruction that lower frames **within each Figma section** are newer. Profile-specific measurements are examples, not universal constants. A visual redesign must preserve scoring, interpretation thresholds, data structure, and essential semantic content unless the user separately requests those changes. Apply the current defaults in VIS-25–30 for explanations only on explicit designer/researcher request, redundant headings, chart language, aggregate labels, decimal formatting, and labels on short bars; an older implementation or scientific package alone is not authority to retain explanatory text or obsolete presentation choices; an approved profile brief (`docs/profiles/`) is.
 
 For a documentation-only visual audit, inspect the authorized images and layer properties without changing runtime code. Ask for designer comments once; an explicit answer that none exist resolves that input. Request scoring sources only if the task needs to establish score semantics or conditional logic; do not infer them from a static design.
 
@@ -51,6 +51,9 @@ risloo-extractor-app/
 │       ├── json/profiles/       # Template JSON per sample
 │       ├── json/gift/           # Gift template data
 │       └── test.js              # Auto-test all samples
+├── docs/
+│   ├── design/                  # Visual design reference (how profiles look)
+│   └── profiles/                # Approved profile briefs from the science team (what each profile shows)
 ├── views/
 │   ├── profiles/samples/        # Handlebars SVG templates (.hbs)
 │   └── gift.hbs
@@ -79,6 +82,27 @@ npm test   # → node ./src/publish/test.js
 
 ## Profile Development Workflow (Figma → Code)
 
+### Profile brief — required before building (مستندات نیم‌رخ)
+
+`docs/profiles/` holds the **profile briefs** the science team writes, one per assessment, named `<ABBR>_profile_brief_<lang>.md` (e.g. `PRPS_profile_brief_fa.md`). The brief's header line names the profile it governs (e.g. `نیم‌رخ PRPS93`); match a profile to its brief by that name. Line 3 of a brief is its status, exactly one of:
+
+| Status line | Meaning |
+|---|---|
+| `**وضعیت: تأیید شده**` | Approved. Build from it |
+| `**وضعیت: نسخهٔ قبلی؛ مبنای نیم‌رخ فعلی**` | Superseded; file ends in `_previous.md`. The existing profile was built from it. Never build from it |
+
+A brief has three parts: what the test and each component mean (orientation only), what the profile shows (total score, which scores in which order, raw/standard/percent, chart type and axes, levels and colors, on-page text, viewer, forbidden elements, sample scores), and the alerts (condition, exact text, effect on the profile, how simultaneous alerts combine).
+
+**Scope.** This applies to profiles built from now on, and to any existing profile that has a brief. Existing profiles without a brief are out of scope and keep their current rules.
+
+**Build from the brief.** Creating a profile or a new page, or changing what a profile with a brief shows, starts by reading its approved brief. The brief decides *what* appears; Figma and `docs/design/` decide *how* it looks; the scoring source decides how each `score` key is computed. Do not add, drop, rename, reorder, band, color by score, or explain anything beyond the brief. The brief's on-page-text and alerts rows are the researcher's explicit request under VIS-25; text the brief does not list is not added.
+
+**No approved brief, no automatic build.** If a new profile has no approved brief, or a profile's only brief is `_previous`, stop before writing code and tell the user. Continue only when the designer or the researcher explicitly says to build without it; what to show then comes from that person, not from inference, and the final report states the profile was built without a brief, on whose instruction.
+
+**Rebuilding after a new brief.** When both an approved brief and a `_previous` brief exist, the profile was built from the old one and must be updated to the new one. In the same change that brings the profile in line with the approved brief, delete the `_previous` file.
+
+**Do not edit briefs.** Their source is in the science workspace; only the science team copies, relabels or replaces them. If a brief disagrees with Figma, designer notes or the scoring source, stop and surface the conflict.
+
 ### Design Sources and Authority
 
 Each profile is designed in Figma. Per task, one or both of the following may be provided:
@@ -93,6 +117,7 @@ Assign authority by source role instead of selecting one artifact and ignoring t
 - **PNG** — final visual acceptance target, including visible orientation, wrapping, cropping, alignment, and composition.
 - **SVG** — exact vector geometry, coordinates, colors, gradients, filters, clipping, strokes, radii, and icon paths.
 - **HTML** — optional text-content and semantic-order aid only when the user authorizes its use.
+- **Profile brief** (`docs/profiles/`) — what is shown: scores and their order, displayed numbers, chart type and axes, levels and colors, on-page text, alerts, and forbidden elements.
 - **Designer notes** — conditional behavior, thresholds, spacing rules, exceptions, and presentation states.
 - **Scoring source** — score keys, valid raw values, report states, thresholds, sorting, and correction logic.
 

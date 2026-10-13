@@ -2,9 +2,9 @@ const { Profile } = require("../Profile");
 
 // ---------------------------------------------------------------------------
 // PRPS93 — مقیاس حل مساله دینی (فرم فارسی ۳۶ گویه‌ای، PRPS-FA36-C1).
-// No Figma source: the chart is designed from the approved individual-result
-// specification of the science package, whose rules this layout enforces
-// rather than decorates:
+// No Figma source. What the chart shows comes from the approved profile brief
+// docs/profiles/PRPS_profile_brief_fa.md (approved 2026-10-13); this layout
+// enforces its rules rather than decorating them:
 //   - three raw scores — همکاری, خودجهت‌دهی, تأخیری — always all three and
 //     always in that fixed order, each on its own separate 12–60 line with
 //     the score's position on it; never one shared axis, never a combined,
@@ -16,7 +16,10 @@ const { Profile } = require("../Profile");
 //   - no explanatory prose: researcher instruction, 2026-10-12, reflected in
 //     the result specification; scientific limits remain in the documentation;
 //   - all-or-nothing: unless scoring/PRPS93.py returns status "valid", only
-//     the approved no-score sentence is drawn — never a partial or zero score.
+//     the brief's single alert (exact approved text) is drawn — never a
+//     partial or zero score;
+//   - marker position = (score − 12) ÷ 48 along each line; the percent is
+//     geometry only and is never printed. Line direction is the designer's.
 // Visual redesign: docs/design/README.md VIS-02, 05–10, 12, 25–26.
 // The scientific contract requires separate position lines, not filled bars.
 // VIS-25: explanation text requires an explicit designer/researcher request.

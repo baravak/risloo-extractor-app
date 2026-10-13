@@ -13,7 +13,7 @@
         <stop offset="1" stop-color="#334155"/>
       </linearGradient>
       {{! JSS white baseline: Figma blur radius 3 = SVG stdDeviation 1.5; shadow casts right. }}
-      <filter id="rsss-base-shadow" x="131" y="19" width="7" height="318" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <filter id="rsss-base-shadow" x="131" y="19" width="7" height="{{shadowHeight}}" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
         <feFlood flood-opacity="0" result="BackgroundImageFix"/>
         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
         <feOffset dx="1" dy="0"/>
@@ -26,12 +26,18 @@
     </defs>
 
     <g transform="translate({{math spec.profile.padding.x '+' offsetX}}, {{math spec.profile.padding.y '+' offsetY}})" data-rsss-plot="true">
-      {{! Shared zero-origin reference, with valid scores still limited to 1–5. }}
+      {{! Neutral category strips from Figma 387:79429; no category score or alert. }}
+      {{#each groups}}
+        <g transform="translate({{x}}, {{top}})" data-rsss-group="{{title}}">
+          <rect x="0.5" y="0.5" width="{{rectWidth}}" height="{{rectHeight}}" rx="3.5" fill="#F9FAFB" stroke="#F3F4F6"/>
+          <text transform="translate({{centerX}}, {{centerY}}) rotate(-90)" text-anchor="middle" direction="rtl" dy=".3em" font-size="13" font-weight="400" fill="#4B5563">{{title}}</text>
+        </g>
+      {{/each}}
+
+      {{! Score 1 sits 40px after the unlabelled baseline; 1–5 share the bar mapping. }}
       {{#each ticks}}
-        {{#if value}}
-        <line x1="{{x}}" y1="22" x2="{{x}}" y2="334" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6 6" stroke-linecap="round"/>
-        {{/if}}
-        <text x="{{ternary value x 133.5}}" y="10.22" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">{{value}}</text>
+        <line x1="{{x}}" y1="22" x2="{{x}}" y2="{{../gridBottom}}" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <text x="{{x}}" y="10.22" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">{{value}}</text>
       {{/each}}
 
       {{! Six domains followed by the total after a larger gap; no score-based sorting or theme. }}
@@ -43,12 +49,12 @@
           {{/if}}
         </g>
         <text x="126" y="{{titleBaseline}}" text-anchor="start" font-size="13" font-weight="400" fill="#334155">{{title}}</text>
-        {{! Below 1: 6px beyond the true fill end, growing right. At/above 1: 4px inside, growing left. }}
-        <text x="{{scoreX}}" y="{{scoreBaseline}}" text-anchor="{{ternary labelOutside 'start' 'end'}}" direction="ltr" unicode-bidi="embed" font-size="13" font-weight="500" fill="{{ternary labelOutside (ternary isTotal '#334155' '#4338CA') 'white'}}">{{mark}}</text>
+        {{! All scores stay 4px inside the fill end and grow left. }}
+        <text x="{{scoreX}}" y="{{scoreBaseline}}" text-anchor="end" direction="ltr" unicode-bidi="embed" font-size="13" font-weight="500" fill="white">{{mark}}</text>
       {{/each}}
-      {{! Paint the solid zero baseline over the fills; other guides remain dashed. }}
+      {{! Paint the unlabelled solid baseline over the fills; score guides remain dashed. }}
       <g opacity="0.5" filter="url(#rsss-base-shadow)">
-        <line x1="133.5" y1="22.5" x2="133.5" y2="333.5" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <line x1="133.5" y1="22.5" x2="133.5" y2="{{baselineBottom}}" stroke="white" stroke-width="1" stroke-linecap="round"/>
       </g>
     </g>
 

@@ -1,19 +1,15 @@
 {{#> layout}}
-
-  {{#if valid}}
-    <defs>
-      {{! RSSS93 palette: indigo components, JSS neutral total; independent of the score. }}
-      <linearGradient id="ohq-bar" x1="0" y1="0" x2="1" y2="0">
-        <stop stop-color="#C7D2FE"/>
-        <stop offset="1" stop-color="#4338CA"/>
-      </linearGradient>
-      {{! As RSSS93 (Figma 8071:184056): inverse of its 0.57 gradient transform, along the fill. }}
-      <linearGradient id="ohq-total" x1="0" y1="0" x2="1.754386" y2="0">
-        <stop stop-color="#94A3B8"/>
-        <stop offset="1" stop-color="#334155"/>
-      </linearGradient>
-      {{! JSS white baseline: Figma blur radius 3 = SVG stdDeviation 1.5; shadow casts right. }}
-      <filter id="ohq-base-shadow" x="131" y="19" width="7" height="{{shadowHeight}}" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+  <defs>
+    <linearGradient id="ohq-bar" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#BAE6FD"/>
+      <stop offset="1" stop-color="#0369A1"/>
+    </linearGradient>
+    {{! Exact total gradient from the source SVG, anchored to its full track. }}
+    <linearGradient id="ohq-total" x1="39" y1="{{total.bottom}}" x2="39" y2="6" gradientUnits="userSpaceOnUse" gradientTransform="translate(-30, {{math 0 '-' total.tip}})">
+      <stop stop-color="#94A3B8"/>
+      <stop offset="1" stop-color="#334155"/>
+    </linearGradient>
+      <filter id="ohq-base-shadow" x="131" y="19" width="7" height="{{guideShadowHeight}}" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
         <feFlood flood-opacity="0" result="BackgroundImageFix"/>
         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
         <feOffset dx="1" dy="0"/>
@@ -23,49 +19,53 @@
         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
         <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
       </filter>
-    </defs>
-
-    <g transform="translate({{math spec.profile.padding.x '+' offsetX}}, {{math spec.profile.padding.y '+' offsetY}})" data-ohq-plot="true">
-      {{! Percent axis 0–100 on the shared 500px track; the zero guide is the solid baseline. }}
-      {{#each ticks}}
-        {{#if dashed}}
-          <line x1="{{x}}" y1="22" x2="{{x}}" y2="{{../gridBottom}}" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6 6" stroke-linecap="round"/>
-        {{/if}}
-        <text x="{{x}}" y="10.22" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">{{value}}</text>
-      {{/each}}
-
-      {{! Total first, then F1–F7 after a larger gap; fixed order, no score-based theme. }}
-      {{#each items}}
+    <filter id="ohq-total-base-shadow" x="24" y="{{total.shadowY}}" width="34" height="14" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="2"/>
+      <feGaussianBlur stdDeviation="3"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+    <clipPath id="ohq-arrow-clip"><rect width="8" height="8"/></clipPath>
+  </defs>
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})" data-ohq-plot="true">
+    {{#each ticks}}
+      {{#if dashed}}<line x1="{{x}}" y1="22" x2="{{x}}" y2="{{../gridBottom}}" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6 6" stroke-linecap="round" data-ohq-guide="{{value}}"/>{{/if}}
+      <text x="{{labelX}}" y="10.22" text-anchor="{{anchor}}" direction="ltr" unicode-bidi="bidi-override" font-size="12" font-weight="400" fill="#94A3B8" data-ohq-tick="{{value}}">{{#if value}}٪ {{/if}}{{value}}</text>
+    {{/each}}
+    {{! Exact 52×12 header from 3603:114849, centred over the 64px raw column. }}
+    <g transform="translate({{rawHeadingX}}, 0)" data-ohq-raw-heading="true">
+      <g transform="translate(0, 2)" clip-path="url(#ohq-arrow-clip)">
+        <path d="M4 0.5V7.5M1 4.5L4 7.5L7 4.5" stroke="#94A3B8" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+      <text x="32" y="10.22" text-anchor="middle" font-size="12" font-weight="400" fill="#94A3B8">نمره خام</text>
+    </g>
+    {{#each items}}
+      <g data-ohq-factor="{{title}}">
         <g transform="translate(134, {{top}})">
-          {{bar 500 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=(ternary isTotal "#F1F5F9" "#E2E8F0") fill-opacity=(ternary isTotal 1 0.5)}}
-          {{#if width}}
-            {{bar width 16 (object tl=0 bl=0 tr=radius br=radius) (toRad 0) fill=(ternary isTotal "url(#ohq-total)" "url(#ohq-bar)")}}
-          {{/if}}
+          {{bar 400 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="#E2E8F0" fill-opacity=0.5}}
+          {{#if width}}{{bar width 16 (object tl=0 bl=0 tr=radius br=radius) (toRad 0) fill="url(#ohq-bar)"}}{{/if}}
         </g>
         <text x="126" y="{{titleBaseline}}" text-anchor="start" font-size="13" font-weight="400" fill="#334155">{{title}}</text>
-        {{! Percent 4px inside the fill end, growing left; the minimum (17%) still fits. }}
         <text x="{{percentX}}" y="{{scoreBaseline}}" text-anchor="end" direction="ltr" unicode-bidi="embed" font-size="13" font-weight="500" fill="white">٪ {{percent}}</text>
-        {{! Raw score and its own range in fixed columns, independent of the bar length. }}
-        <text x="{{../rawX}}" y="{{math top '+' 13.5}}" text-anchor="start" direction="ltr" unicode-bidi="embed" font-size="16" font-weight="700" fill="{{ternary isTotal "#334155" "#4338CA"}}">{{raw}}</text>
-        <text x="{{../rangeX}}" y="{{scoreBaseline}}" text-anchor="end" direction="rtl" font-size="13" font-weight="400" fill="#64748B">{{min}} تا {{max}}</text>
-      {{/each}}
-      {{! Paint the solid baseline over the fills; percent guides remain dashed. }}
-      <g opacity="0.5" filter="url(#ohq-base-shadow)">
-        <line x1="133.5" y1="22.5" x2="133.5" y2="{{baselineBottom}}" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        <text x="{{../rawX}}" y="{{rawBaseline}}" text-anchor="start" direction="ltr" fill="#64748B" data-ohq-raw="true"><tspan font-size="16" font-weight="700" fill="#0369A1">{{raw}}</tspan><tspan dx="2" dy="{{slashShift}}" font-size="12" font-weight="300">/</tspan><tspan dx="2" dy="{{maxShift}}" font-size="13" font-weight="400">{{max}}</tspan></text>
       </g>
+    {{/each}}
+    <g opacity=".5" filter="url(#ohq-base-shadow)">
+      <line x1="133.5" y1="22.5" x2="133.5" y2="{{baselineBottom}}" stroke="white" stroke-width="1" stroke-linecap="round" data-ohq-guide="0"/>
     </g>
-
-  {{else}}
-
-    {{! Brief alert: only «نمره تولید نشد»; no number, bar or partial result. Centred in the 903×714 viewport. }}
-    <g transform="translate(20, 34)">
-      <rect x="181.5" y="237.5" width="500" height="171" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
-      <circle cx="431.5" cy="288" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
-      <line x1="431.5" y1="279" x2="431.5" y2="291" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="431.5" cy="297.5" r="1.6" fill="#64748B"/>
-      <text x="431.5" y="354" text-anchor="middle" font-size="16" font-weight="600" fill="#334155">نمره تولید نشد</text>
+    {{! Source component 8071:184054 in upright coordinates; only its title rotates. }}
+    <g transform="translate({{total.x}}, {{total.y}})" data-ohq-total="true">
+      <g transform="translate(30, 6)">{{bar 18 total.trackHeight (object tl=2 tr=2 bl=0 br=0) (toRad 0) fill="#F1F5F9"}}</g>
+      {{#if total.height}}<g transform="translate(30, {{total.tip}})" data-ohq-total-fill="true">{{bar 18 total.height (object tl=2 tr=2 bl=0 br=0) (toRad 0) fill="url(#ohq-total)"}}</g>{{/if}}
+      <text x="56" y="{{total.percentBaseline}}" text-anchor="start" direction="ltr" unicode-bidi="embed" font-size="18" font-weight="600" fill="#334155" data-ohq-total-percent="true">٪ {{total.percent}}</text>
+      <text x="56" y="{{total.rawBaseline}}" text-anchor="end" direction="rtl" font-size="12" font-weight="400" fill="#64748B" data-ohq-total-raw="true">{{total.raw}} از {{total.max}}</text>
+      <text transform="translate(20.02, {{total.titleBottom}}) rotate(-90)" text-anchor="end" direction="rtl" font-size="12" font-weight="400" fill="#475569">{{total.title}}</text>
+      <g opacity=".5" filter="url(#ohq-total-base-shadow)"><path d="M29 {{total.titleBottom}}H49" stroke="white" stroke-width="2" stroke-linecap="round"/></g>
+      <text x="24" y="9.06" text-anchor="end" direction="ltr" unicode-bidi="embed" font-size="12" font-weight="400" fill="#475569">٪ 100</text>
     </g>
-
-  {{/if}}
-
+  </g>
 {{/layout}}

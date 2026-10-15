@@ -18,7 +18,7 @@
 
 Before creating a profile or redesigning its appearance, read [docs/design/README.md](docs/design/README.md), then the relevant family guide and cited examples. This is the maintained visual reference; keep detailed visual rules there rather than duplicating them in agent entrypoints. The inventory records the designer's instruction that lower frames **within each Figma section** are newer. Profile-specific measurements are examples, not universal constants. A visual redesign must preserve scoring, interpretation thresholds, data structure, and essential semantic content unless the user separately requests those changes. Apply the current defaults in VIS-25–30 for explanations only on explicit designer/researcher request, redundant headings, chart language, aggregate labels, decimal formatting, and labels on short bars; an older implementation or scientific package alone is not authority to retain explanatory text or obsolete presentation choices; an approved profile brief (`docs/profiles/`) is.
 
-For a documentation-only visual audit, inspect the authorized images and layer properties without changing runtime code. Ask for designer comments once; an explicit answer that none exist resolves that input. Request scoring sources only if the task needs to establish score semantics or conditional logic; do not infer them from a static design.
+For a documentation-only visual audit, inspect the authorized images and layer properties without changing runtime code. Ask for designer comments once; an explicit answer that none exist resolves that input. Exception for `designer-checkup`, by standing designer instruction on 2026-10-15: do not ask an optional comments/notes/Figma/Trello intake question; the designer will provide additions. Request scoring sources only if the task needs to establish score semantics or conditional logic; do not infer them from a static design.
 
 **@baravak/risloo-profile-cli** is a Node.js CLI tool that converts psychological test result JSON data into SVG and PNG profile/report images. It supports 81+ psychological questionnaires with Persian/Farsi labeling.
 
@@ -113,7 +113,7 @@ Each profile is designed in Figma. Per task, one or both of the following may be
 - **Figma design file** — connect via Figma MCP to read layer dimensions and structure. Identify the full chart-content envelope as described below; its wrapper is often named **Chart** or **All**.
 - **Figma handoff file** — contains additional implementation notes and specs. It may state that this profile is similar to an existing one. In that case, inspect the referenced profile's JS + HBS files, identify the genuinely shared behavior, and apply only the described differences.
 
-> **Important:** The Figma MCP reads text layers only — it does NOT read Figma comments. Designers often leave critical specs (thresholds, coefficients, pixel values) as Figma comments. Always ask the user to share designer comments before finalizing the plan.
+> **Important:** The Figma MCP reads text layers only — it does NOT read Figma comments. Designers often leave critical specs (thresholds, coefficients, pixel values) as Figma comments. Ask the user to share designer comments before finalizing a new-build plan unless they have already resolved this input. In `designer-checkup`, follow the standing instruction above: use comments the designer volunteers and do not repeat an optional intake question.
 
 Assign authority by source role instead of selecting one artifact and ignoring the others:
 

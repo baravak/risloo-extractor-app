@@ -25,7 +25,7 @@ With one active review, the assessment need not be repeated in every message. Wi
 - Find the relevant project checkout independently of the installed skill's cwd. Read its `AGENTS.md`. This skill lives in risloo-extractor-app; its repository reference is [AGENTS.md](../../../AGENTS.md). For chart edits follow [create-profile](../create-profile/SKILL.md); load the appropriate Figma skill before using Figma tools.
 - Locate the controller, templates, fixture and approved profile brief. Apply the project's brief/source/conflict rules. Never edit the science team's Markdown brief.
 - Discovering a scoring bug does not authorize changing formulas, thresholds, score keys or other tests. Scoring changes require explicit user authorization; obtain the actual scoring source from established context or ask if unknown. Do not expand the scope to unrelated assessments/shared components.
-- The designer compares SVGs with their own Figma file. Missing Figma access is not a reason to withhold existing renders and documentation; do not claim Figma fidelity without comparison. Ask for designer comments once, preserving an existing answer that none exist.
+- The designer compares SVGs with their own Figma file. Missing Figma access is not a reason to withhold existing renders and documentation; do not claim Figma fidelity without comparison. Standing designer instruction, 2026-10-15: do not ask whether there are comments, additional design notes, Figma links or a Trello card at checkup startup; the designer will volunteer them. Use supplied context and proceed with the existing implementation. Ask only for genuinely missing information that blocks the requested work, rather than an optional intake question.
 
 ## Persist review state
 

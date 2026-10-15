@@ -2,37 +2,23 @@ const { Profile } = require("../Profile");
 
 // ---------------------------------------------------------------------------
 // PRPS93 — مقیاس حل مساله دینی (فرم فارسی ۳۶ گویه‌ای، PRPS-FA36-C1).
-// No Figma source. What the chart shows comes from the approved profile brief
-// docs/profiles/PRPS_profile_brief_fa.md (approved 2026-10-13); this layout
-// enforces its rules rather than decorating them:
-//   - three raw scores — همکاری, خودجهت‌دهی, تأخیری — always all three and
-//     always in that fixed order, each on its own separate 12–60 line with
-//     the score's position on it; never one shared axis, never a combined,
-//     sorted or comparative chart;
-//   - classification is off: one neutral hue for all three, no zone, no
-//     threshold, no label, no warning, no "dominant style", nothing that
-//     singles out or ranks the highest score; no total, percentile, standard
-//     score, item mean or percent of maximum;
-//   - no explanatory prose: researcher instruction, 2026-10-12, reflected in
-//     the result specification; scientific limits remain in the documentation;
-//   - all-or-nothing: unless scoring/PRPS93.py returns status "valid", only
-//     the brief's single alert (exact approved text) is drawn — never a
-//     partial or zero score;
-//   - marker position = (score − 12) ÷ 48 along each line; the percent is
-//     geometry only and is never printed. Line direction is the designer's.
-// Visual redesign: docs/design/README.md VIS-02, 05–10, 12, 25–26.
-// The scientific contract requires separate position lines, not filled bars.
-// VIS-25: explanation text requires an explicit designer/researcher request.
-// One upright 800 × 224 content envelope, centred on the 943 × 754 page.
-// No chart-owned offset/rotation/scale; only the declared profile inset.
-// Each ruler owns its endpoints; there is no shared grid or connecting path.
-// Slate palette from tables-mixed-xy.md XY-02; no score-dependent colors.
+// Designer's scientifically approved revision, 2026-10-15:
+// percent = raw / 60 * 100 (not (raw - 12) / 48). Raw scoring is unchanged.
+// Three independent gauges, in fixed RTL order: همکاری، خودجهت‌دهی، تأخیری.
+// Gauge geometry: Figma 5405:143530 (140px, R70/r49, 270° sweep).
+// Fixed factor hues requested by the designer, 2026-10-15; no score levels.
+// Layout: Figma 2941:103565, 141px components separated by 88px.
+// The 100% label extends 3px left of the first component's 141px frame:
+// include that measured overhang in the content envelope, without scaling.
+// No total, interpretation levels, score-dependent themes or no-score alert.
 // ---------------------------------------------------------------------------
-const CHART = { width: 800, height: 224 };
-
-// Each style owns its line: 12 at x=LINE.left, 60 at x=LINE.right.
-// Keep equal visual margins after removing the former full-width divider.
-const LINE = { left: 12.5, right: 642.5, top: 36, pitch: 80 };
+const CHART = { width: 602, height: 179 };
+const GAUGE = { radius: 70, inner: 49, corner: 6, pitch: 229, overhang: 3 };
+const THEMES = {
+  collaborative: { accent: "#5EEAD4", primary: "#0F766E", track: "#F1F5F9" },
+  self_directing: { accent: "#A5B4FC", primary: "#4338CA", track: "#F1F5F9" },
+  deferring: { accent: "#C4B5FD", primary: "#7C3AED", track: "#F1F5F9" },
+};
 
 class PRPS93 extends Profile {
   static pages = 1;
@@ -41,7 +27,6 @@ class PRPS93 extends Profile {
     L1: { eng: "collaborative", title: "همکاری", min: 12, max: 60 },
     L2: { eng: "self_directing", title: "خودجهت‌دهی", min: 12, max: 60 },
     L3: { eng: "deferring", title: "تأخیری", min: 12, max: 60 },
-    L4: { eng: "status" }, // valid | incomplete | invalid
   };
 
   profileSpec = {
@@ -55,8 +40,8 @@ class PRPS93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: CHART.width + 2 * this.padding.x, // 800 → 903
-          height: CHART.height + 2 * this.padding.y, // 224 → 714
+          width: CHART.width + 2 * this.padding.x, // 602 → 903
+          height: CHART.height + 2 * this.padding.y, // 179 → 714
         };
       },
       // Chart inset inside the 943 × 754 design page minus the 20 px the layout
@@ -77,29 +62,57 @@ class PRPS93 extends Profile {
   _calcContext() {
     const s = this.dataset.score;
 
-    // Anything but an explicit "valid" is no score: a missing or unknown status
-    // must not let `?? 0` read as a score.
-    if (s[3].mark !== "valid") return [{ valid: false }];
-
     // Fixed order from `labels`; never sorted by score.
     const styles = s.slice(0, 3).map((data, i) => {
-      const { title, min, max } = data.label;
-      const mark = data.mark ?? 0;
-      const clamped = Math.min(Math.max(mark, min), max);
+      const { eng, title, max } = data.label;
+      const mark = Number(data.mark ?? 0);
+      const p = Math.min(Math.max(mark / max, 0), 1);
       return {
+        key: eng,
+        theme: THEMES[eng],
         title,
         mark,
-        min,
         max,
-        left: LINE.left,
-        right: LINE.right,
-        y: LINE.top + i * LINE.pitch,
-        x: LINE.left + ((LINE.right - LINE.left) * (clamped - min)) / (max - min),
+        p,
+        pct: Math.round(p * 100),
+        x: GAUGE.overhang + (2 - i) * GAUGE.pitch,
+        fillPath: ringPath(p),
       };
     });
 
-    return [{ valid: true, styles }];
+    return [{ styles, trackPath: ringPath(1) }];
   }
 }
 
 module.exports = PRPS93;
+
+// Figma's rounded ellipse trims each circular edge by the corner's arc length
+// and joins it to the radial edge with cubic quarter-circle handles. Keep this
+// local: the shared gauge helper uses different corner geometry, and changing
+// it would affect other assessments. Coordinates are relative to the centre.
+function ringPath(p) {
+  if (p <= 0) return "";
+  const { radius: R, inner: r } = GAUGE;
+  const start = -Math.PI / 2;
+  const sweep = (3 * Math.PI * p) / 2;
+  const end = start + sweep;
+  const f = Math.min(GAUGE.corner, (sweep * r) / 2);
+  const handle = (4 * (Math.SQRT2 - 1) * f) / 3;
+  const point = (radius, angle) => [radius * Math.cos(angle), radius * Math.sin(angle)];
+  const tangent = (a, angle, distance) => [a[0] - Math.sin(angle) * distance, a[1] + Math.cos(angle) * distance];
+  const xy = (a) => a.map((n) => Number(n.toFixed(6))).join(" ");
+  const os = point(R, start + f / R);
+  const oe = point(R, end - f / R);
+  const is = point(r, start + f / r);
+  const ie = point(r, end - f / r);
+  return [
+    `M ${xy(point(R - f, start))}`,
+    `C ${xy(point(R - f + handle, start))} ${xy(tangent(os, start + f / R, -handle))} ${xy(os)}`,
+    `A ${R} ${R} 0 ${sweep - (2 * f) / R > Math.PI ? 1 : 0} 1 ${xy(oe)}`,
+    `C ${xy(tangent(oe, end - f / R, handle))} ${xy(point(R - f + handle, end))} ${xy(point(R - f, end))}`,
+    `L ${xy(point(r + f, end))}`,
+    `C ${xy(point(r + f - handle, end))} ${xy(tangent(ie, end - f / r, handle))} ${xy(ie)}`,
+    `A ${r} ${r} 0 ${sweep - (2 * f) / r > Math.PI ? 1 : 0} 0 ${xy(is)}`,
+    `C ${xy(tangent(is, start + f / r, -handle))} ${xy(point(r + f - handle, start))} ${xy(point(r + f, start))} Z`,
+  ].join(" ");
+}

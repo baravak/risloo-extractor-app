@@ -53,7 +53,7 @@ Phases: `preparing`, `reviewing`, `correcting`, `approved`, `finalizing`, `compl
 
 ## 1. Prepare the review bundle
 
-1. Interpret «تمام احتمالات» as every distinct supported presentation state, not every possible numeric response permutation. Derive a coverage matrix from the brief, controller/templates, notes and actual scoring: every page/presentation variant; valid/incomplete/invalid states; independent alerts and interacting combinations; visibility/cardinality; min/max and boundaries for colors, label positions and piecewise axes. Follow AGENTS.md's boundary-driven coverage rules. Combine cases when one fixture covers multiple independent states; enumerate all interactions that affect layout. Do not call one ordinary sample complete coverage.
+1. Interpret «تمام احتمالات» as every distinct supported presentation state, not every possible numeric response permutation. Derive a coverage matrix from the brief, controller/templates, notes and actual scoring: every page/presentation variant; valid and any supported incomplete/invalid presentation states; independent alerts and interacting combinations; visibility/cardinality; min/max and boundaries for colors, label positions and piecewise axes. Respect the designer's explicit confirmation of which states can reach the profile in the system: do not invent an incomplete-answer presentation case for a required-question flow that the designer has excluded. Record such exclusions per assessment; this does not authorize changing scoring validation or other assessments. Follow AGENTS.md's boundary-driven coverage rules. Combine cases when one fixture covers multiple independent states; enumerate all interactions that affect layout. Do not call one ordinary sample complete coverage.
 2. Prefer fixtures generated through scoring, with consistent raw/aggregate/percentage/level values. Label any deliberately inconsistent layout-only fixture `presentation-only`. Use synthetic data, including sidebar identity fields; never use real patient information for review/Trello.
 3. Generate **full SVGs with sidebar**, named by state, under separate case directories, for all pages. For example:
 
@@ -69,7 +69,7 @@ Phases: `preparing`, `reviewing`, `correcting`, `approved`, `finalizing`, `compl
    ```
 
    Locate `marked` in existing dependencies or through `load_workspace_dependencies`; do not add project dependencies for a preview. Keep generated HTML out of `docs/profiles/`. Give the **HTML** reading link alongside SVG links; keep the original MD accessible.
-5. Inspect actual PNGs and the rendered HTML/font. Open full SVGs and HTML in the app and provide absolute links plus a concise case/coverage index. Await the designer's corrections; no cleanup or push in this phase.
+5. Inspect actual PNGs and the rendered HTML/font. Open the brief HTML and full SVGs **as rendered browser tabs**, not source-code/file-editor tabs. In Codex use `open_in_codex` with `target.type="browser"` and a `file:///...` URL derived from the absolute local path (URL-encode path components as needed); do not use `target.type="file"` for these review artifacts. Provide absolute file links plus a concise case/coverage index. Await the designer's corrections; no cleanup or push in this phase.
 
 ## 2. Apply corrections
 

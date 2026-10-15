@@ -1,0 +1,71 @@
+{{#> layout}}
+
+  {{#if valid}}
+    <defs>
+      {{! RSSS93 palette: indigo components, JSS neutral total; independent of the score. }}
+      <linearGradient id="ohq-bar" x1="0" y1="0" x2="1" y2="0">
+        <stop stop-color="#C7D2FE"/>
+        <stop offset="1" stop-color="#4338CA"/>
+      </linearGradient>
+      {{! As RSSS93 (Figma 8071:184056): inverse of its 0.57 gradient transform, along the fill. }}
+      <linearGradient id="ohq-total" x1="0" y1="0" x2="1.754386" y2="0">
+        <stop stop-color="#94A3B8"/>
+        <stop offset="1" stop-color="#334155"/>
+      </linearGradient>
+      {{! JSS white baseline: Figma blur radius 3 = SVG stdDeviation 1.5; shadow casts right. }}
+      <filter id="ohq-base-shadow" x="131" y="19" width="7" height="{{shadowHeight}}" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dx="1" dy="0"/>
+        <feGaussianBlur stdDeviation="1.5"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+      </filter>
+    </defs>
+
+    <g transform="translate({{math spec.profile.padding.x '+' offsetX}}, {{math spec.profile.padding.y '+' offsetY}})" data-ohq-plot="true">
+      {{! Percent axis 0–100 on the shared 500px track; the zero guide is the solid baseline. }}
+      {{#each ticks}}
+        {{#if dashed}}
+          <line x1="{{x}}" y1="22" x2="{{x}}" y2="{{../gridBottom}}" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6 6" stroke-linecap="round"/>
+        {{/if}}
+        <text x="{{x}}" y="10.22" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">{{value}}</text>
+      {{/each}}
+
+      {{! Total first, then F1–F7 after a larger gap; fixed order, no score-based theme. }}
+      {{#each items}}
+        <g transform="translate(134, {{top}})">
+          {{bar 500 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=(ternary isTotal "#F1F5F9" "#E2E8F0") fill-opacity=(ternary isTotal 1 0.5)}}
+          {{#if width}}
+            {{bar width 16 (object tl=0 bl=0 tr=radius br=radius) (toRad 0) fill=(ternary isTotal "url(#ohq-total)" "url(#ohq-bar)")}}
+          {{/if}}
+        </g>
+        <text x="126" y="{{titleBaseline}}" text-anchor="start" font-size="13" font-weight="400" fill="#334155">{{title}}</text>
+        {{! Percent 4px inside the fill end, growing left; the minimum (17%) still fits. }}
+        <text x="{{percentX}}" y="{{scoreBaseline}}" text-anchor="end" direction="ltr" unicode-bidi="embed" font-size="13" font-weight="500" fill="white">٪ {{percent}}</text>
+        {{! Raw score and its own range in fixed columns, independent of the bar length. }}
+        <text x="{{../rawX}}" y="{{math top '+' 13.5}}" text-anchor="start" direction="ltr" unicode-bidi="embed" font-size="16" font-weight="700" fill="{{ternary isTotal "#334155" "#4338CA"}}">{{raw}}</text>
+        <text x="{{../rangeX}}" y="{{scoreBaseline}}" text-anchor="end" direction="rtl" font-size="13" font-weight="400" fill="#64748B">{{min}} تا {{max}}</text>
+      {{/each}}
+      {{! Paint the solid baseline over the fills; percent guides remain dashed. }}
+      <g opacity="0.5" filter="url(#ohq-base-shadow)">
+        <line x1="133.5" y1="22.5" x2="133.5" y2="{{baselineBottom}}" stroke="white" stroke-width="1" stroke-linecap="round"/>
+      </g>
+    </g>
+
+  {{else}}
+
+    {{! Brief alert: only «نمره تولید نشد»; no number, bar or partial result. Centred in the 903×714 viewport. }}
+    <g transform="translate(20, 34)">
+      <rect x="181.5" y="237.5" width="500" height="171" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <circle cx="431.5" cy="288" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
+      <line x1="431.5" y1="279" x2="431.5" y2="291" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="431.5" cy="297.5" r="1.6" fill="#64748B"/>
+      <text x="431.5" y="354" text-anchor="middle" font-size="16" font-weight="600" fill="#334155">نمره تولید نشد</text>
+    </g>
+
+  {{/if}}
+
+{{/layout}}

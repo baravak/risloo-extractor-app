@@ -1,58 +1,30 @@
 const { Profile } = require("../Profile");
 
-// ---------------------------------------------------------------------------
-// ESS93 — مقیاس خواب‌آلودگی اپوورث (نسخهٔ ایرانی بزرگسالان، ESS-FA-IR2013-D1).
-// No Figma source: the chart is designed from the approved individual-result
-// specification of the science package, whose rules this layout enforces
-// rather than decorates:
-//   - one score only, the 0–24 total, always shown with that range, drawn on
-//     the instrument's own line; no component, no norm, no comparison;
-//   - no classification of any kind: one neutral hue that never changes with
-//     the score, no zone, no cut-off (as text, line, tick or mark), no label,
-//     no warning, no recommendation;
-//   - uniform integer ticks only, so no single value on the line is singled out;
-//   - text for the authorised specialist only, third person: the direction of
-//     the score, the permitted reading (subjective sleepiness), the
-//     decision-support principle, what the score is not, and the population
-//     and administration limits;
-//   - all-or-nothing: unless scoring/ESS93.py returns status "valid", only the
-//     no-score message is drawn — never a partial or zero score.
-// Chart 863 × 674, centred on the 943 × 754 design page.
-// ---------------------------------------------------------------------------
-const CHART = { width: 863, height: 674 };
-
-// The total's own line: 0 at x=LINE.left, max at x=LINE.right.
-const LINE = { left: 20, right: 640, y: 112 };
+// ESS93: Figma 5405:146150, exact 250 × 187 semicircle component.
+// The designer selected this presentation and title on 2026-10-15.
+// Fill = raw / 24; the displayed percentage rounds halves up. No score bands.
+// All questions are required; the designer removed the no-score presentation.
+const TITLE = "خواب‌آلودگی اپوورث";
+const THEME = { accent: "#818CF8", primary: "#4338CA", value: "#4F46E5", track: "#F1F5F9", secondary: "#64748B" };
 
 class ESS93 extends Profile {
   static pages = 1;
 
-  labels = {
-    L1: { eng: "total", title: "نمرهٔ کل", max: 24 },
-    L2: { eng: "status" }, // valid | incomplete | invalid
-  };
+  labels = { L1: { eng: "total", title: "نمرهٔ کل", max: 24 } };
 
   profileSpec = {
     sample: {
-      name: "مقیاس خواب‌آلودگی اپوورث",
+      name: TITLE,
       multiProfile: false,
       questions: false,
       defaultFields: true,
       fields: [],
     },
     profile: {
-      get dimensions() {
-        return {
-          width: CHART.width + 2 * this.padding.x, // 863 → 903
-          height: CHART.height + 2 * this.padding.y, // 674 → 714
-        };
-      },
-      // Chart inset inside the 943 × 754 design page minus the 20 px the layout
-      // owns on every side, so the with-sidebar page renders at scale 1.
-      padding: {
-        x: (943 - CHART.width) / 2 - 20, // 20
-        y: (754 - CHART.height) / 2 - 20, // 20
-      },
+      // Measured Main insets: left 346/right 347; top 284/bottom 283.
+      // Layout owns 20 px per side. Keep its 903 × 714 inner canvas at scale 1.
+      dimensions: { width: 903, height: 714 },
+      padding: { x: 346 - 20, y: 284 - 20 },
     },
     labels: Object.values(this.labels),
   };
@@ -63,31 +35,21 @@ class ESS93 extends Profile {
   }
 
   _calcContext() {
-    const s = this.dataset.score;
-
-    // Anything but an explicit "valid" is no score: a missing or unknown status
-    // must not let `?? 0` read as the lowest valid score.
-    if (s[1].mark !== "valid") return [{ valid: false }];
-
-    const mark = s[0].mark ?? 0;
-    const max = s[0].label.max;
-    const step = (LINE.right - LINE.left) / max;
-
-    return [
-      {
-        valid: true,
-        total: {
-          mark,
-          max,
-          left: LINE.left,
-          right: LINE.right,
-          y: LINE.y,
-          x: LINE.left + step * Math.min(Math.max(mark, 0), max),
-          // One identical tick per integer value; none is emphasised.
-          ticks: Array.from({ length: max + 1 }, (_, i) => LINE.left + step * i),
-        },
+    const mark = Number(this.dataset.score[0].mark ?? 0);
+    const max = this.dataset.score[0].label.max;
+    const p = Math.min(Math.max(mark / max, 0), 1);
+    const end = Math.PI * (1 + p);
+    const point = [125 + 125 * Math.cos(end), 167 + 125 * Math.sin(end)]
+      .map(n => Number(n.toFixed(6))).join(" ");
+    return [{
+      title: TITLE,
+      theme: THEME,
+      total: { mark, max, p, pct: Math.round(p * 100),
+        // Exact Figma track owns the rounded base corners. A sector clips only
+        // the moving radial edge, preserving the source vector at every fill.
+        fillClip: p > 0 ? `M 125 167 L 0 167 A 125 125 0 0 1 ${point} Z` : "",
       },
-    ];
+    }];
   }
 }
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "چکاپ دیزاینر نیم‌رخ"
+  short_description: "بازبینی نیم‌رخ، مستند RTL و نهایی‌سازی پس از تأیید"
+  default_prompt: "با $designer-checkup چکاپ دیزاینر نیم‌رخ آزمون مشخص‌شده را شروع کن."

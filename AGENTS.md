@@ -8,6 +8,9 @@
 | Skill | Path | Use for |
 |---|---|---|
 | `create-profile` | `.claude/skills/create-profile/SKILL.md` | Create / extend / edit a profile (نیم‌رخ) from a Figma design → JS controller + HBS template. `.agents/skills/create-profile/SKILL.md` is a vendor-neutral pointer to the same file (Codex scans `.agents/skills` from the cwd up to the repo root). |
+| `designer-checkup` | `.claude/skills/designer-checkup/SKILL.md` | Designer review of a completed assessment/profile: full SVG coverage, temporary RTL/Dana HTML brief, corrections, then representative PNG, cleanup and push on explicit approval. `.agents/skills/designer-checkup/SKILL.md` is the discovery pointer. |
+
+«چکاپ دیزاینر <آزمون>» starts or resumes `designer-checkup`; follow-up corrections stay in that review. «اوکیه، پوش کن» finalizes the active review using that runbook. A request to create/edit the skill itself does not start or finalize a review.
 
 ## Project Overview
 

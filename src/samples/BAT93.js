@@ -48,14 +48,14 @@ const LEVELS = {
 // The eight rows of the chart, in design order: the core group (five rows starting at
 // y = 49) then the secondary group (three rows starting at y = 313), both on a 40 px
 // pitch. `max` is the raw maximum of the scale, `weight` the title's font weight — the
-// two group totals are the only ones the designer set to 500.
+// two group totals use 700 per the designer's typography correction.
 const SCALES = [
-  { key: "total_core", title: "علائم اصلی (نمره کل)", max: 115, weight: 500, top: 49 },
+  { key: "total_core", title: "علائم اصلی (نمره کل)", max: 115, weight: 700, top: 49 },
   { key: "ex", title: "خستگی", max: 40, weight: 400, top: 89 },
   { key: "md", title: "فاصله ذهنی", max: 25, weight: 400, top: 129 },
   { key: "ci", title: "آسیب‌دیدگی شناختی", max: 25, weight: 400, top: 169 },
   { key: "ei", title: "آسیب‌دیدگی هیجانی", max: 25, weight: 400, top: 209 },
-  { key: "secondary", title: "علائم ثانویه", max: 50, weight: 500, top: 313 },
+  { key: "secondary", title: "علائم ثانویه", max: 50, weight: 700, top: 313 },
   { key: "pd", title: "شکایات روان‌شناختی", max: 25, weight: 400, top: 353 },
   { key: "psc", title: "شکایات روان‌تنی", max: 25, weight: 400, top: 393 },
 ];
@@ -130,8 +130,9 @@ class BAT93 extends Profile {
         mark: raw.mark ?? 0,
         max: raw.label.max,
         // The decimal separator is «٬» (U+066C) by explicit designer instruction —
-        // it is the one that reads well in Dana.
-        score: mean.toFixed(2).replace(".", "٬"),
+        // it is the one that reads well in Dana. VIS-29: do not pad trailing zeroes
+        // or round again; the scoring engine already supplies the reported mean.
+        score: String(mean).replace(".", "٬"),
         width,
         top: scale.top,
         gradientFill: `url(#bat-${level.theme})`,

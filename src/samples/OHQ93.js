@@ -1,7 +1,8 @@
 const { Profile } = require("../Profile");
 
 // OHQ93 designer revision, 2026-10-15: seven horizontal factors and a separate
-// vertical total. Scored raw/percent keys and their rounding remain unchanged.
+// vertical total. Native percentages are stored as fractions (0..1); multiply
+// only for display. Raw scores, percentage rounding and chart geometry stay fixed.
 // Figma: raw header 3603:114849; percent labels 8071:184050;
 // vertical total/readout 8071:184054. No status-dependent display or alerts.
 const CHART = { width: 830, height: 318 };
@@ -60,7 +61,7 @@ class OHQ93 extends Profile {
   _calcContext() {
     const s = this.dataset.score;
     const items = s.slice(1, 8).map((data, i) => {
-      const percent = Number(s[9 + i].mark ?? 0);
+      const percent = Math.round(Number(s[9 + i].mark ?? 0) * 100);
       const width = pctWidth(percent);
       const top = BAR.top + i * BAR.pitch;
       return { title: data.label.title, raw: Number(data.mark ?? 0), min: data.label.min,
@@ -70,7 +71,7 @@ class OHQ93 extends Profile {
         rawBaseline: top + 13.36, slashShift: .66, maxShift: -.165,
         percentX: BAR.x + width - 4 };
     });
-    const percent = Number(s[8].mark ?? 0);
+    const percent = Math.round(Number(s[8].mark ?? 0) * 100);
     const height = Math.min(Math.max(percent, 0), 100) * TOTAL.height / 100;
     const tip = TOTAL.bottom - height;
     return [{

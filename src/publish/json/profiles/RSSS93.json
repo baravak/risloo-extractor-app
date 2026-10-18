@@ -510,12 +510,19 @@
   "score": {
     "status": "valid",
     "divine": 2.6,
+    "divine_percent": 0.52,
     "demonic": 1.25,
+    "demonic_percent": 0.25,
     "interpersonal": 2.4,
+    "interpersonal_percent": 0.48,
     "moral": 3.0,
+    "moral_percent": 0.6,
     "ultimate_meaning": 2.75,
+    "ultimate_meaning_percent": 0.55,
     "doubt": 2.0,
-    "total": 2.35
+    "doubt_percent": 0.4,
+    "total": 2.35,
+    "total_percent": 0.47
   },
   "score_current_version": "1.0.0",
   "score_last_version": "1.0.0"

@@ -660,8 +660,11 @@
   "score": {
     "status": "valid",
     "collaborative": 48,
+    "collaborative_percent": 0.8,
     "self_directing": 30,
-    "deferring": 31
+    "self_directing_percent": 0.5,
+    "deferring": 31,
+    "deferring_percent": 0.52
   },
   "score_current_version": "1.0.0",
   "score_last_version": "1.0.0"

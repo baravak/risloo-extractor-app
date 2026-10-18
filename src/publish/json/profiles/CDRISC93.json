@@ -1,0 +1,509 @@
+{
+    "id": "$X1HXXXXX",
+    "scale": {
+        "id": "$CDRISC-93",
+        "title": "پرسشنامه تاب‌آوری کونور و دیویدسون"
+    },
+    "chain": null,
+    "version": "1",
+    "edition": "",
+    "edition_version": null,
+    "client": {
+        "id": "GH966XXXX",
+        "name": "مراجع"
+    },
+    "room": {
+        "id": "RS96XXXX",
+        "manager": {
+            "id": "GH9XXXXX",
+            "name": "درمانگر",
+            "user_id": "IR9XXXX"
+        },
+        "center": {
+            "id": "RS966XXXX",
+            "acceptation": null,
+            "status": "active",
+            "type": "personal_clinic",
+            "detail": {
+                "title": "درمانگر"
+            }
+        },
+        "acceptation": null,
+        "status": "active",
+        "type": "personal_clinic"
+    },
+    "case": null,
+    "code": null,
+    "created_at": 1694157079,
+    "started_at": 1694157198,
+    "scored_at": 1694242467,
+    "closed_at": 1694160574,
+    "total_amount": 100000,
+    "prepayment": true,
+    "purchased": true,
+    "amount": 100000,
+    "description": "## دستور اجرای آزمون\n\nلطفا مشخص کنید که عبارات زیر چقدر در مورد شما صدق می‌کند. اگر موردی هنوز برایتان رخ نداده است، پاسخ خود را طبق این‌ که اگر آن اتفاق می‌افتاد چه احساسی داشتید، بیان کنید.",
+    "items": [
+        {
+            "type": "text",
+            "text": "وقتی تغییری رخ می‌دهد، می‌توانم خودم را با آن سازگار کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "حداقل یک نفر هست که رابطه نزدیک و صمیمی‌ام با او در زمان استرس به من کمک می‌کند. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "وقتی که راه‌حل روشنی برای مشکلاتم وجود ندارد، گاهی خدا یا تقدیر می‌تواند کمک کند. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "می‌توانم برای هر چیزی که سر راهم قرار می‌گیرد، چاره‌ای بیاندیشم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "موفقیت‌هایی که در گذشته داشته‌ام، چنان اطمینانی در من ایجاد کرده‌اند که می‌توانم با چالش‌ها و مشکلات پیش رو برخورد کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "وقتی با مشکلات مواجه می‌شوم سعی می‌کنم جنبه خنده‌دار آن‌ها را ببینم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "لزوم کنار آمدن با استرس موجب قوی‌تر شدنم می‌گردد. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "معمولا پس از بیماری، صدمه و سایر سختی‌ها به حال اولم باز می‌گردم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "معتقدم که در هر اتفاق خوب یا بد، مصلحتی است. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "در هر کاری بیشترین تلاشم را می‌کنم و به نتیجه هم کاری ندارم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "معتقدم که علی‌رغم موانع موجود، می‌توانم به اهدافم دست یابم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "حتی وقتی که امور ناامید‌کننده می‌شوند، مایوس نمی‌شوم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "در لحظات استرس و بحران، می‌دانم که برای کمک گرفتن به کجا مراجعه کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "وقتی که تحت فشار هستم تمرکزم را از دست نمی‌دهم و درست فکر می‌کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "ترجیح می‌دهم که خودم مشکلاتم را حل کنم تا این که دیگران تمامی تصمیم‌ها را بگیرند. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "اگر شکست بخورم به راحتی دلسرد نمی‌شوم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "وقتی با چالش‌ها و مشکلات زندگی دست و پنجه نرم می‌کنم، خود را فردی توانا می‌دانم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "در صورت لزوم می‌توانم تصمیم‌های دشوار و غیرمنتظره‌ای بگیرم که دیگران را تحت تاثیر قرار می‌دهد. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "می‌توانم احساسات ناخوشایندی چون غم، ترس و خشم را کنترل کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "در برخورد با مشکلات زندگی، گاهی لازم می‌شود که صرفا بر اساس حدس و گمان عمل کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "در زندگی یک حس نیرومند هدفمندی دارم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "حس می‌کنم بر زندگیم کنترل دارم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "چالش‌های زندگی را دوست دارم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "بدون در نظر گرفتن موانع پیش رو، برای رسیدن به اهدافم تلاش می‌کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "به خاطر پیشرفت‌هایم به خود می‌بالم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا نادرست",
+                    "به ندرت",
+                    "گاهی درست",
+                    "اغلب درست",
+                    "همیشه درست"
+                ]
+            },
+            "user_answered": "5"
+        }
+    ],
+    "prerequisites": [
+        {
+            "type": "text",
+            "label": "gender",
+            "text": "جنسیت",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "زن",
+                    "مرد"
+                ]
+            },
+            "alias": "gender",
+            "force": true,
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "label": "age",
+            "text": "سن",
+            "answer": {
+                "type": "number"
+            },
+            "alias": "age",
+            "force": true,
+            "user_answered": "37"
+        },
+        {
+            "type": "text",
+            "label": "education",
+            "text": "تحصیلات",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "ابتدایی اول",
+                    "ابتدایی دوم",
+                    "متوسطه اول",
+                    "متوسطه دوم",
+                    "دیپلم",
+                    "کارشناسی",
+                    "کارشناسی ارشد",
+                    "پزشکی عمومی",
+                    "متخصص",
+                    "دکتری تخصصی",
+                    "حوزوی مقدمات",
+                    "حوزوی سطح۱",
+                    "حوزوی سطح۲",
+                    "حوزوی سطح۳",
+                    "حوزوی سطح۴"
+                ]
+            },
+            "alias": "education",
+            "force": true,
+            "user_answered": "8"
+        },
+        {
+            "type": "text",
+            "label": "marital_status",
+            "text": "وضعیت تأهل",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "مجرد",
+                    "متأهل"
+                ]
+            },
+            "alias": "marital_status",
+            "force": true,
+            "user_answered": "2"
+        }
+    ],
+    "cornometer": 743,
+    "score": {
+        "personal_competence_raw": 15,
+        "personal_competence_percent": 0.469,
+        "trust_in_ones_instincts_and_tolerance_of_negative_affect_raw": 16,
+        "trust_in_ones_instincts_and_tolerance_of_negative_affect_percent": 0.571,
+        "positive_acceptance_of_change_and_secure_relationship_raw": 5,
+        "positive_acceptance_of_change_and_secure_relationship_percent": 0.25,
+        "control_raw": 5,
+        "control_percent": 0.417,
+        "spiritual_influences_raw": 0,
+        "spiritual_influences_percent": 0.0
+    },
+    "score_current_version": "1.0.0",
+    "score_last_version": "1.0.0"
+}

@@ -2,7 +2,7 @@
     "id": "$X1HXXXXX",
     "scale": {
         "id": "$CAARS-93",
-        "title": "مقیاس درجه‌بندی اختلال کمبود توجه/بیش‌فعالی بزرگسالان کانرز — نسخهٔ غربالگری خودگزارشی"
+        "title": "مقیاس درجه‌بندی اختلال کمبود توجه/بیش‌فعالی بزرگسالان کانرز"
     },
     "chain": null,
     "version": "1",
@@ -524,9 +524,12 @@
     "cornometer": 743,
     "score": {
         "status": "valid",
-        "inattention": 15,
-        "hyperactivity": 13,
-        "adhd_index": 17
+        "inattention_raw": 15,
+        "inattention_percent": 0.556,
+        "hyperactivity_raw": 13,
+        "hyperactivity_percent": 0.481,
+        "adhd_index_raw": 17,
+        "adhd_index_percent": 0.472
     },
     "score_current_version": "1.0.0",
     "score_last_version": "1.0.0"

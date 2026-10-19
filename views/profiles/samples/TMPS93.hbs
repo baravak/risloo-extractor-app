@@ -1,0 +1,87 @@
+{{#> layout}}
+
+  <defs>
+    {{! Teal wash behind the plot area (JSS93) }}
+    <linearGradient id="tmpsWash" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#F0FDFA"/>
+      <stop offset="1" stop-color="#CCFBF1"/>
+    </linearGradient>
+
+    {{! One colour for every factor; the gradient follows each bar's own width }}
+    <linearGradient id="tmpsBar" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#99F6E4"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+
+    {{! Shadow of the white 0 % baseline (offset right, soft blur) }}
+    <filter id="tmpsBaseShadow" x="226" y="27" width="7" height="210" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{! ===================== Plot area wash ===================== }}
+    <rect x="230" y="30" width="399" height="204" fill="url(#tmpsWash)" fill-opacity="0.25"/>
+
+    {{! ===================== Raw score of maximum, e.g. "34 از 50" ===================== }}
+    {{#each items as |item|}}
+      <text x="643" y="{{item.baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#047857">{{item.mark}}</tspan> از {{item.max}}</text>
+    {{/each}}
+
+    {{! ===================== Gridlines (10 % … 100 %) ===================== }}
+    <line x1="268.5" y1="30.5" x2="268.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="308.5" y1="30.5" x2="308.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="348.5" y1="30.5" x2="348.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="388.5" y1="30.5" x2="388.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="428.5" y1="30.5" x2="428.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="468.5" y1="30.5" x2="468.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="508.5" y1="30.5" x2="508.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="548.5" y1="30.5" x2="548.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="588.5" y1="30.5" x2="588.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="628.5" y1="30.5" x2="628.5" y2="233.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    {{! ===================== Bar tracks ===================== }}
+    {{#each items as |item|}}
+      <g transform="translate(229, {{item.top}})">
+        {{bar 400 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="black" fill-opacity="0.04"}}
+      </g>
+    {{/each}}
+
+    {{! ===================== Bars + percentage (inside the tip, or just past it) ===================== }}
+    {{#each items as |item|}}
+      <g transform="translate(229, {{item.top}})">
+        {{#if item.width}}{{bar item.width 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="url(#tmpsBar)"}}{{/if}}
+      </g>
+      {{#if item.inside}}
+        <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="white">٪ {{item.pct}}</text>
+      {{else}}
+        <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="start" direction="ltr" font-size="13" font-weight="500" fill="#0F766E">٪ {{item.pct}}</text>
+      {{/if}}
+    {{/each}}
+
+    {{! ===================== Factor names and «نمره کل» ===================== }}
+    {{#each items as |item|}}
+      <text x="220" y="{{item.baseline}}" text-anchor="start" font-size="13" fill="#475569">{{item.title}}</text>
+    {{/each}}
+
+    {{! ===================== White shadowed 0 % baseline ===================== }}
+    <g opacity="0.5" filter="url(#tmpsBaseShadow)">
+      <line x1="228.5" y1="30.5" x2="228.5" y2="233.5" stroke="white" stroke-linecap="round"/>
+    </g>
+
+    {{! ===================== Axis labels ===================== }}
+    <text x="228.5" y="18.06" text-anchor="middle" font-size="12" fill="#94A3B8">0</text>
+    <text x="428.5" y="18.06" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">٪ 50</text>
+    <text x="618" y="18.06" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">٪ 100</text>
+
+  </g>
+
+{{/layout}}

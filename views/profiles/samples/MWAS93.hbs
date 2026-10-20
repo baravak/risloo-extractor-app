@@ -1,0 +1,63 @@
+{{#> layout}}
+
+  <defs>
+    {{! Shadow of the white 0 % baseline (offset right, soft blur), as TMPS93 }}
+    <filter id="mwasBaseShadow" x="226" y="27" width="7" height="410" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+  </defs>
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{! ===================== Raw score of maximum, e.g. "20 از 35" ===================== }}
+    {{#each items as |item|}}
+      {{#if item.produced}}
+        <text x="643" y="{{item.baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#334155">{{item.mark}}</tspan> از {{item.max}}</text>
+      {{/if}}
+    {{/each}}
+
+    {{! ===================== Bar tracks (unfilled part, one colour) ===================== }}
+    {{#each items as |item|}}
+      <g transform="translate(229, {{item.top}})">
+        {{bar 400 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=../track}}
+      </g>
+    {{/each}}
+
+    {{! ===================== Bars + percentage (inside the tip, or just past it) ===================== }}
+    {{#each items as |item|}}
+      {{#if item.produced}}
+        <g transform="translate(229, {{item.top}})">
+          {{#if item.width}}{{bar item.width 16 (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=item.color}}{{/if}}
+        </g>
+        {{#if item.inside}}
+          <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="white">٪ {{item.pct}}</text>
+        {{else}}
+          <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="start" direction="ltr" font-size="13" font-weight="500" fill="{{item.color}}">٪ {{item.pct}}</text>
+        {{/if}}
+      {{/if}}
+    {{/each}}
+
+    {{! ===================== Factor names and «نمرهٔ کل» ===================== }}
+    {{#each items as |item|}}
+      <text x="220" y="{{item.baseline}}" text-anchor="start" font-size="13" fill="#475569">{{item.title}}</text>
+    {{/each}}
+
+    {{! ===================== White shadowed 0 % baseline ===================== }}
+    <g opacity="0.5" filter="url(#mwasBaseShadow)">
+      <line x1="228.5" y1="30.5" x2="228.5" y2="433.5" stroke="white" stroke-linecap="round"/>
+    </g>
+
+    {{! ===================== The two ends of every bar: 0 and 100 % ===================== }}
+    <text x="228.5" y="18.06" text-anchor="middle" font-size="12" fill="#94A3B8">0</text>
+    <text x="628.5" y="18.06" text-anchor="middle" direction="ltr" font-size="12" fill="#94A3B8">٪ 100</text>
+
+  </g>
+
+{{/layout}}

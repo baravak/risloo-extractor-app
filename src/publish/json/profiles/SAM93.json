@@ -1,0 +1,406 @@
+{
+    "id": "$X1HXXXXX",
+    "scale": {
+        "id": "$SAM-93",
+        "title": "پرسشنامه دوسوگرایی نسبت به خود"
+    },
+    "chain": null,
+    "version": "1",
+    "edition": "",
+    "edition_version": null,
+    "client": {
+        "id": "GH966XXXX",
+        "name": "مراجع"
+    },
+    "room": {
+        "id": "RS96XXXX",
+        "manager": {
+            "id": "GH9XXXXX",
+            "name": "درمانگر",
+            "user_id": "IR9XXXX"
+        },
+        "center": {
+            "id": "RS966XXXX",
+            "acceptation": null,
+            "status": "active",
+            "type": "personal_clinic",
+            "detail": {
+                "title": "درمانگر"
+            }
+        },
+        "acceptation": null,
+        "status": "active",
+        "type": "personal_clinic"
+    },
+    "case": null,
+    "code": null,
+    "created_at": 1694157079,
+    "started_at": 1694157198,
+    "scored_at": 1694242467,
+    "closed_at": 1694160574,
+    "total_amount": 100000,
+    "prepayment": true,
+    "purchased": true,
+    "amount": 100000,
+    "description": "## دستور اجرای آزمون\n\nلطفا هر یک از جملات زیر را به دقت بخوانید و مشخص کنید که هر جمله تا چه اندازه در مورد شما صدق می‌کند و یکی از پنج گزینه را انتخاب کنید",
+    "items": [
+        {
+            "type": "text",
+            "text": "من تردید دارم که آیا دیگران واقعا مرا دوست دارند یا نه.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "من دائما مراقبم که از دیدگاه دیگران چگونه به نظر می‌آیم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "من احساس می‌کنم بین بخش‌های متفاوت شخصیتم گسیخته می‌شوم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "می‌ترسم که دست به کاری وحشتناک بزنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "من راجع به ارزش خود به عنوان یک انسان فکر می‌کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "من دائما در مورد اینکه دیگران چه درکی از من دارند، گوش بزنگم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "من احساس می‌کنم پر از تناقض هستم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "من در مورد اینکه دیگران تا چه اندازه می‌خواهند به من نزدیک شوند، تردید دارم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "من تمایل دارم در مورد خودم در قالب «خوب» یا «بد» فکر کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "text": "من در مورد ارزش خودم احساس درهمی دارم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "من تردید دارم که آیا یک شخص اخلاقی هستم یا نه. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "من در مورد اینکه آدم خوب یا بدی هستم، تردید دارم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "اگر من سهوا موجب آسیب به دیگران شوم، این ثابت می‌کند که من آدم غیرقابل اعتمادی هستم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "من در شیوه تفکر در مورد خودم گرایش دارم که از یک حد افراطی به حد افراطی دیگر حرکت کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "من در مورد اینکه چگونه می‌توانم خودم را اصلاح کنم، فکر می‌کنم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "من دائما در مورد اینکه آیا انسان شایسته‌ای هستم یا خیر، نگرانم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "من دائما در مورد اینکه انسان خوب یا بدی هستم، نگرانم. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "وقتی با دیگران هستم به این فکر می‌کنم که آیا در بهترین حالت خود به نظر می‌رسم یا نه. ",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "من دائما نگران این هستم که آیا هیچ کاری برای زندگیم خواهم کرد یا نه؟",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلا",
+                    "کم",
+                    "تا حدی",
+                    "زیاد",
+                    "خیلی زیاد"
+                ]
+            },
+            "user_answered": "4"
+        }
+    ],
+    "prerequisites": [
+        {
+            "type": "text",
+            "label": "gender",
+            "text": "جنسیت",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "زن",
+                    "مرد"
+                ]
+            },
+            "alias": "gender",
+            "force": true,
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "label": "age",
+            "text": "سن",
+            "answer": {
+                "type": "number"
+            },
+            "alias": "age",
+            "force": true,
+            "user_answered": "37"
+        },
+        {
+            "type": "text",
+            "label": "education",
+            "text": "تحصیلات",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "ابتدایی اول",
+                    "ابتدایی دوم",
+                    "متوسطه اول",
+                    "متوسطه دوم",
+                    "دیپلم",
+                    "کارشناسی",
+                    "کارشناسی ارشد",
+                    "پزشکی عمومی",
+                    "متخصص",
+                    "دکتری تخصصی",
+                    "حوزوی مقدمات",
+                    "حوزوی سطح۱",
+                    "حوزوی سطح۲",
+                    "حوزوی سطح۳",
+                    "حوزوی سطح۴"
+                ]
+            },
+            "alias": "education",
+            "force": true,
+            "user_answered": "8"
+        }
+    ],
+    "cornometer": 743,
+    "score": {
+        "total_raw": 42,
+        "total_percent": 0.553,
+        "conflicting_thoughts_of_self_raw": 19,
+        "conflicting_thoughts_of_self_percent": 0.679,
+        "dichotomous_view_of_self_raw": 4,
+        "dichotomous_view_of_self_percent": 0.25,
+        "fear_of_others_judgment_raw": 8,
+        "fear_of_others_judgment_percent": 0.5,
+        "preoccupation_with_self_worth_raw": 11,
+        "preoccupation_with_self_worth_percent": 0.688,
+        "interpretation_level": "undesirable",
+        "percentage_interpretation": "60%-80%"
+    },
+    "score_current_version": "1.0.0",
+    "score_last_version": "1.0.0"
+}

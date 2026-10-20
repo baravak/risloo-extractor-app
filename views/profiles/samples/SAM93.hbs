@@ -1,0 +1,50 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{! ===================== Total: track, level-coloured fill, percentage ===================== }}
+    <g transform="translate(229, {{total.top}})">
+      {{bar 400 total.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=track}}
+      {{#if total.width}}{{bar total.width total.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=total.fill}}{{/if}}
+    </g>
+    {{#if total.inside}}
+      <text x="{{total.labelX}}" y="{{total.baseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="{{total.ink}}">٪ {{total.pct}}</text>
+    {{else}}
+      <text x="{{total.labelX}}" y="{{total.baseline}}" text-anchor="start" direction="ltr" font-size="13" font-weight="500" fill="{{total.ink}}">٪ {{total.pct}}</text>
+    {{/if}}
+
+    {{! «نمرهٔ کل», raw score of maximum and the level name }}
+    <text x="220" y="{{total.baseline}}" text-anchor="start" font-size="13" font-weight="500" fill="#334155">{{total.title}}</text>
+    <text x="643" y="{{total.baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#334155">{{total.mark}}</tspan> از {{total.max}}</text>
+    <text x="704" y="{{total.baseline}}" text-anchor="end" font-size="13" font-weight="600" fill="#334155">{{level}}</text>
+
+    {{! ===================== Five-level strip under the total, with level names ===================== }}
+    {{#each strip as |region|}}
+      <rect x="{{region.x}}" y="{{../stripTop}}" width="{{region.width}}" height="{{../stripHeight}}" fill="{{region.color}}"/>
+    {{/each}}
+    {{#each strip as |region|}}
+      <text x="{{region.center}}" y="{{../levelBaseline}}" text-anchor="middle" font-size="11" fill="#64748B">{{region.title}}</text>
+    {{/each}}
+
+    {{! ===================== Factors: tracks, one-colour fills, percentage ===================== }}
+    {{#each factors as |item|}}
+      <g transform="translate(229, {{item.top}})">
+        {{bar 400 item.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=../track}}
+        {{#if item.width}}{{bar item.width item.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=item.fill}}{{/if}}
+      </g>
+      {{#if item.inside}}
+        <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="{{item.ink}}">٪ {{item.pct}}</text>
+      {{else}}
+        <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="start" direction="ltr" font-size="13" font-weight="500" fill="{{item.ink}}">٪ {{item.pct}}</text>
+      {{/if}}
+    {{/each}}
+
+    {{! Factor names and raw score of maximum, e.g. "19 از 28" }}
+    {{#each factors as |item|}}
+      <text x="220" y="{{item.baseline}}" text-anchor="start" font-size="13" fill="#475569">{{item.title}}</text>
+      <text x="643" y="{{item.baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#334155">{{item.mark}}</tspan> از {{item.max}}</text>
+    {{/each}}
+
+  </g>
+
+{{/layout}}

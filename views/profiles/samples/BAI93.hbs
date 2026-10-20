@@ -1,0 +1,51 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{! ===================== «درجه اضطراب» and the person's level ===================== }}
+    {{#if hasScore}}
+    <text x="840" y="15" text-anchor="start" font-size="13" fill="#475569">درجه اضطراب: <tspan font-size="14" font-weight="600" fill="#334155">{{levelTitle}}</tspan></text>
+    {{/if}}
+
+    {{! ===================== Track and the filled part in the level colour (0 left, 63 right) ===================== }}
+    <g transform="translate({{bar.x}}, {{bar.top}})">
+      {{bar bar.length bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=track}}
+      {{#if (boolean hasScore '&&' width)}}{{bar width bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=fill}}{{/if}}
+    </g>
+
+    {{! ===================== Beside the bar: raw of 63, and the percent ===================== }}
+    {{#if hasScore}}
+    <text x="{{rawX}}" y="{{barBaseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="14" font-weight="600" fill="#334155">{{mark}}</tspan> از {{max}}</text>
+    <text x="{{pctX}}" y="{{barBaseline}}" text-anchor="start" direction="ltr" font-size="14" font-weight="600" fill="#334155">٪ {{pct}}</text>
+    {{/if}}
+
+    {{! ===================== Level strip: four pale parts, name and range under each ===================== }}
+    {{#each parts as |part|}}
+      <rect x="{{part.x}}" y="{{../stripTop}}" width="{{part.width}}" height="{{../stripHeight}}" fill="{{part.pale}}"/>
+    {{/each}}
+    {{#each parts as |part|}}
+      <text x="{{part.mid}}" y="{{../nameBaseline}}" text-anchor="middle" font-size="11" fill="#475569">{{part.title}}</text>
+      <text x="{{part.mid}}" y="{{../rangeBaseline}}" text-anchor="middle" font-size="11" fill="#94A3B8">{{part.from}} تا {{part.to}}</text>
+    {{/each}}
+
+    {{! ===================== «پاسخ به نشانه‌ها» ===================== }}
+    <text x="840" y="{{table.titleBaseline}}" text-anchor="start" font-size="14" font-weight="600" fill="#334155">پاسخ به نشانه‌ها</text>
+
+    {{#each groups as |group|}}
+      {{! ---- group column: pale tint, accent bar in the group colour, name and value ---- }}
+      <rect x="{{../groupX}}" y="{{group.top}}" width="{{../groupWidth}}" height="{{group.height}}" rx="4" fill="{{group.tint}}"/>
+      <rect x="{{math ../table.groupRight '-' ../table.accent}}" y="{{group.top}}" width="{{../table.accent}}" height="{{group.height}}" rx="2" fill="{{group.color}}"/>
+      <text x="{{../groupTextRight}}" y="{{group.baseline}}" text-anchor="start" font-size="13" font-weight="600" fill="#334155">{{group.title}}</text>
+      <text x="{{../groupValueLeft}}" y="{{group.baseline}}" text-anchor="end" font-size="13" fill="#64748B">{{group.value}}</text>
+
+      {{! ---- symptom rows: question number and the item text verbatim ---- }}
+      {{#each group.rows as |row|}}
+        <rect x="0" y="{{row.top}}" width="{{../../table.rowsRight}}" height="{{../../table.rowHeight}}" rx="4" fill="{{group.tint}}"/>
+        <text x="{{../../numberRight}}" y="{{row.baseline}}" text-anchor="start" font-size="12" fill="#94A3B8">{{row.i}}</text>
+        <text x="{{../../textRight}}" y="{{row.baseline}}" text-anchor="start" font-size="12" fill="#334155">{{row.text}}</text>
+      {{/each}}
+    {{/each}}
+
+  </g>
+
+{{/layout}}

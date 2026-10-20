@@ -1,0 +1,36 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  {{#if hasScore}}
+
+    {{! ===================== «نمره کل» ===================== }}
+    <text x="60" y="{{baseline}}" text-anchor="start" font-size="13" fill="#475569">{{title}}</text>
+
+    {{! ===================== Bar ends: 0 and 100 ===================== }}
+    <text x="{{bar.x}}" y="18.06" text-anchor="middle" font-size="12" fill="#94A3B8">0</text>
+    <text x="{{end}}" y="18.06" text-anchor="middle" font-size="12" fill="#94A3B8">100</text>
+
+    {{! ===================== Track (light grey) and the filled part in the level colour ===================== }}
+    <g transform="translate({{bar.x}}, {{bar.top}})">
+      {{bar bar.width bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="#E8EAED"}}
+      {{bar width bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=fill}}
+    </g>
+
+    {{! ===================== Thin border lines at 50 and 80 ===================== }}
+    {{#each borders as |x|}}
+      <line x1="{{x}}" y1="20" x2="{{x}}" y2="48" stroke="#9AA0A6" stroke-width="1"/>
+    {{/each}}
+
+    {{! ===================== Level names, each under its own part ===================== }}
+    {{#each parts as |part|}}
+      <text x="{{part.x}}" y="64" text-anchor="middle" font-size="11" fill="#64748B">{{part.title}}</text>
+    {{/each}}
+
+    {{! ===================== Beside the bar: "raw از 100" and the person's level ===================== }}
+    <text x="586" y="{{baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#334155">{{mark}}</tspan> از {{max}}</text>
+    <text x="646" y="{{baseline}}" text-anchor="end" font-size="13" font-weight="500" fill="#334155">{{levelTitle}}</text>
+
+  {{/if}}
+  </g>
+
+{{/layout}}

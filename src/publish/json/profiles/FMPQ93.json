@@ -1,0 +1,308 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$FMPQ-93",
+    "title": "پرسشنامه خودکارآمدی اخلاقی"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": null,
+  "items": [
+    {
+      "type": "text",
+      "text": "احساس می‌کنم آمادگی دارم که به چالش‌های و مسائل اخلاقی خود پاسخ دهم",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم توانایی دارم که در مورد مسائل اخلاقی تصمیم بگیرم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "اعتقاد دارم که می‌توانم مسایل و چالش‌های اخلاقی را شناسایی کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "از استانداردهای اخلاقی آگاهی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "معمولا تصمیمات اخلاقی در حوزه علم و دانش برای من راحت هست.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "بعضی مواقع مسائل و سوالات اخلاقی (در حوزه علم و دانش) که واضح نیستن قادر هستم پاسخ دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بعضی مواقع در موقعیت‌های چالش برانگیز به صورت اخلاقی رفتار می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "در دوره تحصیلی، بعضی مواقع از من خواسته می شود که به صورت غیر اخلاقی رفتارکنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "معمولا، موقع انجام تحقیق و بررسی، تصمیم‌گیری اخلاقی برای من سخت هست.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "معولا، موقع انجام تحقیق و بررسی، اخلاقی رفتار کردن برای من سخت هست.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "بعضی مواقع ممکن است به صورت غیر اخلاقی رفتار کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "معمولا در طول تحصیلاتم به صورت غیراخلاقی رفتار می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "به توانایی خودم اعتماد دارم که به صورت اخلاقی رفتار خواهم کرد.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا مخالفم",
+          "مخالف",
+          "موافق",
+          "کاملا موافق"
+        ]
+      },
+      "user_answered": "3"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "30"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مجرد",
+          "متأهل"
+        ]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 743,
+  "score": {
+    "total_raw": 34,
+    "total_percent": 0.654
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

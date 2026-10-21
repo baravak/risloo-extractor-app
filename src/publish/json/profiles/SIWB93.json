@@ -1,0 +1,240 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$SIWB-93",
+    "title": "پرسشنامه سنجش معنوی دلمن و فری"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "گزینه ای را که احساس شما را نسبت به هر سوال بهتر توصیف می کند را انتخاب کنید.",
+  "items": [
+    {
+      "type": "text",
+      "text": "چیزهای زیادی برایم وجود ندارد که بتوانم به خودم کمک کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "اغلب، راهی نیست که بتوانم چیزی را که شروع کرده‌ام به اتمام برسانم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "من نمی‌توانم مشکلاتم را درک کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "من وقتی سختی‌ها و مشکلات شخصی دارم غرق می شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "من نمی‌دانم چطور مشکلاتم را حل کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "چیزهای زیادی برایم وجود ندارد که بتوانم تغییری در زندگی‌ام ایجاد کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "5"
+    },
+    {
+      "type": "text",
+      "text": "هنوز هدف زندگی‌ام را پیدا نکرده‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "نمی‌دانم کی هستم، از کجا آمده‌ام و به کجا خواهم رفت.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "من در زندگی‌ام هدفی ندارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "در این دنیا، من نمی‌دانم کجا مناسب است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "من از درک معنای زندگی دور هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در این لحظه خلاء بزرگی در زندگی من وجود دارد.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "کاملا موافقم",
+          "موافقم",
+          "نه موافقم و نه مخالفم",
+          "مخالفم",
+          "کاملا مخالفم"
+        ]
+      },
+      "user_answered": "1"
+    }
+  ],
+  "prerequisites": [],
+  "cornometer": 743,
+  "score": {
+    "self_efficacy_raw": 27,
+    "self_efficacy_percent": 0.9,
+    "life_scheme_raw": 11,
+    "life_scheme_percent": 0.367,
+    "total_raw": 38,
+    "total_percent": 0.633
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

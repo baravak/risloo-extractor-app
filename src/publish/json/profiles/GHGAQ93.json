@@ -1,0 +1,378 @@
+{
+    "id": "$X1HXXXXX",
+    "scale": {
+        "id": "$GHGAQ-93",
+        "title": "پرسشنامه دلبستگی به خدا غباری بناب و حدادی"
+    },
+    "chain": null,
+    "version": "1",
+    "edition": null,
+    "edition_version": null,
+    "client": {
+        "id": "GH966XXXX",
+        "name": "مراجع"
+    },
+    "room": {
+        "id": "RS96XXXX",
+        "manager": {
+            "id": "GH9XXXXX",
+            "name": "درمانگر",
+            "user_id": "IR9XXXX"
+        },
+        "center": {
+            "id": "RS966XXXX",
+            "acceptation": null,
+            "status": "active",
+            "type": "personal_clinic",
+            "detail": {
+                "title": "درمانگر"
+            }
+        },
+        "acceptation": null,
+        "status": "active",
+        "type": "personal_clinic"
+    },
+    "case": null,
+    "code": null,
+    "created_at": 1694157079,
+    "started_at": 1694157198,
+    "scored_at": 1694242467,
+    "closed_at": 1694160574,
+    "total_amount": 100000,
+    "prepayment": true,
+    "purchased": true,
+    "amount": 100000,
+    "description": null,
+    "items": [
+        {
+            "type": "text",
+            "text": "درمواقع ناراحتی به خدا روی می‌آورم.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "درشرایط بحرانی قبلا برای نزدیکی به خدابه سوی مکان‌های مقدس (مثلا مسجد)کشیده شده‌ام.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "اطمینانم به نزدیکی خداوندوپذیرش او،مراتشویق می‌کندکه ازاو کمک بخواهم.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "زمانی که زندگی فشارآور می‌شود مراقبت وعشق خدارا جستجو  می‌نمایم.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "درطوفان‌های زندگی خداوند از من محافظت نموده است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "درصورت مواجهه با مشکلات و ابتلاهای زندگی مطمئن خواهم بود که خداوند با من است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "زمانی که به ابعادچالش‌آور زندگی‌ام قدم می‌گذارم، خداوند از من مواظبت می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "می‌توانم با موقعیت‌های تهدیدآمیز زندگی کنار بیایم چون می‌دانم که خداوند با من است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "زمانی که احساس کردم خداوند از من دور است او را باگریه و زاری به خودفرا می‌خواندم.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "اگراحساس کنم خداوند از من دور است نگران می‌شوم.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "وقتی فکر می‌کنم خداوند مرا به حال خود واگذار کرده است،برایم کابوسی وحشتناک است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "هرگز تردید نمی‌کنم که خداوند مرادوست دارد،حتی اگردچار اشتباه شوم.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "text": "برخی مواقع نگران می‌شوم و ازخود می‌پرسم که آیا خدامرادوست دارد؟",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "5"
+        },
+        {
+            "type": "text",
+            "text": "ازآن جایی که دچارگناه شده‌ام،مطمئن نیستم که خداوند مرا بپذیرد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "4"
+        },
+        {
+            "type": "text",
+            "text": "درشرایط بحرانی خداوند از من مواظبت می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "3"
+        },
+        {
+            "type": "text",
+            "text": "هرموقع که خداوند راصدا کرده‌ام اوبه من پاسخ داده است، خداوند درپاسخ دادن و آرام کردن من دردوران سختی و ناراحتی باسرعت عمل می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "کاملا مخالفم",
+                    "کمی مخالفم",
+                    "نظری ندارم",
+                    "کمی موافقم",
+                    "کاملا موافقم"
+                ]
+            },
+            "user_answered": "3"
+        }
+    ],
+    "prerequisites": [
+        {
+            "type": "text",
+            "label": "gender",
+            "text": "جنسیت",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "زن",
+                    "مرد"
+                ]
+            },
+            "alias": "gender",
+            "force": true,
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "label": "age",
+            "text": "سن",
+            "answer": {
+                "type": "number"
+            },
+            "alias": "age",
+            "force": true,
+            "user_answered": "30"
+        },
+        {
+            "type": "text",
+            "label": "education",
+            "text": "تحصیلات",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "ابتدایی اول",
+                    "ابتدایی دوم",
+                    "متوسطه اول",
+                    "متوسطه دوم",
+                    "دیپلم",
+                    "کارشناسی",
+                    "کارشناسی ارشد",
+                    "پزشکی عمومی",
+                    "متخصص",
+                    "دکتری تخصصی",
+                    "حوزوی مقدمات",
+                    "حوزوی سطح۱",
+                    "حوزوی سطح۲",
+                    "حوزوی سطح۳",
+                    "حوزوی سطح۴"
+                ]
+            },
+            "alias": "education",
+            "force": true,
+            "user_answered": "6"
+        },
+        {
+            "type": "text",
+            "label": "marital_status",
+            "text": "وضعیت تأهل",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "مجرد",
+                    "متأهل"
+                ]
+            },
+            "alias": "marital_status",
+            "force": true,
+            "user_answered": "2"
+        }
+    ],
+    "cornometer": 743,
+    "score": {
+        "try_to_closness_raw": 9,
+        "try_to_closness_percent": 0.9,
+        "secure_haven_raw": 12,
+        "secure_haven_percent": 0.8,
+        "secure_base_raw": 7,
+        "secure_base_percent": 0.467,
+        "objection_to_separation_raw": 13,
+        "objection_to_separation_percent": 0.867,
+        "positive_self_perception_raw": 5,
+        "positive_self_perception_percent": 0.333,
+        "positive_god_perception_raw": 6,
+        "positive_god_perception_percent": 0.6,
+        "total_raw": 52,
+        "total_percent": 0.65
+    },
+    "score_current_version": "1.0.0",
+    "score_last_version": "1.0.0"
+}

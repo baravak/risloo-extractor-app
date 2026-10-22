@@ -1,0 +1,40 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+    <g>
+        <rect x="{{code.x}}" y="0" width="{{code.width}}" height="{{code.height}}" rx="{{code.radius}}" fill="#F0FDFA" />
+        <text x="{{code.centerX}}" y="{{code.middle}}" dy=".35em" font-size="{{code.font}}" font-weight="700" fill="#0D9488" text-anchor="middle" direction="ltr" unicode-bidi="isolate">{{report.mark}}</text>
+        <text x="{{code.centerX}}" y="{{code.titleY}}" dy=".8em" font-size="{{code.titleFont}}" font-weight="400" fill="#64748B" text-anchor="middle">{{report.fr}}</text>
+    </g>
+    <rect x="0" y="{{frame.y}}" width="{{frame.width}}" height="{{frame.height}}" rx="{{frame.radius}}" fill="none" stroke="#E2E8F0" stroke-width="1" />
+    {{#each items as |item index|}}
+    <g transform="translate({{@root.rows.x}}, {{math @root.rows.top '+' (math index '*' @root.rows.pitch)}})">
+        <g>
+            <rect x="0" y="0" width="{{@root.box}}" height="{{@root.box}}" rx="4" fill="{{item.[0].colors.box}}" />
+            <text x="{{@root.boxMiddle}}" y="{{@root.boxMiddle}}" dy=".35em" font-size="{{@root.text.letter}}" font-weight="600" fill="{{item.[0].colors.letter}}" text-anchor="middle">{{item.[0].eng}}</text>
+            <text x="{{@root.boxMiddle}}" y="{{@root.text.rawY}}" dy=".8em" font-size="{{@root.text.raw}}" font-weight="400" fill="{{item.[0].colors.accent}}" text-anchor="middle">{{item.[0].mark}}</text>
+            <text x="{{@root.text.leftX}}" y="{{@root.text.percentY}}" dy=".8em" font-size="{{@root.text.percent}}" font-weight="600" fill="#475569" text-anchor="start">{{item.[0].percentage}}</text>
+            <text x="{{@root.text.leftX}}" y="{{@root.text.nameY}}" dy=".8em" font-size="{{@root.text.name}}" font-weight="400" fill="#475569" text-anchor="start">{{item.[0].fr}}</text>
+        </g>
+        <g>
+            <rect x="{{@root.half.leftX}}" y="{{@root.half.y}}" width="{{@root.half.length}}" height="{{@root.half.height}}" rx="{{@root.half.radius}}" fill="#F5F3FF" />
+            <rect x="{{@root.half.rightX}}" y="{{@root.half.y}}" width="{{@root.half.length}}" height="{{@root.half.height}}" rx="{{@root.half.radius}}" fill="#F5F3FF" />
+            {{#if item.[0].width}}
+            <rect x="{{item.[0].fillX}}" y="{{@root.half.y}}" width="{{item.[0].width}}" height="{{@root.half.height}}" rx="{{item.[0].radius}}" fill="{{item.[0].colors.accent}}" />
+            {{/if}}
+            {{#if item.[1].width}}
+            <rect x="{{item.[1].fillX}}" y="{{@root.half.y}}" width="{{item.[1].width}}" height="{{@root.half.height}}" rx="{{item.[1].radius}}" fill="{{item.[1].colors.accent}}" />
+            {{/if}}
+        </g>
+        <g transform="translate({{@root.rightBoxX}}, 0)">
+            <rect x="0" y="0" width="{{@root.box}}" height="{{@root.box}}" rx="4" fill="{{item.[1].colors.box}}" />
+            <text x="{{@root.boxMiddle}}" y="{{@root.boxMiddle}}" dy=".35em" font-size="{{@root.text.letter}}" font-weight="600" fill="{{item.[1].colors.letter}}" text-anchor="middle">{{item.[1].eng}}</text>
+            <text x="{{@root.boxMiddle}}" y="{{@root.text.rawY}}" dy=".8em" font-size="{{@root.text.raw}}" font-weight="400" fill="{{item.[1].colors.accent}}" text-anchor="middle">{{item.[1].mark}}</text>
+            <text x="{{@root.text.rightX}}" y="{{@root.text.percentY}}" dy=".8em" font-size="{{@root.text.percent}}" font-weight="600" fill="#475569" text-anchor="end">{{item.[1].percentage}}</text>
+            <text x="{{@root.text.rightX}}" y="{{@root.text.nameY}}" dy=".8em" font-size="{{@root.text.name}}" font-weight="400" fill="#475569" text-anchor="end">{{item.[1].fr}}</text>
+        </g>
+    </g>
+    {{/each}}
+  </g>
+
+{{/layout}}

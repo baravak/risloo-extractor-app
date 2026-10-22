@@ -1,0 +1,42 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+    {{#each rows as |row|}}
+    <g transform="translate(0, {{row.top}})">
+
+      {{! ===================== Score name at the right edge, «شدت: <level>» at the bar's 42 end ===================== }}
+      <text x="{{../nameRight}}" y="{{../titleBaseline}}" text-anchor="start" font-size="15" font-weight="600" fill="#334155">{{row.title}}</text>
+      {{#if row.hasScore}}
+      <text x="{{../levelRight}}" y="{{../titleBaseline}}" text-anchor="start" font-size="13" fill="#475569">شدت: <tspan font-size="14" font-weight="600" fill="#334155">{{row.levelTitle}}</tspan></text>
+      {{/if}}
+
+      {{! ===================== Track and the filled part in the level colour (0 left, 42 right) ===================== }}
+      <g transform="translate({{../bar.x}}, {{../bar.top}})">
+        {{bar ../bar.length ../bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=../track}}
+        {{#if (boolean row.hasScore '&&' row.width)}}{{bar row.width ../bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=row.fill}}{{/if}}
+      </g>
+
+      {{! ===================== Beside the bar: raw of 42, and the percent ===================== }}
+      {{#if row.hasScore}}
+      <text x="{{../rawX}}" y="{{../barBaseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="14" font-weight="600" fill="#334155">{{row.mark}}</tspan> از {{row.max}}</text>
+      <text x="{{../pctX}}" y="{{../barBaseline}}" text-anchor="start" direction="ltr" font-size="14" font-weight="600" fill="#334155">٪ {{row.pct}}</text>
+      {{/if}}
+
+      {{! ===================== Level strip: five pale parts, the level name under each ===================== }}
+      {{#each row.parts as |part|}}
+      <rect x="{{part.x}}" y="{{row.stripTop}}" width="{{part.width}}" height="{{row.stripHeight}}" fill="{{part.pale}}"/>
+      {{/each}}
+      {{#each row.parts as |part|}}
+      <text x="{{part.mid}}" y="{{row.nameBaseline}}" text-anchor="middle" font-size="11" fill="#64748B">{{part.title}}</text>
+      {{/each}}
+
+      {{! ===================== One quiet line: the two groups' mean and SD ===================== }}
+      <text x="{{../levelRight}}" y="{{row.meansBaseline}}" text-anchor="start" font-size="11" fill="#94A3B8">میانگین (انحراف معیار) گروه غیربالینی: <tspan fill="#64748B">{{row.nonClinical.mean}} ({{row.nonClinical.sd}})</tspan> · گروه بالینی: <tspan fill="#64748B">{{row.clinical.mean}} ({{row.clinical.sd}})</tspan></text>
+
+    </g>
+    {{/each}}
+
+  </g>
+
+{{/layout}}

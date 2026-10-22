@@ -1,0 +1,428 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$DASS-93",
+    "title": "آزمون مقیاس افسردگی، اضطراب، استرس (DASS) فرم کوتاه"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": null,
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "## دستور اجرای آزمون\n\nخواهشمند است از طریق از جملات زیر را به دقت بخوانید و با علامت × مشخص کنید که هر جمله تا چه اندازه در مورد شما صدق می‌کند. توجه داشته باشید که جمله درست و غلطی وجود ندارد. وقت زیادی روی هر چون به صرف نکنید.",
+  "items": [
+    {
+      "type": "text",
+      "text": "برایم مشکل است آرام بگیرم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "متوجه شده‌ام دهانم خشک می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "فکر نمی‌کنم بتوانم هیچ نوع احساس خوبی را تجربه کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "تنفس کردن برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "برایم سخت است در انجام کار پیشقدم شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "به موقعیت‌هایم به طور افراطی واکنش نشان می‌دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در بدنم احساس لرزش می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم انرژی روانی زیادی مصرف می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "نگرانم که مبادا در بعضی موقعیت‌ها دچار ترس شوم یا به کار احمقانه‌ای دست بزنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم چیزی ندارم که منتظرش باشم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "خدا را پریشان و سر در گم احساس می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "آرام بودن و در آرامش به سر بردن برایم مشکل است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس دل مردگی و دل شکستگی دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "نسبت به هر چیزی که مرا از کار باز دارد بی تحمل و نابردبارم (صبر و تحمل ندارم).",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم که هر لحظه ممکن است دچار ترس و وحشت شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "قادر نیستم درباره ی خیلی چیزها شور و شوق از خود نشان دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم به عنوان یک فرد ارزش زیادی ندارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "4"
+    },
+    {
+      "type": "text",
+      "text": "فکر می‌کنم بسیار حساس و زودرنج هستم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بدون اینکه هیچ‌گونه فعالیت بدنی انجام دهم متوجه شده‌ام که قلبم غیرعادی کار می‌کند (مثلاً ضربان شدید قلب یا از کار افتادن آن برای چند لحظه).",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "بدون هیچ دلیل موجهی احساس ترس می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "احساس می‌کنم زندگی بی‌معنا است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "اصلاً",
+          "کم",
+          "متوسط",
+          "زیاد"
+        ]
+      },
+      "user_answered": "3"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "30"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مجرد",
+          "متأهل"
+        ]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 743,
+  "score": {
+    "depression_raw": 13,
+    "depression_percent": 0.619,
+    "anxiety_raw": 11,
+    "anxiety_percent": 0.524,
+    "stress_raw": 8,
+    "stress_percent": 0.381,
+    "intensity_depression": 3,
+    "intensity_anxiety": 4,
+    "intensity_stress": 1,
+    "type": "short"
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

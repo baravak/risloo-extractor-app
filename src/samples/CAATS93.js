@@ -46,7 +46,7 @@ class CAATS93 extends Profile {
     L35: { eng: "16pf_m", fr: "M", right: "عمل‌گرا", left: "کولی‌باز" },
     L36: { eng: "16pf_n", fr: "N", right: "بی‌ظرافت", left: "ظرافت" },
     L37: { eng: "16pf_o", fr: "O", right: "اطمینان به خود", left: "مستعد احساس گناه" },
-    L38: { eng: "16pf_q1", fr: "Q1", right: "باز بودن نسبت به تغییر", left: "بنیادگرا" },
+    L38: { eng: "16pf_q1", fr: "Q1", right: "باز بودن نسبت به تغییر", left: "نوگرا" },
     L39: { eng: "16pf_q2", fr: "Q2", right: "متکی بر خود", left: "مسلط به دیگران" },
     L40: { eng: "16pf_q3", fr: "Q3", right: "اختلال‌مدار", left: "کمال‌گرا" },
     L41: { eng: "16pf_q4", fr: "Q4", right: "آرام", left: "اضطراب" },

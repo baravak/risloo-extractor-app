@@ -67,7 +67,7 @@ class _16PF93 extends Profile {
     L11_2: {eng: "n_raw"},
     L12_1: { eng: "o_value", down: "اطمینان به خود", top: "مستعد احساس گناه" , max: 26},
     L12_2: {eng: "o_raw"},
-    L13_1: { eng: "q1_value", down: "محافظه‌کار", top: "بنیادگرا" , max: 20},
+    L13_1: { eng: "q1_value", down: "محافظه‌کار", top: "نوگرا" , max: 20},
     L13_2: {eng: "q1_raw"},
     L14_1: { eng: "q2_value", down: "متکی به دیگران", top: "مسلط بر خود" , max: 20},
     L14_2: {eng: "q2_raw"},

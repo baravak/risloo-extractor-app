@@ -1,0 +1,667 @@
+{
+  "id": "$X1HXXXXX",
+  "scale": {
+    "id": "$CAQ-93",
+    "title": "آزمون اضطراب کتل (CAQ)"
+  },
+  "chain": null,
+  "version": "1",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH9XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR9XXXX"
+    },
+    "center": {
+      "id": "RS966XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "personal_clinic",
+      "detail": {
+        "title": "درمانگر"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "personal_clinic"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1694157079,
+  "started_at": 1694157198,
+  "scored_at": 1694242467,
+  "closed_at": 1694160574,
+  "total_amount": 100000,
+  "prepayment": true,
+  "purchased": true,
+  "amount": 100000,
+  "description": "",
+  "items": [
+    {
+      "type": "text",
+      "text": "توجه من به اشخاص یا سرگرمی‌ها تقریباً به سرعت تغییر می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "بین این دو",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "اگر اشخاص نظر خوبی به من ندارند این امر مانع آرامش فکری کامل من نمی‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "بین این دو",
+          "غلط"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دوست دارم نسبت به صحت آن چه می‌خواهم بگویم کاملاً مطمئن باشم قبل از این که عقیده‌ی خود را ابراز کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "بین این دو",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "تمایل دارم که خود را به دست احساسات حسادت آمیز بسپارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "گاهی",
+          "به ندرت",
+          "هرگز"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "اگر قرار باشد که زندگیم را دوباره شروع کنم:",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "آن را به گونه‌ای متفاوت سازمان خواهم داد.",
+          "بین این دو",
+          "دلم می‌خواهد همان طور باشد که قبلا بوده است."
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "والدینم را در مورد مسائل تحسین می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اگر پاسخ «نه» بشنوم ناراحت می‌شوم حتی وقتی می‌دانم که آن چیزی که می‌خواهم غیر ممکن است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "بین این دو",
+          "غلط"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در مورد درست کاری اشخاصی تردید می‌کنم که با من رفتاری دوستانه‌تر از آن دارند که انتظار داشته‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "بین این دو",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "وقتی دستوراتی می‌دادند یا اطاعت مرا خواستار می‌شدند، والدینم (یا کسانی که مرا بزرگ کرده‌اند).",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "همواره بسیار معقول بوده‌اند",
+          "بین این دو",
+          "غالبا نامعقول بوده‌اند."
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "نیاز من به دوستانم بیشتر از نیاز آن‌ها به من است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "به ندرت",
+          "گاهی",
+          "غالبا"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "من یقین دارم که می‌توانم نیروهایم را بسیج کنم تا با یک مشکل ناگهانی مقابله نمایم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "همیشه",
+          "گاهی",
+          "هرگز"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "وقتی بچه بودم از تاریکی می‌ترسیدم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "غالبا",
+          "گاهی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "دیگران گاهی به من می‌گویند که به آسانی هیجانم را در صدایم و رفتارم نشان می‌دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "مردد",
+          "به زودی فراموش می‌کنم و می‌بخشم"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "اگر اشخاص از ملاطفت من به طور ناشایسته استفاده کنند:",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "جریحه‌دار می‌شوم و کینه به دل می‌گیرم",
+          "بین این دو",
+          "هرگز"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "انتقادات شخصی بسیاری از اشخاص ما را ناراحت می‌کنند به جای آن که به من کمک کنند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "غالبا",
+          "گاهی",
+          "هرگز"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "برایم غالباً اتفاق می‌افتد که خیلی زود علیه اشخاص خشمگین می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "بین این دو",
+          "غلط"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "احساس اضطراب می‌کنم مثل این که چیزی می‌خواهم بدون آن که بدانم چیست.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "به ندرت",
+          "گاهی",
+          "غالبا"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گاهی از خود می‌پرسم که آیا اشخاصی که با آن‌ها صحبت می‌کنم نسبت به آنچه می‌گویم واقعاً علاقمند هستند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "بین این دو",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "من هرگز احساس مبهم ناراحتی هایی مانند درد‌های نامعین، سوءهاضمه، احساس ضربان قلب و غیره نداشته‌ام.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "مردد",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "در موقع صحبت با بعضی اشخاص، آن‌قدر ناراحت می‌شوم که به سختی جرات حرف زدن دارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "گاهی",
+          "به ندرت",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "من بیشتر از اغلب اشخاص، به هنگام انجام کاری، نیرو مصرف می‌کنم، چون با «تمام قوا» انجام می‌دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "مردد",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "همواره به خود می‌گویم که حواس پرت نباشم و جزئیات را فراموش نکنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "مردد",
+          "غلط"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "هر اندازه موانع، مشکل و ناخوشایند باشد من ایستادگی می‌کنم و هدف‌های نخستین خود را حفظ می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "من در موقعیت‌های مشکل، هیجان زده و سردرگم می‌شوم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "من گاه‌به‌گاه خواب هایی می‌بینم که خوابم را مختل می‌کند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "من همواره به اندازه کافی نیرو دارم وقتی در مقابل مشکلات قرار می‌گیرم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گاهی خود را مجبور می‌بینم که چیزها را بدون دلیل موجه بشمارم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "مردد",
+          "غلط"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "غالب اشخاص تا حدودی روحیه‌ای عجیب دارند هر چند مایل به پذیرفتن آن نیستند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "مردد",
+          "غلط"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "وقتی در مقابل دیگران مرتکب اشتباه می‌شوم می‌توانم آن را سریعاً فراموش کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "من احساس بدخلقی می‌کنم و نمی‌خواهم کسی را ببینم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "text": "در مقابل بدبیاری‌ها، تقریباً به گریه می‌افتم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "هرگز",
+          "به ندرت",
+          "گاهی"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "حتی در میان جمع، گاهی احساس تنهایی و بی ارزشی بر من چیره می‌شود.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "به هنگام شب بیدار می‌شوم و به‌ دلیل اشتغالات فکری، به سختی می‌توانم بخوابم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "غالبا",
+          "گاهی",
+          "هرگز"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "مشکلاتی که برایم پیش می‌آیند هر چه باشند، معمولاً حالم کاملا خوب است.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گاهی برای چیزهای بسیار کوچک احساس گناه یا پشیمانی می‌کنم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "اعصابم آن‌قدر تحریک‌پذیر است که بعضی صداها مثل صدای در، به نظرم غیرقابل تحمل می‌آیند و مرتعشم می‌کنند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "غالبا",
+          "گاهی",
+          "هرگز"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "اگر چیزی به شدت ناراحتم کند، معمولاً آرامشم را خیلی زود به دست می‌آورم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "تمایل به لرزیدن و یا عرق کردن دارم وقتی به کار مشکلی فکر می‌کنم که باید انجام دهم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "3"
+    },
+    {
+      "type": "text",
+      "text": "معمولاً به سرعت در عرض چند دقیقه خوابم می‌برد، وقتی که به رختخواب می‌روم.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "بین این دو",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "text": "گاهی دچار حالت تنش و ناآرامی می‌شوم، وقتی به چیزهایی فکر می‌کنم که اندکی پیش فکرم را مشغول کرده و توجهم را به خود جلب کرده بوده اند.",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "درست",
+          "مردد",
+          "غلط"
+        ]
+      },
+      "user_answered": "3"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "30"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مجرد",
+          "متأهل"
+        ]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "1"
+    }
+  ],
+  "cornometer": 743,
+  "score": {
+    "c_raw": 6,
+    "c_percent": 0.5,
+    "l_raw": 5,
+    "l_percent": 0.625,
+    "o_raw": 10,
+    "o_percent": 0.417,
+    "q3_raw": 6,
+    "q3_percent": 0.375,
+    "q4_raw": 6,
+    "q4_percent": 0.3,
+    "hidden_anxiety_raw": 19,
+    "hidden_anxiety_percent": 0.475,
+    "obvious_anxiety_raw": 14,
+    "obvious_anxiety_percent": 0.35,
+    "total_raw": 33,
+    "total_percent": 0.413,
+    "result": 6,
+    "anxiety_level": 1,
+    "c": 7,
+    "l": 7,
+    "o": 6,
+    "q3": 6,
+    "q4": 3
+  },
+  "score_current_version": "1.0.0",
+  "score_last_version": "1.0.0"
+}

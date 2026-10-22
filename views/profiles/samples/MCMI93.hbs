@@ -1,0 +1,218 @@
+{{#> layout}}
+<defs>
+  <linearGradient id="mcm93Blue" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#93C5FD"/>
+    <stop offset="1" stop-color="#2563EB"/>
+  </linearGradient>
+  <linearGradient id="mcm93Gray" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#E2E8F0"/>
+    <stop offset="1" stop-color="#94A3B8"/>
+  </linearGradient>
+  <linearGradient id="mcm93Orange" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#FDBA74"/>
+    <stop offset="1" stop-color="#EA580C"/>
+  </linearGradient>
+  <linearGradient id="mcm93Rose" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#FDA4AF"/>
+    <stop offset="1" stop-color="#E11D48"/>
+  </linearGradient>
+  <filter id="mcm93BaselineModifying" x="158" y="461" width="74" height="7" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+  <filter id="mcm93BaselinePersonality" x="290" y="461" width="310" height="7" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+  <filter id="mcm93BaselineClinical" x="666" y="461" width="230" height="7" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dx="1"/>
+    <feGaussianBlur stdDeviation="1.5"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+  </filter>
+</defs>
+
+<g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+
+  {{!-- Side column: elevated codes (rails at x 0 and 40), V card (x 80), alert card (bottom, all rails). --}}
+  <g>
+    {{bar 32 120 (object tl=4 bl=0 tr=4 br=0) (toRad 0) fill="#F1F5F9"}}
+    <path d="M0.5 120V4A3.5 3.5 0 0 1 4 0.5H28A3.5 3.5 0 0 1 31.5 4V120" fill="none" stroke="#E2E8F0"/>
+    <text x="16" y="60" transform="rotate(-90 16 60)" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">کدهای برافراشته</text>
+    {{#each codes as |item|}}
+      <rect x="{{item.x}}" y="{{item.y}}" width="32" height="{{item.height}}" rx="2" fill="#EFF6FF"/>
+      <text class="eng-font" font-family="Dana" x="{{math item.x '+' 16}}" y="{{item.center}}" transform="rotate(-90 {{math item.x '+' 16}} {{item.center}})" direction="ltr" font-size="12" fill="#1E40AF" text-anchor="middle" dy=".3em">{{item.code}}</text>
+    {{/each}}
+
+    <g transform="translate(80, 0)">
+      {{bar 32 120 (object tl=4 bl=0 tr=4 br=0) (toRad 0) fill="#F1F5F9"}}
+      <path d="M0.5 120V4A3.5 3.5 0 0 1 4 0.5H28A3.5 3.5 0 0 1 31.5 4V120" fill="none" stroke="#E2E8F0"/>
+      <text x="16" y="60" transform="rotate(-90 16 60)" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">روایی (V)</text>
+      <g transform="translate(0, 124)">
+        <rect width="32" height="160" rx="2" fill="{{validity.background}}"/>
+        <text x="16" y="{{validity.rawY}}" transform="rotate(-90 16 {{validity.rawY}})" font-size="18" font-weight="500" fill="{{validity.color}}" text-anchor="middle" dy=".35em">{{validity.raw}}</text>
+        <text x="16" y="{{validity.equalsY}}" transform="rotate(-90 16 {{validity.equalsY}})" font-size="14" fill="{{validity.color}}" text-anchor="middle" dy=".35em">=</text>
+        <text x="16" y="{{validity.reportY}}" transform="rotate(-90 16 {{validity.reportY}})" font-size="13" fill="{{validity.color}}" text-anchor="middle" dy=".35em">{{validity.text}}</text>
+      </g>
+    </g>
+
+    {{#if alert}}
+      {{!-- Authored upright: local x runs up the page from the bottom of the side column, local y runs right. --}}
+      <g transform="translate(0, {{chartHeight}}) rotate(-90)">
+        <rect x="0.5" y="0.5" width="{{math alert.length '-' 1}}" height="{{math alert.thickness '-' 1}}" rx="6" fill="#FEF2F2" stroke="#B91C1C" stroke-dasharray="6 6"/>
+        <g transform="translate({{math alert.length '-' 31}}, {{math alert.titleY '-' 8}})">
+          <path d="M9.50001 6.16575V9.72131M9.50001 12.388H9.5089M8.0449 1.35775L0.83957 13.388C0.691033 13.6452 0.61243 13.9368 0.611579 14.2339C0.610729 14.5309 0.68766 14.823 0.834722 15.0811C0.981783 15.3391 1.19385 15.5542 1.44983 15.7049C1.70581 15.8556 1.99677 15.9366 2.29379 15.94H16.7062C17.0031 15.9365 17.2939 15.8555 17.5498 15.7048C17.8057 15.5542 18.0176 15.3392 18.1647 15.0813C18.3117 14.8234 18.3887 14.5314 18.3879 14.2345C18.3872 13.9376 18.3088 13.6461 18.1605 13.3889L10.9551 1.35686C10.8035 1.10664 10.59 0.899744 10.3351 0.756147C10.0802 0.612551 9.79257 0.537109 9.50001 0.537109C9.20746 0.537109 8.91984 0.612551 8.66495 0.756147C8.41005 0.899744 8.1965 1.10664 8.0449 1.35686V1.35775Z" stroke="#B91C1C" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <text x="{{math alert.length '-' 39}}" y="{{alert.titleY}}" text-anchor="start" dy=".3em" font-size="12" font-weight="500" fill="#B91C1C">آزمون نامعتبر است</text>
+        {{#if alert.lines.length}}
+          <line x1="12" x2="{{math alert.length '-' 12}}" y1="{{alert.dividerY}}" y2="{{alert.dividerY}}" stroke="#E7E5E4"/>
+        {{/if}}
+        {{#each alert.lines as |line|}}
+          <text x="{{math ../alert.length '-' 12}}" y="{{line.y}}" text-anchor="start" dy=".3em" font-size="11" fill="#44403C">-</text>
+          <text x="{{math ../alert.length '-' 21}}" y="{{line.y}}" text-anchor="start" dy=".3em" font-size="11" fill="#44403C" xml:space="preserve">{{#each line.parts as |part|}}{{#if part.latin}}<tspan class="eng-font" font-family="Dana">{{part.text}}</tspan>{{else}}<tspan>{{part.text}}</tspan>{{/if}}{{/each}}</text>
+        {{/each}}
+      </g>
+    {{/if}}
+  </g>
+
+  <rect x="120" width="1" height="{{chartHeight}}" fill="#E2E8F0"/>
+
+  {{!-- Chart 1: correction indices, BR 0–100, one uniform scale, no boundary lines. --}}
+  <g>
+    {{#each modifying as |item|}}
+      <g transform="translate({{item.x}}, 64)">
+        {{bar 12 400 (object tl=2 bl=0 tr=2 br=0) (toRad 0) fill=item.theme.track}}
+      </g>
+    {{/each}}
+    <text x="153" y="456" transform="rotate(-90 153 456)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">BR</text>
+    <text x="153" y="0" transform="rotate(-90 153 0)" font-size="12" fill="#9CA3AF" text-anchor="start">نمره خام</text>
+    <path d="M146.5 51H153.5M150.5 54L153.5 51L150.5 48" fill="none" stroke="#9CA3AF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+
+    {{#each modifying as |item|}}
+      {{#if item.barHeight}}
+        <g transform="translate({{item.x}}, {{item.barTop}})" fill="url(#{{item.theme.gradient}})">
+          {{bar 12 item.barHeight (object tl=2 bl=0 tr=2 br=0) (toRad 0)}}
+        </g>
+      {{/if}}
+      <text x="{{item.center}}" y="{{item.scoreY}}" transform="rotate(-90 {{item.center}} {{item.scoreY}})" direction="ltr" font-size="12" font-weight="500" fill="{{ternary item.inside 'white' item.theme.dark}}" text-anchor="{{item.scoreAnchor}}" dy=".35em">{{item.brText}}</text>
+      <rect x="{{item.x}}" y="13" width="12" height="42" rx="2" fill="{{item.theme.track}}"/>
+      <text x="{{item.center}}" y="34" transform="rotate(-90 {{item.center}} 34)" direction="ltr" font-size="12" fill="{{item.theme.dark}}" text-anchor="middle" dy=".35em">{{item.raw}}</text>
+      <text class="eng-font" font-family="Dana" x="{{item.center}}" y="483" transform="rotate(-90 {{item.center}} 483)" direction="ltr" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">{{item.code}}</text>
+      <text x="{{item.center}}" y="503.3" transform="rotate(-90 {{item.center}} 503.3)" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">-</text>
+      <text x="{{item.center}}" y="513.8" transform="rotate(-90 {{item.center}} 513.8)" font-size="12" fill="#334155" text-anchor="start" dy=".35em">{{item.fa}}</text>
+    {{/each}}
+    <g opacity="0.5" filter="url(#mcm93BaselineModifying)">
+      <line x1="160.5" y1="464.5" x2="227.5" y2="464.5" stroke="white" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  {{!-- Chart 2: personality patterns and severe personality pathology; lines at 60, 75, 85, 115. --}}
+  <g>
+    {{#each personality as |item|}}
+      <g transform="translate({{item.x}}, 64)">
+        {{bar 12 400 (object tl=2 bl=0 tr=2 br=0) (toRad 0) fill=item.theme.track}}
+      </g>
+    {{/each}}
+    <line x1="292.5" y1="64.5" x2="595.5" y2="64.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="292.5" y1="169.5" x2="595.5" y2="169.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="292.5" y1="269.5" x2="595.5" y2="269.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="292.5" y1="374.5" x2="595.5" y2="374.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    <text x="285" y="65" transform="rotate(-90 285 65)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="end">115</text>
+    <text x="285" y="170" transform="rotate(-90 285 170)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">85</text>
+    <text x="285" y="270" transform="rotate(-90 285 270)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">75</text>
+    <text x="285" y="375" transform="rotate(-90 285 375)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">60</text>
+    <text x="285" y="456" transform="rotate(-90 285 456)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">BR</text>
+    <text x="285" y="0" transform="rotate(-90 285 0)" font-size="12" fill="#9CA3AF" text-anchor="start">نمره خام</text>
+    <path d="M278.5 51H285.5M282.5 54L285.5 51L282.5 48" fill="none" stroke="#9CA3AF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+
+    {{#each personality as |item|}}
+      {{#if item.barHeight}}
+        <g transform="translate({{item.x}}, {{item.barTop}})" fill="url(#{{item.theme.gradient}})">
+          {{bar 12 item.barHeight (object tl=2 bl=0 tr=2 br=0) (toRad 0)}}
+        </g>
+      {{/if}}
+      <text x="{{item.center}}" y="{{item.scoreY}}" transform="rotate(-90 {{item.center}} {{item.scoreY}})" direction="ltr" font-size="12" font-weight="500" fill="{{ternary item.inside 'white' item.theme.dark}}" text-anchor="{{item.scoreAnchor}}" dy=".35em">{{item.brText}}</text>
+      <rect x="{{item.x}}" y="19" width="12" height="36" rx="2" fill="{{item.theme.track}}"/>
+      <text x="{{item.center}}" y="37" transform="rotate(-90 {{item.center}} 37)" direction="ltr" font-size="12" fill="{{item.theme.dark}}" text-anchor="middle" dy=".35em">{{item.raw}}</text>
+      <text class="eng-font" font-family="Dana" x="{{item.center}}" y="483" transform="rotate(-90 {{item.center}} 483)" direction="ltr" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">{{item.code}}</text>
+      <text x="{{item.center}}" y="503.3" transform="rotate(-90 {{item.center}} 503.3)" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">-</text>
+      <text x="{{item.center}}" y="513.8" transform="rotate(-90 {{item.center}} 513.8)" font-size="12" fill="#334155" text-anchor="start" dy=".35em">{{item.fa}}</text>
+    {{/each}}
+    <g opacity="0.5" filter="url(#mcm93BaselinePersonality)">
+      <line x1="292.5" y1="464.5" x2="595.5" y2="464.5" stroke="white" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  {{!-- Chart 3: clinical syndromes and severe syndromes; lines at 75, 85, 115. --}}
+  <g>
+    {{#each clinical as |item|}}
+      <g transform="translate({{item.x}}, 64)">
+        {{bar 12 400 (object tl=2 bl=0 tr=2 br=0) (toRad 0) fill=item.theme.track}}
+      </g>
+    {{/each}}
+    <line x1="668.5" y1="64.5" x2="891.5" y2="64.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="668.5" y1="169.5" x2="891.5" y2="169.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+    <line x1="668.5" y1="269.5" x2="891.5" y2="269.5" stroke="#E5E7EB" stroke-linecap="round" stroke-dasharray="6 6"/>
+
+    <text x="661" y="65" transform="rotate(-90 661 65)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="end">115</text>
+    <text x="661" y="170" transform="rotate(-90 661 170)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">85</text>
+    <text x="661" y="270" transform="rotate(-90 661 270)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">75</text>
+    <text x="661" y="456" transform="rotate(-90 661 456)" direction="ltr" font-size="12" fill="#9CA3AF" text-anchor="middle">BR</text>
+    <text x="661" y="0" transform="rotate(-90 661 0)" font-size="12" fill="#9CA3AF" text-anchor="start">نمره خام</text>
+    <path d="M654.5 51H661.5M658.5 54L661.5 51L658.5 48" fill="none" stroke="#9CA3AF" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+
+    {{#each clinical as |item|}}
+      {{#if item.barHeight}}
+        <g transform="translate({{item.x}}, {{item.barTop}})" fill="url(#{{item.theme.gradient}})">
+          {{bar 12 item.barHeight (object tl=2 bl=0 tr=2 br=0) (toRad 0)}}
+        </g>
+      {{/if}}
+      <text x="{{item.center}}" y="{{item.scoreY}}" transform="rotate(-90 {{item.center}} {{item.scoreY}})" direction="ltr" font-size="12" font-weight="500" fill="{{ternary item.inside 'white' item.theme.dark}}" text-anchor="{{item.scoreAnchor}}" dy=".35em">{{item.brText}}</text>
+      <rect x="{{item.x}}" y="19" width="12" height="36" rx="2" fill="{{item.theme.track}}"/>
+      <text x="{{item.center}}" y="37" transform="rotate(-90 {{item.center}} 37)" direction="ltr" font-size="12" fill="{{item.theme.dark}}" text-anchor="middle" dy=".35em">{{item.raw}}</text>
+      <text class="eng-font" font-family="Dana" x="{{item.center}}" y="483" transform="rotate(-90 {{item.center}} 483)" direction="ltr" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">{{item.code}}</text>
+      <text x="{{item.center}}" y="503.3" transform="rotate(-90 {{item.center}} 503.3)" font-size="12" fill="#334155" text-anchor="middle" dy=".35em">-</text>
+      <text x="{{item.center}}" y="513.8" transform="rotate(-90 {{item.center}} 513.8)" font-size="12" fill="#334155" text-anchor="start" dy=".35em">{{item.fa}}</text>
+    {{/each}}
+    <g opacity="0.5" filter="url(#mcm93BaselineClinical)">
+      <line x1="668.5" y1="464.5" x2="891.5" y2="464.5" stroke="white" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  {{!-- The five group names, one row, as the MCMI9A group boxes. --}}
+  <g>
+    <rect x="154.5" y="652.5" width="79" height="31" rx="4" fill="none" stroke="#E5E7EB"/>
+    <text x="194" y="668" transform="rotate(180 194 668)" dy=".3em" font-size="10" fill="#4B5563" text-anchor="middle">شاخص‌های اصلاح</text>
+
+    <rect x="292.5" y="652.5" width="227" height="31" rx="4" fill="none" stroke="#E5E7EB"/>
+    <text x="406" y="668" transform="rotate(180 406 668)" dy=".3em" font-size="10" fill="#4B5563" text-anchor="middle">الگوهای بالینی شخصیت</text>
+    <rect x="526.5" y="652.5" width="69" height="31" rx="4" fill="none" stroke="#E5E7EB"/>
+    <g transform="rotate(180 561 668)">
+      <text x="561" y="662.5" dy=".3em" font-size="10" fill="#4B5563" text-anchor="middle">آسیب‌شناسی</text>
+      <text x="561" y="673.5" dy=".3em" font-size="10" fill="#4B5563" text-anchor="middle">شدید شخصیت</text>
+    </g>
+
+    <rect x="668.5" y="652.5" width="148" height="31" rx="4" fill="none" stroke="#E5E7EB"/>
+    <text x="742.5" y="668" transform="rotate(180 742.5 668)" dy=".3em" font-size="10" fill="#4B5563" text-anchor="middle">نشانگان بالینی</text>
+    <rect x="823.5" y="652.5" width="68" height="31" rx="4" fill="none" stroke="#E5E7EB"/>
+    <text x="857.5" y="668" transform="rotate(180 857.5 668)" dy=".3em" font-size="10" fill="#4B5563" text-anchor="middle">نشانگان شدید</text>
+  </g>
+</g>
+{{/layout}}

@@ -1,0 +1,2397 @@
+{
+  "id": "$X1MCMXXXX",
+  "scale": {
+    "id": "$MCMI-93",
+    "title": "آزمون شخصیت میلون"
+  },
+  "version": "3",
+  "edition": "",
+  "edition_version": null,
+  "client": {
+    "id": "GH966XXXXX",
+    "name": "مراجع"
+  },
+  "room": {
+    "id": "RS96XXXX",
+    "manager": {
+      "id": "GH96XXXXX",
+      "name": "درمانگر",
+      "user_id": "IR96XXX",
+      "avatar": null
+    },
+    "center": {
+      "id": "RS96XXXX",
+      "acceptation": null,
+      "status": "active",
+      "type": "counseling_center",
+      "detail": {
+        "title": "مرکز درمانی"
+      }
+    },
+    "acceptation": null,
+    "status": "active",
+    "type": "room"
+  },
+  "case": null,
+  "code": null,
+  "created_at": 1728128259,
+  "started_at": 1728128300,
+  "scored_at": 1728367688,
+  "closed_at": 1728128587,
+  "total_amount": 0,
+  "prepayment": false,
+  "purchased": true,
+  "amount": null,
+  "billing": null,
+  "description": "دفترچه‌ای که دراختیار شما قرار گرفته است دارای جمله‌هایی است که مردم برای توصیف خودشان به کار می‌برند. این جمله‌ها برای کمک به توصیف احساس، رفتار و طرز فکر شما در نظر گرفته شده است. صداقت و جدیت شما در علامت‌گذاری جمله‌ها به شناخت شما کمک می‌کند. چنانچه تعدادی از سوال‌ها به نظر غیرواقعی می‌آیند یا با شرائط شما منطقی نیستند، نگران نباشید زیرا آن‌ها برای توصیف افرادی با مشکلات مختلف تهیه شده‌اند\n\n- اگر شما با یک جمله موافق هستید یا معتقدید که منطبق با وضعیت شماست واژه «بلی» را در پاسخ‌نامه علامت بزنید. \n- اگر شما با یک جمله موافق نیستید و یا فکر می‌کنید که در مورد شما صحت ندارد واژه «خیر» را در پاسخ‌نامه علامت بزنید. \n- سعی کنید به همه جمله‌ها جواب دهید حتی اگر از انتخاب خود مطمئن نیستید. \n- اگر حداکثر سعی خود را نمودید ولی نتوانستید نتیجه بگیرید، واژه خیر را در پاسخ‌نامه علامت بزنید. \n",
+  "items": [
+    {
+      "text": "اخیراً، حتی صبح‌ها احساس ضعف و بی‌حالی می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "برای قوانین و مقررات احترام زیادی قائلم، زیرا از حقوق افراد حمایت می‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "به قدری از انجام دادن کارهای مختلف لذت می‌برم، که نمی‌توانم تصمیم بگیرم کدام یک را اول انجام دهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "بیشتر وقت‌ها احساس ضعف و خستگی می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "چون فکر می‌کنم آدم بزرگ و مهمی هستم برایم مهم نیست که دیگران در مورد من چه فکر می‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "دیگران به اندازه کافی قدر کارها و زحمات مرا نمی‌دانند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اگر خانواده‌ام‌ به من زور بگویند احتمالاً عصبانی می‌شوم و در برابر خواست آن‌ها مقاومت می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم پشت سرم در مورد قیافه و رفتارم حرف می‌زنند و مسخره‌ام می‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب اگر کسی اذیتم کند به شدت از او انتقاد می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "به ندرت تحت تاثیر چیزی قرار می‌گیرم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "هنگام راه رفتن نمی‌توانم تعادلم را حفظ کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "به آسانی و به سرعت احساساتم را بروز می‌دهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "استعمال مواد مخدر اغلب مرا به دردسر می‌اندازد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی اوقات با خانواده‌ام بسیار تند و خشن برخورد می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "خوشی‌های من چندان دوام ندارند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من آدمی خیرخواه و فروتن هستم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "در نوجوانی به خاطر رفتار بدی که در مدرسه داشتم دچار دردسرهای فراوانی می‌شدم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "از ارتباط نزدیک با دیگران می‌ترسم، زیرا ممکن است رسوا شوم و مسخره‌ام کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "دوستانی را انتخاب می‌کنم که بدی‌هایم را به من گوشزد کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب از دوره کودکی افکار غم انگیزی به خاطر دارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من ارتباط با جنس مخالف را دوست دارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "بسیار دمدمی مزاج هستم، دائم نظرات و احساساتم را تغییر می‌دهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "هرگز مصرف مواد مخدر، مشکل جدی در کارم به وجود نیاورده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "چند سالی است که احساس می‌کنم در زندگی شکست خورده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "نمی‌دانم چرا اغلب دچار پشیمانی و احساس گناه می‌شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "دیگران نسبت به قدرت من حسادت می‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اگر حق انتخاب داشته باشم ترجیح می‌دهم تنها کار کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "فکر می‌کنم نظارت و کنترل دقیق بر اعضای خانواده‌ام لازم و ضروری است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "دیگران مرا آدمی‌گوشه گیر و منزوی می‌دانند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اخیراً دلم می‌خواهد چیزها را بشکنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من با جذابیت خودم می‌توانم توجه هر فرد خاصی را به خود جلب خودم جلب کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من همیشه دنبال این هستم که دوستان جدیدی پیدا کنم و با افراد تازه‌اینشست و برخواست کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اگر کسی از من انتقاد کند فوراً خط‌ها و عیب‌های او را بیان می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "تازگی‌ها به کلی خرد شده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب از انجام کار دست می‌کشم، زیرا می‌ترسم آن را درست انجام ندهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب خشم و عصبانیتم را بروز می‌دهم و بعد پشیمان می‌شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی قدرت حس کردن را در بعضی قسمت‌های بدنم از دست می‌دهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من بدون توجه به اینکه انجام کاری چه اثری بر دیگران دارد کارم را انجام می‌دهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "مصرف مواد مخدر ممکن است عاقلانه نباشد ولی در گذشته حس می‌کردم به آن احتیاج دارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من آدم آرام و ترسویی هستم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب احمقانه و بی‌مقدمه رفتار می‌کنم به طوری که بعداً مرا به دردسر می‌اندازد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "هرگز کسی را که از من سوء استفاده کرده نمی‌بخشم. یا موقعیت دردناکی را که تحمل کرده‌ام فراموش نمی‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب بعد از آنکه آن حادثه برایم اتفاق افتاد احساس ناراحتی و تنش می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اکثر اوقات احساس افسردگی و ناراحتی وحشتناکی دارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "همیشه سعی می‌کنم دیگران را از خود خشنود کنم حتی اگر از آن‌ها بدم بیاید.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "در مقایسه با دیگران، همیشه کمتر به مسائل جنسی علاقه نشان داده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "وقتی اتفاق بدی می‌افتد احساس گناه می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "از خیلی وقت پیش، صلاح خود را در این دیده‌ام که با دیگران کمتر رابطه داشته باشم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "از بچگی مواظب بودم کسی سرم کلاه نگذارد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "از آدم‌هایی که خیال می‌کنند هر کاری را می‌توانند بهتر از من انجام دهند متنفرم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "وقتی حوصلم سر برود، دوست دارم به کار پرهیجانی دست بزنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اعتیاد من مشکلاتی برای من به خانواده‌ام به وجود آورده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "تنبیه هرگز مانع انجام کاری که دوست دارم نشده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "بارها بی‌دلیل، شادی و هیجان بیش از حد به من دست داده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "چند هفته است که بی‌دلیل احساس خستگی و فرسودگی می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "مدتی است که هیچ کاری را درست انجام نمی‌دهم و به این دلیل شدیداً احساس گناه می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "فکر می‌کنم آدمی اجتماعی و خونگرم هستم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اخیراً بسیار کم رو و خجالتی شده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "برای روزهای تنگدستی پس انداز می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من به اندازه دیگران در زندگی شانس ندارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "دائم افکار و اندیشه‌ها، در ذهنم موج می‌زنند و رهایم نمی‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "چند سالی است که از زندگی کاملاً  دلسرد و ناامید شده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "چند سالی است که افراد زیادی در مورد زندگی خصوصی‌ام‌ جاسوسی می‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "نمی‌دانم چرا ولی گاهی حرف‌های بد می‌زنم، صرفاً برای اینکه دیگران را رنجیده خاطر کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "در سال گذشته، بیش از ۳۰ بار بر فراز اقیانوس اطلس پرواز کرده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "در گذشته اعتیاد به مواد مخدر باعث شده شغلم را از دست بدهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "فکرهای مهمی در سر دارم که مردم این زمانه آن را نمی‌فهمند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اخیراً مجبورم بدون دلیل در مورد چیزی مکرراً فکر کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "از اکثر موقعیت‌های اجتماعی دوری می‌کنم زیرا می‌ترسم مردم از من انتقاد کنند یا مرا طرد کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "بیشتر وقت‌ها فکر می‌کنم شایسته موفقیت‌هایی که نصیبم شده است نبوده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب وقتی تنها هستم، احساس می‌کنم کسی کنارم نشسته که دیده نمی‌شود.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب به دیگران اجازه می‌دهم تصمیم‌های مهمی‌برایم بگیرند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "احساس بی‌هدفی می‌کنم و نمی‌دانم در زندگی به کجا می‌روم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "ظاهراً نمی‌توانم بخوابم و بعد از خواب هم به اندازه قبل از خواب خسته‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اخیراً خیلی عرق می‌کنم و کلافه‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "پیوسته فکرهای عجیبی به سرم می‌زند کاش می‌توانستم از شر آن‌ها خلاص شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "برایم مشکل است که بر هوس مشروب خواری خود غلبه کنم .",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "حتی وقتی بیدارم متوجه آدم‌هایی که دور و برم هستند نمی‌شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من اغلب اوقات افسرده و غمگین هستم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "پیدا کردن دوست برایم این کار ساده‌ای است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "از سوء استفاده که در کودکی از من شده شرمنده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "همیشه نگرانم که کارهایم خوب برنامه ریزی و تنظیم باشد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "ظاهراً اغلب خلق و خویم از روزی به روز دیگر تغییر زیادی می‌کند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "می‌ترسم ریسک کنم و چیزهای جدید را امتحان کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "سوء استفاده کردن از کسی که خود اجازه چنین کاری را می‌دهد عیب نمی‌دانم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "مدتی است غمگین و گرفته‌ام و نمی‌توانم از این حالت خلاص شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب از دیدن آدم‌هایی که کند کار می‌کنند عصبانی می‌شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "در مهمانی‌ها هیچ وقت گوشه گیر نیستم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من آنچه اعضای خانواده‌ام‌ انجام می‌دهند را زیر نظر دارم تا بدانم به چه کسی می‌توان اعتماد کرد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی در برابر مهربانی مردم دستپاچه و عصبانی می‌شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "استعمال مواد مخدر باعث درگیری خانوادگی برایم شده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اکثر اوقات تنها هستم و این تنهایی را ترجیح می‌دهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "بعضی از اعضای خانواده‌ام می‌گویند که خودخواه هستم و فقط به خودم فکر می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم خیلی راحت می‌توانند نظرم را عوض کنند حتی اگر تصمیم نهایی خود را گرفته باشم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "بیشتر وقت‌ها به دیگران دستور می‌دهم و آن‌ها را عصبانی می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "قبلاً دیگران به من گفته‌اند که به خیلی چیزها بیش از حد شور و علاقه نشان داده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "بهتر است آدم زود بخوابد و زود بیدار شود.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "احساس من نسبت به افراد مهم زندگی‌ام‌ اغلب بین محبت و نفرت در نوسان است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "در جمع و موقعیت‌های اجتماعی همیشه مضطرب و کلافه‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من هر روز مشروب می‌خورم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "قبول دارم که مسئولیت‌های خانوادگی را جدی نمی‌گیرم، ولی باید آن‌ها را جدی بگیرم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "از همان کودکی به تدریج رابطه خود را با واقعیت از دست داده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "افراد آب زیرکاه اغلب سعی دارند کاری را که من انجام داده‌ام یا فکرش از من بوده است را به اسم خودشان تمام کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من نمی‌توانم شادی زیادی تجربه کنم چون احساس می‌کنم لیاقتش را ندارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "علاقه چندانی به دوست پیدا کردن و رفاقت ندارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "بارها در زندگی‌ام وقتی شاد بودم و فعالیت زیادی داشتم، حالت افسردگی به من دست داده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اشتهایم را به کلی از دست داده‌ام و بد خواب هستم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من از تنهایی و بی‌کسی و از اینکه به خودم متکی باشم می‌ترسم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "خاطره یک تجاوز وحشتناک در گذشته، دائم فکر مرا پریشان می‌کند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "در سال گذشته عکس من روی جلد مجله‌های زیادی چاپ شد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "ظاهراً علاقه‌ام را به اکثر فعالیت‌های لذت بخش مثل رابطه جنسی از دست داده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "در یکی دو سال گذشته بسیار غمگین و دل سرد بوده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "یکی دو بار با قانون مشکل داشته‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "بهترین راه اجتناب از اشتباه، تجربه داشتن است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "مردم به خاطر کاری که انجام نداده‌ام به من تهمت می‌زنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اکثر اوقات عادت دارم برخی از مردم را اذیت کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی مردم فکر می‌کنند من عجیب و غریب صحبت می‌کنم و صحبت‌های من برای آن‌ها غریب و ناآشناست.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "دوره‌هایی در زندگی من وجود داشته است که قادر به خرید مواد مخدر نبوده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم تلاش می‌کنند من را بگیرند چون فکر می‌کنند من دیوانه‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من هر کاری لازم باشد انجام می‌دهم تا فردی که دوستش دارم مرا ترک نکند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "یکی دو بار در هفته پرخوری می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "فکر می‌کنم تمام فرصت‌های خوبی که برایم پیش آمد را از دست داده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "هیچ وقت نتوانسته‌ام از احساس غم و اندوه رهایی یابم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "وقتی تنها و دور از خانه هستم اغلب احساس اضطراب و هراس می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "گاهی مردم از دست من عصبانی می‌شوند زیرا فکر می‌کنند من زیاد حرف می‌زنم یا تند صحبت می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "امروزه اکثر افراد موفق، یا خوش شانس‌اند یا کلاهبردار.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من نمی‌خواهم با دیگران رابطه نزدیک پیدا کنم چون مطمئنم به من علاقمند می‌شوند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "بدون علت مشخصی احساس افسردگی می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "بعد از سال‌ها همچنان در مورد حادثه‌ایکه واقعا زندگی‌ام را تهدید می‌کرد خواب‌های وحشتناک می‌بینم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "توان انجام کارهای روزمره‌ام را ندارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "وقتی به کمک احتیاج دارم الکل می‌نوشم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من از فکر کردن در مورد اینکه چگونه در کودکی مورد سوء استفاده قرار گرفته‌ام متنفرم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "حتی وقتی همه کارها خوب پیش می‌رود دائم نگرانم، به زودی حادثه بدی اتفاق خواهد افتاد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "وقتی حادثه بدی در زندگی‌ام اتفاق می‌افتد گاهی احساس ناتوانی می‌کنم و تقریباً دیوانه می‌شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "واقعا از تنهایی و درماندگی و از دست دادن حمایت نزدیکانم که من به آن‌ها وابسته‌ام، می‌ترسم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "می‌دانم که پول زیادی برای مواد مخدر خرج کرده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "همیشه قبل از شروع به انجام کاری، باید اطمینان پیدا کنم که آن کار در آن مدت محدود تمام می‌شود.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "می‌دانم که مردم پشت سرم صحبت می‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من در گرفتن عفو و بخشش دیگران مهارت دارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "می‌دانم که برایم نقشه کشیده‌اند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "احساس می‌کنم که بیشتر مردم افکار پست و زشتی در مورد من دارند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اغلب احساس تنهایی و پوچی می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "گاهی بعد از غذا خوردن خودم را مجبور به استفراغ می‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من معتقدم که همه را خوشحال می‌کنم و دیگران را به خاطر کارهایی که انجام می‌دهم و حرف‌هایی که می‌زنم تحسین می‌کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "دائم نگران کسی یا چیزی هستم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "همیشه بی‌جهت فریب می‌خورم، به ویژه وقتی کسی خودش را برتر از من نشان می‌دهد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "دائم افکار اضطراب برانگیز به ذهن می‌آید.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "در زندگیم چیزهای کمی وجود دارد که واقعاً مرا خوشحال کند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "وقتی به سرنوشت دردناکی که در گذشته داشته‌ام فکر می‌کنم احساس ناکامی‌کرده و به مرگ می‌اندیشم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "از اینکه خیلی زود بیدار می‌شوم و دیگر نمی‌توانم بخوابم ناراحتم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من هرگز قادر به ابراز احساسات من نیستم چون در نظر مردم ارزشی ندارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من مشکل اعتیاد دارم و تلاشم برای کنار گذاشتن آن ناموفق بوده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "عده‌ایتلاش می‌کنند افکارم را کنترل کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "قبلاً تلاش کرده‌ام‌ خودم را بکشم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من گرسنگی می‌کشم تا از همین هم که هست لاغر‌تر شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "نمی‌دانم چرا برخی مردم به من می‌خندند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "در ده سال گذشته هیچ ماشینی ندیده‌ام.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "از آدمهایی که مرا لمس می‌کنند شدیداً می‌ترسم چون فکر می‌کنم آن‌ها ممکن است به من صدمه بزنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "چون آن‌ها از توانایی‌های فوق‌العاده من خبر دارند می‌خواهند مرا دستگیر کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "دائم فکرم درگیر حادثه‌ای است که برایم اتفاق افتاده است.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "ظاهراً کاری می‌کنم که دیگران فکر کنند می‌خواهم به خودم صدمه بزنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب آن قدر غرق افکارم می‌شوم که متوجه نمی‌شوم اطرافم چه می‌گذرد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "مردم به من می‌گویند لاغر هستم اما من احساس می‌کنم خیلی چاقم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "وقایع هولناک گذشته دائم به فکر و خوابم می‌آیند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من به جز اعضای خانواده‌ام‌ هیچ دوستی ندارم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من اغلب کارهایم را سریع انجام می‌دهم و در مورد چیزهایی که باید انجام دهم فکر نمی‌کنم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من به گونه‌ایحمایت دوستانم را جلب کرده‌ام‌ که دیگران نمی‌توانند از من سوء استفاده کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "اغلب به وضوح چیزهایی می‌شنوم که مرا ناراحت می‌کند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "1"
+    },
+    {
+      "text": "من همیشه برای نزاع با دیگران خودم را مجهز نگه می‌دارم زیرا از برخورد تند شان می‌ترسم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "من هر کار را چند بار انجام می‌دهم. گاهی به خاطر کاهش نگرانیم و گاهی به خاطر اینکه مطمئن شوم حادثه بدی اتفاق نمی‌افتد.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "تازگی‌ها به طور جدی به این فکر افتاده‌ام‌ که به زندگی‌ام‌ خاتمه دهم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "مردم مرا آدمی‌منظم و مقرراتی می‌دانند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "وقتی به حادثه دردناکی که سال‌ها پیش برایم اتفاق افتاد فکر می‌کنم دچار ترس و اضطراب می‌شوم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "اگرچه من از دوست پیدا کردن می‌ترسم ولی مایلم دوستان بیشتری داشته باشم.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    },
+    {
+      "text": "واقعیت این است که مردم می‌خواهند با من دوست شوند تا مرا خرد کنند.",
+      "type": "text",
+      "answer": {
+        "type": "optional",
+        "options": [
+          "بلی",
+          "خیر"
+        ]
+      },
+      "user_answered": "2"
+    }
+  ],
+  "prerequisites": [
+    {
+      "type": "text",
+      "label": "gender",
+      "text": "جنسیت",
+      "answer": {
+        "type": "select",
+        "options": [
+          "زن",
+          "مرد"
+        ]
+      },
+      "alias": "gender",
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "age",
+      "text": "سن",
+      "answer": {
+        "type": "number"
+      },
+      "alias": "age",
+      "force": true,
+      "user_answered": "30"
+    },
+    {
+      "type": "text",
+      "label": "education",
+      "text": "تحصیلات",
+      "answer": {
+        "type": "select",
+        "options": [
+          "ابتدایی اول",
+          "ابتدایی دوم",
+          "متوسطه اول",
+          "متوسطه دوم",
+          "دیپلم",
+          "کارشناسی",
+          "کارشناسی ارشد",
+          "پزشکی عمومی",
+          "متخصص",
+          "دکتری تخصصی",
+          "حوزوی مقدمات",
+          "حوزوی سطح۱",
+          "حوزوی سطح۲",
+          "حوزوی سطح۳",
+          "حوزوی سطح۴"
+        ]
+      },
+      "alias": "education",
+      "force": true,
+      "user_answered": "6"
+    },
+    {
+      "type": "text",
+      "label": "job",
+      "text": "شغل",
+      "answer": {
+        "type": "text"
+      },
+      "alias": "job",
+      "force": true,
+      "user_answered": "کارمند"
+    },
+    {
+      "type": "text",
+      "label": "marital_status",
+      "text": "وضعیت تأهل",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مجرد",
+          "متأهل"
+        ]
+      },
+      "alias": "marital_status",
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "economi_situation",
+      "text": "وضعیت اقتصادی",
+      "answer": {
+        "type": "select",
+        "options": [
+          "بد",
+          "متوسط",
+          "خوب",
+          "بسیار خوب",
+          "عالی"
+        ]
+      },
+      "force": true,
+      "user_answered": "2"
+    },
+    {
+      "type": "text",
+      "label": "problem",
+      "text": "مشکلی که به خاطر آن مراجعه کرده‌اید",
+      "answer": {
+        "type": "select",
+        "options": [
+          "مشکلات خلقی",
+          "مشکلات تحصیلی",
+          "مشکلات شغلی",
+          "مشکلات خانوادگی و زناشویی",
+          "مشکل اعتیاد",
+          "مشکل تنهایی",
+          "مشکل خواب و خستگی",
+          "مشکل درگیری با قانون",
+          "سایر مشکلات"
+        ]
+      },
+      "force": true,
+      "user_answered": "1"
+    },
+    {
+      "type": "text",
+      "label": "hospitalized",
+      "text": "اگر درحال حاضر بستری هستید، چندروز بستری شده‌اید؟",
+      "answer": {
+        "type": "number"
+      }
+    }
+  ],
+  "cornometer": 0,
+  "score": {
+    "1": {
+      "raw": 11,
+      "br": 60
+    },
+    "2a": {
+      "raw": 11,
+      "br": 64
+    },
+    "2b": {
+      "raw": 11,
+      "br": 67
+    },
+    "3": {
+      "raw": 14,
+      "br": 65
+    },
+    "4": {
+      "raw": 15,
+      "br": 82
+    },
+    "5": {
+      "raw": 19,
+      "br": 67
+    },
+    "6a": {
+      "raw": 12,
+      "br": 62
+    },
+    "6b": {
+      "raw": 6,
+      "br": 20
+    },
+    "7": {
+      "raw": 8,
+      "br": 17
+    },
+    "8a": {
+      "raw": 12,
+      "br": 62
+    },
+    "8b": {
+      "raw": 9,
+      "br": 60
+    },
+    "a": {
+      "raw": 11,
+      "br": 65
+    },
+    "b": {
+      "raw": 12,
+      "br": 69
+    },
+    "c": {
+      "raw": 13,
+      "br": 60
+    },
+    "cc": {
+      "raw": 10,
+      "br": 64
+    },
+    "d": {
+      "raw": 4,
+      "br": 30
+    },
+    "h": {
+      "raw": 6,
+      "br": 55
+    },
+    "n": {
+      "raw": 10,
+      "br": 67
+    },
+    "p": {
+      "raw": 13,
+      "br": 62
+    },
+    "pp": {
+      "raw": 7,
+      "br": 60
+    },
+    "r": {
+      "raw": 11,
+      "br": 68
+    },
+    "s": {
+      "raw": 15,
+      "br": 65
+    },
+    "ss": {
+      "raw": 20,
+      "br": 95
+    },
+    "t": {
+      "raw": 12,
+      "br": 71
+    },
+    "v": {
+      "raw": 0,
+      "br": 0
+    },
+    "y": {
+      "raw": 4,
+      "br": 10
+    },
+    "z": {
+      "raw": 13,
+      "br": 63
+    },
+    "x": {
+      "raw": 121.73,
+      "br": 74
+    },
+    "status": "valid",
+    "message": null,
+    "messages": []
+  },
+  "score_current_version": "1.0.2",
+  "score_last_version": "1.0.2"
+}

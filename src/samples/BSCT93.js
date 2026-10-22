@@ -5,22 +5,22 @@ class BSCT93 extends Profile {
 
   labels = {
     L0_1: { eng: "total_raw", max: 125, title: "نمره کل" },
-    L0_2: { eng: "total_percentage" },
+    L0_2: { eng: "total_percent" },
 
     L1_1: { eng: "intellectual_ability_raw", max: 25, title: "توانایی ذهنی" },
-    L1_2: { eng: "intellectual_ability_percentage" },
+    L1_2: { eng: "intellectual_ability_percent" },
 
     L2_1: { eng: "physical_attractiveness_raw", max: 25, title: "جذابیت فیزیکی" },
-    L2_2: { eng: "physical_attractiveness_percentage" },
+    L2_2: { eng: "physical_attractiveness_percent" },
 
     L3_1: { eng: "virtues_raw", max: 25, title: "مسائل اخلاقی" },
-    L3_2: { eng: "virtues_percentage" },
+    L3_2: { eng: "virtues_percent" },
 
     L4_1: { eng: "work_efficacy_raw", max: 20, title: "کفایت کاری" },
-    L4_2: { eng: "work_efficacy_percentage" },
+    L4_2: { eng: "work_efficacy_percent" },
 
     L5_1: { eng: "social_skills_raw", max: 30, title: "مهارت‌های اجتماعی" },
-    L5_2: { eng: "social_skills_percentage" },
+    L5_2: { eng: "social_skills_percent" },
   };
 
   profileSpec = {
@@ -56,11 +56,6 @@ class BSCT93 extends Profile {
 
     const total = packItem(dataset.score[0], dataset.score[1]);
     total.transform = `translate(30, ${4 + 230 - total.p * 230})`;
-    // گرادیان لنگرخورده روی کلِ مسیر: روشن (#94A3B8) پایینِ مسیر (abs y=235.5)،
-    // تیره (#334155) بالای مسیر (abs y=12.4). در مختصاتِ محلیِ میله بیان می‌شود
-    // چون <path> همان total.transform را حمل می‌کند (مطابق paint6 در SVG طراحی).
-    total.gradY1 = 230 * total.p + 0.5; // پایینِ مسیر → abs y 235.5
-    total.gradY2 = 230 * total.p - 222.6; // بالای مسیر → abs y 12.4
 
     const factors = [
       packItem(dataset.score[2], dataset.score[3]),
@@ -74,16 +69,23 @@ class BSCT93 extends Profile {
   }
 }
 
-function packItem(raw, percentage) {
+// درصد ذخیره‌شده کسری ۰ تا ۱ با سه رقم است (`<factor>_percent`). عدد نمایشی = درصد × ۱۰۰،
+// گردشده به عدد صحیح با نیمه رو به بالا، با حساب صحیح تا خطای ممیز شناور نیمه را جابه‌جا نکند.
+// امتیاز هر سؤال دست‌کم ۱ است، پس درصد معتبر صفر نمی‌شود؛ درصدِ نیامده یعنی نمره ساخته نشده:
+// میله خالی می‌ماند و عددی نوشته نمی‌شود.
+function packItem(raw, percent) {
+  const has = percent.mark !== undefined && percent.mark !== null;
+  const p = has ? Math.min(Math.max(Number(percent.mark), 0), 1) : 0;
   return {
     ...raw,
     label: {
       ...raw.label,
       eng: raw.label.eng.replace("_raw", ""),
     },
+    has,
     mark: raw.mark ?? 0,
-    percentage: Math.round((percentage.mark ?? 0) * 100),
-    p: percentage.mark ?? 0,
+    percentage: Math.floor((Math.round(p * 1000) + 5) / 10),
+    p,
   };
 }
 

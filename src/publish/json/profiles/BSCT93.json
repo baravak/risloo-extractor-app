@@ -55,7 +55,7 @@
           "تقریباً از همه کسانی که می‌شناسم بدترم."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "5"
     },
     {
       "type": "text",
@@ -70,7 +70,7 @@
           "تقریباً از همه کسانی که می‌شناسم بیشتر است."
         ]
       },
-      "user_answered": "5"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -85,7 +85,7 @@
           "تقریباً از همه کسانی که می‌شناسم کمتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "5"
     },
     {
       "type": "text",
@@ -115,7 +115,7 @@
           "تقریباً از همه کسانی که می‌شناسم کمتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -130,7 +130,7 @@
           "تقریباً بیش از همه کسانی است که می‌شناسم."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -145,7 +145,7 @@
           "تقریباً کمتر از همه کسانی است که می‌شناسم."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "3"
     },
     {
       "type": "text",
@@ -160,7 +160,7 @@
           "تقریباً بیش از همه کسانی است که می‌شناسم."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "2"
     },
     {
       "type": "text",
@@ -175,7 +175,7 @@
           "تقریباً از همه کسانی که می‌شناسم بدتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -190,7 +190,7 @@
           "تقریباً از همه کسانی که می‌شناسم کمتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -205,7 +205,7 @@
           "تقریباً بیش از همه کسانی است که می‌شناسم."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -235,7 +235,7 @@
           "تقریباً از همه کسانی که می‌شناسم کمتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "2"
     },
     {
       "type": "text",
@@ -280,7 +280,7 @@
           "تقریباً از همه کسانی که می‌شناسم بدتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "5"
     },
     {
       "type": "text",
@@ -295,7 +295,7 @@
           "تقریباً از همه کسانی که می‌شناسم بدتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "5"
     },
     {
       "type": "text",
@@ -340,7 +340,7 @@
           "تقریباً از همه کسانی که می‌شناسم بدترم."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -355,7 +355,7 @@
           "تقریباً از همه کسانی که می‌شناسم کمتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "4"
     },
     {
       "type": "text",
@@ -400,7 +400,7 @@
           "تقریباً از همه کسانی که می‌شناسم کمتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "3"
     },
     {
       "type": "text",
@@ -415,7 +415,7 @@
           "تقریباً از همه کسانی که می‌شناسم بیشتر است."
         ]
       },
-      "user_answered": "1"
+      "user_answered": "3"
     }
   ],
   "prerequisites": [
@@ -477,18 +477,18 @@
   ],
   "cornometer": 1,
   "score": {
-    "total_raw": 93,
-    "total_percentage": 0.74,
-    "intellectual_ability_raw": 25,
-    "intellectual_ability_percentage": 1,
-    "physical_attractiveness_raw": 21,
-    "physical_attractiveness_percentage": 0.84,
-    "virtues_raw": 13,
-    "virtues_percentage": 0.52,
-    "work_efficacy_raw": 12,
-    "work_efficacy_percentage": 0.6,
-    "social_skills_raw": 22,
-    "social_skills_percentage": 0.73
+    "total_raw": 77,
+    "total_percent": 0.616,
+    "intellectual_ability_raw": 14,
+    "intellectual_ability_percent": 0.56,
+    "physical_attractiveness_raw": 13,
+    "physical_attractiveness_percent": 0.52,
+    "virtues_raw": 20,
+    "virtues_percent": 0.8,
+    "work_efficacy_raw": 9,
+    "work_efficacy_percent": 0.45,
+    "social_skills_raw": 21,
+    "social_skills_percent": 0.7
   },
   "score_current_version": "1.0.0",
   "score_last_version": "1.0.0"

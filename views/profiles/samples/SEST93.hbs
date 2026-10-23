@@ -1,0 +1,22 @@
+{{#> layout}}
+
+  <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
+  {{#if hasScore}}
+
+    {{! ===================== «نمره کل» ===================== }}
+    <text x="{{math bar.x '-' 8}}" y="{{baseline}}" text-anchor="start" font-size="13" fill="#475569">{{title}}</text>
+
+    {{! ===================== Track (unfilled part) and the filled part, from 0 to 100 ===================== }}
+    <g transform="translate({{bar.x}}, 0)">
+      {{bar bar.length bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=color.track}}
+      {{#if width}}{{bar width bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=color.fill}}{{/if}}
+    </g>
+
+    {{! ===================== Beside the bar: percent, then "raw از 55" ===================== }}
+    <text x="{{pctX}}" y="{{baseline}}" text-anchor="start" direction="ltr" unicode-bidi="embed" font-size="13" font-weight="500" fill="{{color.fill}}">٪ {{pct}}</text>
+    <text x="{{rawX}}" y="{{baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#334155">{{mark}}</tspan> از {{max}}</text>
+
+  {{/if}}
+  </g>
+
+{{/layout}}

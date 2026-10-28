@@ -1,0 +1,927 @@
+{
+    "id": "$X16TCCCC",
+    "scale": {
+        "id": "$CPRS-93",
+        "title": "مقیاس درجه‌بندی کانرز (۱۹۷۸)"
+    },
+    "status": "closed",
+    "chain": null,
+    "version": "1",
+    "edition": "فرم کوتاه والدین",
+    "edition_version": null,
+    "client": {
+        "id": "GH966GGGG",
+        "name": "مراجع",
+        "user_id": "IR96CCCC"
+    },
+    "room": {
+        "id": "RS96CCC",
+        "manager": {
+            "id": "GH966CCCC",
+            "name": "درمانگر",
+            "user_id": "IR9CCCC"
+        },
+        "center": {
+            "id": "RS96CCC",
+            "acceptation": null,
+            "status": "active",
+            "type": "personal_clinic",
+            "detail": {
+                "title": "درمانگر"
+            }
+        },
+        "acceptation": null,
+        "status": "active",
+        "type": "personal_clinic"
+    },
+    "code": null,
+    "created_at": 1745785423,
+    "started_at": 1746013074,
+    "scored_at": null,
+    "closed_at": 1746013100,
+    "total_amount": null,
+    "prepayment": false,
+    "purchased": true,
+    "amount": null,
+    "billing": null,
+    "description": "در زیر فهرستی از عبارات وجود دارد که مشکلات رایج کودکان را توصیف می‌کند. هر عبارت را با دقت بخوانید و با توجه به رفتار فرزندتان در یک ماه گذشته، با گزینه «اصلاً صحیح نیست»، «کمی صحیح است»، «تا حد زیادی صحیح است» یا «کاملاً صحیح است» پاسخ دهید.",
+    "psychologist_description": "Fg",
+    "items": [
+        {
+            "type": "text",
+            "text": "چیزها را می‌جود (ناخن، انگشت، مو، لباس).",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "گستاخ است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "به دشواری با دیگران دوست می‌شود.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "هیجان‌پذیر است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "می‌خواهد کارها را به تنهایی انجام دهد (نمی‌تواند با بقیه همکاری کند).",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "چیزها را می‌مکد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "مرتب گریه می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "زود عصبانی می‌شود.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "در خواب و خیال است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "مشکل یادگیری دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "ناآرام است و وول می‌خورد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "1",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "از موقعیت‌های جدید و بیگانه می‌ترسد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "دائم در حال حرکت است (یک‌جا بند نمی‌شود).",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "خرابکار است (چیزها را خراب می‌کند).",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "داستان می‌بافد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "خجالتی است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "خودش را به دردسر می‌اندازد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "در صحبت کردن مشکل دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "اشتباهات خودش را قبول نمی‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "اهل دعوا و جر و بحث است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "عبوس و اخموست.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "اشیای مربوط به دیگران را بدون اجازه برای خودش برمی‌دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "حرف‌شنوی ندارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "نگران است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "کاری که به او محول می‌شود، به آخر نمی‌رساند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "زودرنج است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "به دیگران زور می‌گوید.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "یک کار یا رفتار را تکرار می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "به خواسته و نیاز دیگران بی‌توجه است (بی‌رحم است).",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "ناپخته و نسنجیده عمل می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "حواس‌پرتی دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "از سردرد شکایت دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "خلق و روحیاتش متغیر است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "با قوانین و محدودیت‌ها مشکل دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "با دیگران دعوا می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "برای کنار آمدن با کودکان دیگر مشکل دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "زود سرخورده می‌شود.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "برای کودکان دیگر ایجاد مزاحمت می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "ناشاد است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "در غذا خوردن مشکل دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "از دل‌درد صحبت می‌کند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "در خوابیدن مشکل دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "از دردها و مشکلات جسمی حرف می‌زند.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "استفراغ و حالت تهوع دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "در جمع خانوادگی (با خواهر و برادرها) احساس می‌کند سرش کلاه رفته.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "به دیگران فخرفروشی می‌کند (پز می‌دهد).",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "در مقابل خواسته‌های دیگران بی‌مقاومت است.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        },
+        {
+            "type": "text",
+            "text": "در هضم و دفع غذا مشکل دارد.",
+            "answer": {
+                "type": "optional",
+                "options": [
+                    "اصلاً صحیح نیست (هرگز، به‌ندرت)",
+                    "کمی صحیح است",
+                    "تا حد زیادی صحیح است",
+                    "کاملاً صحیح است (اغلب اوقات، تقریباً همیشه)"
+                ]
+            },
+            "user_answered": "3",
+            "user_description": null
+        }
+    ],
+    "prerequisites": [
+        {
+            "type": "text",
+            "label": "gender",
+            "text": "جنسیت",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "زن",
+                    "مرد"
+                ]
+            },
+            "alias": "gender",
+            "force": true,
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "label": "age",
+            "text": "سن",
+            "answer": {
+                "type": "number"
+            },
+            "alias": "age",
+            "force": true,
+            "user_answered": "36"
+        },
+        {
+            "type": "text",
+            "label": "education",
+            "text": "تحصیلات",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "ابتدایی اول",
+                    "ابتدایی دوم",
+                    "متوسطه اول",
+                    "متوسطه دوم",
+                    "دیپلم",
+                    "کارشناسی",
+                    "کارشناسی ارشد",
+                    "پزشکی عمومی",
+                    "متخصص",
+                    "دکتری تخصصی",
+                    "حوزوی مقدمات",
+                    "حوزوی سطح۱",
+                    "حوزوی سطح۲",
+                    "حوزوی سطح۳",
+                    "حوزوی سطح۴"
+                ]
+            },
+            "alias": "education",
+            "force": true,
+            "user_answered": "6"
+        },
+        {
+            "type": "text",
+            "label": "marital_status",
+            "text": "وضعیت تأهل",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "مجرد",
+                    "متأهل"
+                ]
+            },
+            "alias": "marital_status",
+            "force": true,
+            "user_answered": "2"
+        },
+        {
+            "type": "text",
+            "label": "relationship",
+            "text": "نسبت شما با کودک چیست؟",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "مادر",
+                    "پدر",
+                    "دیگری"
+                ]
+            },
+            "alias": "relationship",
+            "force": true,
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "label": "child_gender",
+            "text": "جنسیت کودک",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "دختر",
+                    "پسر"
+                ]
+            },
+            "alias": "child_gender",
+            "force": true,
+            "user_answered": "1"
+        },
+        {
+            "type": "text",
+            "label": "child_age",
+            "text": "سن کودک",
+            "answer": {
+                "type": "select",
+                "options": [
+                    "۶ سال",
+                    "۷ سال",
+                    "۸ سال",
+                    "۹ سال",
+                    "۱۰ سال",
+                    "۱۱ سال"
+                ]
+            },
+            "alias": "child_age",
+            "force": true,
+            "user_answered": "6"
+        }
+    ],
+    "entities": [],
+    "cornometer": 10,
+    "score": {
+        "status": "valid",
+        "classic_conduct_mean": 1.5,
+        "classic_conduct_t": 81,
+        "classic_learning_mean": 1.5,
+        "classic_learning_t": 78,
+        "classic_psychosomatic_mean": 2.0,
+        "classic_psychosomatic_t": 115,
+        "classic_impulsive_hyperactive_mean": 0.5,
+        "classic_impulsive_hyperactive_t": 45,
+        "classic_anxiety_mean": 2.0,
+        "classic_anxiety_t": 76,
+        "classic_hyperkinesis_index_mean": 1.4,
+        "classic_hyperkinesis_index_t": 76,
+        "persian_conduct_raw": 28,
+        "persian_conduct_t": 72,
+        "persian_conduct_pr": "96",
+        "persian_social_raw": 16,
+        "persian_social_t": 80,
+        "persian_social_pr": "<99",
+        "persian_psychosomatic_raw": 16,
+        "persian_psychosomatic_t": 84,
+        "persian_psychosomatic_pr": "99",
+        "persian_anxiety_shyness_raw": 8,
+        "persian_anxiety_shyness_t": 58,
+        "persian_anxiety_shyness_pr": "79",
+        "persian_total_raw": 74,
+        "persian_total_t": 79,
+        "persian_total_pr": "99"
+    },
+    "score_current_version": "1.0.0",
+    "score_last_version": "1.0.0",
+    "profiles": []
+}

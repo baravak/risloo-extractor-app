@@ -1,0 +1,50 @@
+{{#> layout}}
+  {{#if valid}}
+  <g transform="translate({{spec.profile.padding.x}}, {{math spec.profile.padding.y '+' shift}})">
+
+    {{! ===================== «نمرهٔ کل», the raw total and beside it the percent («٪ NN», SEST93) ===================== }}
+    {{! One LTR run laid out left → right: percent, total, name; read right → left as name, total, percent. }}
+    <text x="{{right}}" y="{{rowBaseline}}" text-anchor="end" direction="ltr" font-size="15" fill="#475569"><tspan font-size="16" font-weight="500" fill="#64748B">٪ {{pct}}</tspan><tspan dx="14" font-size="26" font-weight="700" fill="#1E293B">{{total}}</tspan><tspan dx="8">{{title}}</tspan></text>
+
+    {{! ===================== Bar: track 0..100 % (0 left), filled from 0 by the percent in the level colour ===================== }}
+    <g transform="translate({{bar.x}}, {{bar.top}})">
+      {{bar bar.length bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=track}}
+      {{#if width}}{{bar width bar.height (object tl=0 bl=0 tr=radius br=radius) (toRad 0) fill=fill}}{{/if}}
+    </g>
+
+    {{! ===================== Two boundary lines, at 12.5 % and 37.5 % (between scores 2|3 and 7|8) ===================== }}
+    {{#each cuts as |cut|}}
+      <line x1="{{cut.x}}" y1="{{cut.y1}}" x2="{{cut.x}}" y2="{{cut.y2}}" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+    {{/each}}
+
+    {{! ===================== Axis ends only: 0 and ٪ 100 (STAXI293 tick labels) ===================== }}
+    <text x="{{axis.minX}}" y="{{axis.baseline}}" text-anchor="start" direction="ltr" unicode-bidi="bidi-override" font-size="12" font-weight="400" fill="#94A3B8">0</text>
+    <text x="{{axis.maxX}}" y="{{axis.baseline}}" text-anchor="end" direction="ltr" unicode-bidi="bidi-override" font-size="12" font-weight="400" fill="#94A3B8">٪ 100</text>
+
+    {{! ===================== Level label on a band in the level's tint ===================== }}
+    <rect x="0" y="{{band.top}}" width="{{right}}" height="{{band.height}}" rx="{{band.radius}}" fill="{{band.tint}}"/>
+    <rect x="{{band.markerX}}" y="{{band.markerY}}" width="{{band.markerWidth}}" height="{{band.markerHeight}}" rx="2" fill="{{band.marker}}"/>
+    <text x="{{band.textX}}" y="{{band.baseline}}" text-anchor="start" direction="rtl" font-size="17" font-weight="600" fill="#1E293B">{{band.title}}</text>
+
+    {{! ===================== Rescreen alert: low risk under 24 months only ===================== }}
+    {{#if rescreen}}
+    <g>
+      <circle cx="{{alert.iconX}}" cy="{{alert.iconY}}" r="{{alert.iconR}}" fill="none" stroke="#475569" stroke-width="1.5"/>
+      <line x1="{{alert.iconX}}" y1="{{math alert.iconY '-' 0.5}}" x2="{{alert.iconX}}" y2="{{math alert.iconY '+' 3.5}}" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="{{alert.iconX}}" cy="{{math alert.iconY '-' 3.5}}" r="1" fill="#475569"/>
+      <text x="{{alert.textX}}" y="{{alert.baseline}}" text-anchor="start" direction="rtl" font-size="14" font-weight="500" fill="#334155">پس از 24 ماهگی دوباره غربال شود</text>
+    </g>
+    {{/if}}
+
+  </g>
+  {{else}}
+  {{! ===================== No score (all-or-nothing), centred on the page ===================== }}
+  <g transform="translate({{box.x}}, {{box.y}})">
+    <rect x="0" y="0" width="500" height="199" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <circle cx="250" cy="60.5" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
+    <line x1="250" y1="51.5" x2="250" y2="63.5" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="250" cy="70" r="1.6" fill="#64748B"/>
+    <text x="250" y="124.5" text-anchor="middle" font-size="17" font-weight="600" fill="#1E293B">نمره تولید نشد</text>
+  </g>
+  {{/if}}
+{{/layout}}

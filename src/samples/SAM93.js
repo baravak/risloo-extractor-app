@@ -3,13 +3,16 @@ const { Profile } = require("../Profile");
 // ---------------------------------------------------------------------------
 // No Figma design: agent design from the approved brief
 // (docs/profiles/SAM_profile_brief_fa.md), in the bar language of TMPS93 /
-// PSOC93. Chart 800 × 222. The total sits on top with its five-level strip; the
-// four factors follow in the brief's fixed order. Only the values the controller
-// has to compute with live here; the static geometry is in the template.
+// PSOC93. Chart 700 × 212. The total sits on top; the four factors follow in the
+// brief's fixed order. Researcher, 2026-11-11: the five-level strip under the
+// total gave way to dashed boundary lines across the total bar, the five level
+// names moved above the bar (the person's own level darker), and the level name
+// beside the bar was dropped. Only the values the controller has to compute with
+// live here; the static geometry is in the template.
 // ---------------------------------------------------------------------------
 const BAR = { x: 229, width: 400, gap: 4, outsideGap: 6 }; // 100 % = 400 px
-const TOTAL = { top: 0, height: 20, stripGap: 6, strip: 6, levelBaseline: 50 };
-const FACTORS = { top: 86, pitch: 40, height: 16 };
+const TOTAL = { top: 20, height: 20, levelBaseline: 10, cutOverhang: 5 };
+const FACTORS = { top: 76, pitch: 40, height: 16 };
 const BASELINE = 4.06; // 13 px text, below the bar's mid-line (JSS93 / TMPS93)
 // The percentage moves outside the bar below 10 %, where "٪ NN" plus the 4 px
 // tip gap would no longer fit (agent rule, as in TMPS93; the brief leaves
@@ -29,6 +32,12 @@ const LEVELS = [
   { key: "very_undesirable", title: "بسیار نامطلوب", from: 50, to: 76, color: "#08519C", ink: "#FFFFFF" },
 ];
 const FACTOR_COLOR = "#5E6E82"; // brief: one colour for all four factors
+// Researcher, 2026-11-11: every fill is a light → full gradient along its own
+// length (as STAXI293 / MCHATR93), ending in the brief's colour at the tip. The
+// total starts from the lightest level colour (lighter still for that level);
+// the factors from a pale tint of their one colour.
+const TOTAL_START = { default: "#C6DBEF", very_desirable: "#EAF2FA" };
+const FACTOR_START = "#B9C3CF";
 const TRACK = "#EEF1F4"; // brief: empty part of every bar
 
 class SAM93 extends Profile {
@@ -70,15 +79,15 @@ class SAM93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: 800 + 2 * this.padding.x, // Chart 800 wide → 903
-          height: 222 + 2 * this.padding.y, // Chart 222 tall → 714
+          width: 700 + 2 * this.padding.x, // Chart 700 wide → 903
+          height: 212 + 2 * this.padding.y, // Chart 212 tall → 714
         };
       },
       // Chart centred on the 943 × 754 design page, minus the 20 px the layout
       // already owns on every side, so the page resolves to 903 × 714.
       padding: {
-        x: 51.5, // (943 − 800) / 2 − 20
-        y: 246, // (754 − 222) / 2 − 20
+        x: 101.5, // (943 − 700) / 2 − 20
+        y: 251, // (754 − 212) / 2 − 20
       },
     },
     labels: Object.values(this.labels),
@@ -127,32 +136,71 @@ class SAM93 extends Profile {
       };
     });
 
-    // The thin strip under the total bar: five regions, edges half-way between
-    // two neighbouring whole scores.
-    const stripTop = TOTAL.top + TOTAL.height + TOTAL.stripGap;
+    // Five regions of the total bar, edges half-way between two neighbouring
+    // whole scores. Each level name is centred over its region; the person's
+    // own level is written darker. The four inner edges are the dashed lines.
     const edge = (score) => (BAR.width * score) / TOTAL_MAX;
-    const strip = LEVELS.map((l) => {
+    const regions = LEVELS.map((l) => {
       const x0 = l.from === 0 ? 0 : edge(l.from - 0.5);
       const x1 = l.to === TOTAL_MAX ? BAR.width : edge(l.to + 0.5);
+      const own = level !== undefined && l.key === level.key;
       return {
         title: l.title,
-        color: l.color,
-        x: BAR.x + x0,
-        width: x1 - x0,
         center: BAR.x + (x0 + x1) / 2,
+        fill: own ? "#1E293B" : "#94A3B8",
+        weight: own ? 600 : 400,
+      };
+    });
+
+    // A boundary line that would cross or touch the total's percent stops at
+    // the bar's edges (as MCHATR93). «٪ NN» at 13 px: about 12.5 px for «٪ »
+    // plus 7.5 px a digit, with 8 px to spare.
+    const total = rows[0];
+    const textWidth = 12.5 + 7.5 * String(total.pct).length;
+    const span = total.inside
+      ? [total.labelX - textWidth - 8, total.labelX + 8]
+      : [total.labelX - 8, total.labelX + textWidth + 8];
+    const barTop = TOTAL.top;
+    const barBottom = TOTAL.top + TOTAL.height;
+    // Inside the bar a line over a dark part of the gradient fill is drawn white
+    // so it stays visible; over a light part, and above and below the bar, it
+    // stays slate. The fill colour under the line is read off the gradient.
+    const startColor = level && level.key === "very_desirable" ? TOTAL_START.very_desirable : TOTAL_START.default;
+    const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+    const underLine = (x) => {
+      const t = total.width > 0 ? Math.min(Math.max((x - BAR.x) / total.width, 0), 1) : 0;
+      const [a, b] = [rgb(startColor), rgb(total.fill)];
+      const [r, g, bl] = a.map((v, i) => v + (b[i] - v) * t);
+      return (0.299 * r + 0.587 * g + 0.114 * bl) / 255; // perceived lightness 0..1
+    };
+    const cuts = LEVELS.slice(1).map((l) => {
+      const x = BAR.x + edge(l.from - 0.5);
+      return {
+        x,
+        y1: barTop - TOTAL.cutOverhang,
+        y2: barBottom + TOTAL.cutOverhang,
+        barTop,
+        barBottom,
+        through: x < span[0] || x > span[1],
+        inner: x <= BAR.x + total.width && underLine(x) < 0.55 ? "#FFFFFF" : "#475569",
       };
     });
 
     return [
       {
-        total: rows[0],
+        total,
         factors: rows.slice(1),
-        level: level ? level.title : "",
-        strip,
-        stripTop,
-        stripHeight: TOTAL.strip,
+        regions,
+        cuts,
         levelBaseline: TOTAL.levelBaseline,
         track: TRACK,
+        gradient: {
+          total: {
+            start: startColor,
+            end: total.fill,
+          },
+          factor: { start: FACTOR_START, end: FACTOR_COLOR },
+        },
       },
     ];
   }

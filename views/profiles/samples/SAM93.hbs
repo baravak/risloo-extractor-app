@@ -1,36 +1,54 @@
 {{#> layout}}
 
+  <defs>
+    {{! Light → full gradient along each fill's own length, ending in the brief's colour (STAXI293 / MCHATR93). }}
+    <linearGradient id="sam-total" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="{{gradient.total.start}}"/>
+      <stop offset="1" stop-color="{{gradient.total.end}}"/>
+    </linearGradient>
+    <linearGradient id="sam-factor" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="{{gradient.factor.start}}"/>
+      <stop offset="1" stop-color="{{gradient.factor.end}}"/>
+    </linearGradient>
+  </defs>
+
   <g transform="translate({{spec.profile.padding.x}}, {{spec.profile.padding.y}})">
 
-    {{! ===================== Total: track, level-coloured fill, percentage ===================== }}
+    {{! ===================== Total: track and level-coloured fill (percentage after the boundary lines) ===================== }}
     <g transform="translate(229, {{total.top}})">
       {{bar 400 total.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=track}}
-      {{#if total.width}}{{bar total.width total.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=total.fill}}{{/if}}
+      {{#if total.width}}{{bar total.width total.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="url(#sam-total)"}}{{/if}}
     </g>
+
+    {{! «نمرهٔ کل» and raw score of maximum }}
+    <text x="220" y="{{total.baseline}}" text-anchor="start" font-size="13" font-weight="500" fill="#334155">{{total.title}}</text>
+    <text x="643" y="{{total.baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#334155">{{total.mark}}</tspan> از {{total.max}}</text>
+
+    {{! ===================== Five level names above the total bar, the person's own level darker ===================== }}
+    {{#each regions as |region|}}
+      <text x="{{region.center}}" y="{{../levelBaseline}}" text-anchor="middle" font-size="11" font-weight="{{region.weight}}" fill="{{region.fill}}">{{region.title}}</text>
+    {{/each}}
+
+    {{! ===================== Four dashed boundary lines across the total bar only ===================== }}
+    {{! Where a line would cross the percent, only its parts above and below the bar are drawn. }}
+    {{#each cuts as |cut|}}
+      <line x1="{{cut.x}}" y1="{{cut.y1}}" x2="{{cut.x}}" y2="{{cut.barTop}}" stroke="#475569" stroke-width="1"/>
+      {{#if cut.through}}
+        <line x1="{{cut.x}}" y1="{{cut.barTop}}" x2="{{cut.x}}" y2="{{cut.barBottom}}" stroke="{{cut.inner}}" stroke-width="1" stroke-dasharray="3 2"/>
+      {{/if}}
+      <line x1="{{cut.x}}" y1="{{cut.barBottom}}" x2="{{cut.x}}" y2="{{cut.y2}}" stroke="#475569" stroke-width="1"/>
+    {{/each}}
     {{#if total.inside}}
       <text x="{{total.labelX}}" y="{{total.baseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="{{total.ink}}">٪ {{total.pct}}</text>
     {{else}}
       <text x="{{total.labelX}}" y="{{total.baseline}}" text-anchor="start" direction="ltr" font-size="13" font-weight="500" fill="{{total.ink}}">٪ {{total.pct}}</text>
     {{/if}}
 
-    {{! «نمرهٔ کل», raw score of maximum and the level name }}
-    <text x="220" y="{{total.baseline}}" text-anchor="start" font-size="13" font-weight="500" fill="#334155">{{total.title}}</text>
-    <text x="643" y="{{total.baseline}}" text-anchor="end" font-size="12" fill="#64748B"><tspan font-size="13" font-weight="500" fill="#334155">{{total.mark}}</tspan> از {{total.max}}</text>
-    <text x="704" y="{{total.baseline}}" text-anchor="end" font-size="13" font-weight="600" fill="#334155">{{level}}</text>
-
-    {{! ===================== Five-level strip under the total, with level names ===================== }}
-    {{#each strip as |region|}}
-      <rect x="{{region.x}}" y="{{../stripTop}}" width="{{region.width}}" height="{{../stripHeight}}" fill="{{region.color}}"/>
-    {{/each}}
-    {{#each strip as |region|}}
-      <text x="{{region.center}}" y="{{../levelBaseline}}" text-anchor="middle" font-size="11" fill="#64748B">{{region.title}}</text>
-    {{/each}}
-
     {{! ===================== Factors: tracks, one-colour fills, percentage ===================== }}
     {{#each factors as |item|}}
       <g transform="translate(229, {{item.top}})">
         {{bar 400 item.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=../track}}
-        {{#if item.width}}{{bar item.width item.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=item.fill}}{{/if}}
+        {{#if item.width}}{{bar item.width item.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill="url(#sam-factor)"}}{{/if}}
       </g>
       {{#if item.inside}}
         <text x="{{item.labelX}}" y="{{item.baseline}}" text-anchor="end" direction="ltr" font-size="13" font-weight="500" fill="{{item.ink}}">٪ {{item.pct}}</text>

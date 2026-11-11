@@ -2,51 +2,55 @@ const { Profile } = require("../Profile");
 
 // ---------------------------------------------------------------------------
 // MCHATR93 — چک‌لیست بازنگری‌شده غربال اوتیسم نوپایان (M-CHAT-R).
-// Built from the profile brief revised at the researcher's request on
-// 2026-11-07 (science catalog copy, «در انتظار تأیید»; the researcher asked
-// for the build to proceed). No Figma design exists: this is an agent layout
-// for the designer to review, in the single-total percent-bar language of
-// SEST93 (bar, track, «٪ NN») with STAXI293's axis-end labels (0 / ٪ 100).
+// Built from the approved profile brief (2026-11-07). No Figma design exists:
+// this is an agent layout for the designer to review. Restyled at the
+// researcher's request on 2026-11-11 so it shares the theme of the other
+// Risloo bar profiles: it is one row in STAXI293's bar language.
 //
-// One column, Chart 500 × 180, top to bottom:
-//   1. «نمرهٔ کل», the raw total (0..20) and beside it its percent of the
-//      maximum, total ÷ 20 × 100 — always a whole number, so no rounding.
-//   2. One horizontal bar on a 0..100 % axis (0 left), filled from 0 by that
-//      percent in the level colour, with two boundary lines at 12.5 % and
-//      37.5 % (between scores 2|3 and 7|8) and only 0 / ٪ 100 at its ends.
-//   3. The level label, exactly one of the brief's three, on a band in the
-//      pale tint of the level colour with a marker in its strong colour.
+// One column, Chart 714 × 150, top to bottom:
+//   1. The axis labels 0 / ٪ 25 / ٪ 50 / ٪ 75 / ٪ 100 above the bar, with
+//      dashed gridlines through the bar row (STAXI293 / OHQ93).
+//   2. «نمرهٔ کل» left of the bar, the bar on a 0..100 % axis (0 left) filled
+//      from 0 by total ÷ 20 × 100 with a light → dark gradient in the level's
+//      colour, its percent inside the bar in white (outside, dark, when the bar
+//      is too short), and «خام / 20» right of the bar. Two boundary lines cross
+//      the bar at 12.5 % and 37.5 % (between scores 2|3 and 7|8).
+//   3. The level label, exactly one of the brief's three, centred under the
+//      bar in the level's dark colour.
 //   4. Only when the level is low and the formula set `rescreen`: the alert
 //      «پس از ۲۴ ماهگی دوباره غربال شود» under the label. Without it the column
 //      is re-centred; no empty space is kept for it.
-// Level colours come from the palette of other Risloo profiles: BAI93's slate
-// for the lowest level, STAXI293's sky family for the two higher ones, light
-// → dark with the level. No warning colour, no red/green pair, no purple or
-// indigo. No explanatory text, norm, percentile rank, comparison or other label.
+// Level colours: slate for the lowest level, the sky family of STAXI293 for
+// the two higher ones, darker with the level. No warning colour, no red/green
+// pair, no purple or indigo. No explanatory text, norm, percentile rank,
+// comparison or other label.
 // Unless status is exactly "valid" with a total and a known level, the page
 // shows only «نمره تولید نشد» — no number, percent, label, bar or alert.
 // ---------------------------------------------------------------------------
-const CHART = { width: 500, height: 180 };
 const MAX = 20;
-const BAR = { x: 0, length: 500, top: 40, height: 20 }; // 100 % = 500 px (1 point = 5 % = 25 px)
+const TITLE_RIGHT = 70; // «نمرهٔ کل» (about 60 px at 15 px) ends here
+const BAR = { x: TITLE_RIGHT + 10, width: 560, top: 36, height: 20 }; // 80 → 640; 1 point = 5 % = 28 px
+const RAW = { left: BAR.x + BAR.width + 10, width: 64 }; // 650 → 714
+const CHART = { width: RAW.left + RAW.width, height: 150 };
+const GRID = { top: 22, bottom: 70 }; // gridlines and the zero line, 14 px past the bar
+const TICKS = [0, 25, 50, 75, 100];
 const CUTS = [12.5, 37.5]; // percent; between two neighbouring scores: 2|3 and 7|8
 const CUT_OVERHANG = 6; // boundary lines reach this far above and below the bar
-const ROW = { baseline: 24 }; // «نمرهٔ کل», the total and its percent
-const AXIS = { baseline: 80 }; // 0 and ٪ 100 under the bar ends
-const BAND = { top: 100, height: 48, radius: 8, marker: { right: 12, width: 4, height: 24 }, textGap: 10 };
-const ALERT = { top: 160, height: 20, icon: 7 }; // icon radius
-const NO_ALERT_SHIFT = (ALERT.top + ALERT.height - (BAND.top + BAND.height)) / 2; // 16: re-centre without the alert
+const LABEL = { baseline: 104 }; // level label
+const ALERT = { top: 124, height: 20, icon: 7 }; // icon radius
+const NO_ALERT_SHIFT = 18; // re-centre the column when there is no alert
+// A bar's percent stays inside it (white, 6 px before the end) when the bar is
+// at least this wide, otherwise 6 px after the end in the dark colour.
+const INSIDE_MIN = 44;
 
 // The three levels exactly as the brief names and bounds them; keyed by the
 // formula's `risk` code (scoring/MCHATR93.py: 0..2 low, 3..7 moderate, 8..20 high).
 const LEVELS = {
-  // low: BAI93's slate (its lowest level); moderate / high: STAXI293's sky
-  // family (#7DD3FC accent → #0369A1 dark), with its light #BAE6FD as a tint.
-  low: { title: "خطر کم", strong: "#94A3B8", tint: "#F1F5F9" },
-  moderate: { title: "خطر متوسط: نیاز به مصاحبهٔ پیگیری", strong: "#38BDF8", tint: "#E0F2FE" },
-  high: { title: "خطر زیاد: نیاز به ارزیابی تشخیصی", strong: "#0369A1", tint: "#BAE6FD" },
+  low: { title: "خطر کم", light: "#E2E8F0", dark: "#64748B" },
+  moderate: { title: "خطر متوسط: نیاز به مصاحبهٔ پیگیری", light: "#BAE6FD", dark: "#0284C7" },
+  high: { title: "خطر زیاد: نیاز به ارزیابی تشخیصی", light: "#7DD3FC", dark: "#075985" },
 };
-const TRACK = "#F1F5F9";
+const TRACK = "#E2E8F0"; // STAXI293's track, at half opacity in the template
 
 class MCHATR93 extends Profile {
   static pages = 1;
@@ -75,15 +79,15 @@ class MCHATR93 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: CHART.width + 2 * this.padding.x, // 500 → 903
-          height: CHART.height + 2 * this.padding.y, // 180 → 714
+          width: CHART.width + 2 * this.padding.x, // 714 → 903
+          height: CHART.height + 2 * this.padding.y, // 150 → 714
         };
       },
       // Chart centred on the 943 × 754 design page, minus the 20 px the layout
       // already owns on every side, so the page resolves to 903 × 714.
       padding: {
-        x: (943 - CHART.width) / 2 - 20, // 201.5
-        y: (754 - CHART.height) / 2 - 20, // 267
+        x: (943 - CHART.width) / 2 - 20, // 94.5
+        y: (754 - CHART.height) / 2 - 20, // 282
       },
     },
     labels: Object.values(this.labels),
@@ -113,47 +117,66 @@ class MCHATR93 extends Profile {
     const rescreen = s.risk === "low" && (s.rescreen === true || s.rescreen === 1 || s.rescreen === "1");
     // Percent of the maximum, total ÷ 20 × 100: always a whole number.
     const pct = (total * 100) / MAX;
-    const at = (percent) => BAR.x + (BAR.length * percent) / 100;
+    const at = (percent) => BAR.x + (BAR.width * percent) / 100;
     const width = at(pct) - BAR.x;
-    const bandMid = BAND.top + BAND.height / 2;
+    const inside = width >= INSIDE_MIN;
+    const centre = BAR.x + BAR.width / 2;
+    // Horizontal extent of «٪ NN» (13 px: about 12.5 px for «٪ » plus 7.5 px a
+    // digit) with 8 px to spare. A boundary line that would cross or touch it
+    // stops at the bar's edges instead of running through the percent.
+    const textWidth = 12.5 + 7.5 * String(pct).length;
+    const percentX = inside ? BAR.x + width - 6 : BAR.x + width + 6;
+    const textSpan = inside ? [percentX - textWidth - 8, percentX + 8] : [percentX - 8, percentX + textWidth + 8];
 
     return [
       {
         valid: true,
         shift: rescreen ? 0 : NO_ALERT_SHIFT,
-        right: CHART.width,
-        rowBaseline: ROW.baseline,
-        title: this.labels.L1.title,
-        total,
-        pct,
-        bar: BAR,
+        level,
         track: TRACK,
+        title: this.labels.L1.title,
+        titleRight: TITLE_RIGHT,
+        titleBaseline: BAR.top + 15,
+        bar: BAR,
         width,
-        radius: Math.min(2, width),
-        fill: level.strong,
-        cuts: CUTS.map((c) => ({ x: at(c), y1: BAR.top - CUT_OVERHANG, y2: BAR.top + BAR.height + CUT_OVERHANG })),
-        axis: { baseline: AXIS.baseline, minX: at(0), maxX: at(100) },
-        band: {
-          top: BAND.top,
-          height: BAND.height,
-          radius: BAND.radius,
-          tint: level.tint,
-          markerX: CHART.width - BAND.marker.right - BAND.marker.width,
-          markerY: bandMid - BAND.marker.height / 2,
-          markerWidth: BAND.marker.width,
-          markerHeight: BAND.marker.height,
-          marker: level.strong,
-          textX: CHART.width - BAND.marker.right - BAND.marker.width - BAND.textGap,
-          baseline: bandMid + 6,
-          title: level.title,
-        },
+        radius: Math.min(3, width),
+        total,
+        max: MAX,
+        pct,
+        percentX,
+        percentAnchor: inside ? "end" : "start",
+        percentFill: inside ? "white" : level.dark,
+        percentBaseline: BAR.top + 14.5,
+        rawX: RAW.left,
+        rawBaseline: BAR.top + 16,
+        grid: { top: GRID.top, bottom: GRID.bottom, height: GRID.bottom - GRID.top },
+        baselineX: BAR.x - 0.5,
+        ticks: TICKS.map((value) => ({
+          value,
+          x: at(value),
+          labelX: value === 100 ? at(100) + 1 : at(value),
+          anchor: value === 100 ? "end" : "middle",
+          dashed: value > 0,
+        })),
+        cuts: CUTS.map((c) => {
+          const x = at(c);
+          return {
+            x,
+            y1: BAR.top - CUT_OVERHANG,
+            y2: BAR.top + BAR.height + CUT_OVERHANG,
+            barTop: BAR.top,
+            barBottom: BAR.top + BAR.height,
+            through: x < textSpan[0] || x > textSpan[1],
+          };
+        }),
+        label: { x: centre, baseline: LABEL.baseline, title: level.title },
         rescreen,
         alert: {
-          // Icon centred on the band marker's axis; text on the label's right edge.
-          iconX: CHART.width - BAND.marker.right - BAND.marker.width / 2,
+          // Icon and text centred as one line under the label.
+          iconX: centre + 112,
           iconY: ALERT.top + ALERT.height / 2,
           iconR: ALERT.icon,
-          textX: CHART.width - BAND.marker.right - BAND.marker.width - BAND.textGap,
+          textX: centre + 100,
           baseline: ALERT.top + ALERT.height / 2 + 4.5,
         },
       },

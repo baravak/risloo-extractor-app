@@ -1,30 +1,66 @@
 {{#> layout}}
   {{#if valid}}
+  <defs>
+    {{! STAXI293's bar gradient, light → dark, in the level's colour. }}
+    <linearGradient id="mchatr-bar" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="{{level.light}}"/>
+      <stop offset="1" stop-color="{{level.dark}}"/>
+    </linearGradient>
+    {{! Zero-line shadow (STAXI293), in the local space of the zero line (x = 0, y from 0). }}
+    <filter id="mchatr-base-shadow" x="-3" y="-3" width="7" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1" dy="0"/>
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1" result="shape"/>
+    </filter>
+  </defs>
   <g transform="translate({{spec.profile.padding.x}}, {{math spec.profile.padding.y '+' shift}})">
 
-    {{! ===================== «نمرهٔ کل», the raw total and beside it the percent («٪ NN», SEST93) ===================== }}
-    {{! One LTR run laid out left → right: percent, total, name; read right → left as name, total, percent. }}
-    <text x="{{right}}" y="{{rowBaseline}}" text-anchor="end" direction="ltr" font-size="15" fill="#475569"><tspan font-size="16" font-weight="500" fill="#64748B">٪ {{pct}}</tspan><tspan dx="14" font-size="26" font-weight="700" fill="#1E293B">{{total}}</tspan><tspan dx="8">{{title}}</tspan></text>
-
-    {{! ===================== Bar: track 0..100 % (0 left), filled from 0 by the percent in the level colour ===================== }}
-    <g transform="translate({{bar.x}}, {{bar.top}})">
-      {{bar bar.length bar.height (object tl=0 bl=0 tr=2 br=2) (toRad 0) fill=track}}
-      {{#if width}}{{bar width bar.height (object tl=0 bl=0 tr=radius br=radius) (toRad 0) fill=fill}}{{/if}}
-    </g>
-
-    {{! ===================== Two boundary lines, at 12.5 % and 37.5 % (between scores 2|3 and 7|8) ===================== }}
-    {{#each cuts as |cut|}}
-      <line x1="{{cut.x}}" y1="{{cut.y1}}" x2="{{cut.x}}" y2="{{cut.y2}}" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+    {{! ===================== Axis labels above the bar: 0, ٪ 25 … ٪ 100 (STAXI293) ===================== }}
+    {{#each ticks as |tick|}}
+      <text x="{{tick.labelX}}" y="10.22" text-anchor="{{tick.anchor}}" direction="ltr" unicode-bidi="bidi-override" font-size="12" font-weight="400" fill="#94A3B8">{{#if tick.value}}٪ {{/if}}{{tick.value}}</text>
+    {{/each}}
+    {{#each ticks as |tick|}}
+      {{#if tick.dashed}}<line x1="{{tick.x}}" y1="{{../grid.top}}" x2="{{tick.x}}" y2="{{../grid.bottom}}" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6 6" stroke-linecap="round"/>{{/if}}
     {{/each}}
 
-    {{! ===================== Axis ends only: 0 and ٪ 100 (STAXI293 tick labels) ===================== }}
-    <text x="{{axis.minX}}" y="{{axis.baseline}}" text-anchor="start" direction="ltr" unicode-bidi="bidi-override" font-size="12" font-weight="400" fill="#94A3B8">0</text>
-    <text x="{{axis.maxX}}" y="{{axis.baseline}}" text-anchor="end" direction="ltr" unicode-bidi="bidi-override" font-size="12" font-weight="400" fill="#94A3B8">٪ 100</text>
+    {{! ===================== «نمرهٔ کل», the bar filled from 0 by the percent, «خام / 20» ===================== }}
+    <text x="{{titleRight}}" y="{{titleBaseline}}" text-anchor="start" font-size="15" font-weight="500" fill="#334155">{{title}}</text>
+    <g transform="translate({{bar.x}}, {{bar.top}})">
+      {{bar bar.width bar.height (object tl=0 bl=0 tr=3 br=3) (toRad 0) fill=track fill-opacity=0.5}}
+      {{#if width}}{{bar width bar.height (object tl=0 bl=0 tr=radius br=radius) (toRad 0) fill="url(#mchatr-bar)"}}{{/if}}
+    </g>
+    <text x="{{rawX}}" y="{{rawBaseline}}" text-anchor="start" direction="ltr" fill="#64748B"><tspan font-size="18" font-weight="700" fill="{{level.dark}}">{{total}}</tspan><tspan dx="2" dy="0.66" font-size="12" font-weight="300">/</tspan><tspan dx="2" dy="-0.165" font-size="13" font-weight="400">{{max}}</tspan></text>
 
-    {{! ===================== Level label on a band in the level's tint ===================== }}
-    <rect x="0" y="{{band.top}}" width="{{right}}" height="{{band.height}}" rx="{{band.radius}}" fill="{{band.tint}}"/>
-    <rect x="{{band.markerX}}" y="{{band.markerY}}" width="{{band.markerWidth}}" height="{{band.markerHeight}}" rx="2" fill="{{band.marker}}"/>
-    <text x="{{band.textX}}" y="{{band.baseline}}" text-anchor="start" direction="rtl" font-size="17" font-weight="600" fill="#1E293B">{{band.title}}</text>
+    {{! ===================== Two boundary lines, at 12.5 % and 37.5 % (between scores 2|3 and 7|8) ===================== }}
+    {{! A white underlay keeps each line visible on both the track and the dark fill.
+        Where the line would cross the percent, only its parts above and below the bar are drawn. }}
+    {{#each cuts as |cut|}}
+      {{#if cut.through}}
+      <line x1="{{cut.x}}" y1="{{cut.y1}}" x2="{{cut.x}}" y2="{{cut.y2}}" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <line x1="{{cut.x}}" y1="{{cut.y1}}" x2="{{cut.x}}" y2="{{cut.y2}}" stroke="#475569" stroke-width="1.25" stroke-linecap="round"/>
+      {{else}}
+      <line x1="{{cut.x}}" y1="{{cut.y1}}" x2="{{cut.x}}" y2="{{cut.barTop}}" stroke="#475569" stroke-width="1.25" stroke-linecap="round"/>
+      <line x1="{{cut.x}}" y1="{{cut.barBottom}}" x2="{{cut.x}}" y2="{{cut.y2}}" stroke="#475569" stroke-width="1.25" stroke-linecap="round"/>
+      {{/if}}
+    {{/each}}
+
+    {{! The bar's percent, after the boundary lines. }}
+    <text x="{{percentX}}" y="{{percentBaseline}}" text-anchor="{{percentAnchor}}" direction="ltr" unicode-bidi="embed" font-size="13" font-weight="500" fill="{{percentFill}}">٪ {{pct}}</text>
+
+    {{! ===================== Zero line, drawn after the bar (STAXI293) ===================== }}
+    <g transform="translate({{baselineX}}, {{grid.top}})">
+      <g opacity=".5" filter="url(#mchatr-base-shadow)">
+        <line x1="0" y1="0.5" x2="0" y2="{{math grid.height '-' 0.5}}" stroke="white" stroke-width="1" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    {{! ===================== Level label, centred under the bar ===================== }}
+    <text x="{{label.x}}" y="{{label.baseline}}" text-anchor="middle" direction="rtl" font-size="17" font-weight="600" fill="{{level.dark}}">{{label.title}}</text>
 
     {{! ===================== Rescreen alert: low risk under 24 months only ===================== }}
     {{#if rescreen}}

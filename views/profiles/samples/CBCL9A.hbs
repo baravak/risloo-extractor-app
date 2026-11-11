@@ -50,7 +50,8 @@
     </filter>
 </defs>
 {{#if valid}}
-<g>
+{{!-- Whole chart 25 px lower so the space above it matches the space below (researcher, 2026-11-11) --}}
+<g transform="translate(0, 25)">
     <rect width="863" x="0" y="360" height="1" rx="0.5" fill="#E2E8F0"/>
     <g transform="translate(24, 0)">
         <text font-size="14" font-weight="600" fill="#334155" transform="translate(12, 32.5), rotate(-90, 0, 0)">
@@ -99,7 +100,9 @@
                 <line x1="3.5" y1="4.5" x2="341.5" y2="4.5" stroke="white" stroke-linecap="round" />
             </g>
         </g>
-        {{!-- Internalizing, externalizing, total: even T axis 28..100; borderline 60..63, clinical 64 and above --}}
+        {{!-- Internalizing, externalizing, total: even T axis 28..100; borderline 60..63, clinical 64 and above.
+             The 60 and 64 lines are 9 px apart, narrower than «مرزی»; both lines break around the label
+             instead of running through it (researcher, 2026-11-11). --}}
         <g transform="translate(527, 0)">
             <g transform="translate(0, 3)">
                 <rect height="81" width="189" x="60" y="46" fill="#FEF2F2" opacity=".25" />
@@ -111,7 +114,6 @@
                 <text x="68" y="80" dy=".77em" font-size="12" font-weight="400" fill="#B91C1C" text-anchor="end">بالینی</text>
                 <rect height="9" width="189" x="60" y="127" fill="#FEFCE8" opacity=".25" />
                 <text x="52" y="117.5" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">64</text>
-                <text x="68" y="125" dy=".77em" font-size="12" font-weight="400" fill="#CA8A04" text-anchor="end">مرزی</text>
                 <rect height="72" width="189" x="60" y="136" fill="#ECFDF5" opacity=".25" />
                 <text x="52" y="133.5" dy=".77em" font-size="12" font-weight="400" fill="#94A3B8" text-anchor="start">60</text>
                 <text x="68" y="165" dy=".77em" font-size="12" font-weight="400" fill="#15803D" text-anchor="end">بهنجار</text>
@@ -126,6 +128,9 @@
                 <line x1="59.5" y1="45.5" x2="250" y2="45.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
                 <line x1="59.5" y1="127.5" x2="250" y2="127.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
                 <line x1="59.5" y1="136.5" x2="250" y2="136.5" stroke="#E2E8F0" stroke-linecap="round" stroke-dasharray="6 6"/>
+                {{!-- Gap in both lines behind «مرزی», in the borderline band's own tint, then the label centred in the band --}}
+                <rect x="58" y="125" width="38" height="14" fill="#FFFEF9" />
+                <text x="68" y="124.5" dy=".77em" font-size="12" font-weight="400" fill="#CA8A04" text-anchor="end">مرزی</text>
                 <g transform="translate(121, 46)">
                     {{#each group2 as |item index|}}
                         <g transform="translate({{math 40 '*' index}}, 0)">

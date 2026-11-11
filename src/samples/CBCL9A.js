@@ -7,7 +7,8 @@ const { Profile } = require("../Profile");
 // Bars use an even T axis (researcher, 2026-10-25), so bar length matches the number:
 //   syndromes and DSM scales: 50..100 over 165 px; band edges at 65 and 70
 //   internalizing, externalizing, total: 28..100 over 162 px; band edges at 60 and 64
-// The layout is CBCL93's.
+// The layout is CBCL93's. Researcher, 2026-11-11: the whole chart moved 25 px down, and in the
+// totals the 60 and 64 lines break around «مرزی»; both axes keep the same height and base.
 // Unless scoring/CBCL9A.py returns status "valid", only «نمره تولید نشد» is drawn.
 
 class CBCL9A extends Profile {

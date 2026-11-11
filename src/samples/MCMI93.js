@@ -165,6 +165,12 @@ class MCMI93 extends Profile {
   constructor(dataset, options, config = {}) {
     super();
     this._init(dataset, options, config);
+    // Researcher, 2026-11-11: the header shows the name the assessment is
+    // registered under in Risloo, «آزمون شخصیت میلون (3)». The title sent with
+    // the sample is the assessment name plus the form title, and this form has
+    // no form title; its 3 is only in `version`, so it is added here.
+    const version = dataset && dataset.version;
+    if (version && this.dataset.info.title !== "-") this.dataset.info.title += ` (${version})`;
   }
 
   _calcContext() {

@@ -5,31 +5,28 @@ const { Profile } = require("../Profile");
 // whose files are not shared or imported here.
 //
 // Eight pole scores, each with its own fixed maximum (E 35, I 34, S 33, N 31, T 35, F 30,
-// J 19, P 18). The two poles of a pair do not add up to a constant, so each pair row has
-// two equal half-bars back to back instead of one shared bar: each half-bar starts at its
-// own letter box (0) and fills toward the centre line by its own stored percent (100% =
-// the centre line). The type code `report` decides the colours, never the bar lengths:
-// the pole whose letter is in the type is teal; the other pole, and both poles of a tied
-// pair (letters in parentheses, e.g. (EI)STJ), are violet. No levels, no explanatory text.
-
-// Chart geometry. MBTI9A's composition (code box, title, framed rows of letter tile ·
-// bar · letter tile) at a lighter scale, after the researcher found the first build
-// bulky (2026-10-22): smaller code and tiles, thin half-bars, smaller text, more air.
-const CHART = { width: 520, height: 456 };
-// The code box is 112 wide for a four-letter code; a longer code (ties in parentheses)
-// widens it around the same centre, keeping the same side space.
-const CODE = { centerX: 260, minWidth: 112, height: 44, padding: 20, radius: 8, font: 28, titleY: 54, titleFont: 13 };
-// Approximate widths of the type-code glyphs at font-size 28, weight 700 (measured on
-// rendered PNGs of ESTP, (EI)NTP and (EI)(SN)(FT)(PJ)), used only to size the code box.
-const CODE_GLYPH = { letter: 16, paren: 10 };
-const FRAME = { y: 96, height: 360, radius: 16 };
-const BOX = 28; // letter tile side
-// Row: left tile 0..28 · left half-bar 42..142 · centre gap · right half-bar 146..246 ·
-// right tile 260..288; the row is centred in the frame.
-const ROW_WIDTH = 288;
-const ROWS = { x: CHART.width / 2 - ROW_WIDTH / 2, top: FRAME.y + 40, pitch: 80 };
-const HALF = { leftX: 42, rightEnd: 246, length: 100, height: 10, radius: 5 };
-const TEXT = { letter: 15, raw: 11, percent: 13, name: 12, gap: 10, rawGap: 5 };
+// J 19, P 18). The two poles of a pair do not add up to a constant, so the 15-block bar
+// of MBTI9A becomes two segmented half-bars back to back, seven blocks each: each half
+// starts at its own letter tile (0) and fills toward the centre gap by its own stored
+// percent (100% = the centre). The type code `report` decides the colours, never the
+// bar lengths: the pole whose letter is in the type is teal; the other pole, and both
+// poles of a tied pair (letters in parentheses, e.g. (EI)STJ), are violet. No levels,
+// no explanatory text.
+//
+// Researcher, 2026-11-11: the lighter build was cluttered; the profile returns to
+// MBTI9A's geometry and sizes (chart 590 × 621, code 40 px in a 142 × 60 box, framed
+// rows at a 114 pitch, 36 px tiles, 24 px letters, 16 px percent and name).
+const CHART = { width: 590, height: 621 };
+// The code box is 142 wide for a four-letter code, as MBTI9A; a longer code (ties in
+// parentheses) widens it around the same centre.
+const CODE = { centerX: 295, minWidth: 142, padding: 24 };
+// Approximate widths of the type-code glyphs at font-size 40, weight 800, used only to
+// size the code box.
+const CODE_GLYPH = { letter: 26, paren: 14 };
+// MBTI9A's blocks: 12 wide at a 15 px pitch. Left half: 52..154; right half: 172..274;
+// letter tiles at 0..36 and 290..326.
+const BLOCK = { width: 12, pitch: 15, count: 7, radius: 4 };
+const HALF = { leftX: 52, rightEnd: 274, span: (BLOCK.count - 1) * BLOCK.pitch + BLOCK.width };
 
 // Row order and names as in MBTI9A: left pole before right pole.
 const PAIRS = [
@@ -43,6 +40,7 @@ const COLORS = {
   chosen: { box: "#0D9488", letter: "#FFFFFF", accent: "#0D9488" },
   other: { box: "#F5F3FF", letter: "#7C3AED", accent: "#7C3AED" },
 };
+const TRACK = "#F5F3FF";
 
 class MBTI93 extends Profile {
   // Number of pages
@@ -88,8 +86,8 @@ class MBTI93 extends Profile {
       // Chart centred on the 943 × 754 design page, minus the 20 px the layout
       // already owns on every side, so the page resolves to 903 × 714.
       padding: {
-        x: 191.5, // (943 − 520) / 2 − 20
-        y: 129, // (754 − 456) / 2 − 20
+        x: 156.5, // (943 − 590) / 2 − 20
+        y: 46.5, // (754 − 621) / 2 − 20
       },
     },
     labels: Object.values(this.labels),
@@ -111,7 +109,27 @@ class MBTI93 extends Profile {
     const report = present(stored("report")) ? String(stored("report")) : "";
     const decided = this._parseType(report);
 
-    const pole = (p) => {
+    // Seven blocks of one half-bar. `fromRight` counts blocks from the right end (the
+    // right pole fills leftward from its tile). Each block shows the part of the fill
+    // that falls on it; the gaps between blocks show nothing.
+    const blocks = (fill, fromRight) => {
+      const list = [];
+      for (let k = 0; k < BLOCK.count; k++) {
+        const x = fromRight
+          ? HALF.rightEnd - BLOCK.width - k * BLOCK.pitch
+          : HALF.leftX + k * BLOCK.pitch;
+        const w = Math.min(Math.max(fill - k * BLOCK.pitch, 0), BLOCK.width);
+        list.push({
+          x,
+          fillX: fromRight ? x + BLOCK.width - w : x,
+          fill: w,
+          radius: Math.min(BLOCK.radius, w / 2),
+        });
+      }
+      return list;
+    };
+
+    const pole = (p, fromRight) => {
       const raw = stored(`${p}_raw`);
       const percent = stored(`${p}_percent`);
       const hasRaw = present(raw);
@@ -121,29 +139,25 @@ class MBTI93 extends Profile {
       // arithmetic.
       const fraction = hasPercent ? Math.min(Math.max(Number(percent), 0), 1) : 0;
       const thousandths = Math.round(fraction * 1000);
-      const width = (HALF.length * thousandths) / 1000;
       const label = this.labels[Object.keys(this.labels).find((k) => this.labels[k].eng === `${p}_raw`)];
       return {
         eng: p.toUpperCase(),
         fr: label.fr,
         mark: hasRaw ? Number(raw) : "",
         percentage: hasPercent ? `${Math.floor((thousandths + 5) / 10)} ٪` : "",
-        width,
-        radius: Math.min(HALF.radius, width / 2),
+        blocks: blocks((HALF.span * thousandths) / 1000, fromRight),
       };
     };
 
     const items = PAIRS.map(([left, right]) => {
-      const a = pole(left);
-      const b = pole(right);
+      const a = pole(left, false);
+      const b = pole(right, true);
       // Colour comes from the type code: the letter in the type is "chosen"; a tied
       // pair (both letters in parentheses) or a pair the code does not mention has
       // no chosen pole.
       const winner = decided[left] === true ? left : decided[right] === true ? right : null;
       a.colors = winner === left ? COLORS.chosen : COLORS.other;
       b.colors = winner === right ? COLORS.chosen : COLORS.other;
-      a.fillX = HALF.leftX;
-      b.fillX = HALF.rightEnd - b.width;
       return [a, b];
     });
 
@@ -152,40 +166,9 @@ class MBTI93 extends Profile {
     return [
       {
         items,
+        track: TRACK,
         report: { mark: report, fr: this.labels.L17.fr },
-        code: {
-          x: CODE.centerX - codeWidth / 2,
-          width: codeWidth,
-          height: CODE.height,
-          radius: CODE.radius,
-          centerX: CODE.centerX,
-          middle: CODE.height / 2,
-          font: CODE.font,
-          titleY: CODE.titleY,
-          titleFont: CODE.titleFont,
-        },
-        frame: { width: CHART.width, ...FRAME },
-        rows: ROWS,
-        box: BOX,
-        boxMiddle: BOX / 2,
-        rightBoxX: ROW_WIDTH - BOX,
-        text: {
-          ...TEXT,
-          rawY: BOX + TEXT.rawGap,
-          // percent above the name, the two lines centred on the tile
-          percentY: -1,
-          nameY: 15,
-          leftX: -TEXT.gap,
-          rightX: BOX + TEXT.gap,
-        },
-        half: {
-          leftX: HALF.leftX,
-          rightX: HALF.rightEnd - HALF.length,
-          y: BOX / 2 - HALF.height / 2,
-          length: HALF.length,
-          height: HALF.height,
-          radius: HALF.radius,
-        },
+        code: { x: CODE.centerX - codeWidth / 2, width: codeWidth, centerX: CODE.centerX },
       },
     ];
   }

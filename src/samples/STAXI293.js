@@ -15,7 +15,7 @@ const { Profile } = require("../Profile");
 //   - OHQ93: the horizontal bar, its percent, axis and raw-score column.
 //
 // Three groups, in the brief's order:
-//   1. حالت خشم — احساس خشم، احساس تمایل به بیان کلامی خشم، … جسمی خشم
+//   1. حالت خشم — احساس خشم، احساس تمایل به بیان کلامی، … جسمی
 //   2. صفت خشم — خوی خشمناک، واکنش خشمناک
 //   3. شاخص بیان خشم — بیان خشم به طرف بیرون / درون، کنترل خشم به طرف بیرون / درون
 // Every bar and every ring is filled from 0 by the score's own stored percent
@@ -25,16 +25,19 @@ const { Profile } = require("../Profile");
 // boundary line, score-dependent colour, code or explanatory text.
 // Unless status is exactly "valid", the page shows only «نمره تولید نشد».
 // ---------------------------------------------------------------------------
-const CHART = { width: 840, height: 632 };
+const CHART = { width: 810, height: 632 };
 const RING = { radius: 70, inner: 49, corner: 6, frame: 141, overhang: 3 }; // PRPS93 / CAARS93
 const RING_X = RING.overhang; // the 100 % label reaches 3 px left of the 141 px frame
 const RING_CENTRE = { x: 70.5, y: 70 }; // inside the frame
 const RING_TITLE_Y = 172.06; // title baseline inside the frame (PRPS93)
 const BLOCK = { top: 30, height: 177, gap: 36 }; // ring + title; groups 213 px apart top to top
-// Names end 32 px after the ring frame plus the longest name (about 181 px).
-const TITLE_RIGHT = RING_X + RING.frame + 32 + 182; // 358
-const BAR = { x: TITLE_RIGHT + 8, width: 400, height: 16 }; // 100 % = 400 px; 366 → 766
-const RAW = { left: BAR.x + BAR.width + 10, width: 64 }; // 776 → 840
+// Names end 32 px after the ring frame plus the longest name (about 151 px,
+// «احساس تمایل به بیان جسمی»). The two «… خشم» names were shortened at the
+// researcher's request (2026-11-11) so the rings sit closer to the bars and the
+// narrower chart leaves wider margins on both sides of the page.
+const TITLE_RIGHT = RING_X + RING.frame + 32 + 152; // 328
+const BAR = { x: TITLE_RIGHT + 8, width: 400, height: 16 }; // 100 % = 400 px; 336 → 736
+const RAW = { left: BAR.x + BAR.width + 10, width: 64 }; // 746 → 810
 const ROW_PITCH = 40; // 16 / 40 rows (BAR-02)
 const GRID_MARGIN = 14; // gridlines and the zero line reach this far past the group's bars
 const TICKS = [0, 25, 50, 75, 100];
@@ -65,9 +68,9 @@ class STAXI293 extends Profile {
     L2: { eng: "state_anger_percent" },
     L3: { eng: "state_feeling_raw", title: "احساس خشم", max: 20 },
     L4: { eng: "state_feeling_percent" },
-    L5: { eng: "state_verbal_raw", title: "احساس تمایل به بیان کلامی خشم", max: 20 },
+    L5: { eng: "state_verbal_raw", title: "احساس تمایل به بیان کلامی", max: 20 },
     L6: { eng: "state_verbal_percent" },
-    L7: { eng: "state_physical_raw", title: "احساس تمایل به بیان جسمی خشم", max: 20 },
+    L7: { eng: "state_physical_raw", title: "احساس تمایل به بیان جسمی", max: 20 },
     L8: { eng: "state_physical_percent" },
     L9: { eng: "trait_anger_raw", title: "صفت خشم", max: 40 },
     L10: { eng: "trait_anger_percent" },
@@ -99,13 +102,13 @@ class STAXI293 extends Profile {
     profile: {
       get dimensions() {
         return {
-          width: CHART.width + 2 * this.padding.x, // 840 → 903
+          width: CHART.width + 2 * this.padding.x, // 810 → 903
           height: CHART.height + 2 * this.padding.y, // 632 → 714
         };
       },
       // Chart centred on the 943 × 754 design page, minus the 20 px the layout owns.
       padding: {
-        x: (943 - CHART.width) / 2 - 20, // 31.5
+        x: (943 - CHART.width) / 2 - 20, // 46.5
         y: (754 - CHART.height) / 2 - 20, // 41
       },
     },

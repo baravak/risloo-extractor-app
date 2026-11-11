@@ -9,18 +9,21 @@ const { Profile } = require("../Profile");
 //     own percent of maximum; never one shared axis, never sorted or highlighted;
 //   - one neutral palette for all three: no levels, zones, thresholds, labels
 //     or score-dependent colour;
-//   - on-page text is exactly the brief's: four limitations and the reference
-//     cut-off as text only, no interpretation text — no score is ever
-//     compared with 55 or 65;
+//   - gauges only, centred on the page: the box with the brief's four
+//     limitations and reference cut-off was removed at the researcher's order
+//     (2026-11-11), against the brief's "with every result" row; no
+//     interpretation text, and no score is ever compared with 55 or 65;
 //   - all-or-nothing: unless scoring/CAARS93.py returns status "valid", only
 //     the alert «نمره تولید نشد» is drawn — never a partial or zero score.
 // `percent` arrives as a 3-decimal fraction; the page shows it × 100 rounded to
 // a whole number, halves up, using integer arithmetic so 0.815 reads 82, not 81.
 // ---------------------------------------------------------------------------
-const CHART = { width: 863, height: 533 };
+// The chart is the gauge row alone: ring top (0) to the title's descenders (~177).
+const CHART = { width: 863, height: 177 };
 const GAUGE = { radius: 70, inner: 49, corner: 6, pitch: 229, overhang: 3, width: 602 };
 const GAUGES_X = (CHART.width - GAUGE.width) / 2; // 130.5
-const TEXT_TOP = 219;
+// The alert box was placed for the former 533 px chart; keep it where it was on the page.
+const ALERT_SHIFT = -(533 - CHART.height) / 2; // -178
 const THEME = { accent: "#A5B4FC", primary: "#4338CA", track: "#F1F5F9" };
 
 class CAARS93 extends Profile {
@@ -48,14 +51,14 @@ class CAARS93 extends Profile {
       get dimensions() {
         return {
           width: CHART.width + 2 * this.padding.x, // 863 → 903
-          height: CHART.height + 2 * this.padding.y, // 533 → 714
+          height: CHART.height + 2 * this.padding.y, // 177 → 714
         };
       },
       // Chart inset inside the 943 × 754 design page minus the 20 px the layout
       // owns on every side, so the with-sidebar page renders at scale 1.
       padding: {
         x: (943 - CHART.width) / 2 - 20, // 20
-        y: (754 - CHART.height) / 2 - 20, // 90.5
+        y: (754 - CHART.height) / 2 - 20, // 268.5
       },
     },
     labels: Object.values(this.labels),
@@ -71,7 +74,7 @@ class CAARS93 extends Profile {
 
     // Anything but an explicit "valid" is no result: a missing status must not
     // let `?? 0` zeros read as the lowest valid score.
-    if (s[6].mark !== "valid") return [{ valid: false }];
+    if (s[6].mark !== "valid") return [{ valid: false, alertShift: ALERT_SHIFT }];
 
     // Fixed order from `labels`; never sorted by score.
     const scales = [0, 1, 2].map((i) => {
@@ -90,7 +93,7 @@ class CAARS93 extends Profile {
       };
     });
 
-    return [{ valid: true, scales, theme: THEME, trackPath: ringPath(1), textTop: TEXT_TOP }];
+    return [{ valid: true, scales, theme: THEME, trackPath: ringPath(1) }];
   }
 }
 

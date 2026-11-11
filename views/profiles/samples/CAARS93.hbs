@@ -34,41 +34,18 @@
       </g>
     {{/each}}
 
-    {{! ===================== Limitations and reference cut-off ===================== }}
-    {{! Exactly the brief's two text blocks, no interpretation text; read by the authorised specialist. }}
-    <g transform="translate(0, {{textTop}})">
-      <rect x="0.5" y="0.5" width="862" height="313" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
-
-      <text x="843" y="30" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">عدم قطعیت و محدودیت</text>
-      <circle cx="840" cy="53.5" r="2" fill="#334155"/>
-      <text x="831" y="58" text-anchor="start" font-size="13.5" fill="#334155">این ابزار غربال است، نه تشخیص.</text>
-      <circle cx="840" cy="77.5" r="2" fill="#334155"/>
-      <text x="831" y="82" text-anchor="start" font-size="13.5" fill="#334155">برای این نسخه هنجار ایرانی و برش قابل محاسبه وجود ندارد.</text>
-      <circle cx="840" cy="101.5" r="2" fill="#334155"/>
-      <text x="831" y="106" text-anchor="start" font-size="13.5" fill="#334155">نمرهٔ بالا ممکن است از افسردگی یا اضطراب هم بیاید.</text>
-      <circle cx="840" cy="125.5" r="2" fill="#334155"/>
-      <text x="831" y="130" text-anchor="start" font-size="13.5" fill="#334155">آزمون تصمیم‌یار است، نه تصمیم‌گیر قطعی.</text>
-
-      <text x="843" y="166" text-anchor="start" font-size="15" font-weight="600" fill="#1E293B">نقطهٔ برش مرجع</text>
-      {{! "T ≥ 65" is its own left-to-right text: inside a right-to-left run it reorders to "65 ≥ T". }}
-      <text x="843" y="192" direction="ltr" text-anchor="end" font-size="13" font-weight="600" fill="#334155">T ≥ 65</text>
-      <text x="790" y="192" text-anchor="start" font-size="13" fill="#334155">— حساسیت 59٪، ویژگی 92٪</text>
-      <text x="843" y="216" direction="ltr" text-anchor="end" font-size="13" font-weight="600" fill="#334155">T ≥ 55</text>
-      <text x="790" y="216" text-anchor="start" font-size="13" fill="#334155">— حساسیت 89٪، ویژگی 68٪</text>
-      <text x="843" y="242" text-anchor="start" font-size="13" fill="#334155">منبع: مطالعهٔ روایی ملاکیِ یک ترجمهٔ فارسیِ دیگر از همین فرم، 1393.</text>
-      <text x="843" y="266" text-anchor="start" font-size="13" fill="#334155">جامعه: 100 والدِ کودکانِ مبتلا به ADHD؛ ملاک بیرونی: مصاحبهٔ روان‌پزشکی بر پایهٔ ملاک‌های یوتا.</text>
-      <text x="843" y="294" text-anchor="start" font-size="13" font-weight="600" fill="#334155">این دو عدد روی مقیاس T تعریف شده‌اند و با نمره‌های خامِ این نسخه قابل مقایسه نیستند.</text>
-    </g>
-
   {{else}}
 
     {{! ===================== Alert: no score (all-or-nothing) ===================== }}
-    {{! Neutral, not the system-error look; no gauge, number or zero is drawn. }}
+    {{! Neutral, not the system-error look; no gauge, number or zero is drawn.
+        Same place on the page as before the chart shrank to the gauges alone. }}
+    <g transform="translate(0, {{alertShift}})">
     <rect x="181.5" y="230.5" width="500" height="160" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
     <circle cx="431.5" cy="285" r="17" fill="none" stroke="#64748B" stroke-width="2"/>
     <line x1="431.5" y1="276" x2="431.5" y2="288" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
     <circle cx="431.5" cy="294.5" r="1.6" fill="#64748B"/>
     <text x="431.5" y="342" text-anchor="middle" font-size="17" font-weight="600" fill="#1E293B">نمره تولید نشد</text>
+    </g>
 
   {{/if}}
 

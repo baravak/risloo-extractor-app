@@ -4,7 +4,7 @@
   {{#each items as |item|}}
 
     {{! ===================== Component name, on the left of its bar ===================== }}
-    <text x="{{../titleRight}}" y="{{item.baseline}}" text-anchor="start" font-size="13" fill="#475569">{{item.title}}</text>
+    <text x="{{../titleRight}}" text-anchor="start" font-size="13" fill="#475569">{{#each item.titleLines as |line|}}<tspan x="{{../../titleRight}}" y="{{line.baseline}}">{{line.text}}</tspan>{{/each}}</text>
 
     {{! ===================== Track (unfilled part) and the filled part, from 0 to 100 ===================== }}
     <g transform="translate({{../bar.x}}, {{item.top}})">
